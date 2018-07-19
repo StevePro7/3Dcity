@@ -1,6 +1,7 @@
 using System;
 using WindowsGame.Common.Managers;
-using WindowsGame.Engine.Interfaces;
+using WindowsGame.Define.Interfaces;
+using WindowsGame.Define.Managers;
 
 namespace WindowsGame.Common.TheGame
 {

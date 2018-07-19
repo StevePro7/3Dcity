@@ -1,9 +1,10 @@
+using WindowsGame.Define.Managers;
 using NUnit.Framework;
 using Rhino.Mocks;
 using WindowsGame.Common;
 using WindowsGame.Common.Managers;
 using WindowsGame.Common.TheGame;
-using WindowsGame.Engine.Interfaces;
+using WindowsGame.Define.Interfaces;
 
 namespace WindowsGame.UnitTests
 {

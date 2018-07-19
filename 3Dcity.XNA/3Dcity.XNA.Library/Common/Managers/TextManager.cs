@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using WindowsGame.Define.Objects;
 using Microsoft.Xna.Framework;
 
 namespace WindowsGame.Common.Managers
@@ -9,6 +11,8 @@ namespace WindowsGame.Common.Managers
 		void LoadContent();
 		void Update(GameTime gameTime);
 		void Draw();
+
+		IList<TextData> LoadTextData(String screen);
 	}
 
 	public class TextManager : ITextManager 
@@ -27,6 +31,12 @@ namespace WindowsGame.Common.Managers
 
 		public void Draw()
 		{
+		}
+
+		public IList<TextData> LoadTextData(String screen)
+		{
+			//return LoadTextData(screen, Constants.TextsSize, Constants.GameOffsetX, Constants.FontOffsetX, Constants.FontOffsetY);
+			return null;
 		}
 
 	}

@@ -7,7 +7,7 @@ namespace WindowsGame.Define.Interfaces
 	{
 		void Initialize();
 		void LoadContent();
-		String Update(GameTime gameTime);
+		Int32 Update(GameTime gameTime);
 		void Draw();
 	}
 }

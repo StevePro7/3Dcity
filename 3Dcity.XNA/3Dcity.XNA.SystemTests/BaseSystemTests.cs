@@ -1,12 +1,13 @@
 ﻿using System;
-using WindowsGame.Engine.Interfaces;
-using WindowsGame.Engine.IoC;
-using WindowsGame.SystemTests.Implementation;
 using NUnit.Framework;
 using WindowsGame.Common;
 using WindowsGame.Common.Managers;
 using WindowsGame.Common.Static;
 using WindowsGame.Common.TheGame;
+using WindowsGame.Define.Interfaces;
+using WindowsGame.Define.IoC;
+using WindowsGame.Define.Managers;
+using WindowsGame.SystemTests.Implementation;
 
 namespace WindowsGame.SystemTests
 {

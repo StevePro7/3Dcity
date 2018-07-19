@@ -1,6 +1,7 @@
 ﻿using System;
 using WindowsGame.Common.Managers;
-using WindowsGame.Engine.IoC;
+using WindowsGame.Define.IoC;
+using WindowsGame.Define.Managers;
 
 namespace WindowsGame.Common.Static
 {
