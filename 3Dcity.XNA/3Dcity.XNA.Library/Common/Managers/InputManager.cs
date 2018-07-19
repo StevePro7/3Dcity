@@ -1,4 +1,5 @@
 using System;
+using WindowsGame.Common.Interfaces;
 using Microsoft.Xna.Framework;
 
 namespace WindowsGame.Common.Managers
@@ -6,27 +7,32 @@ namespace WindowsGame.Common.Managers
 	public interface IInputManager 
 	{
 		void Initialize();
-		void LoadContent();
 		void Update(GameTime gameTime);
-		void Draw();
+
+		Boolean Escape();
 	}
 
 	public class InputManager : IInputManager 
 	{
-		public void Initialize()
+		private readonly IInputFactory inputFactory;
+
+		public InputManager(IInputFactory inputFactory)
 		{
+			this.inputFactory = inputFactory;
 		}
 
-		public void LoadContent()
+		public void Initialize()
 		{
+			inputFactory.Initialize();
 		}
 
 		public void Update(GameTime gameTime)
 		{
 		}
 
-		public void Draw()
+		public Boolean Escape()
 		{
+			return false;
 		}
 
 	}

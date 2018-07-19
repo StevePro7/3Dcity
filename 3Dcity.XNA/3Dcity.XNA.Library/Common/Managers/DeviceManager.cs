@@ -1,4 +1,5 @@
 using System;
+using WindowsGame.Common.Interfaces;
 using Microsoft.Xna.Framework;
 
 namespace WindowsGame.Common.Managers
@@ -6,26 +7,23 @@ namespace WindowsGame.Common.Managers
 	public interface IDeviceManager 
 	{
 		void Initialize();
-		void LoadContent();
-		void Update(GameTime gameTime);
-		void Draw();
 	}
 
 	public class DeviceManager : IDeviceManager 
 	{
-		public void Initialize()
+		private readonly IDeviceFactory deviceFactory;
+
+		public DeviceManager(IDeviceFactory deviceFactory)
 		{
+			this.deviceFactory = deviceFactory;
 		}
 
-		public void LoadContent()
+		public void Initialize()
 		{
+			deviceFactory.Initialize();
 		}
 
 		public void Update(GameTime gameTime)
-		{
-		}
-
-		public void Draw()
 		{
 		}
 
