@@ -1,7 +1,6 @@
-﻿using WindowsGame.Engine.Interfaces;
+﻿using System;
+using WindowsGame.Common.Managers;
 using WindowsGame.Engine.IoC;
-using WindowsGame.Engine.Managers;
-using Microsoft.Xna.Framework.Content;
 
 namespace WindowsGame.Common.Static
 {
@@ -11,10 +10,21 @@ namespace WindowsGame.Common.Static
 		{
 			//IoCContainer.Initialize<IGameManager, GameManager>();
 
-			//IoCContainer.Initialize<IJoystickInput, JoystickInput>();
-			//IoCContainer.Initialize<IKeyboardInput, KeyboardInput>();
-			//IoCContainer.Initialize<IMouseScreenInput, MouseScreenInput>();
-			//IoCContainer.Initialize<ITouchScreenInput, TouchScreenInput>();
+			IoCContainer.Initialize<ICollisionManager, CollisionManager>();
+			IoCContainer.Initialize<IConfigManager, ConfigManager>();
+			IoCContainer.Initialize<IContentManager, ContentManager>();
+			IoCContainer.Initialize<IDeviceManager, DeviceManager>();
+			IoCContainer.Initialize<IImageManager, ImageManager>();
+			IoCContainer.Initialize<IInputManager, InputManager>();
+			IoCContainer.Initialize<IRandomManager, RandomManager>();
+			IoCContainer.Initialize<IResolutionManager, ResolutionManager>();
+			IoCContainer.Initialize<IScoreManager, ScoreManager>();
+			IoCContainer.Initialize<IScreenManager, ScreenManager>();
+			IoCContainer.Initialize<ISoundManager, SoundManager>();
+			IoCContainer.Initialize<ISpriteManager, SpriteManager>();
+			IoCContainer.Initialize<IStorageManager, StorageManager>();
+			IoCContainer.Initialize<ITextManager, TextManager>();
+			IoCContainer.Initialize<IThreadManager, ThreadManager>();
 
 //            IoCContainer.Initialize<IFileProxy, RealFileProxy>();
 //            IoCContainer.Initialize<IFileManager, FileManager>();
