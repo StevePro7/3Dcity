@@ -1,7 +1,10 @@
-﻿using System;
-using WindowsGame.Common.Managers;
+﻿using WindowsGame.Common.Managers;
+using WindowsGame.Common.TheGame;
+using WindowsGame.Define.Implementation;
+using WindowsGame.Define.Interfaces;
 using WindowsGame.Define.IoC;
 using WindowsGame.Define.Managers;
+using log4net.Repository.Hierarchy;
 
 namespace WindowsGame.Common.Static
 {
@@ -9,7 +12,7 @@ namespace WindowsGame.Common.Static
 	{
 		public static void Initialize()
 		{
-			//IoCContainer.Initialize<IGameManager, GameManager>();
+			IoCContainer.Initialize<IGameManager, GameManager>();
 
 			IoCContainer.Initialize<ICollisionManager, CollisionManager>();
 			IoCContainer.Initialize<IConfigManager, ConfigManager>();
@@ -27,8 +30,8 @@ namespace WindowsGame.Common.Static
 			IoCContainer.Initialize<ITextManager, TextManager>();
 			IoCContainer.Initialize<IThreadManager, ThreadManager>();
 
-//            IoCContainer.Initialize<IFileProxy, RealFileProxy>();
-//            IoCContainer.Initialize<IFileManager, FileManager>();
+			IoCContainer.Initialize<IFileProxy, RealFileProxy>();
+			IoCContainer.Initialize<IFileManager, FileManager>();
 
 //#if (WINDOWS && MOBILE)
 //            IoCContainer.Initialize<IDeviceFactory, MobilesDeviceFactory>();
@@ -37,7 +40,7 @@ namespace WindowsGame.Common.Static
 //#elif WINDOWS
 //            IoCContainer.Initialize<IDeviceFactory, WindowsDeviceFactory>();
 //            IoCContainer.Initialize<IInputFactory, WindowsInputFactory>();
-//            IoCContainer.Initialize<ILogger, Logger.Implementation.RealLogger>();
+			IoCContainer.Initialize<ILogger, RealLogger>();
 //#endif
 //#if !WINDOWS
 //            IoCContainer.Initialize<IDeviceFactory, MobilesDeviceFactory>();
