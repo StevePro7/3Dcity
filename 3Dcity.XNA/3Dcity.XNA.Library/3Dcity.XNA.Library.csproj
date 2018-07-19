@@ -82,8 +82,6 @@
     <Compile Include="Common\Managers\DeviceManager.cs" />
     <Compile Include="Common\Managers\ImageManager.cs" />
     <Compile Include="Common\Managers\InputManager.cs" />
-    <Compile Include="Common\Managers\RandomManager.cs" />
-    <Compile Include="Common\Managers\ResolutionManager.cs" />
     <Compile Include="Common\Managers\ScoreManager.cs" />
     <Compile Include="Common\Managers\ScreenManager.cs" />
     <Compile Include="Common\Managers\SoundManager.cs" />
@@ -111,6 +109,8 @@
     <Compile Include="Define\IoC\EngineModule.cs" />
     <Compile Include="Define\IoC\IoCContainer.cs" />
     <Compile Include="Define\Managers\FileManager.cs" />
+    <Compile Include="Define\Managers\RandomManager.cs" />
+    <Compile Include="Define\Managers\ResolutionManager.cs" />
     <Compile Include="Define\Managers\StorageManager.cs" />
     <Compile Include="Define\Managers\ThreadManager.cs" />
     <Compile Include="Define\Objects\TextData.cs" />
