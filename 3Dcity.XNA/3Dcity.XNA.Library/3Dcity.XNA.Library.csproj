@@ -45,6 +45,9 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.5\lib\net40-client\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework.Game, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework.Graphics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
@@ -69,7 +72,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\AnGame.cs" />
+    <Compile Include="Common\Data\BaseData.cs" />
+    <Compile Include="Common\Data\GlobalConfigData.cs" />
+    <Compile Include="Common\Data\StoragePersistData.cs" />
+    <Compile Include="Common\Managers\BaseManager.cs" />
+    <Compile Include="Common\Static\Assets.cs" />
+    <Compile Include="Common\Static\Constants.cs" />
+    <Compile Include="Common\Static\Enumerations.cs" />
+    <Compile Include="Common\Static\Globalize.cs" />
+    <Compile Include="Common\Static\Registration.cs" />
     <Compile Include="Engine\Engine.cs" />
+    <Compile Include="Engine\Implementation\RealFileProxy.cs" />
+    <Compile Include="Engine\Implementation\RealLogger.cs" />
     <Compile Include="Engine\Implementation\TestLogger.cs" />
     <Compile Include="Engine\Interfaces\IFileManager.cs" />
     <Compile Include="Engine\Interfaces\IFileProxy.cs" />

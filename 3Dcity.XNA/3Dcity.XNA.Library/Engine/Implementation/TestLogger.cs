@@ -8,7 +8,6 @@ namespace WindowsGame.Engine.Implementation
 		{
 		}
 
-		
 		public void Debug(string message)
 		{
 		}
