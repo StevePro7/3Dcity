@@ -1,10 +1,12 @@
-﻿using WindowsGame.Common.Managers;
+﻿using WindowsGame.Common.Devices;
+using WindowsGame.Common.Inputs;
+using WindowsGame.Common.Interfaces;
+using WindowsGame.Common.Managers;
 using WindowsGame.Common.TheGame;
 using WindowsGame.Define.Implementation;
 using WindowsGame.Define.Interfaces;
 using WindowsGame.Define.IoC;
 using WindowsGame.Define.Managers;
-using log4net.Repository.Hierarchy;
 
 namespace WindowsGame.Common.Static
 {
@@ -38,8 +40,8 @@ namespace WindowsGame.Common.Static
 //            IoCContainer.Initialize<IInputFactory, WindowsInputFactory>();
 //            IoCContainer.Initialize<ILogger, Logger.Implementation.RealLogger>();
 //#elif WINDOWS
-//            IoCContainer.Initialize<IDeviceFactory, WindowsDeviceFactory>();
-//            IoCContainer.Initialize<IInputFactory, WindowsInputFactory>();
+			IoCContainer.Initialize<IDeviceFactory, WindowsDeviceFactory>();
+			IoCContainer.Initialize<IInputFactory, WindowsInputFactory>();
 			IoCContainer.Initialize<ILogger, RealLogger>();
 //#endif
 //#if !WINDOWS

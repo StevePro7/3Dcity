@@ -72,6 +72,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\AnGame.cs" />
+    <Compile Include="Common\Devices\WindowsDeviceFactory.cs" />
+    <Compile Include="Common\Inputs\WindowsInputFactory.cs" />
     <Compile Include="Common\Interfaces\IDeviceFactory.cs" />
     <Compile Include="Common\Interfaces\IInputFactory.cs" />
     <Compile Include="Common\MyGame.cs" />
