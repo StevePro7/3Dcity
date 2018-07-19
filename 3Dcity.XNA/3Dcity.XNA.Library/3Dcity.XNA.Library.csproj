@@ -75,7 +75,6 @@
     <Compile Include="Common\MyGame.cs" />
     <Compile Include="Common\Data\BaseData.cs" />
     <Compile Include="Common\Data\GlobalConfigData.cs" />
-    <Compile Include="Common\Data\StoragePersistData.cs" />
     <Compile Include="Common\Managers\BaseManager.cs" />
     <Compile Include="Common\Managers\CollisionManager.cs" />
     <Compile Include="Common\Managers\ConfigManager.cs" />
@@ -89,7 +88,6 @@
     <Compile Include="Common\Managers\ScreenManager.cs" />
     <Compile Include="Common\Managers\SoundManager.cs" />
     <Compile Include="Common\Managers\SpriteManager.cs" />
-    <Compile Include="Common\Managers\StorageManager.cs" />
     <Compile Include="Common\Managers\TextManager.cs" />
     <Compile Include="Common\Screens\BaseScreen.cs" />
     <Compile Include="Common\Screens\InitScreen.cs" />
@@ -113,6 +111,7 @@
     <Compile Include="Define\IoC\EngineModule.cs" />
     <Compile Include="Define\IoC\IoCContainer.cs" />
     <Compile Include="Define\Managers\FileManager.cs" />
+    <Compile Include="Define\Managers\StorageManager.cs" />
     <Compile Include="Define\Managers\ThreadManager.cs" />
     <Compile Include="Define\Objects\TextData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
