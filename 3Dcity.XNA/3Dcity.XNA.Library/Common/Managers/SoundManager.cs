@@ -1,31 +1,24 @@
 using System;
 using Microsoft.Xna.Framework;
+using WindowsGame.Define.Factorys;
 
 namespace WindowsGame.Common.Managers
 {
 	public interface ISoundManager 
 	{
 		void Initialize();
-		void LoadContent();
-		void Update(GameTime gameTime);
-		void Draw();
 	}
 
 	public class SoundManager : ISoundManager 
 	{
+		private readonly ISoundFactory soundFactory;
+
+		public SoundManager(ISoundFactory soundFactory)
+		{
+			this.soundFactory = soundFactory;
+		}
+
 		public void Initialize()
-		{
-		}
-
-		public void LoadContent()
-		{
-		}
-
-		public void Update(GameTime gameTime)
-		{
-		}
-
-		public void Draw()
 		{
 		}
 
