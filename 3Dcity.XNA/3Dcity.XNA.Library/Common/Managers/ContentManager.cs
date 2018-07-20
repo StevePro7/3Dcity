@@ -1,6 +1,6 @@
 using System;
 using WindowsGame.Define.Factorys;
-using Microsoft.Xna.Framework.Graphics;
+using WindowsGame.Common.Static;
 
 namespace WindowsGame.Common.Managers
 {
@@ -9,11 +9,18 @@ namespace WindowsGame.Common.Managers
 		void Initialize();
 		void Initialize(String root);
 		void LoadContent();
+		void LoadContentSplash();
 	}
 
 	public class ContentManager : IContentManager 
 	{
 		private readonly IContentFactory contentFactory;
+		private String contentRoot;
+		private String texturesRoot;
+
+		private const String FONTS_DIRECTORY = "Fonts";
+		private const String SOUND_DIRECTORY = "Sound";
+		private const String TEXTURES_DIRECTORY = "Textures";
 
 		public ContentManager(IContentFactory contentFactory)
 		{
@@ -26,11 +33,21 @@ namespace WindowsGame.Common.Managers
 		}
 		public void Initialize(String root)
 		{
+			contentRoot = String.Format("{0}{1}", root, Constants.CONTENT_DIRECTORY);
+			texturesRoot = String.Format("{0}/{1}/", contentRoot, TEXTURES_DIRECTORY);
 		}
 
 		public void LoadContent()
 		{
-			Texture2D graphic = contentFactory.LoadTexture("Emulogic");
+			String fontRoot = String.Format("{0}/{1}/", contentRoot, FONTS_DIRECTORY);
+			Assets.EmulogicFont = contentFactory.LoadFont("Emulogic");
+		}
+
+		public void LoadContentSplash()
+		{
+			// TODO revert!
+			Assets.SteveProTexture = contentFactory.LoadTexture(texturesRoot + "StevePro");
+			//Assets.SteveProTexture = contentFactory.LoadTexture(texturesRoot + "Splash");
 		}
 
 	}

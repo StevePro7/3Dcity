@@ -12,7 +12,6 @@ namespace WindowsGame.Common.Managers
 	public interface IScreenManager 
 	{
 		void Initialize();
-		void Initialize(Matrix theTransformationMatrix);
 		void LoadContent();
 		void Update(GameTime gameTime);
 		void Draw();
@@ -23,20 +22,13 @@ namespace WindowsGame.Common.Managers
 		private IDictionary<Int32, IScreen> screens;
 		private Int32 currScreen = (Int32)ScreenType.Splash;
 		private Int32 nextScreen = (Int32)ScreenType.Splash;
-		private Matrix transformationMatrix;
 		private Color color;
 
 		public void Initialize()
 		{
-			Initialize(Matrix.Identity);
-		}
-
-		public void Initialize(Matrix theTransformationMatrix)
-		{
 			screens = GetScreens();
 			screens[(Int32)ScreenType.Splash].Initialize();
 			screens[(Int32)ScreenType.Init].Initialize();
-			transformationMatrix = theTransformationMatrix;
 			color = GetColor();
 		}
 
@@ -85,6 +77,8 @@ namespace WindowsGame.Common.Managers
 				{(Int32)ScreenType.Splash, new SplashScreen()},
 				{(Int32)ScreenType.Init, new InitScreen()},
 				{(Int32)ScreenType.Title, new TitleScreen()},
+				{(Int32)ScreenType.Exit, new ExitScreen()},
+				{(Int32)ScreenType.Test, new TestScreen()},
 			};
 		}
 
