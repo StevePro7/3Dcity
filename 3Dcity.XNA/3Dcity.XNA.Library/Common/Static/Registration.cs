@@ -6,7 +6,7 @@ using WindowsGame.Common.TheGame;
 using WindowsGame.Define.Implementation;
 using WindowsGame.Define.Interfaces;
 using WindowsGame.Define.IoC;
-using WindowsGame.Define.Managers;
+using TheRegistration = WindowsGame.Define.Static.Registration;
 
 namespace WindowsGame.Common.Static
 {
@@ -14,6 +14,9 @@ namespace WindowsGame.Common.Static
 	{
 		public static void Initialize()
 		{
+			// Initialize engine first.
+			TheRegistration.Initialize();
+
 			IoCContainer.Initialize<IGameManager, GameManager>();
 
 			IoCContainer.Initialize<ICollisionManager, CollisionManager>();
@@ -22,18 +25,12 @@ namespace WindowsGame.Common.Static
 			IoCContainer.Initialize<IDeviceManager, DeviceManager>();
 			IoCContainer.Initialize<IImageManager, ImageManager>();
 			IoCContainer.Initialize<IInputManager, InputManager>();
-			IoCContainer.Initialize<IRandomManager, RandomManager>();
-			IoCContainer.Initialize<IResolutionManager, ResolutionManager>();
+
 			IoCContainer.Initialize<IScoreManager, ScoreManager>();
 			IoCContainer.Initialize<IScreenManager, ScreenManager>();
 			IoCContainer.Initialize<ISoundManager, SoundManager>();
 			IoCContainer.Initialize<ISpriteManager, SpriteManager>();
-			IoCContainer.Initialize<IStorageManager, StorageManager>();
 			IoCContainer.Initialize<ITextManager, TextManager>();
-			IoCContainer.Initialize<IThreadManager, ThreadManager>();
-
-			IoCContainer.Initialize<IFileProxy, ProdFileProxy>();
-			IoCContainer.Initialize<IFileManager, FileManager>();
 
 //#if (WINDOWS && MOBILE)
 //            IoCContainer.Initialize<IDeviceFactory, MobilesDeviceFactory>();

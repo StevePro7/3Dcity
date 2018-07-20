@@ -118,9 +118,12 @@
     <Compile Include="Define\Managers\StorageManager.cs" />
     <Compile Include="Define\Managers\ThreadManager.cs" />
     <Compile Include="Define\Objects\TextData.cs" />
+    <Compile Include="Define\Static\Registration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Define\NewFolder1\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--
