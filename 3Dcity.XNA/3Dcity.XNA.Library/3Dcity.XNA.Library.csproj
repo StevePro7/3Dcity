@@ -103,8 +103,8 @@
     <Compile Include="Common\TheGame\GameFactory.cs" />
     <Compile Include="Common\TheGame\GameManager.cs" />
     <Compile Include="Define\Engine.cs" />
-    <Compile Include="Define\Implementation\RealFileProxy.cs" />
-    <Compile Include="Define\Implementation\RealLogger.cs" />
+    <Compile Include="Define\Implementation\ProdFileProxy.cs" />
+    <Compile Include="Define\Implementation\ProdLogger.cs" />
     <Compile Include="Define\Implementation\TestLogger.cs" />
     <Compile Include="Define\Interfaces\IFileManager.cs" />
     <Compile Include="Define\Interfaces\IFileProxy.cs" />

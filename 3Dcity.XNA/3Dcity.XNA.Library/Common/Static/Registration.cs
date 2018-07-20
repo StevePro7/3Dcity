@@ -32,7 +32,7 @@ namespace WindowsGame.Common.Static
 			IoCContainer.Initialize<ITextManager, TextManager>();
 			IoCContainer.Initialize<IThreadManager, ThreadManager>();
 
-			IoCContainer.Initialize<IFileProxy, RealFileProxy>();
+			IoCContainer.Initialize<IFileProxy, ProdFileProxy>();
 			IoCContainer.Initialize<IFileManager, FileManager>();
 
 //#if (WINDOWS && MOBILE)
@@ -42,7 +42,7 @@ namespace WindowsGame.Common.Static
 //#elif WINDOWS
 			IoCContainer.Initialize<IDeviceFactory, WindowsDeviceFactory>();
 			IoCContainer.Initialize<IInputFactory, WindowsInputFactory>();
-			IoCContainer.Initialize<ILogger, RealLogger>();
+			IoCContainer.Initialize<ILogger, ProdLogger>();
 //#endif
 //#if !WINDOWS
 //            IoCContainer.Initialize<IDeviceFactory, MobilesDeviceFactory>();
