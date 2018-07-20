@@ -10,8 +10,9 @@ namespace WindowsGame.Common.Static
 		// Fonts.
 		public static SpriteFont EmulogicFont;
 
-		// Textures.
-
 		// Sound.
+
+		// Textures.
+		public static Texture2D SteveProTexture;
 	}
 }

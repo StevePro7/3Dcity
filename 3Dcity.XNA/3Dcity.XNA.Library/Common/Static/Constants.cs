@@ -6,6 +6,9 @@ namespace WindowsGame.Common.Static
 	{
 		public const String CONTENT_DIRECTORY = "Content";
 
+		public const String DATA_DIRECTORY = "Data";
+		
+
 		// Global data.
 		public const Boolean IsFixedTimeStep = true;
 		public const UInt32 FramesPerSecond = 100;

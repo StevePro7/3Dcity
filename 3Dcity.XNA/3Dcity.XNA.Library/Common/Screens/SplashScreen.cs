@@ -2,6 +2,7 @@ using System;
 using WindowsGame.Common.Static;
 using WindowsGame.Define.Interfaces;
 using Microsoft.Xna.Framework;
+using WindowsGame.Define;
 
 namespace WindowsGame.Common.Screens
 {
@@ -24,7 +25,7 @@ namespace WindowsGame.Common.Screens
 
 		public override void Draw()
 		{
-			base.Draw();
+			Engine.SpriteBatch.Draw(Assets.SteveProTexture, Vector2.Zero, Color.White);
 		}
 
 	}

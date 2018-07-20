@@ -16,15 +16,14 @@ namespace WindowsGame.Common
 		public static void Initialize()
 		{
 			Manager.Logger.Initialize();
-			Manager.RandomManager.Initialize();
-
 			Manager.ConfigManager.Initialize();
+			Manager.ConfigManager.LoadContent();
+
+			Manager.ContentManager.Initialize();
+			Manager.ContentManager.LoadContentSplash();
 
 			Manager.ResolutionManager.Initialize();
 			Manager.ScreenManager.Initialize();
-			Manager.SoundManager.Initialize();
-			Manager.SpriteManager.Initialize();
-			Manager.StorageManager.Initialize();
 			Manager.ThreadManager.Initialize();
 		}
 
@@ -38,6 +37,10 @@ namespace WindowsGame.Common
 
 		public static void LoadContentAsync()
 		{
+			Manager.InputManager.Initialize();
+			Manager.ScoreManager.Initialize();
+			Manager.RandomManager.Initialize();
+	
 			GC.Collect();
 		}
 
@@ -51,7 +54,8 @@ namespace WindowsGame.Common
 			Manager.InputManager.Update(gameTime);
 
 #if WINDOWS
-			Boolean escape = Manager.InputManager.Escape();
+			Boolean escape = Microsoft.Xna.Framework.Input.Keyboard.GetState().IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Escape);
+			//Boolean escape = Manager.InputManager.Escape();
 			if (escape)
 			{
 				Engine.Game.Exit();
