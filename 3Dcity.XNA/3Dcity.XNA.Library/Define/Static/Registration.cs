@@ -2,6 +2,7 @@
 using WindowsGame.Define.Interfaces;
 using WindowsGame.Define.IoC;
 using WindowsGame.Define.Managers;
+using WindowsGame.Define.Factorys;
 
 namespace WindowsGame.Define.Static
 {
@@ -9,7 +10,11 @@ namespace WindowsGame.Define.Static
 	{
 		public static void Initialize()
 		{
-			// Engine.
+			// Factorys.
+			IoCContainer.Initialize<IContentFactory, ContentFactory>();
+			IoCContainer.Initialize<ISoundFactory, SoundFactory>();
+
+			// Managers.
 			IoCContainer.Initialize<IRandomManager, RandomManager>();
 			IoCContainer.Initialize<IResolutionManager, ResolutionManager>();
 			IoCContainer.Initialize<IStorageManager, StorageManager>();

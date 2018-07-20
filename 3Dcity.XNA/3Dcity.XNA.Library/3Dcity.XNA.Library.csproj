@@ -103,6 +103,8 @@
     <Compile Include="Common\TheGame\GameFactory.cs" />
     <Compile Include="Common\TheGame\GameManager.cs" />
     <Compile Include="Define\Engine.cs" />
+    <Compile Include="Define\Factorys\ContentFactory.cs" />
+    <Compile Include="Define\Factorys\SoundFactory.cs" />
     <Compile Include="Define\Implementation\ProdFileProxy.cs" />
     <Compile Include="Define\Implementation\ProdLogger.cs" />
     <Compile Include="Define\Implementation\TestLogger.cs" />
@@ -121,9 +123,7 @@
     <Compile Include="Define\Static\Registration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Define\NewFolder1\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--

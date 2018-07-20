@@ -1,5 +1,5 @@
-using System;
-using Microsoft.Xna.Framework;
+using WindowsGame.Define.Factorys;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace WindowsGame.Common.Managers
 {
@@ -7,26 +7,24 @@ namespace WindowsGame.Common.Managers
 	{
 		void Initialize();
 		void LoadContent();
-		void Update(GameTime gameTime);
-		void Draw();
 	}
 
 	public class ContentManager : IContentManager 
 	{
+		private readonly IContentFactory contentFactory;
+
+		public ContentManager(IContentFactory contentFactory)
+		{
+			this.contentFactory = contentFactory;
+		}
+
 		public void Initialize()
 		{
 		}
 
 		public void LoadContent()
 		{
-		}
-
-		public void Update(GameTime gameTime)
-		{
-		}
-
-		public void Draw()
-		{
+			Texture2D graphic = contentFactory.LoadTexture("Emulogic");
 		}
 
 	}
