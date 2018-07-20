@@ -6,26 +6,21 @@ namespace WindowsGame.Common.Managers
 	public interface IConfigManager 
 	{
 		void Initialize();
+		void Initialize(String root);
 		void LoadContent();
-		void Update(GameTime gameTime);
-		void Draw();
 	}
 
 	public class ConfigManager : IConfigManager 
 	{
 		public void Initialize()
 		{
+			Initialize(String.Empty);
+		}
+		public void Initialize(String root)
+		{
 		}
 
 		public void LoadContent()
-		{
-		}
-
-		public void Update(GameTime gameTime)
-		{
-		}
-
-		public void Draw()
 		{
 		}
 
