@@ -1,3 +1,4 @@
+using System;
 using WindowsGame.Define.Factorys;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -6,6 +7,7 @@ namespace WindowsGame.Common.Managers
 	public interface IContentManager 
 	{
 		void Initialize();
+		void Initialize(String root);
 		void LoadContent();
 	}
 
@@ -19,6 +21,10 @@ namespace WindowsGame.Common.Managers
 		}
 
 		public void Initialize()
+		{
+			Initialize(String.Empty);
+		}
+		public void Initialize(String root)
 		{
 		}
 

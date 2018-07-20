@@ -5,6 +5,8 @@
 		Splash,
 		Init,
 		Title,
+		Exit,
+		Test,
 	}
 
 }
