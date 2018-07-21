@@ -18,7 +18,6 @@ namespace WindowsGame.Define.Static
 			IoCContainer.Initialize<IRandomManager, RandomManager>();
 			IoCContainer.Initialize<IResolutionManager, ResolutionManager>();
 			IoCContainer.Initialize<IStorageManager, StorageManager>();
-			IoCContainer.Initialize<IThreadManager, ThreadManager>();
 
 			IoCContainer.Initialize<IFileProxy, ProdFileProxy>();
 			IoCContainer.Initialize<IFileManager, FileManager>();

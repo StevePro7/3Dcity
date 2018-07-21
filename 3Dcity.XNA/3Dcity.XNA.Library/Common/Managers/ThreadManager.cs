@@ -2,7 +2,7 @@
 using System.Threading;
 using WindowsGame.Common;
 
-namespace WindowsGame.Define.Managers
+namespace WindowsGame.Common.Managers
 {
 	public interface IThreadManager
 	{

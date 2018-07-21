@@ -31,6 +31,7 @@ namespace WindowsGame.Common.Static
 			IoCContainer.Initialize<ISoundManager, SoundManager>();
 			IoCContainer.Initialize<ISpriteManager, SpriteManager>();
 			IoCContainer.Initialize<ITextManager, TextManager>();
+			IoCContainer.Initialize<IThreadManager, ThreadManager>();
 
 //#if (WINDOWS && MOBILE)
 //            IoCContainer.Initialize<IDeviceFactory, MobilesDeviceFactory>();

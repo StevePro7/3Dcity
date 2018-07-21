@@ -76,10 +76,10 @@
     <Compile Include="Common\Inputs\WindowsInputFactory.cs" />
     <Compile Include="Common\Interfaces\IDeviceFactory.cs" />
     <Compile Include="Common\Interfaces\IInputFactory.cs" />
+    <Compile Include="Common\Managers\ThreadManager.cs" />
     <Compile Include="Common\MyGame.cs" />
     <Compile Include="Common\Data\BaseData.cs" />
     <Compile Include="Common\Data\GlobalConfigData.cs" />
-    <Compile Include="Common\Managers\BaseManager.cs" />
     <Compile Include="Common\Managers\CollisionManager.cs" />
     <Compile Include="Common\Managers\ConfigManager.cs" />
     <Compile Include="Common\Managers\ContentManager.cs" />
@@ -120,7 +120,6 @@
     <Compile Include="Define\Managers\RandomManager.cs" />
     <Compile Include="Define\Managers\ResolutionManager.cs" />
     <Compile Include="Define\Managers\StorageManager.cs" />
-    <Compile Include="Define\Managers\ThreadManager.cs" />
     <Compile Include="Define\Objects\TextData.cs" />
     <Compile Include="Define\Static\Registration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
