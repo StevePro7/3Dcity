@@ -82,7 +82,6 @@
     <Compile Include="Common\Managers\StorageManager.cs" />
     <Compile Include="Common\Managers\ThreadManager.cs" />
     <Compile Include="Common\MyGame.cs" />
-    <Compile Include="Common\Data\BaseData.cs" />
     <Compile Include="Common\Data\GlobalConfigData.cs" />
     <Compile Include="Common\Managers\CollisionManager.cs" />
     <Compile Include="Common\Managers\ConfigManager.cs" />
