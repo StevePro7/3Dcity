@@ -72,10 +72,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\AnGame.cs" />
+    <Compile Include="Common\Data\StoragePersistData.cs" />
+    <Compile Include="Common\Devices\MobilesDeviceFactory.cs" />
     <Compile Include="Common\Devices\WindowsDeviceFactory.cs" />
+    <Compile Include="Common\Inputs\MobilesInputFactory.cs" />
     <Compile Include="Common\Inputs\WindowsInputFactory.cs" />
     <Compile Include="Common\Interfaces\IDeviceFactory.cs" />
     <Compile Include="Common\Interfaces\IInputFactory.cs" />
+    <Compile Include="Common\Managers\StorageManager.cs" />
     <Compile Include="Common\Managers\ThreadManager.cs" />
     <Compile Include="Common\MyGame.cs" />
     <Compile Include="Common\Data\BaseData.cs" />
@@ -107,6 +111,7 @@
     <Compile Include="Define\Engine.cs" />
     <Compile Include="Define\Factorys\ContentFactory.cs" />
     <Compile Include="Define\Factorys\SoundFactory.cs" />
+    <Compile Include="Define\Factorys\StorageFactory.cs" />
     <Compile Include="Define\Implementation\ProdFileProxy.cs" />
     <Compile Include="Define\Implementation\ProdLogger.cs" />
     <Compile Include="Define\Implementation\TestLogger.cs" />
@@ -119,7 +124,6 @@
     <Compile Include="Define\Managers\FileManager.cs" />
     <Compile Include="Define\Managers\RandomManager.cs" />
     <Compile Include="Define\Managers\ResolutionManager.cs" />
-    <Compile Include="Define\Managers\StorageManager.cs" />
     <Compile Include="Define\Objects\TextData.cs" />
     <Compile Include="Define\Static\Registration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

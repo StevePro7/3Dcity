@@ -6,26 +6,32 @@ using WindowsGame.Define;
 
 namespace WindowsGame.Common.Screens
 {
-	public class SplashScreen : BaseScreen, IScreen 
+	public class SplashScreen : BaseScreen, IScreen
 	{
+		private Vector2 bannerPosition;
+		private Boolean flag;
+
 		public override void Initialize()
 		{
-			base.Initialize();
-		}
+			Single wide = (Constants.ScreenWide - Assets.SplashTexture.Width) / 2.0f;
+			Single high = (Constants.ScreenHigh - Assets.SplashTexture.Height) / 2.0f;
 
-		public override void LoadContent()
-		{
-			base.LoadContent();
+			bannerPosition = new Vector2(wide, high);
+			flag = false;
 		}
 
 		public Int32 Update(GameTime gameTime)
 		{
-			return (Int32)ScreenType.Splash;
+			return flag ? (Int32)ScreenType.Init : (Int32)ScreenType.Splash;
 		}
 
 		public override void Draw()
 		{
-			Engine.SpriteBatch.Draw(Assets.SteveProTexture, Vector2.Zero, Color.White);
+			// TODO delegate this to device manager??
+			Engine.Game.Window.Title = GetType().Name;// Globalize.GAME_TITLE;
+
+			Engine.SpriteBatch.Draw(Assets.SplashTexture, bannerPosition, Color.White);
+			flag = true;
 		}
 
 	}

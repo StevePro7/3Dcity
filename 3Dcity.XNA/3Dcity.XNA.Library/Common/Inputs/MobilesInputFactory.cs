@@ -4,9 +4,9 @@ using WindowsGame.Common.Interfaces;
 
 namespace WindowsGame.Common.Inputs
 {
-	public class WindowsInputFactory : IInputFactory
+	public class MobilesInputFactory : IInputFactory
 	{
-		public WindowsInputFactory()
+		public MobilesInputFactory()
 		{
 		}
 

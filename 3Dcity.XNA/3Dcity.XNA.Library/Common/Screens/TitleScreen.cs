@@ -1,5 +1,6 @@
 using System;
 using WindowsGame.Common.Static;
+using WindowsGame.Define;
 using WindowsGame.Define.Interfaces;
 using Microsoft.Xna.Framework;
 
@@ -24,6 +25,8 @@ namespace WindowsGame.Common.Screens
 
 		public override void Draw()
 		{
+			// TODO delegate this to device manager??
+			Engine.Game.Window.Title = GetType().Name;// Globalize.GAME_TITLE;
 			base.Draw();
 		}
 

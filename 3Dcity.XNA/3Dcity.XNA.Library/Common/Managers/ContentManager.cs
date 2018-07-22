@@ -40,14 +40,19 @@ namespace WindowsGame.Common.Managers
 		public void LoadContent()
 		{
 			String fontRoot = String.Format("{0}/{1}/", contentRoot, FONTS_DIRECTORY);
-			Assets.EmulogicFont = contentFactory.LoadFont("Emulogic");
+			Assets.EmulogicFont = contentFactory.LoadFont(fontRoot + "Emulogic");
 		}
 
 		public void LoadContentSplash()
 		{
 			// TODO revert!
-			Assets.SteveProTexture = contentFactory.LoadTexture(texturesRoot + "StevePro");
-			//Assets.SteveProTexture = contentFactory.LoadTexture(texturesRoot + "Splash");
+			String splash = (0 == MyGame.Manager.ConfigManager.GlobalConfigData.SplashDelay) ? "StevePro" : "Splash";
+			Assets.SplashTexture = contentFactory.LoadTexture(texturesRoot + splash);
+
+			Assets.BackgroundTexture = contentFactory.LoadTexture(texturesRoot + "background");
+			Assets.ForegroundTexture = contentFactory.LoadTexture(texturesRoot + "foreground01");
+			Assets.JoypadTexture = contentFactory.LoadTexture(texturesRoot + "joypad");
+			Assets.StarsTexture = contentFactory.LoadTexture(texturesRoot + "stars01");
 		}
 
 	}

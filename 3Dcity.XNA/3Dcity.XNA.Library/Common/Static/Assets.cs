@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Media;
+﻿using Microsoft.Xna.Framework.Graphics;
 
 namespace WindowsGame.Common.Static
 {
@@ -13,6 +10,12 @@ namespace WindowsGame.Common.Static
 		// Sound.
 
 		// Textures.
-		public static Texture2D SteveProTexture;
+		public static Texture2D SplashTexture;
+
+		// Initial screen.
+		public static Texture2D BackgroundTexture;
+		public static Texture2D ForegroundTexture;
+		public static Texture2D JoypadTexture;
+		public static Texture2D StarsTexture;
 	}
 }

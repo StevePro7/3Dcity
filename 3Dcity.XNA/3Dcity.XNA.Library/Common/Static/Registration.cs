@@ -30,23 +30,36 @@ namespace WindowsGame.Common.Static
 			IoCContainer.Initialize<IScreenManager, ScreenManager>();
 			IoCContainer.Initialize<ISoundManager, SoundManager>();
 			IoCContainer.Initialize<ISpriteManager, SpriteManager>();
+			IoCContainer.Initialize<IStorageManager, StorageManager>();
 			IoCContainer.Initialize<ITextManager, TextManager>();
 			IoCContainer.Initialize<IThreadManager, ThreadManager>();
 
-//#if (WINDOWS && MOBILE)
+#if WINDOWS
+			IoCContainer.Initialize<IDeviceFactory, WindowsDeviceFactory>();
+			IoCContainer.Initialize<IInputFactory, WindowsInputFactory>();
+			IoCContainer.Initialize<ILogger, ProdLogger>();
+#endif
+
+#if !WINDOWS
+			IoCContainer.Initialize<IDeviceFactory, MobilesDeviceFactory>();
+			IoCContainer.Initialize<IInputFactory, MobilesInputFactory>();
+			IoCContainer.Initialize<ILogger, TestLogger>();
+#endif
+
 //            IoCContainer.Initialize<IDeviceFactory, MobilesDeviceFactory>();
 //            IoCContainer.Initialize<IInputFactory, WindowsInputFactory>();
 //            IoCContainer.Initialize<ILogger, Logger.Implementation.RealLogger>();
 //#elif WINDOWS
-			IoCContainer.Initialize<IDeviceFactory, WindowsDeviceFactory>();
-			IoCContainer.Initialize<IInputFactory, WindowsInputFactory>();
-			IoCContainer.Initialize<ILogger, ProdLogger>();
+//            IoCContainer.Initialize<IDeviceFactory, WindowsDeviceFactory>();
+//            IoCContainer.Initialize<IInputFactory, WindowsInputFactory>();
+//            IoCContainer.Initialize<ILogger, ProdLogger>();
 //#endif
 //#if !WINDOWS
 //            IoCContainer.Initialize<IDeviceFactory, MobilesDeviceFactory>();
 //            IoCContainer.Initialize<IInputFactory, MobilesInputFactory>();
 //            IoCContainer.Initialize<ILogger, Library.Implementation.TestLogger>();
 //#endif
+
 		}
 	}
 }

@@ -3,42 +3,35 @@ using System.IO;
 using System.IO.IsolatedStorage;
 using System.Xml.Serialization;
 
-namespace WindowsGame.Define.Managers
+namespace WindowsGame.Define.Factorys
 {
-	public interface IStorageManager
+	public interface IStorageFactory
 	{
-		void Initialize();
-		void Initialize(String theFileName);
+		void Initialize(String fileName);
 		T LoadContent<T>();
 		void SaveContent<T>(T data);
 	}
 
-	public class StorageManager : IStorageManager
+	public class StorageFactory : IStorageFactory
 	{
 		private IsolatedStorageFile storage;
-		private String fileName;
+		private String myFileName;
 
-		public void Initialize()
+		public void Initialize(String fileName)
 		{
-			Initialize("GameData.xml");
-		}
-
-		public void Initialize(String theFileName)
-		{
-			fileName = theFileName;
+			myFileName = fileName;
 		}
 
 		public T LoadContent<T>()
 		{
 			T data = default(T);
-
 			try
 			{
 				using (storage = GetUserStoreAsAppropriateForCurrentPlatform())
 				{
-					if (storage.FileExists(fileName))
+					if (storage.FileExists(myFileName))
 					{
-						using (IsolatedStorageFileStream fileStream = new IsolatedStorageFileStream(fileName, FileMode.Open, storage))
+						using (IsolatedStorageFileStream fileStream = new IsolatedStorageFileStream(myFileName, FileMode.Open, storage))
 						{
 							XmlSerializer serializer = new XmlSerializer(typeof(T));
 							data = (T)serializer.Deserialize(fileStream);
@@ -59,7 +52,7 @@ namespace WindowsGame.Define.Managers
 			{
 				using (storage = GetUserStoreAsAppropriateForCurrentPlatform())
 				{
-					using (IsolatedStorageFileStream fileStream = new IsolatedStorageFileStream(fileName, FileMode.Create, storage))
+					using (IsolatedStorageFileStream fileStream = new IsolatedStorageFileStream(myFileName, FileMode.Create, storage))
 					{
 						XmlSerializer serializer = new XmlSerializer(typeof(T));
 						serializer.Serialize(fileStream, data);

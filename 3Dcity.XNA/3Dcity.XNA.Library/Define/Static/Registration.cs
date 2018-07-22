@@ -13,11 +13,11 @@ namespace WindowsGame.Define.Static
 			// Factorys.
 			IoCContainer.Initialize<IContentFactory, ContentFactory>();
 			IoCContainer.Initialize<ISoundFactory, SoundFactory>();
+			IoCContainer.Initialize<IStorageFactory, StorageFactory>();
 
 			// Managers.
 			IoCContainer.Initialize<IRandomManager, RandomManager>();
 			IoCContainer.Initialize<IResolutionManager, ResolutionManager>();
-			IoCContainer.Initialize<IStorageManager, StorageManager>();
 
 			IoCContainer.Initialize<IFileProxy, ProdFileProxy>();
 			IoCContainer.Initialize<IFileManager, FileManager>();

@@ -2,9 +2,9 @@
 
 namespace WindowsGame.Common.Devices
 {
-	public class WindowsDeviceFactory : IDeviceFactory
+	public class MobilesDeviceFactory : IDeviceFactory
 	{
-		public WindowsDeviceFactory()
+		public MobilesDeviceFactory()
 		{
 		}
 

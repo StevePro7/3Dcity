@@ -1,8 +1,8 @@
-using WindowsGame.Common.Static;
+using System;
 using Microsoft.Xna.Framework;
+using WindowsGame.Common.Static;
 using WindowsGame.Common.TheGame;
 using WindowsGame.Define;
-using System;
 
 namespace WindowsGame.Common
 {
@@ -40,7 +40,17 @@ namespace WindowsGame.Common
 			Manager.InputManager.Initialize();
 			Manager.ScoreManager.Initialize();
 			Manager.RandomManager.Initialize();
-	
+			Manager.StorageManager.Initialize();
+			Manager.TextManager.Initialize();
+
+			Manager.CollisionManager.LoadContent();
+			Manager.ContentManager.LoadContent();
+			Manager.ImageManager.LoadContent();
+
+			Manager.ScoreManager.LoadContent();
+			Manager.ScreenManager.LoadContent();
+			Manager.StorageManager.LoadContent();
+
 			GC.Collect();
 		}
 
