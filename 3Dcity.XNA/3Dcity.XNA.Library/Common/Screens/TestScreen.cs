@@ -42,7 +42,54 @@ namespace WindowsGame.Common.Screens
 			Engine.SpriteBatch.Draw(Assets.StarsTexture, pos2, Color.White);
 			Engine.SpriteBatch.Draw(Assets.ForegroundTexture, pos3, Color.White);
 			Engine.SpriteBatch.Draw(Assets.JoypadTexture, pos4, Color.White);
+
+			Draw160();
+			//Draw200();
+			
+			//Engine.SpriteBatch.Draw(Assets.SteveProTexture200, new Vector2(0, 480 - 200), Color.White);
+			//Engine.SpriteBatch.Draw(Assets.JoypadTexture, pos4, Color.White);
+
+			//DrawSquare40(0, 3); DrawSquare40(1, 3); DrawSquare40(2, 3);
+			//DrawSquare80(0, 4); DrawSquare80(1, 4); //DrawSquare80(2, 4);
+			//DrawSquare80(0, 5); DrawSquare80(1, 5); DrawSquare80(2, 5);
 			base.Draw();
+		}
+
+		private void Draw160()
+		{
+			Engine.SpriteBatch.Draw(Assets.SteveProTexture160, new Vector2(0 + 20, 480 - 160 - 20), Color.White);
+			//Engine.SpriteBatch.Draw(Assets.SteveProTexture160, new Vector2(800 - 160 - 20, 480 - 160 - 20), Color.White);
+			Engine.SpriteBatch.Draw(Assets.SteveProTexture80, new Vector2(800 - 80 - 20 - 20, 480 - 80 - 20 - 20), Color.White);
+		}
+
+		private void Draw160org()
+		{
+			Engine.SpriteBatch.Draw(Assets.SteveProTexture160, new Vector2(0, 480 - 160), Color.White);
+			Engine.SpriteBatch.Draw(Assets.SteveProTexture160, new Vector2(800 - 160, 480 - 160), Color.White);
+		}
+
+		private void Draw200()
+		{
+			Engine.SpriteBatch.Draw(Assets.SteveProTexture200, new Vector2(0, 480 - 200), Color.White);
+			Engine.SpriteBatch.Draw(Assets.SteveProTexture200, new Vector2(800 - 200, 480 - 200), Color.White);
+		}
+
+		private void DrawSquare40(Byte x, Byte y)
+		{
+			const Byte size = 80;
+			UInt16 tx = (UInt16)(size * x);
+			UInt16 ty = (UInt16)(size * y + 40);
+			Vector2 pos = new Vector2(tx, ty);
+			Engine.SpriteBatch.Draw(Assets.SteveProTexture40, pos, Color.Black);
+		}
+
+		private void DrawSquare80(Byte x, Byte y)
+		{
+			const Byte size = 80;
+			UInt16 tx = (UInt16)(size * x);
+			UInt16 ty = (UInt16)(size * y);
+			Vector2 pos = new Vector2(tx, ty);
+			Engine.SpriteBatch.Draw(Assets.SteveProTexture80, pos, Color.Black);
 		}
 
 	}
