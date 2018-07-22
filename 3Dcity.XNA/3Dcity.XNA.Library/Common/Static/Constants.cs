@@ -20,12 +20,12 @@ namespace WindowsGame.Common.Static
 #if WINDOWS
 		public const Boolean IsFullScreen = false;
 		public const Boolean IsMouseVisible = true;
-		public const UInt16 ScreenWide = 640;
-		public const UInt16 ScreenHigh = 640;
+		public const UInt16 ScreenWide = 800;
+		public const UInt16 ScreenHigh = 480;
 
 		public const Boolean UseExposed = true;
-		public const UInt16 ExposeWide = 640;
-		public const UInt16 ExposeHigh = 640;
+		public const UInt16 ExposeWide = 800;
+		public const UInt16 ExposeHigh = 480;
 
 		public const Byte GameOffsetX = 0;
 #endif
@@ -33,12 +33,12 @@ namespace WindowsGame.Common.Static
 #if !WINDOWS
 		public const Boolean IsFullScreen = true;
 		public const Boolean IsMouseVisible = false;
-		public const UInt16 ScreenWide = 640;
-		public const UInt16 ScreenHigh = 640;
+		public const UInt16 ScreenWide = 800;
+		public const UInt16 ScreenHigh = 480;
 
 		public const Boolean UseExposed = false;
-		public const UInt16 ExposeWide = 640;
-		public const UInt16 ExposeHigh = 640;
+		public const UInt16 ExposeWide = 800;
+		public const UInt16 ExposeHigh = 480;
 
 		public const Byte GameOffsetX = 0;
 #endif
