@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7C8A3667-80C3-431E-AAAE-5A012766D31A}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WindowsGame</RootNamespace>
+    <AssemblyName>3Dcity.AND</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <AndroidApplication>true</AndroidApplication>
+    <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <AndroidSupportedAbis>armeabi-v7a%3bx86</AndroidSupportedAbis>
+    <AndroidStoreUncompressedFileExtensions>.m4a</AndroidStoreUncompressedFileExtensions>
+    <MandroidI18n />
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <MonoGamePlatform>Android</MonoGamePlatform>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;ANDROID</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
+    <AndroidLinkMode>None</AndroidLinkMode>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <BundleAssemblies>false</BundleAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;ANDROID</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
+    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <BundleAssemblies>false</BundleAssemblies>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Mono.Android" />
+    <Reference Include="MonoGame.Framework, Version=3.4.0.456, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MonoGame.Framework.Android.3.4.0.459\lib\MonoAndroid\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Portable.Ninject.3.3.1\lib\monoandroid\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\AnGame.cs" />
+    <Compile Include="Common\Data\BaseData.cs" />
+    <Compile Include="Common\Data\GlobalConfigData.cs" />
+    <Compile Include="Common\Data\StoragePersistData.cs" />
+    <Compile Include="Common\Devices\MobilesDeviceFactory.cs" />
+    <Compile Include="Common\Devices\WindowsDeviceFactory.cs" />
+    <Compile Include="Common\Inputs\MobilesInputFactory.cs" />
+    <Compile Include="Common\Inputs\WindowsInputFactory.cs" />
+    <Compile Include="Common\Interfaces\IDeviceFactory.cs" />
+    <Compile Include="Common\Interfaces\IInputFactory.cs" />
+    <Compile Include="Common\Managers\BaseManager.cs" />
+    <Compile Include="Common\Managers\CollisionManager.cs" />
+    <Compile Include="Common\Managers\ConfigManager.cs" />
+    <Compile Include="Common\Managers\ContentManager.cs" />
+    <Compile Include="Common\Managers\DeviceManager.cs" />
+    <Compile Include="Common\Managers\ImageManager.cs" />
+    <Compile Include="Common\Managers\InputManager.cs" />
+    <Compile Include="Common\Managers\ScoreManager.cs" />
+    <Compile Include="Common\Managers\ScreenManager.cs" />
+    <Compile Include="Common\Managers\SoundManager.cs" />
+    <Compile Include="Common\Managers\SpriteManager.cs" />
+    <Compile Include="Common\Managers\StorageManager.cs" />
+    <Compile Include="Common\Managers\TextManager.cs" />
+    <Compile Include="Common\Managers\ThreadManager.cs" />
+    <Compile Include="Common\MyGame.cs" />
+    <Compile Include="Common\Screens\BaseScreen.cs" />
+    <Compile Include="Common\Screens\ExitScreen.cs" />
+    <Compile Include="Common\Screens\InitScreen.cs" />
+    <Compile Include="Common\Screens\SplashScreen.cs" />
+    <Compile Include="Common\Screens\TestScreen.cs" />
+    <Compile Include="Common\Screens\TitleScreen.cs" />
+    <Compile Include="Common\Static\Assets.cs" />
+    <Compile Include="Common\Static\Constants.cs" />
+    <Compile Include="Common\Static\Enumerations.cs" />
+    <Compile Include="Common\Static\Globalize.cs" />
+    <Compile Include="Common\Static\Registration.cs" />
+    <Compile Include="Common\TheGame\GameFactory.cs" />
+    <Compile Include="Common\TheGame\GameManager.cs" />
+    <Compile Include="Define\Engine.cs" />
+    <Compile Include="Define\Factorys\ContentFactory.cs" />
+    <Compile Include="Define\Factorys\SoundFactory.cs" />
+    <Compile Include="Define\Factorys\StorageFactory.cs" />
+    <Compile Include="Define\Implementation\ProdFileProxy.cs" />
+    <Compile Include="Define\Implementation\ProdLogger.cs" />
+    <Compile Include="Define\Implementation\TestLogger.cs" />
+    <Compile Include="Define\Interfaces\IFileManager.cs" />
+    <Compile Include="Define\Interfaces\IFileProxy.cs" />
+    <Compile Include="Define\Interfaces\ILogger.cs" />
+    <Compile Include="Define\Interfaces\IScreen.cs" />
+    <Compile Include="Define\IoC\EngineModule.cs" />
+    <Compile Include="Define\IoC\IoCContainer.cs" />
+    <Compile Include="Define\Managers\FileManager.cs" />
+    <Compile Include="Define\Managers\RandomManager.cs" />
+    <Compile Include="Define\Managers\ResolutionManager.cs" />
+    <Compile Include="Define\Objects\TextData.cs" />
+    <Compile Include="Define\Static\Registration.cs" />
+    <Compile Include="GameActivity.cs" />
+    <Compile Include="Resources\Resource.Designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SplashActivity.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Fonts\Emulogic.xnb" />
+    <None Include="Resources\AboutResources.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Drawable\Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Textures\background.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Drawable\Splash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Values\Styles.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <MonoGameContentReference Include="Content\Content.mgcb" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\AndroidManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Data\Config\GlobalConfig.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Textures\foreground01.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Textures\foreground02.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Textures\foreground03.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Textures\joypad.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Textures\Splash.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Textures\stars01.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Textures\stars02.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Textures\StevePro.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\Content\Sound\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
