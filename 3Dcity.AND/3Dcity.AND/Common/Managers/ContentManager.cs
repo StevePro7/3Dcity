@@ -41,18 +41,23 @@ namespace WindowsGame.Common.Managers
 		{
 			String fontRoot = String.Format("{0}/{1}/", contentRoot, FONTS_DIRECTORY);
 			Assets.EmulogicFont = contentFactory.LoadFont(fontRoot + "Emulogic");
-		}
 
-		public void LoadContentSplash()
-		{
-			// TODO revert!
-			String splash = (0 == MyGame.Manager.ConfigManager.GlobalConfigData.SplashDelay) ? "StevePro" : "Splash";
-			Assets.SplashTexture = contentFactory.LoadTexture(texturesRoot + splash);
+			Assets.SteveProTexture40 = contentFactory.LoadTexture(texturesRoot + "StevePro40");
+			Assets.SteveProTexture80 = contentFactory.LoadTexture(texturesRoot + "StevePro80");
+			Assets.SteveProTexture160 = contentFactory.LoadTexture(texturesRoot + "StevePro160");
+			Assets.SteveProTexture200 = contentFactory.LoadTexture(texturesRoot + "StevePro200");
 
 			Assets.BackgroundTexture = contentFactory.LoadTexture(texturesRoot + "background");
 			Assets.ForegroundTexture = contentFactory.LoadTexture(texturesRoot + "foreground01");
 			Assets.JoypadTexture = contentFactory.LoadTexture(texturesRoot + "joypad");
 			Assets.StarsTexture = contentFactory.LoadTexture(texturesRoot + "stars01");
+		}
+
+		public void LoadContentSplash()
+		{
+			// TODO revert!
+			String splash = (0 == MyGame.Manager.ConfigManager.GlobalConfigData.SplashDelay) ? "StevePro40" : "Splash";
+			Assets.SplashTexture = contentFactory.LoadTexture(texturesRoot + splash);
 		}
 
 	}
