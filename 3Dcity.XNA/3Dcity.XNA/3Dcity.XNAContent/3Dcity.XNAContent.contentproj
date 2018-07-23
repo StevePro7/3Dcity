@@ -63,8 +63,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textures\joypad.png">
-      <Name>joypad</Name>
+    <Compile Include="Textures\joypadORG.png">
+      <Name>joypadORG</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -115,6 +115,13 @@
     </Compile>
     <Compile Include="Textures\StevePro200.bmp">
       <Name>StevePro200</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\joypad.png">
+      <Name>joypad</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
