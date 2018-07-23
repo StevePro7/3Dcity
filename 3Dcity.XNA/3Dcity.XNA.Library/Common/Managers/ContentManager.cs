@@ -57,7 +57,7 @@ namespace WindowsGame.Common.Managers
 		public void LoadContentSplash()
 		{
 			// TODO revert!
-			String splash = (0 == MyGame.Manager.ConfigManager.GlobalConfigData.SplashDelay) ? "StevePro40" : "Splash";
+			String splash = (0 == MyGame.Manager.ConfigManager.GlobalConfigData.SplashDelay) ? "StevePro80" : "Splash";
 			Assets.SplashTexture = contentFactory.LoadTexture(texturesRoot + splash);
 		}
 
