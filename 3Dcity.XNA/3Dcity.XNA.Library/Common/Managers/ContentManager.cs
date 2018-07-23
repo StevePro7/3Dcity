@@ -49,6 +49,7 @@ namespace WindowsGame.Common.Managers
 
 			Assets.BackgroundTexture = contentFactory.LoadTexture(texturesRoot + "background");
 			Assets.ForegroundTexture = contentFactory.LoadTexture(texturesRoot + "foreground01");
+			Assets.ButtonTexture = contentFactory.LoadTexture(texturesRoot + "button");
 			Assets.JoypadTexture = contentFactory.LoadTexture(texturesRoot + "joypad");
 			Assets.StarsTexture = contentFactory.LoadTexture(texturesRoot + "stars01");
 		}

@@ -19,6 +19,7 @@ namespace WindowsGame.Common.Static
 		// Initial screen.
 		public static Texture2D BackgroundTexture;
 		public static Texture2D ForegroundTexture;
+		public static Texture2D ButtonTexture;
 		public static Texture2D JoypadTexture;
 		public static Texture2D StarsTexture;
 	}
