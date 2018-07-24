@@ -20,7 +20,7 @@ namespace WindowsGame.Common.Screens
 			pos3 = new Vector2(0, 240);
 			pos4 = new Vector2(0, 480);
 
-			base.Initialize();
+			LoadTextData();
 		}
 
 		public override void LoadContent()
@@ -52,7 +52,8 @@ namespace WindowsGame.Common.Screens
 			//DrawSquare40(0, 3); DrawSquare40(1, 3); DrawSquare40(2, 3);
 			//DrawSquare80(0, 4); DrawSquare80(1, 4); //DrawSquare80(2, 4);
 			//DrawSquare80(0, 5); DrawSquare80(1, 5); DrawSquare80(2, 5);
-			base.Draw();
+
+			MyGame.Manager.TextManager.Draw(TextDataList);
 		}
 
 		private void Draw160()
@@ -62,7 +63,8 @@ namespace WindowsGame.Common.Screens
 
 			//Engine.SpriteBatch.Draw(Assets.SteveProTexture160, new Vector2(800 - 160 - 20, 480 - 160 - 20), Color.White);
 			//Engine.SpriteBatch.Draw(Assets.SteveProTexture80, new Vector2(800 - 80 - 20 - 20, 480 - 80 - 20 - 20), Color.White);
-			Engine.SpriteBatch.Draw(Assets.ButtonTexture, new Vector2(800 - 80 - 20 - 20, 480 - 80 - 20 - 20), Color.White);
+			//Engine.SpriteBatch.Draw(Assets.ButtonTexture, new Vector2(800 - 80 - 20 - 20, 480 - 80 - 20 - 20), Color.White);
+			Engine.SpriteBatch.Draw(Assets.ButtonTexture, new Vector2(800 - 80 - 20 - 20, 480 - 80 - 20), Color.White);
 		}
 
 		private void Draw160org()

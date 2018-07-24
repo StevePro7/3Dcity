@@ -16,11 +16,13 @@ namespace WindowsGame.Common
 		public static void Initialize()
 		{
 			Manager.Logger.Initialize();
-			Manager.ConfigManager.Initialize();
-			Manager.ConfigManager.LoadContent();
 
+			// Load initial content then config!
 			Manager.ContentManager.Initialize();
 			Manager.ContentManager.LoadContentSplash();
+
+			Manager.ConfigManager.Initialize();
+			Manager.ConfigManager.LoadContent();
 
 			Manager.ResolutionManager.Initialize();
 			Manager.ScreenManager.Initialize();

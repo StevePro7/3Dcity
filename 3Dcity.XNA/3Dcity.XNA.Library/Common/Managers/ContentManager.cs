@@ -10,12 +10,13 @@ namespace WindowsGame.Common.Managers
 		void Initialize(String root);
 		void LoadContent();
 		void LoadContentSplash();
+
+		String ContentRoot { get; }
 	}
 
 	public class ContentManager : IContentManager 
 	{
 		private readonly IContentFactory contentFactory;
-		private String contentRoot;
 		private String texturesRoot;
 
 		private const String FONTS_DIRECTORY = "Fonts";
@@ -33,15 +34,19 @@ namespace WindowsGame.Common.Managers
 		}
 		public void Initialize(String root)
 		{
-			contentRoot = String.Format("{0}{1}", root, Constants.CONTENT_DIRECTORY);
-			texturesRoot = String.Format("{0}/{1}/", contentRoot, TEXTURES_DIRECTORY);
+			ContentRoot = String.Format("{0}{1}", root, Constants.CONTENT_DIRECTORY);
+			texturesRoot = String.Format("{0}/{1}/", ContentRoot, TEXTURES_DIRECTORY);
 		}
 
 		public void LoadContent()
 		{
-			String fontRoot = String.Format("{0}/{1}/", contentRoot, FONTS_DIRECTORY);
+			// Fonts.
+			String fontRoot = String.Format("{0}/{1}/", ContentRoot, FONTS_DIRECTORY);
 			Assets.EmulogicFont = contentFactory.LoadFont(fontRoot + "Emulogic");
 
+			// Sounds.
+
+			// Textures.
 			Assets.SteveProTexture40 = contentFactory.LoadTexture(texturesRoot + "StevePro40");
 			Assets.SteveProTexture80 = contentFactory.LoadTexture(texturesRoot + "StevePro80");
 			Assets.SteveProTexture160 = contentFactory.LoadTexture(texturesRoot + "StevePro160");
@@ -61,5 +66,6 @@ namespace WindowsGame.Common.Managers
 			Assets.SplashTexture = contentFactory.LoadTexture(texturesRoot + splash);
 		}
 
+		public String ContentRoot { get; private set; }
 	}
 }

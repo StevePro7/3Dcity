@@ -13,6 +13,8 @@ namespace WindowsGame.Common.Static
 		public const Boolean IsFixedTimeStep = true;
 		public const UInt32 FramesPerSecond = 100;
 
+		public const Byte TextsSize = 20;
+
 		public const SByte FontOffsetX = -1;
 		public const SByte FontOffsetY = -4;
 

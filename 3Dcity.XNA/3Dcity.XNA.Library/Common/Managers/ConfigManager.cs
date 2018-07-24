@@ -8,7 +8,7 @@ namespace WindowsGame.Common.Managers
 	public interface IConfigManager 
 	{
 		void Initialize();
-		void Initialize(String root);
+		void Initialize(String contentRoot);
 		void LoadContent();
 
 		GlobalConfigData GlobalConfigData { get; }
@@ -23,11 +23,12 @@ namespace WindowsGame.Common.Managers
 
 		public void Initialize()
 		{
-			Initialize(String.Empty);
+			String contentRoot = MyGame.Manager.ContentManager.ContentRoot;
+			Initialize(contentRoot);
 		}
-		public void Initialize(String root)
+		public void Initialize(String contentRoot)
 		{
-			configRoot = String.Format("{0}{1}/{2}/{3}", root, Constants.CONTENT_DIRECTORY, Constants.DATA_DIRECTORY, CONFIG_DIRECTORY);
+			configRoot = String.Format("{0}/{1}/{2}", contentRoot, Constants.DATA_DIRECTORY, CONFIG_DIRECTORY);
 		}
 
 		public void LoadContent()
