@@ -7,6 +7,8 @@ namespace WindowsGame.Common.Data
 	{
 		public ScreenType ScreenType;
 		public UInt16 SplashDelay;
+		public UInt16 JoypadX;
+		public UInt16 JoypadY;
 		public Boolean QuitsToExit;
 	}
 }

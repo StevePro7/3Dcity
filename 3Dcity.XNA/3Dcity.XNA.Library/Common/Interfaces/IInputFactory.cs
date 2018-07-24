@@ -8,6 +8,8 @@ namespace WindowsGame.Common.Interfaces
 		void Initialize();
 		void Update(GameTime gameTime);
 
+		Single Horizontal();
+		Single Vertical();
 		Boolean Escape();
 	}
 }

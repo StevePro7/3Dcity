@@ -9,6 +9,8 @@ namespace WindowsGame.Common.Managers
 		void Initialize();
 		void Update(GameTime gameTime);
 
+		Single Horizontal();
+		Single Vertical();
 		Boolean Escape();
 	}
 
@@ -28,6 +30,7 @@ namespace WindowsGame.Common.Managers
 
 		public void Update(GameTime gameTime)
 		{
+			inputFactory.Update(gameTime);
 		}
 
 		public Boolean Escape()
@@ -35,5 +38,20 @@ namespace WindowsGame.Common.Managers
 			return false;
 		}
 
+
+		#region IInputManager Members
+
+
+		public float Horizontal()
+		{
+			return inputFactory.Horizontal();
+		}
+
+		public float Vertical()
+		{
+			return inputFactory.Vertical();
+		}
+
+		#endregion
 	}
 }

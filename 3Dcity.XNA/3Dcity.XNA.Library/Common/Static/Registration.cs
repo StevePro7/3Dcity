@@ -1,5 +1,6 @@
 ﻿using WindowsGame.Common.Devices;
 using WindowsGame.Common.Inputs;
+using WindowsGame.Common.Inputs.Types;
 using WindowsGame.Common.Interfaces;
 using WindowsGame.Common.Managers;
 using WindowsGame.Common.TheGame;
@@ -33,6 +34,11 @@ namespace WindowsGame.Common.Static
 			IoCContainer.Initialize<IStorageManager, StorageManager>();
 			IoCContainer.Initialize<ITextManager, TextManager>();
 			IoCContainer.Initialize<IThreadManager, ThreadManager>();
+
+			IoCContainer.Initialize<IJoystickInput, JoystickInput>();
+			//IoCContainer.Initialize<IKeyboardInput, KeyboardInput>();
+			//IoCContainer.Initialize<IMouseScreenInput, MouseScreenInput>();
+			//IoCContainer.Initialize<ITouchScreenInput, TouchScreenInput>();
 
 #if WINDOWS
 			IoCContainer.Initialize<IDeviceFactory, WindowsDeviceFactory>();

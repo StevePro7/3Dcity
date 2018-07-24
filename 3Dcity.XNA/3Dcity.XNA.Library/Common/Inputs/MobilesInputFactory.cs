@@ -23,5 +23,20 @@ namespace WindowsGame.Common.Inputs
 			return false;
 		}
 
+
+		#region IInputFactory Members
+
+
+		public float Horizontal()
+		{
+			throw new NotImplementedException();
+		}
+
+		public float Vertical()
+		{
+			throw new NotImplementedException();
+		}
+
+		#endregion
 	}
 }

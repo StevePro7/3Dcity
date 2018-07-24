@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
 	<ScreenType>Test</ScreenType>
+	<SplashDelay>0</SplashDelay>
+	<JoypadX>0</JoypadX>
+	<JoypadY>360</JoypadY>
 	<QuitsToExit>true</QuitsToExit>
 </GlobalConfigData>
