@@ -51,6 +51,8 @@ namespace WindowsGame.Common.Managers
 			Assets.SteveProTexture80 = contentFactory.LoadTexture(texturesRoot + "StevePro80");
 			Assets.SteveProTexture160 = contentFactory.LoadTexture(texturesRoot + "StevePro160");
 			Assets.SteveProTexture200 = contentFactory.LoadTexture(texturesRoot + "StevePro200");
+			Assets.GameScreen800 = contentFactory.LoadTexture(texturesRoot + "GameScreen800");
+			Assets.GameScreen960 = contentFactory.LoadTexture(texturesRoot + "GameScreen960");
 
 			Assets.BackgroundTexture = contentFactory.LoadTexture(texturesRoot + "background");
 			Assets.ForegroundTexture = contentFactory.LoadTexture(texturesRoot + "foreground01");

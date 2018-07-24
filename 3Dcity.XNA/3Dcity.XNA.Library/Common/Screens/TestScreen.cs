@@ -38,12 +38,15 @@ namespace WindowsGame.Common.Screens
 			// TODO delegate this to device manager??
 			Engine.Game.Window.Title = GetType().Name;
 
-			Engine.SpriteBatch.Draw(Assets.BackgroundTexture, pos1, Color.White);
-			Engine.SpriteBatch.Draw(Assets.StarsTexture, pos2, Color.White);
-			Engine.SpriteBatch.Draw(Assets.ForegroundTexture, pos3, Color.White);
-			Engine.SpriteBatch.Draw(Assets.JoypadTexture, pos4, Color.White);
+			//Engine.SpriteBatch.Draw(Assets.GameScreen800, Vector2.Zero, Color.White);
+			Engine.SpriteBatch.Draw(Assets.GameScreen960, Vector2.Zero, Color.White);
 
-			Draw160();
+			//Engine.SpriteBatch.Draw(Assets.BackgroundTexture, pos1, Color.White);
+			//Engine.SpriteBatch.Draw(Assets.StarsTexture, pos2, Color.White);
+			//Engine.SpriteBatch.Draw(Assets.ForegroundTexture, pos3, Color.White);
+			//Engine.SpriteBatch.Draw(Assets.JoypadTexture, pos4, Color.White);
+
+			//Draw160();
 			//Draw200();
 			
 			//Engine.SpriteBatch.Draw(Assets.SteveProTexture200, new Vector2(0, 480 - 200), Color.White);
@@ -53,7 +56,7 @@ namespace WindowsGame.Common.Screens
 			//DrawSquare80(0, 4); DrawSquare80(1, 4); //DrawSquare80(2, 4);
 			//DrawSquare80(0, 5); DrawSquare80(1, 5); DrawSquare80(2, 5);
 
-			MyGame.Manager.TextManager.Draw(TextDataList);
+			//MyGame.Manager.TextManager.Draw(TextDataList);
 		}
 
 		private void Draw160()
