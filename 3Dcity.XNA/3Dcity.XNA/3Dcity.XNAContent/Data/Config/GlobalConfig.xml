@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
 	<ScreenType>Test</ScreenType>
-	<FramesPerSecond>100</FramesPerSecond>
+	<FramesPerSecond>50</FramesPerSecond>
 	<SplashDelay>0</SplashDelay>
 	<JoypadX>0</JoypadX>
 	<JoypadY>360</JoypadY>

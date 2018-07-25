@@ -64,6 +64,9 @@ namespace WindowsGame.Common
 
 		public static void Update(GameTime gameTime)
 		{
+			// 50fps = 20ms = 20 / 1000 = 0.02
+			Single delta = (Single) gameTime.ElapsedGameTime.TotalSeconds;
+
 			Manager.InputManager.Update(gameTime);
 
 #if WINDOWS
