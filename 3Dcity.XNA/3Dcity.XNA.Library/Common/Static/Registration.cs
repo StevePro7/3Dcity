@@ -36,9 +36,9 @@ namespace WindowsGame.Common.Static
 			IoCContainer.Initialize<IThreadManager, ThreadManager>();
 
 			IoCContainer.Initialize<IJoystickInput, JoystickInput>();
-			//IoCContainer.Initialize<IKeyboardInput, KeyboardInput>();
-			//IoCContainer.Initialize<IMouseScreenInput, MouseScreenInput>();
-			//IoCContainer.Initialize<ITouchScreenInput, TouchScreenInput>();
+			IoCContainer.Initialize<IKeyboardInput, KeyboardInput>();
+			IoCContainer.Initialize<IMouseScreenInput, MouseScreenInput>();
+			IoCContainer.Initialize<ITouchScreenInput, TouchScreenInput>();
 
 #if WINDOWS
 			IoCContainer.Initialize<IDeviceFactory, WindowsDeviceFactory>();

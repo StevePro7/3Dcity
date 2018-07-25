@@ -18,6 +18,7 @@ namespace WindowsGame.Common.Screens
 		private Vector2 sprite;
 		private Single cx, cy;
 		private Single sx, sy;
+		private Single tx, ty;
 
 		public override void Initialize()
 		{
@@ -55,6 +56,93 @@ namespace WindowsGame.Common.Screens
 			Single horizontal = MyGame.Manager.InputManager.Horizontal();
 			if (horizontal != 0.0f)
 			{
+				tx = (horizontal - 100.0f) / 100.0f;
+				//MyGame.Manager.Logger.Info(horizontal.ToString());
+			}
+
+			Single vertical = MyGame.Manager.InputManager.Vertical();
+			//Single vertical = 0.0f;
+			if (vertical != 0.0f)
+			{
+				ty = ((vertical - 280) - 100.0f) / 100.0f;
+				//MyGame.Manager.Logger.Info(vertical.ToString());
+			}
+
+			//const Single tolerance = 0.0f;
+			//if (Math.Abs(horizontal) >= tolerance || Math.Abs(vertical) >= tolerance)
+			//{
+
+			const byte offset = 4;
+			Single vx = horizontal * offset;
+			Single vy = vertical * offset;
+
+			if (0 != horizontal)
+			{
+				middle.X = horizontal - 20;
+				sprite.X += tx * 2;
+			}
+			if (0 != vertical)
+			{
+				middle.Y = vertical - 20;
+				sprite.Y += ty * 2;
+			}
+			//middle.X += vx;
+			//middle.Y -= vy;
+			if (middle.X <= 20)
+			{
+				middle.X = 20.0f;
+			}
+			if (middle.X >= 140)
+			{
+				middle.X = 140.0f;
+			}
+			if (middle.Y <= 300)
+			{
+				middle.Y = 300.0f;
+			}
+			if (middle.Y >= 420)
+			{
+				middle.Y = 420.0f;
+			}
+
+			// joypad
+			//sprite.X += vx * 2;
+			//sprite.Y -= vy * 2;
+
+			
+			
+			if (sprite.X <= 0.0f)
+			{
+				sprite.X = 0.0f;
+			}
+			if (sprite.X >= 720.0f)
+			{
+				sprite.X = 720.0f;
+			}
+			if (sprite.Y <= 78.0f)
+			{
+				sprite.Y = 78.0f;
+			}
+			if (sprite.Y >= 400.0f)
+			{
+				sprite.Y = 400.0f;
+			}
+
+			//}
+
+			return (Int32)ScreenType.Test;
+		}
+
+		// this method assumes that horizontal + vertical
+		// return float between -1 to +1 range
+		public Int32 Update_Joypad(GameTime gameTime)
+		{
+			//middle.X = cx;
+			//middle.Y = cy;
+
+			Single horizontal = MyGame.Manager.InputManager.Horizontal();
+			if (horizontal != 0.0f)
+			{
 				//MyGame.Manager.Logger.Info(horizontal.ToString());
 			}
 
@@ -67,47 +155,47 @@ namespace WindowsGame.Common.Screens
 			//const Single tolerance = 0.0f;
 			//if (Math.Abs(horizontal) >= tolerance || Math.Abs(vertical) >= tolerance)
 			//{
-				const byte offset = 4;
-				Single vx = horizontal * offset;
-				Single vy = vertical * offset;
+			const byte offset = 4;
+			Single vx = horizontal * offset;
+			Single vy = vertical * offset;
 
-				middle.X += vx;
-				middle.Y -= vy;
-				if (middle.X <= 20)
-				{
-					middle.X = 20.0f;
-				}
-				if (middle.X >= 140)
-				{
-					middle.X = 140.0f;
-				}
-				if (middle.Y <= 300)
-				{
-					middle.Y = 300.0f;
-				}
-				if (middle.Y >= 420)
-				{
-					middle.Y = 420.0f;
-				}
+			middle.X += vx;
+			middle.Y -= vy;
+			if (middle.X <= 20)
+			{
+				middle.X = 20.0f;
+			}
+			if (middle.X >= 140)
+			{
+				middle.X = 140.0f;
+			}
+			if (middle.Y <= 300)
+			{
+				middle.Y = 300.0f;
+			}
+			if (middle.Y >= 420)
+			{
+				middle.Y = 420.0f;
+			}
 
-				sprite.X += vx * 2;
-				sprite.Y -= vy * 2;
-				if (sprite.X <= 0.0f)
-				{
-					sprite.X = 0.0f;
-				}
-				if (sprite.X >= 720.0f)
-				{
-					sprite.X = 720.0f;
-				}
-				if (sprite.Y <= 78.0f)
-				{
-					sprite.Y = 78.0f;
-				}
-				if (sprite.Y >= 400.0f)
-				{
-					sprite.Y = 400.0f;
-				}
+			sprite.X += vx * 2;
+			sprite.Y -= vy * 2;
+			if (sprite.X <= 0.0f)
+			{
+				sprite.X = 0.0f;
+			}
+			if (sprite.X >= 720.0f)
+			{
+				sprite.X = 720.0f;
+			}
+			if (sprite.Y <= 78.0f)
+			{
+				sprite.Y = 78.0f;
+			}
+			if (sprite.Y >= 400.0f)
+			{
+				sprite.Y = 400.0f;
+			}
 			//}
 
 			return (Int32)ScreenType.Test;

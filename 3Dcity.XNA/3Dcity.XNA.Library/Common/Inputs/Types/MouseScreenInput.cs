@@ -8,6 +8,7 @@ namespace WindowsGame.Common.Inputs.Types
 	{
 		void Update(GameTime gameTime);
 		Boolean ButtonHold();
+		Boolean ButtonMove();
 
 		Int32 CurrMouseX { get; }
 		Int32 CurrMouseY { get; }
@@ -33,6 +34,10 @@ namespace WindowsGame.Common.Inputs.Types
 		public Boolean ButtonHold()
 		{
 			return ButtonState.Pressed == CurrButtonState && ButtonState.Released == PrevButtonState;
+		}
+		public Boolean ButtonMove()
+		{
+			return ButtonState.Pressed == CurrButtonState;
 		}
 
 		public Int32 CurrMouseX { get; private set; }
