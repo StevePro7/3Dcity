@@ -17,6 +17,7 @@ namespace WindowsGame.Common.Static
 		public static Texture2D SteveProTexture200;
 		public static Texture2D GameScreen800;
 		public static Texture2D GameScreen960;
+		public static Texture2D IconTexture;
 
 		// Initial screen.
 		public static Texture2D BackgroundTexture;
