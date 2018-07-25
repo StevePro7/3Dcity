@@ -76,6 +76,10 @@
     <Compile Include="Common\Devices\MobilesDeviceFactory.cs" />
     <Compile Include="Common\Devices\WindowsDeviceFactory.cs" />
     <Compile Include="Common\Inputs\MobilesInputFactory.cs" />
+    <Compile Include="Common\Inputs\Types\JoystickInput.cs" />
+    <Compile Include="Common\Inputs\Types\KeyboardInput.cs" />
+    <Compile Include="Common\Inputs\Types\MouseScreenInput.cs" />
+    <Compile Include="Common\Inputs\Types\TouchScreenInput.cs" />
     <Compile Include="Common\Inputs\WindowsInputFactory.cs" />
     <Compile Include="Common\Interfaces\IDeviceFactory.cs" />
     <Compile Include="Common\Interfaces\IInputFactory.cs" />
