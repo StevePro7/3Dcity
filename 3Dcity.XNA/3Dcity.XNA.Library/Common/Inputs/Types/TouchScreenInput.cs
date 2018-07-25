@@ -1,19 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input.Touch;
-using WindowsGame.Define.Managers;
-using WindowsGame.Common;
 
 namespace WindowsGame.Common.Inputs.Types
 {
 	public interface ITouchScreenInput
 	{
 		void Initialize();
-		void Initialize(Vector2 viewPortVector2, Matrix invertTransformationMatrix);
+		void Initialize(Vector2 theViewPortVector2, Matrix theIvertTransformationMatrix);
 		void Update(GameTime gameTime);
 
-		Vector2 TouchPosition { get; }
-		TouchLocationState TouchState { get; }
+		Vector2[] TouchPosition { get; }
+		TouchLocationState[] TouchState { get; }
 		Boolean Tap { get; }
 		Boolean Hold { get; }
 		Boolean DoubleTap { get; }
@@ -25,34 +24,33 @@ namespace WindowsGame.Common.Inputs.Types
 	{
 		private Vector2 viewPortVector2;
 		private Matrix invertTransformationMatrix;
+		private IList<TouchLocation> touchLocationList;
+		private const Byte MAX_TOUCHES = 4;
 
 		public void Initialize()
 		{
 			Initialize(Vector2.Zero, Matrix.Identity);
 		}
-		public void Initialize(Vector2 viewPortVector2, Matrix invertTransformationMatrix)
+		public void Initialize(Vector2 theViewPortVector2, Matrix theIvertTransformationMatrix)
 		{
-			this.viewPortVector2 = viewPortVector2;
-			this.invertTransformationMatrix = invertTransformationMatrix;
+			viewPortVector2 = theViewPortVector2;
+			invertTransformationMatrix = theIvertTransformationMatrix;
 
 			TouchPanel.EnabledGestures = GestureType.Tap | GestureType.DoubleTap | GestureType.Hold | GestureType.HorizontalDrag | GestureType.VerticalDrag;
+			touchLocationList = new List<TouchLocation>(MAX_TOUCHES);
 		}
 
 		public void Update(GameTime gameTime)
 		{
-			var location = GetTouchLocation();
-			if (null != location)
+			// Reset all touch information first.
+			for (Byte index = 0; index < MAX_TOUCHES; index++)
 			{
-				TouchLocation touchLocation = (TouchLocation)location;
-				//TouchPosition = touchLocation.Position;
-				TouchPosition = GetTouchPosition(touchLocation.Position);
-				TouchState = touchLocation.State;
+				TouchPosition[index] = Vector2.Zero;
+				TouchState[index] = TouchLocationState.Invalid;
 			}
-			else
-			{
-				TouchPosition = Vector2.Zero;
-				TouchState = TouchLocationState.Invalid;
-			}
+
+			// Populate touch information accordingly.
+			touchLocationList = GetTouchLocationList();
 
 			Tap = Hold = DoubleTap = HorizontalDrag = VerticalDrag = false;
 			if (!TouchPanel.IsGestureAvailable)
@@ -66,6 +64,27 @@ namespace WindowsGame.Common.Inputs.Types
 			DoubleTap = gesture.GestureType == GestureType.DoubleTap;
 			HorizontalDrag = gesture.GestureType == GestureType.HorizontalDrag;
 			VerticalDrag = gesture.GestureType == GestureType.VerticalDrag;
+		}
+
+		private IList<TouchLocation> GetTouchLocationList()
+		{
+			touchLocationList.Clear();
+			
+			TouchCollection touchCollection = TouchPanel.GetState();
+			if (0 == touchCollection.Count)
+			{
+				return touchLocationList;
+			}
+
+			for (Byte index = 0; index < touchCollection.Count; index++)
+			{
+				TouchLocation touchLocation = touchCollection[index];
+
+				TouchPosition[index] = GetTouchPosition(touchLocation.Position);
+				TouchState[index] = touchLocation.State;
+			}
+
+			return touchLocationList;
 		}
 
 		private static TouchLocation? GetTouchLocation()
@@ -86,8 +105,8 @@ namespace WindowsGame.Common.Inputs.Types
 			return Vector2.Transform(deltaPosition, invertTransformationMatrix);
 		}
 
-		public Vector2 TouchPosition { get; private set; }
-		public TouchLocationState TouchState { get; private set; }
+		public Vector2[] TouchPosition { get; private set; }
+		public TouchLocationState[] TouchState { get; private set; }
 		public Boolean Tap { get; private set; }
 		public Boolean Hold { get; private set; }
 		public Boolean DoubleTap { get; private set; }

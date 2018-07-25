@@ -31,8 +31,9 @@ namespace WindowsGame.Common
 
 		public static void LoadContent()
 		{
+			Byte framesPerSecond = MyGame.Manager.ConfigManager.GlobalConfigData.FramesPerSecond;
 			Engine.Game.IsFixedTimeStep = Constants.IsFixedTimeStep;
-			Engine.Game.TargetElapsedTime = TimeSpan.FromSeconds(1.0f / Constants.FramesPerSecond);
+			Engine.Game.TargetElapsedTime = TimeSpan.FromSeconds(1.0f / framesPerSecond);
 			Engine.Game.IsMouseVisible = Constants.IsMouseVisible;
 			Manager.ResolutionManager.LoadContent(Constants.IsFullScreen, Constants.ScreenWide, Constants.ScreenHigh, Constants.UseExposed, Constants.ExposeWide, Constants.ExposeHigh);
 		}
