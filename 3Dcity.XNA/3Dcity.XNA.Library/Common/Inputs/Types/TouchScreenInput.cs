@@ -49,6 +49,16 @@ namespace WindowsGame.Common.Inputs.Types
 				TouchState[index] = TouchLocationState.Invalid;
 			}
 
+			//OLD code
+			//var location = GetTouchLocation();
+			//if (null != location)
+			//{
+			//    TouchLocation touchLocation = (TouchLocation)location;
+			//    //TouchPosition = touchLocation.Position;
+			//    TouchPosition = GetTouchPosition(touchLocation.Position);
+			//    TouchState = touchLocation.State;
+			//}
+
 			// Populate touch information accordingly.
 			touchLocationList = GetTouchLocationList();
 
