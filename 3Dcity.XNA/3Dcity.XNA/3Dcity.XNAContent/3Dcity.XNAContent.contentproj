@@ -152,25 +152,23 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\vloume80.png">
-      <Name>vloume80</Name>
+    <Compile Include="Textures\pause.png">
+      <Name>pause</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textures\vloume81.png">
-      <Name>vloume81</Name>
+    <Compile Include="Textures\play.png">
+      <Name>play</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Textures\pause80.png">
-      <Name>pause80</Name>
+    <Compile Include="Textures\soundOff.png">
+      <Name>soundOff</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textures\play80.png">
-      <Name>play80</Name>
+    <Compile Include="Textures\soundOn.png">
+      <Name>soundOn</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
