@@ -5,5 +5,11 @@
 	<SplashDelay>0</SplashDelay>
 	<JoypadX>0</JoypadX>
 	<JoypadY>360</JoypadY>
+	<IconLeftI>1</IconLeftI>
+	<IconLeftX>6</IconLeftX>
+	<IconLeftY>3</IconLeftY>
+	<IconRightI>1</IconRightI>
+	<IconRightX>725</IconRightX>
+	<IconRightY>3</IconRightY>
 	<QuitsToExit>true</QuitsToExit>
 </GlobalConfigData>

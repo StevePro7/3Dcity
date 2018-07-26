@@ -16,9 +16,13 @@ namespace WindowsGame.Common.Screens
 		private Vector2 joypadMD;
 		private Vector2 middle;
 		private Vector2 sprite;
+		private Vector2 leftPos, rightPos;
+		private Microsoft.Xna.Framework.Graphics.Texture2D leftImg, rightImg;
 		private Single cx, cy;
 		private Single sx, sy;
 		private Single tx, ty;
+		private Byte li, ri;
+		private UInt16 lx, ly, rx, ry;
 
 		public override void Initialize()
 		{
@@ -31,6 +35,15 @@ namespace WindowsGame.Common.Screens
 			UInt16 joypadY = MyGame.Manager.ConfigManager.GlobalConfigData.JoypadY;
 			joypadTL = new Vector2(joypadX, joypadY);
 			joypadMD = new Vector2(joypadX + 20, joypadY + 20);
+
+			li = MyGame.Manager.ConfigManager.GlobalConfigData.IconLeftI;
+			ri = MyGame.Manager.ConfigManager.GlobalConfigData.IconRightI;
+			lx = MyGame.Manager.ConfigManager.GlobalConfigData.IconLeftX;
+			ly = MyGame.Manager.ConfigManager.GlobalConfigData.IconLeftY;
+			rx = MyGame.Manager.ConfigManager.GlobalConfigData.IconRightX;
+			ry = MyGame.Manager.ConfigManager.GlobalConfigData.IconRightY;
+			leftPos = new Vector2(lx, ly);
+			rightPos = new Vector2(rx, ry);
 
 			cx = 80.0f;
 			cy = 360.0f;
@@ -45,6 +58,18 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
+			leftImg = Assets.PlayTexture;
+			if (0 != li)
+			{
+				leftImg = Assets.PauseTexture;
+			}
+
+			rightImg = Assets.SoundOnTexture;
+			if (0 != ri)
+			{
+				rightImg = Assets.SoundOffTexture;
+			}
+
 			base.LoadContent();
 		}
 
@@ -227,6 +252,10 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.TextManager.Draw(TextDataList);
 
 			DrawJoypadButton();
+
+			Engine.SpriteBatch.Draw(leftImg, leftPos, Color.White);
+			Engine.SpriteBatch.Draw(rightImg, rightPos, Color.White);
+
 			Engine.SpriteBatch.Draw(Assets.SteveProTexture80, sprite, Color.Yellow);
 		}
 
