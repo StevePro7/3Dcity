@@ -1,8 +1,9 @@
-﻿using WindowsGame.Define.Implementation;
+﻿using WindowsGame.Define.Factorys;
+using WindowsGame.Define.Implementation;
+using WindowsGame.Define.Inputs;
 using WindowsGame.Define.Interfaces;
 using WindowsGame.Define.IoC;
 using WindowsGame.Define.Managers;
-using WindowsGame.Define.Factorys;
 
 namespace WindowsGame.Define.Static
 {
@@ -14,6 +15,12 @@ namespace WindowsGame.Define.Static
 			IoCContainer.Initialize<IContentFactory, ContentFactory>();
 			IoCContainer.Initialize<ISoundFactory, SoundFactory>();
 			IoCContainer.Initialize<IStorageFactory, StorageFactory>();
+
+			// Inputs.
+			IoCContainer.Initialize<IJoystickInput, JoystickInput>();
+			IoCContainer.Initialize<IKeyboardInput, KeyboardInput>();
+			IoCContainer.Initialize<IMouseInput, MouseScreenInput>();
+			IoCContainer.Initialize<ITouchInput, TouchScreenInput>();
 
 			// Managers.
 			IoCContainer.Initialize<IRandomManager, RandomManager>();

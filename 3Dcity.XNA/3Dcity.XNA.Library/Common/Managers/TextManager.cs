@@ -32,16 +32,18 @@ namespace WindowsGame.Common.Managers
 
 		public void Initialize()
 		{
-			String contentRoot = MyGame.Manager.ContentManager.ContentRoot;
-			Initialize(contentRoot);
+			//String contentRoot = MyGame.Manager.ContentManager.ContentRoot;
+			//Initialize(contentRoot);
+			Initialize(String.Empty);
 		}
 
-		public void Initialize(String contentRoot)
+		public void Initialize(String root)
 		{
 			DELIM = new[] { ',' };
 			PIPES = new[] { '|' };
 
-			textFileRoot = String.Format("{0}/{1}/{2}", contentRoot, Constants.DATA_DIRECTORY, TEXTS_DIRECTORY);
+			textFileRoot = String.Format("{0}{1}/{2}/{3}", root, Constants.CONTENT_DIRECTORY, Constants.DATA_DIRECTORY, TEXTS_DIRECTORY);
+			//textFileRoot = String.Format("{0}/{1}/{2}", contentRoot, Constants.DATA_DIRECTORY, TEXTS_DIRECTORY);
 		}
 
 		public void Draw()

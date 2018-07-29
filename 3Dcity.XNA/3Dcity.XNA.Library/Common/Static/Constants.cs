@@ -20,6 +20,7 @@ namespace WindowsGame.Common.Static
 
 		// Custom data.
 #if WINDOWS
+		public const Platform Platform = Static.Platform.Desktop;
 		public const Boolean IsFullScreen = false;
 		public const Boolean IsMouseVisible = true;
 		public const UInt16 ScreenWide = 800;
@@ -33,6 +34,7 @@ namespace WindowsGame.Common.Static
 #endif
 
 #if !WINDOWS
+		public const Platform Platform = Static.Platform.Mobiles;
 		public const Boolean IsFullScreen = true;
 		public const Boolean IsMouseVisible = false;
 		public const UInt16 ScreenWide = 800;

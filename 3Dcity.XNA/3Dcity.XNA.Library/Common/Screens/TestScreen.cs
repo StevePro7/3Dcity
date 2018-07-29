@@ -52,6 +52,9 @@ namespace WindowsGame.Common.Screens
 			sx = (Constants.ScreenWide - 80) / 2.0f;
 			sy = (Constants.ScreenHigh - 80) / 2.0f;
 			sy += 50;
+
+			sx = 300;
+			sy = 200;
 			sprite = new Vector2(sx, sy);
 			LoadTextData();
 		}
@@ -235,8 +238,8 @@ namespace WindowsGame.Common.Screens
 			//Engine.SpriteBatch.Draw(Assets.GameScreen960, Vector2.Zero, Color.White);
 
 			Engine.SpriteBatch.Draw(Assets.BackgroundTexture, pos1, Color.White);
-			Engine.SpriteBatch.Draw(Assets.StarsTexture, pos2, Color.White);
-			Engine.SpriteBatch.Draw(Assets.ForegroundTexture, pos3, Color.White);
+			Engine.SpriteBatch.Draw(Assets.Stars01Texture, pos2, Color.White);
+			Engine.SpriteBatch.Draw(Assets.Foreground01Texture, pos3, Color.White);
 			Engine.SpriteBatch.Draw(Assets.JoypadTexture, pos4, Color.White);
 
 			Draw160();
@@ -256,13 +259,34 @@ namespace WindowsGame.Common.Screens
 			Engine.SpriteBatch.Draw(leftImg, leftPos, Color.White);
 			Engine.SpriteBatch.Draw(rightImg, rightPos, Color.White);
 
-			Engine.SpriteBatch.Draw(Assets.SteveProTexture80, sprite, Color.Yellow);
+			//Engine.SpriteBatch.Draw(Assets.SteveProTexture80, sprite, Color.Yellow);
+			//Engine.SpriteBatch.Draw(Assets.Target80Texture, sprite, Color.White);
+			
+
+			//Engine.SpriteBatch.Draw(Assets.Enemy64Texture, new Vector2(420, 200), Color.White);
+			
+			//Engine.SpriteBatch.Draw(Assets.Enemy128Texture, new Vector2(660, 120), Color.White);
+
+			Engine.SpriteBatch.Draw(Assets.Enemy25Texture, new Vector2(50, 250), Color.White);
+			Engine.SpriteBatch.Draw(Assets.Enemy32Texture, new Vector2(100, 240), Color.White);
+			Engine.SpriteBatch.Draw(Assets.Enemy40Texture, new Vector2(150, 220), Color.White);
+			Engine.SpriteBatch.Draw(Assets.Enemy50Texture, new Vector2(200, 200), Color.White);
+			Engine.SpriteBatch.Draw(Assets.Enemy64Texture, new Vector2(300, 200), Color.White);
+			Engine.SpriteBatch.Draw(Assets.Enemy80Texture, new Vector2(400, 160), Color.White);
+			Engine.SpriteBatch.Draw(Assets.Enemy96Texture, new Vector2(500, 140), Color.White);
+			Engine.SpriteBatch.Draw(Assets.Enemy120Texture, new Vector2(640, 120), Color.White);
+
+			//Engine.SpriteBatch.Draw(Assets.Target64Texture, new Vector2(320, 180), Color.White);
+
+			//Engine.SpriteBatch.Draw(Assets.Target64Texture, sprite, Color.White);
+			Engine.SpriteBatch.Draw(Assets.Target64Texture, sprite, Color.White);
 		}
 
 		private void DrawJoypadButton()
 		{
-			// MOve
-			Engine.SpriteBatch.Draw(Assets.SteveProTexture40, middle, Color.White);
+			// Move
+			Engine.SpriteBatch.Draw(Assets.Target40Texture, middle, Color.White);
+			//Engine.SpriteBatch.Draw(Assets.SteveProTexture40, middle, Color.White);
 
 			// Top left = (80, 360)
 			//Engine.SpriteBatch.Draw(Assets.SteveProTexture40, joypadTL, Color.White);

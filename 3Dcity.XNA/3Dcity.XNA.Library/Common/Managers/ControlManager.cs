@@ -6,9 +6,7 @@ namespace WindowsGame.Common.Managers
 	public interface IControlManager 
 	{
 		void Initialize();
-		void LoadContent();
-		void Update(GameTime gameTime);
-		void Draw();
+		Boolean Test(int x, int y);
 	}
 
 	public class ControlManager : IControlManager 
@@ -17,16 +15,9 @@ namespace WindowsGame.Common.Managers
 		{
 		}
 
-		public void LoadContent()
+		public Boolean Test(int x, int y)
 		{
-		}
-
-		public void Update(GameTime gameTime)
-		{
-		}
-
-		public void Draw()
-		{
+			return x == 10;
 		}
 
 	}

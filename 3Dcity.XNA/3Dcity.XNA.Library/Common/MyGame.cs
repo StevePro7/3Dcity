@@ -27,6 +27,8 @@ namespace WindowsGame.Common
 			Manager.ResolutionManager.Initialize();
 			Manager.ScreenManager.Initialize();
 			Manager.ThreadManager.Initialize();
+
+			Manager.InputManager.Initialize();
 		}
 
 		public static void LoadContent()
@@ -36,13 +38,16 @@ namespace WindowsGame.Common
 			Engine.Game.TargetElapsedTime = TimeSpan.FromSeconds(1.0f / framesPerSecond);
 			Engine.Game.IsMouseVisible = Constants.IsMouseVisible;
 			Manager.ResolutionManager.LoadContent(Constants.IsFullScreen, Constants.ScreenWide, Constants.ScreenHigh, Constants.UseExposed, Constants.ExposeWide, Constants.ExposeHigh);
+
+			Manager.InputManager.LoadContent();
 		}
 
 		public static void LoadContentAsync()
 		{
-			Manager.InputManager.Initialize();
 			Manager.ScoreManager.Initialize();
 			Manager.RandomManager.Initialize();
+			Manager.RenderManager.Initialize();
+			Manager.SpriteManager.Initialize();
 			Manager.StorageManager.Initialize();
 			Manager.TextManager.Initialize();
 
@@ -50,8 +55,10 @@ namespace WindowsGame.Common
 			Manager.ContentManager.LoadContent();
 			Manager.ImageManager.LoadContent();
 
+			Manager.RenderManager.LoadContent();
 			Manager.ScoreManager.LoadContent();
 			Manager.ScreenManager.LoadContent();
+			Manager.SpriteManager.LoadContent();
 			Manager.StorageManager.LoadContent();
 
 			GC.Collect();

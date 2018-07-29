@@ -72,17 +72,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\AnGame.cs" />
+    <Compile Include="Common\Data\PlatformConfigData.cs" />
     <Compile Include="Common\Data\StoragePersistData.cs" />
     <Compile Include="Common\Devices\MobilesDeviceFactory.cs" />
     <Compile Include="Common\Devices\WindowsDeviceFactory.cs" />
-    <Compile Include="Common\Inputs\MobilesInputFactory.cs" />
+    <Compile Include="Common\Inputs\DesktopInputManager.cs" />
+    <Compile Include="Common\Inputs\MobilesInputManager.cs" />
     <Compile Include="Common\Inputs\Types\JoystickInput.cs" />
     <Compile Include="Common\Inputs\Types\KeyboardInput.cs" />
     <Compile Include="Common\Inputs\Types\MouseScreenInput.cs" />
     <Compile Include="Common\Inputs\Types\TouchScreenInput.cs" />
-    <Compile Include="Common\Inputs\WindowsInputFactory.cs" />
     <Compile Include="Common\Interfaces\IDeviceFactory.cs" />
-    <Compile Include="Common\Interfaces\IInputFactory.cs" />
+    <Compile Include="Common\Interfaces\IInputManager.cs" />
     <Compile Include="Common\Managers\BulletManager.cs" />
     <Compile Include="Common\Managers\ControlManager.cs" />
     <Compile Include="Common\Managers\EnemyManager.cs" />
@@ -97,15 +98,23 @@
     <Compile Include="Common\Managers\ContentManager.cs" />
     <Compile Include="Common\Managers\DeviceManager.cs" />
     <Compile Include="Common\Managers\ImageManager.cs" />
-    <Compile Include="Common\Managers\InputManager.cs" />
     <Compile Include="Common\Managers\ScoreManager.cs" />
     <Compile Include="Common\Managers\ScreenManager.cs" />
     <Compile Include="Common\Managers\SoundManager.cs" />
     <Compile Include="Common\Managers\SpriteManager.cs" />
     <Compile Include="Common\Managers\TextManager.cs" />
+    <Compile Include="Common\Objects\BaseObject.cs" />
+    <Compile Include="Common\Objects\BaseSprite.cs" />
+    <Compile Include="Common\Objects\BigTarget.cs" />
+    <Compile Include="Common\Objects\Collision200.cs" />
+    <Compile Include="Common\Objects\FireButton.cs" />
+    <Compile Include="Common\Objects\JoypadMove.cs" />
+    <Compile Include="Common\Objects\SmallTarget.cs" />
     <Compile Include="Common\Screens\BaseScreen.cs" />
     <Compile Include="Common\Screens\ExitScreen.cs" />
     <Compile Include="Common\Screens\InitScreen.cs" />
+    <Compile Include="Common\Screens\PlayScreen.cs" />
+    <Compile Include="Common\Screens\ReadyScreen.cs" />
     <Compile Include="Common\Screens\SplashScreen.cs" />
     <Compile Include="Common\Screens\TestScreen.cs" />
     <Compile Include="Common\Screens\TitleScreen.cs" />
@@ -123,6 +132,10 @@
     <Compile Include="Define\Implementation\ProdFileProxy.cs" />
     <Compile Include="Define\Implementation\ProdLogger.cs" />
     <Compile Include="Define\Implementation\TestLogger.cs" />
+    <Compile Include="Define\Inputs\JoystickInput.cs" />
+    <Compile Include="Define\Inputs\KeyboardInput.cs" />
+    <Compile Include="Define\Inputs\MouseScreenInput.cs" />
+    <Compile Include="Define\Inputs\TouchScreenInput.cs" />
     <Compile Include="Define\Interfaces\IFileManager.cs" />
     <Compile Include="Define\Interfaces\IFileProxy.cs" />
     <Compile Include="Define\Interfaces\ILogger.cs" />

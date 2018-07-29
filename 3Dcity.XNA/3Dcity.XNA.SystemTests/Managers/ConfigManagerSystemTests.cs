@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Reflection;
+using WindowsGame.Common.Static;
+using WindowsGame.Data;
 using NUnit.Framework;
 using WindowsGame.Common;
 using WindowsGame.Common.Data;
@@ -18,10 +20,20 @@ namespace WindowsGame.SystemTests.Managers
 		}
 
 		[Test]
-		public void LoadContentTest()
+		public void LoadGlobalConfigDataTest()
 		{
-			ConfigManager.LoadContent();
+			ConfigManager.LoadGlobalConfigData();
 			GlobalConfigData data = ConfigManager.GlobalConfigData;
+
+			Assert.IsNotNull(data);
+			ShowConfigData(data);
+		}
+
+		[Test]
+		public void LoadPlaformConfigDataTest()
+		{
+			ConfigManager.LoadPlaformConfigData(Platform.Mobiles);
+			PlatformConfigData data = ConfigManager.PlatformConfigData;
 
 			Assert.IsNotNull(data);
 			ShowConfigData(data);

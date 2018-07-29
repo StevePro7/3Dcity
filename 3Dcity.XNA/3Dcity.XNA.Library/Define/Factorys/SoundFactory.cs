@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Media;
 using MediaPlayerX = Microsoft.Xna.Framework.Media.MediaPlayer;
 using System;
 
-
 namespace WindowsGame.Define.Factorys
 {
 	public interface ISoundFactory

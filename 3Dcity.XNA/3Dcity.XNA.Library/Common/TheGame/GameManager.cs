@@ -1,3 +1,4 @@
+using WindowsGame.Common.Interfaces;
 using WindowsGame.Common.Managers;
 using WindowsGame.Define.Interfaces;
 using WindowsGame.Define.Managers;

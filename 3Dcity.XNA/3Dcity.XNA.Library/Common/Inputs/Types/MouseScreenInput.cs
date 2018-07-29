@@ -6,6 +6,8 @@ namespace WindowsGame.Common.Inputs.Types
 {
 	public interface IMouseScreenInput
 	{
+		void Initialize();
+		void LoadContent();
 		void Update(GameTime gameTime);
 		Boolean ButtonHold();
 		Boolean ButtonMove();
@@ -19,6 +21,17 @@ namespace WindowsGame.Common.Inputs.Types
 	public class MouseScreenInput : IMouseScreenInput
 	{
 		private MouseState currMouseState;
+		private Byte maxTouches;
+
+		public void Initialize()
+		{
+			maxTouches = 0;
+		}
+
+		public void LoadContent()
+		{
+			maxTouches = MyGame.Manager.ConfigManager.PlatformConfigData.MaxTouches;
+		}
 
 		public void Update(GameTime gameTime)
 		{

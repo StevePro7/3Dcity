@@ -29,7 +29,7 @@ namespace WindowsGame.Common.Static
 			IoCContainer.Initialize<IEnemyManager, EnemyManager>();
 			IoCContainer.Initialize<IExplosionManager, ExplosionManager>();
 			IoCContainer.Initialize<IImageManager, ImageManager>();
-			IoCContainer.Initialize<IInputManager, InputManager>();
+			//IoCContainer.Initialize<IInputManager, InputManager>();
 			IoCContainer.Initialize<IRenderManager, RenderManager>();
 			IoCContainer.Initialize<IScoreManager, ScoreManager>();
 			IoCContainer.Initialize<IScreenManager, ScreenManager>();
@@ -46,13 +46,13 @@ namespace WindowsGame.Common.Static
 
 #if WINDOWS
 			IoCContainer.Initialize<IDeviceFactory, WindowsDeviceFactory>();
-			IoCContainer.Initialize<IInputFactory, WindowsInputFactory>();
+			IoCContainer.Initialize<IInputManager, DesktopInputManager>();
 			IoCContainer.Initialize<ILogger, ProdLogger>();
 #endif
 
 #if !WINDOWS
 			IoCContainer.Initialize<IDeviceFactory, MobilesDeviceFactory>();
-			IoCContainer.Initialize<IInputFactory, MobilesInputFactory>();
+			IoCContainer.Initialize<IInputManager, MobilesInputManager>();
 			IoCContainer.Initialize<ILogger, TestLogger>();
 #endif
 

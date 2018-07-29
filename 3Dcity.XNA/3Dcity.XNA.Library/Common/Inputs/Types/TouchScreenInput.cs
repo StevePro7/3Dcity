@@ -8,11 +8,17 @@ namespace WindowsGame.Common.Inputs.Types
 	public interface ITouchScreenInput
 	{
 		void Initialize();
-		void Initialize(Vector2 theViewPortVector2, Matrix theIvertTransformationMatrix);
+		void LoadContent();
 		void Update(GameTime gameTime);
 
-		Vector2[] TouchPosition { get; }
-		TouchLocationState[] TouchState { get; }
+		void ProcessTouches(TouchCollection touchCollection);
+		//void ProcessGesture(Boolean isGestureAvailable, GestureSample gestureSample);
+
+		IList<Vector2> TouchPositions { get; }
+		IList<Boolean> TouchStates { get; }
+
+		Vector2[] TouchPositionsX { get; }
+		TouchLocationState[] TouchStatesX { get; }
 		Boolean Tap { get; }
 		Boolean Hold { get; }
 		Boolean DoubleTap { get; }
@@ -24,42 +30,54 @@ namespace WindowsGame.Common.Inputs.Types
 	{
 		private Vector2 viewPortVector2;
 		private Matrix invertTransformationMatrix;
-		private IList<TouchLocation> touchLocationList;
-		private const Byte MAX_TOUCHES = 4;
+		//private IList<TouchLocation> touchLocationList;
+		//private const Byte MAX_TOUCHES = 10;
+		private Byte maxTouches;
+
+		public TouchScreenInput()
+		{
+			// Construct touch information.
+			//touchLocationList = new List<TouchLocation>(MAX_TOUCHES);
+
+			//TouchPositionsX = new Vector2[MAX_TOUCHES];
+			//TouchStatesX = new TouchLocationState[MAX_TOUCHES];
+		}
 
 		public void Initialize()
 		{
-			Initialize(Vector2.Zero, Matrix.Identity);
-		}
-		public void Initialize(Vector2 theViewPortVector2, Matrix theIvertTransformationMatrix)
-		{
-			viewPortVector2 = theViewPortVector2;
-			invertTransformationMatrix = theIvertTransformationMatrix;
-
 			TouchPanel.EnabledGestures = GestureType.Tap | GestureType.DoubleTap | GestureType.Hold | GestureType.HorizontalDrag | GestureType.VerticalDrag;
+			maxTouches = 0;
+			//Initialize(Vector2.Zero, Matrix.Identity);
+		}
 
-			InitializeTouchData();
-			ResetAllTouchData();
+		//public void LoadContent()
+		//{
+		//    TouchPanel.EnabledGestures = GestureType.Tap | GestureType.DoubleTap | GestureType.Hold | GestureType.HorizontalDrag | GestureType.VerticalDrag;
+
+		//    //Initialize(Vector2.Zero, Matrix.Identity);
+		//}
+		public void LoadContent()
+		{
+			viewPortVector2 = MyGame.Manager.ResolutionManager.ViewPortVector2;
+			invertTransformationMatrix = MyGame.Manager.ResolutionManager.InvertTransformationMatrix;
+
+			maxTouches = MyGame.Manager.ConfigManager.PlatformConfigData.MaxTouches;
+
+			//touchLocationList = new List<TouchLocation>(maxTouches);
+
+			TouchPositions = new List<Vector2>(maxTouches);
+			TouchStates = new List<Boolean>(maxTouches);
+			//InitializeTouchData();
+			//ResetAllTouchData();
 		}
 
 		public void Update(GameTime gameTime)
 		{
-			// Reset all touch information first.
-			ResetAllTouchData();
-
-			//OLD code
-			//var location = GetTouchLocation();
-			//if (null != location)
-			//{
-			//    TouchLocation touchLocation = (TouchLocation)location;
-			//    //TouchPosition = touchLocation.Position;
-			//    TouchPosition = GetTouchPosition(touchLocation.Position);
-			//    TouchState = touchLocation.State;
-			//}
-
 			// Populate touch information accordingly.
-			touchLocationList = GetTouchLocationList();
+			TouchCollection touchCollection = TouchPanel.GetState();
+			ProcessTouches(touchCollection);
 
+			// Process gestures if any are available.
 			Tap = Hold = DoubleTap = HorizontalDrag = VerticalDrag = false;
 			if (!TouchPanel.IsGestureAvailable)
 			{
@@ -72,38 +90,65 @@ namespace WindowsGame.Common.Inputs.Types
 			DoubleTap = gesture.GestureType == GestureType.DoubleTap;
 			HorizontalDrag = gesture.GestureType == GestureType.HorizontalDrag;
 			VerticalDrag = gesture.GestureType == GestureType.VerticalDrag;
+
+
+			//Boolean isGestureAvailable = TouchPanel.IsGestureAvailable;
+			//GestureSample gestureSample = TouchPanel.ReadGesture();
+			//ProcessGesture(isGestureAvailable, gestureSample);
+
+			// Reset all touch information first.
+			//ResetAllTouchData();
+			//OLD code
+			//var location = GetTouchLocation();
+			//if (null != location)
+			//{
+			//    TouchLocation touchLocation = (TouchLocation)location;
+			//    //TouchPosition = touchLocation.Position;
+			//    TouchPosition = GetTouchPosition(touchLocation.Position);
+			//    TouchState = touchLocation.State;
+			//}
+
+			//touchLocationList = GetTouchLocationList();
 		}
 
-		private void ResetAllTouchData()
+		public void ProcessTouches(TouchCollection touchCollection)
 		{
-			// Reset all touch information.
-			touchLocationList.Clear();
+			TouchPositions.Clear();
+			TouchStates.Clear();
 
-			for (Byte index = 0; index < MAX_TOUCHES; index++)
-			{
-				TouchPosition[index] = Vector2.Zero;
-				TouchState[index] = TouchLocationState.Invalid;
-			}
-		}
-
-		private IList<TouchLocation> GetTouchLocationList()
-		{
-			TouchCollection touchCollection = TouchPanel.GetState();
 			if (0 == touchCollection.Count)
 			{
-				return touchLocationList;
+				return;
 			}
 
+			int count = Math.Max(maxTouches, touchCollection.Count);
 			for (Byte index = 0; index < touchCollection.Count; index++)
 			{
 				TouchLocation touchLocation = touchCollection[index];
 
-				TouchPosition[index] = GetTouchPosition(touchLocation.Position);
-				TouchState[index] = touchLocation.State;
-			}
+				Vector2 position = GetTouchPosition(touchLocation.Position);
+				Boolean isValid = TouchLocationState.Pressed == touchLocation.State || TouchLocationState.Moved == touchLocation.State;
 
-			return touchLocationList;
+				TouchPositions.Add(position);
+				TouchStates.Add(isValid);
+			}
 		}
+
+		//public void ProcessGesture(Boolean isGestureAvailable, GestureSample gestureSample)
+		//{
+		//    Tap = Hold = DoubleTap = HorizontalDrag = VerticalDrag = false;
+
+		//    if (!isGestureAvailable)
+		//    {
+		//        return;
+		//    }
+
+		//    Tap = gestureSample.GestureType == GestureType.Tap;
+		//    Hold = gestureSample.GestureType == GestureType.Hold;
+		//    DoubleTap = gestureSample.GestureType == GestureType.DoubleTap;
+		//    HorizontalDrag = gestureSample.GestureType == GestureType.HorizontalDrag;
+		//    VerticalDrag = gestureSample.GestureType == GestureType.VerticalDrag;
+		//}
 
 		private Vector2 GetTouchPosition(Vector2 touchPosition)
 		{
@@ -111,6 +156,48 @@ namespace WindowsGame.Common.Inputs.Types
 			Vector2 deltaPosition = touchPosition - viewPortVector2;
 			return Vector2.Transform(deltaPosition, invertTransformationMatrix);
 		}
+
+		/*
+		private void ResetAllTouchData()
+		{
+			// Reset all touch information.
+			touchLocationList.Clear();
+
+			TouchPositions.Clear();
+			TouchStates.Clear();
+
+			//for (Byte index = 0; index < maxTouches; index++)
+			//{
+			//    TouchPositions[index].Ad = Vector2.Zero;
+			//    TouchStates[index] = false;
+
+			//    //TouchPositionsX[index] = Vector2.Zero;
+			//    //TouchStatesX[index] = TouchLocationState.Invalid;
+			//}
+		}
+		*/
+
+		//private IList<TouchLocation> GetTouchLocationList()
+		//{
+		//    TouchCollection touchCollection = TouchPanel.GetState();
+		//    if (0 == touchCollection.Count)
+		//    {
+		//        return touchLocationList;
+		//    }
+
+		//    int count = Math.Max(maxTouches, touchCollection.Count);
+		//    for (Byte index = 0; index < touchCollection.Count; index++)
+		//    {
+		//        TouchLocation touchLocation = touchCollection[index];
+
+		//        TouchPositionsX[index] = GetTouchPosition(touchLocation.Position);
+		//        TouchStatesX[index] = touchLocation.State;
+		//    }
+
+		//    return touchLocationList;
+		//}
+
+		
 
 		//private static TouchLocation? GetTouchLocation()
 		//{
@@ -123,17 +210,17 @@ namespace WindowsGame.Common.Inputs.Types
 		//    return null;
 		//}
 
-		private void InitializeTouchData()
-		{
-			// Initialize touch information.
-			touchLocationList = new List<TouchLocation>(MAX_TOUCHES);
+			// TODO delete!
+		//private void InitializeTouchData()
+		//{
+			
+		//}
 
-			TouchPosition = new Vector2[MAX_TOUCHES];
-			TouchState = new TouchLocationState[MAX_TOUCHES];
-		}
+		public IList<Vector2> TouchPositions { get; private set; }
+		public IList<Boolean> TouchStates { get; private set; }
 
-		public Vector2[] TouchPosition { get; private set; }
-		public TouchLocationState[] TouchState { get; private set; }
+		public Vector2[] TouchPositionsX { get; private set; }
+		public TouchLocationState[] TouchStatesX { get; private set; }
 		public Boolean Tap { get; private set; }
 		public Boolean Hold { get; private set; }
 		public Boolean DoubleTap { get; private set; }

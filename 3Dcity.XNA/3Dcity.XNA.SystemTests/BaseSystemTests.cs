@@ -1,4 +1,5 @@
 ﻿using System;
+using WindowsGame.Common.Interfaces;
 using NUnit.Framework;
 using WindowsGame.Common;
 using WindowsGame.Common.Managers;
@@ -31,7 +32,8 @@ namespace WindowsGame.SystemTests
 		protected IFileManager FileManager;
 		protected ILogger Logger;
 
-		protected const String CONTENT_ROOT = @"E:\3Dcity.XNA.Content\";
+		// mklink /D D:\3Dcity.XNA.Content D:\SVN\3Dcity\3Dcity.XNA\3Dcity.XNA\3Dcity.XNA\bin\x86\Debug\
+		protected const String CONTENT_ROOT = @"D:\3Dcity.XNA.Content\";
 
 #pragma warning disable 618
 		[TestFixtureSetUp]
