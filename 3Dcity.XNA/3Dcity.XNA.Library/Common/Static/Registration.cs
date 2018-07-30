@@ -5,9 +5,14 @@ using WindowsGame.Common.Interfaces;
 using WindowsGame.Common.Managers;
 using WindowsGame.Common.TheGame;
 using WindowsGame.Define.Implementation;
+using WindowsGame.Define.Inputs;
 using WindowsGame.Define.Interfaces;
 using WindowsGame.Define.IoC;
+using IJoystickInput = WindowsGame.Common.Inputs.Types.IJoystickInput;
+using JoystickInput = WindowsGame.Common.Inputs.Types.JoystickInput;
+//using MouseScreenInput = WindowsGame.Common.Inputs.Types.MouseScreenInput;
 using TheRegistration = WindowsGame.Define.Static.Registration;
+using TouchScreenInput = WindowsGame.Common.Inputs.Types.TouchScreenInput;
 
 namespace WindowsGame.Common.Static
 {

@@ -7,7 +7,7 @@ namespace WindowsGame.Common.Inputs.Types
 {
 	public interface ITouchScreenInput
 	{
-		void Initialize();
+		void Initialize(GestureType gestureType);
 		void LoadContent();
 		void Update(GameTime gameTime);
 
@@ -43,9 +43,10 @@ namespace WindowsGame.Common.Inputs.Types
 			//TouchStatesX = new TouchLocationState[MAX_TOUCHES];
 		}
 
-		public void Initialize()
+		public void Initialize(GestureType gestureType)
 		{
-			TouchPanel.EnabledGestures = GestureType.Tap | GestureType.DoubleTap | GestureType.Hold | GestureType.HorizontalDrag | GestureType.VerticalDrag;
+			TouchPanel.EnabledGestures = gestureType;
+			//TouchPanel.EnabledGestures = GestureType.Tap | GestureType.DoubleTap | GestureType.Hold | GestureType.HorizontalDrag | GestureType.VerticalDrag;
 			maxTouches = 0;
 			//Initialize(Vector2.Zero, Matrix.Identity);
 		}

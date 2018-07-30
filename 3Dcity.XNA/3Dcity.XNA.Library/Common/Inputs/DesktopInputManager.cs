@@ -1,10 +1,12 @@
 ﻿using System;
+using WindowsGame.Define.Inputs;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 using WindowsGame.Common.Inputs.Types;
 using WindowsGame.Common.Interfaces;
 using WindowsGame.Common.Managers;
+using IJoystickInput = WindowsGame.Common.Inputs.Types.IJoystickInput;
 
 namespace WindowsGame.Common.Inputs
 {
@@ -40,6 +42,84 @@ namespace WindowsGame.Common.Inputs
 			mouseScreenInput.Update(gameTime);
 		}
 
+		public Vector2 Steve01()
+		{
+			//if (!mouseScreenInput.LeftButtonHold())
+			if (!mouseScreenInput.LeftButtonPress())
+			{
+				return Vector2.Zero;
+			}
+
+			Rectangle collision = new Rectangle(0, 280, 200, 200);
+			Vector2 position = mouseScreenInput.MosuePosition;
+
+			Boolean contains = position.X >= collision.Left &&
+								position.X <= collision.Right &
+								position.Y >= collision.Top &&
+								position.Y <= collision.Bottom;
+
+			if (!contains)
+			{
+				return Vector2.Zero;
+			}
+
+			return position;
+		}
+		public Single Steve02()
+		{
+			//if (!mouseScreenInput.LeftButtonHold())
+			if (!mouseScreenInput.LeftButtonPress())
+			{
+				return 0.0f;
+			}
+
+			Rectangle collision = new Rectangle(0, 280, 200, 200);
+			Vector2 position = mouseScreenInput.MosuePosition;
+
+			Boolean contains = position.X >= collision.Left &&
+								position.X <= collision.Right &
+								position.Y >= collision.Top &&
+								position.Y <= collision.Bottom;
+
+			if (!contains)
+			{
+				return 0.0f;
+			}
+
+			Single width = collision.Width / 2.0f;
+			Single dataX = position.X - width;
+
+			Single value = dataX /= width;
+			return value;
+		}
+		public Single Steve03()
+		{
+			//if (!mouseScreenInput.LeftButtonHold())
+			if (!mouseScreenInput.LeftButtonPress())
+			{
+				return 0.0f;
+			}
+
+			Rectangle collision = new Rectangle(0, 280, 200, 200);
+			Vector2 position = mouseScreenInput.MosuePosition;
+
+			Boolean contains = position.X >= collision.Left &&
+								position.X <= collision.Right &
+								position.Y >= collision.Top &&
+								position.Y <= collision.Bottom;
+
+			if (!contains)
+			{
+				return 0.0f;
+			}
+
+			Single height = collision.Height / 2.0f;
+			Single dataY = position.Y - collision.Top - height;
+
+			Single value = dataY /= height;
+			return value;
+		}
+
 		public Vector2[] GetPositions()
 		{
 			Boolean test = controlManager.Test(mouseScreenInput.CurrMouseX, mouseScreenInput.CurrMouseY);
@@ -62,15 +142,18 @@ namespace WindowsGame.Common.Inputs
 			return keyboardInput.KeyHold(Keys.Escape) || joystickInput.JoyHold(Buttons.Back);
 		}
 
-
-
 		public float Horizontal()
 		{
 			Single horz = 0.0f;
 
-			//return joystickInput.Horizontal();
+			horz = Steve02();
+			if (Math.Abs(horz) > Single.Epsilon)
+			{
+				return horz;
+			}
 
 			horz = joystickInput.Horizontal();
+			//if (Math.Abs(horz) > Single.Epsilon)//0.001f)
 			if (Math.Abs(horz) > 0.001f)
 			{
 				return horz;
@@ -103,6 +186,12 @@ namespace WindowsGame.Common.Inputs
 		public float Vertical()
 		{
 			float vert = 0.0f;
+
+			vert = Steve03();
+			if (Math.Abs(vert) > Single.Epsilon)
+			{
+				return vert;
+			}
 
 			vert = joystickInput.Vertical();
 			if (Math.Abs(vert) > 0.001f)

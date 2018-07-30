@@ -1,9 +1,12 @@
-﻿using WindowsGame.Define.Factorys;
+﻿using WindowsGame.Common.Inputs.Types;
+using WindowsGame.Define.Factorys;
 using WindowsGame.Define.Implementation;
 using WindowsGame.Define.Inputs;
 using WindowsGame.Define.Interfaces;
 using WindowsGame.Define.IoC;
 using WindowsGame.Define.Managers;
+using IJoystickInput = WindowsGame.Define.Inputs.IJoystickInput;
+using JoystickInput = WindowsGame.Define.Inputs.JoystickInput;
 
 namespace WindowsGame.Define.Static
 {
@@ -19,8 +22,8 @@ namespace WindowsGame.Define.Static
 			// Inputs.
 			IoCContainer.Initialize<IJoystickInput, JoystickInput>();
 			IoCContainer.Initialize<IKeyboardInput, KeyboardInput>();
-			IoCContainer.Initialize<IMouseInput, MouseScreenInput>();
-			IoCContainer.Initialize<ITouchInput, TouchScreenInput>();
+			IoCContainer.Initialize<IMouseScreenInput, MouseScreenInput>();
+			IoCContainer.Initialize<ITouchScreenInput, TouchScreenInput>();
 
 			// Managers.
 			IoCContainer.Initialize<IRandomManager, RandomManager>();

@@ -25,7 +25,8 @@ namespace WindowsGame.Common.Inputs
 
 		public void Initialize()
 		{
-			touchScreenInput.Initialize();
+			const GestureType gestureType = GestureType.Tap | GestureType.DoubleTap | GestureType.Hold | GestureType.HorizontalDrag | GestureType.VerticalDrag;
+			touchScreenInput.Initialize(gestureType);
 		}
 
 		public void LoadContent()
@@ -36,6 +37,19 @@ namespace WindowsGame.Common.Inputs
 		public void Update(GameTime gameTime)
 		{
 			touchScreenInput.Update(gameTime);
+		}
+
+		public Vector2 Steve01()
+		{
+			return Vector2.Zero;
+		}
+		public Single Steve02()
+		{
+			return 0.0f;
+		}
+		public Single Steve03()
+		{
+			return 0.0f;
 		}
 
 		public Vector2[] GetPositions()

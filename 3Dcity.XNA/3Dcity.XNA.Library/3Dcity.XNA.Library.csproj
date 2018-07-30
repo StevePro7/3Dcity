@@ -79,8 +79,6 @@
     <Compile Include="Common\Inputs\DesktopInputManager.cs" />
     <Compile Include="Common\Inputs\MobilesInputManager.cs" />
     <Compile Include="Common\Inputs\Types\JoystickInput.cs" />
-    <Compile Include="Common\Inputs\Types\KeyboardInput.cs" />
-    <Compile Include="Common\Inputs\Types\MouseScreenInput.cs" />
     <Compile Include="Common\Inputs\Types\TouchScreenInput.cs" />
     <Compile Include="Common\Interfaces\IDeviceFactory.cs" />
     <Compile Include="Common\Interfaces\IInputManager.cs" />

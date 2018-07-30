@@ -27,8 +27,26 @@ namespace WindowsGame.Common.Screens
 			//MyGame.Manager.RenderManager.UpdateStar(gameTime);
 			//MyGame.Manager.RenderManager.UpdateGrid(gameTime);
 
+			//Vector2 steve01 = MyGame.Manager.InputManager.Steve01();
+			//if (Vector2.Zero != steve01)
+			//{
+			//    //String msg = String.Format("({0}, {1})", steve01.X, steve01.Y);
+			//    //MyGame.Manager.Logger.Info(msg);
+
+			//    Single steve02 = MyGame.Manager.InputManager.Steve02();
+			//    if (Math.Abs(steve02) > Single.Epsilon)
+			//    {
+			//        //String msg = steve02.ToString();
+			//        String msg = String.Format("({0}, {1}) = {2}", steve01.X, steve01.Y, steve02);
+			//        MyGame.Manager.Logger.Info(msg);
+			//    }
+			//}
+
+
+
 			Single horz = MyGame.Manager.InputManager.Horizontal();
 			Single vert = MyGame.Manager.InputManager.Vertical();
+
 			//if (Math.Abs(horz) > 0.4)
 			//{
 			MyGame.Manager.SpriteManager.Update(gameTime, horz, vert);

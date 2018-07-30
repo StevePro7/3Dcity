@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="BaseUnitTests.cs" />
     <Compile Include="Managers\CollisionManagerUnitTests.cs" />
+    <Compile Include="Managers\ControlManagerUnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,7 +61,9 @@
       <Name>3Dcity.XNA.Library</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="UnitTests.nunit" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
