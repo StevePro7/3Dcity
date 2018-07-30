@@ -72,22 +72,29 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\AnGame.cs" />
-    <Compile Include="Common\Data\BaseData.cs" />
     <Compile Include="Common\Data\GlobalConfigData.cs" />
+    <Compile Include="Common\Data\PlatformConfigData.cs" />
     <Compile Include="Common\Data\StoragePersistData.cs" />
     <Compile Include="Common\Devices\MobilesDeviceFactory.cs" />
     <Compile Include="Common\Devices\WindowsDeviceFactory.cs" />
-    <Compile Include="Common\Inputs\MobilesInputFactory.cs" />
-    <Compile Include="Common\Inputs\WindowsInputFactory.cs" />
+    <Compile Include="Common\Inputs\DesktopInputManager.cs" />
+    <Compile Include="Common\Inputs\MobilesInputManager.cs" />
+    <Compile Include="Common\Inputs\Types\JoystickInput.cs" />
+    <Compile Include="Common\Inputs\Types\KeyboardInput.cs" />
+    <Compile Include="Common\Inputs\Types\MouseScreenInput.cs" />
+    <Compile Include="Common\Inputs\Types\TouchScreenInput.cs" />
     <Compile Include="Common\Interfaces\IDeviceFactory.cs" />
-    <Compile Include="Common\Interfaces\IInputFactory.cs" />
-    <Compile Include="Common\Managers\BaseManager.cs" />
+    <Compile Include="Common\Interfaces\IInputManager.cs" />
+    <Compile Include="Common\Managers\BulletManager.cs" />
     <Compile Include="Common\Managers\CollisionManager.cs" />
     <Compile Include="Common\Managers\ConfigManager.cs" />
     <Compile Include="Common\Managers\ContentManager.cs" />
+    <Compile Include="Common\Managers\ControlManager.cs" />
     <Compile Include="Common\Managers\DeviceManager.cs" />
+    <Compile Include="Common\Managers\EnemyManager.cs" />
+    <Compile Include="Common\Managers\ExplosionManager.cs" />
     <Compile Include="Common\Managers\ImageManager.cs" />
-    <Compile Include="Common\Managers\InputManager.cs" />
+    <Compile Include="Common\Managers\RenderManager.cs" />
     <Compile Include="Common\Managers\ScoreManager.cs" />
     <Compile Include="Common\Managers\ScreenManager.cs" />
     <Compile Include="Common\Managers\SoundManager.cs" />
@@ -96,9 +103,18 @@
     <Compile Include="Common\Managers\TextManager.cs" />
     <Compile Include="Common\Managers\ThreadManager.cs" />
     <Compile Include="Common\MyGame.cs" />
+    <Compile Include="Common\Objects\BaseObject.cs" />
+    <Compile Include="Common\Objects\BaseSprite.cs" />
+    <Compile Include="Common\Objects\BigTarget.cs" />
+    <Compile Include="Common\Objects\Collision200.cs" />
+    <Compile Include="Common\Objects\FireButton.cs" />
+    <Compile Include="Common\Objects\JoypadMove.cs" />
+    <Compile Include="Common\Objects\SmallTarget.cs" />
     <Compile Include="Common\Screens\BaseScreen.cs" />
     <Compile Include="Common\Screens\ExitScreen.cs" />
     <Compile Include="Common\Screens\InitScreen.cs" />
+    <Compile Include="Common\Screens\PlayScreen.cs" />
+    <Compile Include="Common\Screens\ReadyScreen.cs" />
     <Compile Include="Common\Screens\SplashScreen.cs" />
     <Compile Include="Common\Screens\TestScreen.cs" />
     <Compile Include="Common\Screens\TitleScreen.cs" />
@@ -116,6 +132,10 @@
     <Compile Include="Define\Implementation\ProdFileProxy.cs" />
     <Compile Include="Define\Implementation\ProdLogger.cs" />
     <Compile Include="Define\Implementation\TestLogger.cs" />
+    <Compile Include="Define\Inputs\JoystickInput.cs" />
+    <Compile Include="Define\Inputs\KeyboardInput.cs" />
+    <Compile Include="Define\Inputs\MouseScreenInput.cs" />
+    <Compile Include="Define\Inputs\TouchScreenInput.cs" />
     <Compile Include="Define\Interfaces\IFileManager.cs" />
     <Compile Include="Define\Interfaces\IFileProxy.cs" />
     <Compile Include="Define\Interfaces\ILogger.cs" />
@@ -170,9 +190,6 @@
     <AndroidAsset Include="Assets\Content\Textures\Splash.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Textures\StevePro.bmp" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Assets\Content\Sound\" />
   </ItemGroup>
   <ItemGroup>
@@ -195,6 +212,75 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\Textures\StevePro80.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Data\Config\PlatformConfigMobiles.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Data\Config\PlatformConfigDesktop.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Textures\120.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Textures\128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Textures\20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Textures\25.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Textures\32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Textures\40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Textures\50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Textures\64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Textures\80.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Textures\96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Textures\button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Textures\GameScreen800.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Textures\GameScreen960.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Textures\joypadORG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Textures\pause.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Textures\play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Textures\soundOff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Textures\soundOn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Textures\Target40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Textures\Target64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Textures\Target80.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />

@@ -1,5 +1,3 @@
-using System;
-using Microsoft.Xna.Framework;
 using WindowsGame.Define.Factorys;
 
 namespace WindowsGame.Common.Managers

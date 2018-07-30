@@ -77,6 +77,8 @@ namespace WindowsGame.Common.Managers
 				{(Int32)ScreenType.Splash, new SplashScreen()},
 				{(Int32)ScreenType.Init, new InitScreen()},
 				{(Int32)ScreenType.Title, new TitleScreen()},
+				{(Int32)ScreenType.Ready, new ReadyScreen()},
+				{(Int32)ScreenType.Play, new PlayScreen()},
 				{(Int32)ScreenType.Exit, new ExitScreen()},
 				{(Int32)ScreenType.Test, new TestScreen()},
 			};
