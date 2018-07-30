@@ -73,20 +73,28 @@ namespace WindowsGame.Common.Inputs
 				return 0.0f;
 			}
 
-			Rectangle collision = new Rectangle(0, 280, 200, 200);
+			//Rectangle collision = new Rectangle(0, 280, 200, 200);
+			//Rectangle collisionOT = new Rectangle(-200, 80, 600, 600);
+			Rectangle collisionOT = new Rectangle(-100, 180, 400, 400);
 			Vector2 position = mouseScreenInput.MosuePosition;
 
-			Boolean contains = position.X >= collision.Left &&
-								position.X <= collision.Right &
-								position.Y >= collision.Top &&
-								position.Y <= collision.Bottom;
+			Boolean contains = position.X >= collisionOT.Left &&
+								position.X <= collisionOT.Right &
+								position.Y >= collisionOT.Top &&
+								position.Y <= collisionOT.Bottom;
 
 			if (!contains)
 			{
 				return 0.0f;
 			}
 
-			Single width = collision.Width / 2.0f;
+			if (position.X < 0) { position.X = 0; }
+			if (position.X > 200) { position.X = 200; }
+			if (position.Y < 280) { position.Y = 280; }
+			if (position.Y > 480) { position.Y = 480; }
+
+			//Single width = collision.Width / 2.0f;
+			const Single width = 200 / 2.0f;
 			Single dataX = position.X - width;
 
 			Single value = dataX /= width;
@@ -100,21 +108,30 @@ namespace WindowsGame.Common.Inputs
 				return 0.0f;
 			}
 
-			Rectangle collision = new Rectangle(0, 280, 200, 200);
+			//Rectangle collision = new Rectangle(0, 280, 200, 200);
+			//Rectangle collisionOT = new Rectangle(-200, 80, 600, 600);
+			Rectangle collisionOT = new Rectangle(-100, 180, 400, 400);
 			Vector2 position = mouseScreenInput.MosuePosition;
 
-			Boolean contains = position.X >= collision.Left &&
-								position.X <= collision.Right &
-								position.Y >= collision.Top &&
-								position.Y <= collision.Bottom;
+			Boolean contains = position.X >= collisionOT.Left &&
+								position.X <= collisionOT.Right &
+								position.Y >= collisionOT.Top &&
+								position.Y <= collisionOT.Bottom;
 
 			if (!contains)
 			{
 				return 0.0f;
 			}
 
-			Single height = collision.Height / 2.0f;
-			Single dataY = position.Y - collision.Top - height;
+			if (position.X < 0) { position.X = 0; }
+			if (position.X > 200) { position.X = 200; }
+			if (position.Y < 280) { position.Y = 280; }
+			if (position.Y > 480) { position.Y = 480; }
+
+			//Single height = collision.Height / 2.0f;
+			const Single height = 200 / 2.0f;
+			//Single dataY = position.Y - collision.Top - height;
+			Single dataY = position.Y - 280 - height;
 
 			Single value = dataY /= height;
 			return value;
