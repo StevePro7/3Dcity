@@ -38,8 +38,16 @@ namespace WindowsGame.Common.Managers
 			return MyConvert(position, Rectangle.Empty);
 		}
 
+		private Boolean CheckJoyPadColl(Vector2 position)
+		{
+			return false;
+		}
+
 		public Single CheckJoyPadHorz(Vector2 position)
 		{
+			Single value = 0.0f;
+
+			// Step 01. check collision.
 			Boolean contains = position.X >= joyPadCollision.Left &&
 								position.X <= joyPadCollision.Right &
 								position.Y >= joyPadCollision.Top &&
@@ -47,9 +55,10 @@ namespace WindowsGame.Common.Managers
 
 			if (!contains)
 			{
-				return 0.0f;
+				return value;
 			}
 
+			// Step 02. clamp position.
 			if (position.X < joyPadBounds.Left)
 			{
 				position.X = joyPadBounds.Left; 
@@ -67,12 +76,79 @@ namespace WindowsGame.Common.Managers
 				position.Y = joyPadBounds.Bottom; 
 			}
 
-			return 0.0f;
+			// Step 03. calcd value.
+			Single space = joyPadBounds.Width;
+			Single coord = position.X;
+			Single bound = joyPadBounds.Left;
+
+			value = CalcdJoyPadPosn(space, coord, bound);
+			//Single halve = space / 2.0f;
+			//Single calcd = coord - bound - halve;
+
+			//if (Math.Abs(halve) > Single.Epsilon)
+			//{
+			//    value = calcd / halve;
+			//}
+
+			return value;
 		}
+
 		public Single CheckJoyPadVert(Vector2 position)
 		{
-			return 0.0f;
+			Single value = 0.0f;
+
+			// Step 01. check collision.
+			Boolean contains = position.X >= joyPadCollision.Left &&
+								position.X <= joyPadCollision.Right &
+								position.Y >= joyPadCollision.Top &&
+								position.Y <= joyPadCollision.Bottom;
+
+			if (!contains)
+			{
+				return value;
+			}
+
+			// Step 02. clamp position.
+			if (position.X < joyPadBounds.Left)
+			{
+				position.X = joyPadBounds.Left;
+			}
+			if (position.X > joyPadBounds.Right)
+			{
+				position.X = joyPadBounds.Right;
+			}
+			if (position.Y < joyPadBounds.Top)
+			{
+				position.Y = joyPadBounds.Top;
+			}
+			if (position.Y > joyPadBounds.Bottom)
+			{
+				position.Y = joyPadBounds.Bottom;
+			}
+
+			// Step 03. calcd value.
+			Single space = joyPadBounds.Height;
+			Single coord = position.Y;
+			Single bound = joyPadBounds.Top;
+
+			return CalcdJoyPadPosn(space, coord, bound);
 		}
+
+		private Single CalcdJoyPadPosn(Single space, Single coord, Single bound)
+		{
+			Single value = 0.0f;
+
+			Single halve = space / 2.0f;
+			Single calcd = coord - bound - halve;
+
+			if (Math.Abs(halve) > Single.Epsilon)
+			{
+				value = calcd / halve;
+			}
+
+			return value;
+		}
+
 		public Boolean CheckJoyPadMove(Vector2 position)
 		{
 			return false;

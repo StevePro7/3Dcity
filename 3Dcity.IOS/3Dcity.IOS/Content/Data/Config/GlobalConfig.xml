@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Play</ScreenType>
+	<ScreenType>Test</ScreenType>
 	<FramesPerSecond>50</FramesPerSecond>
 	<SplashDelay>0</SplashDelay>
 	<StarDelay>0</StarDelay>

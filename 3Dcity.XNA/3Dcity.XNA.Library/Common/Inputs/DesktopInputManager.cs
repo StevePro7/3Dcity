@@ -78,6 +78,8 @@ namespace WindowsGame.Common.Inputs
 			Rectangle collisionOT = new Rectangle(-100, 180, 400, 400);
 			Vector2 position = mouseScreenInput.MosuePosition;
 
+			Single bob = controlManager.CheckJoyPadHorz(position);
+
 			Boolean contains = position.X >= collisionOT.Left &&
 								position.X <= collisionOT.Right &
 								position.Y >= collisionOT.Top &&
@@ -113,6 +115,8 @@ namespace WindowsGame.Common.Inputs
 			//Rectangle collisionOT = new Rectangle(-200, 80, 600, 600);
 			Rectangle collisionOT = new Rectangle(-100, 180, 400, 400);
 			Vector2 position = mouseScreenInput.MosuePosition;
+
+			Single bob = controlManager.CheckJoyPadVert(position);
 
 			Boolean contains = position.X >= collisionOT.Left &&
 								position.X <= collisionOT.Right &
