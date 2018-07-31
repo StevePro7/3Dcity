@@ -95,7 +95,8 @@ namespace WindowsGame.Common.Inputs
 
 			//Single width = collision.Width / 2.0f;
 			const Single width = 200 / 2.0f;
-			Single dataX = position.X - width;
+			//Single dataX = position.X - collision.Left - width;
+			Single dataX = position.X - 0 - width;
 
 			Single value = dataX /= width;
 			return value;
@@ -136,6 +137,16 @@ namespace WindowsGame.Common.Inputs
 			Single value = dataY /= height;
 			return value;
 		}
+
+		//HORZ
+		// collision.Width	space
+		// collision.Left		delta
+		// posX			coord
+
+		//VERT
+		// collision.Height	space
+		// collision.Top		delta
+		// posY			coord
 
 		public Vector2[] GetPositions()
 		{

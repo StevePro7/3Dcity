@@ -11,10 +11,16 @@ namespace WindowsGame.Common.Objects
 
 		public virtual void Initialize(Vector2 position, Rectangle collision)
 		{
+			Initialize(position, collision, Rectangle.Empty);
+		}
+
+		public virtual void Initialize(Vector2 position, Rectangle collision, Rectangle bounds)
+		{
 			BaseX = (UInt16)(position.X);
 			BaseY = (UInt16)(position.Y);
 			Position = position;
 			Collision = collision;
+			Bounds = bounds;
 		}
 
 		//public virtual void Initialize(UInt16 baseX, UInt16 baseY, UInt16 size, UInt16 collX, UInt16 collY, UInt16 rect)
@@ -69,5 +75,6 @@ namespace WindowsGame.Common.Objects
 		public Vector2 Position { get; private set; }
 		public Vector2 Midpoint { get; private set; }
 		public Rectangle Collision { get; private set; }
+		public Rectangle Bounds { get; private set; }
 	}
 }

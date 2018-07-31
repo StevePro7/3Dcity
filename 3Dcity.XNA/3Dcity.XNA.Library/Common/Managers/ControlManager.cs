@@ -6,6 +6,12 @@ namespace WindowsGame.Common.Managers
 	public interface IControlManager 
 	{
 		void Initialize();
+		void LoadContent();
+
+		Single CheckJoyPadHorz(Vector2 position);
+		Single CheckJoyPadVert(Vector2 position);
+		Boolean CheckJoyPadMove(Vector2 position);
+
 		Single MyConvert(Vector2 position);
 		Single MyConvert(Vector2 position, Rectangle collision);
 		Single MyConvert(Int32 posX, Int32 posY, Int32 rectX, Int32 rectY, Int32 rectW, Int32 rectH);
@@ -14,13 +20,62 @@ namespace WindowsGame.Common.Managers
 
 	public class ControlManager : IControlManager 
 	{
+		private Rectangle joyPadCollision;
+		private Rectangle joyPadBounds;
+
 		public void Initialize()
 		{
+		}
+
+		public void LoadContent()
+		{
+			joyPadCollision = MyGame.Manager.SpriteManager.JoypadMove.Collision;
+			joyPadBounds = MyGame.Manager.SpriteManager.JoypadMove.Bounds;
 		}
 
 		public Single MyConvert(Vector2 position)
 		{
 			return MyConvert(position, Rectangle.Empty);
+		}
+
+		public Single CheckJoyPadHorz(Vector2 position)
+		{
+			Boolean contains = position.X >= joyPadCollision.Left &&
+								position.X <= joyPadCollision.Right &
+								position.Y >= joyPadCollision.Top &&
+								position.Y <= joyPadCollision.Bottom;
+
+			if (!contains)
+			{
+				return 0.0f;
+			}
+
+			if (position.X < joyPadBounds.Left)
+			{
+				position.X = joyPadBounds.Left; 
+			}
+			if (position.X > joyPadBounds.Right)
+			{
+				position.X = joyPadBounds.Right; 
+			}
+			if (position.Y < joyPadBounds.Top)
+			{ 
+				position.Y = joyPadBounds.Top; 
+			}
+			if (position.Y > joyPadBounds.Bottom)
+			{ 
+				position.Y = joyPadBounds.Bottom; 
+			}
+
+			return 0.0f;
+		}
+		public Single CheckJoyPadVert(Vector2 position)
+		{
+			return 0.0f;
+		}
+		public Boolean CheckJoyPadMove(Vector2 position)
+		{
+			return false;
 		}
 
 		public Single MyConvert(Vector2 position, Rectangle collision)

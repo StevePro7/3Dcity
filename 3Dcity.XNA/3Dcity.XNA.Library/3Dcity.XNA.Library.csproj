@@ -83,10 +83,12 @@
     <Compile Include="Common\Interfaces\IDeviceFactory.cs" />
     <Compile Include="Common\Interfaces\IInputManager.cs" />
     <Compile Include="Common\Managers\BulletManager.cs" />
+    <Compile Include="Common\Managers\IconManager.cs" />
     <Compile Include="Common\Managers\ControlManager.cs" />
     <Compile Include="Common\Managers\EnemyManager.cs" />
     <Compile Include="Common\Managers\ExplosionManager.cs" />
     <Compile Include="Common\Managers\RenderManager.cs" />
+    <Compile Include="Common\Managers\StateManager.cs" />
     <Compile Include="Common\Managers\StorageManager.cs" />
     <Compile Include="Common\Managers\ThreadManager.cs" />
     <Compile Include="Common\MyGame.cs" />
