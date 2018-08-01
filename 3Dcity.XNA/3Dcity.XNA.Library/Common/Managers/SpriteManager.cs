@@ -94,12 +94,14 @@ namespace WindowsGame.Common.Managers
 			Vector2 stPos = new Vector2(80, 360);
 			Rectangle stBounds = new Rectangle(30, 310, 100, 100);
 			SmallTarget = new SmallTarget();
-			SmallTarget.Initialize(stPos, Rectangle.Empty, stBounds);
+			SmallTarget.Initialize(stPos, stBounds);
+			//SmallTarget.Initialize(stPos, Rectangle.Empty, stBounds);
 
 			Vector2 stPos2 = new Vector2(80, 80);
 			Rectangle stBounds2 = new Rectangle(30, 30, 100, 100);
 			SmallTarget2 = new SmallTarget();
-			SmallTarget2.Initialize(stPos2, Rectangle.Empty, stBounds2);
+			SmallTarget2.Initialize(stPos2, stBounds2);
+			//SmallTarget2.Initialize(stPos2, Rectangle.Empty, stBounds2);
 
 			const Byte targetTop = 80;
 			const Byte targetSize = 64;

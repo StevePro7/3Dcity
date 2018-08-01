@@ -5,7 +5,11 @@ using System.Text;
 
 namespace WindowsGame.Common.Managers
 {
-	class StateManager
+	public interface IStateManager
+	{
+	}
+
+	public class StateManager : IStateManager
 	{
 	}
 }

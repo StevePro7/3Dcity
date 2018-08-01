@@ -9,6 +9,11 @@ namespace WindowsGame.Common.Objects
 	{
 		private Texture2D texture;
 
+		public virtual void Initialize(Vector2 position, Rectangle bounds)
+		{
+			Initialize(position, Rectangle.Empty, bounds);
+		}
+
 		public virtual void Initialize(Vector2 position, Rectangle collision, Rectangle bounds)
 		{
 			BaseX = (UInt16)(position.X);

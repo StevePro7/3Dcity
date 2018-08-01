@@ -5,7 +5,11 @@ using System.Text;
 
 namespace WindowsGame.Common.Managers
 {
-	class IconManager
+	public interface IIconManager
+	{
+	}
+
+	public class IconManager : IIconManager
 	{
 	}
 }
