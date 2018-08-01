@@ -59,7 +59,7 @@ namespace WindowsGame.UnitTests.Managers
 
 			position = ControlManager.ClampPosInRect(position, bounds);
 
-		    Assert.That(200, Is.EqualTo(position.X));
+			Assert.That(200, Is.EqualTo(position.X));
 			Assert.That(280, Is.EqualTo(position.Y));
 		}
 
@@ -101,41 +101,6 @@ namespace WindowsGame.UnitTests.Managers
 
 			Assert.That(0.46f, Is.EqualTo(value));
 		}
-
-		//[Test]
-		//public void MyConvertTest01()
-		//{
-		//    posX = 100; posY = 100;
-		//    collX = 0; collY = 280; collW = 200; collH = 200;
-
-		//    Single value = ControlManager.MyConvert(posX, posY, collX, collY, collW, collH);
-
-		//    Assert.That(0.0f, Is.EqualTo(value));
-		//}
-
-		//[Test]
-		//public void MyConvertTest02()
-		//{
-		//    posX = 0; posY = 380;
-		//    collX = 0; collY = 280;
-		//    collW = 200; collH = 200;
-
-		//    Single value = ControlManager.MyConvert(posX, posY, collX, collY, collW, collH);
-
-		//    Assert.That(-1.0f, Is.EqualTo(value));
-		//}
-
-		//[Test]
-		//public void MyConvertTest03()
-		//{
-		//    posX = 200; posY = 380;
-		//    collX = 0; collY = 280;
-		//    collW = 200; collH = 200;
-
-		//    Single value = ControlManager.MyConvert(posX, posY, collX, collY, collW, collH);
-
-		//    Assert.That(1.0f, Is.EqualTo(value));
-		//}
 
 		[TearDown]
 		public void TearDown()
