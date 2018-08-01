@@ -154,8 +154,8 @@ namespace WindowsGame.Common.Inputs
 
 		public Vector2[] GetPositions()
 		{
-			Boolean test = controlManager.Test(mouseScreenInput.CurrMouseX, mouseScreenInput.CurrMouseY);
-
+			//TODO delete
+			//Boolean test = controlManager.Test(mouseScreenInput.CurrMouseX, mouseScreenInput.CurrMouseY);
 			return null;
 		}
 

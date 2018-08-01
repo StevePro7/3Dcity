@@ -13,15 +13,17 @@ namespace WindowsGame.Common.Managers
 		Boolean CheckJoyPadMove(Vector2 position);
 
 		Boolean CheckPosInRect(Vector2 position, Rectangle collision);
-		Boolean CheckPosInRect(Int32 posX, Int32 posY, Int32 collX, Int32 collY, Int32 collW, Int32 collH);
+		Vector2 ClampPosInRect(Vector2 position, Rectangle bounds);
+		Single CalcJoyPadPosn(Single space, Single coord, Single bound);
 
+		//Boolean CheckPosInRect(Int32 posX, Int32 posY, Int32 collX, Int32 collY, Int32 collW, Int32 collH);
 		//void ClampPosInRect(Int32 posX, Int32 posY, Int32 boundX, Int32 boundY, Int32 boundW, Int32 boundH, out Int32 newX, out Int32 newY);
 		//Vector2 ClampPosInRect(Vector2 position, Rectangle bounds);
 
-		Single MyConvert(Vector2 position);
-		Single MyConvert(Vector2 position, Rectangle collision);
-		Single MyConvert(Int32 posX, Int32 posY, Int32 collX, Int32 collY, Int32 collW, Int32 collH);
-		Boolean Test(int x, int y);
+		//Single MyConvert(Vector2 position);
+		//Single MyConvert(Vector2 position, Rectangle collision);
+		//Single MyConvert(Int32 posX, Int32 posY, Int32 collX, Int32 collY, Int32 collW, Int32 collH);
+		//Boolean Test(int x, int y);
 	}
 
 	public class ControlManager : IControlManager 
@@ -47,20 +49,43 @@ namespace WindowsGame.Common.Managers
 				position.Y <= collision.Bottom;
 		}
 
-		public Boolean CheckPosInRect(Int32 posX, Int32 posY, Int32 collX, Int32 collY, Int32 collW, Int32 collH)
+		public Vector2 ClampPosInRect(Vector2 position, Rectangle bounds)
 		{
-			Vector2 position = Vector2.Zero;
-			position.X = posX;
-			position.Y = posY;
+			if (position.X < bounds.Left)
+			{
+				position.X = bounds.Left;
+			}
+			if (position.X > bounds.Right)
+			{
+				position.X = bounds.Right;
+			}
+			if (position.Y < bounds.Top)
+			{
+				position.Y = bounds.Top;
+			}
+			if (position.Y > bounds.Bottom)
+			{
+				position.Y = bounds.Bottom;
+			}
 
-			Rectangle collision = Rectangle.Empty;
-			collision.X = collX;
-			collision.Y = collY;
-			collision.Width = collW;
-			collision.Height = collH;
-
-			return CheckPosInRect(position, collision);
+			return position;
 		}
+
+		//TODO DELETE
+		//public Boolean CheckPosInRect(Int32 posX, Int32 posY, Int32 collX, Int32 collY, Int32 collW, Int32 collH)
+		//{
+		//    Vector2 position = Vector2.Zero;
+		//    position.X = posX;
+		//    position.Y = posY;
+
+		//    Rectangle collision = Rectangle.Empty;
+		//    collision.X = collX;
+		//    collision.Y = collY;
+		//    collision.Width = collW;
+		//    collision.Height = collH;
+
+		//    return CheckPosInRect(position, collision);
+		//}
 
 		//public void ClampPosInRect(Int32 posX, Int32 posY, Int32 boundX, Int32 boundY, Int32 boundW, Int32 boundH, out Int32 newX, out Int32 newY)
 		//{
@@ -82,10 +107,7 @@ namespace WindowsGame.Common.Managers
 		//    Int32
 		//}
 
-		public Single MyConvert(Vector2 position)
-		{
-			return MyConvert(position, Rectangle.Empty);
-		}
+		
 
 		private Boolean CheckJoyPadColl(Vector2 position)
 		{
@@ -109,29 +131,30 @@ namespace WindowsGame.Common.Managers
 			}
 
 			// Step 02. clamp position.
-			if (position.X < joyPadBounds.Left)
-			{
-				position.X = joyPadBounds.Left; 
-			}
-			if (position.X > joyPadBounds.Right)
-			{
-				position.X = joyPadBounds.Right; 
-			}
-			if (position.Y < joyPadBounds.Top)
-			{ 
-				position.Y = joyPadBounds.Top; 
-			}
-			if (position.Y > joyPadBounds.Bottom)
-			{ 
-				position.Y = joyPadBounds.Bottom; 
-			}
+			position = ClampPosInRect(position, joyPadBounds);
+			//if (position.X < joyPadBounds.Left)
+			//{
+			//    position.X = joyPadBounds.Left; 
+			//}
+			//if (position.X > joyPadBounds.Right)
+			//{
+			//    position.X = joyPadBounds.Right; 
+			//}
+			//if (position.Y < joyPadBounds.Top)
+			//{ 
+			//    position.Y = joyPadBounds.Top; 
+			//}
+			//if (position.Y > joyPadBounds.Bottom)
+			//{ 
+			//    position.Y = joyPadBounds.Bottom; 
+			//}
 
 			// Step 03. calcd value.
 			Single space = joyPadBounds.Width;
 			Single coord = position.X;
 			Single bound = joyPadBounds.Left;
 
-			value = CalcdJoyPadPosn(space, coord, bound);
+			value = CalcJoyPadPosn(space, coord, bound);
 			//Single halve = space / 2.0f;
 			//Single calcd = coord - bound - halve;
 
@@ -160,32 +183,33 @@ namespace WindowsGame.Common.Managers
 			}
 
 			// Step 02. clamp position.
-			if (position.X < joyPadBounds.Left)
-			{
-				position.X = joyPadBounds.Left;
-			}
-			if (position.X > joyPadBounds.Right)
-			{
-				position.X = joyPadBounds.Right;
-			}
-			if (position.Y < joyPadBounds.Top)
-			{
-				position.Y = joyPadBounds.Top;
-			}
-			if (position.Y > joyPadBounds.Bottom)
-			{
-				position.Y = joyPadBounds.Bottom;
-			}
+			position = ClampPosInRect(position, joyPadBounds);
+			//if (position.X < joyPadBounds.Left)
+			//{
+			//    position.X = joyPadBounds.Left;
+			//}
+			//if (position.X > joyPadBounds.Right)
+			//{
+			//    position.X = joyPadBounds.Right;
+			//}
+			//if (position.Y < joyPadBounds.Top)
+			//{
+			//    position.Y = joyPadBounds.Top;
+			//}
+			//if (position.Y > joyPadBounds.Bottom)
+			//{
+			//    position.Y = joyPadBounds.Bottom;
+			//}
 
 			// Step 03. calcd value.
 			Single space = joyPadBounds.Height;
 			Single coord = position.Y;
 			Single bound = joyPadBounds.Top;
 
-			return CalcdJoyPadPosn(space, coord, bound);
+			return CalcJoyPadPosn(space, coord, bound);
 		}
 
-		private Single CalcdJoyPadPosn(Single space, Single coord, Single bound)
+		public Single CalcJoyPadPosn(Single space, Single coord, Single bound)
 		{
 			Single value = 0.0f;
 
@@ -205,45 +229,47 @@ namespace WindowsGame.Common.Managers
 			return false;
 		}
 
-		public Single MyConvert(Vector2 position, Rectangle collision)
-		{
-			Single value = 0.0f;
-			//if (!collision.Contains((Int32)position.X, (Int32)position.Y))
-			//{
-			//    return value;
-			//}
+		//public Single MyConvert(Vector2 position)
+		//{
+		//    return MyConvert(position, Rectangle.Empty);
+		//}
+		//public Single MyConvert(Vector2 position, Rectangle collision)
+		//{
+		//    Single value = 0.0f;
+		//    //if (!collision.Contains((Int32)position.X, (Int32)position.Y))
+		//    //{
+		//    //    return value;
+		//    //}
 
-			//if (position.X >= collision.Left && position.X <= collision.Right)
-			if (position.X < collision.Left || position.X <= collision.Right)
-			{
+		//    //if (position.X >= collision.Left && position.X <= collision.Right)
+		//    if (position.X < collision.Left || position.X <= collision.Right)
+		//    {
 				
-			}
-			Single width = collision.Width / 2.0f;
-			Single dataX = position.X - width;
+		//    }
+		//    Single width = collision.Width / 2.0f;
+		//    Single dataX = position.X - width;
 
-			value = dataX /= width;
-			return value;
-		}
+		//    value = dataX /= width;
+		//    return value;
+		//}
+		//public Single MyConvert(Int32 posX, Int32 posY, Int32 collX, Int32 collY, Int32 collW, Int32 collH)
+		//{
+		//    Vector2 position = Vector2.Zero;
+		//    position.X = posX;
+		//    position.Y = posY;
 
-		public Single MyConvert(Int32 posX, Int32 posY, Int32 collX, Int32 collY, Int32 collW, Int32 collH)
-		{
-			Vector2 position = Vector2.Zero;
-			position.X = posX;
-			position.Y = posY;
+		//    Rectangle collision = Rectangle.Empty;
+		//    collision.X = collX;
+		//    collision.Y = collY;
+		//    collision.Width = collW;
+		//    collision.Height = collH;
 
-			Rectangle collision = Rectangle.Empty;
-			collision.X = collX;
-			collision.Y = collY;
-			collision.Width = collW;
-			collision.Height = collH;
-
-			return MyConvert(position, collision);
-		}
-
-		public Boolean Test(int x, int y)
-		{
-			return x == 10;
-		}
+		//    return MyConvert(position, collision);
+		//}
+		//public Boolean Test(int x, int y)
+		//{
+		//    return x == 10;
+		//}
 
 	}
 }

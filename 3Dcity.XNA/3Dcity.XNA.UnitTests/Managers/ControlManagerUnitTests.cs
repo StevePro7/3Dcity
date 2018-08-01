@@ -1,12 +1,17 @@
 ﻿using System;
-using WindowsGame.Common.Managers;
+using Microsoft.Xna.Framework;
 using NUnit.Framework;
+using WindowsGame.Common.Managers;
 
 namespace WindowsGame.UnitTests.Managers
 {
 	[TestFixture]
 	public class ControlManagerUnitTests : BaseUnitTests
 	{
+		private Int32 posX, posY;
+		private Int32 collX, collY, collW, collH;
+		private Int32 sizeX, sizeY, sizeW, sizeH;
+
 		[SetUp]
 		public new void SetUp()
 		{
@@ -18,11 +23,13 @@ namespace WindowsGame.UnitTests.Managers
 		[Test]
 		public void CheckPosInRectTest01()
 		{
-			const int posX = 100; const int posY = 300;
-			const int collX = 0; const int collY = 280;
-			const int collW = 200; const int collH = 200;
+			posX = 100; posY = 300;
+			collX = 0; collY = 280; collW = 200; collH = 200;
 
-			Boolean posInRect = ControlManager.CheckPosInRect(posX, posY, collX, collY, collW, collH);
+			Vector2 position = new Vector2(posX, posY);
+			Rectangle collision = new Rectangle(collX, collY, collW, collH);
+
+			Boolean posInRect = ControlManager.CheckPosInRect(position, collision);
 
 			Assert.That(true, Is.EqualTo(posInRect));
 		}
@@ -30,65 +37,105 @@ namespace WindowsGame.UnitTests.Managers
 		[Test]
 		public void CheckPosInRectTest02()
 		{
-			const int posX = 300; const int posY = 300;
-			const int collX = 0; const int collY = 280;
-			const int collW = 200; const int collH = 200;
+			posX = 300; posY = 300;
+			collX = 0; collY = 280; collW = 200; collH = 200;
 
-			Boolean posInRect = ControlManager.CheckPosInRect(posX, posY, collX, collY, collW, collH);
+			Vector2 position = new Vector2(posX, posY);
+			Rectangle collision = new Rectangle(collX, collY, collW, collH);
+
+			Boolean posInRect = ControlManager.CheckPosInRect(position, collision);
 
 			Assert.That(false, Is.EqualTo(posInRect));
 		}
 
+		[Test]
+		public void ClampPosInRectTest01()
+		{
+		    posX = 250; posY = 200;
+		    sizeX = 0; sizeY = 280; sizeW = 200; sizeH = 200;
+
+			Vector2 position = new Vector2(posX, posY);
+			Rectangle bounds = new Rectangle(sizeX, sizeY, sizeW, sizeH);
+
+			position = ControlManager.ClampPosInRect(position, bounds);
+
+		    Assert.That(200, Is.EqualTo(position.X));
+			Assert.That(280, Is.EqualTo(position.Y));
+		}
+
+		[Test]
+		public void ClampPosInRectTest02()
+		{
+			posX = 50; posY = 580;
+			sizeX = 0; sizeY = 280; sizeW = 200; sizeH = 200;
+
+			Vector2 position = new Vector2(posX, posY);
+			Rectangle bounds = new Rectangle(sizeX, sizeY, sizeW, sizeH);
+
+			position = ControlManager.ClampPosInRect(position, bounds);
+
+			Assert.That(50, Is.EqualTo(position.X));
+			Assert.That(480, Is.EqualTo(position.Y));
+		}
+
+		[Test]
+		public void CalcJoyPadPosnTest01()
+		{
+			const Single space = 200.0f;
+			const Single coord = 51.0f;
+			const Single bound = 0.0f;
+
+			Single value = ControlManager.CalcJoyPadPosn(space, coord, bound);
+
+			Assert.That(-0.49f, Is.EqualTo(value));
+		}
+
+		[Test]
+		public void CalcJoyPadPosnTest02()
+		{
+			const Single space = 200.0f;
+			const Single coord = 426.0f;
+			const Single bound = 280.0f;
+
+			Single value = ControlManager.CalcJoyPadPosn(space, coord, bound);
+
+			Assert.That(0.46f, Is.EqualTo(value));
+		}
+
 		//[Test]
-		//public void ClampPosInRectTest()
+		//public void MyConvertTest01()
 		//{
-		//    const int posX = 250; const int posY = 200;
-		//    const int boundX = 0; const int boundY = 280;
-		//    const int boundW = 200; const int boundH = 200;
+		//    posX = 100; posY = 100;
+		//    collX = 0; collY = 280; collW = 200; collH = 200;
 
-		//    int newX;
-		//    int newY;
-		//    ControlManager.ClampPosInRect(posX, posY, boundsX, boundsY, boundsW, boundsH, out newX, newY);
+		//    Single value = ControlManager.MyConvert(posX, posY, collX, collY, collW, collH);
 
-		//    Assert.That(200, Is.EqualTo(newX));
-		//    Assert.That(280, Is.EqualTo(newY));
+		//    Assert.That(0.0f, Is.EqualTo(value));
 		//}
 
-		[Test]
-		public void MyConvertTest01()
-		{
-			const int posX = 100; const int posY = 100;
-			const int collX = 0; const int collY = 280;
-			const int collW = 200; const int collH = 200;
+		//[Test]
+		//public void MyConvertTest02()
+		//{
+		//    posX = 0; posY = 380;
+		//    collX = 0; collY = 280;
+		//    collW = 200; collH = 200;
 
-			Single value = ControlManager.MyConvert(posX, posY, collX, collY, collW, collH);
+		//    Single value = ControlManager.MyConvert(posX, posY, collX, collY, collW, collH);
 
-			Assert.That(0.0f, Is.EqualTo(value));
-		}
+		//    Assert.That(-1.0f, Is.EqualTo(value));
+		//}
 
-		[Test]
-		public void MyConvertTest02()
-		{
-			const int posX = 0; const int posY = 380;
-			const int collX = 0; const int collY = 280;
-			const int collW = 200; const int collH = 200;
+		//[Test]
+		//public void MyConvertTest03()
+		//{
+		//    posX = 200; posY = 380;
+		//    collX = 0; collY = 280;
+		//    collW = 200; collH = 200;
 
-			Single value = ControlManager.MyConvert(posX, posY, collX, collY, collW, collH);
+		//    Single value = ControlManager.MyConvert(posX, posY, collX, collY, collW, collH);
 
-			Assert.That(-1.0f, Is.EqualTo(value));
-		}
-
-		[Test]
-		public void MyConvertTest03()
-		{
-			const int posX = 200; const int posY = 380;
-			const int collX = 0; const int collY = 280;
-			const int collW = 200; const int collH = 200;
-
-			Single value = ControlManager.MyConvert(posX, posY, collX, collY, collW, collH);
-
-			Assert.That(1.0f, Is.EqualTo(value));
-		}
+		//    Assert.That(1.0f, Is.EqualTo(value));
+		//}
 
 		[TearDown]
 		public void TearDown()
