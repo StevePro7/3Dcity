@@ -49,6 +49,9 @@ namespace WindowsGame.Common.Screens
 
 			//if (Math.Abs(horz) > 0.4)
 			//{
+			MyGame.Manager.RenderManager.UpdateGrid(gameTime);
+			MyGame.Manager.RenderManager.UpdateStar(gameTime);
+
 			MyGame.Manager.SpriteManager.Update(gameTime, horz, vert);
 			//}
 
@@ -63,6 +66,7 @@ namespace WindowsGame.Common.Screens
 			//Engine.SpriteBatch.Draw(Assets.Target80Texture, new Vector2(100, 100), Color.White);
 			//MyGame.Manager.RenderManager.Draw();
 
+			MyGame.Manager.RenderManager.Draw();
 			MyGame.Manager.SpriteManager.Draw();
 			base.Draw();
 		}

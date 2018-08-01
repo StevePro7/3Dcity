@@ -9,7 +9,8 @@ namespace WindowsGame.Common.Objects
 {
 	public class SmallTarget : BaseSprite
 	{
-		private const Single ratio = 0.05f;
+		//private const Single ratio = 0.05f;
+		private const Single ratio = 0.15f;			// TODO make configurable to tweak "speed" in which small target moves
 
 		public override void Update(GameTime gameTime, Single horz, Single vert)
 		{

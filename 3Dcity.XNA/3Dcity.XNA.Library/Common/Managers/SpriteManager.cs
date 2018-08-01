@@ -48,12 +48,12 @@ namespace WindowsGame.Common.Managers
 
 		public void Draw()
 		{
-			Collision1200.Draw();
+			//Collision1200.Draw();
 			//Collision2200.Draw();
 			JoypadMove.Draw();
-			JoypadMove2.Draw();
+			//JoypadMove2.Draw();
 			SmallTarget.Draw();
-			SmallTarget2.Draw();
+			//SmallTarget2.Draw();
 			BigTarget.Draw();
 		}
 
