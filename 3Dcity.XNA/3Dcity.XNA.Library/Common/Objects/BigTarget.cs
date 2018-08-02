@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using WindowsGame.Common.Static;
 
 namespace WindowsGame.Common.Objects
 {
@@ -23,6 +24,18 @@ namespace WindowsGame.Common.Objects
 		public override void Update(GameTime gameTime, Single horz, Single vert)
 		{
 			Vector2 position = Position;
+
+			// Tolerance
+			if (Math.Abs(horz) < Constants.Tolerance)
+			{
+				horz = 0.0f;
+			}
+			if (Math.Abs(vert) < Constants.Tolerance)
+			{
+				vert= 0.0f;
+			}
+
+
 			if (Math.Abs(horz) < Single.Epsilon && Math.Abs(vert) < Single.Epsilon)
 			{
 				accX = 1.0f;

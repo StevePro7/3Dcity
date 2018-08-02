@@ -18,6 +18,8 @@ namespace WindowsGame.Common.Static
 		public const SByte FontOffsetX = -1;
 		public const SByte FontOffsetY = -4;
 
+		public const Single Tolerance = 0.1f;		//TODO make configurable?  Or set to 0.0f to take out!
+
 		// Custom data.
 #if WINDOWS
 		public const Platform Platform = Static.Platform.Desktop;

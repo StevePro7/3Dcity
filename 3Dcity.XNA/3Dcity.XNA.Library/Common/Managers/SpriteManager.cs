@@ -103,10 +103,10 @@ namespace WindowsGame.Common.Managers
 			SmallTarget2.Initialize(stPos2, stBounds2);
 			//SmallTarget2.Initialize(stPos2, Rectangle.Empty, stBounds2);
 
-			const Byte targetTop = 80;
+			const Byte targetTop = 74;
 			const Byte targetSize = 64;
 			Vector2 bgPos = new Vector2(400, 240);
-			Rectangle bgBounds = new Rectangle(0, targetTop, 800 - targetSize, 480 - targetTop - targetSize);
+			Rectangle bgBounds = new Rectangle(-2, targetTop, Constants.ScreenWide - targetSize + 2, Constants.ScreenHigh - targetTop - targetSize + 2);
 			BigTarget = new BigTarget();
 			BigTarget.Initialize(bgPos, Rectangle.Empty, bgBounds);
 		}

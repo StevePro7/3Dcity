@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using WindowsGame.Common.Static;
 
 namespace WindowsGame.Common.Objects
 {
@@ -23,6 +24,9 @@ namespace WindowsGame.Common.Objects
 		{
 			Vector2 position = Position;
 
+			
+
+
 			// TODO regression test on desktop and further test on mobiles
 			//Boolean snap = false;
 			//#if WINDOWS
@@ -37,11 +41,14 @@ namespace WindowsGame.Common.Objects
 			// SQUIGGLE
 
 			// no squiggle
-			int aa = (int)horz;
-			int bb = (int)vert;
+			//int aa = (int)horz;
+			//int bb = (int)vert;
 			//if (0 == aa && 0 == bb)
 			//if (0 == (Int32)horz && 0 == (Int32)vert)
-			if (Math.Abs(horz) < Single.Epsilon && Math.Abs(vert) < Single.Epsilon)
+			//if (Math.Abs(horz) < Single.Epsilon && Math.Abs(vert) < Single.Epsilon)
+
+			// TODO - ignore squiggle + check if this snaps back to center on iPad!
+			if (0 == horz && 0 == vert)
 			{
 				position.X = BaseX;
 				position.Y = BaseY;
@@ -52,6 +59,17 @@ namespace WindowsGame.Common.Objects
 			//{
 			//    position.Y = BaseY;
 			//}
+
+
+			// Tolerance
+			if (Math.Abs(horz) < Constants.Tolerance)
+			{
+				horz = 0.0f;
+			}
+			if (Math.Abs(vert) < Constants.Tolerance)
+			{
+				vert = 0.0f;
+			}
 
 
 			Single val1 = horz * 100.0f;
@@ -107,34 +125,5 @@ namespace WindowsGame.Common.Objects
 			oldPosition = Position;
 		}
 
-		//private Texture2D[] textureList;
-		//public virtual void Initialize(UInt16 baseX, UInt16 baseY, UInt16 size, UInt16 boundX, UInt16 boundY, UInt16 rect)
-		//{
-		//    Initialize(baseX, baseY, size, size, boundX, boundY, rect, rect);
-		//}
-
-		//public virtual void Initialize(UInt16 baseX, UInt16 baseY, UInt16 sizeW, UInt16 sizeH, UInt16 boundX, UInt16 boundY, UInt16 boundW, UInt16 boundH)
-		//{
-		//    BaseX = baseX;
-		//    BaseY = baseY;
-		//    Position = new Vector2(baseX, baseY);
-
-		//    Single midX = sizeW / 2.0f;
-		//    Single midY = sizeH / 2.0f;
-		//    Midpoint = new Vector2(baseX + midX, baseY + midY);
-
-		//    Collision = new Rectangle(collX, collY, collW, collH);
-		//}
-
-		//public virtual void LoadContent(Texture2D theTexture)
-		//{
-		//    texture = theTexture;
-		//}
-
-		//public UInt16 BaseX { get; private set; }
-		//public UInt16 BaseY { get; private set; }
-		//public Vector2 Position { get; private set; }
-		//public Vector2 Midpoint { get; private set; }
-		//public Rectangle Bounds { get; private set; }
 	}
 }
