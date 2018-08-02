@@ -4,6 +4,6 @@ namespace WindowsGame.Data
 {
 	public struct PlatformConfigData
 	{
-		public Byte MaxTouches;
+		public Byte MaxInputs;
 	}
 }

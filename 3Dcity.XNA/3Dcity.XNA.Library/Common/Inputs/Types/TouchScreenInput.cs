@@ -32,7 +32,7 @@
 //        private Matrix invertTransformationMatrix;
 //        //private IList<TouchLocation> touchLocationList;
 //        //private const Byte MAX_TOUCHES = 10;
-//        private Byte maxTouches;
+//        private Byte maxInputs;
 
 //        public TouchScreenInput()
 //        {
@@ -47,7 +47,7 @@
 //        {
 //            TouchPanel.EnabledGestures = gestureType;
 //            //TouchPanel.EnabledGestures = GestureType.Tap | GestureType.DoubleTap | GestureType.Hold | GestureType.HorizontalDrag | GestureType.VerticalDrag;
-//            maxTouches = 0;
+//            maxInputs = 0;
 //            //Initialize(Vector2.Zero, Matrix.Identity);
 //        }
 
@@ -62,12 +62,12 @@
 //            viewPortVector2 = MyGame.Manager.ResolutionManager.ViewPortVector2;
 //            invertTransformationMatrix = MyGame.Manager.ResolutionManager.InvertTransformationMatrix;
 
-//            maxTouches = MyGame.Manager.ConfigManager.PlatformConfigData.MaxTouches;
+//            maxInputs = MyGame.Manager.ConfigManager.PlatformConfigData.MaxInputs;
 
-//            //touchLocationList = new List<TouchLocation>(maxTouches);
+//            //touchLocationList = new List<TouchLocation>(maxInputs);
 
-//            TouchPositions = new List<Vector2>(maxTouches);
-//            TouchStates = new List<Boolean>(maxTouches);
+//            TouchPositions = new List<Vector2>(maxInputs);
+//            TouchStates = new List<Boolean>(maxInputs);
 //            //InitializeTouchData();
 //            //ResetAllTouchData();
 //        }
@@ -122,7 +122,7 @@
 //                return;
 //            }
 
-//            int count = Math.Max(maxTouches, touchCollection.Count);
+//            int count = Math.Max(maxInputs, touchCollection.Count);
 //            for (Byte index = 0; index < touchCollection.Count; index++)
 //            {
 //                TouchLocation touchLocation = touchCollection[index];
@@ -167,7 +167,7 @@
 //            TouchPositions.Clear();
 //            TouchStates.Clear();
 
-//            //for (Byte index = 0; index < maxTouches; index++)
+//            //for (Byte index = 0; index < maxInputs; index++)
 //            //{
 //            //    TouchPositions[index].Ad = Vector2.Zero;
 //            //    TouchStates[index] = false;
@@ -186,7 +186,7 @@
 //        //        return touchLocationList;
 //        //    }
 
-//        //    int count = Math.Max(maxTouches, touchCollection.Count);
+//        //    int count = Math.Max(maxInputs, touchCollection.Count);
 //        //    for (Byte index = 0; index < touchCollection.Count; index++)
 //        //    {
 //        //        TouchLocation touchLocation = touchCollection[index];

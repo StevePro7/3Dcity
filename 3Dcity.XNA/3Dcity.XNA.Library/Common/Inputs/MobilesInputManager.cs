@@ -18,7 +18,7 @@ namespace WindowsGame.Common.Inputs
 
 		private Vector2 viewPortVector2;
 		private Matrix invertTransformationMatrix;
-		private Byte maxTouches;
+		private Byte maxInputs;
 
 		public MobilesInputManager(IJoystickInput joystickInput, ITouchScreenInput touchScreenInput, IControlManager controlManager, IResolutionManager resolutionManager)
 		{
@@ -33,7 +33,7 @@ namespace WindowsGame.Common.Inputs
 			const GestureType gestureType = GestureType.Tap | GestureType.DoubleTap | GestureType.Hold | GestureType.HorizontalDrag | GestureType.VerticalDrag;
 			touchScreenInput.Initialize(gestureType);
 
-			maxTouches = 0;
+			maxInputs = 0;
 		}
 
 		public void LoadContent()
@@ -41,7 +41,7 @@ namespace WindowsGame.Common.Inputs
 			viewPortVector2 = MyGame.Manager.ResolutionManager.ViewPortVector2;
 			invertTransformationMatrix = MyGame.Manager.ResolutionManager.InvertTransformationMatrix;
 
-			maxTouches = MyGame.Manager.ConfigManager.PlatformConfigData.MaxTouches;
+			maxInputs = MyGame.Manager.ConfigManager.PlatformConfigData.MaxInputs;
 		}
 
 		public void Update(GameTime gameTime)
@@ -83,7 +83,7 @@ namespace WindowsGame.Common.Inputs
 				return horz;
 			}
 
-			Int32 loops = Math.Min(maxTouches, count);
+			Int32 loops = Math.Min(maxInputs, count);
 			for (Byte index = 0; index < loops; index++)
 			{
 				TouchLocation touchLocation = touchCollection[index];
@@ -126,7 +126,7 @@ namespace WindowsGame.Common.Inputs
 				return vert;
 			}
 
-			Int32 loops = Math.Min(maxTouches, count);
+			Int32 loops = Math.Min(maxInputs, count);
 			for (Byte index = 0; index < loops; index++)
 			{
 				TouchLocation touchLocation = touchCollection[index];

@@ -37,19 +37,19 @@ namespace WindowsGame.Define.Inputs
 		private ButtonState prevLeftButtonState;
 		private ButtonState currRightButtonState;
 		private ButtonState prevRightButtonState;
-		private Byte maxTouches;
+		private Byte maxInputs;
 
 		public void Initialize()
 		{
 			CurrMouseX = 0;
 			CurrMouseY = 0;
 			MosuePosition = Vector2.Zero;
-			maxTouches = 0;
+			maxInputs = 0;
 		}
 
 		public void LoadContent()
 		{
-			maxTouches = MyGame.Manager.ConfigManager.PlatformConfigData.MaxTouches;
+			maxInputs = MyGame.Manager.ConfigManager.PlatformConfigData.MaxInputs;
 		}
 
 		public void Update(GameTime gameTime)
