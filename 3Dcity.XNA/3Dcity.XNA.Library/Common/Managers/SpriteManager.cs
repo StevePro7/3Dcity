@@ -51,9 +51,9 @@ namespace WindowsGame.Common.Managers
 			//Collision1200.Draw();
 			//Collision2200.Draw();
 			JoypadMove.Draw();
-			//JoypadMove2.Draw();
+			JoypadMove2.Draw();
 			SmallTarget.Draw();
-			//SmallTarget2.Draw();
+			SmallTarget2.Draw();
 			BigTarget.Draw();
 		}
 

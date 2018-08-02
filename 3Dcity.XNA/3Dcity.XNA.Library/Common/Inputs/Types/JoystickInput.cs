@@ -9,8 +9,10 @@ namespace WindowsGame.Common.Inputs.Types
 		void Initialize();
 		void Update(GameTime gameTime);
 
+		// TODO take this out because this is the engine!
 		Single Horizontal();
 		Single Vertical();
+		// TODO take this out because this is the engine!
 
 		Boolean JoyHold(Buttons button);
 		Boolean JoyMove(Buttons button);

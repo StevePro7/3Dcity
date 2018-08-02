@@ -10,16 +10,11 @@ namespace WindowsGame.Common.Managers
 
 		Single CheckJoyPadHorz(Vector2 position);
 		Single CheckJoyPadVert(Vector2 position);
-		Boolean CheckJoyPadMove(Vector2 position);
+		//Boolean CheckJoyPadMove(Vector2 position);
 
 		Boolean CheckPosInRect(Vector2 position, Rectangle collision);
 		Vector2 ClampPosInRect(Vector2 position, Rectangle bounds);
 		Single CalcJoyPadPosn(Single space, Single coord, Single bound);
-
-		//Boolean CheckPosInRect(Int32 posX, Int32 posY, Int32 collX, Int32 collY, Int32 collW, Int32 collH);
-		//void ClampPosInRect(Int32 posX, Int32 posY, Int32 boundX, Int32 boundY, Int32 boundW, Int32 boundH, out Int32 newX, out Int32 newY);
-		//Vector2 ClampPosInRect(Vector2 position, Rectangle bounds);
-
 	}
 
 	public class ControlManager : IControlManager 
@@ -35,6 +30,38 @@ namespace WindowsGame.Common.Managers
 		{
 			joyPadCollision = MyGame.Manager.SpriteManager.JoypadMove.Collision;
 			joyPadBounds = MyGame.Manager.SpriteManager.JoypadMove.Bounds;
+		}
+
+		public Single CheckJoyPadHorz(Vector2 position)
+		{
+			// Step 01. check collision.
+			Boolean contains = CheckPosInRect(position, joyPadCollision);
+			if (!contains)
+			{
+				return 0.0f;
+			}
+
+			// Step 02. clamp position.
+			position = ClampPosInRect(position, joyPadBounds);
+
+			// Step 03. calcd value.
+			return CalcJoyPadPosn(joyPadBounds.Width, position.X, joyPadBounds.Left);
+		}
+
+		public Single CheckJoyPadVert(Vector2 position)
+		{
+			// Step 01. check collision.
+			Boolean contains = CheckPosInRect(position, joyPadCollision);
+			if (!contains)
+			{
+				return 0.0f;
+			}
+
+			// Step 02. clamp position.
+			position = ClampPosInRect(position, joyPadBounds);
+
+			// Step 03. calcd value.
+			return CalcJoyPadPosn(joyPadBounds.Height, position.Y, joyPadBounds.Top);
 		}
 
 		public Boolean CheckPosInRect(Vector2 position, Rectangle collision)
@@ -65,52 +92,6 @@ namespace WindowsGame.Common.Managers
 			}
 
 			return position;
-		}
-
-		public Single CheckJoyPadHorz(Vector2 position)
-		{
-			Single value = 0.0f;
-
-			// Step 01. check collision.
-			Boolean contains = CheckPosInRect(position, joyPadCollision);
-			if (!contains)
-			{
-				return value;
-			}
-
-			// Step 02. clamp position.
-			position = ClampPosInRect(position, joyPadBounds);
-
-			// Step 03. calcd value.
-			Single space = joyPadBounds.Width;
-			Single coord = position.X;
-			Single bound = joyPadBounds.Left;
-
-			return CalcJoyPadPosn(joyPadBounds.Width, position.X, joyPadBounds.Left);
-			//return CalcJoyPadPosn(space, coord, bound);
-		}
-
-		public Single CheckJoyPadVert(Vector2 position)
-		{
-			Single value = 0.0f;
-
-			// Step 01. check collision.
-			Boolean contains = CheckPosInRect(position, joyPadCollision);
-			if (!contains)
-			{
-				return value;
-			}
-
-			// Step 02. clamp position.
-			position = ClampPosInRect(position, joyPadBounds);
-
-			// Step 03. calcd value.
-			Single space = joyPadBounds.Height;
-			Single coord = position.Y;
-			Single bound = joyPadBounds.Top;
-
-			return CalcJoyPadPosn(joyPadBounds.Height, position.Y, joyPadBounds.Top);
-			//return CalcJoyPadPosn(space, coord, bound);
 		}
 
 		public Single CalcJoyPadPosn(Single space, Single coord, Single bound)

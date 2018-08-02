@@ -10,10 +10,6 @@ namespace WindowsGame.Common.Interfaces
 		void LoadContent();
 		void Update(GameTime gameTime);
 
-		Vector2 Steve01();
-		Single Steve02();
-		Single Steve03();
-
 		Vector2[] GetPositions();
 		TouchLocationState[] GetStates();
 		Boolean[] GetStates2();
