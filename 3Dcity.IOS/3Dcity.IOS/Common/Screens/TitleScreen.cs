@@ -16,9 +16,6 @@ namespace WindowsGame.Common.Screens
 		private Byte index, max;
 		private Single delay;
 		private Vector2 pos1, pos2, pos3, pos4;
-		//private float start, stopX;
-		//private float delta, scale;
-		//private bool flag;
 
 		public override void Initialize()
 		{
@@ -48,24 +45,8 @@ namespace WindowsGame.Common.Screens
 
 		public Int32 Update(GameTime gameTime)
 		{
-			//if (flag)
-			//{
-			//    return (Int32)ScreenType.Title;
-
-			//}
-			//var percentage = Timer / delay;
-			//MyGame.Manager.Logger.Info(percentage.ToString());
-			//float input = MathHelper.SmoothStep(0, 1, percentage);
-			
-			////input = 1 - input;
-			//scale = 4*input + 1;
-			
 			UpdateTimer(gameTime);
 			if (Timer > delay)
-			//{
-			//    //Engine.Game.Window.Title = "bob";
-			//    flag = true;
-			//}
 			{
 				Timer = 0;
 				index++;

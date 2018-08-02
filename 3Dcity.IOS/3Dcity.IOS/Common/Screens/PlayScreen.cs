@@ -22,17 +22,16 @@ namespace WindowsGame.Common.Screens
 
 		public Int32 Update(GameTime gameTime)
 		{
-			//var positions = MyGame.Manager.InputManager.GetPositions();
-
-			//MyGame.Manager.RenderManager.UpdateStar(gameTime);
-			//MyGame.Manager.RenderManager.UpdateGrid(gameTime);
-
 			Single horz = MyGame.Manager.InputManager.Horizontal();
 			Single vert = MyGame.Manager.InputManager.Vertical();
+
 			//if (Math.Abs(horz) > 0.4)
 			//{
 			MyGame.Manager.SpriteManager.Update(gameTime, horz, vert);
 			//}
+
+			MyGame.Manager.RenderManager.UpdateGrid(gameTime);
+			MyGame.Manager.RenderManager.UpdateStar(gameTime);
 
 			return (Int32)ScreenType.Play;
 		}
@@ -42,10 +41,9 @@ namespace WindowsGame.Common.Screens
 			// TODO delegate this to device manager??
 			Engine.Game.Window.Title = GetType().Name;// Globalize.GAME_TITLE;
 
-			//Engine.SpriteBatch.Draw(Assets.Target80Texture, new Vector2(100, 100), Color.White);
-			//MyGame.Manager.RenderManager.Draw();
-
+			MyGame.Manager.RenderManager.Draw();
 			MyGame.Manager.SpriteManager.Draw();
+
 			base.Draw();
 		}
 

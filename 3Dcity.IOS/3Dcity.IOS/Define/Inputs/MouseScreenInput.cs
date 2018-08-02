@@ -1,16 +1,20 @@
 ﻿using System;
 using WindowsGame.Common;
+using WindowsGame.Common.Managers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
 namespace WindowsGame.Define.Inputs
 {
-	public interface IMouseInput
+	public interface IMouseScreenInput
 	{
 		// Methods.
 		void Initialize();
 		void LoadContent();
 		void Update(GameTime gameTime);
+
+		Single Horizontal();
+		Single Vertical();
 
 		Boolean LeftButtonPress();
 		Boolean LeftButtonHold();
@@ -27,25 +31,25 @@ namespace WindowsGame.Define.Inputs
 		//ButtonState prevRightButtonState { get; }
 	}
 
-	public class MouseScreenInput : IMouseInput
+	public class MouseScreenInput : IMouseScreenInput
 	{
 		private ButtonState currLeftButtonState;
 		private ButtonState prevLeftButtonState;
 		private ButtonState currRightButtonState;
 		private ButtonState prevRightButtonState;
-		private Byte maxTouches;
+		private Byte maxInputs;
 
 		public void Initialize()
 		{
 			CurrMouseX = 0;
 			CurrMouseY = 0;
 			MosuePosition = Vector2.Zero;
-			maxTouches = 0;
+			maxInputs = 0;
 		}
 
 		public void LoadContent()
 		{
-			maxTouches = MyGame.Manager.ConfigManager.PlatformConfigData.MaxTouches;
+			maxInputs = MyGame.Manager.ConfigManager.PlatformConfigData.MaxInputs;
 		}
 
 		public void Update(GameTime gameTime)
@@ -64,6 +68,16 @@ namespace WindowsGame.Define.Inputs
 
 			currLeftButtonState = mouseState.LeftButton;
 			currRightButtonState = mouseState.RightButton;
+		}
+
+		public Single Horizontal()
+		{
+			return 0.0f;
+		}
+
+		public Single Vertical()
+		{
+			return 0.0f;
 		}
 
 		public Boolean LeftButtonPress()

@@ -44,6 +44,7 @@ namespace WindowsGame.Common
 
 		public static void LoadContentAsync()
 		{
+			Manager.ControlManager.Initialize();
 			Manager.ScoreManager.Initialize();
 			Manager.RandomManager.Initialize();
 			Manager.RenderManager.Initialize();
@@ -51,6 +52,7 @@ namespace WindowsGame.Common
 			Manager.StorageManager.Initialize();
 			Manager.TextManager.Initialize();
 
+			Manager.ControlManager.LoadContent();
 			Manager.CollisionManager.LoadContent();
 			Manager.ContentManager.LoadContent();
 			Manager.ImageManager.LoadContent();

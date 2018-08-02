@@ -119,12 +119,14 @@
     <Compile Include="Common\Managers\DeviceManager.cs" />
     <Compile Include="Common\Managers\EnemyManager.cs" />
     <Compile Include="Common\Managers\ExplosionManager.cs" />
+    <Compile Include="Common\Managers\IconManager.cs" />
     <Compile Include="Common\Managers\ImageManager.cs" />
     <Compile Include="Common\Managers\RenderManager.cs" />
     <Compile Include="Common\Managers\ScoreManager.cs" />
     <Compile Include="Common\Managers\ScreenManager.cs" />
     <Compile Include="Common\Managers\SoundManager.cs" />
     <Compile Include="Common\Managers\SpriteManager.cs" />
+    <Compile Include="Common\Managers\StateManager.cs" />
     <Compile Include="Common\Managers\StorageManager.cs" />
     <Compile Include="Common\Managers\TextManager.cs" />
     <Compile Include="Common\Managers\ThreadManager.cs" />

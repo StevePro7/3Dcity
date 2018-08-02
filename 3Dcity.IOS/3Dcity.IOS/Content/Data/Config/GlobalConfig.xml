@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Test</ScreenType>
+	<ScreenType>Play</ScreenType>
 	<FramesPerSecond>50</FramesPerSecond>
 	<SplashDelay>0</SplashDelay>
 	<StarDelay>0</StarDelay>
 	<GridDelay>0</GridDelay>
 	<JoypadX>0</JoypadX>
 	<JoypadY>360</JoypadY>
-	<IconLeftI>1</IconLeftI>
+	<IconLeftI>0</IconLeftI>
 	<IconLeftX>6</IconLeftX>
-	<IconLeftY>3</IconLeftY>
-	<IconRightI>1</IconRightI>
+	<IconLeftY>4</IconLeftY>
+	<IconRightI>0</IconRightI>
 	<IconRightX>725</IconRightX>
-	<IconRightY>3</IconRightY>
+	<IconRightY>4</IconRightY>
 	<EnemyIndex>0</EnemyIndex>
 	<QuitsToExit>true</QuitsToExit>
 </GlobalConfigData>

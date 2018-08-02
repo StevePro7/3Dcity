@@ -11,6 +11,9 @@ namespace WindowsGame.Common.Managers
 		void LoadContent();
 		void Update(GameTime gameTime, Single horz, Single vert);
 		void Draw();
+
+		// Properties.
+		JoypadMove JoypadMove { get; }
 	}
 
 	public class SpriteManager : ISpriteManager
@@ -27,7 +30,7 @@ namespace WindowsGame.Common.Managers
 		public void LoadContent()
 		{
 			Collision1200.LoadContent(Assets.SteveProTexture200);
-			Collision2200.LoadContent(Assets.SteveProTexture200);
+			//Collision2200.LoadContent(Assets.SteveProTexture200);
 			JoypadMove.LoadContent(Assets.JoypadTexture);
 			JoypadMove2.LoadContent(Assets.JoypadTexture);
 			SmallTarget.LoadContent(Assets.Target40Texture);
@@ -46,7 +49,7 @@ namespace WindowsGame.Common.Managers
 		public void Draw()
 		{
 			//Collision1200.Draw();
-			Collision2200.Draw();
+			//Collision2200.Draw();
 			JoypadMove.Draw();
 			JoypadMove2.Draw();
 			SmallTarget.Draw();
@@ -64,10 +67,14 @@ namespace WindowsGame.Common.Managers
 			//UInt16 baseX = 20;///MyGame.Manager.ConfigManager.GlobalConfigData.JoypadX;
 			//UInt16 baseY = 20;//MyGame.Manager.ConfigManager.GlobalConfigData.JoypadY;
 
+			// TODO JoyPadMove collision confirm!
 			Vector2 jpPos = new Vector2(20, 300);
-			Rectangle jpColl = new Rectangle(0, 280, 200, 200);
+			//Rectangle jpColl = new Rectangle(0, 280, 200, 200);
+			//Rectangle jpColl = new Rectangle(-200, 80, 600, 600);
+			Rectangle jpColl = new Rectangle(-100, 180, 400, 400);
+			Rectangle jpBndl = new Rectangle(0, 280, 200, 200);
 			JoypadMove = new JoypadMove();
-			JoypadMove.Initialize(jpPos, jpColl);
+			JoypadMove.Initialize(jpPos, jpColl, jpBndl);
 			//JoypadMove.Initialize(jp1x, jp1y, jpyPsize, 0, 0, collSize);
 
 			Vector2 jpPos2 = new Vector2(20, 20);
@@ -81,18 +88,20 @@ namespace WindowsGame.Common.Managers
 			Collision1200 = new Collision200();
 			Collision1200.Initialize(new Vector2(0, 280), jpColl);
 
-			Collision2200 = new Collision200();
-			Collision2200.Initialize(Vector2.Zero, jpColl2);
+			//Collision2200 = new Collision200();
+			//Collision2200.Initialize(Vector2.Zero, jpColl2);
 
 			Vector2 stPos = new Vector2(80, 360);
 			Rectangle stBounds = new Rectangle(30, 310, 100, 100);
 			SmallTarget = new SmallTarget();
-			SmallTarget.Initialize(stPos, Rectangle.Empty, stBounds);
+			SmallTarget.Initialize(stPos, stBounds);
+			//SmallTarget.Initialize(stPos, Rectangle.Empty, stBounds);
 
 			Vector2 stPos2 = new Vector2(80, 80);
 			Rectangle stBounds2 = new Rectangle(30, 30, 100, 100);
 			SmallTarget2 = new SmallTarget();
-			SmallTarget2.Initialize(stPos2, Rectangle.Empty, stBounds2);
+			SmallTarget2.Initialize(stPos2, stBounds2);
+			//SmallTarget2.Initialize(stPos2, Rectangle.Empty, stBounds2);
 
 			const Byte targetTop = 80;
 			const Byte targetSize = 64;
@@ -103,7 +112,7 @@ namespace WindowsGame.Common.Managers
 		}
 
 		public Collision200 Collision1200 { get; private set; }
-		public Collision200 Collision2200 { get; private set; }
+		//public Collision200 Collision2200 { get; private set; }
 		public JoypadMove JoypadMove { get; private set; }
 		public JoypadMove JoypadMove2 { get; private set; }
 		public SmallTarget SmallTarget { get; private set; }

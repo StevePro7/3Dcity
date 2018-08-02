@@ -161,8 +161,8 @@ namespace WindowsGame.Common.Screens
 			return (Int32)ScreenType.Test;
 		}
 
-		// this method assumes that horizontal + vertical
-		// return float between -1 to +1 range
+		// This method assumes that horizontal + vertical
+		// return Single value between -1 to +1 range
 		public Int32 Update_Joypad(GameTime gameTime)
 		{
 			//middle.X = cx;

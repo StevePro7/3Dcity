@@ -1,9 +1,10 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input.Touch;
-using WindowsGame.Common.Inputs.Types;
+using WindowsGame.Common.Inputs.Types;		// TODO move to engine!
 using WindowsGame.Common.Interfaces;
 using WindowsGame.Common.Managers;
+using WindowsGame.Define.Inputs;
 using WindowsGame.Define.Managers;
 
 namespace WindowsGame.Common.Inputs
@@ -15,6 +16,10 @@ namespace WindowsGame.Common.Inputs
 		private readonly IControlManager controlManager;
 		private readonly IResolutionManager resolutionManager;
 
+		private Vector2 viewPortVector2;
+		private Matrix invertTransformationMatrix;
+		private Byte maxInputs;
+
 		public MobilesInputManager(IJoystickInput joystickInput, ITouchScreenInput touchScreenInput, IControlManager controlManager, IResolutionManager resolutionManager)
 		{
 			this.joystickInput = joystickInput;
@@ -25,12 +30,18 @@ namespace WindowsGame.Common.Inputs
 
 		public void Initialize()
 		{
-			touchScreenInput.Initialize();
+			const GestureType gestureType = GestureType.Tap | GestureType.DoubleTap | GestureType.Hold | GestureType.HorizontalDrag | GestureType.VerticalDrag;
+			touchScreenInput.Initialize(gestureType);
+
+			maxInputs = 0;
 		}
 
 		public void LoadContent()
 		{
-			touchScreenInput.LoadContent();
+			viewPortVector2 = MyGame.Manager.ResolutionManager.ViewPortVector2;
+			invertTransformationMatrix = MyGame.Manager.ResolutionManager.InvertTransformationMatrix;
+
+			maxInputs = MyGame.Manager.ConfigManager.PlatformConfigData.MaxInputs;
 		}
 
 		public void Update(GameTime gameTime)
@@ -40,12 +51,14 @@ namespace WindowsGame.Common.Inputs
 
 		public Vector2[] GetPositions()
 		{
-			return touchScreenInput.TouchPositionsX;
+			return null;
+			//return touchScreenInput.TouchPositionsX;	// TODO delete
 		}
 
 		public TouchLocationState[] GetStates()
 		{
-			return touchScreenInput.TouchStatesX;
+			return null;
+			//return touchScreenInput.TouchStatesX;	// TODO delete
 		}
 
 		public Boolean[] GetStates2()
@@ -58,15 +71,89 @@ namespace WindowsGame.Common.Inputs
 			return false;
 		}
 
-		public float Horizontal()
+		public Single Horizontal()
 		{
-			return 0.0f;
+			Single horz = 0.0f;
+
+			// Touch.
+			TouchCollection touchCollection = touchScreenInput.TouchCollection;
+			Int32 count = touchCollection.Count;
+			if (0 == count)
+			{
+				return horz;
+			}
+
+			Int32 loops = Math.Min(maxInputs, count);
+			for (Byte index = 0; index < loops; index++)
+			{
+				TouchLocation touchLocation = touchCollection[index];
+
+				TouchLocationState state = touchLocation.State;
+				if (!(TouchLocationState.Pressed == state || TouchLocationState.Moved == state))
+				{
+					continue;
+				}
+
+				Vector2 position = GetTouchPosition(touchLocation.Position);
+				Single temp = controlManager.CheckJoyPadHorz(position);
+				if (Math.Abs(temp) > Single.Epsilon)
+				{
+					horz = temp;
+				}
+			}
+
+			//foreach (TouchLocation touch in touchCollection)
+			//{
+			//    TouchLocationState state = touch.State;
+			//    if (TouchLocationState.Pressed == state || TouchLocationState.Moved == state)
+			//    {
+
+			//    }
+			//}
+
+			return horz;
 		}
 
-		public float Vertical()
+		public Single Vertical()
 		{
-			return 0.0f;
+			Single vert = 0.0f;
+
+			// Touch.
+			TouchCollection touchCollection = touchScreenInput.TouchCollection;
+			Int32 count = touchCollection.Count;
+			if (0 == count)
+			{
+				return vert;
+			}
+
+			Int32 loops = Math.Min(maxInputs, count);
+			for (Byte index = 0; index < loops; index++)
+			{
+				TouchLocation touchLocation = touchCollection[index];
+
+				TouchLocationState state = touchLocation.State;
+				if (!(TouchLocationState.Pressed == state || TouchLocationState.Moved == state))
+				{
+					continue;
+				}
+
+				Vector2 position = GetTouchPosition(touchLocation.Position);
+				Single temp = controlManager.CheckJoyPadVert(position);
+				if (Math.Abs(temp) > Single.Epsilon)
+				{
+					vert = temp;
+				}
+			}
+
+			return vert;
 		}
 
+		private Vector2 GetTouchPosition(Vector2 touchPosition)
+		{
+			// http://www.david-amador.com/2010/03/xna-2d-independent-resolution-rendering.
+			Vector2 deltaPosition = touchPosition - viewPortVector2;
+			return Vector2.Transform(deltaPosition, invertTransformationMatrix);
+		}
+ 
 	}
 }

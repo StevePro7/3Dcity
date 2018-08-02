@@ -1,10 +1,12 @@
 ﻿using System;
+using WindowsGame.Define.Inputs;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 using WindowsGame.Common.Inputs.Types;
 using WindowsGame.Common.Interfaces;
 using WindowsGame.Common.Managers;
+using IJoystickInput = WindowsGame.Common.Inputs.Types.IJoystickInput;
 
 namespace WindowsGame.Common.Inputs
 {
@@ -42,8 +44,6 @@ namespace WindowsGame.Common.Inputs
 
 		public Vector2[] GetPositions()
 		{
-			Boolean test = controlManager.Test(mouseScreenInput.CurrMouseX, mouseScreenInput.CurrMouseY);
-
 			return null;
 		}
 
@@ -62,20 +62,28 @@ namespace WindowsGame.Common.Inputs
 			return keyboardInput.KeyHold(Keys.Escape) || joystickInput.JoyHold(Buttons.Back);
 		}
 
-
-
-		public float Horizontal()
+		public Single Horizontal()
 		{
 			Single horz = 0.0f;
 
-			//return joystickInput.Horizontal();
+			// Mouse.
+			if (mouseScreenInput.LeftButtonPress())
+			{
+				horz = controlManager.CheckJoyPadHorz(mouseScreenInput.MosuePosition);
+				if (Math.Abs(horz) > Single.Epsilon)
+				{
+					return horz;
+				}
+			}
 
+			// Joystick.
 			horz = joystickInput.Horizontal();
-			if (Math.Abs(horz) > 0.001f)
+			if (Math.Abs(horz) > Single.Epsilon)
 			{
 				return horz;
 			}
 
+			// Keyboard.
 			if (keyboardInput.KeyPress(Keys.Left))
 			{
 				horz = -1.0f;
@@ -86,30 +94,30 @@ namespace WindowsGame.Common.Inputs
 			}
 
 			return horz;
-
-			//float horz = 0.0f;
-			//if (!mouseScreenInput.ButtonMove())
-			//{
-			//    return horz;
-			//}
-			//if (mouseScreenInput.CurrMouseX < 0 || mouseScreenInput.CurrMouseX > 200.0f)
-			//{
-			//    return horz;
-			//}
-
-			//return mouseScreenInput.CurrMouseX;
 		}
 
-		public float Vertical()
+		public Single Vertical()
 		{
-			float vert = 0.0f;
+			Single vert = 0.0f;
 
+			// Mouse.
+			if (mouseScreenInput.LeftButtonPress())
+			{
+				vert = controlManager.CheckJoyPadVert(mouseScreenInput.MosuePosition);
+				if (Math.Abs(vert) > Single.Epsilon)
+				{
+					return vert;
+				}
+			}
+
+			// Joystick.
 			vert = joystickInput.Vertical();
-			if (Math.Abs(vert) > 0.001f)
+			if (Math.Abs(vert) > Single.Epsilon)
 			{
 				return vert;
 			}
 
+			// Keyboard.
 			if (keyboardInput.KeyPress(Keys.Up))
 			{
 				vert = -1.0f;
@@ -120,17 +128,6 @@ namespace WindowsGame.Common.Inputs
 			}
 
 			return vert;
-
-			//if (!mouseScreenInput.ButtonMove())
-			//{
-			//    return vert;
-			//}
-			//if (mouseScreenInput.CurrMouseY < 280.0f || mouseScreenInput.CurrMouseY > 480.0f)
-			//{
-			//    return vert;
-			//}
-
-			//return mouseScreenInput.CurrMouseY;
 		}
 
 	}

@@ -1,4 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <PlatformConfigData>
-	<MaxTouches>1</MaxTouches>
+	<MaxInputs>1</MaxInputs>
 </PlatformConfigData>
