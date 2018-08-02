@@ -14,7 +14,7 @@
 	<string>7.0</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
@@ -27,9 +27,9 @@
 		<integer>1</integer>
 		<integer>2</integer>
 	</array>
-	<key>UIStatusBarHidden</key>
-	<true/>
 	<key>UIRequiresFullScreen</key>
+	<true/>
+	<key>UIStatusBarHidden</key>
 	<true/>
 </dict>
 </plist>
