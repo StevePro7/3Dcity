@@ -19,6 +19,7 @@ namespace WindowsGame.UnitTests
 		protected IDeviceManager DeviceManager;
 		protected IEnemyManager EnemyManager;
 		protected IExplosionManager ExplosionManager;
+		protected IIconManager IconManager;
 		protected IImageManager ImageManager;
 		protected IInputManager InputManager;
 		protected IRandomManager RandomManager;
@@ -28,6 +29,7 @@ namespace WindowsGame.UnitTests
 		protected IScreenManager ScreenManager;
 		protected ISoundManager SoundManager;
 		protected ISpriteManager SpriteManager;
+		protected IStateManager StateManager;
 		protected IStorageManager StorageManager;
 		protected ITextManager TextManager;
 		protected IThreadManager ThreadManager;
@@ -47,6 +49,7 @@ namespace WindowsGame.UnitTests
 			DeviceManager = MockRepository.GenerateStub<IDeviceManager>();
 			EnemyManager = MockRepository.GenerateStub<IEnemyManager>();
 			ExplosionManager = MockRepository.GenerateStub<IExplosionManager>();
+			IconManager = MockRepository.GenerateStub<IIconManager>();
 			ImageManager = MockRepository.GenerateStub<IImageManager>();
 			InputManager = MockRepository.GenerateStub<IInputManager>();
 			RandomManager = MockRepository.GenerateStub<IRandomManager>();
@@ -56,6 +59,7 @@ namespace WindowsGame.UnitTests
 			ScreenManager = MockRepository.GenerateStub<IScreenManager>();
 			SoundManager = MockRepository.GenerateStub<ISoundManager>();
 			SpriteManager = MockRepository.GenerateStub<ISpriteManager>();
+			StateManager = MockRepository.GenerateStub<IStateManager>();
 			StorageManager = MockRepository.GenerateStub<IStorageManager>();
 			TextManager = MockRepository.GenerateStub<ITextManager>();
 			ThreadManager = MockRepository.GenerateStub<IThreadManager>();
@@ -75,6 +79,7 @@ namespace WindowsGame.UnitTests
 				DeviceManager,
 				EnemyManager,
 				ExplosionManager,
+				IconManager,
 				ImageManager,
 				InputManager,
 				RandomManager,
@@ -84,6 +89,7 @@ namespace WindowsGame.UnitTests
 				ScreenManager,
 				SoundManager,
 				SpriteManager,
+				StateManager,
 				StorageManager,
 				TextManager,
 				ThreadManager,
@@ -107,6 +113,7 @@ namespace WindowsGame.UnitTests
 			DeviceManager = null;
 			EnemyManager = null;
 			ExplosionManager = null;
+			IconManager = null;
 			ImageManager = null;
 			InputManager = null;
 			RandomManager = null;
@@ -116,6 +123,7 @@ namespace WindowsGame.UnitTests
 			ScreenManager = null;
 			SoundManager = null;
 			SpriteManager = null;
+			StateManager = null;
 			StorageManager = null;
 			TextManager = null;
 			ThreadManager = null;

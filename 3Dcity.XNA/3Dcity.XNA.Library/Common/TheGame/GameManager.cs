@@ -15,6 +15,7 @@ namespace WindowsGame.Common.TheGame
 		IDeviceManager DeviceManager { get; }
 		IEnemyManager EnemyManager { get; }
 		IExplosionManager ExplosionManager { get; }
+		IIconManager IconManager { get; }
 		IImageManager ImageManager { get; }
 		IInputManager InputManager { get; }
 		IRandomManager RandomManager { get; }
@@ -25,6 +26,7 @@ namespace WindowsGame.Common.TheGame
 		ISoundManager SoundManager { get; }
 		ISpriteManager SpriteManager { get; }
 		IStorageManager StorageManager { get; }
+		IStateManager StateManager { get; }
 		ITextManager TextManager { get; }
 		IThreadManager ThreadManager { get; }
 		IFileManager FileManager { get; }
@@ -43,6 +45,7 @@ namespace WindowsGame.Common.TheGame
 			IDeviceManager deviceManager,
 			IEnemyManager enemyManager,
 			IExplosionManager explosionManager,
+			IIconManager iconManager,
 			IImageManager imageManager,
 			IInputManager inputManager,
 			IRandomManager randomManager,
@@ -52,6 +55,7 @@ namespace WindowsGame.Common.TheGame
 			IScreenManager screenManager,
 			ISoundManager soundManager,
 			ISpriteManager spriteManager,
+			IStateManager stateManager,
 			IStorageManager storageManager,
 			ITextManager textManager,
 			IThreadManager threadManager,
@@ -68,6 +72,7 @@ namespace WindowsGame.Common.TheGame
 			EnemyManager = enemyManager;
 			ExplosionManager = explosionManager;
 			ImageManager = imageManager;
+			IconManager = iconManager;
 			InputManager = inputManager;
 			RandomManager = randomManager;
 			RenderManager = renderManager;
@@ -77,6 +82,7 @@ namespace WindowsGame.Common.TheGame
 			SoundManager = soundManager;
 			SpriteManager = spriteManager;
 			StorageManager = storageManager;
+			StateManager = stateManager;
 			TextManager = textManager;
 			ThreadManager = threadManager;
 			FileManager = fileManager;
@@ -91,6 +97,7 @@ namespace WindowsGame.Common.TheGame
 		public IDeviceManager DeviceManager { get; private set; }
 		public IEnemyManager EnemyManager { get; private set; }
 		public IExplosionManager ExplosionManager { get; private set; }
+		public IIconManager IconManager { get; private set; }
 		public IImageManager ImageManager { get; private set; }
 		public IInputManager InputManager { get; private set; }
 		public IRandomManager RandomManager { get; private set; }
@@ -101,6 +108,7 @@ namespace WindowsGame.Common.TheGame
 		public ISoundManager SoundManager { get; private set; }
 		public ISpriteManager SpriteManager { get; private set; }
 		public IStorageManager StorageManager { get; private set; }
+		public IStateManager StateManager { get; private set; }
 		public ITextManager TextManager { get; private set; }
 		public IThreadManager ThreadManager { get; private set; }
 		public IFileManager FileManager { get; private set; }

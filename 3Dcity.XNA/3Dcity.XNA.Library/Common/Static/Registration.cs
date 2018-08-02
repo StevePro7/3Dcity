@@ -33,13 +33,14 @@ namespace WindowsGame.Common.Static
 			IoCContainer.Initialize<IDeviceManager, DeviceManager>();
 			IoCContainer.Initialize<IEnemyManager, EnemyManager>();
 			IoCContainer.Initialize<IExplosionManager, ExplosionManager>();
+			IoCContainer.Initialize<IIconManager, IconManager>();
 			IoCContainer.Initialize<IImageManager, ImageManager>();
-			//IoCContainer.Initialize<IInputManager, InputManager>();
 			IoCContainer.Initialize<IRenderManager, RenderManager>();
 			IoCContainer.Initialize<IScoreManager, ScoreManager>();
 			IoCContainer.Initialize<IScreenManager, ScreenManager>();
 			IoCContainer.Initialize<ISoundManager, SoundManager>();
 			IoCContainer.Initialize<ISpriteManager, SpriteManager>();
+			IoCContainer.Initialize<IStateManager, StateManager>();
 			IoCContainer.Initialize<IStorageManager, StorageManager>();
 			IoCContainer.Initialize<ITextManager, TextManager>();
 			IoCContainer.Initialize<IThreadManager, ThreadManager>();
