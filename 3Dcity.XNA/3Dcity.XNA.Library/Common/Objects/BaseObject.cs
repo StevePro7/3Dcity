@@ -21,7 +21,7 @@ namespace WindowsGame.Common.Objects
 			Position = position;
 			Collision = collision;
 			Bounds = bounds;
-			Index = 1;
+			Index = 0;
 		}
 
 		public virtual void LoadContent(Texture2D theTexture)

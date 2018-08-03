@@ -128,13 +128,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\button.png">
-      <Name>button</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Data\Texts\TestScreen.txt">
       <Name>TestScreen</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
