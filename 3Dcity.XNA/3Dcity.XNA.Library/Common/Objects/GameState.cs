@@ -14,5 +14,10 @@ namespace WindowsGame.Common.Objects
 			index = (Byte)(1 - index);
 		}
 
+		public override void Draw()
+		{
+			base.Draw(index);
+		}
+
 	}
 }

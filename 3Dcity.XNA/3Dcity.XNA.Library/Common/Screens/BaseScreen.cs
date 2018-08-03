@@ -27,6 +27,7 @@ namespace WindowsGame.Common.Screens
 
 		public virtual void Draw()
 		{
+			MyGame.Manager.IconManager.Draw();
 		}
 
 		protected void LoadTextData()

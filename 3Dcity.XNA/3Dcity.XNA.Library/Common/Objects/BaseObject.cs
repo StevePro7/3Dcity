@@ -1,13 +1,12 @@
 ﻿using System;
-using WindowsGame.Define;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using WindowsGame.Define;
 
 namespace WindowsGame.Common.Objects
 {
 	public class BaseObject
 	{
-		//private Texture2D texture;
 		private Texture2D[] textures;
 
 		public virtual void Initialize(Vector2 position, Rectangle collision)
@@ -28,11 +27,6 @@ namespace WindowsGame.Common.Objects
 		{
 			Texture2D[] theTextures = new Texture2D[1] { theTexture };
 			LoadContent(theTextures);
-
-			//UInt16 width = (UInt16)(theTexture.Width);
-			//UInt16 height = (UInt16)(theTexture.Height);
-
-			//LoadContent(theTexture, width, height);
 		}
 
 		public virtual void LoadContent(Texture2D[] theTextures)
@@ -49,31 +43,6 @@ namespace WindowsGame.Common.Objects
 			Single midY = height / 2.0f + BaseY;
 			Midpoint = new Vector2(midX, midY);
 		}
-
-		//protected virtual void LoadContent(Texture2D[] theTextures)//, UInt16 width, UInt16 height)
-		//{
-		//    textures = theTextures;
-
-		//    UInt16 width = (UInt16)(theTextures[0].Width);
-		//    UInt16 height = (UInt16)(theTextures[0].Height);
-		//    SizeW = width;
-		//    SizeH = height;
-
-		//    Single midX = width / 2.0f + BaseX;
-		//    Single midY = height / 2.0f + BaseY;
-		//    Midpoint = new Vector2(midX, midY);
-		//}
-		//protected virtual void LoadContent(Texture2D theTexture, UInt16 width, UInt16 height)
-		//{
-		//    //textures = new Texture2D[1] { theTexture };
-
-		//    SizeW = width;
-		//    SizeH = height;
-
-		//    Single midX = width / 2.0f + BaseX;
-		//    Single midY = height / 2.0f + BaseY;
-		//    Midpoint = new Vector2(midX, midY);
-		//}
 
 		public virtual void Draw()
 		{

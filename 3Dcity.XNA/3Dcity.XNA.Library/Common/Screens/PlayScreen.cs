@@ -38,6 +38,8 @@ namespace WindowsGame.Common.Screens
 
 		public override void Draw()
 		{
+			base.Draw();
+
 			// TODO delegate this to device manager??
 			Engine.Game.Window.Title = GetType().Name;// Globalize.GAME_TITLE;
 

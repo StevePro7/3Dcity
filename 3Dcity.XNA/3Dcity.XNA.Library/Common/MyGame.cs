@@ -57,7 +57,7 @@ namespace WindowsGame.Common
 			Manager.ControlManager.LoadContent();
 			Manager.CollisionManager.LoadContent();
 			Manager.ContentManager.LoadContent();
-			Manager.IconManager.Initialize();
+			Manager.IconManager.LoadContent();
 			Manager.ImageManager.LoadContent();
 
 			Manager.RenderManager.LoadContent();
