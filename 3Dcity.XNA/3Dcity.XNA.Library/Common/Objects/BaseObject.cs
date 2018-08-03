@@ -7,7 +7,8 @@ namespace WindowsGame.Common.Objects
 {
 	public class BaseObject
 	{
-		private Texture2D texture;
+		//private Texture2D texture;
+		private Texture2D[] textures;
 
 		public virtual void Initialize(Vector2 position, Rectangle collision)
 		{
@@ -23,49 +24,64 @@ namespace WindowsGame.Common.Objects
 			Bounds = bounds;
 		}
 
-		//public virtual void Initialize(UInt16 baseX, UInt16 baseY, UInt16 size, UInt16 collX, UInt16 collY, UInt16 rect)
-		//{
-		//    Initialize(baseX, baseY, size, size, collX, collY, rect, rect);
-		//}
-
-		//public virtual void Initialize(UInt16 baseX, UInt16 baseY, UInt16 sizeW, UInt16 sizeH, UInt16 collX, UInt16 collY, UInt16 collW, UInt16 collH)
-		//{
-		//    BaseX = baseX;
-		//    BaseY = baseY;
-		//    SizeW = sizeW;
-		//    SizeH = sizeH;
-		//    Position = new Vector2(baseX, baseY);
-
-		//    Single midX = sizeW / 2.0f;
-		//    Single midY = sizeH / 2.0f;
-		//    Midpoint = new Vector2(baseX + midX, baseY + midY);
-
-		//    Collision = new Rectangle(collX, collY, collW, collH);
-		//}
-
 		public virtual void LoadContent(Texture2D theTexture)
 		{
-			UInt16 width = (UInt16)(theTexture.Width);
-			UInt16 height = (UInt16)(theTexture.Height);
+			Texture2D[] theTextures = new Texture2D[1] { theTexture };
+			LoadContent(theTextures);
 
-			LoadContent(theTexture, width, height);
+			//UInt16 width = (UInt16)(theTexture.Width);
+			//UInt16 height = (UInt16)(theTexture.Height);
+
+			//LoadContent(theTexture, width, height);
 		}
 
-		protected virtual void LoadContent(Texture2D theTexture, UInt16 width, UInt16 height)
+		public virtual void LoadContent(Texture2D[] theTextures)
 		{
-			texture = theTexture;
+			textures = theTextures;
 
-			SizeW = (UInt16)(texture.Width);
-			SizeH = (UInt16)(texture.Height);
+			// Assume all textures in array are same size!
+			UInt16 width = (UInt16)(theTextures[0].Width);
+			UInt16 height = (UInt16)(theTextures[0].Height);
+			SizeW = width;
+			SizeH = height;
 
 			Single midX = width / 2.0f + BaseX;
 			Single midY = height / 2.0f + BaseY;
 			Midpoint = new Vector2(midX, midY);
 		}
 
+		//protected virtual void LoadContent(Texture2D[] theTextures)//, UInt16 width, UInt16 height)
+		//{
+		//    textures = theTextures;
+
+		//    UInt16 width = (UInt16)(theTextures[0].Width);
+		//    UInt16 height = (UInt16)(theTextures[0].Height);
+		//    SizeW = width;
+		//    SizeH = height;
+
+		//    Single midX = width / 2.0f + BaseX;
+		//    Single midY = height / 2.0f + BaseY;
+		//    Midpoint = new Vector2(midX, midY);
+		//}
+		//protected virtual void LoadContent(Texture2D theTexture, UInt16 width, UInt16 height)
+		//{
+		//    //textures = new Texture2D[1] { theTexture };
+
+		//    SizeW = width;
+		//    SizeH = height;
+
+		//    Single midX = width / 2.0f + BaseX;
+		//    Single midY = height / 2.0f + BaseY;
+		//    Midpoint = new Vector2(midX, midY);
+		//}
+
 		public virtual void Draw()
 		{
-			Engine.SpriteBatch.Draw(texture, Position, Color.White);
+			Engine.SpriteBatch.Draw(textures[0], Position, Color.White);
+		}
+		public virtual void Draw(Byte index)
+		{
+			Engine.SpriteBatch.Draw(textures[index], Position, Color.White);
 		}
 
 		public UInt16 BaseX { get; private set; }

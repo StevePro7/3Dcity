@@ -108,6 +108,8 @@
     <Compile Include="Common\Objects\BigTarget.cs" />
     <Compile Include="Common\Objects\Collision200.cs" />
     <Compile Include="Common\Objects\FireButton.cs" />
+    <Compile Include="Common\Objects\GameSound.cs" />
+    <Compile Include="Common\Objects\GameState.cs" />
     <Compile Include="Common\Objects\JoypadMove.cs" />
     <Compile Include="Common\Objects\SmallTarget.cs" />
     <Compile Include="Common\Screens\BaseScreen.cs" />

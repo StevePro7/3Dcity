@@ -29,12 +29,12 @@ namespace WindowsGame.Common.Managers
 
 		public void LoadContent()
 		{
-			Collision1200.LoadContent(Assets.SteveProTexture200);
+			//Collision1200.LoadContent(Assets.SteveProTexture200);
 			//Collision2200.LoadContent(Assets.SteveProTexture200);
 			JoypadMove.LoadContent(Assets.JoypadTexture);
-			JoypadMove2.LoadContent(Assets.JoypadTexture);
+			//JoypadMove2.LoadContent(Assets.JoypadTexture);
 			SmallTarget.LoadContent(Assets.Target40Texture);
-			SmallTarget2.LoadContent(Assets.Target40Texture);
+			//SmallTarget2.LoadContent(Assets.Target40Texture);
 			BigTarget.LoadContent(Assets.Target64Texture);
 		}
 
@@ -51,9 +51,9 @@ namespace WindowsGame.Common.Managers
 			//Collision1200.Draw();
 			//Collision2200.Draw();
 			JoypadMove.Draw();
-			JoypadMove2.Draw();
+			//JoypadMove2.Draw();
 			SmallTarget.Draw();
-			SmallTarget2.Draw();
+			//SmallTarget2.Draw();
 			BigTarget.Draw();
 		}
 
