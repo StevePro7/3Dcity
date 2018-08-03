@@ -311,7 +311,7 @@ namespace WindowsGame.Common.Screens
 			//Engine.SpriteBatch.Draw(Assets.SteveProTexture160, new Vector2(800 - 160 - 20, 480 - 160 - 20), Color.White);
 			//Engine.SpriteBatch.Draw(Assets.SteveProTexture80, new Vector2(800 - 80 - 20 - 20, 480 - 80 - 20 - 20), Color.White);
 			//Engine.SpriteBatch.Draw(Assets.ButtonTexture, new Vector2(800 - 80 - 20 - 20, 480 - 80 - 20 - 20), Color.White);
-			Engine.SpriteBatch.Draw(Assets.ButtonTexture, new Vector2(800 - 80 - 20 - 20, 480 - 80 - 20), Color.White);
+			Engine.SpriteBatch.Draw(Assets.ButtonOnTexture, new Vector2(800 - 80 - 20 - 20, 480 - 80 - 20), Color.White);
 		}
 
 		private void Draw160org()

@@ -5,7 +5,11 @@ using System.Text;
 
 namespace WindowsGame.Common.Objects
 {
-	public class FireButton
+	public class JoyButton : BaseObject
 	{
+		public override void Draw()
+		{
+			base.Draw(Index);
+		}
 	}
 }

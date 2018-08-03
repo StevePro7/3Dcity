@@ -41,7 +41,9 @@ namespace WindowsGame.Common.Static
 		public static Texture2D Foreground01Texture;
 		public static Texture2D Foreground02Texture;
 		public static Texture2D Foreground03Texture;
-		public static Texture2D ButtonTexture;
+		//public static Texture2D ButtonTexture;
+		public static Texture2D ButtonOnTexture;
+		public static Texture2D ButtonOffTexture;
 		public static Texture2D JoypadTexture;
 		public static Texture2D Stars01Texture;
 		public static Texture2D Stars02Texture;

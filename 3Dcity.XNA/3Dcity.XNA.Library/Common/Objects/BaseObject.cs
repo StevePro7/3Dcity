@@ -21,6 +21,7 @@ namespace WindowsGame.Common.Objects
 			Position = position;
 			Collision = collision;
 			Bounds = bounds;
+			Index = 1;
 		}
 
 		public virtual void LoadContent(Texture2D theTexture)
@@ -44,6 +45,11 @@ namespace WindowsGame.Common.Objects
 			Midpoint = new Vector2(midX, midY);
 		}
 
+		public void ToggleIndex()
+		{
+			Index = (Byte)(1 - Index);
+		}
+
 		public virtual void Draw()
 		{
 			Engine.SpriteBatch.Draw(textures[0], Position, Color.White);
@@ -61,5 +67,6 @@ namespace WindowsGame.Common.Objects
 		public Vector2 Midpoint { get; private set; }
 		public Rectangle Collision { get; private set; }
 		public Rectangle Bounds { get; private set; }
+		protected Byte Index { get; private set; }
 	}
 }

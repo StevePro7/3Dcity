@@ -79,7 +79,8 @@ namespace WindowsGame.Common.Managers
 			Assets.Foreground01Texture = contentFactory.LoadTexture(texturesRoot + "foreground01");
 			Assets.Foreground02Texture = contentFactory.LoadTexture(texturesRoot + "foreground02");
 			Assets.Foreground03Texture = contentFactory.LoadTexture(texturesRoot + "foreground03");
-			Assets.ButtonTexture = contentFactory.LoadTexture(texturesRoot + "button");
+			Assets.ButtonOnTexture = contentFactory.LoadTexture(texturesRoot + "ButtonOn");
+			Assets.ButtonOffTexture = contentFactory.LoadTexture(texturesRoot + "ButtonOff");
 			Assets.JoypadTexture = contentFactory.LoadTexture(texturesRoot + "joypad");
 			Assets.Stars01Texture = contentFactory.LoadTexture(texturesRoot + "stars01");
 			Assets.Stars02Texture = contentFactory.LoadTexture(texturesRoot + "stars02");

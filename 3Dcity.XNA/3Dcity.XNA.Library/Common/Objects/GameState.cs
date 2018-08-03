@@ -7,16 +7,9 @@ namespace WindowsGame.Common.Objects
 {
 	public class GameState : BaseObject
 	{
-		private Byte index;
-
-		public void ToggleIndex()
-		{
-			index = (Byte)(1 - index);
-		}
-
 		public override void Draw()
 		{
-			base.Draw(index);
+			base.Draw(Index);
 		}
 
 	}
