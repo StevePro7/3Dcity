@@ -370,18 +370,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\spritesheet01.png">
-      <Name>spritesheet01</Name>
+    <Compile Include="Textures\spritesheet01-1024.png">
+      <Name>spritesheet01-1024</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textures\spritesheet1024.png">
-      <Name>spritesheet1024</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Textures\spritesheet960.png">
-      <Name>spritesheet960</Name>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\spritesheet02-1024.png">
+      <Name>spritesheet02-1024</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
