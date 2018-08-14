@@ -44,22 +44,31 @@ namespace WindowsGame.Common
 
 		public static void LoadContentAsync()
 		{
+			// Load all the content first!
+			Manager.ContentManager.LoadContent();
+
+			Manager.BulletManager.Initialize();
 			Manager.ControlManager.Initialize();
+			Manager.EnemyManager.Initialize();
+			Manager.ExplosionManager.Initialize();
 			Manager.IconManager.Initialize();
 			Manager.ImageManager.Initialize();
 			Manager.RandomManager.Initialize();
 			Manager.RenderManager.Initialize();
 			Manager.ScoreManager.Initialize();
+			Manager.SoundManager.Initialize();
 			Manager.SpriteManager.Initialize();
+			Manager.StateManager.Initialize();
 			Manager.StorageManager.Initialize();
 			Manager.TextManager.Initialize();
 
+			Manager.BulletManager.LoadContent();
 			Manager.ControlManager.LoadContent();
 			Manager.CollisionManager.LoadContent();
-			Manager.ContentManager.LoadContent();
+			Manager.EnemyManager.LoadContent();
+			Manager.ExplosionManager.LoadContent();
 			Manager.IconManager.LoadContent();
 			Manager.ImageManager.LoadContent();
-
 			Manager.RenderManager.LoadContent();
 			Manager.ScoreManager.LoadContent();
 			Manager.ScreenManager.LoadContent();

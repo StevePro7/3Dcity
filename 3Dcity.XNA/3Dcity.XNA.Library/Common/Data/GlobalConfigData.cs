@@ -12,12 +12,6 @@ namespace WindowsGame.Common.Data
 		public UInt16 GridDelay;
 		public UInt16 JoypadX;
 		public UInt16 JoypadY;
-		public Byte IconLeftI;
-		public UInt16 IconLeftX;
-		public UInt16 IconLeftY;
-		public Byte IconRightI;
-		public UInt16 IconRightX;
-		public UInt16 IconRightY;
 		public Byte EnemyIndex;
 		public Boolean QuitsToExit;
 	}

@@ -72,14 +72,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\AnGame.cs" />
+    <Compile Include="Common\Data\LevelConfigData.cs" />
     <Compile Include="Common\Data\PlatformConfigData.cs" />
     <Compile Include="Common\Data\StoragePersistData.cs" />
     <Compile Include="Common\Devices\MobilesDeviceFactory.cs" />
     <Compile Include="Common\Devices\WindowsDeviceFactory.cs" />
     <Compile Include="Common\Inputs\DesktopInputManager.cs" />
     <Compile Include="Common\Inputs\MobilesInputManager.cs" />
-    <Compile Include="Common\Inputs\Types\JoystickInput.cs" />
-    <Compile Include="Common\Inputs\Types\TouchScreenInput.cs" />
     <Compile Include="Common\Interfaces\IDeviceFactory.cs" />
     <Compile Include="Common\Interfaces\IInputManager.cs" />
     <Compile Include="Common\Managers\BulletManager.cs" />
@@ -104,14 +103,11 @@
     <Compile Include="Common\Managers\SpriteManager.cs" />
     <Compile Include="Common\Managers\TextManager.cs" />
     <Compile Include="Common\Objects\BaseObject.cs" />
-    <Compile Include="Common\Objects\BaseSprite.cs" />
-    <Compile Include="Common\Objects\BigTarget.cs" />
     <Compile Include="Common\Objects\Collision200.cs" />
     <Compile Include="Common\Objects\JoyButton.cs" />
     <Compile Include="Common\Objects\GameSound.cs" />
     <Compile Include="Common\Objects\GameState.cs" />
     <Compile Include="Common\Objects\JoypadMove.cs" />
-    <Compile Include="Common\Objects\SmallTarget.cs" />
     <Compile Include="Common\Screens\BaseScreen.cs" />
     <Compile Include="Common\Screens\ExitScreen.cs" />
     <Compile Include="Common\Screens\InitScreen.cs" />
@@ -120,6 +116,12 @@
     <Compile Include="Common\Screens\SplashScreen.cs" />
     <Compile Include="Common\Screens\TestScreen.cs" />
     <Compile Include="Common\Screens\TitleScreen.cs" />
+    <Compile Include="Common\Sprites\BaseSprite.cs" />
+    <Compile Include="Common\Sprites\BigTarget.cs" />
+    <Compile Include="Common\Sprites\Bullet.cs" />
+    <Compile Include="Common\Sprites\Enemy.cs" />
+    <Compile Include="Common\Sprites\Explosion.cs" />
+    <Compile Include="Common\Sprites\SmallTarget.cs" />
     <Compile Include="Common\Static\Assets.cs" />
     <Compile Include="Common\Static\Constants.cs" />
     <Compile Include="Common\Static\Enumerations.cs" />

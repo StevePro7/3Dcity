@@ -1,4 +1,5 @@
 ﻿using System;
+using WindowsGame.Common.Managers;
 using WindowsGame.Common.Static;
 using WindowsGame.Define.Interfaces;
 using Microsoft.Xna.Framework;
@@ -9,17 +10,10 @@ namespace WindowsGame.Common.Screens
 {
 	public class ReadyScreen : BaseScreen, IScreen 
 	{
-		private Vector2[] positions;
-		private TouchLocationState[] states;
-		private Vector2[,] matrix;
-
-		private const Byte MAX_X = 2;
-		private const Byte MAX_Y = 10;
-
 		public override void Initialize()
 		{
-			matrix = GetMatrix();
 			base.Initialize();
+			LoadTextData();
 		}
 
 		public override void LoadContent()
@@ -27,56 +21,34 @@ namespace WindowsGame.Common.Screens
 			base.LoadContent();
 		}
 
-		public Int32 Update(GameTime gameTime)
+		public override Int32 Update(GameTime gameTime)
 		{
-			positions = MyGame.Manager.InputManager.GetPositions();
-			states = MyGame.Manager.InputManager.GetStates();
+			MyGame.Manager.ExplosionManager.Update(gameTime);
+			//MyGame.Manager.BulletManager.Update(gameTime);
 			return (Int32)ScreenType.Ready;
 		}
 
 		public override void Draw()
 		{
-			// TODO delegate this to device manager??
-			Engine.Game.Window.Title = GetType().Name;// Globalize.GAME_TITLE;
 
-			if (null != positions)
-			{
-				int max = positions.Length;
-				for (var i = 0; i < max; i++)
-				{
-					string text = String.Format("({0}, {1})", positions[i].X, positions[i].Y);
-					Engine.SpriteBatch.DrawString(Assets.EmulogicFont, text, matrix[0, i], Color.Yellow);
-				}
-			}
+			MyGame.Manager.RenderManager.Draw();
 
-			if (null != states)
-			{
-				int max = states.Length;
-				for (var i = 0; i < max; i++)
-				{
-					string text = states[i].ToString();
-					Engine.SpriteBatch.DrawString(Assets.EmulogicFont, text, matrix[1, i], Color.White);
-				}
-			}
+			Engine.SpriteBatch.Draw(Assets.Enemy25Texture, new Vector2(50, 250), Color.White);
+			Engine.SpriteBatch.Draw(Assets.Enemy32Texture, new Vector2(100, 240), Color.White);
+			Engine.SpriteBatch.Draw(Assets.Enemy40Texture, new Vector2(150, 220), Color.White);
+			Engine.SpriteBatch.Draw(Assets.Enemy50Texture, new Vector2(200, 200), Color.White);
+			Engine.SpriteBatch.Draw(Assets.Enemy64Texture, new Vector2(300, 200), Color.White);
+			Engine.SpriteBatch.Draw(Assets.Enemy80Texture, new Vector2(400, 160), Color.White);
+			Engine.SpriteBatch.Draw(Assets.Enemy96Texture, new Vector2(500, 140), Color.White);
+			Engine.SpriteBatch.Draw(Assets.Enemy120Texture, new Vector2(640, 120), Color.White);
 
-			//Engine.SpriteBatch.DrawString(Assets.EmulogicFont, "HELLO", matrix[0, 0], Color.Yellow);
-			//Engine.SpriteBatch.DrawString(Assets.EmulogicFont, "0", matrix[0, 0] Color.Yellow );
 
+			MyGame.Manager.ExplosionManager.Draw();
+			//MyGame.Manager.BulletManager.Draw();
+			MyGame.Manager.SpriteManager.Draw();
+
+			MyGame.Manager.TextManager.Draw(TextDataList);
 			base.Draw();
-		}
-
-		private Vector2[,] GetMatrix()
-		{
-			matrix = new Vector2[MAX_X, MAX_Y];
-			for (Byte x = 0; x < MAX_X; x++)
-			{
-				for (Byte y = 0; y < MAX_Y; y++)
-				{
-					matrix[x, y] = new Vector2((x * 450) + 20, (y * 30) + 20);
-				}
-			}
-
-			return matrix;
 		}
 
 	}

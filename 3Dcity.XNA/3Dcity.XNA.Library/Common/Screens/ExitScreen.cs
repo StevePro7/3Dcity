@@ -17,7 +17,7 @@ namespace WindowsGame.Common.Screens
 			base.LoadContent();
 		}
 
-		public Int32 Update(GameTime gameTime)
+		public override Int32 Update(GameTime gameTime)
 		{
 			return (Int32)ScreenType.Exit;
 		}

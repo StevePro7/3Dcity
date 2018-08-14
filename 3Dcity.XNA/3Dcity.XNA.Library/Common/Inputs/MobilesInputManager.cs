@@ -1,11 +1,9 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input.Touch;
-using WindowsGame.Common.Inputs.Types;		// TODO move to engine!
 using WindowsGame.Common.Interfaces;
 using WindowsGame.Common.Managers;
 using WindowsGame.Define.Inputs;
-using WindowsGame.Define.Managers;
 
 namespace WindowsGame.Common.Inputs
 {
@@ -14,18 +12,16 @@ namespace WindowsGame.Common.Inputs
 		private readonly IJoystickInput joystickInput;
 		private readonly ITouchScreenInput touchScreenInput;
 		private readonly IControlManager controlManager;
-		private readonly IResolutionManager resolutionManager;
 
 		private Vector2 viewPortVector2;
 		private Matrix invertTransformationMatrix;
 		private Byte maxInputs;
 
-		public MobilesInputManager(IJoystickInput joystickInput, ITouchScreenInput touchScreenInput, IControlManager controlManager, IResolutionManager resolutionManager)
+		public MobilesInputManager(IJoystickInput joystickInput, ITouchScreenInput touchScreenInput, IControlManager controlManager)
 		{
 			this.joystickInput = joystickInput;
 			this.touchScreenInput = touchScreenInput;
 			this.controlManager = controlManager;
-			this.resolutionManager = resolutionManager;
 		}
 
 		public void Initialize()
@@ -146,6 +142,117 @@ namespace WindowsGame.Common.Inputs
 			}
 
 			return vert;
+		}
+
+		public Boolean Fire()
+		{
+			Boolean fire = false;
+
+			// Touch.
+			TouchCollection touchCollection = touchScreenInput.TouchCollection;
+			Int32 count = touchCollection.Count;
+			if (0 == count)
+			{
+				return false;
+			}
+
+			Int32 loops = Math.Min(maxInputs, count);
+			for (Byte index = 0; index < loops; index++)
+			{
+				TouchLocation touchLocation = touchCollection[index];
+
+				TouchLocationState state = touchLocation.State;
+				if (!(TouchLocationState.Pressed == state || TouchLocationState.Moved == state))
+				{
+					continue;
+				}
+
+				Vector2 position = GetTouchPosition(touchLocation.Position);
+				Boolean temp = controlManager.CheckJoyPadFire(position);
+				if (!temp)
+				{
+					continue;
+				}
+
+				fire = true;
+				break;
+			}
+
+			return fire;
+		}
+
+		public Boolean GameState()
+		{
+			Boolean data = false;
+
+			// Touch.
+			TouchCollection touchCollection = touchScreenInput.TouchCollection;
+			Int32 count = touchCollection.Count;
+			if (0 == count)
+			{
+				return false;
+			}
+
+			Int32 loops = Math.Min(maxInputs, count);
+			for (Byte index = 0; index < loops; index++)
+			{
+				TouchLocation touchLocation = touchCollection[index];
+
+				TouchLocationState state = touchLocation.State;
+				if (!(TouchLocationState.Pressed == state))
+				{
+					continue;
+				}
+
+				Vector2 position = GetTouchPosition(touchLocation.Position);
+				Boolean temp = controlManager.CheckGameState(position);
+				if (!temp)
+				{
+					continue;
+				}
+
+				data = true;
+				break;
+			}
+
+			return data;
+		}
+
+		public Boolean GameSound()
+		{
+			Boolean data = false;
+
+			// Touch.
+			TouchCollection touchCollection = touchScreenInput.TouchCollection;
+			Int32 count = touchCollection.Count;
+			if (0 == count)
+			{
+				return false;
+			}
+
+			Int32 loops = Math.Min(maxInputs, count);
+			for (Byte index = 0; index < loops; index++)
+			{
+				TouchLocation touchLocation = touchCollection[index];
+
+				TouchLocationState state = touchLocation.State;
+				if (!(TouchLocationState.Pressed == state))
+				{
+					continue;
+				}
+
+				Vector2 position = GetTouchPosition(touchLocation.Position);
+				Boolean temp = controlManager.CheckGameSound(position);
+				if (!temp)
+				{
+					continue;
+				}
+
+				data = true;
+				break;
+			}
+
+			return data;
 		}
 
 		private Vector2 GetTouchPosition(Vector2 touchPosition)

@@ -1,10 +1,8 @@
 ﻿using System;
-using WindowsGame.Common.Managers;
-using WindowsGame.Common.Objects;
-using WindowsGame.Common.Static;
-using WindowsGame.Define.Interfaces;
 using Microsoft.Xna.Framework;
+using WindowsGame.Common.Static;
 using WindowsGame.Define;
+using WindowsGame.Define.Interfaces;
 
 namespace WindowsGame.Common.Screens
 {
@@ -13,17 +11,53 @@ namespace WindowsGame.Common.Screens
 		public override void Initialize()
 		{
 			base.Initialize();
+			LoadTextData();
 		}
 
 		public override void LoadContent()
 		{
+			MyGame.Manager.SoundManager.PlayMusic();
 			base.LoadContent();
 		}
 
-		public Int32 Update(GameTime gameTime)
+		public override Int32 Update(GameTime gameTime)
 		{
+			base.Update(gameTime);
+			if (GamePause)
+			{
+				return (Int32)ScreenType.Play;
+			}
+
 			Single horz = MyGame.Manager.InputManager.Horizontal();
 			Single vert = MyGame.Manager.InputManager.Vertical();
+
+			Boolean fire = MyGame.Manager.InputManager.Fire();
+			if (fire)
+			{
+				MyGame.Manager.SoundManager.PlaySoundEffect();
+
+				// get max number of bullets from bullet MGR
+				// check if at least one bullet available...
+				// OR if fire delay still running then true!
+				// otherwise fire = false;
+
+//				Vector2 position = MyGame.Manager.SpriteManager.BigTarget.Position;
+//				MyGame.Manager.BulletManager.Fire(position);
+			}
+
+			Byte index = Convert.ToByte(fire);
+			MyGame.Manager.IconManager.UpdateIcon(MyGame.Manager.IconManager.JoyButton, index);
+
+			//MyGame.Manager.BulletManager.Update(gameTime);
+			//Boolean isFiring = MyGame.Manager.BulletManager.IsFiring;
+			//if (!isFiring)
+			//{
+			//        Vector2 position = MyGame.Manager.SpriteManager.BigTarget.Position;
+			//        MyGame.Manager.BulletManager.Fire(position);
+			//}
+
+			MyGame.Manager.BulletManager.Update(gameTime);
+
 
 			//if (Math.Abs(horz) > 0.4)
 			//{
@@ -40,13 +74,12 @@ namespace WindowsGame.Common.Screens
 		{
 			base.Draw();
 
-			// TODO delegate this to device manager??
-			Engine.Game.Window.Title = GetType().Name;// Globalize.GAME_TITLE;
+			MyGame.Manager.IconManager.DrawControls();
 
-			MyGame.Manager.RenderManager.Draw();
+			MyGame.Manager.BulletManager.Draw();
 			MyGame.Manager.SpriteManager.Draw();
 
-			base.Draw();
+			MyGame.Manager.TextManager.Draw(TextDataList);
 		}
 
 	}

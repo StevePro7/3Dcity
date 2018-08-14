@@ -45,9 +45,13 @@ namespace WindowsGame.Common.Objects
 			Midpoint = new Vector2(midX, midY);
 		}
 
-		public void ToggleIndex()
+		public void ToggleIcon()
 		{
 			Index = (Byte)(1 - Index);
+		}
+		public void UpdateIcon(Byte index)
+		{
+			Index = index;
 		}
 
 		public virtual void Draw()

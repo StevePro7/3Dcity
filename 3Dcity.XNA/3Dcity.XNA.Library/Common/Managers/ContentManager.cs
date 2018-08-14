@@ -1,6 +1,10 @@
 using System;
+using System.Collections.Generic;
+using WindowsGame.Define;
 using WindowsGame.Define.Factorys;
 using WindowsGame.Common.Static;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 
 namespace WindowsGame.Common.Managers
 {
@@ -42,11 +46,21 @@ namespace WindowsGame.Common.Managers
 		public void LoadContent()
 		{
 			// Fonts.
-			String fontRoot = String.Format("{0}/{1}/", contentRoot, FONTS_DIRECTORY);
-			Assets.EmulogicFont = contentFactory.LoadFont(fontRoot + "Emulogic");
+			String fontsRoot = String.Format("{0}/{1}/", contentRoot, FONTS_DIRECTORY);
+			Assets.EmulogicFont = contentFactory.LoadFont(fontsRoot + "Emulogic");
 
 			// Sounds.
-			//String soundsRoot = String.Format("{0}/{1}/", contentRoot, SOUND_DIRECTORY);
+			String soundsRoot = String.Format("{0}/{1}/", contentRoot, SOUND_DIRECTORY);
+			Assets.GameMusicSong = Engine.Content.Load<Song>(soundsRoot + "GameMusic");
+			Assets.GameOverSong = Engine.Content.Load<Song>(soundsRoot + "GameOver");
+
+			Assets.SoundEffectDictionary = new Dictionary<SoundEffectType, SoundEffectInstance>();
+			for (SoundEffectType key = SoundEffectType.Funny; key <= SoundEffectType.Early; ++key)
+			{
+				String assetName = String.Format("{0}{1}", soundsRoot, key);
+				SoundEffectInstance value = contentFactory.LoadSoundEffectInstance(assetName);
+				Assets.SoundEffectDictionary.Add(key, value);
+			}
 
 			// Textures.
 			Assets.SteveProTexture40 = contentFactory.LoadTexture(texturesRoot + "StevePro40");
@@ -58,7 +72,11 @@ namespace WindowsGame.Common.Managers
 
 			Assets.Target40Texture = contentFactory.LoadTexture(texturesRoot + "Target40");
 			Assets.Target64Texture = contentFactory.LoadTexture(texturesRoot + "Target64");
-			Assets.Target80Texture = contentFactory.LoadTexture(texturesRoot + "Target80");
+			//Assets.Target80Texture = contentFactory.LoadTexture(texturesRoot + "Target80");
+
+			Assets.BulletsTexture = contentFactory.LoadTexture(texturesRoot + "bullets");
+			//Assets.Enemies96Texture = contentFactory.LoadTexture(texturesRoot + "enemies96");
+			Assets.Enemies120Texture = contentFactory.LoadTexture(texturesRoot + "enemies120");
 
 			Assets.Enemy25Texture = contentFactory.LoadTexture(texturesRoot + "25");
 			Assets.Enemy32Texture = contentFactory.LoadTexture(texturesRoot + "32");
@@ -69,6 +87,11 @@ namespace WindowsGame.Common.Managers
 			Assets.Enemy96Texture = contentFactory.LoadTexture(texturesRoot + "96");
 			Assets.Enemy120Texture = contentFactory.LoadTexture(texturesRoot + "120");
 			//Assets.Enemy128Texture = contentFactory.LoadTexture(texturesRoot + "128");
+
+			Assets.Explosion64Texture = contentFactory.LoadTexture(texturesRoot + "Explosion64");
+			Assets.Explosion80Texture = contentFactory.LoadTexture(texturesRoot + "Explosion80");
+			Assets.Explosion128Texture = contentFactory.LoadTexture(texturesRoot + "Explosion128");
+			Assets.Explosion160Texture = contentFactory.LoadTexture(texturesRoot + "Explosion160");
 
 			Assets.PlayTexture = contentFactory.LoadTexture(texturesRoot + "play");
 			Assets.PauseTexture = contentFactory.LoadTexture(texturesRoot + "pause");
@@ -84,6 +107,10 @@ namespace WindowsGame.Common.Managers
 			Assets.JoypadTexture = contentFactory.LoadTexture(texturesRoot + "joypad");
 			Assets.Stars01Texture = contentFactory.LoadTexture(texturesRoot + "stars01");
 			Assets.Stars02Texture = contentFactory.LoadTexture(texturesRoot + "stars02");
+
+			// TODO delete
+			//Assets.ZZwhiteTexture = contentFactory.LoadTexture(texturesRoot + "ZZwhite");
+			//Assets.ZZindigoTexture = contentFactory.LoadTexture(texturesRoot + "ZZindigo");
 		}
 
 		public void LoadContentSplash()

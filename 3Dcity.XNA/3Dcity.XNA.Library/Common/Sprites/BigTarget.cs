@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+using WindowsGame.Common.Sprites;
 using WindowsGame.Common.Static;
 
-namespace WindowsGame.Common.Objects
+namespace WindowsGame.Common.Sprites
 {
 	public class BigTarget : BaseSprite
 	{
@@ -21,16 +18,16 @@ namespace WindowsGame.Common.Objects
 			accY = 1.0f;
 		}
 
-		public override void Update(GameTime gameTime, Single horz, Single vert)
+		public void Update(GameTime gameTime, Single horz, Single vert)
 		{
 			Vector2 position = Position;
 
 			// Tolerance
-			if (Math.Abs(horz) < Constants.Tolerance)
+			if (Math.Abs(horz) < Constants.GeneralTolerance)
 			{
 				horz = 0.0f;
 			}
-			if (Math.Abs(vert) < Constants.Tolerance)
+			if (Math.Abs(vert) < Constants.GeneralTolerance)
 			{
 				vert= 0.0f;
 			}
@@ -57,7 +54,7 @@ namespace WindowsGame.Common.Objects
 				accY *= RATIO;
 			}
 
-			const Single max = 2.5f;					// TODO tweak maxiumum acceleration
+			const Single max = 2.5f;					// TODO tweak maximum acceleration
 			if (accX > max)
 			{
 				accX = max;

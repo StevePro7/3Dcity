@@ -6,14 +6,15 @@ using WindowsGame.Define.Interfaces;
 
 namespace WindowsGame.Common.Screens
 {
-	public class InitScreen : BaseScreen, IScreen 
+	public class InitScreen : IScreen
 	{
 		private Vector2 bannerPosition;
 		private Int32 nextScreen;
 		private UInt16 splashDelay;
+		private UInt16 splashTimer;
 		private Boolean join;
 
-		public override void Initialize()
+		public void Initialize()
 		{
 			Single wide = (Constants.ScreenWide - Assets.SplashTexture.Width) / 2.0f;
 			Single high = (Constants.ScreenHigh - Assets.SplashTexture.Height) / 2.0f;
@@ -21,18 +22,19 @@ namespace WindowsGame.Common.Screens
 
 			nextScreen = GetNextScreen();
 			splashDelay = MyGame.Manager.ConfigManager.GlobalConfigData.SplashDelay;
+			splashTimer = 0;
 			join = false;
 		}
 
-		public override void LoadContent()
+		public void LoadContent()
 		{
-			base.LoadContent();
+			splashTimer = 0;
 			MyGame.Manager.ThreadManager.LoadContentAsync();
 		}
 
 		public Int32 Update(GameTime gameTime)
 		{
-			UpdateTimer(gameTime);
+			splashTimer += (UInt16)gameTime.ElapsedGameTime.Milliseconds;
 
 			// Do not attempt to progress until join.
 			join = MyGame.Manager.ThreadManager.Join(1);
@@ -41,18 +43,15 @@ namespace WindowsGame.Common.Screens
 				return (Int32)ScreenType.Init;
 			}
 
-			if (Timer > splashDelay)
+			if (splashTimer > splashDelay)
 			{
 				return nextScreen;
 			}
 			return (Int32)ScreenType.Init;
 		}
 
-		public override void Draw()
+		public void Draw()
 		{
-			// TODO delegate this to device manager??
-			Engine.Game.Window.Title = GetType().Name;
-
 			Engine.SpriteBatch.Draw(Assets.SplashTexture, bannerPosition, Color.White);
 		}
 

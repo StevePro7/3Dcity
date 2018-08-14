@@ -18,11 +18,12 @@ namespace WindowsGame.Common.Static
 		public const SByte FontOffsetX = -1;
 		public const SByte FontOffsetY = -4;
 
-		public const Single Tolerance = 0.1f;		//TODO make configurable?  Or set to 0.0f to take out!
+		public const Single GeneralTolerance = 0.1f;		//TODO make configurable?  Or set to 0.0f to take out!
+		public const Single JoystickTolerance = 0.1f;	// Original is 0.4f;
 
 		// Custom data.
 #if WINDOWS
-		public const Platform Platform = Static.Platform.Desktop;
+		public const PlatformType PlatformType = Static.PlatformType.Desktop;
 		public const Boolean IsFullScreen = false;
 		public const Boolean IsMouseVisible = true;
 		public const UInt16 ScreenWide = 800;
@@ -36,7 +37,7 @@ namespace WindowsGame.Common.Static
 #endif
 
 #if !WINDOWS
-		public const Platform Platform = Static.Platform.Mobiles;
+		public const PlatformType PlatformType = Static.PlatformType.Mobiles;
 		public const Boolean IsFullScreen = true;
 		public const Boolean IsMouseVisible = false;
 		public const UInt16 ScreenWide = 800;

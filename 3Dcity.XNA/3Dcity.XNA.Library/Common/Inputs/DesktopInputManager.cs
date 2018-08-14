@@ -1,12 +1,11 @@
 ﻿using System;
-using WindowsGame.Define.Inputs;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
-using WindowsGame.Common.Inputs.Types;
 using WindowsGame.Common.Interfaces;
 using WindowsGame.Common.Managers;
-using IJoystickInput = WindowsGame.Common.Inputs.Types.IJoystickInput;
+using WindowsGame.Common.Static;
+using WindowsGame.Define.Inputs;
 
 namespace WindowsGame.Common.Inputs
 {
@@ -27,6 +26,7 @@ namespace WindowsGame.Common.Inputs
 
 		public void Initialize()
 		{
+			joystickInput.Initialize();
 			mouseScreenInput.Initialize();
 		}
 
@@ -77,10 +77,20 @@ namespace WindowsGame.Common.Inputs
 			}
 
 			// Joystick.
-			horz = joystickInput.Horizontal();
-			if (Math.Abs(horz) > Single.Epsilon)
+			Byte index = (Byte)joystickInput.CurrPlayerIndex;
+			Single floatX = joystickInput.CurrGamePadState[index].ThumbSticks.Left.X;
+
+			if (floatX < -Constants.JoystickTolerance || floatX > Constants.JoystickTolerance)
 			{
-				return horz;
+				return floatX;
+			}
+			if (joystickInput.CurrGamePadState[index].IsButtonDown(Buttons.DPadLeft))
+			{
+				return -1.0f;
+			}
+			if (joystickInput.CurrGamePadState[index].IsButtonDown(Buttons.DPadRight))
+			{
+				return 1.0f;
 			}
 
 			// Keyboard.
@@ -111,10 +121,20 @@ namespace WindowsGame.Common.Inputs
 			}
 
 			// Joystick.
-			vert = joystickInput.Vertical();
-			if (Math.Abs(vert) > Single.Epsilon)
+			Byte index = (Byte)joystickInput.CurrPlayerIndex;
+			Single floatY = joystickInput.CurrGamePadState[index].ThumbSticks.Left.Y;
+
+			if (floatY < -Constants.JoystickTolerance || floatY > Constants.JoystickTolerance)
 			{
-				return vert;
+				return -floatY;
+			}
+			if (joystickInput.CurrGamePadState[index].IsButtonDown(Buttons.DPadUp))
+			{
+				return -1.0f;
+			}
+			if (joystickInput.CurrGamePadState[index].IsButtonDown(Buttons.DPadDown))
+			{
+				return 1.0f;
 			}
 
 			// Keyboard.
@@ -128,6 +148,87 @@ namespace WindowsGame.Common.Inputs
 			}
 
 			return vert;
+		}
+
+		public Boolean Fire()
+		{
+			// Mouse.
+			if (mouseScreenInput.RightButtonPress())
+			{
+				//Boolean fire = controlManager.CheckJoyPadFire(mouseScreenInput.MosuePosition);
+				//if (fire)
+				//{
+					return true;
+				//}
+			}
+
+			// Joystick.
+			if (joystickInput.JoyPress(Buttons.A))
+			{
+				return true;
+			}
+
+			// Keyboard.
+			if (keyboardInput.KeyPress(Keys.Space))
+			{
+				return true;
+			}
+
+			return false;
+		}
+
+		public Boolean GameState()
+		{
+			// Mouse.
+			if (mouseScreenInput.LeftButtonHold())
+			{
+				Boolean test = controlManager.CheckGameState(mouseScreenInput.MosuePosition);
+				if (test)
+				{
+					return true;
+				}
+			}
+
+			// Joystick.
+			if (joystickInput.JoyHold(Buttons.X))
+			{
+				return true;
+			}
+
+			// Keyboard.
+			if (keyboardInput.KeyHold(Keys.Enter))
+			{
+				return true;
+			}
+
+			return false;
+		}
+
+		public Boolean GameSound()
+		{
+			// Mouse.
+			if (mouseScreenInput.LeftButtonHold())
+			{
+				Boolean test = controlManager.CheckGameSound(mouseScreenInput.MosuePosition);
+				if (test)
+				{
+					return true;
+				}
+			}
+
+			// Joystick.
+			if (joystickInput.JoyHold(Buttons.Y))
+			{
+				return true;
+			}
+
+			// Keyboard.
+			if (keyboardInput.KeyHold(Keys.S))
+			{
+				return true;
+			}
+
+			return false;
 		}
 
 	}

@@ -10,13 +10,18 @@ namespace WindowsGame.Define.Factorys
 		void Initialize();
 		void Initialize(Boolean thePlayMusic, Boolean thePlaySound);
 
-		void StartMusic(Song song);
-		void StartMusic(Song song, Boolean isRepeating);
+		void SetPlaySound(Boolean playSound);
+
+		void PlayMusic(Song song);
+		void PlayMusic(Song song, Boolean isRepeating);
 		void StopMusic();
 		void PauseMusic();
 		void ResumeMusic();
 
 		void PlaySoundEffect(SoundEffectInstance soundEffect);
+		void PauseSoundEffect(SoundEffectInstance soundEffect);
+		void ResumeSoundEffect(SoundEffectInstance soundEffect);
+		void StopSoundEffect(SoundEffectInstance soundEffect);
 	}
 
 	public class SoundFactory : ISoundFactory
@@ -35,12 +40,17 @@ namespace WindowsGame.Define.Factorys
 			playSound = thePlaySound;
 		}
 
-		public void StartMusic(Song song)
+		public void SetPlaySound(Boolean thePlaySound)
 		{
-			StartMusic(song, true);
+			playSound = thePlaySound;
 		}
 
-		public void StartMusic(Song song, Boolean isRepeating)
+		public void PlayMusic(Song song)
+		{
+			PlayMusic(song, true);
+		}
+
+		public void PlayMusic(Song song, Boolean isRepeating)
 		{
 			if (!playMusic)
 			{
@@ -58,11 +68,6 @@ namespace WindowsGame.Define.Factorys
 
 		public void PauseMusic()
 		{
-			if (!playMusic)
-			{
-				return;
-			}
-
 			if (MediaState.Playing == MediaPlayerX.State)
 			{
 				MediaPlayerX.Pause();
@@ -71,11 +76,6 @@ namespace WindowsGame.Define.Factorys
 
 		public void ResumeMusic()
 		{
-			if (!playMusic)
-			{
-				return;
-			}
-
 			if (MediaState.Paused == MediaPlayerX.State)
 			{
 				MediaPlayerX.Resume();
@@ -84,11 +84,6 @@ namespace WindowsGame.Define.Factorys
 
 		public void StopMusic()
 		{
-			if (!playMusic)
-			{
-				return;
-			}
-
 			if (MediaState.Playing == MediaPlayerX.State)
 			{
 				MediaPlayerX.Stop();
@@ -102,7 +97,36 @@ namespace WindowsGame.Define.Factorys
 				return;
 			}
 
+			if (SoundState.Playing == soundEffect.State)
+			{
+				return;
+			}
+
 			soundEffect.Play();
+		}
+
+		public void PauseSoundEffect(SoundEffectInstance soundEffect)
+		{
+			if (SoundState.Playing == soundEffect.State)
+			{
+				soundEffect.Pause();
+			}
+		}
+
+		public void ResumeSoundEffect(SoundEffectInstance soundEffect)
+		{
+			if (SoundState.Paused == soundEffect.State)
+			{
+				soundEffect.Resume();
+			}
+		}
+
+		public void StopSoundEffect(SoundEffectInstance soundEffect)
+		{
+			if (SoundState.Playing == soundEffect.State)
+			{
+				soundEffect.Stop();
+			}
 		}
 
 	}

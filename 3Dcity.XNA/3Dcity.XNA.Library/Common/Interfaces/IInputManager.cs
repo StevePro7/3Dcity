@@ -13,9 +13,12 @@ namespace WindowsGame.Common.Interfaces
 		Vector2[] GetPositions();
 		TouchLocationState[] GetStates();
 		Boolean[] GetStates2();
+		Boolean Escape();
 
 		Single Horizontal();
 		Single Vertical();
-		Boolean Escape();
+		Boolean GameState();
+		Boolean GameSound();
+		Boolean Fire();
 	}
 }

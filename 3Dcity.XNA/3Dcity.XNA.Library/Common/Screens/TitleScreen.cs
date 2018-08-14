@@ -19,6 +19,8 @@ namespace WindowsGame.Common.Screens
 
 		public override void Initialize()
 		{
+			base.Initialize();
+
 			ex = 100;
 			ey = 100;
 			max = 8;
@@ -30,7 +32,6 @@ namespace WindowsGame.Common.Screens
 			//flag = false;
 			//start = 32.0f;
 			//stopX = 128.0f;
-			base.Initialize();
 		}
 
 		public override void LoadContent()
@@ -43,7 +44,7 @@ namespace WindowsGame.Common.Screens
 			base.LoadContent();
 		}
 
-		public Int32 Update(GameTime gameTime)
+		public override Int32 Update(GameTime gameTime)
 		{
 			UpdateTimer(gameTime);
 			if (Timer > delay)
