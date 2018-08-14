@@ -1,6 +1,6 @@
 using System;
 using WindowsGame.Common.Static;
-using WindowsGame.Define.Factorys;
+using WindowsGame.Master.Factorys;
 using Microsoft.Xna.Framework.Audio;
 
 namespace WindowsGame.Common.Managers

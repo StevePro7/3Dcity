@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input.Touch;
 using WindowsGame.Common.Interfaces;
 using WindowsGame.Common.Managers;
-using WindowsGame.Define.Inputs;
+using WindowsGame.Master.Inputs;
 
 namespace WindowsGame.Common.Inputs
 {

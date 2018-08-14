@@ -1,9 +1,9 @@
 ﻿using System;
 using WindowsGame.Common.Managers;
 using WindowsGame.Common.Static;
-using WindowsGame.Define.Interfaces;
+using WindowsGame.Master.Interfaces;
 using Microsoft.Xna.Framework;
-using WindowsGame.Define;
+using WindowsGame.Master;
 using Microsoft.Xna.Framework.Input.Touch;
 
 namespace WindowsGame.Common.Screens

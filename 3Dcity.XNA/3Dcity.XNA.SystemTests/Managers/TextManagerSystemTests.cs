@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using WindowsGame.Common;
 using WindowsGame.Common.Screens;
-using WindowsGame.Define.Objects;
+using WindowsGame.Master.Objects;
 
 namespace WindowsGame.SystemTests.Managers
 {

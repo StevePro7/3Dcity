@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using WindowsGame.Define;
+using WindowsGame.Master;
 
 namespace WindowsGame.Common.Objects
 {

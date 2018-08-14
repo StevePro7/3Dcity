@@ -2,7 +2,7 @@ using System;
 using Microsoft.Xna.Framework;
 using WindowsGame.Common.Static;
 using WindowsGame.Common.TheGame;
-using WindowsGame.Define;
+using WindowsGame.Master;
 
 namespace WindowsGame.Common
 {

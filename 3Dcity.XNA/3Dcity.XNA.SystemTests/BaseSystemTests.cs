@@ -5,9 +5,9 @@ using WindowsGame.Common;
 using WindowsGame.Common.Managers;
 using WindowsGame.Common.Static;
 using WindowsGame.Common.TheGame;
-using WindowsGame.Define.Interfaces;
-using WindowsGame.Define.IoC;
-using WindowsGame.Define.Managers;
+using WindowsGame.Master.Interfaces;
+using WindowsGame.Master.IoC;
+using WindowsGame.Master.Managers;
 using WindowsGame.SystemTests.Implementation;
 
 namespace WindowsGame.SystemTests

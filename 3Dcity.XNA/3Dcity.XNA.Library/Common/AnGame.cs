@@ -1,7 +1,7 @@
 using System;
 using WindowsGame.Common.Static;
 using WindowsGame.Common.TheGame;
-using WindowsGame.Define;
+using WindowsGame.Master;
 using Microsoft.Xna.Framework;
 
 namespace WindowsGame.Common

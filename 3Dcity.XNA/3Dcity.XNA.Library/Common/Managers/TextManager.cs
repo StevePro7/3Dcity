@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using WindowsGame.Common.Static;
-using WindowsGame.Define;
-using WindowsGame.Define.Objects;
+using WindowsGame.Master;
+using WindowsGame.Master.Objects;
 using Microsoft.Xna.Framework;
 
 namespace WindowsGame.Common.Managers

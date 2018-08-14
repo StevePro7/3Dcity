@@ -3,10 +3,10 @@ using WindowsGame.Common.Inputs;
 using WindowsGame.Common.Interfaces;
 using WindowsGame.Common.Managers;
 using WindowsGame.Common.TheGame;
-using WindowsGame.Define.Implementation;
-using WindowsGame.Define.Interfaces;
-using WindowsGame.Define.IoC;
-using TheRegistration = WindowsGame.Define.Static.Registration;
+using WindowsGame.Master.Implementation;
+using WindowsGame.Master.Interfaces;
+using WindowsGame.Master.IoC;
+using TheRegistration = WindowsGame.Master.Static.Registration;
 
 namespace WindowsGame.Common.Static
 {

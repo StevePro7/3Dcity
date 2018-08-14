@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using WindowsGame.Common.Data;
-using WindowsGame.Define.Factorys;
+using WindowsGame.Master.Factorys;
 
 namespace WindowsGame.Common.Managers
 {

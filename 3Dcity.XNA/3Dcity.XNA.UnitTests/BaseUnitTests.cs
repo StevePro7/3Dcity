@@ -4,8 +4,8 @@ using Rhino.Mocks;
 using WindowsGame.Common;
 using WindowsGame.Common.Managers;
 using WindowsGame.Common.TheGame;
-using WindowsGame.Define.Interfaces;
-using WindowsGame.Define.Managers;
+using WindowsGame.Master.Interfaces;
+using WindowsGame.Master.Managers;
 
 namespace WindowsGame.UnitTests
 {

@@ -1,5 +1,5 @@
 ﻿using System;
-using WindowsGame.Define;
+using WindowsGame.Master;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 

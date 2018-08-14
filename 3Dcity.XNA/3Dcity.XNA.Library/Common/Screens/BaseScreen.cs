@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using WindowsGame.Common.Objects;
 using WindowsGame.Common.Static;
-using WindowsGame.Define.Objects;
+using WindowsGame.Master.Objects;
 using Microsoft.Xna.Framework;
 
 namespace WindowsGame.Common.Screens
@@ -78,7 +78,7 @@ namespace WindowsGame.Common.Screens
 		public virtual void Draw()
 		{
 			// TODO remove!
-			Define.Engine.Game.Window.Title = GetType().Name;
+			Master.Engine.Game.Window.Title = GetType().Name;
 
 			MyGame.Manager.RenderManager.Draw();
 			MyGame.Manager.IconManager.Draw();
