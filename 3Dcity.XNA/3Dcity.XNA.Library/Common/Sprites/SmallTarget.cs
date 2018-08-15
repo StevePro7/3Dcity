@@ -1,9 +1,6 @@
 ﻿using System;
-using WindowsGame.Master;
 using Microsoft.Xna.Framework;
-using WindowsGame.Common.Sprites;
 using WindowsGame.Common.Static;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace WindowsGame.Common.Sprites
 {
@@ -71,11 +68,5 @@ namespace WindowsGame.Common.Sprites
 
 			Position = position;
 		}
-
-		//public override void Draw()
-		//{
-		//    Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, Position, rectangles[0], Color.White, 0.0f, Vector2.Zero, 4.0f,
-		//        SpriteEffects.None, 1.0f);
-		//}
 	}
 }

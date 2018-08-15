@@ -1,8 +1,7 @@
 using System;
-using WindowsGame.Common.Objects;
+using Microsoft.Xna.Framework;
 using WindowsGame.Common.Sprites;
 using WindowsGame.Common.Static;
-using Microsoft.Xna.Framework;
 
 namespace WindowsGame.Common.Managers
 {
@@ -29,9 +28,6 @@ namespace WindowsGame.Common.Managers
 		{
 			BigTarget.LoadContent(MyGame.Manager.ImageManager.TargetBigRectangle);
 			SmallTarget.LoadContent(MyGame.Manager.ImageManager.TargetSmallRectangle);
-
-			//SmallTarget.LoadContent(Assets.Target40Texture);
-			//BigTarget.LoadContent(Assets.Target64Texture);
 		}
 
 		public void Update(GameTime gameTime, Single horz, Single vert)
