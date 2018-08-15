@@ -123,10 +123,6 @@ namespace WindowsGame.Common.Managers
 			Byte g = Byte.Parse(hexCode.Substring(2, 2), NumberStyles.HexNumber);
 			Byte b = Byte.Parse(hexCode.Substring(4, 2), NumberStyles.HexNumber);
 
-			//Byte r = Convert.ToByte(hexCode.Substring(0, 2));
-			//Byte g = Convert.ToByte(hexCode.Substring(2, 2));
-			//Byte b = Convert.ToByte(hexCode.Substring(4, 2));
-
 			return new Color(r, g, b);
 		}
 
