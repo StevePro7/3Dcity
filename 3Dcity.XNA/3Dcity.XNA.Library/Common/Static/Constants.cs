@@ -11,7 +11,7 @@ namespace WindowsGame.Common.Static
 
 		// Global data.
 		public const Boolean IsFixedTimeStep = true;
-		public const UInt32 FramesPerSecond = 100;
+		//public const UInt32 FramesPerSecond = 100;
 
 		public const Byte TextsSize = 20;
 
@@ -21,9 +21,22 @@ namespace WindowsGame.Common.Static
 		public const Single GeneralTolerance = 0.1f;		//TODO make configurable?  Or set to 0.0f to take out!
 		public const Single JoystickTolerance = 0.1f;	// Original is 0.4f;
 
+		// Maximums.
 		public const Byte MAX_GRID = 3;
 		public const Byte MAX_STAR = 2;
 		public const Byte MAX_ENEMY = 8;
+		public const Byte MAX_BULLET = 6;
+		public const Byte MAX_EXPLODE_TYPE = 2;
+		public const Byte MAX_EXPLODE_FRAME = 12;
+
+		// Sizes.
+		public const Byte HalfSize = 40;
+		public const Byte IconSize = 70;
+		public const Byte BaseSize = 80;
+		public const Byte DbleSize = 160;
+		public const Byte TargetSize = 64;
+		public const Byte EnemySize = 120;
+
 
 		// Custom data.
 #if WINDOWS
@@ -39,6 +52,7 @@ namespace WindowsGame.Common.Static
 		public const UInt16 ExposeHigh = 480;
 
 		public const Byte GameOffsetX = 0;
+		public const Byte GameOffsetY = 60;
 #endif
 
 		// IMPORTANT
@@ -58,6 +72,7 @@ namespace WindowsGame.Common.Static
 		public const UInt16 ExposeHigh = 480;
 
 		public const Byte GameOffsetX = 0;
+		public const Byte GameOffsetY = 60;
 #endif
 
 	}

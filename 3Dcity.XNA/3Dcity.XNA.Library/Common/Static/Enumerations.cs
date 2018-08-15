@@ -19,6 +19,12 @@
 		Kill
 	}
 
+	public enum ExplodeType
+	{
+		Small = 0,
+		Big = 1
+	}
+
 	public enum SoundEffectType
 	{
 		Funny,

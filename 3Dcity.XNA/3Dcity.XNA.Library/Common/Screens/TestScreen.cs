@@ -33,6 +33,7 @@ namespace WindowsGame.Common.Screens
 			base.Draw();
 			MyGame.Manager.IconManager.DrawControls();
 
+			MyGame.Manager.SpriteManager.Draw();
 			for (Byte index = 0; index < Constants.MAX_ENEMY; index++)
 			{
 				Engine.SpriteBatch.Draw(Assets.ZZindigoTexture, boxPositions[index], Color.Black);

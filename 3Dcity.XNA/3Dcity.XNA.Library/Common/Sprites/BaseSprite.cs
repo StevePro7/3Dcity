@@ -29,7 +29,7 @@ namespace WindowsGame.Common.Sprites
 			BaseX = (UInt16)(position.X);
 			BaseY = (UInt16)(position.Y);
 			Position = position;
-			Collision = collision;
+			//Collision = collision;
 			Bounds = bounds;
 
 			// Default one frame;
@@ -96,7 +96,7 @@ namespace WindowsGame.Common.Sprites
 		//public UInt16 SizeH { get; private set; }
 		public Vector2 Position { get; protected set; }
 		//public Vector2 Midpoint { get; private set; }
-		public Rectangle Collision { get; private set; }
+		//public Rectangle Collision { get; private set; }
 		public Rectangle Bounds { get; private set; }
 	}
 }

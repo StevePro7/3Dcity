@@ -16,7 +16,6 @@ namespace WindowsGame.Common.Managers
 		// Properties.
 		SmallTarget SmallTarget { get; }
 		BigTarget BigTarget { get; }
-		//JoypadMove JoypadMove { get; }
 	}
 
 	public class SpriteManager : ISpriteManager
@@ -28,8 +27,6 @@ namespace WindowsGame.Common.Managers
 
 		public void LoadContent()
 		{
-			//JoypadMove.LoadContent(Assets.JoypadTexture);
-
 			SmallTarget.LoadContent(Assets.Target40Texture);
 			BigTarget.LoadContent(Assets.Target64Texture);
 		}
@@ -42,22 +39,12 @@ namespace WindowsGame.Common.Managers
 
 		public void Draw()
 		{
-			//JoypadMove.Draw();
-
 			SmallTarget.Draw();
 			BigTarget.Draw();
 		}
 
 		private void TheInit()
 		{
-			//Vector2 jpPos = new Vector2(20, 300);
-			////Rectangle jpColl = new Rectangle(0, 280, 200, 200);
-			////Rectangle jpColl = new Rectangle(-200, 80, 600, 600);
-			//Rectangle jpColl = new Rectangle(-100, 180, 400, 400);
-			//Rectangle jpBndl = new Rectangle(0, 280, 200, 200);
-			//JoypadMove = new JoypadMove();
-			//JoypadMove.Initialize(jpPos, jpColl, jpBndl);
-
 			Vector2 stPos = new Vector2(80, 360);
 			Rectangle stBounds = new Rectangle(30, 310, 100, 100);
 			SmallTarget = new SmallTarget();
@@ -70,8 +57,6 @@ namespace WindowsGame.Common.Managers
 			BigTarget = new BigTarget();
 			BigTarget.Initialize(bgPos, Rectangle.Empty, bgBounds);
 		}
-
-		//public JoypadMove JoypadMove { get; private set; }
 
 		public SmallTarget SmallTarget { get; private set; }
 		public BigTarget BigTarget { get; private set; }
