@@ -99,13 +99,13 @@ namespace WindowsGame.Common.Managers
 
 			// Bullets.
 			high = (UInt16)(3 * baseSize + dbleSize + enemySize);
-			BulletRectangles = new Rectangle[Constants.MAX_BULLET];
-			for (Byte index = 0; index < Constants.MAX_BULLET; index++)
+			BulletRectangles = new Rectangle[Constants.MAX_BULLET_FRAME];
+			for (Byte index = 0; index < Constants.MAX_BULLET_FRAME; index++)
 			{
 				BulletRectangles[index] = new Rectangle(index * targetSize, high, targetSize, targetSize);
 			}
 
-			const UInt16 wide = (UInt16)(Constants.MAX_BULLET * targetSize);
+			const UInt16 wide = (UInt16)(Constants.MAX_BULLET_FRAME * targetSize);
 			TargetBigRectangle = new Rectangle(wide + 8, high + 8, targetSize, targetSize);
 			TargetSmallRectangle = new Rectangle(wide + baseSize + 20, high + 20, halfSize, halfSize);
 		}

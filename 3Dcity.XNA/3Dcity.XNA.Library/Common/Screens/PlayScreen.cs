@@ -34,15 +34,15 @@ namespace WindowsGame.Common.Screens
 			Boolean fire = MyGame.Manager.InputManager.Fire();
 			if (fire)
 			{
-				MyGame.Manager.SoundManager.PlaySoundEffect();
+				//MyGame.Manager.SoundManager.PlaySoundEffect();
 
 				// get max number of bullets from bullet MGR
 				// check if at least one bullet available...
 				// OR if fire delay still running then true!
 				// otherwise fire = false;
 
-//				Vector2 position = MyGame.Manager.SpriteManager.BigTarget.Position;
-//				MyGame.Manager.BulletManager.Fire(position);
+				Vector2 position = MyGame.Manager.SpriteManager.BigTarget.Position;
+				MyGame.Manager.BulletManager.Fire(position);
 			}
 
 			Byte index = Convert.ToByte(fire);

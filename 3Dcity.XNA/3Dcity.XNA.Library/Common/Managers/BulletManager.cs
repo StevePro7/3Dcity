@@ -22,7 +22,7 @@ namespace WindowsGame.Common.Managers
 	public class BulletManager : IBulletManager 
 	{
 		private const Byte MAX_BULLET = 10;
-		private const Byte MAX_FRAMES = 6;
+		//private const Byte MAX_FRAMES = 6;
 		private Single fireDelay;
 		private Single fireTimer;
 
@@ -37,7 +37,7 @@ namespace WindowsGame.Common.Managers
 
 			Bullet = new Bullet();
 			Bullet.Initialize(Vector2.Zero);
-			Bullet.Initialize(MAX_FRAMES, 750);		// TODO make the bullet delay configurable
+			Bullet.Initialize(Constants.MAX_BULLET_FRAME, 750);		// TODO make the bullet delay configurable
 			IsFiring = false;
 			fireDelay = 5000;
 			fireTimer = 0;

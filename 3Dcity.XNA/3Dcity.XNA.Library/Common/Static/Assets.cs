@@ -38,21 +38,7 @@ namespace WindowsGame.Common.Static
 		public static Texture2D Enemy96Texture;
 		public static Texture2D Enemy120Texture;
 
-
-		// Initial screen.
-		//public static Texture2D BackgroundTexture;
-		//public static Texture2D Foreground01Texture;
-		public static Texture2D Foreground02Texture;
-		public static Texture2D Foreground03Texture;
-		//public static Texture2D ButtonTexture;
-		public static Texture2D ButtonOnTexture;
-		public static Texture2D ButtonOffTexture;
-		public static Texture2D JoypadTexture;
-		public static Texture2D Stars01Texture;
-		public static Texture2D Stars02Texture;
-
 		// TODO delete
-		//public static Texture2D ZZwhiteTexture;
 		public static Texture2D ZZindigoTexture;
 	}
 }
