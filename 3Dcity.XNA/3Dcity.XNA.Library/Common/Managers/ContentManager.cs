@@ -71,15 +71,6 @@ namespace WindowsGame.Common.Managers
 			Assets.SteveProTexture160 = contentFactory.LoadTexture(texturesRoot + "StevePro160");
 			Assets.SteveProTexture200 = contentFactory.LoadTexture(texturesRoot + "StevePro200");
 
-			Assets.Enemy25Texture = contentFactory.LoadTexture(texturesRoot + "25");
-			Assets.Enemy32Texture = contentFactory.LoadTexture(texturesRoot + "32");
-			Assets.Enemy40Texture = contentFactory.LoadTexture(texturesRoot + "40");
-			Assets.Enemy50Texture = contentFactory.LoadTexture(texturesRoot + "50");
-			Assets.Enemy64Texture = contentFactory.LoadTexture(texturesRoot + "64");
-			Assets.Enemy80Texture = contentFactory.LoadTexture(texturesRoot + "80");
-			Assets.Enemy96Texture = contentFactory.LoadTexture(texturesRoot + "96");
-			Assets.Enemy120Texture = contentFactory.LoadTexture(texturesRoot + "120");
-
 			// TODO delete
 			Assets.ZZindigoTexture = contentFactory.LoadTexture(texturesRoot + "ZZindigo");
 		}

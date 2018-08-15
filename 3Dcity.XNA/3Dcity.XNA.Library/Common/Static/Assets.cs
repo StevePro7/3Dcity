@@ -26,18 +26,6 @@ namespace WindowsGame.Common.Static
 		public static Texture2D SteveProTexture160;
 		public static Texture2D SteveProTexture200;
 
-		public static Texture2D BulletsTexture;
-		//public static Texture2D Enemies96Texture;
-		public static Texture2D Enemies120Texture;
-		public static Texture2D Enemy25Texture;
-		public static Texture2D Enemy32Texture;
-		public static Texture2D Enemy40Texture;
-		public static Texture2D Enemy50Texture;
-		public static Texture2D Enemy64Texture;
-		public static Texture2D Enemy80Texture;
-		public static Texture2D Enemy96Texture;
-		public static Texture2D Enemy120Texture;
-
 		// TODO delete
 		public static Texture2D ZZindigoTexture;
 	}
