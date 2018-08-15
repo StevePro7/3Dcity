@@ -20,7 +20,7 @@ namespace WindowsGame.Master.Objects
 		{
 		}
 
-		private TextData(Vector2 position, String text, Color color)
+		public TextData(Vector2 position, String text, Color color)
 			: this()
 		{
 			Position = position;

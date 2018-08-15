@@ -20,6 +20,7 @@ namespace WindowsGame.Common.Screens
 		public override void Initialize()
 		{
 			base.Initialize();
+			LoadTextData();
 
 			rectangles = MyGame.Manager.ImageManager.EnemyRectangles;
 			ex = 100;
@@ -27,7 +28,7 @@ namespace WindowsGame.Common.Screens
 			positions = GetPositions(ex, ey);
 			//textures = GetTextures();
 			index = MyGame.Manager.ConfigManager.GlobalConfigData.EnemyIndex;
-			delay = 800.0f;
+			delay = 1200.0f;
 			//flag = false;
 			//start = 32.0f;
 			//stopX = 128.0f;
@@ -39,12 +40,33 @@ namespace WindowsGame.Common.Screens
 			pos2 = new Vector2(0, 80);
 			pos3 = new Vector2(0, 240);
 			pos4 = new Vector2(0, 480);
-			
+
+			MyGame.Manager.SoundManager.PlayMusic();
 			base.LoadContent();
 		}
 
 		public override Int32 Update(GameTime gameTime)
 		{
+			base.Update(gameTime);
+			if (GamePause)
+			{
+				return (Int32)CurrScreen;
+			}
+
+			Single horz = MyGame.Manager.InputManager.Horizontal();
+			Single vert = MyGame.Manager.InputManager.Vertical();
+
+			Boolean fire = MyGame.Manager.InputManager.Fire();
+			if (fire)
+			{
+				Vector2 position = MyGame.Manager.SpriteManager.BigTarget.Position;
+				MyGame.Manager.BulletManager.Fire(position);
+			}
+
+			Byte myIndex = Convert.ToByte(fire);
+			MyGame.Manager.IconManager.UpdateIcon(MyGame.Manager.IconManager.JoyButton, myIndex);
+
+			// Enemy first.
 			UpdateTimer(gameTime);
 			if (Timer > delay)
 			{
@@ -56,19 +78,34 @@ namespace WindowsGame.Common.Screens
 				}
 			}
 
+
+			// Then bullet and target second.
+			MyGame.Manager.BulletManager.Update(gameTime);
+			MyGame.Manager.SpriteManager.Update(gameTime, horz, vert);
+
+
 			return (Int32)ScreenType.Title;
 		}
 
 		public override void Draw()
 		{
+			// Sprite sheet #01.
 			base.Draw();
+			MyGame.Manager.IconManager.DrawControls();
 
+			MyGame.Manager.TextManager.Draw(TextDataList);
+
+			// Sprite sheet #02.
+
+			// Enemy first.
 			Rectangle rectangle = rectangles[index];
 			var position = positions[index];
 			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, position, rectangle, Color.White);
 
-			//Engine.SpriteBatch.Draw(textures[index], positions[index], Color.White);
-			//Engine.SpriteBatch.Draw(texture, position, Color.White);
+
+			// Then bullet and target second.
+			MyGame.Manager.BulletManager.Draw();
+			MyGame.Manager.SpriteManager.Draw();
 		}
 
 		//private Texture2D[] GetTextures()

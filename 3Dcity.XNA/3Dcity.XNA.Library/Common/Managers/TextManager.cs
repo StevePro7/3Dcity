@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using Microsoft.Xna.Framework;
 using WindowsGame.Common.Static;
 using WindowsGame.Master;
 using WindowsGame.Master.Objects;
-using Microsoft.Xna.Framework;
 
 namespace WindowsGame.Common.Managers
 {
@@ -74,8 +75,13 @@ namespace WindowsGame.Common.Managers
 				SByte y = Convert.ToSByte(items[1]);
 				String message = items[2];
 
+				Color color = Color.White;
+				if (items.Length > 3)
+				{
+					color = ConvertFromHex(items[3]);
+				}
 				Vector2 postion = GetTextPosition(x, y, textsSize, offsetX, fontX, fontY);
-				TextData item = new TextData(postion, message);
+				TextData item = new TextData(postion, message, color);
 
 				textDataList.Add(item);
 			}
@@ -98,6 +104,30 @@ namespace WindowsGame.Common.Managers
 			{
 				Engine.SpriteBatch.DrawString(Assets.EmulogicFont, data.Text, data.Position, data.Color);
 			}
+		}
+
+		private static Color ConvertFromHex(String hexCode)
+		{
+			Color color = Color.White;
+			if (hexCode.StartsWith("#"))
+			{
+				hexCode = hexCode.Substring(1, hexCode.Length - 1);
+			}
+
+			if (6 != hexCode.Length)
+			{
+				return color;
+			}
+
+			Byte r = Byte.Parse(hexCode.Substring(0, 2), NumberStyles.HexNumber);
+			Byte g = Byte.Parse(hexCode.Substring(2, 2), NumberStyles.HexNumber);
+			Byte b = Byte.Parse(hexCode.Substring(4, 2), NumberStyles.HexNumber);
+
+			//Byte r = Convert.ToByte(hexCode.Substring(0, 2));
+			//Byte g = Convert.ToByte(hexCode.Substring(2, 2));
+			//Byte b = Convert.ToByte(hexCode.Substring(4, 2));
+
+			return new Color(r, g, b);
 		}
 
 	}

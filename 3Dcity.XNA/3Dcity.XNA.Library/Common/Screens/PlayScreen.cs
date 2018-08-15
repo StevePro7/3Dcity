@@ -65,7 +65,6 @@ namespace WindowsGame.Common.Screens
 			//}
 
 
-			
 
 			return (Int32)ScreenType.Play;
 		}
@@ -73,8 +72,8 @@ namespace WindowsGame.Common.Screens
 		public override void Draw()
 		{
 			// Sprite sheet #01.
-			//base.Draw();
-			//MyGame.Manager.IconManager.DrawControls();
+			base.Draw();
+			MyGame.Manager.IconManager.DrawControls();
 
 			MyGame.Manager.TextManager.Draw(TextDataList);
 
