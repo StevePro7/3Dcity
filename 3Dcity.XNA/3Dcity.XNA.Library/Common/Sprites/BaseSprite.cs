@@ -8,9 +8,9 @@ namespace WindowsGame.Common.Sprites
 {
 	public class BaseSprite
 	{
-		private Rectangle[] rectangles;
+		protected Rectangle[] rectangles;
 		private Byte maxFrames;
-		private Byte frameIndex;
+		protected Byte frameIndex;
 		private UInt16 frameDelay;
 		private UInt16 frameTimer;
 
@@ -59,6 +59,10 @@ namespace WindowsGame.Common.Sprites
 			UInt16 height = (UInt16)(theRectangles[0].Height);
 			SizeW = width;
 			SizeH = height;
+
+			Single midX = width / 2.0f + BaseX;
+			Single midY = height / 2.0f + BaseY;
+			Midpoint = new Vector2(midX, midY);
 		}
 
 		public virtual void Update(GameTime gameTime)
@@ -90,7 +94,7 @@ namespace WindowsGame.Common.Sprites
 		public UInt16 SizeW { get; private set; }
 		public UInt16 SizeH { get; private set; }
 		public Vector2 Position { get; protected set; }
-		//public Vector2 Midpoint { get; private set; }
+		public Vector2 Midpoint { get; private set; }
 		//public Rectangle Collision { get; private set; }
 		public Rectangle Bounds { get; private set; }
 	}

@@ -62,6 +62,8 @@ namespace WindowsGame.Common.Screens
 
 		public override void Draw()
 		{
+			base.Draw();
+
 			//delta = (scale - 1) * 20.0f;	// 40 / 2
 			//Vector2 position = basePosition;
 
@@ -78,10 +80,10 @@ namespace WindowsGame.Common.Screens
 			////basePosition = position;
 			//Engine.SpriteBatch.Draw(Assets.Enemy40Texture, position, null, Color.White, 0.0f, Vector2.Zero, scale, SpriteEffects.None, 1.0f);
 
-			Engine.SpriteBatch.Draw(Assets.BackgroundTexture, pos1, Color.White);
-			Engine.SpriteBatch.Draw(Assets.Stars01Texture, pos2, Color.White);
-			Engine.SpriteBatch.Draw(Assets.Foreground01Texture, pos3, Color.White);
-			Engine.SpriteBatch.Draw(Assets.JoypadTexture, pos4, Color.White);
+			//Engine.SpriteBatch.Draw(Assets.BackgroundTexture, pos1, Color.White);
+			//Engine.SpriteBatch.Draw(Assets.Stars01Texture, pos2, Color.White);
+			//Engine.SpriteBatch.Draw(Assets.Foreground01Texture, pos3, Color.White);
+			//Engine.SpriteBatch.Draw(Assets.JoypadTexture, pos4, Color.White);
 
 			// TODO delegate this to device manager??
 			Engine.Game.Window.Title = GetType().Name;// Globalize.GAME_TITLE;
@@ -90,7 +92,7 @@ namespace WindowsGame.Common.Screens
 			var position = positions[index];
 			Engine.SpriteBatch.Draw(textures[index], positions[index], Color.White);
 			Engine.SpriteBatch.Draw(texture, position, Color.White);
-			base.Draw();
+			
 		}
 
 		private Texture2D[] GetTextures()

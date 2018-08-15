@@ -71,10 +71,6 @@ namespace WindowsGame.Common.Managers
 			Assets.SteveProTexture160 = contentFactory.LoadTexture(texturesRoot + "StevePro160");
 			Assets.SteveProTexture200 = contentFactory.LoadTexture(texturesRoot + "StevePro200");
 
-			Assets.Target40Texture = contentFactory.LoadTexture(texturesRoot + "Target40");
-			Assets.Target64Texture = contentFactory.LoadTexture(texturesRoot + "Target64");
-			//Assets.Target80Texture = contentFactory.LoadTexture(texturesRoot + "Target80");
-
 			Assets.BulletsTexture = contentFactory.LoadTexture(texturesRoot + "bullets");
 			//Assets.Enemies96Texture = contentFactory.LoadTexture(texturesRoot + "enemies96");
 			Assets.Enemies120Texture = contentFactory.LoadTexture(texturesRoot + "enemies120");
@@ -88,11 +84,7 @@ namespace WindowsGame.Common.Managers
 			Assets.Enemy96Texture = contentFactory.LoadTexture(texturesRoot + "96");
 			Assets.Enemy120Texture = contentFactory.LoadTexture(texturesRoot + "120");
 
-			//Assets.Explosion64Texture = contentFactory.LoadTexture(texturesRoot + "Explosion64");
-			//Assets.Explosion80Texture = contentFactory.LoadTexture(texturesRoot + "Explosion80");
-			//Assets.Explosion128Texture = contentFactory.LoadTexture(texturesRoot + "Explosion128");
-			//Assets.Explosion160Texture = contentFactory.LoadTexture(texturesRoot + "Explosion160");
-
+			// TODO delete
 			Assets.ZZindigoTexture = contentFactory.LoadTexture(texturesRoot + "ZZindigo");
 		}
 

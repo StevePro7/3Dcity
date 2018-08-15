@@ -25,16 +25,6 @@ namespace WindowsGame.Common.Static
 		public static Texture2D SteveProTexture80;
 		public static Texture2D SteveProTexture160;
 		public static Texture2D SteveProTexture200;
-		//public static Texture2D GameScreen800;
-		//public static Texture2D GameScreen960;
-
-		public static Texture2D Target40Texture;
-		public static Texture2D Target64Texture;
-		//public static Texture2D Target80Texture;
-		public static Texture2D PlayTexture;
-		public static Texture2D PauseTexture;
-		public static Texture2D SoundOnTexture;
-		public static Texture2D SoundOffTexture;
 
 		public static Texture2D BulletsTexture;
 		//public static Texture2D Enemies96Texture;
@@ -47,16 +37,11 @@ namespace WindowsGame.Common.Static
 		public static Texture2D Enemy80Texture;
 		public static Texture2D Enemy96Texture;
 		public static Texture2D Enemy120Texture;
-		//public static Texture2D Enemy128Texture;
 
-		//public static Texture2D Explosion64Texture;
-		//public static Texture2D Explosion80Texture;
-		//public static Texture2D Explosion128Texture;
-		//public static Texture2D Explosion160Texture;
 
 		// Initial screen.
-		public static Texture2D BackgroundTexture;
-		public static Texture2D Foreground01Texture;
+		//public static Texture2D BackgroundTexture;
+		//public static Texture2D Foreground01Texture;
 		public static Texture2D Foreground02Texture;
 		public static Texture2D Foreground03Texture;
 		//public static Texture2D ButtonTexture;

@@ -30,6 +30,7 @@ namespace WindowsGame.Common.Screens
 
 		public override void Draw()
 		{
+			base.Draw();
 
 			MyGame.Manager.RenderManager.Draw();
 
@@ -48,7 +49,7 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.SpriteManager.Draw();
 
 			MyGame.Manager.TextManager.Draw(TextDataList);
-			base.Draw();
+			
 		}
 
 	}
