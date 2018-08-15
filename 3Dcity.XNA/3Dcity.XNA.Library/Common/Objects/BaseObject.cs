@@ -1,13 +1,13 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+using WindowsGame.Common.Static;
 using WindowsGame.Master;
 
 namespace WindowsGame.Common.Objects
 {
 	public class BaseObject
 	{
-		private Texture2D[] textures;
+		private Rectangle[] rectangles;
 
 		public virtual void Initialize(Vector2 position, Rectangle collision)
 		{
@@ -24,19 +24,19 @@ namespace WindowsGame.Common.Objects
 			Index = 0;
 		}
 
-		public virtual void LoadContent(Texture2D theTexture)
+		public virtual void LoadContent(Rectangle theRectangle)
 		{
-			Texture2D[] theTextures = new Texture2D[1] { theTexture };
-			LoadContent(theTextures);
+			Rectangle[] theRectangles = new Rectangle[1] { theRectangle };
+			LoadContent(theRectangles);
 		}
 
-		public virtual void LoadContent(Texture2D[] theTextures)
+		public virtual void LoadContent(Rectangle[] theRectangles)
 		{
-			textures = theTextures;
+			rectangles = theRectangles;
 
 			// Assume all textures in array are same size!
-			UInt16 width = (UInt16)(theTextures[0].Width);
-			UInt16 height = (UInt16)(theTextures[0].Height);
+			UInt16 width = (UInt16)(theRectangles[0].Width);
+			UInt16 height = (UInt16)(theRectangles[0].Height);
 			SizeW = width;
 			SizeH = height;
 
@@ -56,11 +56,12 @@ namespace WindowsGame.Common.Objects
 
 		public virtual void Draw()
 		{
-			Engine.SpriteBatch.Draw(textures[0], Position, Color.White);
+			Engine.SpriteBatch.Draw(Assets.SpriteSheet01Texture, Position, rectangles[0], Color.White);
 		}
-		public virtual void Draw(Byte index)
+
+		protected virtual void Draw(Byte index)
 		{
-			Engine.SpriteBatch.Draw(textures[index], Position, Color.White);
+			Engine.SpriteBatch.Draw(Assets.SpriteSheet01Texture, Position, rectangles[index], Color.White);
 		}
 
 		public UInt16 BaseX { get; private set; }

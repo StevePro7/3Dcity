@@ -42,20 +42,20 @@ namespace WindowsGame.Common.Inputs
 			mouseScreenInput.Update(gameTime);
 		}
 
-		public Vector2[] GetPositions()
-		{
-			return null;
-		}
+		//public Vector2[] GetPositions()
+		//{
+		//    return null;
+		//}
 
-		public TouchLocationState[] GetStates()
-		{
-			return null;
-		}
+		//public TouchLocationState[] GetStates()
+		//{
+		//    return null;
+		//}
 
-		public Boolean[] GetStates2()
-		{
-			return null;
-		}
+		//public Boolean[] GetStates2()
+		//{
+		//    return null;
+		//}
 
 		public Boolean Escape()
 		{

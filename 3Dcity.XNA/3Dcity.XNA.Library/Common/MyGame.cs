@@ -46,13 +46,13 @@ namespace WindowsGame.Common
 		{
 			// Load all the content first!
 			Manager.ContentManager.LoadContent();
+			Manager.ImageManager.LoadContent();
 
 			Manager.BulletManager.Initialize();
 			Manager.ControlManager.Initialize();
 			Manager.EnemyManager.Initialize();
 			Manager.ExplosionManager.Initialize();
 			Manager.IconManager.Initialize();
-			Manager.ImageManager.Initialize();
 			Manager.RandomManager.Initialize();
 			Manager.RenderManager.Initialize();
 			Manager.ScoreManager.Initialize();
@@ -68,7 +68,6 @@ namespace WindowsGame.Common
 			Manager.EnemyManager.LoadContent();
 			Manager.ExplosionManager.LoadContent();
 			Manager.IconManager.LoadContent();
-			Manager.ImageManager.LoadContent();
 			Manager.RenderManager.LoadContent();
 			Manager.ScoreManager.LoadContent();
 			Manager.ScreenManager.LoadContent();

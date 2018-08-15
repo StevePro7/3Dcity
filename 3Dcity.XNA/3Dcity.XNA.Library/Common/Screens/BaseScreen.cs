@@ -20,11 +20,7 @@ namespace WindowsGame.Common.Screens
 			String screenName = GetType().Name.ToLower();
 			screenName = screenName.Replace("screen", String.Empty);
 
-			ScreenType result;
-			if (Enum.TryParse<ScreenType>(screenName, true, out result))
-			{
-				CurrScreen = result;
-			}
+			CurrScreen = (ScreenType)Enum.Parse(typeof(ScreenType), screenName, true);
 		}
 
 		public virtual void LoadContent()
@@ -65,6 +61,10 @@ namespace WindowsGame.Common.Screens
 				BaseObject icon = MyGame.Manager.IconManager.GameSound;
 				MyGame.Manager.IconManager.ToggleIcon(icon);
 			}
+
+			// Update grid + stars.
+			MyGame.Manager.RenderManager.UpdateStar(gameTime);
+			MyGame.Manager.RenderManager.UpdateGrid(gameTime);
 
 			return (Int32)CurrScreen;
 		}

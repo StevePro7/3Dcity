@@ -5,8 +5,8 @@
 	<!--<ScreenType>Ready</ScreenType>-->
 	<FramesPerSecond>50</FramesPerSecond>
 	<SplashDelay>0</SplashDelay>
-	<StarDelay>0</StarDelay>
-	<GridDelay>0</GridDelay>
+	<StarDelay>2000</StarDelay>
+	<GridDelay>200</GridDelay>
 	<JoypadX>0</JoypadX>
 	<JoypadY>360</JoypadY>
 	<EnemyIndex>0</EnemyIndex>

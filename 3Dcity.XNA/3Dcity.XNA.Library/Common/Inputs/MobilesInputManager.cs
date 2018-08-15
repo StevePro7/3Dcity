@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input.Touch;
 using WindowsGame.Common.Interfaces;
@@ -13,6 +14,8 @@ namespace WindowsGame.Common.Inputs
 		private readonly ITouchScreenInput touchScreenInput;
 		private readonly IControlManager controlManager;
 
+		private IList<Vector2> pressPositions;
+		private IList<Vector2> movePositions;
 		private Vector2 viewPortVector2;
 		private Matrix invertTransformationMatrix;
 		private Byte maxInputs;
@@ -38,28 +41,43 @@ namespace WindowsGame.Common.Inputs
 			invertTransformationMatrix = MyGame.Manager.ResolutionManager.InvertTransformationMatrix;
 
 			maxInputs = MyGame.Manager.ConfigManager.PlatformConfigData.MaxInputs;
+			pressPositions = new List<Vector2>(maxInputs);
+			movePositions = new List<Vector2>(maxInputs);
 		}
 
 		public void Update(GameTime gameTime)
 		{
+			// Update touch input
 			touchScreenInput.Update(gameTime);
-		}
 
-		public Vector2[] GetPositions()
-		{
-			return null;
-			//return touchScreenInput.TouchPositionsX;	// TODO delete
-		}
+			// Process touch input.
+			pressPositions.Clear();
+			movePositions.Clear();
 
-		public TouchLocationState[] GetStates()
-		{
-			return null;
-			//return touchScreenInput.TouchStatesX;	// TODO delete
-		}
+			TouchCollection touchCollection = touchScreenInput.TouchCollection;
+			Int32 count = touchCollection.Count;
+			if (0 == count)
+			{
+				return;
+			}
 
-		public Boolean[] GetStates2()
-		{
-			return null;
+			Int32 loops = Math.Min(maxInputs, count);
+			for (Byte index = 0; index < loops; index++)
+			{
+				TouchLocation touchLocation = touchCollection[index];
+
+				TouchLocationState state = touchLocation.State;
+				Vector2 position = GetTouchPosition(touchLocation.Position);
+
+				if (TouchLocationState.Pressed == state)
+				{
+					pressPositions.Add(position);
+				}
+				if (TouchLocationState.Pressed == state || TouchLocationState.Moved == state)
+				{
+					movePositions.Add(position);
+				}
+			}
 		}
 
 		public Boolean Escape()
@@ -69,143 +87,67 @@ namespace WindowsGame.Common.Inputs
 
 		public Single Horizontal()
 		{
-			Single horz = 0.0f;
-
-			// Touch.
-			TouchCollection touchCollection = touchScreenInput.TouchCollection;
-			Int32 count = touchCollection.Count;
-			if (0 == count)
-			{
-				return horz;
-			}
-
-			Int32 loops = Math.Min(maxInputs, count);
-			for (Byte index = 0; index < loops; index++)
-			{
-				TouchLocation touchLocation = touchCollection[index];
-
-				TouchLocationState state = touchLocation.State;
-				if (!(TouchLocationState.Pressed == state || TouchLocationState.Moved == state))
-				{
-					continue;
-				}
-
-				Vector2 position = GetTouchPosition(touchLocation.Position);
-				Single temp = controlManager.CheckJoyPadHorz(position);
-				if (Math.Abs(temp) > Single.Epsilon)
-				{
-					horz = temp;
-				}
-			}
-
-			//foreach (TouchLocation touch in touchCollection)
-			//{
-			//    TouchLocationState state = touch.State;
-			//    if (TouchLocationState.Pressed == state || TouchLocationState.Moved == state)
-			//    {
-
-			//    }
-			//}
-
-			return horz;
+			return MyMoveFunc(controlManager.CheckJoyPadHorz);
 		}
 
 		public Single Vertical()
 		{
-			Single vert = 0.0f;
-
-			// Touch.
-			TouchCollection touchCollection = touchScreenInput.TouchCollection;
-			Int32 count = touchCollection.Count;
-			if (0 == count)
-			{
-				return vert;
-			}
-
-			Int32 loops = Math.Min(maxInputs, count);
-			for (Byte index = 0; index < loops; index++)
-			{
-				TouchLocation touchLocation = touchCollection[index];
-
-				TouchLocationState state = touchLocation.State;
-				if (!(TouchLocationState.Pressed == state || TouchLocationState.Moved == state))
-				{
-					continue;
-				}
-
-				Vector2 position = GetTouchPosition(touchLocation.Position);
-				Single temp = controlManager.CheckJoyPadVert(position);
-				if (Math.Abs(temp) > Single.Epsilon)
-				{
-					vert = temp;
-				}
-			}
-
-			return vert;
+			return MyMoveFunc(controlManager.CheckJoyPadVert);
 		}
 
 		public Boolean Fire()
 		{
-			Boolean fire = false;
-
-			// Touch.
-			TouchCollection touchCollection = touchScreenInput.TouchCollection;
-			Int32 count = touchCollection.Count;
-			if (0 == count)
-			{
-				return false;
-			}
-
-			Int32 loops = Math.Min(maxInputs, count);
-			for (Byte index = 0; index < loops; index++)
-			{
-				TouchLocation touchLocation = touchCollection[index];
-
-				TouchLocationState state = touchLocation.State;
-				if (!(TouchLocationState.Pressed == state || TouchLocationState.Moved == state))
-				{
-					continue;
-				}
-
-				Vector2 position = GetTouchPosition(touchLocation.Position);
-				Boolean temp = controlManager.CheckJoyPadFire(position);
-				if (!temp)
-				{
-					continue;
-				}
-
-				fire = true;
-				break;
-			}
-
-			return fire;
+			return MyMove2Func(controlManager.CheckJoyPadFire);
 		}
 
 		public Boolean GameState()
 		{
+			return MyPressFunc(controlManager.CheckGameState);
+		}
+
+		public Boolean GameSound()
+		{
+			return MyPressFunc(controlManager.CheckGameSound);
+		}
+
+		private Single MyMoveFunc(Func<Vector2, Single> func)
+		{
+			Single data = 0.0f;
+
+			Byte count = (Byte)(movePositions.Count);
+			if (0 == count)
+			{
+				return data;
+			}
+
+			for (Byte index = 0; index < count; index++)
+			{
+				Vector2 position = movePositions[index];
+				Single temp = func(position);
+
+				if (Math.Abs(temp) > Single.Epsilon)
+				{
+					data = temp;
+				}
+			}
+
+			return data;
+		}
+		private Boolean MyMove2Func(Func<Vector2, Boolean> func)
+		{
 			Boolean data = false;
 
-			// Touch.
-			TouchCollection touchCollection = touchScreenInput.TouchCollection;
-			Int32 count = touchCollection.Count;
+			Byte count = (Byte)(movePositions.Count);
 			if (0 == count)
 			{
 				return false;
 			}
 
-			Int32 loops = Math.Min(maxInputs, count);
-			for (Byte index = 0; index < loops; index++)
+			for (Byte index = 0; index < count; index++)
 			{
-				TouchLocation touchLocation = touchCollection[index];
+				Vector2 position = movePositions[index];
+				Boolean temp = func(position);
 
-				TouchLocationState state = touchLocation.State;
-				if (!(TouchLocationState.Pressed == state))
-				{
-					continue;
-				}
-
-				Vector2 position = GetTouchPosition(touchLocation.Position);
-				Boolean temp = controlManager.CheckGameState(position);
 				if (!temp)
 				{
 					continue;
@@ -217,32 +159,21 @@ namespace WindowsGame.Common.Inputs
 
 			return data;
 		}
-
-		public Boolean GameSound()
+		private Boolean MyPressFunc(Func<Vector2, Boolean> func)
 		{
 			Boolean data = false;
 
-			// Touch.
-			TouchCollection touchCollection = touchScreenInput.TouchCollection;
-			Int32 count = touchCollection.Count;
+			Byte count = (Byte)(pressPositions.Count);
 			if (0 == count)
 			{
 				return false;
 			}
 
-			Int32 loops = Math.Min(maxInputs, count);
-			for (Byte index = 0; index < loops; index++)
+			for (Byte index = 0; index < count; index++)
 			{
-				TouchLocation touchLocation = touchCollection[index];
+				Vector2 position = pressPositions[index];
+				Boolean temp = func(position);
 
-				TouchLocationState state = touchLocation.State;
-				if (!(TouchLocationState.Pressed == state))
-				{
-					continue;
-				}
-
-				Vector2 position = GetTouchPosition(touchLocation.Position);
-				Boolean temp = controlManager.CheckGameSound(position);
 				if (!temp)
 				{
 					continue;

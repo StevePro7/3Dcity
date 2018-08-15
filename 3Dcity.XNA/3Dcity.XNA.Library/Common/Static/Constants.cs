@@ -21,6 +21,9 @@ namespace WindowsGame.Common.Static
 		public const Single GeneralTolerance = 0.1f;		//TODO make configurable?  Or set to 0.0f to take out!
 		public const Single JoystickTolerance = 0.1f;	// Original is 0.4f;
 
+		public const Byte MAX_GRID = 3;
+		public const Byte MAX_STAR = 2;
+
 		// Custom data.
 #if WINDOWS
 		public const PlatformType PlatformType = Static.PlatformType.Desktop;
@@ -28,6 +31,7 @@ namespace WindowsGame.Common.Static
 		public const Boolean IsMouseVisible = true;
 		public const UInt16 ScreenWide = 800;
 		public const UInt16 ScreenHigh = 480;
+		public const UInt16 ScreenHalf = 240;
 
 		public const Boolean UseExposed = true;
 		public const UInt16 ExposeWide = 800;
@@ -36,12 +40,17 @@ namespace WindowsGame.Common.Static
 		public const Byte GameOffsetX = 0;
 #endif
 
+		// IMPORTANT
+		// Full screen on Windows seems to need 4/3 ratio
+		// e.g. 640x480, 800x600 so allow for GameOffsetY
+
 #if !WINDOWS
 		public const PlatformType PlatformType = Static.PlatformType.Mobiles;
 		public const Boolean IsFullScreen = true;
 		public const Boolean IsMouseVisible = false;
 		public const UInt16 ScreenWide = 800;
 		public const UInt16 ScreenHigh = 480;
+		public const UInt16 ScreenHalf = 240;
 
 		public const Boolean UseExposed = false;
 		public const UInt16 ExposeWide = 800;

@@ -13,7 +13,6 @@ namespace WindowsGame.Common.Managers
 		void LoadContent();
 		void ToggleIcon(BaseObject icon);
 		void UpdateIcon(BaseObject icon, Byte index);
-		//void Update(GameTime gameTime);
 		void Draw();
 		void DrawControls();
 
@@ -61,18 +60,10 @@ namespace WindowsGame.Common.Managers
 
 		public void LoadContent()
 		{
-			Texture2D[] theTextures = null;
-
-			theTextures = new Texture2D[2] { Assets.PlayTexture, Assets.PauseTexture };
-			GameState.LoadContent(theTextures);
-
-			theTextures = new Texture2D[2] { Assets.SoundOnTexture, Assets.SoundOffTexture };
-			GameSound.LoadContent(theTextures);
-
-			JoypadMove.LoadContent(Assets.JoypadTexture);
-
-			theTextures = new Texture2D[2] { Assets.ButtonOnTexture, Assets.ButtonOffTexture };
-			JoyButton.LoadContent(theTextures);
+			JoypadMove.LoadContent(MyGame.Manager.ImageManager.JoypadRectangle);
+			JoyButton.LoadContent(MyGame.Manager.ImageManager.JoyButtonRectangles);
+			GameState.LoadContent(MyGame.Manager.ImageManager.GameStateRectangles);
+			GameSound.LoadContent(MyGame.Manager.ImageManager.GameSoundRectangles);
 		}
 
 		public void ToggleIcon(BaseObject icon)
@@ -84,10 +75,6 @@ namespace WindowsGame.Common.Managers
 			icon.UpdateIcon(index);
 		}
 
-		//public void Update(GameTime gameTime)
-		//{
-		//}
-		
 		public void Draw()
 		{
 			GameState.Draw();

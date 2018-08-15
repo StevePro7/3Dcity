@@ -28,11 +28,8 @@ namespace WindowsGame.Common.Screens
 		public override void Draw()
 		{
 			base.Draw();
-
 			MyGame.Manager.TextManager.Draw(TextDataList);
 		}
-
-		
 
 	}
 }

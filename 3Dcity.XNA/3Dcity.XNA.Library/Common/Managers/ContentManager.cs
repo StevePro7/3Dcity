@@ -63,12 +63,13 @@ namespace WindowsGame.Common.Managers
 			}
 
 			// Textures.
+			Assets.SpriteSheet01Texture = contentFactory.LoadTexture(texturesRoot + "spritesheet01-1024");
+			Assets.SpriteSheet02Texture = contentFactory.LoadTexture(texturesRoot + "spritesheet02-1024");
+
 			Assets.SteveProTexture40 = contentFactory.LoadTexture(texturesRoot + "StevePro40");
 			Assets.SteveProTexture80 = contentFactory.LoadTexture(texturesRoot + "StevePro80");
 			Assets.SteveProTexture160 = contentFactory.LoadTexture(texturesRoot + "StevePro160");
 			Assets.SteveProTexture200 = contentFactory.LoadTexture(texturesRoot + "StevePro200");
-			//Assets.GameScreen800 = contentFactory.LoadTexture(texturesRoot + "GameScreen800");
-			//Assets.GameScreen960 = contentFactory.LoadTexture(texturesRoot + "GameScreen960");
 
 			Assets.Target40Texture = contentFactory.LoadTexture(texturesRoot + "Target40");
 			Assets.Target64Texture = contentFactory.LoadTexture(texturesRoot + "Target64");
@@ -86,31 +87,11 @@ namespace WindowsGame.Common.Managers
 			Assets.Enemy80Texture = contentFactory.LoadTexture(texturesRoot + "80");
 			Assets.Enemy96Texture = contentFactory.LoadTexture(texturesRoot + "96");
 			Assets.Enemy120Texture = contentFactory.LoadTexture(texturesRoot + "120");
-			//Assets.Enemy128Texture = contentFactory.LoadTexture(texturesRoot + "128");
 
 			Assets.Explosion64Texture = contentFactory.LoadTexture(texturesRoot + "Explosion64");
 			Assets.Explosion80Texture = contentFactory.LoadTexture(texturesRoot + "Explosion80");
 			Assets.Explosion128Texture = contentFactory.LoadTexture(texturesRoot + "Explosion128");
 			Assets.Explosion160Texture = contentFactory.LoadTexture(texturesRoot + "Explosion160");
-
-			Assets.PlayTexture = contentFactory.LoadTexture(texturesRoot + "play");
-			Assets.PauseTexture = contentFactory.LoadTexture(texturesRoot + "pause");
-			Assets.SoundOnTexture = contentFactory.LoadTexture(texturesRoot + "soundOn");
-			Assets.SoundOffTexture = contentFactory.LoadTexture(texturesRoot + "soundOff");
-
-			Assets.BackgroundTexture = contentFactory.LoadTexture(texturesRoot + "background");
-			Assets.Foreground01Texture = contentFactory.LoadTexture(texturesRoot + "foreground01");
-			Assets.Foreground02Texture = contentFactory.LoadTexture(texturesRoot + "foreground02");
-			Assets.Foreground03Texture = contentFactory.LoadTexture(texturesRoot + "foreground03");
-			Assets.ButtonOnTexture = contentFactory.LoadTexture(texturesRoot + "ButtonOn");
-			Assets.ButtonOffTexture = contentFactory.LoadTexture(texturesRoot + "ButtonOff");
-			Assets.JoypadTexture = contentFactory.LoadTexture(texturesRoot + "joypad");
-			Assets.Stars01Texture = contentFactory.LoadTexture(texturesRoot + "stars01");
-			Assets.Stars02Texture = contentFactory.LoadTexture(texturesRoot + "stars02");
-
-			// TODO delete
-			//Assets.ZZwhiteTexture = contentFactory.LoadTexture(texturesRoot + "ZZwhite");
-			//Assets.ZZindigoTexture = contentFactory.LoadTexture(texturesRoot + "ZZindigo");
 		}
 
 		public void LoadContentSplash()

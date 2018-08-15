@@ -64,8 +64,8 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.SpriteManager.Update(gameTime, horz, vert);
 			//}
 
-			MyGame.Manager.RenderManager.UpdateGrid(gameTime);
-			MyGame.Manager.RenderManager.UpdateStar(gameTime);
+
+			
 
 			return (Int32)ScreenType.Play;
 		}
