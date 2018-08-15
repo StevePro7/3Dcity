@@ -1,4 +1,5 @@
 ﻿using System;
+using WindowsGame.Common.Static;
 using WindowsGame.Master;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -7,8 +8,9 @@ namespace WindowsGame.Common.Sprites
 {
 	public class BaseSprite
 	{
-		private Texture2D texture;
-		private Rectangle[] frameRects;
+		protected Rectangle[] rectangles;
+		//private Texture2D texture;
+		//private Rectangle[] frameRects;
 		private Byte maxFrames;
 		private Byte frameIndex;
 		private UInt16 frameDelay;
@@ -44,31 +46,49 @@ namespace WindowsGame.Common.Sprites
 			frameIndex = 0;
 		}
 
-		public virtual void LoadContent(Texture2D theTexture)
+		public virtual void LoadContent(Rectangle theRectangle)
 		{
-			UInt16 width = (UInt16)(theTexture.Width);
-			UInt16 height = (UInt16)(theTexture.Height);
-
-			LoadContent(theTexture, width, height);
+			Rectangle[] theRectangles = new Rectangle[1] { theRectangle };
+			LoadContent(theRectangles);
 		}
 
-		protected virtual void LoadContent(Texture2D theTexture, UInt16 width, UInt16 height)
+		public virtual void LoadContent(Rectangle[] theRectangles)
 		{
-			texture = theTexture;
+			rectangles = theRectangles;
 
-			UInt16 sizeW = (UInt16)(texture.Width / maxFrames);
-			UInt16 sizeH = (UInt16)(texture.Height);
-
-			frameRects = new Rectangle[maxFrames];
-			for (Byte index = 0; index < maxFrames; index++)
-			{
-				frameRects[index] = new Rectangle(sizeW * index, 0, sizeW, sizeH);
-			}
-
-			//Single midX = width / 2.0f + BaseX;
-			//Single midY = height / 2.0f + BaseY;
-			//Midpoint = new Vector2(midX, midY);
+			// Assume all textures in array are same size!
+			UInt16 width = (UInt16)(theRectangles[0].Width);
+			UInt16 height = (UInt16)(theRectangles[0].Height);
+			SizeW = width;
+			SizeH = height;
 		}
+
+
+		//public virtual void LoadContent(Texture2D theTexture)
+		//{
+		//    UInt16 width = (UInt16)(theTexture.Width);
+		//    UInt16 height = (UInt16)(theTexture.Height);
+
+		//    LoadContent(theTexture, width, height);
+		//}
+
+		//protected virtual void LoadContent(Texture2D theTexture, UInt16 width, UInt16 height)
+		//{
+		//    texture = theTexture;
+
+		//    UInt16 sizeW = (UInt16)(texture.Width / maxFrames);
+		//    UInt16 sizeH = (UInt16)(texture.Height);
+
+		//    frameRects = new Rectangle[maxFrames];
+		//    for (Byte index = 0; index < maxFrames; index++)
+		//    {
+		//        frameRects[index] = new Rectangle(sizeW * index, 0, sizeW, sizeH);
+		//    }
+
+		//    //Single midX = width / 2.0f + BaseX;
+		//    //Single midY = height / 2.0f + BaseY;
+		//    //Midpoint = new Vector2(midX, midY);
+		//}
 
 		public virtual void Update(GameTime gameTime)
 		{
@@ -84,16 +104,27 @@ namespace WindowsGame.Common.Sprites
 			}
 		}
 
+		//public virtual void Draw()
+		//{
+		//    //Engine.SpriteBatch.Draw(texture, Position, Color.White);
+		//    //Engine.SpriteBatch.Draw(texture, Position, frameRects[frameIndex], Color.White);
+		//}
+
 		public virtual void Draw()
 		{
-			//Engine.SpriteBatch.Draw(texture, Position, Color.White);
-			Engine.SpriteBatch.Draw(texture, Position, frameRects[frameIndex], Color.White);
+			//Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, Position, rectangles[0], Color.White);
+			Draw(frameIndex);
+		}
+
+		protected virtual void Draw(Byte index)
+		{
+			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, Position, rectangles[index], Color.White);
 		}
 
 		public UInt16 BaseX { get; private set; }
 		public UInt16 BaseY { get; private set; }
-		//public UInt16 SizeW { get; private set; }
-		//public UInt16 SizeH { get; private set; }
+		public UInt16 SizeW { get; private set; }
+		public UInt16 SizeH { get; private set; }
 		public Vector2 Position { get; protected set; }
 		//public Vector2 Midpoint { get; private set; }
 		//public Rectangle Collision { get; private set; }

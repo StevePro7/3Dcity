@@ -45,7 +45,7 @@ namespace WindowsGame.Common.Managers
 
 		public void LoadContent()
 		{
-			Bullet.LoadContent(Assets.BulletsTexture);
+			Bullet.LoadContent(MyGame.Manager.ImageManager.BulletRectangles);
 		}
 
 		public void Update(GameTime gameTime)

@@ -21,8 +21,8 @@ namespace WindowsGame.Common.Managers
 		Rectangle[][] ExplodeRectangles { get; }
 		Rectangle[] EnemyRectangles { get; }
 		Rectangle[] BulletRectangles { get; }
-		Rectangle TargetBigRectangles { get; }
-		Rectangle TargetSmallRectangles { get; }
+		Rectangle TargetBigRectangle { get; }
+		Rectangle TargetSmallRectangle { get; }
 	}
 
 	public class ImageManager : IImageManager 
@@ -104,7 +104,10 @@ namespace WindowsGame.Common.Managers
 			{
 				BulletRectangles[index] = new Rectangle(index * targetSize, high, targetSize, targetSize);
 			}
-			int x = 8;
+
+			const UInt16 wide = (UInt16)(Constants.MAX_BULLET * targetSize);
+			TargetBigRectangle = new Rectangle(wide + 8, high + 8, targetSize, targetSize);
+			TargetSmallRectangle = new Rectangle(wide + baseSize + 20, high + 20, halfSize, halfSize);
 		}
 
 		// Sprite sheet #01.
@@ -120,7 +123,7 @@ namespace WindowsGame.Common.Managers
 		public Rectangle[][] ExplodeRectangles { get; private set; }
 		public Rectangle[] EnemyRectangles { get; private set; }
 		public Rectangle[] BulletRectangles { get; private set; }
-		public Rectangle TargetBigRectangles { get; private set; }
-		public Rectangle TargetSmallRectangles { get; private set; }
+		public Rectangle TargetBigRectangle { get; private set; }
+		public Rectangle TargetSmallRectangle { get; private set; }
 	}
 }

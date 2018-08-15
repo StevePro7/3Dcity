@@ -27,8 +27,11 @@ namespace WindowsGame.Common.Managers
 
 		public void LoadContent()
 		{
-			SmallTarget.LoadContent(Assets.Target40Texture);
-			BigTarget.LoadContent(Assets.Target64Texture);
+			BigTarget.LoadContent(MyGame.Manager.ImageManager.TargetBigRectangle);
+			SmallTarget.LoadContent(MyGame.Manager.ImageManager.TargetSmallRectangle);
+
+			//SmallTarget.LoadContent(Assets.Target40Texture);
+			//BigTarget.LoadContent(Assets.Target64Texture);
 		}
 
 		public void Update(GameTime gameTime, Single horz, Single vert)

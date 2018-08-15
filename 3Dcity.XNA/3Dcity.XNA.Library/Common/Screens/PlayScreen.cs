@@ -72,13 +72,15 @@ namespace WindowsGame.Common.Screens
 
 		public override void Draw()
 		{
-			base.Draw();
-			MyGame.Manager.IconManager.DrawControls();
-
-			MyGame.Manager.BulletManager.Draw();
-			MyGame.Manager.SpriteManager.Draw();
+			// Sprite sheet #01.
+			//base.Draw();
+			//MyGame.Manager.IconManager.DrawControls();
 
 			MyGame.Manager.TextManager.Draw(TextDataList);
+
+			// Sprite sheet #02.
+			MyGame.Manager.BulletManager.Draw();
+			MyGame.Manager.SpriteManager.Draw();
 		}
 
 	}

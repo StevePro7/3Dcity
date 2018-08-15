@@ -12,11 +12,11 @@ namespace WindowsGame.Master.Objects
 		private IList<String> List { get; set; }
 
 		public TextData(Vector2 position, String text)
-			: this(position, text, Color.White)
+			: this(position, text, Color.Yellow)
 		{
 		}
 		public TextData(Vector2 position, IList<String> list)
-			: this(position, list, Color.White)
+			: this(position, list, Color.Yellow)
 		{
 		}
 
