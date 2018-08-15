@@ -88,10 +88,12 @@ namespace WindowsGame.Common.Managers
 			Assets.Enemy96Texture = contentFactory.LoadTexture(texturesRoot + "96");
 			Assets.Enemy120Texture = contentFactory.LoadTexture(texturesRoot + "120");
 
-			Assets.Explosion64Texture = contentFactory.LoadTexture(texturesRoot + "Explosion64");
-			Assets.Explosion80Texture = contentFactory.LoadTexture(texturesRoot + "Explosion80");
-			Assets.Explosion128Texture = contentFactory.LoadTexture(texturesRoot + "Explosion128");
-			Assets.Explosion160Texture = contentFactory.LoadTexture(texturesRoot + "Explosion160");
+			//Assets.Explosion64Texture = contentFactory.LoadTexture(texturesRoot + "Explosion64");
+			//Assets.Explosion80Texture = contentFactory.LoadTexture(texturesRoot + "Explosion80");
+			//Assets.Explosion128Texture = contentFactory.LoadTexture(texturesRoot + "Explosion128");
+			//Assets.Explosion160Texture = contentFactory.LoadTexture(texturesRoot + "Explosion160");
+
+			Assets.ZZindigoTexture = contentFactory.LoadTexture(texturesRoot + "ZZindigo");
 		}
 
 		public void LoadContentSplash()

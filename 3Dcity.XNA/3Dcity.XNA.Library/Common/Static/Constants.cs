@@ -23,6 +23,7 @@ namespace WindowsGame.Common.Static
 
 		public const Byte MAX_GRID = 3;
 		public const Byte MAX_STAR = 2;
+		public const Byte MAX_ENEMY = 8;
 
 		// Custom data.
 #if WINDOWS

@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Play</ScreenType>
+	<ScreenType>Test</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Ready</ScreenType>-->
 	<FramesPerSecond>50</FramesPerSecond>
 	<SplashDelay>0</SplashDelay>
-	<StarDelay>2000</StarDelay>
-	<GridDelay>200</GridDelay>
+	<StarDelay>0</StarDelay>
+	<GridDelay>0</GridDelay>
 	<JoypadX>0</JoypadX>
 	<JoypadY>360</JoypadY>
 	<EnemyIndex>0</EnemyIndex>

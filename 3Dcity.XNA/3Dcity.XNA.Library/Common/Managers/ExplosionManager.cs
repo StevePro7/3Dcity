@@ -31,7 +31,7 @@ namespace WindowsGame.Common.Managers
 			//Explosion.LoadContent(Assets.Explosion64Texture);
 			//Explosion.LoadContent(Assets.Explosion80Texture);
 			//Explosion.LoadContent(Assets.Explosion128Texture);
-			Explosion.LoadContent(Assets.Explosion160Texture);
+			//Explosion.LoadContent(Assets.Explosion160Texture);
 		}
 
 		public void Update(GameTime gameTime)
