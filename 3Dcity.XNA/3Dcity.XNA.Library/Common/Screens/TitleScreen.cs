@@ -9,7 +9,6 @@ namespace WindowsGame.Common.Screens
 {
 	public class TitleScreen : BaseScreen, IScreen
 	{
-		private Texture2D[] textures;
 		private Rectangle[] rectangles;
 		private Vector2[] positions;
 		private int ex, ey;
@@ -26,12 +25,8 @@ namespace WindowsGame.Common.Screens
 			ex = 100;
 			ey = 100;
 			positions = GetPositions(ex, ey);
-			//textures = GetTextures();
 			index = MyGame.Manager.ConfigManager.GlobalConfigData.EnemyIndex;
 			delay = 1200.0f;
-			//flag = false;
-			//start = 32.0f;
-			//stopX = 128.0f;
 		}
 
 		public override void LoadContent()
@@ -108,19 +103,6 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.SpriteManager.Draw();
 		}
 
-		//private Texture2D[] GetTextures()
-		//{
-		//    textures = new Texture2D[max];
-		//    textures[0] = Assets.Enemy25Texture;
-		//    textures[1] = Assets.Enemy32Texture;
-		//    textures[2] = Assets.Enemy40Texture;
-		//    textures[3] = Assets.Enemy50Texture;
-		//    textures[4] = Assets.Enemy64Texture;
-		//    textures[5] = Assets.Enemy80Texture;
-		//    textures[6] = Assets.Enemy96Texture;
-		//    textures[7] = Assets.Enemy120Texture;
-		//    return textures;
-		//}
 		private Vector2[] GetPositions(int sx, int sy)
 		{
 			positions = positions = new Vector2[Constants.MAX_ENEMY];
