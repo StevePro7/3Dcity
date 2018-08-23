@@ -19,7 +19,7 @@ namespace WindowsGame.Common.Screens
 
 		public override Int32 Update(GameTime gameTime)
 		{
-			return (Int32)ScreenType.Exit;
+			return (Int32)CurrScreen;
 		}
 
 		public override void Draw()

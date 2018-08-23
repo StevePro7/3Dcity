@@ -50,6 +50,7 @@
     <Compile Include="BaseSystemTests.cs" />
     <Compile Include="Implementation\TestFileProxy.cs" />
     <Compile Include="Managers\ConfigManagerSystemTests.cs" />
+    <Compile Include="Managers\ScreenManagerSystemTests.cs" />
     <Compile Include="Managers\TextManagerSystemTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TheGame\GameManagerTests.cs" />

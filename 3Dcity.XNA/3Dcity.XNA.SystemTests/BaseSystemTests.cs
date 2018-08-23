@@ -33,7 +33,7 @@ namespace WindowsGame.SystemTests
 		protected ILogger Logger;
 
 		// mklink /D D:\3Dcity.XNA.Content D:\SVN\3Dcity\3Dcity.XNA\3Dcity.XNA\3Dcity.XNA\bin\x86\Debug\
-		protected const String CONTENT_ROOT = @"D:\3Dcity.XNA.Content\";
+		protected const String CONTENT_ROOT = @"C:\3Dcity.XNA.Content\";
 
 #pragma warning disable 618
 		[TestFixtureSetUp]
