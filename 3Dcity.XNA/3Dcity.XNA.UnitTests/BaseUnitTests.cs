@@ -13,11 +13,13 @@ namespace WindowsGame.UnitTests
 	{
 		protected IBulletManager BulletManager;
 		protected ICollisionManager CollisionManager;
+		protected ICommandManager CommandManager;
 		protected IConfigManager ConfigManager;
 		protected IContentManager ContentManager;
 		protected IControlManager ControlManager;
 		protected IDeviceManager DeviceManager;
 		protected IEnemyManager EnemyManager;
+		protected IEventManager EventManager;
 		protected IExplosionManager ExplosionManager;
 		protected IIconManager IconManager;
 		protected IImageManager ImageManager;
@@ -43,11 +45,13 @@ namespace WindowsGame.UnitTests
 		{
 			BulletManager = MockRepository.GenerateStub<IBulletManager>();
 			CollisionManager = MockRepository.GenerateStub<ICollisionManager>();
+			CommandManager = MockRepository.GenerateStub<ICommandManager>();
 			ConfigManager = MockRepository.GenerateStub<IConfigManager>();
 			ContentManager = MockRepository.GenerateStub<IContentManager>();
 			ControlManager = MockRepository.GenerateStub<IControlManager>();
 			DeviceManager = MockRepository.GenerateStub<IDeviceManager>();
 			EnemyManager = MockRepository.GenerateStub<IEnemyManager>();
+			EventManager = MockRepository.GenerateStub<IEventManager>();
 			ExplosionManager = MockRepository.GenerateStub<IExplosionManager>();
 			IconManager = MockRepository.GenerateStub<IIconManager>();
 			ImageManager = MockRepository.GenerateStub<IImageManager>();
@@ -73,11 +77,13 @@ namespace WindowsGame.UnitTests
 			(
 				BulletManager,
 				CollisionManager,
+				CommandManager,
 				ConfigManager,
 				ContentManager,
 				ControlManager,
 				DeviceManager,
 				EnemyManager,
+				EventManager,
 				ExplosionManager,
 				IconManager,
 				ImageManager,
@@ -107,11 +113,13 @@ namespace WindowsGame.UnitTests
 		{
 			BulletManager = null;
 			CollisionManager = null;
+			CommandManager = null;
 			ConfigManager = null;
 			ContentManager = null;
 			ControlManager = null;
 			DeviceManager = null;
 			EnemyManager = null;
+			EventManager = null;
 			ExplosionManager = null;
 			IconManager = null;
 			ImageManager = null;

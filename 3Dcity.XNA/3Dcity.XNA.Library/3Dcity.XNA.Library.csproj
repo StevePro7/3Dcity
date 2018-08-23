@@ -82,6 +82,8 @@
     <Compile Include="Common\Interfaces\IDeviceFactory.cs" />
     <Compile Include="Common\Interfaces\IInputManager.cs" />
     <Compile Include="Common\Managers\BulletManager.cs" />
+    <Compile Include="Common\Managers\CommandManager.cs" />
+    <Compile Include="Common\Managers\EventManager.cs" />
     <Compile Include="Common\Managers\IconManager.cs" />
     <Compile Include="Common\Managers\ControlManager.cs" />
     <Compile Include="Common\Managers\EnemyManager.cs" />
@@ -109,6 +111,7 @@
     <Compile Include="Common\Objects\GameState.cs" />
     <Compile Include="Common\Objects\JoypadMove.cs" />
     <Compile Include="Common\Screens\BaseScreen.cs" />
+    <Compile Include="Common\Screens\DemoScreen.cs" />
     <Compile Include="Common\Screens\ExitScreen.cs" />
     <Compile Include="Common\Screens\InitScreen.cs" />
     <Compile Include="Common\Screens\PlayScreen.cs" />

@@ -41,6 +41,7 @@
 		Title,
 		Play,
 		Ready,
+		Demo,
 		Exit,
 		Test,
 	}

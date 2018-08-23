@@ -9,11 +9,13 @@ namespace WindowsGame.Common.TheGame
 	{
 		IBulletManager BulletManager { get; }
 		ICollisionManager CollisionManager { get; }
+		ICommandManager CommandManager { get; }
 		IConfigManager ConfigManager { get; }
 		IContentManager ContentManager { get; }
 		IControlManager ControlManager { get; }
 		IDeviceManager DeviceManager { get; }
 		IEnemyManager EnemyManager { get; }
+		IEventManager EventManager { get; }
 		IExplosionManager ExplosionManager { get; }
 		IIconManager IconManager { get; }
 		IImageManager ImageManager { get; }
@@ -39,11 +41,13 @@ namespace WindowsGame.Common.TheGame
 		(
 			IBulletManager bulletManager,
 			ICollisionManager collisionManager,
+			ICommandManager commandManager,
 			IConfigManager configManager,
 			IContentManager contentManager,
 			IControlManager controlManager,
 			IDeviceManager deviceManager,
 			IEnemyManager enemyManager,
+			IEventManager eventManager,
 			IExplosionManager explosionManager,
 			IIconManager iconManager,
 			IImageManager imageManager,
@@ -65,11 +69,13 @@ namespace WindowsGame.Common.TheGame
 		{
 			BulletManager = bulletManager;
 			CollisionManager = collisionManager;
+			CommandManager = commandManager;
 			ConfigManager = configManager;
 			ContentManager = contentManager;
 			ControlManager = controlManager;
 			DeviceManager = deviceManager;
 			EnemyManager = enemyManager;
+			EventManager = eventManager;
 			ExplosionManager = explosionManager;
 			ImageManager = imageManager;
 			IconManager = iconManager;
@@ -91,11 +97,13 @@ namespace WindowsGame.Common.TheGame
 
 		public IBulletManager BulletManager { get; private set; }
 		public ICollisionManager CollisionManager { get; private set; }
+		public ICommandManager CommandManager { get; private set; }
 		public IConfigManager ConfigManager { get; private set; }
 		public IContentManager ContentManager { get; private set; }
 		public IControlManager ControlManager { get; private set; }
 		public IDeviceManager DeviceManager { get; private set; }
 		public IEnemyManager EnemyManager { get; private set; }
+		public IEventManager EventManager { get; private set; }
 		public IExplosionManager ExplosionManager { get; private set; }
 		public IIconManager IconManager { get; private set; }
 		public IImageManager ImageManager { get; private set; }

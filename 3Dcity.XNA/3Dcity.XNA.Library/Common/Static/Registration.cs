@@ -21,11 +21,13 @@ namespace WindowsGame.Common.Static
 
 			IoCContainer.Initialize<IBulletManager, BulletManager>();
 			IoCContainer.Initialize<ICollisionManager, CollisionManager>();
+			IoCContainer.Initialize<ICommandManager, CommandManager>();
 			IoCContainer.Initialize<IConfigManager, ConfigManager>();
 			IoCContainer.Initialize<IContentManager, ContentManager>();
 			IoCContainer.Initialize<IControlManager, ControlManager>();
 			IoCContainer.Initialize<IDeviceManager, DeviceManager>();
 			IoCContainer.Initialize<IEnemyManager, EnemyManager>();
+			IoCContainer.Initialize<IEventManager, EventManager>();
 			IoCContainer.Initialize<IExplosionManager, ExplosionManager>();
 			IoCContainer.Initialize<IIconManager, IconManager>();
 			IoCContainer.Initialize<IImageManager, ImageManager>();
