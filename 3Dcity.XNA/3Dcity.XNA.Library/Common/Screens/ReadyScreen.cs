@@ -25,7 +25,7 @@ namespace WindowsGame.Common.Screens
 		{
 			MyGame.Manager.ExplosionManager.Update(gameTime);
 			//MyGame.Manager.BulletManager.Update(gameTime);
-			return (Int32)ScreenType.Ready;
+			return (Int32)CurrScreen;
 		}
 
 		public override void Draw()

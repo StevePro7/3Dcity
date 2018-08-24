@@ -17,21 +17,16 @@ namespace WindowsGame.Common.Managers
 
 	public class ExplosionManager : IExplosionManager 
 	{
-		//private const Byte MAX_FRAMES = 12;
-
 		public void Initialize()
 		{
 			Explosion = new Explosion();
 			Explosion.Initialize(new Vector2(400, 320));
-			Explosion.Initialize(Constants.MAX_EXPLODE_FRAME, 500);		// TODO make the bullet delay configurable
+			Explosion.Initialize(Constants.MAX_EXPLODE_FRAME, 100);		// TODO make the bullet delay configurable
 		}
 
 		public void LoadContent()
 		{
-			Explosion.LoadContent(MyGame.Manager.ImageManager.ExplodeRectangles[1]);
-			//Explosion.LoadContent(Assets.Explosion80Texture);
-			//Explosion.LoadContent(Assets.Explosion128Texture);
-			//Explosion.LoadContent(Assets.Explosion160Texture);
+			Explosion.LoadContent(MyGame.Manager.ImageManager.ExplodeRectangles[0]);
 		}
 
 		public void Update(GameTime gameTime)

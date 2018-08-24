@@ -47,6 +47,7 @@ namespace WindowsGame.Common.Screens
 			{
 				return nextScreen;
 			}
+
 			return (Int32)ScreenType.Init;
 		}
 

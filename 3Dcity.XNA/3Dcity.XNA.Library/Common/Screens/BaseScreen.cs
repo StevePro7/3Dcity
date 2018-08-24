@@ -89,13 +89,6 @@ namespace WindowsGame.Common.Screens
 			LoadTextData(GetType().Name);
 		}
 
-		//TODO delete unused method...
-		//protected void LoadTextData(Byte suffix)
-		//{
-		//    String name = String.Format("{0}{1}", GetType().Name, suffix);
-		//    LoadTextData(name);
-		//}
-
 		private void LoadTextData(String screen)
 		{
 			TextDataList = MyGame.Manager.TextManager.LoadTextData(screen);

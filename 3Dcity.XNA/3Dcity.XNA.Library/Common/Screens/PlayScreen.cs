@@ -25,7 +25,7 @@ namespace WindowsGame.Common.Screens
 			base.Update(gameTime);
 			if (GamePause)
 			{
-				return (Int32)ScreenType.Play;
+				return (Int32)CurrScreen;
 			}
 
 			Single horz = MyGame.Manager.InputManager.Horizontal();
@@ -64,9 +64,7 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.SpriteManager.Update(gameTime, horz, vert);
 			//}
 
-
-
-			return (Int32)ScreenType.Play;
+			return (Int32)CurrScreen;
 		}
 
 		public override void Draw()

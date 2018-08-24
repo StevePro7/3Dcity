@@ -73,13 +73,11 @@ namespace WindowsGame.Common.Screens
 				}
 			}
 
-
 			// Then bullet and target second.
 			MyGame.Manager.BulletManager.Update(gameTime);
 			MyGame.Manager.SpriteManager.Update(gameTime, horz, vert);
 
-
-			return (Int32)ScreenType.Title;
+			return (Int32)CurrScreen;
 		}
 
 		public override void Draw()
