@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using WindowsGame.Common.Static;
 using Microsoft.Xna.Framework;
 
 namespace WindowsGame.Common.Managers
@@ -6,27 +8,45 @@ namespace WindowsGame.Common.Managers
 	public interface IEventManager
 	{
 		void Initialize();
-		void LoadContent();
+		void ClearEvents();
+		void AddLargeTargetMoveEvent(Vector2 position);
+		void AddSmallTargetMoveEvent(Vector2 position);
 		void Update(GameTime gameTime);
-		void Draw();
 	}
 
 	public class EventManager : IEventManager
 	{
+		private IList<EventType> eventTypeData;
+		private IList<ValueType> eventArgsData;
+
+		private Single delta;
 		private Single timer;
 
 		public void Initialize()
 		{
+			eventTypeData = new List<EventType>();
+			eventArgsData = new List<ValueType>();
+
+			delta = 0.0f;
+			timer = 0.0f;
 		}
 
-		public void LoadContent()
+		public void ClearEvents()
 		{
+		}
+
+		public void AddLargeTargetMoveEvent(Vector2 position)
+		{
+			AddEvent(EventType.LargeTargetMove, position);
+		}
+		public void AddSmallTargetMoveEvent(Vector2 position)
+		{
+			AddEvent(EventType.SmallTargetMove, position);
 		}
 
 		public void Update(GameTime gameTime)
 		{
-			//Single delta = (Single)Math.Round(gameTime.ElapsedGameTime.TotalSeconds, 2);
-			Single delta = (Single)gameTime.ElapsedGameTime.TotalSeconds;
+			delta = (Single)gameTime.ElapsedGameTime.TotalSeconds;
 			timer += delta;
 			timer = (Single)Math.Round(timer, 2);
 			//if (0 == eventTypeData.Count)
@@ -37,8 +57,10 @@ namespace WindowsGame.Common.Managers
 			MyGame.Manager.Logger.Info(timer.ToString());
 		}
 
-		public void Draw()
+		private void AddEvent(EventType type, ValueType args)
 		{
+			eventTypeData.Add(type);
+			eventArgsData.Add(args);
 		}
 
 	}

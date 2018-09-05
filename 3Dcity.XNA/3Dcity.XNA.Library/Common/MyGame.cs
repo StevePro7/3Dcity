@@ -69,7 +69,6 @@ namespace WindowsGame.Common
 			Manager.CollisionManager.LoadContent();
 			Manager.CommandManager.LoadContent();
 			Manager.EnemyManager.LoadContent();
-			Manager.EventManager.LoadContent();
 			Manager.ExplosionManager.LoadContent();
 			Manager.IconManager.LoadContent();
 			Manager.RenderManager.LoadContent();

@@ -34,6 +34,12 @@
 		Early
 	}
 
+	public enum EventType
+	{
+		LargeTargetMove,
+		SmallTargetMove,
+	}
+
 	public enum ScreenType
 	{
 		Splash,

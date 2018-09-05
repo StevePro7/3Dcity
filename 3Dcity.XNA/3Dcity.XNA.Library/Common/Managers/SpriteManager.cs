@@ -17,7 +17,7 @@ namespace WindowsGame.Common.Managers
 
 		// Properties.
 		SmallTarget SmallTarget { get; }
-		BigTarget BigTarget { get; }
+		LargeTarget BigTarget { get; }
 	}
 
 	public class SpriteManager : ISpriteManager
@@ -63,12 +63,12 @@ namespace WindowsGame.Common.Managers
 			const Byte targetSize = 64;
 			Vector2 bgPos = new Vector2((Constants.ScreenWide - 64) / 2.0f, 250);
 			Rectangle bgBounds = new Rectangle(-2, targetTop, Constants.ScreenWide - targetSize + 2, Constants.ScreenHigh - targetTop - targetSize + 2);
-			BigTarget = new BigTarget();
+			BigTarget = new LargeTarget();
 			BigTarget.Initialize(bgPos, Rectangle.Empty, bgBounds);
 		}
 
 		public SmallTarget SmallTarget { get; private set; }
-		public BigTarget BigTarget { get; private set; }
+		public LargeTarget BigTarget { get; private set; }
 
 	}
 }

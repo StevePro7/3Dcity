@@ -120,7 +120,7 @@
     <Compile Include="Common\Screens\TestScreen.cs" />
     <Compile Include="Common\Screens\TitleScreen.cs" />
     <Compile Include="Common\Sprites\BaseSprite.cs" />
-    <Compile Include="Common\Sprites\BigTarget.cs" />
+    <Compile Include="Common\Sprites\LargeTarget.cs" />
     <Compile Include="Common\Sprites\Bullet.cs" />
     <Compile Include="Common\Sprites\Enemy.cs" />
     <Compile Include="Common\Sprites\Explosion.cs" />

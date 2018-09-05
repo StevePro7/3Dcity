@@ -1,18 +1,19 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
-using WindowsGame.Common.Sprites;
 using WindowsGame.Common.Static;
 
 namespace WindowsGame.Common.Sprites
 {
-	public class BigTarget : BaseSprite
+	public class LargeTarget : BaseSprite
 	{
 		private const Single PIXEL = 200.0f;		// TODO tweak this constant
 		private const Single RATIO = 1.05f;			// TODO tweak this acceleration
+		private const Single MAXIM = 2.5f;			// TODO tweak maximum acceleration
+
 		private Single accX;
 		private Single accY;
 
-		public BigTarget() : base()
+		public LargeTarget() : base()
 		{
 			accX = 1.0f;
 			accY = 1.0f;
@@ -54,14 +55,14 @@ namespace WindowsGame.Common.Sprites
 				accY *= RATIO;
 			}
 
-			const Single max = 2.5f;					// TODO tweak maximum acceleration
-			if (accX > max)
+			//const Single max = 2.5f;					// TODO tweak maximum acceleration
+			if (accX > MAXIM)
 			{
-				accX = max;
+				accX = MAXIM;
 			}
-			if (accY > max)
+			if (accY > MAXIM)
 			{
-				accY = max;
+				accY = MAXIM;
 			}
 
 			Single delta = (Single)gameTime.ElapsedGameTime.TotalSeconds;

@@ -6,8 +6,7 @@ namespace WindowsGame.Common.Sprites
 {
 	public class SmallTarget : BaseSprite
 	{
-		//private const Single ratio = 0.05f;
-		private const Single ratio = 0.15f;			// TODO make configurable to tweak "speed" in which small target moves
+		private const Single RATIO = 0.15f;			// TODO make configurable to tweak "speed" in which small target moves
 
 		public void Update(GameTime gameTime, Single horz, Single vert)
 		{
@@ -38,12 +37,12 @@ namespace WindowsGame.Common.Sprites
 			Single val1 = horz * 100.0f;
 			Single val2 = val1 / 2.0f;
 			//Single val3 = val2 + BaseX;
-			Single val3 = val2 * ratio;
+			Single val3 = val2 * RATIO;
 
 			Single val5 = vert * 100.0f;
 			Single val6 = val5 / 2.0f;
 			//Single val7 = val6 + BaseY;
-			Single val7 = val6 * ratio;
+			Single val7 = val6 * RATIO;
 
 
 			position.X += val3;
