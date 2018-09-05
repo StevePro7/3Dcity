@@ -50,16 +50,19 @@ namespace WindowsGame.Common.Managers
 			Assets.EmulogicFont = contentFactory.LoadFont(fontsRoot + "Emulogic");
 
 			// Sounds.
-			String soundsRoot = String.Format("{0}/{1}/", contentRoot, SOUND_DIRECTORY);
-			Assets.GameMusicSong = Engine.Content.Load<Song>(soundsRoot + "GameMusic");
-			Assets.GameOverSong = Engine.Content.Load<Song>(soundsRoot + "GameOver");
-
-			Assets.SoundEffectDictionary = new Dictionary<SoundEffectType, SoundEffectInstance>();
-			for (SoundEffectType key = SoundEffectType.Funny; key <= SoundEffectType.Early; ++key)
+			if (MyGame.Manager.ConfigManager.GlobalConfigData.LoadAudio)
 			{
-				String assetName = String.Format("{0}{1}", soundsRoot, key);
-				SoundEffectInstance value = contentFactory.LoadSoundEffectInstance(assetName);
-				Assets.SoundEffectDictionary.Add(key, value);
+				String soundsRoot = String.Format("{0}/{1}/", contentRoot, SOUND_DIRECTORY);
+				Assets.GameMusicSong = Engine.Content.Load<Song>(soundsRoot + "GameMusic");
+				Assets.GameOverSong = Engine.Content.Load<Song>(soundsRoot + "GameOver");
+
+				Assets.SoundEffectDictionary = new Dictionary<SoundEffectType, SoundEffectInstance>();
+				for (SoundEffectType key = SoundEffectType.Funny; key <= SoundEffectType.Early; ++key)
+				{
+					String assetName = String.Format("{0}{1}", soundsRoot, key);
+					SoundEffectInstance value = contentFactory.LoadSoundEffectInstance(assetName);
+					Assets.SoundEffectDictionary.Add(key, value);
+				}
 			}
 
 			// Textures.

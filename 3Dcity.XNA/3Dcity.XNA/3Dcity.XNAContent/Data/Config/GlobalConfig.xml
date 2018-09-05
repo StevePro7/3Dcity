@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Title</ScreenType>
+	<ScreenType>Ready</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Ready</ScreenType>-->
 	<FramesPerSecond>50</FramesPerSecond>
+	<LoadAudio>false</LoadAudio>
 	<SplashDelay>0</SplashDelay>
 	<StarDelay>2000</StarDelay>
 	<GridDelay>200</GridDelay>
