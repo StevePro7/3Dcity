@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 
 namespace WindowsGame.Common.Managers
 {
-	public interface IEventManager 
+	public interface ICommandManager
 	{
 		void Initialize();
 		void LoadContent();
@@ -11,7 +11,7 @@ namespace WindowsGame.Common.Managers
 		void Draw();
 	}
 
-	public class EventManager : IEventManager 
+	public class CommandManager : ICommandManager
 	{
 		public void Initialize()
 		{
@@ -19,11 +19,6 @@ namespace WindowsGame.Common.Managers
 
 		public void LoadContent()
 		{
-		}
-
-		public void LoadLevel(Byte enemies)
-		{
-			
 		}
 
 		public void Update(GameTime gameTime)

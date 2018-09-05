@@ -9,7 +9,10 @@ namespace WindowsGame.Common.Managers
 	{
 		void Initialize();
 		void LoadContent();
-		void Update(GameTime gameTime, Single horz, Single vert);
+
+		void SetMovement(Single horz, Single vert);
+		void Update(GameTime gameTime);
+
 		void Draw();
 
 		// Properties.
@@ -19,6 +22,8 @@ namespace WindowsGame.Common.Managers
 
 	public class SpriteManager : ISpriteManager
 	{
+		private Single targetHorz, targetVert;
+
 		public void Initialize()
 		{
 			TheInit();
@@ -30,10 +35,15 @@ namespace WindowsGame.Common.Managers
 			SmallTarget.LoadContent(MyGame.Manager.ImageManager.TargetSmallRectangle);
 		}
 
-		public void Update(GameTime gameTime, Single horz, Single vert)
+		public void SetMovement(Single horz, Single vert)
 		{
-			BigTarget.Update(gameTime, horz, vert);
-			SmallTarget.Update(gameTime, horz, vert);
+			targetHorz = horz;
+			targetVert = vert;
+		}
+		public void Update(GameTime gameTime)
+		{
+			BigTarget.Update(gameTime, targetHorz, targetVert);
+			SmallTarget.Update(gameTime, targetHorz, targetVert);
 		}
 
 		public void Draw()

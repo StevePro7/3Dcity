@@ -9,14 +9,15 @@ namespace WindowsGame.UnitTests.Managers
 		public new void SetUp()
 		{
 			// System under test.
-			ControlManager = new ControlManager();
+			SpriteManager = new SpriteManager();
 			base.SetUp();
 		}
 
 		[Test]
 		public void MyTest()
 		{
-			Assert.That(1, Is.EqualTo(1));
+			SpriteManager.Initialize();
+			SpriteManager.SetMovement(0, 0);
 		}
 
 		[TearDown]

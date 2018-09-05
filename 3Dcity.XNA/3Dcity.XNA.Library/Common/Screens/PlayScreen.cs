@@ -61,7 +61,8 @@ namespace WindowsGame.Common.Screens
 
 			//if (Math.Abs(horz) > 0.4)
 			//{
-			MyGame.Manager.SpriteManager.Update(gameTime, horz, vert);
+			MyGame.Manager.SpriteManager.SetMovement(horz, vert);
+			MyGame.Manager.SpriteManager.Update(gameTime);
 			//}
 
 			return (Int32)CurrScreen;

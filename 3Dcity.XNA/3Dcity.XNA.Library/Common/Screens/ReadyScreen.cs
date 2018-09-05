@@ -23,6 +23,15 @@ namespace WindowsGame.Common.Screens
 
 		public override Int32 Update(GameTime gameTime)
 		{
+			base.Update(gameTime);
+
+			Single horz = MyGame.Manager.InputManager.Horizontal();
+			Single vert = MyGame.Manager.InputManager.Vertical();
+			MyGame.Manager.SpriteManager.SetMovement(horz, vert);
+
+			MyGame.Manager.SpriteManager.Update(gameTime);
+
+			MyGame.Manager.EventManager.Update(gameTime);
 			//MyGame.Manager.ExplosionManager.Update(gameTime);
 			//MyGame.Manager.BulletManager.Update(gameTime);
 			return (Int32)CurrScreen;
@@ -30,13 +39,12 @@ namespace WindowsGame.Common.Screens
 
 		public override void Draw()
 		{
-			base.Draw();
-
-			MyGame.Manager.RenderManager.Draw();
+			//base.Draw();
+			MyGame.Manager.IconManager.DrawControls();
 
 			//MyGame.Manager.ExplosionManager.Draw();
 			//MyGame.Manager.BulletManager.Draw();
-			//MyGame.Manager.SpriteManager.Draw();
+			MyGame.Manager.SpriteManager.Draw();
 
 			MyGame.Manager.TextManager.Draw(TextDataList);
 			

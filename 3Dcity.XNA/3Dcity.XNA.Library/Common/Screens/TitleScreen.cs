@@ -36,7 +36,7 @@ namespace WindowsGame.Common.Screens
 			pos3 = new Vector2(0, 240);
 			pos4 = new Vector2(0, 480);
 
-			MyGame.Manager.SoundManager.PlayMusic();
+			//MyGame.Manager.SoundManager.PlayMusic();
 			base.LoadContent();
 		}
 
@@ -75,7 +75,10 @@ namespace WindowsGame.Common.Screens
 
 			// Then bullet and target second.
 			MyGame.Manager.BulletManager.Update(gameTime);
-			MyGame.Manager.SpriteManager.Update(gameTime, horz, vert);
+
+
+			MyGame.Manager.SpriteManager.SetMovement(horz, vert);
+			MyGame.Manager.SpriteManager.Update(gameTime);
 
 			return (Int32)CurrScreen;
 		}
