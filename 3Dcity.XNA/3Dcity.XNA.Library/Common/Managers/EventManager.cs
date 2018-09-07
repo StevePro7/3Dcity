@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 using WindowsGame.Common.Static;
 using Microsoft.Xna.Framework;
 
@@ -15,6 +16,10 @@ namespace WindowsGame.Common.Managers
 		void AddLargeTargetMoveEvent(Vector2 position);
 		void AddSmallTargetMoveEvent(Vector2 position);
 
+		void SerializeAllEvents();
+		String SerializeTypeData(IList<EventType> theEventTypeData);
+		String SerializeArgsData(IList<ValueType> theEventArgsData);
+
 		void Update(GameTime gameTime);
 	}
 
@@ -27,6 +32,9 @@ namespace WindowsGame.Common.Managers
 		private IList<EventType> eventTypeData;
 		private IList<ValueType> eventArgsData;
 
+		private StringBuilder eventTypeBuilder;
+		private StringBuilder eventArgsBuilder;
+
 		private Char[] delim;
 		private Single delta;
 		private Single timer;
@@ -35,6 +43,9 @@ namespace WindowsGame.Common.Managers
 		{
 			eventTypeData = new List<EventType>();
 			eventArgsData = new List<ValueType>();
+
+			eventTypeBuilder = new StringBuilder();
+			eventArgsBuilder = new StringBuilder();
 
 			delim = new[] { '|' };
 			delta = 0.0f;
@@ -64,7 +75,17 @@ namespace WindowsGame.Common.Managers
 				ProcessEvent(eventType, eventArgs);
 			}
 
+			// Save events for later.
+			String eventTypeText = SerializeTypeData(eventTypeData);
+			String eventArgsText = SerializeArgsData(eventArgsData);
+
+			timer = (Single)Math.Round(delta, 2);
+			eventTimeList.Add(timer);
+			eventTypeList.Add(eventTypeText);
+			eventArgsList.Add(eventArgsText);
+
 			delta = 0.0f;
+			timer = 0.0f;
 		}
 
 		public void ProcessEvent(EventType eventType, ValueType eventArgs)
@@ -79,6 +100,45 @@ namespace WindowsGame.Common.Managers
 					SmallTargetMove(eventArgs);
 					break;
 			}
+		}
+
+		public void SerializeAllEvents()
+		{
+			UInt16 count = (UInt16)(eventTimeList.Count);
+			for (UInt16 index = 0; index < count; ++index)
+			{
+				Single time = (Single)Math.Round(eventTimeList[index], 2);
+				String type = eventTypeList[index];
+				String args = eventArgsList[index];
+				String value = String.Format("{0},{1},{2}", time, type, args);
+				System.Diagnostics.Debug.WriteLine(value);
+			}
+			System.Diagnostics.Debug.WriteLine(String.Empty);
+		}
+
+		public String SerializeTypeData(IList<EventType> theEventTypeData)
+		{
+			eventTypeBuilder.Length = 0;
+			if (0 == theEventTypeData.Count)
+			{
+				return String.Empty;
+			}
+
+			foreach (EventType eventType in theEventTypeData)
+			{
+				String value = ((Byte)eventType).ToString().PadLeft(2, '0');
+				eventTypeBuilder.Append(value);
+				eventTypeBuilder.Append(delim);
+			}
+
+			String data = eventTypeBuilder.ToString();
+			data = data.Substring(0, data.Length - 1);
+			return data;
+		}
+
+		public String SerializeArgsData(IList<ValueType> theEventArgsData)
+		{
+			return String.Join("|", theEventArgsData);
 		}
 
 		public void AddLargeTargetMoveEvent(Vector2 position)
