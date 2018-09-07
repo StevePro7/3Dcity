@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using WindowsGame.Common.Static;
 using WindowsGame.Master.Interfaces;
 using Microsoft.Xna.Framework;
@@ -6,6 +7,13 @@ namespace WindowsGame.Common.Screens
 {
 	public class DemoScreen : BaseScreen, IScreen
 	{
+		private IList<Single> eventTimeList;
+		private IList<String> eventTypeList;
+		private IList<String> eventArgsList;
+
+		private IList<EventType> eventTypeData;
+		private IList<ValueType> eventArgsData;
+
 		public override void Initialize()
 		{
 			base.Initialize();

@@ -65,6 +65,11 @@ namespace WindowsGame.Common.Sprites
 			Midpoint = new Vector2(midX, midY);
 		}
 
+		public virtual void SetPosition(Vector2 position)
+		{
+			Position = position;
+		}
+
 		public virtual void Update(GameTime gameTime)
 		{
 			frameTimer += (UInt16)gameTime.ElapsedGameTime.Milliseconds;

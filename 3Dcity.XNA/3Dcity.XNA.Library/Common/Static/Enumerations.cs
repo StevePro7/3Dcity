@@ -40,6 +40,15 @@
 		SmallTargetMove,
 	}
 
+	public enum SpriteType
+	{
+		LargeTarget,
+		SmallTarget,
+		Bullet,
+		Enemy,
+		Explosion
+	}
+
 	public enum ScreenType
 	{
 		Splash,

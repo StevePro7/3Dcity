@@ -54,7 +54,7 @@ namespace WindowsGame.Common.Screens
 			Boolean fire = MyGame.Manager.InputManager.Fire();
 			if (fire)
 			{
-				Vector2 position = MyGame.Manager.SpriteManager.BigTarget.Position;
+				Vector2 position = MyGame.Manager.SpriteManager.LargeTarget.Position;
 				MyGame.Manager.BulletManager.Fire(position);
 			}
 

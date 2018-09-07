@@ -37,6 +37,9 @@ namespace WindowsGame.Common.Screens
 			//MyGame.Manager.EventManager.Update(gameTime);
 			//MyGame.Manager.ExplosionManager.Update(gameTime);
 			//MyGame.Manager.BulletManager.Update(gameTime);
+
+			MyGame.Manager.EventManager.ProcessEvents(gameTime);
+
 			return (Int32) CurrScreen;
 		}
 
@@ -54,10 +57,10 @@ namespace WindowsGame.Common.Screens
 
 		private static void MoveTarget(GameTime gameTime)
 		{
-			Vector2 largeTargetPosBEF = MyGame.Manager.SpriteManager.BigTarget.Position;
+			Vector2 largeTargetPosBEF = MyGame.Manager.SpriteManager.LargeTarget.Position;
 			Vector2 smallTargetPosBEF = MyGame.Manager.SpriteManager.SmallTarget.Position;
 			MyGame.Manager.SpriteManager.Update(gameTime);
-			Vector2 largeTargetPosAFT = MyGame.Manager.SpriteManager.BigTarget.Position;
+			Vector2 largeTargetPosAFT = MyGame.Manager.SpriteManager.LargeTarget.Position;
 			Vector2 smallTargetPosAFT = MyGame.Manager.SpriteManager.SmallTarget.Position;
 
 			if (largeTargetPosBEF != largeTargetPosAFT)

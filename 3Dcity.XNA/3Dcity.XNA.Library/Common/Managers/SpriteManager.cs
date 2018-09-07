@@ -11,13 +11,14 @@ namespace WindowsGame.Common.Managers
 		void LoadContent();
 
 		void SetMovement(Single horz, Single vert);
+		void SetPosition(SpriteType type, Vector2 position);
 		void Update(GameTime gameTime);
 
 		void Draw();
 
 		// Properties.
 		SmallTarget SmallTarget { get; }
-		LargeTarget BigTarget { get; }
+		LargeTarget LargeTarget { get; }
 	}
 
 	public class SpriteManager : ISpriteManager
@@ -31,7 +32,7 @@ namespace WindowsGame.Common.Managers
 
 		public void LoadContent()
 		{
-			BigTarget.LoadContent(MyGame.Manager.ImageManager.TargetBigRectangle);
+			LargeTarget.LoadContent(MyGame.Manager.ImageManager.TargetBigRectangle);
 			SmallTarget.LoadContent(MyGame.Manager.ImageManager.TargetSmallRectangle);
 		}
 
@@ -40,16 +41,31 @@ namespace WindowsGame.Common.Managers
 			targetHorz = horz;
 			targetVert = vert;
 		}
+
+		public void SetPosition(SpriteType type, Vector2 position)
+		{
+			switch (type)
+			{
+				case SpriteType.LargeTarget:
+					LargeTarget.SetPosition(position);
+					break;
+
+				case SpriteType.SmallTarget:
+					SmallTarget.SetPosition(position);
+					break;
+			}
+		}
+
 		public void Update(GameTime gameTime)
 		{
-			BigTarget.Update(gameTime, targetHorz, targetVert);
+			LargeTarget.Update(gameTime, targetHorz, targetVert);
 			SmallTarget.Update(gameTime, targetHorz, targetVert);
 		}
 
 		public void Draw()
 		{
 			SmallTarget.Draw();
-			BigTarget.Draw();
+			LargeTarget.Draw();
 		}
 
 		private void TheInit()
@@ -63,12 +79,12 @@ namespace WindowsGame.Common.Managers
 			const Byte targetSize = 64;
 			Vector2 bgPos = new Vector2((Constants.ScreenWide - 64) / 2.0f, 250);
 			Rectangle bgBounds = new Rectangle(-2, targetTop, Constants.ScreenWide - targetSize + 2, Constants.ScreenHigh - targetTop - targetSize + 2);
-			BigTarget = new LargeTarget();
-			BigTarget.Initialize(bgPos, Rectangle.Empty, bgBounds);
+			LargeTarget = new LargeTarget();
+			LargeTarget.Initialize(bgPos, Rectangle.Empty, bgBounds);
 		}
 
 		public SmallTarget SmallTarget { get; private set; }
-		public LargeTarget BigTarget { get; private set; }
+		public LargeTarget LargeTarget { get; private set; }
 
 	}
 }

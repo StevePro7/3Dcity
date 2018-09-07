@@ -41,7 +41,7 @@ namespace WindowsGame.Common.Screens
 				// OR if fire delay still running then true!
 				// otherwise fire = false;
 
-				Vector2 position = MyGame.Manager.SpriteManager.BigTarget.Position;
+				Vector2 position = MyGame.Manager.SpriteManager.LargeTarget.Position;
 				MyGame.Manager.BulletManager.Fire(position);
 			}
 
