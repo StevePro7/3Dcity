@@ -19,7 +19,8 @@ namespace WindowsGame.Common.Managers
 		void SerializeAllEvents();
 		String SerializeTypeData(IList<EventType> theEventTypeData);
 		String SerializeArgsData(IList<ValueType> theEventArgsData);
-
+		IList<EventType> DeserializeTypeText(String theEventTypeText);
+		IList<ValueType> DeserializeArgsText(String theEventArgsText);
 		void Update(GameTime gameTime);
 	}
 
@@ -162,6 +163,53 @@ namespace WindowsGame.Common.Managers
 			String data = eventArgsBuilder.ToString();
 			data = data.Substring(0, data.Length - 1);
 			return data;
+		}
+
+		public IList<EventType> DeserializeTypeText(String theEventTypeText)
+		{
+			eventTypeData.Clear();
+
+			String[] theList = theEventTypeText.Split(Constants.Delim1);
+			for (Byte index = 0; index < theList.Length; ++index)
+			{
+				String theText = theList[index];
+				if (0 == theText.Length)
+				{
+					continue;
+				}
+
+				EventType eventType = (EventType)Enum.Parse(typeof(EventType), theText, true);
+				eventTypeData.Add(eventType);
+			}
+
+			return eventTypeData;
+		}
+
+		public IList<ValueType> DeserializeArgsText(String theEventArgsText)
+		{
+			eventArgsData.Clear();
+
+			String[] theList = theEventArgsText.Split(Constants.Delim1);
+			for (Byte index = 0; index < theList.Length; ++index)
+			{
+				String theText = theList[index];
+				if (0 == theText.Length)
+				{
+					continue;
+				}
+
+				// Position [Vector2]
+				if (theText.Contains(Constants.Delim2[0].ToString()))
+				{
+					Vector2 position = Vector2.Zero;
+					String[] data = theText.Split(Constants.Delim2);
+					position.X = Convert.ToSingle(data[0]);
+					position.Y = Convert.ToSingle(data[1]);
+					eventArgsData.Add(position);
+				}
+			}
+
+			return eventArgsData;
 		}
 
 		public void AddLargeTargetMoveEvent(Vector2 position)

@@ -99,6 +99,76 @@ namespace WindowsGame.UnitTests.Managers
 			Assert.That("372.2:250|87.5:360", Is.EqualTo(result));
 		}
 
+		[Test]
+		public void DeserializeTypeTextNoneTest()
+		{
+			// Arrange.
+			String theEventTypeText = String.Empty;
+
+			// Act.
+			IList<EventType> result = EventManager.DeserializeTypeText(theEventTypeText);
+
+			// Assert.
+			Assert.That(0, Is.EqualTo(result.Count));
+		}
+		[Test]
+		public void DeserializeTypeTextOnceTest()
+		{
+			// Arrange.
+			const String theEventTypeText = "00";
+
+			// Act.
+			IList<EventType> result = EventManager.DeserializeTypeText(theEventTypeText);
+
+			// Assert.
+			Assert.That(1, Is.EqualTo(result.Count));
+			Assert.That(EventType.LargeTargetMove, Is.EqualTo(result[0]));
+		}
+
+		[Test]
+		public void DeserializeTypeTextTwiceTest()
+		{
+			// Arrange.
+			const String theEventTypeText = "00|01";
+
+			// Act.
+			IList<EventType> result = EventManager.DeserializeTypeText(theEventTypeText);
+
+			// Assert.
+			Assert.That(2, Is.EqualTo(result.Count));
+			Assert.That(EventType.LargeTargetMove, Is.EqualTo(result[0]));
+			Assert.That(EventType.SmallTargetMove, Is.EqualTo(result[1]));
+		}
+
+		[Test]
+		public void DeserializeArgsTextNoneTest()
+		{
+			// Arrange.
+			String theEventArgsText = String.Empty;
+
+			// Act.
+			IList<ValueType> result = EventManager.DeserializeArgsText(theEventArgsText);
+
+			// Assert.
+			Assert.That(0, Is.EqualTo(result.Count));
+		}
+
+		[Test]
+		public void DeserializeArgsTextOnceTest()
+		{
+			// Arrange.
+			const String theEventArgsText = "80:360";
+
+			// Act.
+			IList<ValueType> result = EventManager.DeserializeArgsText(theEventArgsText);
+
+			// Assert.
+			Assert.That(1, Is.EqualTo(result.Count));
+			Vector2 position = (Vector2)result[0];
+			Assert.That(80, Is.EqualTo(position.X));
+			Assert.That(360, Is.EqualTo(position.Y));
+		}
+
 		[TearDown]
 		public void TearDown()
 		{
