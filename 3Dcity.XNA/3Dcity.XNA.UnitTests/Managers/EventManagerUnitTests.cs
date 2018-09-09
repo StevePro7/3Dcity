@@ -124,7 +124,6 @@ namespace WindowsGame.UnitTests.Managers
 			Assert.That(1, Is.EqualTo(result.Count));
 			Assert.That(EventType.LargeTargetMove, Is.EqualTo(result[0]));
 		}
-
 		[Test]
 		public void DeserializeTypeTextTwiceTest()
 		{
@@ -152,7 +151,6 @@ namespace WindowsGame.UnitTests.Managers
 			// Assert.
 			Assert.That(0, Is.EqualTo(result.Count));
 		}
-
 		[Test]
 		public void DeserializeArgsTextOnceTest()
 		{
@@ -166,6 +164,21 @@ namespace WindowsGame.UnitTests.Managers
 			Assert.That(1, Is.EqualTo(result.Count));
 			Vector2 position = (Vector2)result[0];
 			Assert.That(80, Is.EqualTo(position.X));
+			Assert.That(360, Is.EqualTo(position.Y));
+		}
+		[Test]
+		public void DeserializeArgsTextTwiceTest()
+		{
+			// Arrange.
+			const String theEventArgsText = "348.99:241.88|87.5:360";
+
+			// Act.
+			IList<ValueType> result = EventManager.DeserializeArgsText(theEventArgsText);
+
+			// Assert.
+			Assert.That(2, Is.EqualTo(result.Count));
+			Vector2 position = (Vector2)result[1];
+			Assert.That(87.5f, Is.EqualTo(position.X));
 			Assert.That(360, Is.EqualTo(position.Y));
 		}
 

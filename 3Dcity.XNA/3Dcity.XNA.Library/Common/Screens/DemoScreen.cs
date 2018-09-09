@@ -16,6 +16,7 @@ namespace WindowsGame.Common.Screens
 
 		private UInt16 index;
 		private Single delta;
+		private Single timer;
 
 		public override void Initialize()
 		{
@@ -25,7 +26,7 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
-			const Byte commandId = 0;
+			const Byte commandId = 1;
 
 			eventTimeList = MyGame.Manager.CommandManager.CommandTimeList[commandId];
 			eventTypeList = MyGame.Manager.CommandManager.CommandTypeList[commandId];
@@ -33,6 +34,7 @@ namespace WindowsGame.Common.Screens
 
 			index = 0;
 			delta = 0.0f;
+			timer = 0.0f;
 
 			base.LoadContent();
 		}
@@ -49,17 +51,28 @@ namespace WindowsGame.Common.Screens
 			}
 
 			Single eventTime = eventTimeList[index];
-			Single timer = (Single)Math.Round(gameTime.ElapsedGameTime.TotalSeconds, 2);
+			//Single timer = (Single)Math.Round(gameTime.ElapsedGameTime.TotalSeconds, 2);
+			timer = (Single)gameTime.ElapsedGameTime.TotalSeconds;
 			delta += timer;
+			delta = (Single)Math.Round(delta, 2);
 
-			if (delta < eventTime)
+			if (delta >= eventTime)
 			{
-				return (Int32)CurrScreen;
-			}
+				// Process current event.
+				delta -= eventTime;
+				LoadNewEvents(index);
 
-			// Process current event.
-			delta -= eventTime;
-			LoadNewEvents(index);
+				Byte count = (Byte)(eventTypeData.Count);
+				for (Byte delim = 0; delim < count; ++delim)
+				{
+					EventType eventType = eventTypeData[delim];
+					ValueType eventArgs = eventArgsData[delim];
+
+					MyGame.Manager.EventManager.ProcessEvent(eventType, eventArgs);
+				}
+
+				index++;
+			}
 
 			return (Int32)CurrScreen;
 		}

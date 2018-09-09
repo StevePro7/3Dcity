@@ -3,11 +3,12 @@
 	<ScreenType>Demo</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Ready</ScreenType>-->
-	<FramesPerSecond>50</FramesPerSecond>
+	<FramesPerSecond>100</FramesPerSecond>
 	<LoadAudio>false</LoadAudio>
 	<SplashDelay>0</SplashDelay>
 	<StarDelay>2000</StarDelay>
 	<GridDelay>200</GridDelay>
+	<EventRatio>1.0</EventRatio>
 	<JoypadX>0</JoypadX>
 	<JoypadY>360</JoypadY>
 	<EnemyIndex>0</EnemyIndex>

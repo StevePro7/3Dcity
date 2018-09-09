@@ -40,6 +40,8 @@ namespace WindowsGame.Common.Managers
 		public void LoadContent()
 		{
 			LoadCommandData(0);
+			LoadCommandData(1);
+			LoadCommandData(2);
 		}
 
 		public void LoadCommandData(Byte commandId)
@@ -66,7 +68,9 @@ namespace WindowsGame.Common.Managers
 			IList<String> eventArgsList = new List<String>();
 
 			//const Single ratio = 0.5f;
-			const Single ratio = 1.0f;
+			//const Single ratio = 1.0f;
+			Single ratio = MyGame.Manager.ConfigManager.GlobalConfigData.EventRatio;
+
 			UInt16 count = (UInt16)(lines.Count);
 			for (UInt16 index = 0; index < count; ++index)
 			{
