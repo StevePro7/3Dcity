@@ -11,11 +11,6 @@ namespace WindowsGame.Common.Sprites
 			BulletType = BulletType.Idle;
 		}
 
-		public void SetPosition(Vector2 position)
-		{
-			Position = position;
-		}
-
 		public BulletType BulletType { get; private set; }
 	}
 

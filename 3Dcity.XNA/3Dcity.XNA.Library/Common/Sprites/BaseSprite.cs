@@ -65,7 +65,7 @@ namespace WindowsGame.Common.Sprites
 			Midpoint = new Vector2(midX, midY);
 		}
 
-		public virtual void SetPosition(Vector2 position)
+		public void SetPosition(Vector2 position)
 		{
 			Position = position;
 		}

@@ -35,19 +35,25 @@ namespace WindowsGame.Common.Managers
 		private StringBuilder eventTypeBuilder;
 		private StringBuilder eventArgsBuilder;
 
-		private Char[] delim;
+		private Char[] delim1;
+		private Char[] delim2;
 		private Single delta;
 		private Single timer;
 
 		public void Initialize()
 		{
+			eventTimeList = new List<Single>();
+			eventTypeList = new List<String>();
+			eventArgsList = new List<String>();
+
 			eventTypeData = new List<EventType>();
 			eventArgsData = new List<ValueType>();
 
 			eventTypeBuilder = new StringBuilder();
 			eventArgsBuilder = new StringBuilder();
 
-			delim = new[] { '|' };
+			delim1 = new[] { '|' };
+			delim2 = new[] { ':' };
 			delta = 0.0f;
 			timer = 0.0f;
 		}
@@ -128,7 +134,7 @@ namespace WindowsGame.Common.Managers
 			{
 				String value = ((Byte)eventType).ToString().PadLeft(2, '0');
 				eventTypeBuilder.Append(value);
-				eventTypeBuilder.Append(delim);
+				eventTypeBuilder.Append(delim1);
 			}
 
 			String data = eventTypeBuilder.ToString();
@@ -138,7 +144,27 @@ namespace WindowsGame.Common.Managers
 
 		public String SerializeArgsData(IList<ValueType> theEventArgsData)
 		{
-			return String.Join("|", theEventArgsData);
+			eventArgsBuilder.Length = 0;
+			if (0 == theEventArgsData.Count)
+			{
+				return String.Empty;
+			}
+
+			foreach (ValueType valueType in theEventArgsData)
+			{
+				if (valueType is Vector2)
+				{
+					Vector2 position = (Vector2)valueType;
+					eventTypeBuilder.Append(position.X.ToString().PadLeft(2, '0'));
+					eventTypeBuilder.Append(delim2);
+					eventTypeBuilder.Append(position.Y.ToString().PadLeft(2, '0'));
+					eventTypeBuilder.Append(delim1);
+				}
+			}
+
+			String data = eventTypeBuilder.ToString();
+			data = data.Substring(0, data.Length - 1);
+			return data;
 		}
 
 		public void AddLargeTargetMoveEvent(Vector2 position)

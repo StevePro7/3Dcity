@@ -55,7 +55,6 @@ namespace WindowsGame.Common.Sprites
 				accY *= RATIO;
 			}
 
-			//const Single max = 2.5f;					// TODO tweak maximum acceleration
 			if (accX > MAXIM)
 			{
 				accX = MAXIM;
