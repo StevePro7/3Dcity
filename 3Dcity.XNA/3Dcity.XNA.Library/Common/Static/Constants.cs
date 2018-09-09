@@ -7,7 +7,7 @@ namespace WindowsGame.Common.Static
 		public const String CONTENT_DIRECTORY = "Content";
 
 		public const String DATA_DIRECTORY = "Data";
-		
+
 
 		// Global data.
 		public const Boolean IsFixedTimeStep = true;
@@ -37,6 +37,12 @@ namespace WindowsGame.Common.Static
 		public const Byte DbleSize = 160;
 		public const Byte TargetSize = 64;
 		public const Byte EnemySize = 120;
+
+
+		// Delimiters.
+		public static readonly Char[] Delim0 = { ',' };
+		public static readonly Char[] Delim1 = { '|' };
+		public static readonly Char[] Delim2 = { ':' };
 
 
 		// Custom data.

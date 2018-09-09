@@ -14,18 +14,27 @@ namespace WindowsGame.SystemTests
 {
 	public abstract class BaseSystemTests
 	{
+		protected IBulletManager BulletManager;
 		protected ICollisionManager CollisionManager;
+		protected ICommandManager CommandManager;
 		protected IConfigManager ConfigManager;
 		protected IContentManager ContentManager;
+		protected IControlManager ControlManager;
 		protected IDeviceManager DeviceManager;
+		protected IEnemyManager EnemyManager;
+		protected IEventManager EventManager;
+		protected IExplosionManager ExplosionManager;
+		protected IIconManager IconManager;
 		protected IImageManager ImageManager;
 		protected IInputManager InputManager;
 		protected IRandomManager RandomManager;
+		protected IRenderManager RenderManager;
 		protected IResolutionManager ResolutionManager;
 		protected IScoreManager ScoreManager;
 		protected IScreenManager ScreenManager;
 		protected ISoundManager SoundManager;
 		protected ISpriteManager SpriteManager;
+		protected IStateManager StateManager;
 		protected IStorageManager StorageManager;
 		protected ITextManager TextManager;
 		protected IThreadManager ThreadManager;
@@ -33,7 +42,8 @@ namespace WindowsGame.SystemTests
 		protected ILogger Logger;
 
 		// mklink /D D:\3Dcity.XNA.Content D:\SVN\3Dcity\3Dcity.XNA\3Dcity.XNA\3Dcity.XNA\bin\x86\Debug\
-		protected const String CONTENT_ROOT = @"C:\3Dcity.XNA.Content\";
+		// mklink /D E:\3Dcity.XNA.Content E:\GitHub\StevePro7\3Dcity\3Dcity.XNA\3Dcity.XNA\3Dcity.XNA\bin\x86\Debug\
+		protected const String CONTENT_ROOT = @"E:\3Dcity.XNA.Content\";
 
 #pragma warning disable 618
 		[TestFixtureSetUp]

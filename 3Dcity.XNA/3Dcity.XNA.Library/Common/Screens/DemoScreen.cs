@@ -14,9 +14,13 @@ namespace WindowsGame.Common.Screens
 		private IList<EventType> eventTypeData;
 		private IList<ValueType> eventArgsData;
 
+		private UInt16 index;
+		private Single delta;
+
 		public override void Initialize()
 		{
 			base.Initialize();
+			LoadTextData();
 		}
 
 		public override void LoadContent()
@@ -32,6 +36,11 @@ namespace WindowsGame.Common.Screens
 		public override void Draw()
 		{
 			//base.Draw();
+			MyGame.Manager.IconManager.DrawControls();
+
+			MyGame.Manager.SpriteManager.Draw();
+
+			MyGame.Manager.TextManager.Draw(TextDataList);
 		}
 
 	}

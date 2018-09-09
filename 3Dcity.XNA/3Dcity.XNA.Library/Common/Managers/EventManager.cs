@@ -35,8 +35,6 @@ namespace WindowsGame.Common.Managers
 		private StringBuilder eventTypeBuilder;
 		private StringBuilder eventArgsBuilder;
 
-		private Char[] delim1;
-		private Char[] delim2;
 		private Single delta;
 		private Single timer;
 
@@ -52,8 +50,6 @@ namespace WindowsGame.Common.Managers
 			eventTypeBuilder = new StringBuilder();
 			eventArgsBuilder = new StringBuilder();
 
-			delim1 = new[] { '|' };
-			delim2 = new[] { ':' };
 			delta = 0.0f;
 			timer = 0.0f;
 		}
@@ -135,7 +131,7 @@ namespace WindowsGame.Common.Managers
 			{
 				String value = ((Byte)eventType).ToString().PadLeft(2, '0');
 				eventTypeBuilder.Append(value);
-				eventTypeBuilder.Append(delim1);
+				eventTypeBuilder.Append(Constants.Delim1);
 			}
 
 			String data = eventTypeBuilder.ToString();
@@ -157,9 +153,9 @@ namespace WindowsGame.Common.Managers
 				{
 					Vector2 position = (Vector2)valueType;
 					eventArgsBuilder.Append(Math.Round(position.X, 2).ToString().PadLeft(2, '0'));
-					eventArgsBuilder.Append(delim2);
+					eventArgsBuilder.Append(Constants.Delim2);
 					eventArgsBuilder.Append(Math.Round(position.Y, 2).ToString().PadLeft(2, '0'));
-					eventArgsBuilder.Append(delim1);
+					eventArgsBuilder.Append(Constants.Delim1);
 				}
 			}
 
