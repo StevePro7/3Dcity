@@ -97,6 +97,7 @@ namespace WindowsGame.Common
 			//Boolean escape = Manager.InputManager.Escape();
 			if (escape)
 			{
+				MyGame.Manager.EventManager.SerializeAllEvents();
 				Engine.Game.Exit();
 				return;
 			}

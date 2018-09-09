@@ -113,12 +113,13 @@ namespace WindowsGame.Common.Managers
 			UInt16 count = (UInt16)(eventTimeList.Count);
 			for (UInt16 index = 0; index < count; ++index)
 			{
-				Single time = (Single)Math.Round(eventTimeList[index], 2);
+				String time = eventTimeList[index].ToString().PadLeft(2, '0');
 				String type = eventTypeList[index];
 				String args = eventArgsList[index];
 				String value = String.Format("{0},{1},{2}", time, type, args);
 				System.Diagnostics.Debug.WriteLine(value);
 			}
+
 			System.Diagnostics.Debug.WriteLine(String.Empty);
 		}
 
@@ -155,14 +156,14 @@ namespace WindowsGame.Common.Managers
 				if (valueType is Vector2)
 				{
 					Vector2 position = (Vector2)valueType;
-					eventTypeBuilder.Append(position.X.ToString().PadLeft(2, '0'));
-					eventTypeBuilder.Append(delim2);
-					eventTypeBuilder.Append(position.Y.ToString().PadLeft(2, '0'));
-					eventTypeBuilder.Append(delim1);
+					eventArgsBuilder.Append(Math.Round(position.X, 2).ToString().PadLeft(2, '0'));
+					eventArgsBuilder.Append(delim2);
+					eventArgsBuilder.Append(Math.Round(position.Y, 2).ToString().PadLeft(2, '0'));
+					eventArgsBuilder.Append(delim1);
 				}
 			}
 
-			String data = eventTypeBuilder.ToString();
+			String data = eventArgsBuilder.ToString();
 			data = data.Substring(0, data.Length - 1);
 			return data;
 		}
