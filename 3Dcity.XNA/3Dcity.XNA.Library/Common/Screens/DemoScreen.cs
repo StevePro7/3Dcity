@@ -41,14 +41,20 @@ namespace WindowsGame.Common.Screens
 
 		public override Int32 Update(GameTime gameTime)
 		{
-			MyGame.Manager.EventManager.ClearEvents();
-
-			UpdateTimer(gameTime);
+			base.Update(gameTime);
+			if (GamePause)
+			{
+				return (Int32)CurrScreen;
+			}
 
 			if (index >= eventTimeList.Count)
 			{
 				return (Int32)CurrScreen;
 			}
+
+			UpdateTimer(gameTime);
+
+			MyGame.Manager.EventManager.ClearEvents();
 
 			Single eventTime = eventTimeList[index];
 			//Single timer = (Single)Math.Round(gameTime.ElapsedGameTime.TotalSeconds, 2);
@@ -79,7 +85,7 @@ namespace WindowsGame.Common.Screens
 
 		public override void Draw()
 		{
-			//base.Draw();
+			base.Draw();
 			MyGame.Manager.IconManager.DrawControls();
 
 			MyGame.Manager.SpriteManager.Draw();

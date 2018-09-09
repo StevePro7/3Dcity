@@ -102,19 +102,19 @@ namespace WindowsGame.Common.Managers
 		private void PauseAllAudio()
 		{
 			PauseMusic();
-			foreach (SoundEffectInstance soundEffect in Assets.SoundEffectDictionary.Values)
-			{
-				soundFactory.PauseSoundEffect(soundEffect);
-			}
+			//foreach (SoundEffectInstance soundEffect in Assets.SoundEffectDictionary.Values)
+			//{
+			//    soundFactory.PauseSoundEffect(soundEffect);
+			//}
 		}
 
 		private void ResumeAllAudio()
 		{
 			ResumeMusic();
-			foreach (SoundEffectInstance soundEffect in Assets.SoundEffectDictionary.Values)
-			{
-				soundFactory.ResumeSoundEffect(soundEffect);
-			}
+			//foreach (SoundEffectInstance soundEffect in Assets.SoundEffectDictionary.Values)
+			//{
+			//    soundFactory.ResumeSoundEffect(soundEffect);
+			//}
 		}
 
 	}
