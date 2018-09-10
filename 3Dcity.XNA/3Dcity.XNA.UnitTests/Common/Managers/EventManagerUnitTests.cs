@@ -5,7 +5,7 @@ using WindowsGame.Common.Static;
 using Microsoft.Xna.Framework;
 using NUnit.Framework;
 
-namespace WindowsGame.UnitTests.Managers
+namespace WindowsGame.UnitTests.Common.Managers
 {
 	[TestFixture]
 	public class EventManagerUnitTests : BaseUnitTests

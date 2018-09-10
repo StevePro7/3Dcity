@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 using WindowsGame.Common;
-using WindowsGame.Common.Managers;
 
-namespace WindowsGame.SystemTests.Managers
+namespace WindowsGame.SystemTests.Common.Managers
 {
 	[TestFixture]
 	public class CommandManagerSystemTests : BaseSystemTests

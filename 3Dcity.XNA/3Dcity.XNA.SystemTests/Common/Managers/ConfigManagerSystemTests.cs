@@ -5,7 +5,7 @@ using WindowsGame.Common;
 using WindowsGame.Common.Data;
 using WindowsGame.Common.Static;
 
-namespace WindowsGame.SystemTests.Managers
+namespace WindowsGame.SystemTests.Common.Managers
 {
 	[TestFixture]
 	public class ConfigManagerSystemTests : BaseSystemTests

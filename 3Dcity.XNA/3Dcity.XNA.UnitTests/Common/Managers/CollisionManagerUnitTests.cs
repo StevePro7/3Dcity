@@ -1,23 +1,23 @@
 ﻿using WindowsGame.Common.Managers;
 using NUnit.Framework;
-namespace WindowsGame.UnitTests.Managers
+
+namespace WindowsGame.UnitTests.Common.Managers
 {
 	[TestFixture]
-	public class SpriteManagerUnitTests : BaseUnitTests
+	public class CollisionManagerUnitTests : BaseUnitTests
 	{
 		[SetUp]
 		public new void SetUp()
 		{
 			// System under test.
-			SpriteManager = new SpriteManager();
+			CollisionManager = new CollisionManager();
 			base.SetUp();
 		}
 
 		[Test]
-		public void MyTest()
+		public void CheckEnemyCollisionExitTest()
 		{
-			SpriteManager.Initialize();
-			SpriteManager.SetMovement(0, 0);
+			Assert.That(1, Is.EqualTo(1));
 		}
 
 		[TearDown]
@@ -25,5 +25,6 @@ namespace WindowsGame.UnitTests.Managers
 		{
 			CollisionManager = null;
 		}
+
 	}
 }

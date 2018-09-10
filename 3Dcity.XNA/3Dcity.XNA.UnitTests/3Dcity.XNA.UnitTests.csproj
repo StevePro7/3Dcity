@@ -55,11 +55,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseUnitTests.cs" />
-    <Compile Include="Managers\CollisionManagerUnitTests.cs" />
-    <Compile Include="Managers\ControlManagerUnitTests.cs" />
-    <Compile Include="Managers\EventManagerUnitTests.cs" />
-    <Compile Include="Managers\EnemyManagerUnitTests.cs" />
-    <Compile Include="Managers\SpriteManagerUnitTests.cs" />
+    <Compile Include="Common\Managers\CollisionManagerUnitTests.cs" />
+    <Compile Include="Common\Managers\ControlManagerUnitTests.cs" />
+    <Compile Include="Common\Managers\EventManagerUnitTests.cs" />
+    <Compile Include="Common\Managers\EnemyManagerUnitTests.cs" />
+    <Compile Include="Common\Managers\SpriteManagerUnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using NUnit.Framework;
 using WindowsGame.Common.Managers;
 
-namespace WindowsGame.UnitTests.Managers
+namespace WindowsGame.UnitTests.Common.Managers
 {
 	[TestFixture]
 	public class ControlManagerUnitTests : BaseUnitTests

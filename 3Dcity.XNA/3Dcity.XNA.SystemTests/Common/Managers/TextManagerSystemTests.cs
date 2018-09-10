@@ -5,7 +5,7 @@ using WindowsGame.Common;
 using WindowsGame.Common.Screens;
 using WindowsGame.Master.Objects;
 
-namespace WindowsGame.SystemTests.Managers
+namespace WindowsGame.SystemTests.Common.Managers
 {
 	[TestFixture]
 	public class TextManagerSystemTests : BaseSystemTests

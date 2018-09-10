@@ -1,7 +1,7 @@
 ﻿using WindowsGame.Common.Managers;
 using NUnit.Framework;
 
-namespace WindowsGame.UnitTests.Managers
+namespace WindowsGame.UnitTests.Common.Managers
 {
 	[TestFixture]
 	public class EnemyManagerUnitTests : BaseUnitTests

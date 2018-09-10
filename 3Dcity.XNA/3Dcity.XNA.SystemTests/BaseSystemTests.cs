@@ -8,7 +8,7 @@ using WindowsGame.Common.TheGame;
 using WindowsGame.Master.Interfaces;
 using WindowsGame.Master.IoC;
 using WindowsGame.Master.Managers;
-using WindowsGame.SystemTests.Implementation;
+using WindowsGame.SystemTests.Master.Implementation;
 
 namespace WindowsGame.SystemTests
 {
