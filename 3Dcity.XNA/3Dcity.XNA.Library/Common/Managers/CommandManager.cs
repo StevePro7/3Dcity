@@ -21,6 +21,7 @@ namespace WindowsGame.Common.Managers
 	public class CommandManager : ICommandManager
 	{
 		private String commandRoot;
+		private Single ratio;
 
 		private const String EVENTS_DIRECTORY = "Events";
 
@@ -35,10 +36,15 @@ namespace WindowsGame.Common.Managers
 			CommandTimeList = new Dictionary<Byte, IList<Single>>();
 			CommandTypeList = new Dictionary<Byte, IList<String>>();
 			CommandArgsList = new Dictionary<Byte, IList<String>>();
+
+			ratio = 1.0f;
 		}
 
 		public void LoadContent()
 		{
+			// Check if ratio configured externally for testing.
+			ratio = MyGame.Manager.ConfigManager.GlobalConfigData.EventRatio;
+
 			LoadCommandData(0);
 			LoadCommandData(1);
 			LoadCommandData(2);
@@ -66,10 +72,6 @@ namespace WindowsGame.Common.Managers
 			IList<Single> eventTimeList = new List<Single>();
 			IList<String> eventTypeList = new List<String>();
 			IList<String> eventArgsList = new List<String>();
-
-			//const Single ratio = 0.5f;
-			//const Single ratio = 1.0f;
-			Single ratio = MyGame.Manager.ConfigManager.GlobalConfigData.EventRatio;
 
 			UInt16 count = (UInt16)(lines.Count);
 			for (UInt16 index = 0; index < count; ++index)

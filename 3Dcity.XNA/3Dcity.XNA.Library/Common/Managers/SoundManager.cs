@@ -32,7 +32,9 @@ namespace WindowsGame.Common.Managers
 
 		public void Initialize()
 		{
-			soundFactory.Initialize();
+			// TODO revert
+			//soundFactory.Initialize();
+			soundFactory.Initialize(false, false);
 		}
 
 		public void GamePause(Boolean gamePause)

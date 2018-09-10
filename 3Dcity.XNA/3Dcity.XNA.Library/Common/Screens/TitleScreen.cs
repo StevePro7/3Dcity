@@ -86,10 +86,10 @@ namespace WindowsGame.Common.Screens
 		public override void Draw()
 		{
 			// Sprite sheet #01.
-			base.Draw();
-			MyGame.Manager.IconManager.DrawControls();
+			//base.Draw();
+			//MyGame.Manager.IconManager.DrawControls();
 
-			MyGame.Manager.TextManager.Draw(TextDataList);
+			//MyGame.Manager.TextManager.Draw(TextDataList);
 
 			// Sprite sheet #02.
 
@@ -107,14 +107,18 @@ namespace WindowsGame.Common.Screens
 		private Vector2[] GetPositions(int sx, int sy)
 		{
 			positions = positions = new Vector2[Constants.MAX_ENEMY];
-			positions[0] = GetPosition(25, sx, sy);
-			positions[1] = GetPosition(32, sx, sy);
-			positions[2] = GetPosition(40, sx, sy);
-			positions[3] = GetPosition(50, sx, sy);
-			positions[4] = GetPosition(64, sx, sy);
-			positions[5] = GetPosition(80, sx, sy);
-			positions[6] = GetPosition(96, sx, sy);
-			positions[7] = GetPosition(120, sx, sy);
+			for (Byte loop = 0; loop < Constants.MAX_ENEMY; loop++)
+			{
+				positions[loop] = new Vector2(sx, sy);
+			}
+			//positions[0] = GetPosition(25, sx, sy);
+			//positions[1] = GetPosition(32, sx, sy);
+			//positions[2] = GetPosition(40, sx, sy);
+			//positions[3] = GetPosition(50, sx, sy);
+			//positions[4] = GetPosition(64, sx, sy);
+			//positions[5] = GetPosition(80, sx, sy);
+			//positions[6] = GetPosition(96, sx, sy);
+			//positions[7] = GetPosition(120, sx, sy);
 			return positions;
 		}
 		private static Vector2 GetPosition(Byte off, int tx, int ty)
