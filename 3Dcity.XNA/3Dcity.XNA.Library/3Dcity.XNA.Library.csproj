@@ -152,6 +152,7 @@
     <Compile Include="Master\Managers\FileManager.cs" />
     <Compile Include="Master\Managers\RandomManager.cs" />
     <Compile Include="Master\Managers\ResolutionManager.cs" />
+    <Compile Include="Master\Managers\StopwatchManager.cs" />
     <Compile Include="Master\Objects\TextData.cs" />
     <Compile Include="Master\Static\Registration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

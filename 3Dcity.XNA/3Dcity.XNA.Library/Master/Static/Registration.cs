@@ -25,6 +25,7 @@ namespace WindowsGame.Master.Static
 			// Managers.
 			IoCContainer.Initialize<IRandomManager, RandomManager>();
 			IoCContainer.Initialize<IResolutionManager, ResolutionManager>();
+			IoCContainer.Initialize<IStopwatchManager, StopwatchManager>();
 
 			IoCContainer.Initialize<IFileProxy, ProdFileProxy>();
 			IoCContainer.Initialize<IFileManager, FileManager>();

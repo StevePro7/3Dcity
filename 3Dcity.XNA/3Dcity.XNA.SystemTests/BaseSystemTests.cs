@@ -35,6 +35,7 @@ namespace WindowsGame.SystemTests
 		protected ISoundManager SoundManager;
 		protected ISpriteManager SpriteManager;
 		protected IStateManager StateManager;
+		protected IStopwatchManager StopwatchManager;
 		protected IStorageManager StorageManager;
 		protected ITextManager TextManager;
 		protected IThreadManager ThreadManager;

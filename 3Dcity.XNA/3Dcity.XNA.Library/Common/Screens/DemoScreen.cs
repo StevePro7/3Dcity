@@ -26,7 +26,7 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
-			const Byte commandId = 1;
+			const Byte commandId = 2;
 
 			eventTimeList = MyGame.Manager.CommandManager.CommandTimeList[commandId];
 			eventTypeList = MyGame.Manager.CommandManager.CommandTypeList[commandId];
@@ -36,6 +36,7 @@ namespace WindowsGame.Common.Screens
 			delta = 0.0f;
 			timer = 0.0f;
 
+			MyGame.Manager.StopwatchManager.Start();
 			base.LoadContent();
 		}
 
@@ -49,6 +50,8 @@ namespace WindowsGame.Common.Screens
 
 			if (index >= eventTimeList.Count)
 			{
+				MyGame.Manager.StopwatchManager.Stop();
+				Int64 time = MyGame.Manager.StopwatchManager.ElapsedMilliseconds;
 				return (Int32)CurrScreen;
 			}
 

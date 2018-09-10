@@ -32,6 +32,7 @@ namespace WindowsGame.UnitTests
 		protected ISoundManager SoundManager;
 		protected ISpriteManager SpriteManager;
 		protected IStateManager StateManager;
+		protected IStopwatchManager StopwatchManager;
 		protected IStorageManager StorageManager;
 		protected ITextManager TextManager;
 		protected IThreadManager ThreadManager;
@@ -64,6 +65,7 @@ namespace WindowsGame.UnitTests
 			SoundManager = MockRepository.GenerateStub<ISoundManager>();
 			SpriteManager = MockRepository.GenerateStub<ISpriteManager>();
 			StateManager = MockRepository.GenerateStub<IStateManager>();
+			StopwatchManager = MockRepository.GenerateStub<IStopwatchManager>();
 			StorageManager = MockRepository.GenerateStub<IStorageManager>();
 			TextManager = MockRepository.GenerateStub<ITextManager>();
 			ThreadManager = MockRepository.GenerateStub<IThreadManager>();
@@ -96,6 +98,7 @@ namespace WindowsGame.UnitTests
 				SoundManager,
 				SpriteManager,
 				StateManager,
+				StopwatchManager,
 				StorageManager,
 				TextManager,
 				ThreadManager,
@@ -132,6 +135,7 @@ namespace WindowsGame.UnitTests
 			SoundManager = null;
 			SpriteManager = null;
 			StateManager = null;
+			StopwatchManager = null;
 			StorageManager = null;
 			TextManager = null;
 			ThreadManager = null;

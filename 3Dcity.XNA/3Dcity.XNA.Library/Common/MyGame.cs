@@ -61,6 +61,7 @@ namespace WindowsGame.Common
 			Manager.SoundManager.Initialize();
 			Manager.SpriteManager.Initialize();
 			Manager.StateManager.Initialize();
+			Manager.StopwatchManager.Initialize();
 			Manager.StorageManager.Initialize();
 			Manager.TextManager.Initialize();
 

@@ -29,6 +29,7 @@ namespace WindowsGame.Common.TheGame
 		ISpriteManager SpriteManager { get; }
 		IStorageManager StorageManager { get; }
 		IStateManager StateManager { get; }
+		IStopwatchManager StopwatchManager { get; }
 		ITextManager TextManager { get; }
 		IThreadManager ThreadManager { get; }
 		IFileManager FileManager { get; }
@@ -60,6 +61,7 @@ namespace WindowsGame.Common.TheGame
 			ISoundManager soundManager,
 			ISpriteManager spriteManager,
 			IStateManager stateManager,
+			IStopwatchManager stopwatchManager,
 			IStorageManager storageManager,
 			ITextManager textManager,
 			IThreadManager threadManager,
@@ -87,8 +89,9 @@ namespace WindowsGame.Common.TheGame
 			ScreenManager = screenManager;
 			SoundManager = soundManager;
 			SpriteManager = spriteManager;
-			StorageManager = storageManager;
 			StateManager = stateManager;
+			StopwatchManager = stopwatchManager;
+			StorageManager = storageManager;
 			TextManager = textManager;
 			ThreadManager = threadManager;
 			FileManager = fileManager;
@@ -117,6 +120,7 @@ namespace WindowsGame.Common.TheGame
 		public ISpriteManager SpriteManager { get; private set; }
 		public IStorageManager StorageManager { get; private set; }
 		public IStateManager StateManager { get; private set; }
+		public IStopwatchManager StopwatchManager { get; private set; }
 		public ITextManager TextManager { get; private set; }
 		public IThreadManager ThreadManager { get; private set; }
 		public IFileManager FileManager { get; private set; }
