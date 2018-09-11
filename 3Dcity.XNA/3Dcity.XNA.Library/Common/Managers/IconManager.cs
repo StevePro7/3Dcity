@@ -32,29 +32,29 @@ namespace WindowsGame.Common.Managers
 			const Byte fireOffset = 200;
 
 			GameState = new GameState();
-			Vector2 statePosn = new Vector2(5, 4);
-			Rectangle stateColl = new Rectangle(0, 0, gameOffset, gameOffset);
+			Vector2 statePosn = new Vector2(5, 4 + Constants.GameOffsetY);
+			Rectangle stateColl = new Rectangle(0, + Constants.GameOffsetY, gameOffset, gameOffset);
 			GameState.Initialize(statePosn, stateColl);
 
 			GameSound = new GameSound();
-			Vector2 soundPosn = new Vector2(725, 4);
-			Rectangle soundColl = new Rectangle(Constants.ScreenWide - gameOffset, 0, gameOffset, gameOffset);
+			Vector2 soundPosn = new Vector2(725, 4 + Constants.GameOffsetY);
+			Rectangle soundColl = new Rectangle(Constants.ScreenWide - gameOffset, 0 + Constants.GameOffsetY, gameOffset, gameOffset);
 			GameSound.Initialize(soundPosn, soundColl);
 
 
 			// Joystick controller.
 			JoypadMove = new JoypadMove();
-			Vector2 jpPos = new Vector2(20, 300);
+			Vector2 jpPos = new Vector2(20, 300 + Constants.GameOffsetY);
 			//Rectangle jpColl = new Rectangle(0, 280, 200, 200);
 			//Rectangle jpColl = new Rectangle(-200, 80, 600, 600);
-			Rectangle jpColl = new Rectangle(-100, 180, 400, 400);
-			Rectangle jpBndl = new Rectangle(0, 280, 200, 200);
+			Rectangle jpColl = new Rectangle(-100, 180 + Constants.GameOffsetY, 400, 400);
+			Rectangle jpBndl = new Rectangle(0, 280 + Constants.GameOffsetY, 200, 200);
 			JoypadMove.Initialize(jpPos, jpColl, jpBndl);
 
 			// Joystick fire button.
 			JoyButton = new JoyButton();
-			Vector2 firePosn = new Vector2(Constants.ScreenWide - 80 - (2 * 20), Constants.ScreenHigh - 80 - (1 * 20));
-			Rectangle fireColl = new Rectangle(Constants.ScreenWide - fireOffset, Constants.ScreenHigh - fireOffset, fireOffset, fireOffset);
+			Vector2 firePosn = new Vector2(Constants.ScreenWide - 80 - (2 * 20), Constants.ScreenHigh - Constants.GameOffsetY - 80 - (1 * 20));
+			Rectangle fireColl = new Rectangle(Constants.ScreenWide - fireOffset, Constants.ScreenHigh - Constants.GameOffsetY - fireOffset, fireOffset, fireOffset);
 			JoyButton.Initialize(firePosn, fireColl);
 		}
 

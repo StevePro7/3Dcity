@@ -15,9 +15,9 @@ namespace WindowsGame.Common.Managers
 		void Draw();
 
 		IList<TextData> LoadTextData(String screen);
-		IList<TextData> LoadTextData(String screen, Byte textsSize, UInt32 offsetX, Single fontX, Single fontY);
+		IList<TextData> LoadTextData(String screen, Byte textsSize, UInt16 offsetX, UInt16 offsetY, Single fontX, Single fontY);
 		Vector2 GetTextPosition(SByte x, SByte y);
-		Vector2 GetTextPosition(SByte x, SByte y, Byte textsSize, UInt32 offsetX, Single fontX, Single fontY);
+		Vector2 GetTextPosition(SByte x, SByte y, Byte textsSize, UInt16 offsetX, UInt16 offsetY, Single fontX, Single fontY);
 
 		void Draw(IEnumerable<TextData> textDataList);
 	}
@@ -53,12 +53,11 @@ namespace WindowsGame.Common.Managers
 
 		public IList<TextData> LoadTextData(String screen)
 		{
-			return LoadTextData(screen, Constants.TextsSize, Constants.GameOffsetX, Constants.FontOffsetX, Constants.FontOffsetY);
+			return LoadTextData(screen, Constants.TextsSize, Constants.GameOffsetX, Constants.GameOffsetY, Constants.FontOffsetX, Constants.FontOffsetY);
 		}
 
-		public IList<TextData> LoadTextData(String screen, Byte textsSize, UInt32 offsetX, Single fontX, Single fontY)
+		public IList<TextData> LoadTextData(String screen, Byte textsSize, UInt16 offsetX, UInt16 offsetY, Single fontX, Single fontY)
 		{
-			//String file = GetTextFile(screen + ".txt");
 			String file = String.Format("{0}/{1}.txt", textFileRoot, screen);
 			var lines = MyGame.Manager.FileManager.LoadTxt(file);
 
@@ -80,7 +79,7 @@ namespace WindowsGame.Common.Managers
 				{
 					color = ConvertFromHex(items[3]);
 				}
-				Vector2 postion = GetTextPosition(x, y, textsSize, offsetX, fontX, fontY);
+				Vector2 postion = GetTextPosition(x, y, textsSize, offsetX, offsetY, fontX, fontY);
 				TextData item = new TextData(postion, message, color);
 
 				textDataList.Add(item);
@@ -91,11 +90,11 @@ namespace WindowsGame.Common.Managers
 
 		public Vector2 GetTextPosition(SByte x, SByte y)
 		{
-			return GetTextPosition(x, y, Constants.TextsSize, Constants.GameOffsetX, Constants.FontOffsetX, Constants.FontOffsetY);
+			return GetTextPosition(x, y, Constants.TextsSize, Constants.GameOffsetX, Constants.GameOffsetY, Constants.FontOffsetX, Constants.FontOffsetY);
 		}
-		public Vector2 GetTextPosition(SByte x, SByte y, Byte textsSize, UInt32 offsetX, Single fontX, Single fontY)
+		public Vector2 GetTextPosition(SByte x, SByte y, Byte textsSize, UInt16 offsetX, UInt16 offsetY, Single fontX, Single fontY)
 		{
-			return new Vector2(x * textsSize + offsetX + fontX, y * textsSize + fontY);
+			return new Vector2(x * textsSize + offsetX + fontX, y * textsSize + offsetY + fontY);
 		}
 
 		public void Draw(IEnumerable<TextData> textDataList)

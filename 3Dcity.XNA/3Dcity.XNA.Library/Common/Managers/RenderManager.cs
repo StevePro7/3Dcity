@@ -20,6 +20,7 @@ namespace WindowsGame.Common.Managers
 		private Rectangle[] gridRectangles;
 		private Rectangle[] starRectangles;
 		private Rectangle backRectangle;
+		private Vector2 backPosition;
 		private Vector2 starPosition;
 		private Vector2 gridPosition;
 		private Vector2 origin;
@@ -35,8 +36,9 @@ namespace WindowsGame.Common.Managers
 			starTimer = gridTimer = 0;
 			starIndex = gridIndex = 0;
 
-			starPosition = new Vector2(0, 80);
-			gridPosition = new Vector2(0, 240);
+			backPosition = new Vector2(0, 0 + Constants.GameOffsetY);
+			starPosition = new Vector2(0, 80 + Constants.GameOffsetY);
+			gridPosition = new Vector2(0, 240 + Constants.GameOffsetY);
 			origin = new Vector2(40, 0);
 			rotation = MathHelper.ToRadians(270);
 		}
@@ -93,7 +95,7 @@ namespace WindowsGame.Common.Managers
 
 		public void Draw()
 		{
-			Engine.SpriteBatch.Draw(Assets.SpriteSheet01Texture, Vector2.Zero, backRectangle, Color.White);
+			Engine.SpriteBatch.Draw(Assets.SpriteSheet01Texture, backPosition, backRectangle, Color.White);
 			Engine.SpriteBatch.Draw(Assets.SpriteSheet01Texture, gridPosition, gridRectangles[gridIndex], Color.White);
 			Engine.SpriteBatch.Draw(Assets.SpriteSheet01Texture, starPosition, starRectangles[starIndex], Color.White, rotation, origin, 1.0f, SpriteEffects.None, 1.0f);
 		}

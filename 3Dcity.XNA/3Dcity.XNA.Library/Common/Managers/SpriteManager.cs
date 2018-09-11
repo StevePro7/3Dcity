@@ -70,15 +70,15 @@ namespace WindowsGame.Common.Managers
 
 		private void TheInit()
 		{
-			Vector2 stPos = new Vector2(80, 360);
-			Rectangle stBounds = new Rectangle(30, 310, 100, 100);
+			Vector2 stPos = new Vector2(80, 360 + Constants.GameOffsetY);
+			Rectangle stBounds = new Rectangle(30, 310 + Constants.GameOffsetY, 100, 100);
 			SmallTarget = new SmallTarget();
 			SmallTarget.Initialize(stPos, stBounds);
 
 			const Byte targetTop = 74;
 			const Byte targetSize = 64;
-			Vector2 bgPos = new Vector2((Constants.ScreenWide - 64) / 2.0f, 250);
-			Rectangle bgBounds = new Rectangle(-2, targetTop, Constants.ScreenWide - targetSize + 2, Constants.ScreenHigh - targetTop - targetSize + 2);
+			Vector2 bgPos = new Vector2((Constants.ScreenWide - 64) / 2.0f, 250 + Constants.GameOffsetY);
+			Rectangle bgBounds = new Rectangle(-2, targetTop + Constants.GameOffsetY, Constants.ScreenWide - targetSize + 2, Constants.ScreenHigh - (2 * Constants.GameOffsetY) - targetTop - targetSize + 2);
 			LargeTarget = new LargeTarget();
 			LargeTarget.Initialize(bgPos, Rectangle.Empty, bgBounds);
 		}

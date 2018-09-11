@@ -39,15 +39,15 @@ namespace WindowsGame.Common.Managers
 
 			// Sprite sheet #01.
 			GridRectangles = new Rectangle[Constants.MAX_GRID];
-			GridRectangles[0] = new Rectangle(0, Constants.ScreenHalf * 1, Constants.ScreenWide, Constants.ScreenHalf);
-			GridRectangles[1] = new Rectangle(0, Constants.ScreenHalf * 2, Constants.ScreenWide, Constants.ScreenHalf);
-			GridRectangles[2] = new Rectangle(0, Constants.ScreenHalf * 3, Constants.ScreenWide, Constants.ScreenHalf);
+			GridRectangles[0] = new Rectangle(0, Constants.GridHeight * 1, Constants.ScreenWide, Constants.GridHeight);
+			GridRectangles[1] = new Rectangle(0, Constants.GridHeight * 2, Constants.ScreenWide, Constants.GridHeight);
+			GridRectangles[2] = new Rectangle(0, Constants.GridHeight * 3, Constants.ScreenWide, Constants.GridHeight);
 
 			StarRectangles = new Rectangle[Constants.MAX_STAR];
 			StarRectangles[0] = new Rectangle(Constants.ScreenWide + halfSize * 0, dbleSize, halfSize, Constants.ScreenWide);
 			StarRectangles[1] = new Rectangle(Constants.ScreenWide + halfSize * 1, dbleSize, halfSize, Constants.ScreenWide);
 
-			BackRectangle = new Rectangle(0, Constants.ScreenHalf * 0, Constants.ScreenWide, Constants.ScreenHalf);
+			BackRectangle = new Rectangle(0, Constants.GridHeight * 0, Constants.ScreenWide, Constants.GridHeight);
 
 			JoypadRectangle = new Rectangle(Constants.ScreenWide, 0, dbleSize, dbleSize);
 			JoyButtonRectangles = new Rectangle[2];

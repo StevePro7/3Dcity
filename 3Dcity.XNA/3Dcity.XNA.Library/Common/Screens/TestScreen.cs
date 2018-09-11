@@ -44,17 +44,20 @@ namespace WindowsGame.Common.Screens
 
 		private Vector2[] GetBoxPositions()
 		{
+			const Single hi = 80 + Constants.GameOffsetY;
+			const Single lo = 280 + Constants.GameOffsetY;
+
 			boxPositions = new Vector2[Constants.MAX_ENEMY];
-			boxPositions[0] = new Vector2(160 * 0, 80);
-			boxPositions[1] = new Vector2(160 * 1, 80);
-			boxPositions[2] = new Vector2(160 * 2, 80);
-			boxPositions[3] = new Vector2(160 * 3, 80);
-			boxPositions[4] = new Vector2(160 * 4, 80);
+			boxPositions[0] = new Vector2(160 * 0, hi);
+			boxPositions[1] = new Vector2(160 * 1, hi);
+			boxPositions[2] = new Vector2(160 * 2, hi);
+			boxPositions[3] = new Vector2(160 * 3, hi);
+			boxPositions[4] = new Vector2(160 * 4, hi);
 
 			const Byte offset = 190;
-			boxPositions[5] = new Vector2(160 * 0 + offset, 280);
-			boxPositions[6] = new Vector2(160 * 1 + offset, 280);
-			boxPositions[7] = new Vector2(160 * 2 + offset, 280);
+			boxPositions[5] = new Vector2(160 * 0 + offset, lo);
+			boxPositions[6] = new Vector2(160 * 1 + offset, lo);
+			boxPositions[7] = new Vector2(160 * 2 + offset, lo);
 
 			return boxPositions;
 		}
