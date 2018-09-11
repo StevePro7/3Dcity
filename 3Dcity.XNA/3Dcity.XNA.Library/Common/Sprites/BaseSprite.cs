@@ -9,10 +9,18 @@ namespace WindowsGame.Common.Sprites
 	public class BaseSprite
 	{
 		protected Rectangle[] rectangles;
-		private Byte maxFrames;
-		protected Byte frameIndex;
-		private UInt16 frameDelay;
-		private UInt16 frameTimer;
+		//private Byte maxFrames;
+		//protected Byte frameIndex;
+		//private UInt16 frameDelay;
+		//private UInt16 frameTimer;
+
+		public virtual void Initialize(Byte maxFrames)
+		{
+			MaxFrames = maxFrames;
+			FrameIndex = 0;
+			//frameDelay = theFrameDelay;
+			//frameTimer = 0;
+		}
 
 		public virtual void Initialize(Vector2 position)
 		{
@@ -33,15 +41,7 @@ namespace WindowsGame.Common.Sprites
 			Bounds = bounds;
 
 			// Default one frame;
-			Initialize(1, 0);
-		}
-
-		public virtual void Initialize(Byte theMaxFrames, UInt16 theFrameDelay)
-		{
-			maxFrames = theMaxFrames;
-			frameDelay = theFrameDelay;
-			frameTimer = 0;
-			frameIndex = 0;
+			Initialize(1);
 		}
 
 		public virtual void LoadContent(Rectangle theRectangle)
@@ -72,27 +72,30 @@ namespace WindowsGame.Common.Sprites
 
 		public virtual void Update(GameTime gameTime)
 		{
-			frameTimer += (UInt16)gameTime.ElapsedGameTime.Milliseconds;
-			if (frameTimer >= frameDelay)
-			{
-				frameTimer -= frameDelay;
-				frameIndex++;
-				if (frameIndex >= maxFrames)
-				{
-					frameIndex = 0;
-				}
-			}
+			//frameTimer += (UInt16)gameTime.ElapsedGameTime.Milliseconds;
+			//if (frameTimer >= frameDelay)
+			//{
+			//    frameTimer -= frameDelay;
+			//    frameIndex++;
+			//    if (frameIndex >= maxFrames)
+			//    {
+			//        frameIndex = 0;
+			//    }
+			//}
 		}
 
 		public virtual void Draw()
 		{
-			Draw(frameIndex);
+			Draw(FrameIndex);
 		}
 
-		protected virtual void Draw(Byte index)
+		protected virtual void Draw(Byte theFrameIndex)
 		{
-			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, Position, rectangles[index], Color.White);
+			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, Position, rectangles[theFrameIndex], Color.White);
 		}
+
+		public Byte MaxFrames { get; protected set; }
+		public Byte FrameIndex { get; protected set; }
 
 		public UInt16 BaseX { get; private set; }
 		public UInt16 BaseY { get; private set; }

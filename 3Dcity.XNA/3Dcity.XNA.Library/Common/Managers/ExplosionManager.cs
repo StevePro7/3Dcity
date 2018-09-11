@@ -21,7 +21,7 @@ namespace WindowsGame.Common.Managers
 		{
 			Explosion = new Explosion();
 			Explosion.Initialize(new Vector2(400, 320));
-			Explosion.Initialize(Constants.MAX_EXPLODE_FRAME, 100);		// TODO make the bullet delay configurable
+			Explosion.Initialize(Constants.MAX_EXPLODE_FRAME);		// TODO make the bullet delay configurable
 		}
 
 		public void LoadContent()

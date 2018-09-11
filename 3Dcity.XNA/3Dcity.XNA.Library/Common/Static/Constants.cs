@@ -21,11 +21,15 @@ namespace WindowsGame.Common.Static
 		public const Single GeneralTolerance = 0.1f;		//TODO make configurable?  Or set to 0.0f to take out!
 		public const Single JoystickTolerance = 0.1f;	// Original is 0.4f;
 
+		public const SByte INVALID_INDEX = -1;
+
 		// Maximums.
 		public const Byte MAX_GRID = 3;
 		public const Byte MAX_STAR = 2;
 		public const Byte MAX_ENEMY = 8;
-		public const Byte MAX_BULLET_SHOOT = 10;
+		public const Byte MAX_ENEMY_SHOOT = 8;
+
+		//public const Byte MAX_BULLET_SHOOT = 10;
 		public const Byte MAX_BULLET_FRAME = 6;
 		public const Byte MAX_EXPLODE_TYPE = 2;
 		public const Byte MAX_EXPLODE_FRAME = 12;

@@ -17,6 +17,7 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
+			MyGame.Manager.BulletManager.Reset(2, 1000, 500);
 			base.LoadContent();
 		}
 
@@ -28,17 +29,24 @@ namespace WindowsGame.Common.Screens
 				return (Int32)CurrScreen;
 			}
 
+			// Move target unconditionally.
 			Single horz = MyGame.Manager.InputManager.Horizontal();
 			Single vert = MyGame.Manager.InputManager.Vertical();
 			MyGame.Manager.SpriteManager.SetMovement(horz, vert);
 			MyGame.Manager.SpriteManager.Update(gameTime);
 
-			//Boolean fire = MyGame.Manager.InputManager.Fire();
-			//if (fire)
-			//{
-			//    Vector2 position = MyGame.Manager.SpriteManager.LargeTarget.Position;
-			//    MyGame.Manager.BulletManager.Fire(position);
-			//}
+			Boolean fire = MyGame.Manager.InputManager.Fire();
+			if (fire)
+			{
+				SByte bulletIndex = MyGame.Manager.BulletManager.CheckBullets();
+				if (Constants.INVALID_INDEX != bulletIndex)
+				{
+					Vector2 position = MyGame.Manager.SpriteManager.LargeTarget.Position;
+					MyGame.Manager.BulletManager.Shoot((Byte)bulletIndex, position);
+				}
+				//    Vector2 position = MyGame.Manager.SpriteManager.LargeTarget.Position;
+				//    MyGame.Manager.BulletManager.Fire(position);
+			}
 
 			//Byte myIndex = Convert.ToByte(fire);
 			//MyGame.Manager.IconManager.UpdateIcon(MyGame.Manager.IconManager.JoyButton, myIndex);
@@ -63,7 +71,7 @@ namespace WindowsGame.Common.Screens
 
 			// Then bullet and target second.
 			MyGame.Manager.BulletManager.Draw();
-			//MyGame.Manager.SpriteManager.Draw();
+			MyGame.Manager.SpriteManager.Draw();
 		}
 
 	}
