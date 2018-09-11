@@ -16,7 +16,7 @@ namespace WindowsGame.Common.Screens
 		public override void LoadContent()
 		{
 			// Not bad settings for default
-			MyGame.Manager.BulletManager.Reset(5, 200, 100);
+			MyGame.Manager.BulletManager.Reset(10, 200, 100);
 			base.LoadContent();
 		}
 
@@ -27,6 +27,11 @@ namespace WindowsGame.Common.Screens
 			{
 				return (Int32)CurrScreen;
 			}
+
+			// Log delta to monitor performance!
+#if DEBUG
+			MyGame.Manager.Logger.Info(gameTime.ElapsedGameTime.TotalSeconds.ToString());
+#endif
 
 			MyGame.Manager.CollisionManager.ClearBulletCollisionList();
 
@@ -45,12 +50,7 @@ namespace WindowsGame.Common.Screens
 					Vector2 position = MyGame.Manager.SpriteManager.LargeTarget.Position;
 					MyGame.Manager.BulletManager.Shoot((Byte)bulletIndex, position);
 				}
-				//    Vector2 position = MyGame.Manager.SpriteManager.LargeTarget.Position;
-				//    MyGame.Manager.BulletManager.Fire(position);
 			}
-
-			//Byte myIndex = Convert.ToByte(fire);
-			//MyGame.Manager.IconManager.UpdateIcon(MyGame.Manager.IconManager.JoyButton, myIndex);
 
 			// Then bullet and target second.
 			MyGame.Manager.BulletManager.Update(gameTime);
@@ -72,7 +72,6 @@ namespace WindowsGame.Common.Screens
 			base.Draw();
 			MyGame.Manager.IconManager.DrawControls();
 
-			//MyGame.Manager.TextManager.Draw(TextDataList);
 
 			// Sprite sheet #02.
 
@@ -80,6 +79,8 @@ namespace WindowsGame.Common.Screens
 			// Then bullet and target second.
 			MyGame.Manager.BulletManager.Draw();
 			MyGame.Manager.SpriteManager.Draw();
+
+			MyGame.Manager.TextManager.Draw(TextDataList);
 		}
 
 	}

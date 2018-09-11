@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using WindowsGame.Common.Sprites;
 using WindowsGame.Common.Static;
-using Microsoft.Xna.Framework;
 
 namespace WindowsGame.Common.Managers
 {
@@ -14,30 +14,18 @@ namespace WindowsGame.Common.Managers
 		SByte CheckBullets();
 		void Update(GameTime gameTime);
 		
-		//void Fire(Vector2 position);
 		void Shoot(Byte bulletIndex, Vector2 position);
 		void Draw();
 
 		IList<Bullet> BulletList { get; }
-		//Bullet Bullet { get; }
 		Boolean CanShoot { get; }
-		Boolean IsFiring { get; }
-
 		UInt16 ShootDelay { get; }
 		Single ShootTimer { get; }
 	}
 
 	public class BulletManager : IBulletManager 
 	{
-//		public const Byte MAX_BULLET_SHOOT = 10;
-
 		private Byte maxBulletShoot;
-		//private const Byte MAX_BULLET = 10;
-		//private const Byte MAX_BULLET = 1;
-		//private const Byte MAX_FRAMES = 6;
-		//private UInt16 frameDelay;
-		//private UInt16 shootDelay;
-		//private Single shootTimer;
 
 		public void Initialize()
 		{
@@ -51,12 +39,6 @@ namespace WindowsGame.Common.Managers
 			}
 
 			maxBulletShoot = Constants.MAX_BULLET_SHOOT;
-			//Bullet = new Bullet();
-			//Bullet.Initialize(Vector2.Zero);
-			//Bullet.Initialize(Constants.MAX_BULLET_FRAME, 750);		// TODO make the bullet delay configurable
-			//IsFiring = false;
-			//fireDelay = 5000;
-			//fireTimer = 0;
 		}
 
 		public void LoadContent()
@@ -120,15 +102,6 @@ namespace WindowsGame.Common.Managers
 					ShootTimer = 0;
 				}
 			}
-			//if (IsFiring)
-			//{
-			//    fireTimer += (Single)gameTime.ElapsedGameTime.TotalSeconds;
-			//    if (fireTimer >= fireDelay)
-			//    {
-			//        fireTimer -= fireDelay;
-			//        IsFiring = false;
-			//    }
-			//}
 
 			for (Byte index = 0; index < maxBulletShoot; index++)
 			{
@@ -139,12 +112,6 @@ namespace WindowsGame.Common.Managers
 				}
 			}
 		}
-
-		//public void Fire(Vector2 position)
-		//{
-		//    //IsFiring = true;
-		//    //Bullet.SetPosition(position);
-		//}
 
 		public void Shoot(Byte bulletIndex, Vector2 position)
 		{
@@ -165,10 +132,7 @@ namespace WindowsGame.Common.Managers
 		}
 
 		public IList<Bullet> BulletList { get; private set; }
-		//public Bullet Bullet { get; private set; }
 		public Boolean CanShoot { get; private set; }
-		public Boolean IsFiring { get; private set; }
-
 		public UInt16 ShootDelay { get; private set; }
 		public Single ShootTimer { get; private set; }
 	}

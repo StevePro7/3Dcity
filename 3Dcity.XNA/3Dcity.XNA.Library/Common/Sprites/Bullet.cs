@@ -1,26 +1,14 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
-using WindowsGame.Common.Static;
 
 namespace WindowsGame.Common.Sprites
 {
 	public class Bullet : BaseSprite
 	{
-		public override void Initialize(Vector2 position)
-		{
-			base.Initialize(position);
-			BulletType = BulletType.Idle;
-		}
-
 		public void Reset(UInt16 frameDelay)
 		{
-			// TODO remove this as bullet only has 2x states
-			BulletType = BulletType.Idle;
-
 			// Constant throughout level.
 			FrameDelay = frameDelay;
-			//ShootDelay = shootDelay;
-
 			IsFiring = false;
 			FrameIndex = 0;
 			FrameTimer = 0;
@@ -47,6 +35,7 @@ namespace WindowsGame.Common.Sprites
 				FrameTimer -= FrameDelay;
 				FrameIndex++;
 
+				// Check for collision after final frame complete!
 				if (FrameIndex >= MaxFrames)
 				{
 					IsFiring = false;
@@ -61,12 +50,8 @@ namespace WindowsGame.Common.Sprites
 		}
 
 		public Byte ID { get; private set; }
-
-		public BulletType BulletType { get; private set; }
-
 		public Boolean IsFiring { get; private set; }
 		public UInt16 FrameDelay { get; private set; }
-		//public UInt16 ShootDelay { get; private set; }
 		public Single FrameTimer { get; private set; }
 	}
 

@@ -12,13 +12,6 @@
 		Hard = 1
 	}
 
-	public enum BulletType
-	{
-		Idle,
-		Fire,
-		Kill
-	}
-
 	public enum ExplodeType
 	{
 		Small = 0,
