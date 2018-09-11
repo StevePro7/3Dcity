@@ -29,7 +29,7 @@ namespace WindowsGame.Common.Static
 		public const Byte MAX_ENEMY = 8;
 		public const Byte MAX_ENEMY_SHOOT = 8;
 
-		//public const Byte MAX_BULLET_SHOOT = 10;
+		public const Byte MAX_BULLET_SHOOT = 10;
 		public const Byte MAX_BULLET_FRAME = 6;
 		public const Byte MAX_EXPLODE_TYPE = 2;
 		public const Byte MAX_EXPLODE_FRAME = 12;

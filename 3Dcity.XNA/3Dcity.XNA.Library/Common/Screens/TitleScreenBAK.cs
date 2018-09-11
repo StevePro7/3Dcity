@@ -55,7 +55,7 @@ namespace WindowsGame.Common.Screens
 			if (fire)
 			{
 				Vector2 position = MyGame.Manager.SpriteManager.LargeTarget.Position;
-				MyGame.Manager.BulletManager.Fire(position);
+				MyGame.Manager.BulletManager.Shoot(1, position);
 			}
 
 			Byte myIndex = Convert.ToByte(fire);

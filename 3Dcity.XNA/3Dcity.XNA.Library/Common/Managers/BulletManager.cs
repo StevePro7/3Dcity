@@ -11,22 +11,25 @@ namespace WindowsGame.Common.Managers
 		void Initialize();
 		void LoadContent();
 		void Reset(Byte theBulletShoot, UInt16 frameDelay, UInt16 shootDelay);
+		SByte CheckBullets();
 		void Update(GameTime gameTime);
 		
-		void Fire(Vector2 position);
+		//void Fire(Vector2 position);
 		void Shoot(Byte bulletIndex, Vector2 position);
 		void Draw();
 
-		SByte CheckBullets();
-
 		IList<Bullet> BulletList { get; }
 		//Bullet Bullet { get; }
+		Boolean CanShoot { get; }
 		Boolean IsFiring { get; }
+
+		UInt16 ShootDelay { get; }
+		Single ShootTimer { get; }
 	}
 
 	public class BulletManager : IBulletManager 
 	{
-		public const Byte MAX_BULLET_SHOOT = 10;
+//		public const Byte MAX_BULLET_SHOOT = 10;
 
 		private Byte maxBulletShoot;
 		//private const Byte MAX_BULLET = 10;
@@ -38,8 +41,8 @@ namespace WindowsGame.Common.Managers
 
 		public void Initialize()
 		{
-			BulletList = new List<Bullet>(MAX_BULLET_SHOOT);
-			for (Byte index = 0; index < MAX_BULLET_SHOOT; index++)
+			BulletList = new List<Bullet>(Constants.MAX_BULLET_SHOOT);
+			for (Byte index = 0; index < Constants.MAX_BULLET_SHOOT; index++)
 			{
 				Bullet bullet = new Bullet();
 				bullet.SetID(index);
@@ -47,7 +50,7 @@ namespace WindowsGame.Common.Managers
 				BulletList.Add(bullet);
 			}
 
-			maxBulletShoot = MAX_BULLET_SHOOT;
+			maxBulletShoot = Constants.MAX_BULLET_SHOOT;
 			//Bullet = new Bullet();
 			//Bullet.Initialize(Vector2.Zero);
 			//Bullet.Initialize(Constants.MAX_BULLET_FRAME, 750);		// TODO make the bullet delay configurable
@@ -58,7 +61,7 @@ namespace WindowsGame.Common.Managers
 
 		public void LoadContent()
 		{
-			for (Byte index = 0; index < MAX_BULLET_SHOOT; index++)
+			for (Byte index = 0; index < Constants.MAX_BULLET_SHOOT; index++)
 			{
 				Bullet bullet = BulletList[index];
 				bullet.LoadContent(MyGame.Manager.ImageManager.BulletRectangles);
@@ -68,9 +71,9 @@ namespace WindowsGame.Common.Managers
 		public void Reset(Byte theBulletShoot, UInt16 frameDelay, UInt16 shootDelay)
 		{
 			maxBulletShoot = theBulletShoot;
-			if (maxBulletShoot > MAX_BULLET_SHOOT)
+			if (maxBulletShoot > Constants.MAX_BULLET_SHOOT)
 			{
-				maxBulletShoot = MAX_BULLET_SHOOT;
+				maxBulletShoot = Constants.MAX_BULLET_SHOOT;
 			}
 
 			for (Byte index = 0; index < maxBulletShoot; index++)
@@ -78,10 +81,45 @@ namespace WindowsGame.Common.Managers
 				Bullet bullet = BulletList[index];
 				bullet.Reset(frameDelay);
 			}
+
+			ShootDelay = shootDelay;
+			ShootTimer = 0;
+			CanShoot = true;
+		}
+
+		public SByte CheckBullets()
+		{
+			SByte bulletIndex = Constants.INVALID_INDEX;
+			if (!CanShoot)
+			{
+				return bulletIndex;
+			}
+
+			for (Byte testerIndex = 0; testerIndex < maxBulletShoot; testerIndex++)
+			{
+				Bullet bullet = BulletList[testerIndex];
+				if (!bullet.IsFiring)
+				{
+					CanShoot = false;
+					bulletIndex = (SByte)testerIndex;
+					break;
+				}
+			}
+
+			return bulletIndex;
 		}
 
 		public void Update(GameTime gameTime)
 		{
+			if (!CanShoot)
+			{
+				ShootTimer += (Single)gameTime.ElapsedGameTime.Milliseconds;
+				if (ShootTimer >= ShootDelay)
+				{
+					CanShoot = true;
+					ShootTimer = 0;
+				}
+			}
 			//if (IsFiring)
 			//{
 			//    fireTimer += (Single)gameTime.ElapsedGameTime.TotalSeconds;
@@ -95,17 +133,18 @@ namespace WindowsGame.Common.Managers
 			for (Byte index = 0; index < maxBulletShoot; index++)
 			{
 				Bullet bullet = BulletList[index];
-				bullet.Update(gameTime);
+				if (bullet.IsFiring)
+				{
+					bullet.Update(gameTime);
+				}
 			}
 		}
 
-		
-
-		public void Fire(Vector2 position)
-		{
-			IsFiring = true;
-			//Bullet.SetPosition(position);
-		}
+		//public void Fire(Vector2 position)
+		//{
+		//    //IsFiring = true;
+		//    //Bullet.SetPosition(position);
+		//}
 
 		public void Shoot(Byte bulletIndex, Vector2 position)
 		{
@@ -123,34 +162,14 @@ namespace WindowsGame.Common.Managers
 					bullet.Draw();
 				}
 			}
-
-			if (IsFiring)
-			{
-				//Bullet.Draw();
-			}
-		}
-
-		public SByte CheckBullets()
-		{
-			SByte bulletIndex = Constants.INVALID_INDEX;
-			for (Byte testerIndex = 0; testerIndex < maxBulletShoot; testerIndex++)
-			{
-				Bullet bullet = BulletList[testerIndex];
-				if (!bullet.IsFiring)
-				{
-					bulletIndex = (SByte)testerIndex;
-					break;
-				}
-			}
-
-			return bulletIndex;
 		}
 
 		public IList<Bullet> BulletList { get; private set; }
 		//public Bullet Bullet { get; private set; }
+		public Boolean CanShoot { get; private set; }
 		public Boolean IsFiring { get; private set; }
 
-		public UInt16 CheckDelay { get; private set; }
-		public Single CheckTimer { get; private set; }
+		public UInt16 ShootDelay { get; private set; }
+		public Single ShootTimer { get; private set; }
 	}
 }

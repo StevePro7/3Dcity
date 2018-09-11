@@ -17,7 +17,7 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
-			MyGame.Manager.BulletManager.Reset(2, 1000, 500);
+			MyGame.Manager.BulletManager.Reset(2, 1000, 2000);
 			base.LoadContent();
 		}
 
@@ -28,6 +28,8 @@ namespace WindowsGame.Common.Screens
 			{
 				return (Int32)CurrScreen;
 			}
+
+			MyGame.Manager.CollisionManager.ClearBulletCollisionList();
 
 			// Move target unconditionally.
 			Single horz = MyGame.Manager.InputManager.Horizontal();
@@ -53,7 +55,10 @@ namespace WindowsGame.Common.Screens
 
 			// Then bullet and target second.
 			MyGame.Manager.BulletManager.Update(gameTime);
-
+			if (MyGame.Manager.CollisionManager.BulletCollisionList.Count > 0)
+			{
+				// Check collisions here.
+			}
 
 			return (Int32)CurrScreen;
 		}
