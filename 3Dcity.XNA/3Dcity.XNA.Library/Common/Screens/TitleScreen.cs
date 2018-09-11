@@ -1,9 +1,7 @@
 using System;
-using WindowsGame.Common.Static;
-using WindowsGame.Master;
-using WindowsGame.Master.Interfaces;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+using WindowsGame.Common.Static;
+using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
 {
@@ -17,7 +15,8 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
-			MyGame.Manager.BulletManager.Reset(2, 1000, 2000);
+			// Not bad settings for default
+			MyGame.Manager.BulletManager.Reset(5, 200, 100);
 			base.LoadContent();
 		}
 
@@ -60,6 +59,10 @@ namespace WindowsGame.Common.Screens
 				// Check collisions here.
 			}
 
+			// Update fire icon.
+			Byte fireIcon = Convert.ToByte(!MyGame.Manager.BulletManager.CanShoot);
+			MyGame.Manager.IconManager.UpdateIcon(MyGame.Manager.IconManager.JoyButton, fireIcon);
+
 			return (Int32)CurrScreen;
 		}
 
@@ -67,7 +70,7 @@ namespace WindowsGame.Common.Screens
 		{
 			// Sprite sheet #01.
 			base.Draw();
-			//MyGame.Manager.IconManager.DrawControls();
+			MyGame.Manager.IconManager.DrawControls();
 
 			//MyGame.Manager.TextManager.Draw(TextDataList);
 
