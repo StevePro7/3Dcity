@@ -15,7 +15,7 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
-			// Not bad settings for default
+			// Not bad settings for default.
 			MyGame.Manager.BulletManager.Reset(10, 200, 100);
 			base.LoadContent();
 		}

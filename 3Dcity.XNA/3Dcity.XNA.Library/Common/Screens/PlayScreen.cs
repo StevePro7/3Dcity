@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using WindowsGame.Common.Static;
-using WindowsGame.Master;
 using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
@@ -16,7 +15,8 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
-			MyGame.Manager.SoundManager.PlayMusic();
+			// Not bad settings for default.
+			MyGame.Manager.BulletManager.Reset(10, 200, 100);
 			base.LoadContent();
 		}
 
@@ -28,42 +28,40 @@ namespace WindowsGame.Common.Screens
 				return (Int32)CurrScreen;
 			}
 
+			// Log delta to monitor performance!
+#if DEBUG
+			MyGame.Manager.Logger.Info(gameTime.ElapsedGameTime.TotalSeconds.ToString());
+#endif
+
+			MyGame.Manager.CollisionManager.ClearBulletCollisionList();
+
+			// Move target unconditionally.
 			Single horz = MyGame.Manager.InputManager.Horizontal();
 			Single vert = MyGame.Manager.InputManager.Vertical();
+			MyGame.Manager.SpriteManager.SetMovement(horz, vert);
+			MyGame.Manager.SpriteManager.Update(gameTime);
 
 			Boolean fire = MyGame.Manager.InputManager.Fire();
 			if (fire)
 			{
-				//MyGame.Manager.SoundManager.PlaySoundEffect();
-
-				// get max number of bullets from bullet MGR
-				// check if at least one bullet available...
-				// OR if fire delay still running then true!
-				// otherwise fire = false;
-
-				Vector2 position = MyGame.Manager.SpriteManager.LargeTarget.Position;
-				MyGame.Manager.BulletManager.Shoot(1, position);
+				SByte bulletIndex = MyGame.Manager.BulletManager.CheckBullets();
+				if (Constants.INVALID_INDEX != bulletIndex)
+				{
+					Vector2 position = MyGame.Manager.SpriteManager.LargeTarget.Position;
+					MyGame.Manager.BulletManager.Shoot((Byte)bulletIndex, position);
+				}
 			}
 
-			Byte index = Convert.ToByte(fire);
-			MyGame.Manager.IconManager.UpdateIcon(MyGame.Manager.IconManager.JoyButton, index);
-
-			//MyGame.Manager.BulletManager.Update(gameTime);
-			//Boolean isFiring = MyGame.Manager.BulletManager.IsFiring;
-			//if (!isFiring)
-			//{
-			//        Vector2 position = MyGame.Manager.SpriteManager.BigTarget.Position;
-			//        MyGame.Manager.BulletManager.Fire(position);
-			//}
-
+			// Then bullet and target second.
 			MyGame.Manager.BulletManager.Update(gameTime);
+			if (MyGame.Manager.CollisionManager.BulletCollisionList.Count > 0)
+			{
+				// Check collisions here.
+			}
 
-
-			//if (Math.Abs(horz) > 0.4)
-			//{
-			MyGame.Manager.SpriteManager.SetMovement(horz, vert);
-			MyGame.Manager.SpriteManager.Update(gameTime);
-			//}
+			// Update fire icon.
+			Byte fireIcon = Convert.ToByte(!MyGame.Manager.BulletManager.CanShoot);
+			MyGame.Manager.IconManager.UpdateIcon(MyGame.Manager.IconManager.JoyButton, fireIcon);
 
 			return (Int32)CurrScreen;
 		}
@@ -74,11 +72,15 @@ namespace WindowsGame.Common.Screens
 			base.Draw();
 			MyGame.Manager.IconManager.DrawControls();
 
-			MyGame.Manager.TextManager.Draw(TextDataList);
 
 			// Sprite sheet #02.
+
+
+			// Then bullet and target second.
 			MyGame.Manager.BulletManager.Draw();
 			MyGame.Manager.SpriteManager.Draw();
+
+			MyGame.Manager.TextManager.Draw(TextDataList);
 		}
 
 	}

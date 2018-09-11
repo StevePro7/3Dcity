@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Title</ScreenType>
+	<ScreenType>Play</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Ready</ScreenType>-->
 	<FramesPerSecond>100</FramesPerSecond>
@@ -11,8 +11,8 @@
 	<EventRatio>1.0</EventRatio>
 	<UpdateStar>false</UpdateStar>
 	<UpdateGrid>false</UpdateGrid>
-	<RenderBack>false</RenderBack>
-	<RenderIcon>false</RenderIcon>
+	<RenderBack>true</RenderBack>
+	<RenderIcon>true</RenderIcon>
 	<JoypadX>0</JoypadX>
 	<JoypadY>360</JoypadY>
 	<EnemyIndex>0</EnemyIndex>
