@@ -12,6 +12,10 @@ namespace WindowsGame.Common.Data
 		public UInt16 StarDelay;
 		public UInt16 GridDelay;
 		public Single EventRatio;
+		public Boolean UpdateStar;
+		public Boolean UpdateGrid;
+		public Boolean RenderBack;
+		public Boolean RenderIcon;
 		public UInt16 JoypadX;
 		public UInt16 JoypadY;
 		public Byte EnemyIndex;

@@ -9,6 +9,10 @@
 	<StarDelay>2000</StarDelay>
 	<GridDelay>200</GridDelay>
 	<EventRatio>1.0</EventRatio>
+	<UpdateStar>false</UpdateStar>
+	<UpdateGrid>false</UpdateGrid>
+	<RenderBack>false</RenderBack>
+	<RenderIcon>false</RenderIcon>
 	<JoypadX>0</JoypadX>
 	<JoypadY>360</JoypadY>
 	<EnemyIndex>0</EnemyIndex>

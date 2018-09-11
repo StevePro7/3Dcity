@@ -63,8 +63,15 @@ namespace WindowsGame.Common.Screens
 			}
 
 			// Update grid + stars.
-			MyGame.Manager.RenderManager.UpdateStar(gameTime);
-			MyGame.Manager.RenderManager.UpdateGrid(gameTime);
+			if (MyGame.Manager.ConfigManager.GlobalConfigData.UpdateStar)
+			{
+				MyGame.Manager.RenderManager.UpdateStar(gameTime);
+			}
+
+			if (MyGame.Manager.ConfigManager.GlobalConfigData.UpdateGrid)
+			{
+				MyGame.Manager.RenderManager.UpdateGrid(gameTime);
+			}
 
 			return (Int32)CurrScreen;
 		}
@@ -80,8 +87,15 @@ namespace WindowsGame.Common.Screens
 			// TODO remove!
 			Master.Engine.Game.Window.Title = GetType().Name;
 
-			MyGame.Manager.RenderManager.Draw();
-			MyGame.Manager.IconManager.Draw();
+			if (MyGame.Manager.ConfigManager.GlobalConfigData.RenderBack)
+			{
+				MyGame.Manager.RenderManager.Draw();
+			}
+
+			if (MyGame.Manager.ConfigManager.GlobalConfigData.RenderIcon)
+			{
+				MyGame.Manager.IconManager.Draw();
+			}
 		}
 
 		protected void LoadTextData()
