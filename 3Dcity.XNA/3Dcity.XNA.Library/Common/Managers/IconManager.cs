@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using WindowsGame.Common.Objects;
 using WindowsGame.Common.Static;
 
@@ -45,8 +44,6 @@ namespace WindowsGame.Common.Managers
 			// Joystick controller.
 			JoypadMove = new JoypadMove();
 			Vector2 jpPos = new Vector2(20, 300 + Constants.GameOffsetY);
-			//Rectangle jpColl = new Rectangle(0, 280, 200, 200);
-			//Rectangle jpColl = new Rectangle(-200, 80, 600, 600);
 			Rectangle jpColl = new Rectangle(-100, 180 + Constants.GameOffsetY, 400, 400);
 			Rectangle jpBndl = new Rectangle(0, 280 + Constants.GameOffsetY, 200, 200);
 			JoypadMove.Initialize(jpPos, jpColl, jpBndl);
@@ -92,5 +89,6 @@ namespace WindowsGame.Common.Managers
 		public GameState GameState { get; private set; }
 		public JoypadMove JoypadMove { get; private set; }
 		public JoyButton JoyButton { get; private set; }
+
 	}
 }

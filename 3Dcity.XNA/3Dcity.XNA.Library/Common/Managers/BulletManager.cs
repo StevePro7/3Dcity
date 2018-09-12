@@ -135,5 +135,6 @@ namespace WindowsGame.Common.Managers
 		public Boolean CanShoot { get; private set; }
 		public UInt16 ShootDelay { get; private set; }
 		public Single ShootTimer { get; private set; }
+
 	}
 }

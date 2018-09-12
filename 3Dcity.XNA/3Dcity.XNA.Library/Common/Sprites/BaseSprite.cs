@@ -9,17 +9,11 @@ namespace WindowsGame.Common.Sprites
 	public class BaseSprite
 	{
 		protected Rectangle[] rectangles;
-		//private Byte maxFrames;
-		//protected Byte frameIndex;
-		//private UInt16 frameDelay;
-		//private UInt16 frameTimer;
 
 		public virtual void Initialize(Byte maxFrames)
 		{
 			MaxFrames = maxFrames;
 			FrameIndex = 0;
-			//frameDelay = theFrameDelay;
-			//frameTimer = 0;
 		}
 
 		public virtual void Initialize(Vector2 position)
@@ -72,16 +66,6 @@ namespace WindowsGame.Common.Sprites
 
 		public virtual void Update(GameTime gameTime)
 		{
-			//frameTimer += (UInt16)gameTime.ElapsedGameTime.Milliseconds;
-			//if (frameTimer >= frameDelay)
-			//{
-			//    frameTimer -= frameDelay;
-			//    frameIndex++;
-			//    if (frameIndex >= maxFrames)
-			//    {
-			//        frameIndex = 0;
-			//    }
-			//}
 		}
 
 		public virtual void Draw()
@@ -104,6 +88,7 @@ namespace WindowsGame.Common.Sprites
 
 		public Byte MaxFrames { get; protected set; }
 		public Byte FrameIndex { get; protected set; }
+		public Single FrameTimer { get; protected set; }
 
 		public UInt16 BaseX { get; private set; }
 		public UInt16 BaseY { get; private set; }
@@ -112,5 +97,6 @@ namespace WindowsGame.Common.Sprites
 		public Vector2 Position { get; protected set; }
 		public Vector2 Midpoint { get; private set; }
 		//public Rectangle Collision { get; private set; }
+
 	}
 }

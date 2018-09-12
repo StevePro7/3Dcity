@@ -125,5 +125,6 @@ namespace WindowsGame.Common.Managers
 		public Rectangle[] BulletRectangles { get; private set; }
 		public Rectangle TargetBigRectangle { get; private set; }
 		public Rectangle TargetSmallRectangle { get; private set; }
+
 	}
 }

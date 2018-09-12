@@ -67,5 +67,6 @@ namespace WindowsGame.Common.Sprites
 
 			Position = position;
 		}
+
 	}
 }

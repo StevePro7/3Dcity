@@ -14,8 +14,6 @@ namespace WindowsGame.Common.Managers
 		void Initialize(String root);
 		void LoadContent();
 		void LoadContentSplash();
-
-		//String ContentRoot { get; }
 	}
 
 	public class ContentManager : IContentManager 
@@ -85,6 +83,5 @@ namespace WindowsGame.Common.Managers
 			Assets.SplashTexture = contentFactory.LoadTexture(texturesRoot + splash);
 		}
 
-		//public String ContentRoot { get; private set; }
 	}
 }

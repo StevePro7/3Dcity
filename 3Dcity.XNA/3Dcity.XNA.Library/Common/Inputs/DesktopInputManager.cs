@@ -257,12 +257,11 @@ namespace WindowsGame.Common.Inputs
 			{
 				return 5;
 			}
-
-			if (keyboardInput.KeyPress(Keys.Q))
+			if (keyboardInput.KeyPress(Keys.D7) || keyboardInput.KeyPress(Keys.Q))
 			{
 				return 6;
 			}
-			if (keyboardInput.KeyPress(Keys.W))
+			if (keyboardInput.KeyPress(Keys.D8) || keyboardInput.KeyPress(Keys.W))
 			{
 				return 7;
 			}

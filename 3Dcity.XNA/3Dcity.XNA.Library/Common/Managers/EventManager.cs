@@ -21,7 +21,6 @@ namespace WindowsGame.Common.Managers
 		String SerializeArgsData(IList<ValueType> theEventArgsData);
 		IList<EventType> DeserializeTypeText(String theEventTypeText);
 		IList<ValueType> DeserializeArgsText(String theEventArgsText);
-		void Update(GameTime gameTime);
 	}
 
 	public class EventManager : IEventManager
@@ -225,19 +224,6 @@ namespace WindowsGame.Common.Managers
 		{
 			eventTypeData.Add(type);
 			eventArgsData.Add(args);
-		}
-
-		public void Update(GameTime gameTime)
-		{
-			delta = (Single)gameTime.ElapsedGameTime.TotalSeconds;
-			timer += delta;
-			timer = (Single)Math.Round(timer, 2);
-			//if (0 == eventTypeData.Count)
-			//{
-			//    return;
-			//}
-
-			MyGame.Manager.Logger.Info(timer.ToString());
 		}
 
 		private static void LargeTargetMove(ValueType eventArgs)

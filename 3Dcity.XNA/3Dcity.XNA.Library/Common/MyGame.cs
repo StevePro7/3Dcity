@@ -70,7 +70,6 @@ namespace WindowsGame.Common
 			Manager.ControlManager.LoadContent();
 			Manager.CommandManager.LoadContent();
 			Manager.EnemyManager.LoadContent();
-			Manager.ExplosionManager.LoadContent();
 			Manager.IconManager.LoadContent();
 			Manager.RenderManager.LoadContent();
 			Manager.ScoreManager.LoadContent();

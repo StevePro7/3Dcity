@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace WindowsGame.Common.Managers
 {
@@ -35,5 +32,6 @@ namespace WindowsGame.Common.Managers
 
 		public Boolean GamePause { get; private set; }
 		public Boolean GameQuiet { get; private set; }
+
 	}
 }

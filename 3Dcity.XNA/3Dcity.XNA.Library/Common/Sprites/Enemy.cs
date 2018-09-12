@@ -25,6 +25,6 @@ namespace WindowsGame.Common.Sprites
 				Bounds = new Rectangle(offset + wide * index, 280 + Constants.GameOffsetY, (wide - size), (high - size));
 			}
 		}
-	}
 
+	}
 }

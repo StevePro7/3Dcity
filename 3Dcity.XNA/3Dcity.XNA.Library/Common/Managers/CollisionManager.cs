@@ -42,5 +42,6 @@ namespace WindowsGame.Common.Managers
 		}
 
 		public IList<Byte> BulletCollisionList { get; private set; }
+
 	}
 }

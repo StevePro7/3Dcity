@@ -69,5 +69,6 @@ namespace WindowsGame.Common.Managers
 
 		public IList<Enemy> EnemyList { get; private set; }
 		public IDictionary<Byte, Enemy> EnemyDict { get; private set; }
+
 	}
 }

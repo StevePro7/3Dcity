@@ -131,5 +131,6 @@ namespace WindowsGame.Common.Managers
 		{
 			return CheckPosInRect(position, gameSoundCollision);
 		}
+
 	}
 }

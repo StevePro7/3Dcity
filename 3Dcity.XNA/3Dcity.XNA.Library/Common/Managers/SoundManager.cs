@@ -11,7 +11,6 @@ namespace WindowsGame.Common.Managers
 
 		void GamePause(Boolean gamePause);
 		void GameQuiet(Boolean gameQuiet);
-		//void ToggleGameSound();
 		void SetPlaySound(Boolean thePlaySound);
 
 		void PlaySoundEffect();
@@ -104,19 +103,27 @@ namespace WindowsGame.Common.Managers
 		private void PauseAllAudio()
 		{
 			PauseMusic();
-			//foreach (SoundEffectInstance soundEffect in Assets.SoundEffectDictionary.Values)
-			//{
-			//    soundFactory.PauseSoundEffect(soundEffect);
-			//}
+			if (!MyGame.Manager.ConfigManager.GlobalConfigData.LoadAudio)
+			{
+				return;
+			}
+			foreach (SoundEffectInstance soundEffect in Assets.SoundEffectDictionary.Values)
+			{
+				soundFactory.PauseSoundEffect(soundEffect);
+			}
 		}
 
 		private void ResumeAllAudio()
 		{
 			ResumeMusic();
-			//foreach (SoundEffectInstance soundEffect in Assets.SoundEffectDictionary.Values)
-			//{
-			//    soundFactory.ResumeSoundEffect(soundEffect);
-			//}
+			if (!MyGame.Manager.ConfigManager.GlobalConfigData.LoadAudio)
+			{
+				return;
+			}
+			foreach (SoundEffectInstance soundEffect in Assets.SoundEffectDictionary.Values)
+			{
+				soundFactory.ResumeSoundEffect(soundEffect);
+			}
 		}
 
 	}

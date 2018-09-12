@@ -65,5 +65,6 @@ namespace WindowsGame.Common.Managers
 		public GlobalConfigData GlobalConfigData { get; private set; }
 		public PlatformConfigData PlatformConfigData { get; private set; }
 		public LevelConfigData LevelConfigData { get; private set; }
+
 	}
 }
