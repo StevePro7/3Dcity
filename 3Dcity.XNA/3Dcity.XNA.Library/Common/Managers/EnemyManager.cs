@@ -10,7 +10,7 @@ namespace WindowsGame.Common.Managers
 	{
 		void Initialize();
 		void LoadContent();
-		void LoadLevel(Byte enemies);
+		void Reset(Byte theEnemySpawn);
 		void Update(GameTime gameTime);
 		void Draw();
 
@@ -57,10 +57,6 @@ namespace WindowsGame.Common.Managers
 			{
 				maxEnemySpawn = Constants.MAX_ENEMY_SPAWN;
 			}
-		}
-
-		public void LoadLevel(Byte enemies)
-		{
 		}
 
 		public void Update(GameTime gameTime)

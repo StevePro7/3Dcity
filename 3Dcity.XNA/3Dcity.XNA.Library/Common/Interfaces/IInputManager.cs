@@ -17,8 +17,9 @@ namespace WindowsGame.Common.Interfaces
 
 		Single Horizontal();
 		Single Vertical();
+		Boolean Fire();
 		Boolean GameState();
 		Boolean GameSound();
-		Boolean Fire();
+		SByte Number();
 	}
 }

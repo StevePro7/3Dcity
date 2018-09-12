@@ -231,5 +231,60 @@ namespace WindowsGame.Common.Inputs
 			return false;
 		}
 
+		public SByte Number()
+		{
+			if (keyboardInput.KeyPress(Keys.D1))
+			{
+				return 0;
+			}
+			if (keyboardInput.KeyPress(Keys.D2))
+			{
+				return 1;
+			}
+			if (keyboardInput.KeyPress(Keys.D3))
+			{
+				return 2;
+			}
+			if (keyboardInput.KeyPress(Keys.D4))
+			{
+				return 3;
+			}
+			if (keyboardInput.KeyPress(Keys.D5))
+			{
+				return 4;
+			}
+			if (keyboardInput.KeyPress(Keys.D6))
+			{
+				return 5;
+			}
+
+			if (keyboardInput.KeyPress(Keys.Q))
+			{
+				return 6;
+			}
+			if (keyboardInput.KeyPress(Keys.W))
+			{
+				return 7;
+			}
+			if (keyboardInput.KeyPress(Keys.E))
+			{
+				return 8;
+			}
+			if (keyboardInput.KeyPress(Keys.R))
+			{
+				return 9;
+			}
+			if (keyboardInput.KeyPress(Keys.T))
+			{
+				return 10;
+			}
+			if (keyboardInput.KeyPress(Keys.Y))
+			{
+				return 11;
+			}
+
+			return Constants.INVALID_INDEX;
+		}
+
 	}
 }

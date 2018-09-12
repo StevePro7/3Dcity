@@ -9,22 +9,31 @@ namespace WindowsGame.Common.Screens
 	public class TestScreen : BaseScreen, IScreen
 	{
 		private Vector2[] boxPositions;
+		private SByte number;
 
 		public override void Initialize()
 		{
 			base.Initialize();
 			LoadTextData();
+			number = Constants.INVALID_INDEX;
 		}
 
 		public override void LoadContent()
 		{
 			boxPositions = GetBoxPositions();
+			MyGame.Manager.EnemyManager.Reset(1);
 			base.LoadContent();
 		}
 
 		public override Int32 Update(GameTime gameTime)
 		{
 			base.Update(gameTime);
+			number = MyGame.Manager.InputManager.Number();
+			if (Constants.INVALID_INDEX != number)
+			{
+				MyGame.Manager.Logger.Info(number.ToString());
+			}
+
 			return (Int32)CurrScreen;
 		}
 
@@ -39,9 +48,21 @@ namespace WindowsGame.Common.Screens
 				Engine.SpriteBatch.Draw(Assets.ZZindigoTexture, boxPositions[index], Color.Black);
 			}
 
-			Vector2 enemyPos = new Vector2(800-120, 80);
-			Rectangle enemyRect = MyGame.Manager.ImageManager.EnemyRectangles[7];
+			Vector2 enemyPos = new Vector2(350-120, 280 + 80);
+			Rectangle enemyRect = MyGame.Manager.ImageManager.EnemyRectangles[3];
 			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, enemyPos, enemyRect, Color.White);
+
+			if (Constants.INVALID_INDEX != number)
+			{
+				// BIG
+				//Vector2 bombsPos = new Vector2(enemyPos.X - 20, enemyPos.Y - 20);
+
+				// SMALL
+				Vector2 bombsPos = new Vector2(enemyPos.X + 20, enemyPos.Y + 20);
+
+				Rectangle bombsRect = MyGame.Manager.ImageManager.ExplodeRectangles[0][(Byte) number];
+				Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, bombsPos, bombsRect, Color.White);
+			}
 
 			MyGame.Manager.TextManager.Draw(TextDataList);
 		}

@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input.Touch;
 using WindowsGame.Common.Interfaces;
 using WindowsGame.Common.Managers;
+using WindowsGame.Common.Static;
 using WindowsGame.Master.Inputs;
 
 namespace WindowsGame.Common.Inputs
@@ -108,6 +109,11 @@ namespace WindowsGame.Common.Inputs
 		public Boolean GameSound()
 		{
 			return MyPressFunc(controlManager.CheckGameSound);
+		}
+
+		public SByte Number()
+		{
+			return Constants.INVALID_INDEX;
 		}
 
 		private Single MyMoveFunc(Func<Vector2, Single> func)

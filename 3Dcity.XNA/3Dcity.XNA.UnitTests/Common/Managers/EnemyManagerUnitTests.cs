@@ -15,12 +15,12 @@ namespace WindowsGame.UnitTests.Common.Managers
 			base.SetUp();
 		}
 
-		[Test]
-		public void LoadTest()
-		{
-			EnemyManager.LoadLevel(1);
-			Assert.That(1, Is.EqualTo(1));
-		}
+		//[Test]
+		//public void LoadTest()
+		//{
+		//    EnemyManager.LoadLevel(1);
+		//    Assert.That(1, Is.EqualTo(1));
+		//}
 
 		[TearDown]
 		public void TearDown()
