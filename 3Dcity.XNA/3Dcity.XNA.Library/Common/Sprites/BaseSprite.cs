@@ -94,6 +94,14 @@ namespace WindowsGame.Common.Sprites
 			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, Position, rectangles[theFrameIndex], Color.White);
 		}
 
+		public void SetID(Byte index)
+		{
+			ID = index;
+		}
+
+		public Byte ID { get; protected set; }
+		public Rectangle Bounds { get; protected set; }
+
 		public Byte MaxFrames { get; protected set; }
 		public Byte FrameIndex { get; protected set; }
 
@@ -104,6 +112,5 @@ namespace WindowsGame.Common.Sprites
 		public Vector2 Position { get; protected set; }
 		public Vector2 Midpoint { get; private set; }
 		//public Rectangle Collision { get; private set; }
-		public Rectangle Bounds { get; private set; }
 	}
 }

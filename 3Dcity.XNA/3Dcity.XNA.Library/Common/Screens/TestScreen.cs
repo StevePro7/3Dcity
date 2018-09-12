@@ -34,11 +34,15 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.IconManager.DrawControls();
 
 			MyGame.Manager.SpriteManager.Draw();
-			for (Byte index = 0; index < Constants.MAX_ENEMY; index++)
+			for (Byte index = 0; index < Constants.MAX_ENEMY_SPAWN; index++)
 			{
 				Engine.SpriteBatch.Draw(Assets.ZZindigoTexture, boxPositions[index], Color.Black);
 			}
-			
+
+			Vector2 enemyPos = new Vector2(800-120, 80);
+			Rectangle enemyRect = MyGame.Manager.ImageManager.EnemyRectangles[7];
+			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, enemyPos, enemyRect, Color.White);
+
 			MyGame.Manager.TextManager.Draw(TextDataList);
 		}
 
@@ -47,7 +51,7 @@ namespace WindowsGame.Common.Screens
 			const Single hi = 80 + Constants.GameOffsetY;
 			const Single lo = 280 + Constants.GameOffsetY;
 
-			boxPositions = new Vector2[Constants.MAX_ENEMY];
+			boxPositions = new Vector2[Constants.MAX_ENEMY_SPAWN];
 			boxPositions[0] = new Vector2(160 * 0, hi);
 			boxPositions[1] = new Vector2(160 * 1, hi);
 			boxPositions[2] = new Vector2(160 * 2, hi);

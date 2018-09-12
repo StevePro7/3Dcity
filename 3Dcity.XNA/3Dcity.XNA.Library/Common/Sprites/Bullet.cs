@@ -44,12 +44,12 @@ namespace WindowsGame.Common.Sprites
 			}
 		}
 
-		public void SetID(Byte index)
-		{
-			ID = index;
-		}
+		//public void SetID(Byte index)
+		//{
+		//    ID = index;
+		//}
 
-		public Byte ID { get; private set; }
+		//public Byte ID { get; private set; }
 		public Boolean IsFiring { get; private set; }
 		public UInt16 FrameDelay { get; private set; }
 		public Single FrameTimer { get; private set; }
