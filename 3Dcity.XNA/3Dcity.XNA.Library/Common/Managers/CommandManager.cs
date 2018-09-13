@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using WindowsGame.Common.Static;
-using Microsoft.Xna.Framework;
 
 namespace WindowsGame.Common.Managers
 {

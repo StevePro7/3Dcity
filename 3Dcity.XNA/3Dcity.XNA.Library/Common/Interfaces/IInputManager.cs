@@ -10,9 +10,6 @@ namespace WindowsGame.Common.Interfaces
 		void LoadContent();
 		void Update(GameTime gameTime);
 
-		//Vector2[] GetPositions();
-		//TouchLocationState[] GetStates();
-		//Boolean[] GetStates2();
 		Boolean Escape();
 
 		Single Horizontal();

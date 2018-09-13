@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Input.Touch;
 using WindowsGame.Common.Interfaces;
 using WindowsGame.Common.Managers;
 using WindowsGame.Common.Static;
@@ -41,21 +40,6 @@ namespace WindowsGame.Common.Inputs
 			keyboardInput.Update(gameTime);
 			mouseScreenInput.Update(gameTime);
 		}
-
-		//public Vector2[] GetPositions()
-		//{
-		//    return null;
-		//}
-
-		//public TouchLocationState[] GetStates()
-		//{
-		//    return null;
-		//}
-
-		//public Boolean[] GetStates2()
-		//{
-		//    return null;
-		//}
 
 		public Boolean Escape()
 		{

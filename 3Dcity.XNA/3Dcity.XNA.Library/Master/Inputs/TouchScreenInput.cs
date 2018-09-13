@@ -38,5 +38,6 @@ namespace WindowsGame.Master.Inputs
 		public TouchCollection TouchCollection { get; private set; }
 		public Boolean IsGestureAvailable { get; private set; }
 		public GestureSample? GestureSample { get; private set; }
+
 	}
 }

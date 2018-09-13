@@ -96,5 +96,6 @@ namespace WindowsGame.Master.Inputs
 		public PlayerIndex CurrPlayerIndex { get; private set; }
 		public GamePadState[] CurrGamePadState { get; private set; }
 		public GamePadState[] PrevGamePadState { get; private set; }
+
 	}
 }

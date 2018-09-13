@@ -1,6 +1,5 @@
 ﻿using System;
 using WindowsGame.Common;
-using WindowsGame.Common.Managers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
@@ -25,10 +24,6 @@ namespace WindowsGame.Master.Inputs
 		Int32 CurrMouseX { get; }
 		Int32 CurrMouseY { get; }
 		Vector2 MosuePosition { get; }
-		//ButtonState currLeftButtonState { get; }
-		//ButtonState prevLeftButtonState { get; }
-		//ButtonState currRightButtonState { get; }
-		//ButtonState prevRightButtonState { get; }
 	}
 
 	public class MouseScreenInput : IMouseScreenInput
@@ -83,23 +78,19 @@ namespace WindowsGame.Master.Inputs
 		public Boolean LeftButtonPress()
 		{
 			return ButtonPress(currLeftButtonState);
-			//return ButtonState.Pressed == currLeftButtonState;
 		}
 		public Boolean LeftButtonHold()
 		{
 			return ButtonHold(currLeftButtonState, prevLeftButtonState);
-			//return ButtonState.Pressed == currLeftButtonState && ButtonState.Released == prevLeftButtonState;
 		}
 
 		public Boolean RightButtonPress()
 		{
 			return ButtonPress(currRightButtonState);
-			//return ButtonState.Pressed == currRightButtonState;
 		}
 		public Boolean RightButtonHold()
 		{
 			return ButtonHold(currRightButtonState, prevRightButtonState);
-			//return ButtonState.Pressed == currRightButtonState && ButtonState.Released == prevRightButtonState;
 		}
 
 		private static Boolean ButtonPress(ButtonState buttonState)
@@ -115,9 +106,6 @@ namespace WindowsGame.Master.Inputs
 		public Int32 CurrMouseX { get; private set; }
 		public Int32 CurrMouseY { get; private set; }
 		public Vector2 MosuePosition { get; private set; }
-		//public ButtonState currLeftButtonState { get; private set; }
-		//public ButtonState prevLeftButtonState { get; private set; }
-		//public ButtonState currRightButtonState { get; private set; }
-		//public ButtonState prevRightButtonState { get; private set; }
+
 	}
 }

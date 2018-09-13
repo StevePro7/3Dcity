@@ -1,7 +1,7 @@
-﻿using Microsoft.Xna.Framework.Audio;
+﻿using System;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 using MediaPlayerX = Microsoft.Xna.Framework.Media.MediaPlayer;
-using System;
 
 namespace WindowsGame.Master.Factorys
 {
