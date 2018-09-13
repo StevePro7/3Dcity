@@ -88,14 +88,16 @@ namespace WindowsGame.Common.Managers
 			foreach (var key in ExplosionDict.Keys)
 			{
 				Explosion explosion = ExplosionDict[key];
-				if (null != explosion && explosion.IsExploding)
+				if (null == explosion || !explosion.IsExploding)
 				{
-					// Update explosion but check to see if finished.
-					explosion.Update(gameTime);
-					if (!explosion.IsExploding)
-					{
-						keys.Add(explosion.ID);
-					}
+					continue;
+				}
+
+				// Update explosion but check to see if finished.
+				explosion.Update(gameTime);
+				if (!explosion.IsExploding)
+				{
+					keys.Add(explosion.ID);
 				}
 			}
 
@@ -104,15 +106,6 @@ namespace WindowsGame.Common.Managers
 			{
 				ExplosionDict.Remove(key);
 			}
-
-			//for (Byte index = 0; index < maxBombsExplode; index++)
-			//{
-			//    Explosion explode = ExplosionList[index];
-			//    if (explode.IsExploding)
-			//    {
-			//        explode.Update(gameTime);
-			//    }
-			//}
 		}
 
 		public void Draw()
@@ -129,17 +122,7 @@ namespace WindowsGame.Common.Managers
 				{
 					explosion.Draw();
 				}
-				
 			}
-
-			//for (Byte index = 0; index < maxBombsExplode; index++)
-			//{
-			//    Explosion explode = ExplosionList[index];
-			//    if (explode.IsExploding)
-			//    {
-			//        explode.Draw();
-			//    }
-			//}
 		}
 
 		public IList<Explosion> ExplosionList { get; private set; }

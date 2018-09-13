@@ -23,18 +23,26 @@ namespace WindowsGame.Common.Screens
 		{
 			boxPositions = GetBoxPositions();
 			MyGame.Manager.EnemyManager.Reset(1);
-			MyGame.Manager.ExplosionManager.Reset(8, 1000);
+			MyGame.Manager.ExplosionManager.Reset(8, 100);
 			base.LoadContent();
 		}
 
 		public override Int32 Update(GameTime gameTime)
 		{
 			base.Update(gameTime);
+			if (GamePause)
+			{
+				return (Int32)CurrScreen;
+			}
+
+			// Log delta to monitor performance!
+#if DEBUG
+			MyGame.Manager.Logger.Info(gameTime.ElapsedGameTime.TotalSeconds.ToString());
+#endif
 
 			number = MyGame.Manager.InputManager.Number();
 			if (Constants.INVALID_INDEX != number)
 			{
-				number = 0;
 				Byte explodeIndex = (Byte) number;
 				Explosion explosion = MyGame.Manager.ExplosionManager.ExplosionList[explodeIndex];
 				if (!explosion.IsExploding)
@@ -45,12 +53,9 @@ namespace WindowsGame.Common.Screens
 					MyGame.Manager.ExplosionManager.LoadContent(explodeIndex, explodeType);
 					MyGame.Manager.ExplosionManager.Explode(explodeIndex, position);
 				}
-
-				//MyGame.Manager.Logger.Info(number.ToString());
 			}
 
 			MyGame.Manager.ExplosionManager.Update(gameTime);
-
 			return (Int32)CurrScreen;
 		}
 
@@ -88,9 +93,15 @@ namespace WindowsGame.Common.Screens
 
 		private static Vector2 GetPosition(Byte theNumber)
 		{
-			if (0 == theNumber)
+			if (theNumber < 5)
 			{
-				return new Vector2(150, 100);
+				Single x = theNumber*140 + 50;
+				return new Vector2(x, 60 + (theNumber * 10));
+			}
+			else
+			{
+				Single x = (theNumber - 5)* 140 + 150;
+				return new Vector2(x, 200 + (theNumber * 10));
 			}
 
 			return Vector2.Zero;
