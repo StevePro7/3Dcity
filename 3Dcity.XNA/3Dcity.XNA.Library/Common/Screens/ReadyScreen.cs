@@ -1,10 +1,6 @@
 ﻿using System;
-using WindowsGame.Common.Managers;
-using WindowsGame.Common.Static;
-using WindowsGame.Master.Interfaces;
 using Microsoft.Xna.Framework;
-using WindowsGame.Master;
-using Microsoft.Xna.Framework.Input.Touch;
+using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
 {
@@ -18,6 +14,7 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
+			MyGame.Manager.ScoreManager.Reset();
 			base.LoadContent();
 		}
 
@@ -39,19 +36,21 @@ namespace WindowsGame.Common.Screens
 			//MyGame.Manager.BulletManager.Update(gameTime);
 
 			MyGame.Manager.EventManager.ProcessEvents(gameTime);
-
+			MyGame.Manager.ScoreManager.Update(gameTime);
 			return (Int32) CurrScreen;
 		}
 
 		public override void Draw()
 		{
-			//base.Draw();
+			// Sprite sheet #01.
+			base.Draw();
 			MyGame.Manager.IconManager.DrawControls();
+			MyGame.Manager.ScoreManager.Draw();
 
-			//MyGame.Manager.ExplosionManager.Draw();
-			//MyGame.Manager.BulletManager.Draw();
+			// Sprite sheet #02.
 			MyGame.Manager.SpriteManager.Draw();
 
+			// Text data last!
 			MyGame.Manager.TextManager.Draw(TextDataList);
 		}
 

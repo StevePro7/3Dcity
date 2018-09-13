@@ -12,7 +12,6 @@ namespace WindowsGame.Common.Managers
 	{
 		void Initialize();
 		void Initialize(String contentRoot);
-		void Draw();
 
 		IList<TextData> LoadTextData(String screen);
 		IList<TextData> LoadTextData(String screen, Byte textsSize, UInt16 offsetX, UInt16 offsetY, Single fontX, Single fontY);
@@ -20,6 +19,7 @@ namespace WindowsGame.Common.Managers
 		Vector2 GetTextPosition(SByte x, SByte y, Byte textsSize, UInt16 offsetX, UInt16 offsetY, Single fontX, Single fontY);
 
 		void Draw(IEnumerable<TextData> textDataList);
+		void Draw(TextData textData);
 	}
 
 	public class TextManager : ITextManager 
@@ -33,8 +33,6 @@ namespace WindowsGame.Common.Managers
 
 		public void Initialize()
 		{
-			//String contentRoot = MyGame.Manager.ContentManager.ContentRoot;
-			//Initialize(contentRoot);
 			Initialize(String.Empty);
 		}
 
@@ -44,11 +42,6 @@ namespace WindowsGame.Common.Managers
 			PIPES = new[] { '|' };
 
 			textFileRoot = String.Format("{0}{1}/{2}/{3}", root, Constants.CONTENT_DIRECTORY, Constants.DATA_DIRECTORY, TEXTS_DIRECTORY);
-			//textFileRoot = String.Format("{0}/{1}/{2}", contentRoot, Constants.DATA_DIRECTORY, TEXTS_DIRECTORY);
-		}
-
-		public void Draw()
-		{
 		}
 
 		public IList<TextData> LoadTextData(String screen)
@@ -99,10 +92,15 @@ namespace WindowsGame.Common.Managers
 
 		public void Draw(IEnumerable<TextData> textDataList)
 		{
-			foreach (TextData data in textDataList)
+			foreach (TextData textData in textDataList)
 			{
-				Engine.SpriteBatch.DrawString(Assets.EmulogicFont, data.Text, data.Position, data.Color);
+				Draw(textData);
 			}
+		}
+
+		public void Draw(TextData textData)
+		{
+			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, textData.Text, textData.Position, textData.Color);
 		}
 
 		private static Color ConvertFromHex(String hexCode)

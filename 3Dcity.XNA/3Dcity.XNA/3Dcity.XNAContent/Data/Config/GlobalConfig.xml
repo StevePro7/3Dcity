@@ -2,13 +2,14 @@
 <GlobalConfigData>
 	<ScreenType>Test</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
-	<!--<ScreenType>Test</ScreenType>-->
+	<!--<ScreenType>Ready</ScreenType>-->
 	<FramesPerSecond>100</FramesPerSecond>
 	<LoadAudio>false</LoadAudio>
 	<SplashDelay>0</SplashDelay>
 	<StarDelay>2000</StarDelay>
 	<GridDelay>200</GridDelay>
 	<EventRatio>1.0</EventRatio>
+	<ScoreBlink>true</ScoreBlink>
 	<UpdateStar>false</UpdateStar>
 	<UpdateGrid>false</UpdateGrid>
 	<RenderBack>true</RenderBack>

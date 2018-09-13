@@ -24,6 +24,8 @@ namespace WindowsGame.Common.Screens
 			boxPositions = GetBoxPositions();
 			MyGame.Manager.EnemyManager.Reset(1);
 			MyGame.Manager.ExplosionManager.Reset(8, 100);
+
+			MyGame.Manager.ScoreManager.Reset();
 			base.LoadContent();
 		}
 
@@ -61,33 +63,26 @@ namespace WindowsGame.Common.Screens
 
 		public override void Draw()
 		{
+			// Sprite sheet #01.
 			base.Draw();
 			MyGame.Manager.IconManager.DrawControls();
+			MyGame.Manager.ScoreManager.Draw();
 
+			// Sprite sheet #02.
 			MyGame.Manager.SpriteManager.Draw();
 			for (Byte index = 0; index < Constants.MAX_ENEMY_SPAWN; index++)
 			{
 				Engine.SpriteBatch.Draw(Assets.ZZindigoTexture, boxPositions[index], Color.Black);
 			}
 
-			Vector2 enemyPos = new Vector2(350-120, 280 + 80);
-			Rectangle enemyRect = MyGame.Manager.ImageManager.EnemyRectangles[3];
-			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, enemyPos, enemyRect, Color.White);
+			//Vector2 enemyPos = new Vector2(350-120, 280 + 80);
+			//Rectangle enemyRect = MyGame.Manager.ImageManager.EnemyRectangles[3];
+			//Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, enemyPos, enemyRect, Color.White);
 
 			MyGame.Manager.ExplosionManager.Draw();
 
-			//if (Constants.INVALID_INDEX != number)
-			//{
-			//    // BIG
-			//    //Vector2 bombsPos = new Vector2(enemyPos.X - 20, enemyPos.Y - 20);
 
-			//    // SMALL
-			//    Vector2 bombsPos = new Vector2(enemyPos.X + 20, enemyPos.Y + 20);
-
-			//    Rectangle bombsRect = MyGame.Manager.ImageManager.ExplodeRectangles[0][(Byte) number];
-			//    Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, bombsPos, bombsRect, Color.White);
-			//}
-
+			// Text data last!
 			MyGame.Manager.TextManager.Draw(TextDataList);
 		}
 
