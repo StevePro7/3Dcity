@@ -10,7 +10,7 @@ namespace WindowsGame.Common.Managers
 	{
 		void Initialize();
 		void LoadContent();
-		void Reset(Byte theEnemySpawn);
+		void Reset(LevelType theLevelType, Byte theEnemySpawn);
 		void Spawn(UInt16 frameDelay);
 		void Start(UInt16 frameDelay);
 		//void Spawn(UInt16 frameDelay, Vector2 position);
@@ -21,8 +21,9 @@ namespace WindowsGame.Common.Managers
 		//IDictionary<Byte, Enemy> EnemyDict { get; }
 	}
 
-	public class EnemyManager : IEnemyManager 
+	public class EnemyManager : IEnemyManager
 	{
+		private LevelType levelType;
 		private Byte maxEnemySpawn;
 
 		public void Initialize()
@@ -51,8 +52,9 @@ namespace WindowsGame.Common.Managers
 			}
 		}
 
-		public void Reset(Byte theEnemySpawn)
+		public void Reset(LevelType theLevelType, Byte theEnemySpawn)
 		{
+			levelType = theLevelType;
 			maxEnemySpawn = theEnemySpawn;
 			if (maxEnemySpawn > Constants.MAX_ENEMYS_SPAWN)
 			{
@@ -70,7 +72,7 @@ namespace WindowsGame.Common.Managers
 		{
 			for (Byte index = 0; index < maxEnemySpawn; index++)
 			{
-				Vector2 position = new Vector2(350, 250);
+				Vector2 position = GetPositioni(index);
 				EnemyList[index].Spawn(frameDelay, position);
 			}
 		}
@@ -97,6 +99,17 @@ namespace WindowsGame.Common.Managers
 			{
 				EnemyList[index].Draw();
 			}
+		}
+
+		private Vector2 GetPositioni(Byte index)
+		{
+			Single x = 250;
+			if (0 == index%2)
+			{
+				x = 450;
+			}
+
+			return new Vector2(x, 300);
 		}
 
 		public IList<Enemy> EnemyList { get; private set; }

@@ -22,8 +22,10 @@ namespace WindowsGame.Common.Screens
 		public override void LoadContent()
 		{
 			boxPositions = GetBoxPositions();
-			MyGame.Manager.EnemyManager.Reset(1);
-			MyGame.Manager.EnemyManager.Spawn(500);
+
+			LevelType levelType = MyGame.Manager.StateManager.LevelType;
+			MyGame.Manager.EnemyManager.Reset(levelType, 2);
+			MyGame.Manager.EnemyManager.Spawn(1500);
 			MyGame.Manager.EnemyManager.Start(2000);
 			MyGame.Manager.ExplosionManager.Reset(8, 100);
 
@@ -79,7 +81,7 @@ namespace WindowsGame.Common.Screens
 
 			for (Byte index = 0; index < Constants.MAX_ENEMYS_SPAWN; index++)
 			{
-				Engine.SpriteBatch.Draw(Assets.ZZindigoTexture, boxPositions[index], Color.Black);
+				//Engine.SpriteBatch.Draw(Assets.ZZindigoTexture, boxPositions[index], Color.Black);
 			}
 
 			//Vector2 enemyPos = new Vector2(350-120, 280 + 80);
