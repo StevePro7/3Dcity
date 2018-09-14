@@ -37,8 +37,8 @@ namespace WindowsGame.Common.Static
 
 		public static readonly UInt16[] ENEMY_OFFSET_X = new UInt16[MAX_ENEMYS_SPAWN] { 0, 160, 320, 480, 640, 190, 350, 510 };
 		public static readonly UInt16[] ENEMY_OFFSET_Y = new UInt16[MAX_ENEMYS_SPAWN] { 80, 80, 80, 80, 80, 280, 280, 280 };
-		public const Byte ENEMY_RANDOM_X = 35;
-		public const Byte ENEMY_RANDOM_Y = 75;
+		public const Byte ENEMY_RANDOM_X = 36;
+		public const Byte ENEMY_RANDOM_Y = 72;
 
 		// Sizes.
 		public const Byte HalfSize = 40;
