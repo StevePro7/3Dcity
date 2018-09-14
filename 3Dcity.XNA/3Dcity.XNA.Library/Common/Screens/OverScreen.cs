@@ -71,7 +71,9 @@ namespace WindowsGame.Common.Screens
 			// Sprite sheet #02.
 
 			// Enemy
-			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, enemyPos, enemyRects[enemyFrame], Color.White);
+			//Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, enemyPos, enemyRects[enemyFrame], Color.White);
+			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, new Vector2(40, 80), enemyRects[6], Color.White);
+			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, new Vector2(160, 80), enemyRects[6], Color.White);
 
 			// Coll box.
 			for (Byte index = 0; index < Constants.MAX_ENEMYS_SPAWN; index++)

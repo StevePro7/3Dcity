@@ -94,7 +94,7 @@ namespace WindowsGame.Common.Managers
 			for (Byte index = 0; index < maxEnemySpawn; index++)
 			{
 				SpawnOneEnemy(index);
-				EnemyList[index].Start((UInt16)(1000 + 3000 * index));
+				EnemyList[index].Start((UInt16)(1000 + 3000 * index));		// TODO tweak configurable numbers
 			}
 		}
 
@@ -120,8 +120,8 @@ namespace WindowsGame.Common.Managers
 			Enemy enemy = EnemyList[index];
 
 			Vector2 position = enemy.Position;
-			Byte randomX = (Byte)MyGame.Manager.RandomManager.Next(40);
-			Byte randomY = (Byte)MyGame.Manager.RandomManager.Next(80);
+			Byte randomX = (Byte)MyGame.Manager.RandomManager.Next(Constants.ENEMY_RANDOM_X);
+			Byte randomY = (Byte)MyGame.Manager.RandomManager.Next(Constants.ENEMY_RANDOM_Y);
 			UInt16 offsetX = EnemyOffsetX[(Byte)slotID];
 			UInt16 offsetY = EnemyOffsetY[(Byte)slotID];
 			position.X = randomX + offsetX;
