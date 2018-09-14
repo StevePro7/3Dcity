@@ -105,7 +105,6 @@
     <Compile Include="Common\Managers\SpriteManager.cs" />
     <Compile Include="Common\Managers\TextManager.cs" />
     <Compile Include="Common\Objects\BaseObject.cs" />
-    <Compile Include="Common\Objects\Collision200.cs" />
     <Compile Include="Common\Objects\JoyButton.cs" />
     <Compile Include="Common\Objects\GameSound.cs" />
     <Compile Include="Common\Objects\GameState.cs" />

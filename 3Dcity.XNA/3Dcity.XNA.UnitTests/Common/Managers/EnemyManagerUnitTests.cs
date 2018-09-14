@@ -3,17 +3,17 @@ using NUnit.Framework;
 
 namespace WindowsGame.UnitTests.Common.Managers
 {
-	[TestFixture]
+	//[TestFixture]
 	public class EnemyManagerUnitTests : BaseUnitTests
 	{
-		[SetUp]
-		public new void SetUp()
-		{
-			// System under test.
-			EnemyManager = new EnemyManager();
-			EnemyManager.Initialize();
-			base.SetUp();
-		}
+		//[SetUp]
+		//public new void SetUp()
+		//{
+		//    // System under test.
+		//    EnemyManager = new EnemyManager();
+		//    EnemyManager.Initialize();
+		//    base.SetUp();
+		//}
 
 		//[Test]
 		//public void LoadTest()
@@ -22,11 +22,11 @@ namespace WindowsGame.UnitTests.Common.Managers
 		//    Assert.That(1, Is.EqualTo(1));
 		//}
 
-		[TearDown]
-		public void TearDown()
-		{
-			CollisionManager = null;
-		}
+		//[TearDown]
+		//public void TearDown()
+		//{
+		//    CollisionManager = null;
+		//}
 
 	}
 }

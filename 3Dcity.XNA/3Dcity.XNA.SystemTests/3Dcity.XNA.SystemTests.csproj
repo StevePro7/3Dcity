@@ -51,7 +51,6 @@
     <Compile Include="Master\Implementation\TestFileProxy.cs" />
     <Compile Include="Common\Managers\CommandManagerSystemTests.cs" />
     <Compile Include="Common\Managers\ConfigManagerSystemTests.cs" />
-    <Compile Include="Common\Managers\ScreenManagerSystemTests.cs" />
     <Compile Include="Common\Managers\TextManagerSystemTests.cs" />
     <Compile Include="Master\Managers\StopwatchManagerSystemTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
