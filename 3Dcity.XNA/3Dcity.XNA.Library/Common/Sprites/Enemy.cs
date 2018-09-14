@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using WindowsGame.Common.Static;
 using Microsoft.Xna.Framework;
@@ -13,19 +12,14 @@ namespace WindowsGame.Common.Sprites
 		public Enemy()
 		{
 			FrameDelay = new UInt16[Constants.MAX_ENEMYS_FRAME];
-			//FrameImage = new Byte[Constants.MAX_ENEMYS_FRAME] { 0, 0, 1, 2, 3, 4, 5, 6, 7, 7, 7, 7, 7 };
-			FrameImage = new Byte[Constants.MAX_ENEMYS_FRAME] { 6, 0, 1, 2, 3, 4, 5, 6, 7, 2, 7, 3, 7 };
+			FrameImage = new Byte[Constants.MAX_ENEMYS_FRAME] { 0, 0, 1, 2, 3, 4, 5, 6, 7, 7, 7, 7, 7 };
+			//FrameImage = new Byte[Constants.MAX_ENEMYS_FRAME] { 6, 0, 1, 2, 3, 4, 5, 6, 7, 2, 7, 3, 7 };
 
 			blinkFrame = new List<Byte>{ 0, 9, 11 };
 		}
 
-		public void Reset(UInt16 frameDelay)
+		public void Reset()
 		{
-			for (Byte index = 0; index < Constants.MAX_ENEMYS_FRAME; index++)
-			{
-				FrameDelay[index] = frameDelay;
-			}
-
 			EnemyType = EnemyType.Idle;
 			//IsActive = false;
 			FrameCount = 0;
@@ -33,13 +27,30 @@ namespace WindowsGame.Common.Sprites
 			FrameTimer = 0;
 		}
 
-		public void Spawn()
+		public void Spawn(UInt16 frameDelay, Vector2 position)
 		{
 			// Calculate all frame delays
+			for (Byte index = 0; index < Constants.MAX_ENEMYS_FRAME; index++)
+			{
+				FrameDelay[index] = frameDelay;
+				if (blinkFrame.Contains(index))
+				{
+					FrameDelay[index] /= 2;
+				}
+			}
+
+			SetPosition(position);
+
 			EnemyType = EnemyType.Move;
 			FrameCount = 0;
 			FrameTimer = 0;
 			FrameIndex = FrameImage[FrameCount];
+		}
+
+		public void Start(UInt16 frameDelay)
+		{
+			// Longer delay for initial move.
+			FrameDelay[0] = frameDelay;
 		}
 
 		public override void Update(GameTime gameTime)
@@ -51,7 +62,7 @@ namespace WindowsGame.Common.Sprites
 
 			FrameTimer += (UInt16)gameTime.ElapsedGameTime.Milliseconds;
 			FrameIndex = FrameImage[FrameCount];
-			UInt16 frameDelay = FrameDelay[FrameIndex];
+			UInt16 frameDelay = FrameDelay[FrameCount];
 			if (FrameTimer >= frameDelay)
 			{
 				FrameTimer -= frameDelay;

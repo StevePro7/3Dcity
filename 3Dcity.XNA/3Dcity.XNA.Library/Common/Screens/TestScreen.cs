@@ -22,8 +22,9 @@ namespace WindowsGame.Common.Screens
 		public override void LoadContent()
 		{
 			boxPositions = GetBoxPositions();
-			MyGame.Manager.EnemyManager.Reset(1, 900);
-			MyGame.Manager.EnemyManager.Spawn();
+			MyGame.Manager.EnemyManager.Reset(1);
+			MyGame.Manager.EnemyManager.Spawn(500);
+			MyGame.Manager.EnemyManager.Start(2000);
 			MyGame.Manager.ExplosionManager.Reset(8, 100);
 
 			MyGame.Manager.ScoreManager.Reset();
@@ -74,7 +75,7 @@ namespace WindowsGame.Common.Screens
 
 			// Sprite sheet #02.
 			MyGame.Manager.EnemyManager.Draw();
-			MyGame.Manager.SpriteManager.Draw();
+			//MyGame.Manager.SpriteManager.Draw();
 
 			for (Byte index = 0; index < Constants.MAX_ENEMYS_SPAWN; index++)
 			{
@@ -104,8 +105,6 @@ namespace WindowsGame.Common.Screens
 				Single x = (theNumber - 5)* 140 + 150;
 				return new Vector2(x, 200 + (theNumber * 10));
 			}
-
-			return Vector2.Zero;
 		}
 
 		private Vector2[] GetBoxPositions()

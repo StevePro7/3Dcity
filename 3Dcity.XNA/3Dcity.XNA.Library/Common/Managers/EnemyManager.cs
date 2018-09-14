@@ -10,8 +10,10 @@ namespace WindowsGame.Common.Managers
 	{
 		void Initialize();
 		void LoadContent();
-		void Reset(Byte theEnemySpawn, UInt16 frameDelay);
-		void Spawn();
+		void Reset(Byte theEnemySpawn);
+		void Spawn(UInt16 frameDelay);
+		void Start(UInt16 frameDelay);
+		//void Spawn(UInt16 frameDelay, Vector2 position);
 		void Update(GameTime gameTime);
 		void Draw();
 
@@ -49,7 +51,7 @@ namespace WindowsGame.Common.Managers
 			}
 		}
 
-		public void Reset(Byte theEnemySpawn, UInt16 frameDelay)
+		public void Reset(Byte theEnemySpawn)
 		{
 			maxEnemySpawn = theEnemySpawn;
 			if (maxEnemySpawn > Constants.MAX_ENEMYS_SPAWN)
@@ -59,15 +61,25 @@ namespace WindowsGame.Common.Managers
 
 			for (Byte index = 0; index < maxEnemySpawn; index++)
 			{
-				EnemyList[index].Reset(frameDelay);
+				EnemyList[index].Reset();
 			}
 		}
 
-		public void Spawn()
+		//public void Spawn(UInt16 frameDelay, Vector2 position)
+		public void Spawn(UInt16 frameDelay)
 		{
 			for (Byte index = 0; index < maxEnemySpawn; index++)
 			{
-				EnemyList[index].Spawn();
+				Vector2 position = new Vector2(350, 250);
+				EnemyList[index].Spawn(frameDelay, position);
+			}
+		}
+
+		public void Start(UInt16 frameDelay)
+		{
+			for (Byte index = 0; index < maxEnemySpawn; index++)
+			{
+				EnemyList[index].Start(frameDelay);
 			}
 		}
 
