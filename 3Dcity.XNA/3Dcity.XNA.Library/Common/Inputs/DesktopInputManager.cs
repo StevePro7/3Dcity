@@ -217,51 +217,51 @@ namespace WindowsGame.Common.Inputs
 
 		public SByte Number()
 		{
-			if (keyboardInput.KeyPress(Keys.D1))
+			if (keyboardInput.KeyHold(Keys.D1))
 			{
 				return 0;
 			}
-			if (keyboardInput.KeyPress(Keys.D2))
+			if (keyboardInput.KeyHold(Keys.D2))
 			{
 				return 1;
 			}
-			if (keyboardInput.KeyPress(Keys.D3))
+			if (keyboardInput.KeyHold(Keys.D3))
 			{
 				return 2;
 			}
-			if (keyboardInput.KeyPress(Keys.D4))
+			if (keyboardInput.KeyHold(Keys.D4))
 			{
 				return 3;
 			}
-			if (keyboardInput.KeyPress(Keys.D5))
+			if (keyboardInput.KeyHold(Keys.D5))
 			{
 				return 4;
 			}
-			if (keyboardInput.KeyPress(Keys.D6))
+			if (keyboardInput.KeyHold(Keys.D6))
 			{
 				return 5;
 			}
-			if (keyboardInput.KeyPress(Keys.D7) || keyboardInput.KeyPress(Keys.Q))
+			if (keyboardInput.KeyHold(Keys.D7) || keyboardInput.KeyHold(Keys.Q))
 			{
 				return 6;
 			}
-			if (keyboardInput.KeyPress(Keys.D8) || keyboardInput.KeyPress(Keys.W))
+			if (keyboardInput.KeyHold(Keys.D8) || keyboardInput.KeyHold(Keys.W))
 			{
 				return 7;
 			}
-			if (keyboardInput.KeyPress(Keys.E))
+			if (keyboardInput.KeyHold(Keys.E))
 			{
 				return 8;
 			}
-			if (keyboardInput.KeyPress(Keys.R))
+			if (keyboardInput.KeyHold(Keys.R))
 			{
 				return 9;
 			}
-			if (keyboardInput.KeyPress(Keys.T))
+			if (keyboardInput.KeyHold(Keys.T))
 			{
 				return 10;
 			}
-			if (keyboardInput.KeyPress(Keys.Y))
+			if (keyboardInput.KeyHold(Keys.Y))
 			{
 				return 11;
 			}

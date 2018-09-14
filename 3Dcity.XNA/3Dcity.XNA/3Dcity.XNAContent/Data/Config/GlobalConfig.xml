@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Play</ScreenType>
+	<ScreenType>Over</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Ready</ScreenType>-->
 	<FramesPerSecond>100</FramesPerSecond>
@@ -9,13 +9,17 @@
 	<StarDelay>2000</StarDelay>
 	<GridDelay>200</GridDelay>
 	<EventRatio>1.0</EventRatio>
-	<ScoreBlink>true</ScoreBlink>
-	<UpdateStar>true</UpdateStar>
-	<UpdateGrid>true</UpdateGrid>
+	<ScoreBlink>false</ScoreBlink>
+	<UpdateStar>false</UpdateStar>
+	<UpdateGrid>false</UpdateGrid>
 	<RenderBack>true</RenderBack>
-	<RenderIcon>true</RenderIcon>
-	<JoypadX>0</JoypadX>
-	<JoypadY>360</JoypadY>
+	<RenderIcon>false</RenderIcon>
+	<TargetX>0</TargetX>
+	<TargetY>0</TargetY>
+	<EnemysX>160</EnemysX>
+	<EnemysY>160</EnemysY>
+	<EnemyFrame>7</EnemyFrame>
 	<EnemyIndex>0</EnemyIndex>
+	<IsGodMode>true</IsGodMode>
 	<QuitsToExit>true</QuitsToExit>
 </GlobalConfigData>

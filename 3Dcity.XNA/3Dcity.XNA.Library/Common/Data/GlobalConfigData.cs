@@ -17,9 +17,13 @@ namespace WindowsGame.Common.Data
 		public Boolean UpdateGrid;
 		public Boolean RenderBack;
 		public Boolean RenderIcon;
-		public UInt16 JoypadX;
-		public UInt16 JoypadY;
+		public UInt16 TargetX;
+		public UInt16 TargetY;
+		public UInt16 EnemysX;
+		public UInt16 EnemysY;
+		public Byte EnemyFrame;
 		public Byte EnemyIndex;
+		public Boolean IsGodMode;
 		public Boolean QuitsToExit;
 	}
 }

@@ -112,6 +112,7 @@
     <Compile Include="Common\Screens\BaseScreen.cs" />
     <Compile Include="Common\Back\TitleScreenBAK.cs" />
     <Compile Include="Common\Back\PlayScreenBAK.cs" />
+    <Compile Include="Common\Screens\OverScreen.cs" />
     <Compile Include="Common\Screens\DemoScreen.cs" />
     <Compile Include="Common\Screens\ExitScreen.cs" />
     <Compile Include="Common\Screens\InitScreen.cs" />

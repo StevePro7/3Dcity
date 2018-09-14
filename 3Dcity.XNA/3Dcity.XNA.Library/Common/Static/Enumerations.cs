@@ -58,6 +58,7 @@
 		Title,
 		Ready,
 		Play,
+		Over,
 		Demo,
 		Exit,
 		Test,
