@@ -24,9 +24,9 @@ namespace WindowsGame.Common.Screens
 			boxPositions = GetBoxPositions();
 
 			LevelType levelType = MyGame.Manager.StateManager.LevelType;
-			MyGame.Manager.EnemyManager.Reset(levelType, 8, 2000, 5000);
-
+			MyGame.Manager.EnemyManager.Reset(levelType, 5, 2000, 5000);
 			MyGame.Manager.EnemyManager.SpawnAllEnemies();
+
 			//MyGame.Manager.EnemyManager.SpawnOneEnemy(0);
 			//MyGame.Manager.EnemyManager.Spawn(1500);
 			//MyGame.Manager.EnemyManager.Start(2000);
@@ -46,12 +46,12 @@ namespace WindowsGame.Common.Screens
 
 			// Log delta to monitor performance!
 #if DEBUG
-			MyGame.Manager.Logger.Info(gameTime.ElapsedGameTime.TotalSeconds.ToString());
+			//MyGame.Manager.Logger.Info(gameTime.ElapsedGameTime.TotalSeconds.ToString());
 #endif
 
 			// Move enemies.
 			MyGame.Manager.EnemyManager.Update(gameTime);
-
+			MyGame.Manager.EnemyManager.CheckAllEnemies();
 			number = MyGame.Manager.InputManager.Number();
 			if (Constants.INVALID_INDEX != number)
 			{

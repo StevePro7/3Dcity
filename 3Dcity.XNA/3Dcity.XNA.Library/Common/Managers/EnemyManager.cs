@@ -13,8 +13,10 @@ namespace WindowsGame.Common.Managers
 		void Reset(LevelType theLevelType, Byte theEnemySpawn, UInt16 minDelay, UInt16 maxDelay);
 		void SpawnAllEnemies();
 		void SpawnOneEnemy(Byte index);
-		void Spawn(UInt16 frameDelay);
-		void Start(UInt16 frameDelay);
+		//void Spawn(UInt16 frameDelay);
+		//void Start(UInt16 frameDelay);
+		void CheckAllEnemies();
+
 		//void Spawn(UInt16 frameDelay, Vector2 position);
 		void Update(GameTime gameTime);
 		void Draw();
@@ -92,14 +94,14 @@ namespace WindowsGame.Common.Managers
 			for (Byte index = 0; index < maxEnemySpawn; index++)
 			{
 				SpawnOneEnemy(index);
-				EnemyList[index].Start(1000);
+				EnemyList[index].Start((UInt16)(1000 + 3000 * index));
 			}
 		}
 
 		public void SpawnOneEnemy(Byte index)
 		{
 			// TODO work out better the frame delay.
-			UInt16 frameDelay = 500;
+			UInt16 frameDelay = 2000;
 			//UInt16 frameDelay = MyGame.Manager.RandomManager.Next(MinDelay, MaxDelay);
 
 			SByte slotID = Constants.INVALID_INDEX;
@@ -131,20 +133,41 @@ namespace WindowsGame.Common.Managers
 		}
 
 		//public void Spawn(UInt16 frameDelay, Vector2 position)
-		public void Spawn(UInt16 frameDelay)
-		{
-			for (Byte index = 0; index < maxEnemySpawn; index++)
-			{
-				//Vector2 position = GetPositioni(index);
-				//EnemyList[index].Spawn(frameDelay, position);
-			}
-		}
+		//public void Spawn(UInt16 frameDelay)
+		//{
+		//    for (Byte index = 0; index < maxEnemySpawn; index++)
+		//    {
+		//        //Vector2 position = GetPositioni(index);
+		//        //EnemyList[index].Spawn(frameDelay, position);
+		//    }
+		//}
 
-		public void Start(UInt16 frameDelay)
+		//public void Start(UInt16 frameDelay)
+		//{
+		//    for (Byte index = 0; index < maxEnemySpawn; index++)
+		//    {
+		//        EnemyList[index].Start(frameDelay);
+		//    }
+		//}
+
+		public void CheckAllEnemies()
 		{
 			for (Byte index = 0; index < maxEnemySpawn; index++)
 			{
-				EnemyList[index].Start(frameDelay);
+				Enemy enemy = EnemyList[index];
+				if (EnemyType.Test != enemy.EnemyType)
+				{
+					continue;
+				}
+
+				SByte slotID = enemy.SlotID;
+				if (EnemyDict.ContainsKey((Byte)slotID))
+				{
+					EnemyDict.Remove((Byte)slotID);
+				}
+
+				enemy.Reset();
+				SpawnOneEnemy(index);
 			}
 		}
 
