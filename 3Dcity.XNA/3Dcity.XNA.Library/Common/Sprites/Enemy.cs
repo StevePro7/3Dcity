@@ -25,8 +25,10 @@ namespace WindowsGame.Common.Sprites
 			FrameTimer = 0;
 		}
 
-		public void Spawn(UInt16 frameDelay, Vector2 position)
+		public void Spawn(Byte slotID, UInt16 frameDelay, Vector2 position, Rectangle bounds)
 		{
+			SetSlotID(slotID);
+
 			// Calculate all frame delays
 			for (Byte index = 0; index < Constants.MAX_ENEMYS_FRAME; index++)
 			{
@@ -38,6 +40,7 @@ namespace WindowsGame.Common.Sprites
 			}
 
 			SetPosition(position);
+			SetBounds(bounds);
 
 			EnemyType = EnemyType.Move;
 			FrameCount = 0;
@@ -90,29 +93,34 @@ namespace WindowsGame.Common.Sprites
 			base.Draw();
 		}
 
-		public void SetBounds(Byte index)
-		{
-			// High + wide max enemy.
-			const Byte size = 120;
-			const Byte wide = 160;
-			const Byte high = 200;
-			const Byte uppr = 5;
+		// TODO delete
+		//public void SetBounds(Byte index)
+		//{
+		//    // High + wide max enemy.
+		//    const Byte size = 120;
+		//    const Byte wide = 160;
+		//    const Byte high = 200;
+		//    const Byte uppr = 5;
 
-			if (index < uppr)
-			{
-				Bounds = new Rectangle((wide * index), 80 + Constants.GameOffsetY, (wide - size), (high - size));
-			}
-			else
-			{
-				index -= uppr;
-				const Byte offset = 190;
-				Bounds = new Rectangle(offset + wide * index, 280 + Constants.GameOffsetY, (wide - size), (high - size));
-			}
-		}
+		//    if (index < uppr)
+		//    {
+		//        Bounds = new Rectangle((wide * index), 80 + Constants.GameOffsetY, (wide - size), (high - size));
+		//    }
+		//    else
+		//    {
+		//        index -= uppr;
+		//        const Byte offset = 190;
+		//        Bounds = new Rectangle(offset + wide * index, 280 + Constants.GameOffsetY, (wide - size), (high - size));
+		//    }
+		//}
 
 		public void SetSlotID()
 		{
 			SlotID = Constants.INVALID_INDEX;
+		}
+		public void SetSlotID(Byte slotID)
+		{
+			SlotID = (SByte)slotID;
 		}
 
 		public SByte SlotID { get; private set; }

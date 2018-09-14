@@ -64,6 +64,11 @@ namespace WindowsGame.Common.Sprites
 			Position = position;
 		}
 
+		public void SetBounds(Rectangle bounds)
+		{
+			Bounds = bounds;
+		}
+
 		public virtual void Update(GameTime gameTime)
 		{
 		}

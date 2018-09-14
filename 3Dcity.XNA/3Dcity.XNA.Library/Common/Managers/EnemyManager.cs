@@ -89,30 +89,44 @@ namespace WindowsGame.Common.Managers
 
 		public void SpawnAllEnemies()
 		{
+			for (Byte index = 0; index < maxEnemySpawn; index++)
+			{
+				SpawnOneEnemy(index);
+				EnemyList[index].Start(1000);
+			}
 		}
 
 		public void SpawnOneEnemy(Byte index)
 		{
+			// TODO work out better the frame delay.
+			UInt16 frameDelay = 500;
+			//UInt16 frameDelay = MyGame.Manager.RandomManager.Next(MinDelay, MaxDelay);
+
 			SByte slotID = Constants.INVALID_INDEX;
 			while (true)
 			{
-				slotID = (SByte)MyGame.Manager.RandomManager.Next(maxEnemySpawn);
+				slotID = (SByte)MyGame.Manager.RandomManager.Next(Constants.MAX_ENEMYS_SPAWN);
 				if (!EnemyDict.ContainsKey((Byte)slotID))
 				{
 					break;
 				}
 			}
 
+			// TODO delete
+			MyGame.Manager.Logger.Info(slotID.ToString());
+
 			Enemy enemy = EnemyList[index];
+
 			Vector2 position = enemy.Position;
 			Byte randomX = (Byte)MyGame.Manager.RandomManager.Next(40);
 			Byte randomY = (Byte)MyGame.Manager.RandomManager.Next(80);
 			UInt16 offsetX = EnemyOffsetX[(Byte)slotID];
 			UInt16 offsetY = EnemyOffsetY[(Byte)slotID];
-
 			position.X = randomX + offsetX;
 			position.Y = randomY + offsetY;
-			enemy.Spawn(0, position);
+
+			Rectangle bounds = EnemyBounds[(Byte)slotID];
+			enemy.Spawn((Byte)slotID, frameDelay, position, bounds);
 			EnemyDict.Add((Byte)slotID, enemy);
 		}
 
@@ -121,8 +135,8 @@ namespace WindowsGame.Common.Managers
 		{
 			for (Byte index = 0; index < maxEnemySpawn; index++)
 			{
-				Vector2 position = GetPositioni(index);
-				EnemyList[index].Spawn(frameDelay, position);
+				//Vector2 position = GetPositioni(index);
+				//EnemyList[index].Spawn(frameDelay, position);
 			}
 		}
 
