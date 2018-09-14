@@ -33,7 +33,7 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.Logger.Info(gameTime.ElapsedGameTime.TotalSeconds.ToString());
 #endif
 
-			MyGame.Manager.CollisionManager.ClearBulletCollisionList();
+			MyGame.Manager.CollisionManager.ClearCollisionList();
 
 			// Move target unconditionally.
 			Single horz = MyGame.Manager.InputManager.Horizontal();

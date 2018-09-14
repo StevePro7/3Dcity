@@ -1,18 +1,17 @@
 using System;
 using System.Collections.Generic;
 using WindowsGame.Common.Static;
-using Microsoft.Xna.Framework;
 
 namespace WindowsGame.Common.Managers
 {
 	public interface ICollisionManager 
 	{
 		void Initialize();
-		void ClearBulletCollisionList();
+		void ClearCollisionList();
 		void AddToBulletCollisionList(Byte bulletIndex);
 		void AddToEnemysCollisionList(Byte enemysIndex);
-		void Update(GameTime gameTime);
-		void Draw();
+		//void Update(GameTime gameTime);
+		//void Draw();
 
 		IList<Byte> BulletCollisionList { get; }
 		IList<Byte> EnemysCollisionList { get; }
@@ -26,9 +25,10 @@ namespace WindowsGame.Common.Managers
 			EnemysCollisionList = new List<Byte>(Constants.MAX_ENEMYS_SPAWN);
 		}
 
-		public void ClearBulletCollisionList()
+		public void ClearCollisionList()
 		{
 			BulletCollisionList.Clear();
+			EnemysCollisionList.Clear();
 		}
 
 		public void AddToBulletCollisionList(Byte bulletIndex)
@@ -38,16 +38,16 @@ namespace WindowsGame.Common.Managers
 
 		public void AddToEnemysCollisionList(Byte enemysIndex)
 		{
-			
+			EnemysCollisionList.Add(enemysIndex);
 		}
 
-		public void Update(GameTime gameTime)
-		{
-		}
+		//public void Update(GameTime gameTime)
+		//{
+		//}
 
-		public void Draw()
-		{
-		}
+		//public void Draw()
+		//{
+		//}
 
 		public IList<Byte> BulletCollisionList { get; private set; }
 		public IList<Byte> EnemysCollisionList { get; private set; }

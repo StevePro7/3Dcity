@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Test</ScreenType>
+	<ScreenType>Play</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Ready</ScreenType>-->
 	<FramesPerSecond>100</FramesPerSecond>
@@ -10,8 +10,8 @@
 	<GridDelay>200</GridDelay>
 	<EventRatio>1.0</EventRatio>
 	<ScoreBlink>true</ScoreBlink>
-	<UpdateStar>false</UpdateStar>
-	<UpdateGrid>false</UpdateGrid>
+	<UpdateStar>true</UpdateStar>
+	<UpdateGrid>true</UpdateGrid>
 	<RenderBack>true</RenderBack>
 	<RenderIcon>true</RenderIcon>
 	<JoypadX>0</JoypadX>
