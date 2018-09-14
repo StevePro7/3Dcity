@@ -22,7 +22,8 @@ namespace WindowsGame.Common.Screens
 		public override void LoadContent()
 		{
 			boxPositions = GetBoxPositions();
-			MyGame.Manager.EnemyManager.Reset(1);
+			MyGame.Manager.EnemyManager.Reset(1, 900);
+			MyGame.Manager.EnemyManager.Spawn();
 			MyGame.Manager.ExplosionManager.Reset(8, 100);
 
 			MyGame.Manager.ScoreManager.Reset();
@@ -41,6 +42,9 @@ namespace WindowsGame.Common.Screens
 #if DEBUG
 			MyGame.Manager.Logger.Info(gameTime.ElapsedGameTime.TotalSeconds.ToString());
 #endif
+
+			// Move enemies.
+			MyGame.Manager.EnemyManager.Update(gameTime);
 
 			number = MyGame.Manager.InputManager.Number();
 			if (Constants.INVALID_INDEX != number)
@@ -69,8 +73,10 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.ScoreManager.Draw();
 
 			// Sprite sheet #02.
+			MyGame.Manager.EnemyManager.Draw();
 			MyGame.Manager.SpriteManager.Draw();
-			for (Byte index = 0; index < Constants.MAX_ENEMY_SPAWN; index++)
+
+			for (Byte index = 0; index < Constants.MAX_ENEMYS_SPAWN; index++)
 			{
 				Engine.SpriteBatch.Draw(Assets.ZZindigoTexture, boxPositions[index], Color.Black);
 			}
@@ -107,7 +113,7 @@ namespace WindowsGame.Common.Screens
 			const Single hi = 80 + Constants.GameOffsetY;
 			const Single lo = 280 + Constants.GameOffsetY;
 
-			boxPositions = new Vector2[Constants.MAX_ENEMY_SPAWN];
+			boxPositions = new Vector2[Constants.MAX_ENEMYS_SPAWN];
 			boxPositions[0] = new Vector2(160 * 0, hi);
 			boxPositions[1] = new Vector2(160 * 1, hi);
 			boxPositions[2] = new Vector2(160 * 2, hi);

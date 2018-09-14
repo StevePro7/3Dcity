@@ -12,6 +12,15 @@
 		Hard = 1
 	}
 
+	public enum EnemyType
+	{
+		Idle,
+		Move,
+		Test,
+		Dead,
+		None
+	}
+
 	public enum ExplodeType
 	{
 		Small = 0,

@@ -26,8 +26,8 @@ namespace WindowsGame.Common.Managers
 
 		public void Initialize()
 		{
-			ExplosionList = new List<Explosion>(Constants.MAX_ENEMY_SPAWN);
-			ExplosionDict = new Dictionary<Byte, Explosion>(Constants.MAX_ENEMY_SPAWN);
+			ExplosionList = new List<Explosion>(Constants.MAX_ENEMYS_SPAWN);
+			ExplosionDict = new Dictionary<Byte, Explosion>(Constants.MAX_ENEMYS_SPAWN);
 
 			for (Byte index = 0; index < Constants.MAX_EXPLODE_SPAWN; index++)
 			{

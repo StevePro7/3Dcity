@@ -1,14 +1,13 @@
 ﻿using System;
+using Microsoft.Xna.Framework;
 using WindowsGame.Common.Static;
 using WindowsGame.Master;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace WindowsGame.Common.Sprites
 {
 	public class BaseSprite
 	{
-		protected Rectangle[] rectangles;
+		private Rectangle[] rectangles;
 
 		public virtual void Initialize(Byte maxFrames)
 		{
@@ -26,6 +25,7 @@ namespace WindowsGame.Common.Sprites
 			Initialize(position, Rectangle.Empty, bounds);
 		}
 
+		// TODO use overload above as collision not needed
 		public virtual void Initialize(Vector2 position, Rectangle collision, Rectangle bounds)
 		{
 			BaseX = (UInt16)(position.X);

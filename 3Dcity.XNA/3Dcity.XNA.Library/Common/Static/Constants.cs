@@ -27,8 +27,8 @@ namespace WindowsGame.Common.Static
 		public const Byte MAX_GRID = 3;
 		public const Byte MAX_STAR = 2;
 
-		public const Byte MAX_ENEMY_SPAWN = 8;
-		public const Byte MAX_ENEMY_FRAME = 13;
+		public const Byte MAX_ENEMYS_SPAWN = 8;
+		public const Byte MAX_ENEMYS_FRAME = 13;
 		public const Byte MAX_BULLET_SHOOT = 10;
 		public const Byte MAX_BULLET_FRAME = 6;
 		public const Byte MAX_EXPLODE_TYPE = 2;

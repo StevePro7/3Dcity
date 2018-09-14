@@ -67,7 +67,7 @@ namespace WindowsGame.Common.Screens
 			{
 				Timer = 0;
 				index++;
-				if (index >= Constants.MAX_ENEMY_SPAWN)
+				if (index >= Constants.MAX_ENEMYS_SPAWN)
 				{
 					index = 0;
 				}
@@ -106,8 +106,8 @@ namespace WindowsGame.Common.Screens
 
 		private Vector2[] GetPositions(int sx, int sy)
 		{
-			positions = positions = new Vector2[Constants.MAX_ENEMY_SPAWN];
-			for (Byte loop = 0; loop < Constants.MAX_ENEMY_SPAWN; loop++)
+			positions = positions = new Vector2[Constants.MAX_ENEMYS_SPAWN];
+			for (Byte loop = 0; loop < Constants.MAX_ENEMYS_SPAWN; loop++)
 			{
 				positions[loop] = new Vector2(sx, sy);
 			}

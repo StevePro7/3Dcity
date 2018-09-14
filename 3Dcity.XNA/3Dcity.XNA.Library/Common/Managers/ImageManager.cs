@@ -90,8 +90,8 @@ namespace WindowsGame.Common.Managers
 
 			// Enemies.
 			high = (UInt16)(3 * baseSize + dbleSize);
-			EnemyRectangles = new Rectangle[Constants.MAX_ENEMY_SPAWN];
-			for (Byte index = 0; index < Constants.MAX_ENEMY_SPAWN; index++)
+			EnemyRectangles = new Rectangle[Constants.MAX_ENEMYS_SPAWN];
+			for (Byte index = 0; index < Constants.MAX_ENEMYS_SPAWN; index++)
 			{
 				EnemyRectangles[index] = new Rectangle(index * enemySize, high, enemySize, enemySize);
 			}

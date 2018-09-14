@@ -39,7 +39,7 @@ namespace WindowsGame.Common.Sprites
 				if (FrameIndex >= MaxFrames)
 				{
 					IsFiring = false;
-					MyGame.Manager.CollisionManager.AddToBulletCollisionList(ID);
+					MyGame.Manager.CollisionManager.AddToBulletCollisionList(ID);		// TODO re-factor!
 				}
 			}
 		}
