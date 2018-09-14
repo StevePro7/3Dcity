@@ -1,8 +1,7 @@
 ﻿using System;
-using WindowsGame.Common.Sprites;
 using Microsoft.Xna.Framework;
+using WindowsGame.Common.Sprites;
 using WindowsGame.Common.Static;
-using WindowsGame.Master;
 using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
@@ -24,7 +23,10 @@ namespace WindowsGame.Common.Screens
 			boxPositions = GetBoxPositions();
 
 			LevelType levelType = MyGame.Manager.StateManager.LevelType;
-			MyGame.Manager.EnemyManager.Reset(levelType, 2);
+			MyGame.Manager.EnemyManager.Reset(levelType, 1, 2000, 5000);
+
+			MyGame.Manager.EnemyManager.SpawnOneEnemy(0);
+
 			MyGame.Manager.EnemyManager.Spawn(1500);
 			MyGame.Manager.EnemyManager.Start(2000);
 			MyGame.Manager.ExplosionManager.Reset(8, 100);

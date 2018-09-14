@@ -7,21 +7,19 @@ namespace WindowsGame.Common.Sprites
 {
 	public class Enemy : BaseSprite
 	{
-		private IList<Byte> blinkFrame;
+		private readonly IList<Byte> blinkFrame;
 
 		public Enemy()
 		{
 			FrameDelay = new UInt16[Constants.MAX_ENEMYS_FRAME];
 			FrameImage = new Byte[Constants.MAX_ENEMYS_FRAME] { 0, 0, 1, 2, 3, 4, 5, 6, 7, 7, 7, 7, 7 };
-			//FrameImage = new Byte[Constants.MAX_ENEMYS_FRAME] { 6, 0, 1, 2, 3, 4, 5, 6, 7, 2, 7, 3, 7 };
-
 			blinkFrame = new List<Byte>{ 0, 9, 11 };
 		}
 
 		public void Reset()
 		{
+			SlotID = Constants.INVALID_INDEX;
 			EnemyType = EnemyType.Idle;
-			//IsActive = false;
 			FrameCount = 0;
 			FrameIndex = 0;
 			FrameTimer = 0;
@@ -72,7 +70,6 @@ namespace WindowsGame.Common.Sprites
 				if (FrameCount >= MaxFrames)
 				{
 					EnemyType = EnemyType.Test;
-					//IsActive = false;
 					//MyGame.Manager.CollisionManager.AddToEnemysCollisionList(ID);		// TODO re-factor!
 				}
 			}
@@ -113,7 +110,12 @@ namespace WindowsGame.Common.Sprites
 			}
 		}
 
-		//public Boolean IsActive{ get; private set; }
+		public void SetSlotID()
+		{
+			SlotID = Constants.INVALID_INDEX;
+		}
+
+		public SByte SlotID { get; private set; }
 		public UInt16[] FrameDelay { get; private set; }
 		public Byte[] FrameImage { get; private set; }
 		public Byte FrameCount { get; private set; }
