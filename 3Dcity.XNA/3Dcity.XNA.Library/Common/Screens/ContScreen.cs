@@ -4,12 +4,12 @@ using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
 {
-	public class DiffScreen : BaseScreen, IScreen
+	public class ContScreen : BaseScreen, IScreen
 	{
 		public override void Initialize()
 		{
 			base.Initialize();
-			//LoadTextData();
+			LoadTextData();
 		}
 
 		public override void LoadContent()
@@ -25,6 +25,9 @@ namespace WindowsGame.Common.Screens
 		public override void Draw()
 		{
 			base.Draw();
+
+			// Text data last!
+			MyGame.Manager.TextManager.Draw(TextDataList);
 		}
 
 	}

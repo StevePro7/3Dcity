@@ -19,7 +19,9 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.BulletManager.Reset(10, 200, 100);
 
 			LevelType levelType = MyGame.Manager.StateManager.LevelType;
-			MyGame.Manager.EnemyManager.Reset(levelType, 5, 2000, 5000);
+			const Byte enemySpawn = 1;
+			const Byte enemyTotal = 3;
+			MyGame.Manager.EnemyManager.Reset(levelType, enemySpawn, 2000, 5000, enemyTotal);
 			MyGame.Manager.EnemyManager.SpawnAllEnemies();
 
 			MyGame.Manager.ScoreManager.Reset();
@@ -59,6 +61,7 @@ namespace WindowsGame.Common.Screens
 				}
 			}
 
+			// BULLETS.
 			// Update bullets and test collision.
 			MyGame.Manager.BulletManager.Update(gameTime);
 			if (MyGame.Manager.CollisionManager.BulletCollisionList.Count > 0)
@@ -66,9 +69,19 @@ namespace WindowsGame.Common.Screens
 				// Check collisions here.
 			}
 
+
+			// ENEMYS.
 			// Update enemies and test collisions.
 			MyGame.Manager.EnemyManager.Update(gameTime);
-			MyGame.Manager.EnemyManager.CheckAllEnemies();
+			if (MyGame.Manager.EnemyManager.EnemyTest.Count > 0)
+			{
+				Boolean collision = MyGame.Manager.CollisionManager.CheckOne();
+				if (collision)
+				{
+					return (Int32)ScreenType.Over;
+				}
+			}
+			//MyGame.Manager.EnemyManager.CheckAllEnemies();
 			if (MyGame.Manager.CollisionManager.EnemysCollisionList.Count > 0)
 			{
 				// Check collisions here.

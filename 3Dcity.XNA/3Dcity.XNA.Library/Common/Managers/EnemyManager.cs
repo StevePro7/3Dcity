@@ -10,7 +10,7 @@ namespace WindowsGame.Common.Managers
 	{
 		void Initialize();
 		void LoadContent();
-		void Reset(LevelType theLevelType, Byte theEnemySpawn, UInt16 minDelay, UInt16 maxDelay);
+		void Reset(LevelType theLevelType, Byte theEnemySpawn, UInt16 minDelay, UInt16 maxDelay, Byte enemyTotal);
 		void SpawnAllEnemies();
 		void SpawnOneEnemy(Byte index);
 		void CheckAllEnemies();
@@ -20,10 +20,14 @@ namespace WindowsGame.Common.Managers
 		void Draw();
 
 		IList<Enemy> EnemyList { get; }
+		IList<Enemy> EnemyTest { get; }
 		IDictionary<Byte, Enemy> EnemyDict { get; }
+
 		IList<Rectangle> EnemyBounds { get; }
 		UInt16[] EnemyOffsetX { get; }
 		UInt16[] EnemyOffsetY { get; }
+		Byte EnemyCount { get; }
+		Byte EnemyTotal { get; }
 		UInt16 MinDelay { get; }
 		UInt16 MaxDelay { get; }
 	}
@@ -38,6 +42,7 @@ namespace WindowsGame.Common.Managers
 			maxEnemySpawn = Constants.MAX_ENEMYS_SPAWN;
 
 			EnemyList = new List<Enemy>(maxEnemySpawn);
+			EnemyTest = new List<Enemy>(maxEnemySpawn);
 			EnemyDict = new Dictionary<Byte, Enemy>(maxEnemySpawn);
 			EnemyBounds = GetEnemyBounds();
 
@@ -66,24 +71,34 @@ namespace WindowsGame.Common.Managers
 			}
 		}
 
-		public void Reset(LevelType theLevelType, Byte theEnemySpawn, UInt16 minDelay, UInt16 maxDelay)
+		public void Reset(LevelType theLevelType, Byte theEnemySpawn, UInt16 minDelay, UInt16 maxDelay, Byte enemyTotal)
 		{
 			levelType = theLevelType;
 			maxEnemySpawn = theEnemySpawn;
-
-			MinDelay = minDelay;
-			MaxDelay = maxDelay;
 			if (maxEnemySpawn > Constants.MAX_ENEMYS_SPAWN)
 			{
 				maxEnemySpawn = Constants.MAX_ENEMYS_SPAWN;
 			}
 
+			MinDelay = minDelay;
+			MaxDelay = maxDelay;
+
+			// Reset all enemies but not the list as will clear.
 			for (Byte index = 0; index < maxEnemySpawn; index++)
 			{
 				EnemyList[index].Reset();
 			}
 
+			EnemyTest.Clear();
 			EnemyDict.Clear();
+
+			// Ensure total at least the max.
+			if (enemyTotal < maxEnemySpawn)
+			{
+				enemyTotal = maxEnemySpawn;
+			}
+			EnemyTotal = enemyTotal;
+			EnemyCount = 0;
 		}
 
 		public void SpawnAllEnemies()
@@ -91,14 +106,14 @@ namespace WindowsGame.Common.Managers
 			for (Byte index = 0; index < maxEnemySpawn; index++)
 			{
 				SpawnOneEnemy(index);
-				EnemyList[index].Start((UInt16)(1000 + 3000 * index));		// TODO tweak configurable numbers
+				EnemyList[index].Start((UInt16)(Constants.TestFrameDelay + 3000 * index));		// TODO tweak configurable numbers
 			}
 		}
 
 		public void SpawnOneEnemy(Byte index)
 		{
 			// TODO work out better the frame delay.
-			UInt16 frameDelay = 2000;
+			UInt16 frameDelay = Constants.TestFrameDelay;
 			//UInt16 frameDelay = MyGame.Manager.RandomManager.Next(MinDelay, MaxDelay);
 
 			SByte slotID = Constants.INVALID_INDEX;
@@ -131,6 +146,7 @@ namespace WindowsGame.Common.Managers
 
 		public void CheckAllEnemies()
 		{
+			Boolean test = false;
 			for (Byte index = 0; index < maxEnemySpawn; index++)
 			{
 				Enemy enemy = EnemyList[index];
@@ -146,15 +162,50 @@ namespace WindowsGame.Common.Managers
 				}
 
 				enemy.Reset();
-				SpawnOneEnemy(index);
+				EnemyCount++;
+
+				if (EnemyCount > EnemyTotal)
+				{
+					test = true;
+					enemy.None();
+				}
+				//SpawnOneEnemy(index);
 			}
+
+		//	return test;
+		}
+
+		public Boolean CheckEnemiesNone()
+		{
+			Boolean test = false;
+			for (Byte index = 0; index < maxEnemySpawn; index++)
+			{
+				Enemy enemy = EnemyList[index];
+				if (EnemyType.None != enemy.EnemyType)
+				{
+					break;
+				}
+				else
+				{
+					test = true;
+				}
+			}
+
+			return test;
 		}
 
 		public void Update(GameTime gameTime)
 		{
+			EnemyTest.Clear();
 			for (Byte index = 0; index < maxEnemySpawn; index++)
 			{
-				EnemyList[index].Update(gameTime);
+				Enemy enemy = EnemyList[index];
+				enemy.Update(gameTime);
+
+				if (EnemyType.Test == enemy.EnemyType)
+				{
+					EnemyTest.Add(enemy);
+				}
 			}
 		}
 
@@ -199,10 +250,13 @@ namespace WindowsGame.Common.Managers
 		}
 
 		public IList<Enemy> EnemyList { get; private set; }
+		public IList<Enemy> EnemyTest { get; private set; }
 		public IDictionary<Byte, Enemy> EnemyDict { get; private set; }
 		public IList<Rectangle> EnemyBounds { get; private set; }
 		public UInt16[] EnemyOffsetX { get; private set; }
 		public UInt16[] EnemyOffsetY { get; private set; }
+		public Byte EnemyCount { get; private set; }
+		public Byte EnemyTotal { get; private set; }
 		public UInt16 MinDelay { get; private set; }
 		public UInt16 MaxDelay { get; private set; }
 	}

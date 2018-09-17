@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Play</ScreenType>
+	<ScreenType>Test</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Ready</ScreenType>-->
 	<FramesPerSecond>100</FramesPerSecond>
@@ -13,7 +13,7 @@
 	<UpdateStar>false</UpdateStar>
 	<UpdateGrid>false</UpdateGrid>
 	<RenderBack>true</RenderBack>
-	<RenderIcon>false</RenderIcon>
+	<RenderIcon>true</RenderIcon>
 	<TargetX>0</TargetX>
 	<TargetY>0</TargetY>
 	<EnemysX>160</EnemysX>

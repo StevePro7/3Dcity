@@ -84,6 +84,7 @@
     <Compile Include="Common\Managers\BulletManager.cs" />
     <Compile Include="Common\Managers\CommandManager.cs" />
     <Compile Include="Common\Managers\BossManager.cs" />
+    <Compile Include="Common\Managers\DebugManager.cs" />
     <Compile Include="Common\Managers\LevelManager.cs" />
     <Compile Include="Common\Managers\EventManager.cs" />
     <Compile Include="Common\Managers\IconManager.cs" />
@@ -116,6 +117,7 @@
     <Compile Include="Common\Back\PlayScreenBAK.cs" />
     <Compile Include="Common\Screens\ContScreen.cs" />
     <Compile Include="Common\Back\EventScreenBAK.cs" />
+    <Compile Include="Common\Back\ExplosionScreenBAK.cs" />
     <Compile Include="Common\Screens\LevelScreen.cs" />
     <Compile Include="Common\Screens\DiffScreen.cs" />
     <Compile Include="Common\Screens\OverScreen.cs" />

@@ -7,7 +7,7 @@ using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
 {
-	public class TestScreen : BaseScreen, IScreen
+	public class ExplosionScreenBAK : BaseScreen, IScreen
 	{
 		private Vector2[] boxPositions;
 		private SByte number;
@@ -29,6 +29,9 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.EnemyManager.Reset(levelType, enemySpawn, 2000, 5000, enemyTotal);
 			MyGame.Manager.EnemyManager.SpawnAllEnemies();
 
+			//MyGame.Manager.EnemyManager.SpawnOneEnemy(0);
+			//MyGame.Manager.EnemyManager.Spawn(1500);
+			//MyGame.Manager.EnemyManager.Start(2000);
 			MyGame.Manager.ExplosionManager.Reset(8, 100);
 
 			MyGame.Manager.ScoreManager.Reset();
@@ -48,23 +51,24 @@ namespace WindowsGame.Common.Screens
 			//MyGame.Manager.Logger.Info(gameTime.ElapsedGameTime.TotalSeconds.ToString());
 #endif
 
-			// ENEMYS.
-			// Update enemies and test collisions.
+			// Move enemies.
 			MyGame.Manager.EnemyManager.Update(gameTime);
-			if (MyGame.Manager.EnemyManager.EnemyTest.Count > 0)
+			MyGame.Manager.EnemyManager.CheckAllEnemies();
+
+			number = MyGame.Manager.InputManager.Number();
+			if (Constants.INVALID_INDEX != number)
 			{
-				Boolean collision = MyGame.Manager.CollisionManager.CheckOne();
-				if (collision)
+				Byte explodeIndex = (Byte) number;
+				Explosion explosion = MyGame.Manager.ExplosionManager.ExplosionList[explodeIndex];
+				if (!explosion.IsExploding)
 				{
-					return (Int32)ScreenType.Over;
+					Vector2 position = GetPosition(explodeIndex);
+					Byte diff = (Byte)(number % 2);
+					ExplodeType explodeType = (ExplodeType)diff;
+					MyGame.Manager.ExplosionManager.LoadContent(explodeIndex, explodeType);
+					MyGame.Manager.ExplosionManager.Explode(explodeIndex, position);
 				}
 			}
-			//MyGame.Manager.EnemyManager.CheckAllEnemies();
-			if (MyGame.Manager.CollisionManager.EnemysCollisionList.Count > 0)
-			{
-				// Check collisions here.
-			}
-
 
 			MyGame.Manager.ExplosionManager.Update(gameTime);
 			return (Int32)CurrScreen;
@@ -79,19 +83,36 @@ namespace WindowsGame.Common.Screens
 
 			// Sprite sheet #02.
 			MyGame.Manager.EnemyManager.Draw();
-			MyGame.Manager.SpriteManager.Draw();
+			//MyGame.Manager.SpriteManager.Draw();
 
 			for (Byte index = 0; index < Constants.MAX_ENEMYS_SPAWN; index++)
 			{
 				Engine.SpriteBatch.Draw(Assets.ZZindigoTexture, boxPositions[index], Color.Black);
 			}
 
+			//Vector2 enemyPos = new Vector2(350-120, 280 + 80);
+			//Rectangle enemyRect = MyGame.Manager.ImageManager.EnemyRectangles[3];
+			//Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, enemyPos, enemyRect, Color.White);
 
 			MyGame.Manager.ExplosionManager.Draw();
 
 
 			// Text data last!
 			MyGame.Manager.TextManager.Draw(TextDataList);
+		}
+
+		private static Vector2 GetPosition(Byte theNumber)
+		{
+			if (theNumber < 5)
+			{
+				Single x = theNumber*140 + 50;
+				return new Vector2(x, 60 + (theNumber * 10));
+			}
+			else
+			{
+				Single x = (theNumber - 5)* 140 + 150;
+				return new Vector2(x, 200 + (theNumber * 10));
+			}
 		}
 
 		private Vector2[] GetBoxPositions()

@@ -219,6 +219,18 @@
       <Name>OverScreen</Name>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\Texts\ContScreen.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>ContScreen</Name>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\Texts\LevelScreen.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>LevelScreen</Name>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

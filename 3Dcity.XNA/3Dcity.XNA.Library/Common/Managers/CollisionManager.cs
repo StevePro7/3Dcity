@@ -1,15 +1,22 @@
 using System;
 using System.Collections.Generic;
+using WindowsGame.Common.Sprites;
 using WindowsGame.Common.Static;
+using Microsoft.Xna.Framework;
 
 namespace WindowsGame.Common.Managers
 {
 	public interface ICollisionManager 
 	{
 		void Initialize();
+
+		Boolean CheckOne();
+		Boolean CheckOne(Vector2 targetPosition, IList<Enemy> enemyList);
+
 		void ClearCollisionList();
 		void AddToBulletCollisionList(Byte bulletIndex);
 		void AddToEnemysCollisionList(Byte enemysIndex);
+
 
 		IList<Byte> BulletCollisionList { get; }
 		IList<Byte> EnemysCollisionList { get; }
@@ -21,6 +28,20 @@ namespace WindowsGame.Common.Managers
 		{
 			BulletCollisionList = new List<Byte>(Constants.MAX_BULLET_SHOOT);
 			EnemysCollisionList = new List<Byte>(Constants.MAX_ENEMYS_SPAWN);
+		}
+
+		// TODO give a better name!
+		public Boolean CheckOne()
+		{
+			Vector2 targetPosition = MyGame.Manager.SpriteManager.LargeTarget.Position;
+			IList<Enemy> enemyList = MyGame.Manager.EnemyManager.EnemyList;
+
+			return CheckOne(targetPosition, enemyList);
+		}
+
+		public Boolean CheckOne(Vector2 targetPosition, IList<Enemy> enemyList)
+		{
+			return true;
 		}
 
 		public void ClearCollisionList()

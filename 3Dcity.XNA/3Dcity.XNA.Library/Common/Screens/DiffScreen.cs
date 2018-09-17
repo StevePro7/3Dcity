@@ -4,7 +4,7 @@ using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
 {
-	public class ContScreen : BaseScreen, IScreen
+	public class DiffScreen : BaseScreen, IScreen
 	{
 		public override void Initialize()
 		{

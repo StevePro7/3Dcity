@@ -80,10 +80,10 @@ namespace WindowsGame.Common.Sprites
 
 		public override void Draw()
 		{
-			if (EnemyType.Move != EnemyType)
-			{
-				return;
-			}
+			//if (EnemyType.Move != EnemyType)
+			//{
+			//    return;
+			//}
 
 			if (blinkFrame.Contains(FrameCount))
 			{
@@ -93,26 +93,14 @@ namespace WindowsGame.Common.Sprites
 			base.Draw();
 		}
 
-		// TODO delete
-		//public void SetBounds(Byte index)
-		//{
-		//    // High + wide max enemy.
-		//    const Byte size = 120;
-		//    const Byte wide = 160;
-		//    const Byte high = 200;
-		//    const Byte uppr = 5;
-
-		//    if (index < uppr)
-		//    {
-		//        Bounds = new Rectangle((wide * index), 80 + Constants.GameOffsetY, (wide - size), (high - size));
-		//    }
-		//    else
-		//    {
-		//        index -= uppr;
-		//        const Byte offset = 190;
-		//        Bounds = new Rectangle(offset + wide * index, 280 + Constants.GameOffsetY, (wide - size), (high - size));
-		//    }
-		//}
+		public void Dead()
+		{
+			EnemyType = EnemyType.Dead;
+		}
+		public void None()
+		{
+			EnemyType = EnemyType.None;
+		}
 
 		public void SetSlotID()
 		{
