@@ -20,10 +20,9 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
-
 			LevelType levelType = MyGame.Manager.StateManager.LevelType;
-			const Byte enemySpawn = 2;
-			const Byte enemyTotal = 2;
+			Byte enemySpawn = MyGame.Manager.ConfigManager.GlobalConfigData.EnemySpawn;	// 1;
+			Byte enemyTotal = MyGame.Manager.ConfigManager.GlobalConfigData.EnemyTotal;	// 1;
 			MyGame.Manager.EnemyManager.Reset(levelType, enemySpawn, 2000, 5000, enemyTotal);
 			MyGame.Manager.EnemyManager.SpawnAllEnemies();
 
@@ -67,18 +66,11 @@ namespace WindowsGame.Common.Screens
 					Enemy enemy = enemyTest[testIndex];
 					MyGame.Manager.EnemyManager.CheckThisEnemy(enemy);
 
-					Byte enemyAvoid = MyGame.Manager.EnemyManager.EnemyAvoid;
-					Byte enemyKills = MyGame.Manager.EnemyManager.EnemyKills;
+					Byte enemySpawn = MyGame.Manager.EnemyManager.EnemySpawn;
 					Byte enemyTotal = MyGame.Manager.EnemyManager.EnemyTotal;
-					if (enemyAvoid + enemyKills >= enemyTotal)
+					if (enemySpawn >= enemyTotal)
 					{
 						enemy.None();
-					}
-
-					Boolean gameover = MyGame.Manager.EnemyManager.CheckEnemiesNone();
-					if (gameover)
-					{
-						return (Int32) ScreenType.Cont; // TODO actually finished level.
 					}
 					else
 					{
@@ -86,9 +78,13 @@ namespace WindowsGame.Common.Screens
 					}
 				}
 
-				
-
+				Boolean gameover = MyGame.Manager.EnemyManager.CheckEnemiesNone();
+				if (gameover)
+				{
+					return (Int32)ScreenType.Cont; // TODO actually finished level!
+				}
 			}
+
 			//MyGame.Manager.EnemyManager.CheckAllEnemies();
 			if (MyGame.Manager.CollisionManager.EnemysCollisionList.Count > 0)
 			{
@@ -98,6 +94,11 @@ namespace WindowsGame.Common.Screens
 
 			MyGame.Manager.ExplosionManager.Update(gameTime);
 			return (Int32)CurrScreen;
+		}
+
+		private void RespawnEnemy()
+		{
+			
 		}
 
 		public override void Draw()

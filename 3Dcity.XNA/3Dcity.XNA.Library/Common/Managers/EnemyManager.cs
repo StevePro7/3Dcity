@@ -28,11 +28,11 @@ namespace WindowsGame.Common.Managers
 		IList<Rectangle> EnemyBounds { get; }
 		UInt16[] EnemyOffsetX { get; }
 		UInt16[] EnemyOffsetY { get; }
-		Byte EnemyAvoid { get; }
-		Byte EnemyKills { get; }
-		Byte EnemyTotal { get; }
+		
 		UInt16 MinDelay { get; }
 		UInt16 MaxDelay { get; }
+		Byte EnemySpawn { get; }
+		Byte EnemyTotal { get; }
 	}
 
 	public class EnemyManager : IEnemyManager
@@ -101,8 +101,7 @@ namespace WindowsGame.Common.Managers
 				enemyTotal = maxEnemySpawn;
 			}
 			EnemyTotal = enemyTotal;
-			EnemyAvoid = 0;
-			EnemyKills = 0;
+			EnemySpawn = 0;
 		}
 
 		public void SpawnAllEnemies()
@@ -110,7 +109,7 @@ namespace WindowsGame.Common.Managers
 			for (Byte index = 0; index < maxEnemySpawn; index++)
 			{
 				SpawnOneEnemy(index);
-				EnemyList[index].Start((UInt16)(Constants.TestFrameDelay + 3000 * index));		// TODO tweak configurable numbers
+				EnemyList[index].Start((UInt16)(Constants.TestFrameDelay + 3* Constants.TestFrameDelay * index));		// TODO tweak configurable numbers
 			}
 		}
 
@@ -146,6 +145,8 @@ namespace WindowsGame.Common.Managers
 			Rectangle bounds = EnemyBounds[(Byte)slotID];
 			enemy.Spawn((Byte)slotID, frameDelay, position, bounds);
 			EnemyDict.Add((Byte)slotID, enemy);
+
+			EnemySpawn++;
 		}
 
 		// TODO delete
@@ -194,7 +195,6 @@ namespace WindowsGame.Common.Managers
 			}
 
 			enemy.Reset();
-			EnemyAvoid++;
 		}
 
 		public Boolean CheckEnemiesNone()
@@ -275,8 +275,7 @@ namespace WindowsGame.Common.Managers
 		public IList<Rectangle> EnemyBounds { get; private set; }
 		public UInt16[] EnemyOffsetX { get; private set; }
 		public UInt16[] EnemyOffsetY { get; private set; }
-		public Byte EnemyAvoid { get; private set; }
-		public Byte EnemyKills { get; private set; }
+		public Byte EnemySpawn { get; private set; }
 		public Byte EnemyTotal { get; private set; }
 		public UInt16 MinDelay { get; private set; }
 		public UInt16 MaxDelay { get; private set; }

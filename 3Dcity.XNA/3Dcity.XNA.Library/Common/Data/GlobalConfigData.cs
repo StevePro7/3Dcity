@@ -23,6 +23,8 @@ namespace WindowsGame.Common.Data
 		public UInt16 EnemysY;
 		public Byte EnemyFrame;
 		public Byte EnemyIndex;
+		public Byte EnemySpawn;
+		public Byte EnemyTotal;
 		public Boolean IsGodMode;
 		public Boolean QuitsToExit;
 	}

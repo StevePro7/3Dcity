@@ -11,6 +11,10 @@ namespace WindowsGame.Common.Managers
 		void Reset();
 		void Update(GameTime gameTime);
 		void Draw();
+
+		// Properties.
+		Byte ScoreAvoid { get; }
+		Byte ScoreKills { get; }
 	}
 
 	public class ScoreManager : IScoreManager
@@ -62,5 +66,7 @@ namespace WindowsGame.Common.Managers
 			}
 		}
 
+		public Byte ScoreAvoid { get; private set; }
+		public Byte ScoreKills { get; private set; }
 	}
 }
