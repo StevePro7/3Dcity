@@ -5,6 +5,7 @@ This is a test line
 Spritesheet here
 E:\Steven\XNA\3Dcity\SpriteSheet01
 E:\Steven\XNA\3Dcity\SpriteSheet02
+E:\Steven\XNA\3Dcity\Title
 
 Measurements on Background
 Y = 3 + 70 + 5 = 78
