@@ -19,6 +19,12 @@ namespace WindowsGame.Common.Screens
 
 		public override Int32 Update(GameTime gameTime)
 		{
+			base.Update(gameTime);
+			if (GamePause)
+			{
+				return (Int32)CurrScreen;
+			}
+
 			return (Int32)CurrScreen;
 		}
 

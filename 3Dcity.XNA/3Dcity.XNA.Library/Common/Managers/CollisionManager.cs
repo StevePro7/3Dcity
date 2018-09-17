@@ -11,7 +11,7 @@ namespace WindowsGame.Common.Managers
 		void Initialize();
 
 		Boolean CheckOne();
-		Boolean CheckOne(Vector2 targetPosition, IList<Enemy> enemyList);
+		Boolean CheckOne(Vector2 targetPosition, IList<Enemy> enemyTest);
 
 		void ClearCollisionList();
 		void AddToBulletCollisionList(Byte bulletIndex);
@@ -34,14 +34,15 @@ namespace WindowsGame.Common.Managers
 		public Boolean CheckOne()
 		{
 			Vector2 targetPosition = MyGame.Manager.SpriteManager.LargeTarget.Position;
-			IList<Enemy> enemyList = MyGame.Manager.EnemyManager.EnemyList;
+			IList<Enemy> enemyTest = MyGame.Manager.EnemyManager.EnemyTest;
 
-			return CheckOne(targetPosition, enemyList);
+			return CheckOne(targetPosition, enemyTest);
 		}
 
-		public Boolean CheckOne(Vector2 targetPosition, IList<Enemy> enemyList)
+		public Boolean CheckOne(Vector2 targetPosition, IList<Enemy> EnemyTest)
 		{
-			return true;
+			// TODO implement collision logic between enemies to test and target.
+			return false;
 		}
 
 		public void ClearCollisionList()

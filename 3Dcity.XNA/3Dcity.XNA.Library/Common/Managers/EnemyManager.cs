@@ -13,7 +13,9 @@ namespace WindowsGame.Common.Managers
 		void Reset(LevelType theLevelType, Byte theEnemySpawn, UInt16 minDelay, UInt16 maxDelay, Byte enemyTotal);
 		void SpawnAllEnemies();
 		void SpawnOneEnemy(Byte index);
-		void CheckAllEnemies();
+		//void CheckAllEnemies();					// TODO delete
+		void CheckThisEnemy(Enemy enemy);
+		Boolean CheckEnemiesNone();
 
 		//void Spawn(UInt16 frameDelay, Vector2 position);
 		void Update(GameTime gameTime);
@@ -26,7 +28,8 @@ namespace WindowsGame.Common.Managers
 		IList<Rectangle> EnemyBounds { get; }
 		UInt16[] EnemyOffsetX { get; }
 		UInt16[] EnemyOffsetY { get; }
-		Byte EnemyCount { get; }
+		Byte EnemyAvoid { get; }
+		Byte EnemyKills { get; }
 		Byte EnemyTotal { get; }
 		UInt16 MinDelay { get; }
 		UInt16 MaxDelay { get; }
@@ -98,7 +101,8 @@ namespace WindowsGame.Common.Managers
 				enemyTotal = maxEnemySpawn;
 			}
 			EnemyTotal = enemyTotal;
-			EnemyCount = 0;
+			EnemyAvoid = 0;
+			EnemyKills = 0;
 		}
 
 		public void SpawnAllEnemies()
@@ -144,50 +148,66 @@ namespace WindowsGame.Common.Managers
 			EnemyDict.Add((Byte)slotID, enemy);
 		}
 
-		public void CheckAllEnemies()
+		// TODO delete
+		//public void CheckAllEnemies()
+		//{
+		//    Boolean test = false;
+		//    for (Byte index = 0; index < maxEnemySpawn; index++)
+		//    {
+		//        Enemy enemy = EnemyList[index];
+		//        if (EnemyType.Test != enemy.EnemyType)
+		//        {
+		//            continue;
+		//        }
+
+		//        SByte slotID = enemy.SlotID;
+		//        if (EnemyDict.ContainsKey((Byte)slotID))
+		//        {
+		//            EnemyDict.Remove((Byte)slotID);
+		//        }
+
+		//        enemy.Reset();
+
+		//        //EnemyCount++;
+		//        //if (EnemyCount > EnemyTotal)
+		//        //{
+		//        //    test = true;
+		//        //    enemy.None();
+		//        //}
+		//        //SpawnOneEnemy(index);
+		//    }
+
+		////	return test;
+		//}
+
+		public void CheckThisEnemy(Enemy enemy)
 		{
-			Boolean test = false;
-			for (Byte index = 0; index < maxEnemySpawn; index++)
+			if (EnemyType.Test != enemy.EnemyType)
 			{
-				Enemy enemy = EnemyList[index];
-				if (EnemyType.Test != enemy.EnemyType)
-				{
-					continue;
-				}
-
-				SByte slotID = enemy.SlotID;
-				if (EnemyDict.ContainsKey((Byte)slotID))
-				{
-					EnemyDict.Remove((Byte)slotID);
-				}
-
-				enemy.Reset();
-				EnemyCount++;
-
-				if (EnemyCount > EnemyTotal)
-				{
-					test = true;
-					enemy.None();
-				}
-				//SpawnOneEnemy(index);
+				return;
 			}
 
-		//	return test;
+			SByte slotID = enemy.SlotID;
+			if (EnemyDict.ContainsKey((Byte)slotID))
+			{
+				EnemyDict.Remove((Byte)slotID);
+			}
+
+			enemy.Reset();
+			EnemyAvoid++;
 		}
 
 		public Boolean CheckEnemiesNone()
 		{
-			Boolean test = false;
+			// Assume no more to spawn.
+			Boolean test = true;
 			for (Byte index = 0; index < maxEnemySpawn; index++)
 			{
 				Enemy enemy = EnemyList[index];
 				if (EnemyType.None != enemy.EnemyType)
 				{
+					test = false;
 					break;
-				}
-				else
-				{
-					test = true;
 				}
 			}
 
@@ -255,7 +275,8 @@ namespace WindowsGame.Common.Managers
 		public IList<Rectangle> EnemyBounds { get; private set; }
 		public UInt16[] EnemyOffsetX { get; private set; }
 		public UInt16[] EnemyOffsetY { get; private set; }
-		public Byte EnemyCount { get; private set; }
+		public Byte EnemyAvoid { get; private set; }
+		public Byte EnemyKills { get; private set; }
 		public Byte EnemyTotal { get; private set; }
 		public UInt16 MinDelay { get; private set; }
 		public UInt16 MaxDelay { get; private set; }

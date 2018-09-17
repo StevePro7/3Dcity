@@ -53,7 +53,7 @@ namespace WindowsGame.Common.Screens
 
 			// Move enemies.
 			MyGame.Manager.EnemyManager.Update(gameTime);
-			MyGame.Manager.EnemyManager.CheckAllEnemies();
+			//MyGame.Manager.EnemyManager.CheckAllEnemies();		// TODO delete
 
 			number = MyGame.Manager.InputManager.Number();
 			if (Constants.INVALID_INDEX != number)
