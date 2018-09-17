@@ -14,7 +14,9 @@ namespace WindowsGame.Common.Managers
 		void SpawnAllEnemies();
 		void SpawnOneEnemy(Byte index);
 		//void CheckAllEnemies();					// TODO delete
-		void CheckThisEnemy(Enemy enemy);
+		Boolean CheckThisEnemy(Byte index);
+		//void CheckThisEnemy(Byte index);
+		//void CheckThisEnemy(Enemy enemy);			// TODO delete
 		Boolean CheckEnemiesNone();
 
 		//void Spawn(UInt16 frameDelay, Vector2 position);
@@ -181,21 +183,63 @@ namespace WindowsGame.Common.Managers
 		////	return test;
 		//}
 
-		public void CheckThisEnemy(Enemy enemy)
+		public Boolean CheckThisEnemy(Byte index)
 		{
-			if (EnemyType.Test != enemy.EnemyType)
+			Boolean check = false;
+
+			Enemy enemy = EnemyList[index];
+			if (EnemyType.Test == enemy.EnemyType || EnemyType.Dead == enemy.EnemyType)
 			{
-				return;
+				SByte slotID = enemy.SlotID;
+				if (EnemyDict.ContainsKey((Byte) slotID))
+				{
+					EnemyDict.Remove((Byte) slotID);
+				}
+
+				enemy.Reset();
 			}
 
-			SByte slotID = enemy.SlotID;
-			if (EnemyDict.ContainsKey((Byte)slotID))
+			// Check this is last enemy!!
+			if (EnemySpawn >= EnemyTotal)
 			{
-				EnemyDict.Remove((Byte)slotID);
+				enemy.None();
+				check = true;
 			}
 
-			enemy.Reset();
+			return check;
 		}
+
+		//public void CheckThisEnemy(Byte index)
+		//{
+		//    Enemy enemy = EnemyList[index];
+		//    if (EnemyType.Test == enemy.EnemyType || EnemyType.Dead == enemy.EnemyType)
+		//    {
+		//        SByte slotID = enemy.SlotID;
+		//        if (EnemyDict.ContainsKey((Byte)slotID))
+		//        {
+		//            EnemyDict.Remove((Byte)slotID);
+		//        }
+
+		//        enemy.Reset();
+		//    }
+		//}
+
+		// TODO delete
+		//public void CheckThisEnemy(Enemy enemy)
+		//{
+		//    if (EnemyType.Test != enemy.EnemyType)
+		//    {
+		//        return;
+		//    }
+
+		//    SByte slotID = enemy.SlotID;
+		//    if (EnemyDict.ContainsKey((Byte)slotID))
+		//    {
+		//        EnemyDict.Remove((Byte)slotID);
+		//    }
+
+		//    enemy.Reset();
+		//}
 
 		public Boolean CheckEnemiesNone()
 		{

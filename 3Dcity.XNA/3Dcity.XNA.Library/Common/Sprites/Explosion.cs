@@ -1,4 +1,5 @@
 ﻿using System;
+using WindowsGame.Common.Static;
 using Microsoft.Xna.Framework;
 
 namespace WindowsGame.Common.Sprites
@@ -12,13 +13,15 @@ namespace WindowsGame.Common.Sprites
 			IsExploding = false;
 			FrameIndex = 0;
 			FrameTimer = 0;
+			EnemyID = Constants.INVALID_INDEX;
 		}
 
-		public void Explode()
+		public void Explode(Byte enemyID)
 		{
 			IsExploding = true;
 			FrameIndex = 0;
 			FrameTimer = 0;
+			EnemyID = (SByte)enemyID;
 		}
 
 		public override void Update(GameTime gameTime)
@@ -43,6 +46,6 @@ namespace WindowsGame.Common.Sprites
 
 		public Boolean IsExploding { get; private set; }
 		public UInt16 FrameDelay { get; private set; }
-
+		public SByte EnemyID { get; private set; }
 	}
 }

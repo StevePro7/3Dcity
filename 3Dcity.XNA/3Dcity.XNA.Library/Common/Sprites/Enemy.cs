@@ -12,7 +12,7 @@ namespace WindowsGame.Common.Sprites
 		public Enemy()
 		{
 			FrameDelay = new UInt16[Constants.MAX_ENEMYS_FRAME];
-			FrameImage = new Byte[Constants.MAX_ENEMYS_FRAME] { 0, 0, 1, 2, 3, 4, 5, 6, 7, 7, 7, 7, 7 };
+			FrameImage = new Byte[] { 0, 0, 1, 2, 3, 4, 5, 6, 7, 7, 7, 7, 7 };
 			blinkFrame = new List<Byte>{ 0, 9, 11 };
 		}
 
@@ -80,10 +80,10 @@ namespace WindowsGame.Common.Sprites
 
 		public override void Draw()
 		{
-			//if (EnemyType.Move != EnemyType)
-			//{
-			//    return;
-			//}
+			if (EnemyType.Move != EnemyType)
+			{
+				return;
+			}
 
 			if (blinkFrame.Contains(FrameCount))
 			{

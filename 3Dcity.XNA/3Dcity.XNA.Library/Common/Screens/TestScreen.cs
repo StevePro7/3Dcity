@@ -64,18 +64,25 @@ namespace WindowsGame.Common.Screens
 					// if (misses >= 4) then return game over
 
 					Enemy enemy = enemyTest[testIndex];
-					MyGame.Manager.EnemyManager.CheckThisEnemy(enemy);
+					//MyGame.Manager.EnemyManager.CheckThisEnemy(enemy);
+					Byte enemyID = enemy.ID;
 
-					Byte enemySpawn = MyGame.Manager.EnemyManager.EnemySpawn;
-					Byte enemyTotal = MyGame.Manager.EnemyManager.EnemyTotal;
-					if (enemySpawn >= enemyTotal)
+					Boolean check = MyGame.Manager.EnemyManager.CheckThisEnemy(enemyID);
+					if (!check)
 					{
-						enemy.None();
+						MyGame.Manager.EnemyManager.SpawnOneEnemy(enemyID);
 					}
-					else
-					{
-						MyGame.Manager.EnemyManager.SpawnOneEnemy(enemy.ID);
-					}
+
+					//Byte enemySpawn = MyGame.Manager.EnemyManager.EnemySpawn;
+					//Byte enemyTotal = MyGame.Manager.EnemyManager.EnemyTotal;
+					//if (enemySpawn >= enemyTotal)
+					//{
+					//    enemy.None();
+					//}
+					//else
+					//{
+					//    MyGame.Manager.EnemyManager.SpawnOneEnemy(enemyID);
+					//}
 				}
 
 				Boolean gameover = MyGame.Manager.EnemyManager.CheckEnemiesNone();
@@ -91,8 +98,63 @@ namespace WindowsGame.Common.Screens
 				// Check collisions here.
 			}
 
+			number = MyGame.Manager.InputManager.Number();
+			if (Constants.INVALID_INDEX != number)
+			{
+				// Retrieve slotID from bullet position
+				// (determine if collision!)
+				Byte slotID = (Byte)number;
+				if (MyGame.Manager.EnemyManager.EnemyDict.ContainsKey(slotID))
+				{
+					Enemy enemy = MyGame.Manager.EnemyManager.EnemyDict[slotID];
+					if (0 != enemy.FrameCount)
+					{
+						// Can kill initial enemy [at frame count = 0] because enemy will be "hidden".
+						ExplodeType explodeType = enemy.FrameIndex < 5 ? ExplodeType.Small : ExplodeType.Big;
+						MyGame.Manager.ExplosionManager.LoadContent(slotID, explodeType);
+						MyGame.Manager.ExplosionManager.Explode(slotID, enemy.ID, enemy.Position);
+						//enemy.Dead();
+					}
+				}
+				else
+				{
+					MyGame.Manager.Logger.Info("miss " + (slotID).ToString());
+				}
+			}
 
+
+			// EXPLOSIONS.
 			MyGame.Manager.ExplosionManager.Update(gameTime);
+
+
+			if (MyGame.Manager.ExplosionManager.ExplosionTest.Count > 0)
+			{
+				// Iterate all enemy ships to test and add to misses.
+				IList<Byte> explosionTest = MyGame.Manager.ExplosionManager.ExplosionTest;
+				for (Byte testIndex = 0; testIndex < explosionTest.Count; testIndex++)
+				{
+					Byte enemyID = explosionTest[testIndex];
+
+					Boolean check = MyGame.Manager.EnemyManager.CheckThisEnemy(enemyID);
+					if (!check)
+					{
+						MyGame.Manager.EnemyManager.SpawnOneEnemy(enemyID);
+					}
+
+					//MyGame.Manager.EnemyManager.CheckThisEnemy(enemyID);
+					//Byte enemySpawn = MyGame.Manager.EnemyManager.EnemySpawn;
+					//Byte enemyTotal = MyGame.Manager.EnemyManager.EnemyTotal;
+					//if (enemySpawn >= enemyTotal)
+					//{
+					//    enemy.None();
+					//}
+					//else
+					//{
+					//    MyGame.Manager.EnemyManager.SpawnOneEnemy(enemyID);
+					//}
+				}
+			}
+
 			return (Int32)CurrScreen;
 		}
 

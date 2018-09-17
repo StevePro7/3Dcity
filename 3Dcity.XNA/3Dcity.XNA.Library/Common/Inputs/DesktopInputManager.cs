@@ -241,30 +241,30 @@ namespace WindowsGame.Common.Inputs
 			{
 				return 5;
 			}
-			if (keyboardInput.KeyHold(Keys.D7) || keyboardInput.KeyHold(Keys.Q))
+			if (keyboardInput.KeyHold(Keys.D7))// || keyboardInput.KeyHold(Keys.Q))
 			{
 				return 6;
 			}
-			if (keyboardInput.KeyHold(Keys.D8) || keyboardInput.KeyHold(Keys.W))
+			if (keyboardInput.KeyHold(Keys.D8))// || keyboardInput.KeyHold(Keys.W))
 			{
 				return 7;
 			}
-			if (keyboardInput.KeyHold(Keys.E))
-			{
-				return 8;
-			}
-			if (keyboardInput.KeyHold(Keys.R))
-			{
-				return 9;
-			}
-			if (keyboardInput.KeyHold(Keys.T))
-			{
-				return 10;
-			}
-			if (keyboardInput.KeyHold(Keys.Y))
-			{
-				return 11;
-			}
+			//if (keyboardInput.KeyHold(Keys.E))
+			//{
+			//    return 8;
+			//}
+			//if (keyboardInput.KeyHold(Keys.R))
+			//{
+			//    return 9;
+			//}
+			//if (keyboardInput.KeyHold(Keys.T))
+			//{
+			//    return 10;
+			//}
+			//if (keyboardInput.KeyHold(Keys.Y))
+			//{
+			//    return 11;
+			//}
 
 			return Constants.INVALID_INDEX;
 		}

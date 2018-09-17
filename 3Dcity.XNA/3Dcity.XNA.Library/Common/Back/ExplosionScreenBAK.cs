@@ -66,7 +66,7 @@ namespace WindowsGame.Common.Screens
 					Byte diff = (Byte)(number % 2);
 					ExplodeType explodeType = (ExplodeType)diff;
 					MyGame.Manager.ExplosionManager.LoadContent(explodeIndex, explodeType);
-					MyGame.Manager.ExplosionManager.Explode(explodeIndex, position);
+					MyGame.Manager.ExplosionManager.Explode(explodeIndex, 5, position);
 				}
 			}
 

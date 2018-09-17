@@ -9,13 +9,14 @@ namespace WindowsGame.Common.Managers
 	public interface IExplosionManager 
 	{
 		void Initialize();
-		void LoadContent(Byte explodeIndex, ExplodeType explodeType);
+		void LoadContent(Byte slotID, ExplodeType explodeType);
 		void Reset(Byte theBulletShoot, UInt16 frameDelay);
-		void Explode(Byte explodeIndex, Vector2 position);
+		void Explode(Byte slotID, Byte enemyID, Vector2 position);
 		void Update(GameTime gameTime);
 		void Draw();
 
 		IList<Explosion> ExplosionList { get; }
+		IList<Byte> ExplosionTest { get; }
 		IDictionary<Byte, Explosion> ExplosionDict { get; }
 	}
 
@@ -27,6 +28,7 @@ namespace WindowsGame.Common.Managers
 		public void Initialize()
 		{
 			ExplosionList = new List<Explosion>(Constants.MAX_ENEMYS_SPAWN);
+			ExplosionTest = new List<Byte>();
 			ExplosionDict = new Dictionary<Byte, Explosion>(Constants.MAX_ENEMYS_SPAWN);
 
 			for (Byte index = 0; index < Constants.MAX_EXPLODE_SPAWN; index++)
@@ -41,11 +43,11 @@ namespace WindowsGame.Common.Managers
 			maxBombsExplode = Constants.MAX_EXPLODE_SPAWN;
 		}
 
-		public void LoadContent(Byte explodeIndex, ExplodeType explodeType)
+		public void LoadContent(Byte slotID, ExplodeType explodeType)
 		{
 			// Load the explosion rectangles on demand.
-			Explosion explosion = ExplosionList[explodeIndex];
-			explosion.LoadContent(MyGame.Manager.ImageManager.ExplodeRectangles[(Int32)explodeType]);
+			Explosion explosion = ExplosionList[slotID];
+			explosion.LoadContent(MyGame.Manager.ImageManager.ExplodeRectangles[(Byte)explodeType]);
 		}
 
 		public void Reset(Byte theBombsExplode, UInt16 frameDelay)
@@ -61,20 +63,23 @@ namespace WindowsGame.Common.Managers
 				Explosion explode = ExplosionList[index];
 				explode.Reset(frameDelay);
 			}
+
+			ExplosionTest.Clear();
+			keys.Clear();
 		}
 
-		public void Explode(Byte explodeIndex, Vector2 position)
+		public void Explode(Byte slotID, Byte enemyID, Vector2 position)
 		{
-			Explosion explosion = ExplosionList[explodeIndex];
+			Explosion explosion = ExplosionList[slotID];
 			if (explosion.IsExploding)
 			{
 				return;
 			}
 
 			explosion.SetPosition(position);
-			explosion.Explode();
+			explosion.Explode(enemyID);
 
-			ExplosionDict.Add(explodeIndex, explosion);
+			ExplosionDict.Add(slotID, explosion);
 		}
 
 		public void Update(GameTime gameTime)
@@ -84,6 +89,7 @@ namespace WindowsGame.Common.Managers
 				return;
 			}
 
+			ExplosionTest.Clear();
 			keys.Clear();
 			foreach (var key in ExplosionDict.Keys)
 			{
@@ -97,6 +103,7 @@ namespace WindowsGame.Common.Managers
 				explosion.Update(gameTime);
 				if (!explosion.IsExploding)
 				{
+					ExplosionTest.Add((Byte)explosion.EnemyID);
 					keys.Add(explosion.ID);
 				}
 			}
@@ -126,6 +133,7 @@ namespace WindowsGame.Common.Managers
 		}
 
 		public IList<Explosion> ExplosionList { get; private set; }
+		public IList<Byte> ExplosionTest { get; private set; }
 		public IDictionary<Byte, Explosion> ExplosionDict { get; private set; }
 	}
 }

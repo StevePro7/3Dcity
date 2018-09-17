@@ -9,7 +9,7 @@ namespace WindowsGame.Common.Static
 		public const String DATA_DIRECTORY = "Data";
 
 		// TODO delete!
-		public const UInt16 TestFrameDelay = 100;
+		public const UInt16 TestFrameDelay = 1000;
 
 		// Global data.
 		public const Boolean IsFixedTimeStep = true;
