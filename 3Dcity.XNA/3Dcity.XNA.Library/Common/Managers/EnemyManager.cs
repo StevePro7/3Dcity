@@ -132,7 +132,7 @@ namespace WindowsGame.Common.Managers
 			}
 
 			// TODO delete
-			MyGame.Manager.Logger.Info(slotID.ToString());
+			MyGame.Manager.Logger.Info((slotID+1).ToString());
 
 			Enemy enemy = EnemyList[index];
 
@@ -188,16 +188,18 @@ namespace WindowsGame.Common.Managers
 			Boolean check = false;
 
 			Enemy enemy = EnemyList[index];
-			if (EnemyType.Test == enemy.EnemyType || EnemyType.Dead == enemy.EnemyType)
+			if (EnemyType.Idle == enemy.EnemyType)
 			{
-				SByte slotID = enemy.SlotID;
-				if (EnemyDict.ContainsKey((Byte) slotID))
-				{
-					EnemyDict.Remove((Byte) slotID);
-				}
-
-				enemy.Reset();
+				return false;
 			}
+
+			SByte slotID = enemy.SlotID;
+			if (EnemyDict.ContainsKey((Byte)slotID))
+			{
+				EnemyDict.Remove((Byte)slotID);
+			}
+
+			enemy.Reset();
 
 			// Check this is last enemy!!
 			if (EnemySpawn >= EnemyTotal)

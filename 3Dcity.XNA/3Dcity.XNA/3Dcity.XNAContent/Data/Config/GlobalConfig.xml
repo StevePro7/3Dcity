@@ -20,8 +20,8 @@
 	<EnemysY>160</EnemysY>
 	<EnemyFrame>7</EnemyFrame>
 	<EnemyIndex>0</EnemyIndex>
-	<EnemySpawn>1</EnemySpawn>
-	<EnemyTotal>1</EnemyTotal>
+	<EnemySpawn>3</EnemySpawn>
+	<EnemyTotal>5</EnemyTotal>
 	<IsGodMode>true</IsGodMode>
 	<QuitsToExit>true</QuitsToExit>
 </GlobalConfigData>

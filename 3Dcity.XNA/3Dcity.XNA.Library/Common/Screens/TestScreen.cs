@@ -84,12 +84,6 @@ namespace WindowsGame.Common.Screens
 					//    MyGame.Manager.EnemyManager.SpawnOneEnemy(enemyID);
 					//}
 				}
-
-				Boolean gameover = MyGame.Manager.EnemyManager.CheckEnemiesNone();
-				if (gameover)
-				{
-					return (Int32)ScreenType.Cont; // TODO actually finished level!
-				}
 			}
 
 			//MyGame.Manager.EnemyManager.CheckAllEnemies();
@@ -106,14 +100,15 @@ namespace WindowsGame.Common.Screens
 				Byte slotID = (Byte)number;
 				if (MyGame.Manager.EnemyManager.EnemyDict.ContainsKey(slotID))
 				{
+					// Can kill initial enemy [at frame count = 0] because enemy will be "hidden".
 					Enemy enemy = MyGame.Manager.EnemyManager.EnemyDict[slotID];
 					if (0 != enemy.FrameCount)
 					{
-						// Can kill initial enemy [at frame count = 0] because enemy will be "hidden".
-						ExplodeType explodeType = enemy.FrameIndex < 5 ? ExplodeType.Small : ExplodeType.Big;
+						// TODO if DiffType == HARD and enemy.FrameCount = 9 OR 11 then enemy dead?
+						ExplodeType explodeType = enemy.FrameIndex < 4 ? ExplodeType.Small : ExplodeType.Big;
 						MyGame.Manager.ExplosionManager.LoadContent(slotID, explodeType);
-						MyGame.Manager.ExplosionManager.Explode(slotID, enemy.ID, enemy.Position);
-						//enemy.Dead();
+						MyGame.Manager.ExplosionManager.Explode(slotID, enemy.ID, explodeType, enemy.Position);
+						enemy.Dead();
 					}
 				}
 				else
@@ -155,12 +150,15 @@ namespace WindowsGame.Common.Screens
 				}
 			}
 
-			return (Int32)CurrScreen;
-		}
 
-		private void RespawnEnemy()
-		{
-			
+			Boolean gameover = MyGame.Manager.EnemyManager.CheckEnemiesNone();
+			if (gameover)
+			{
+				return (Int32)ScreenType.Cont; // TODO actually finished level!
+			}
+
+
+			return (Int32)CurrScreen;
 		}
 
 		public override void Draw()

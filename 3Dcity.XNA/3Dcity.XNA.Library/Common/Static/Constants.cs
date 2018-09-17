@@ -42,6 +42,9 @@ namespace WindowsGame.Common.Static
 		public const Byte ENEMY_RANDOM_X = 36;
 		public const Byte ENEMY_RANDOM_Y = 72;
 
+		public static readonly SByte[] EXPLODE_OFFSET_X = new SByte[2] { 20, -20 };
+		public static readonly SByte[] EXPLODE_OFFSET_Y = new SByte[2] { 20, -20 };
+
 		// Sizes.
 		public const Byte HalfSize = 40;
 		public const Byte IconSize = 70;

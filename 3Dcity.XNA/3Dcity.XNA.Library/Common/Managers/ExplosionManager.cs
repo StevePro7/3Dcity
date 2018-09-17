@@ -11,7 +11,7 @@ namespace WindowsGame.Common.Managers
 		void Initialize();
 		void LoadContent(Byte slotID, ExplodeType explodeType);
 		void Reset(Byte theBulletShoot, UInt16 frameDelay);
-		void Explode(Byte slotID, Byte enemyID, Vector2 position);
+		void Explode(Byte slotID, Byte enemyID, ExplodeType explodeType, Vector2 position);
 		void Update(GameTime gameTime);
 		void Draw();
 
@@ -68,7 +68,7 @@ namespace WindowsGame.Common.Managers
 			keys.Clear();
 		}
 
-		public void Explode(Byte slotID, Byte enemyID, Vector2 position)
+		public void Explode(Byte slotID, Byte enemyID, ExplodeType explodeType, Vector2 position)
 		{
 			Explosion explosion = ExplosionList[slotID];
 			if (explosion.IsExploding)
@@ -76,7 +76,10 @@ namespace WindowsGame.Common.Managers
 				return;
 			}
 
-			explosion.SetPosition(position);
+			Vector2 newPosition = position;
+			newPosition.X += Constants.EXPLODE_OFFSET_X[(Byte) explodeType];
+			newPosition.Y += Constants.EXPLODE_OFFSET_Y[(Byte)explodeType];
+			explosion.SetPosition(newPosition);
 			explosion.Explode(enemyID);
 
 			ExplosionDict.Add(slotID, explosion);
@@ -84,12 +87,12 @@ namespace WindowsGame.Common.Managers
 
 		public void Update(GameTime gameTime)
 		{
+			ExplosionTest.Clear();
 			if (0 == ExplosionDict.Count)
 			{
 				return;
 			}
 
-			ExplosionTest.Clear();
 			keys.Clear();
 			foreach (var key in ExplosionDict.Keys)
 			{

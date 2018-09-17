@@ -80,10 +80,10 @@ namespace WindowsGame.Common.Sprites
 
 		public override void Draw()
 		{
-			if (EnemyType.Move != EnemyType)
-			{
-				return;
-			}
+			//if (EnemyType.Move != EnemyType)
+			//{
+			//    return;
+			//}
 
 			if (blinkFrame.Contains(FrameCount))
 			{
