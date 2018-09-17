@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Level</ScreenType>
+	<ScreenType>Test</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<FramesPerSecond>100</FramesPerSecond>
@@ -22,8 +22,8 @@
 	<EnemysY>160</EnemysY>
 	<EnemyFrame>7</EnemyFrame>
 	<EnemyIndex>0</EnemyIndex>
-	<EnemySpawn>1</EnemySpawn>
-	<EnemyTotal>1</EnemyTotal>
+	<EnemySpawn>3</EnemySpawn>
+	<EnemyTotal>10</EnemyTotal>
 	<IsGodMode>true</IsGodMode>
 	<QuitsToExit>true</QuitsToExit>
 </GlobalConfigData>

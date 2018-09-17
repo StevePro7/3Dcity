@@ -50,3 +50,39 @@ if (0 == horz)
 }
 
 // otherwise this is the most up-to-date touch press / move
+
+
+LEVELS
+https://www.giantbomb.com/space-harrier/3030-6036/
+Stage 1: Moot
+Stage 2: Geeza
+Stage 3: Amar
+Stage 4: Cieciel
+Stage 5: Bonus Stage	BONUS
+Stage 6: Olisis
+Stage 7: Lucasia
+Stage 8: Ida
+Stage 9: Revi
+Stage 10: Minia
+Stage 11: Parms
+Stage 12: Bonus Stage	BONUS
+Stage 13: Drail
+Stage 14: Asute
+Stage 15: Vicel
+Stage 16: Natura
+Stage 17: Nark
+Stage 18: Absymbel
+
+
+SELECT DIFFICULTY
+SELECT LEVEL NAME
+[18]>> ABSYMBEL
+
+[01]
+MOOT
+
+[07]
+LUCASIA
+
+[18]
+ABSYMBEL
