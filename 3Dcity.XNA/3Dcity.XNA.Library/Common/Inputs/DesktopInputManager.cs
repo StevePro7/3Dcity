@@ -139,11 +139,15 @@ namespace WindowsGame.Common.Inputs
 			// Mouse.
 			if (mouseScreenInput.RightButtonPress())
 			{
-				//Boolean fire = controlManager.CheckJoyPadFire(mouseScreenInput.MosuePosition);
-				//if (fire)
-				//{
+				return true;
+			}
+			if (mouseScreenInput.LeftButtonPress())
+			{
+				Boolean test = controlManager.CheckJoyPadFire(mouseScreenInput.MosuePosition);
+				if (test)
+				{
 					return true;
-				//}
+				}
 			}
 
 			// Joystick.

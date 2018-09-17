@@ -9,7 +9,7 @@
 	<SplashDelay>0</SplashDelay>
 	<StarDelay>2000</StarDelay>
 	<GridDelay>200</GridDelay>
-	<SelectDelay>1000</SelectDelay>
+	<SelectDelay>500</SelectDelay>
 	<EventRatio>1.0</EventRatio>
 	<ScoreBlink>false</ScoreBlink>
 	<UpdateStar>false</UpdateStar>

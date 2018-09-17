@@ -31,7 +31,6 @@ namespace WindowsGame.Common.Screens
 			delay = MyGame.Manager.ConfigManager.GlobalConfigData.SelectDelay;
 
 			levelType = (Byte)MyGame.Manager.LevelManager.LevelType;
-			levelType = (Byte)LevelType.Hard;
 			flag1 = flag2 = false;
 
 			base.LoadContent();
@@ -42,23 +41,18 @@ namespace WindowsGame.Common.Screens
 			if (flag1)
 			{
 				UpdateTimer(gameTime);
-				if (Timer > delay)
+				if (Timer > delay * 2)
 				{
 					flag1 = false;
 					iconIndex = Convert.ToByte(flag1);
 					MyGame.Manager.IconManager.UpdateIcon(MyGame.Manager.IconManager.JoyButton, iconIndex);
-					return (Int32) ScreenType.Over;
+					MyGame.Manager.LevelManager.SetLevelType((LevelType)levelType);
+					return (Int32) ScreenType.Over;			// TODO goto level select screen
 				}
 
 				iconIndex = Convert.ToByte(flag1);
 				MyGame.Manager.IconManager.UpdateIcon(MyGame.Manager.IconManager.JoyButton, iconIndex);
 				return (Int32)CurrScreen;
-			}
-
-			Boolean fire = MyGame.Manager.InputManager.Fire();
-			if (fire)
-			{
-				flag1 = true;
 			}
 
 			if (flag2)
@@ -77,6 +71,15 @@ namespace WindowsGame.Common.Screens
 				return (Int32)CurrScreen;
 			}
 
+			// Check fire first.
+			Boolean fire = MyGame.Manager.InputManager.Fire();
+			if (fire)
+			{
+				flag1 = true;
+				return (Int32)CurrScreen;
+			}
+
+			// Check move second.
 			Single horz = MyGame.Manager.InputManager.Horizontal();
 			if (0 == horz)
 			{
