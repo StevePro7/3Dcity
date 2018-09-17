@@ -45,6 +45,8 @@ namespace WindowsGame.Common.Static
 		public static readonly SByte[] EXPLODE_OFFSET_X = new SByte[2] { 20, -20 };
 		public static readonly SByte[] EXPLODE_OFFSET_Y = new SByte[2] { 20, -20 };
 
+		public static readonly Byte[] CURSOR_OFFSET_X = new Byte[3] { 30, 80, 130 };
+
 		// Sizes.
 		public const Byte HalfSize = 40;
 		public const Byte IconSize = 70;

@@ -79,6 +79,11 @@ namespace WindowsGame.Common.Managers
 
 		public void PlaySoundEffect()
 		{
+			if (null == Assets.SoundEffectDictionary)
+			{
+				return;
+			}
+
 			SoundEffectType key = SoundEffectType.Funny;
 			//SoundEffectType key = SoundEffectType.Cheat;
 			SoundEffectInstance value = Assets.SoundEffectDictionary[key];

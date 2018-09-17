@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Play</ScreenType>
+	<ScreenType>Diff</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
-	<!--<ScreenType>Ready</ScreenType>-->
+	<!--<ScreenType>Diff</ScreenType>-->
 	<FramesPerSecond>100</FramesPerSecond>
 	<LoadAudio>false</LoadAudio>
 	<PlayAudio>false</PlayAudio>
 	<SplashDelay>0</SplashDelay>
 	<StarDelay>2000</StarDelay>
 	<GridDelay>200</GridDelay>
+	<SelectDelay>1000</SelectDelay>
 	<EventRatio>1.0</EventRatio>
 	<ScoreBlink>false</ScoreBlink>
 	<UpdateStar>false</UpdateStar>

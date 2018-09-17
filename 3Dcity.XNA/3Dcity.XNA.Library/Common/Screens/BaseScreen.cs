@@ -98,6 +98,11 @@ namespace WindowsGame.Common.Screens
 			}
 		}
 
+		protected void ResetTimer()
+		{
+			Timer = 0;
+		}
+
 		protected void LoadTextData()
 		{
 			LoadTextData(GetType().Name);

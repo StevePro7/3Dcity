@@ -18,6 +18,8 @@ namespace WindowsGame.Common.Managers
 	{
 		public void Initialize()
 		{
+			// TODO get from storage...
+			LevelType = LevelType.Easy;
 		}
 
 		public void LoadContent()
