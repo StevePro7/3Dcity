@@ -9,20 +9,20 @@ namespace WindowsGame.Common.Screens
 {
 	public class TestScreen : BaseScreen, IScreen
 	{
-		private SByte number;
+		//private SByte number;
 
 		public override void Initialize()
 		{
 			base.Initialize();
 			LoadTextData();
-			number = Constants.INVALID_INDEX;
+			//number = Constants.INVALID_INDEX;
 		}
 
 		public override void LoadContent()
 		{
 			LevelType levelType = MyGame.Manager.StateManager.LevelType;
-			Byte enemySpawn = MyGame.Manager.ConfigManager.GlobalConfigData.EnemySpawn;	// 1;
-			Byte enemyTotal = MyGame.Manager.ConfigManager.GlobalConfigData.EnemyTotal;	// 1;
+			Byte enemySpawn = MyGame.Manager.ConfigManager.GlobalConfigData.EnemySpawn;	// 1;  // TODO level config
+			Byte enemyTotal = MyGame.Manager.ConfigManager.GlobalConfigData.EnemyTotal;	// 1;  // TODO level config
 			MyGame.Manager.EnemyManager.Reset(levelType, enemySpawn, 2000, 5000, enemyTotal);
 			MyGame.Manager.EnemyManager.SpawnAllEnemies();
 
@@ -72,27 +72,20 @@ namespace WindowsGame.Common.Screens
 					{
 						MyGame.Manager.EnemyManager.SpawnOneEnemy(enemyID);
 					}
-
-					//Byte enemySpawn = MyGame.Manager.EnemyManager.EnemySpawn;
-					//Byte enemyTotal = MyGame.Manager.EnemyManager.EnemyTotal;
-					//if (enemySpawn >= enemyTotal)
-					//{
-					//    enemy.None();
-					//}
-					//else
-					//{
-					//    MyGame.Manager.EnemyManager.SpawnOneEnemy(enemyID);
-					//}
 				}
 			}
 
+
+			// TODO - is this redundant because Enemy "kill" target [ABOVE]
 			//MyGame.Manager.EnemyManager.CheckAllEnemies();
 			if (MyGame.Manager.CollisionManager.EnemysCollisionList.Count > 0)
 			{
 				// Check collisions here.
 			}
 
-			number = MyGame.Manager.InputManager.Number();
+
+			// TODO - implement bullet logic... for now simulate slotID of bullet on last frame
+			SByte number = MyGame.Manager.InputManager.Number();
 			if (Constants.INVALID_INDEX != number)
 			{
 				// Retrieve slotID from bullet position
@@ -111,17 +104,15 @@ namespace WindowsGame.Common.Screens
 						enemy.Dead();
 					}
 				}
-				else
-				{
-					MyGame.Manager.Logger.Info("miss " + (slotID).ToString());
-				}
+				//else
+				//{
+				//    MyGame.Manager.Logger.Info("miss " + (slotID).ToString());		// TODO remove logging
+				//}
 			}
 
 
 			// EXPLOSIONS.
 			MyGame.Manager.ExplosionManager.Update(gameTime);
-
-
 			if (MyGame.Manager.ExplosionManager.ExplosionTest.Count > 0)
 			{
 				// Iterate all enemy ships to test and add to misses.
@@ -135,22 +126,10 @@ namespace WindowsGame.Common.Screens
 					{
 						MyGame.Manager.EnemyManager.SpawnOneEnemy(enemyID);
 					}
-
-					//MyGame.Manager.EnemyManager.CheckThisEnemy(enemyID);
-					//Byte enemySpawn = MyGame.Manager.EnemyManager.EnemySpawn;
-					//Byte enemyTotal = MyGame.Manager.EnemyManager.EnemyTotal;
-					//if (enemySpawn >= enemyTotal)
-					//{
-					//    enemy.None();
-					//}
-					//else
-					//{
-					//    MyGame.Manager.EnemyManager.SpawnOneEnemy(enemyID);
-					//}
 				}
 			}
 
-
+			// Finally, check to see if all enemies finished = level complete.
 			Boolean gameover = MyGame.Manager.EnemyManager.CheckEnemiesNone();
 			if (gameover)
 			{
