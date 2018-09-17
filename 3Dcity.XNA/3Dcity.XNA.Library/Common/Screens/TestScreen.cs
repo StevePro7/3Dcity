@@ -20,7 +20,7 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
-			LevelType levelType = MyGame.Manager.StateManager.LevelType;
+			LevelType levelType = MyGame.Manager.LevelManager.LevelType;
 			Byte enemySpawn = MyGame.Manager.ConfigManager.GlobalConfigData.EnemySpawn;	// 1;  // TODO level config
 			Byte enemyTotal = MyGame.Manager.ConfigManager.GlobalConfigData.EnemyTotal;	// 1;  // TODO level config
 			MyGame.Manager.EnemyManager.Reset(levelType, enemySpawn, 2000, 5000, enemyTotal);

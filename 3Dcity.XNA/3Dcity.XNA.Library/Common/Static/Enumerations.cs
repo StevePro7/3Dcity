@@ -6,6 +6,12 @@
 		Mobiles = 1
 	}
 
+	public enum CursorType
+	{
+		Left = 0,
+		Right = 1
+	}
+
 	public enum LevelType
 	{
 		Easy = 0,

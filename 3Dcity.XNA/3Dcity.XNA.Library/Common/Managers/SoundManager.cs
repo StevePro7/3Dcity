@@ -31,9 +31,15 @@ namespace WindowsGame.Common.Managers
 
 		public void Initialize()
 		{
-			// TODO revert
-			//soundFactory.Initialize();
-			soundFactory.Initialize(false, false);
+			// TODO revert, refactor, etc.
+			if (MyGame.Manager.ConfigManager.GlobalConfigData.LoadAudio && MyGame.Manager.ConfigManager.GlobalConfigData.PlayAudio)
+			{
+				soundFactory.Initialize();
+			}
+			else
+			{
+				soundFactory.Initialize(false, false);
+			}
 		}
 
 		public void GamePause(Boolean gamePause)

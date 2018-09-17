@@ -18,13 +18,14 @@ namespace WindowsGame.Common.Screens
 			// Not bad settings for default.
 			MyGame.Manager.BulletManager.Reset(10, 200, 100);
 
-			LevelType levelType = MyGame.Manager.StateManager.LevelType;
+			LevelType levelType = MyGame.Manager.LevelManager.LevelType;
 			const Byte enemySpawn = 1;
 			const Byte enemyTotal = 3;
 			MyGame.Manager.EnemyManager.Reset(levelType, enemySpawn, 2000, 5000, enemyTotal);
 			MyGame.Manager.EnemyManager.SpawnAllEnemies();
 
 			MyGame.Manager.ScoreManager.Reset();
+			MyGame.Manager.SoundManager.PlayMusic();
 			base.LoadContent();
 		}
 
@@ -53,6 +54,9 @@ namespace WindowsGame.Common.Screens
 			Boolean fire = MyGame.Manager.InputManager.Fire();
 			if (fire)
 			{
+				// TODO delete
+				MyGame.Manager.SoundManager.PlaySoundEffect();
+
 				SByte bulletIndex = MyGame.Manager.BulletManager.CheckBullets();
 				if (Constants.INVALID_INDEX != bulletIndex)
 				{

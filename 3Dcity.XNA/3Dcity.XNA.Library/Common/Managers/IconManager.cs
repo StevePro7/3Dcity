@@ -61,6 +61,10 @@ namespace WindowsGame.Common.Managers
 			JoyButton.LoadContent(MyGame.Manager.ImageManager.JoyButtonRectangles);
 			GameState.LoadContent(MyGame.Manager.ImageManager.GameStateRectangles);
 			GameSound.LoadContent(MyGame.Manager.ImageManager.GameSoundRectangles);
+
+			// TODO is this correct to set sound icon here?
+			//Byte index = Convert.ToByte(!MyGame.Manager.StateManager.GameSound);
+			//UpdateIcon(GameSound, index);
 		}
 
 		public void ToggleIcon(BaseObject icon)

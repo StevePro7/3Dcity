@@ -2,6 +2,10 @@
 Placeholder for 3Dcity coming soon!
 This is a test line
 
+Spritesheet here
+E:\Steven\XNA\3Dcity\SpriteSheet01
+E:\Steven\XNA\3Dcity\SpriteSheet02
+
 Measurements on Background
 Y = 3 + 70 + 5 = 78
 X = 6

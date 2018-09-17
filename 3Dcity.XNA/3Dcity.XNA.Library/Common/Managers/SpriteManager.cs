@@ -15,6 +15,7 @@ namespace WindowsGame.Common.Managers
 		void Update(GameTime gameTime);
 
 		void Draw();
+		void DrawCursor();
 
 		// Properties.
 		SmallTarget SmallTarget { get; }
@@ -66,6 +67,11 @@ namespace WindowsGame.Common.Managers
 		{
 			SmallTarget.Draw();
 			LargeTarget.Draw();
+		}
+
+		public void DrawCursor()
+		{
+			SmallTarget.Draw();
 		}
 
 		private void TheInit()

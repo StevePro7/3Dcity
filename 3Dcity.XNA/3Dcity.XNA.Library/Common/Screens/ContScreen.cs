@@ -30,7 +30,15 @@ namespace WindowsGame.Common.Screens
 
 		public override void Draw()
 		{
+			// Sprite sheet #01.
 			base.Draw();
+			MyGame.Manager.IconManager.DrawControls();
+			MyGame.Manager.ScoreManager.Draw();
+
+			// Sprite sheet #02.
+			MyGame.Manager.EnemyManager.Draw();
+			MyGame.Manager.BulletManager.Draw();
+			MyGame.Manager.SpriteManager.Draw();
 
 			// Text data last!
 			MyGame.Manager.TextManager.Draw(TextDataList);

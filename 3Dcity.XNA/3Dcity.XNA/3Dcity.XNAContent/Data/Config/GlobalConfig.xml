@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Test</ScreenType>
+	<ScreenType>Play</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Ready</ScreenType>-->
 	<FramesPerSecond>100</FramesPerSecond>
 	<LoadAudio>false</LoadAudio>
+	<PlayAudio>false</PlayAudio>
 	<SplashDelay>0</SplashDelay>
 	<StarDelay>2000</StarDelay>
 	<GridDelay>200</GridDelay>
@@ -20,8 +21,8 @@
 	<EnemysY>160</EnemysY>
 	<EnemyFrame>7</EnemyFrame>
 	<EnemyIndex>0</EnemyIndex>
-	<EnemySpawn>3</EnemySpawn>
-	<EnemyTotal>5</EnemyTotal>
+	<EnemySpawn>1</EnemySpawn>
+	<EnemyTotal>1</EnemyTotal>
 	<IsGodMode>true</IsGodMode>
 	<QuitsToExit>true</QuitsToExit>
 </GlobalConfigData>
