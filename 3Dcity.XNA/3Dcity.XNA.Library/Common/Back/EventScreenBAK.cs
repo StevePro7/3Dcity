@@ -1,8 +1,9 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using WindowsGame.Common.Screens;
 using WindowsGame.Master.Interfaces;
 
-namespace WindowsGame.Common.Screens
+namespace WindowsGame.Common.Back
 {
 	// Testing saving events.
 	public class EventScreenBAK : BaseScreen, IScreen

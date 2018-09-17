@@ -1,11 +1,12 @@
 ﻿using System;
+using WindowsGame.Common.Screens;
 using Microsoft.Xna.Framework;
 using WindowsGame.Common.Sprites;
 using WindowsGame.Common.Static;
 using WindowsGame.Master;
 using WindowsGame.Master.Interfaces;
 
-namespace WindowsGame.Common.Screens
+namespace WindowsGame.Common.Back
 {
 	public class ExplosionScreenBAK : BaseScreen, IScreen
 	{
@@ -23,7 +24,7 @@ namespace WindowsGame.Common.Screens
 		{
 			boxPositions = GetBoxPositions();
 
-			LevelType levelType = MyGame.Manager.StateManager.LevelType;
+			LevelType levelType = MyGame.Manager.LevelManager.LevelType;
 			const Byte enemySpawn = 1;
 			const Byte enemyTotal = 3;
 			MyGame.Manager.EnemyManager.Reset(levelType, enemySpawn, 2000, 5000, enemyTotal);

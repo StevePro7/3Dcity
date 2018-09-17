@@ -1,11 +1,11 @@
 using System;
+using Microsoft.Xna.Framework;
+using WindowsGame.Common.Screens;
 using WindowsGame.Common.Static;
 using WindowsGame.Master;
 using WindowsGame.Master.Interfaces;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
-namespace WindowsGame.Common.Screens
+namespace WindowsGame.Common.Back
 {
 	public class TitleScreenBAK : BaseScreen, IScreen
 	{
