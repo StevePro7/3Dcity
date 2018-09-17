@@ -19,6 +19,7 @@ namespace WindowsGame.Common.Static
 
 			IoCContainer.Initialize<IGameManager, GameManager>();
 
+			IoCContainer.Initialize<IBossManager, BossManager>();
 			IoCContainer.Initialize<IBulletManager, BulletManager>();
 			IoCContainer.Initialize<ICollisionManager, CollisionManager>();
 			IoCContainer.Initialize<ICommandManager, CommandManager>();
@@ -31,6 +32,7 @@ namespace WindowsGame.Common.Static
 			IoCContainer.Initialize<IExplosionManager, ExplosionManager>();
 			IoCContainer.Initialize<IIconManager, IconManager>();
 			IoCContainer.Initialize<IImageManager, ImageManager>();
+			IoCContainer.Initialize<ILevelManager, LevelManager>(); 
 			IoCContainer.Initialize<IRenderManager, RenderManager>();
 			IoCContainer.Initialize<IScoreManager, ScoreManager>();
 			IoCContainer.Initialize<IScreenManager, ScreenManager>();

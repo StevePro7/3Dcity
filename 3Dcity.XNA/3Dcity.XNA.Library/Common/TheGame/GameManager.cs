@@ -7,6 +7,7 @@ namespace WindowsGame.Common.TheGame
 {
 	public interface IGameManager
 	{
+		IBossManager BossManager { get; }
 		IBulletManager BulletManager { get; }
 		ICollisionManager CollisionManager { get; }
 		ICommandManager CommandManager { get; }
@@ -20,6 +21,7 @@ namespace WindowsGame.Common.TheGame
 		IIconManager IconManager { get; }
 		IImageManager ImageManager { get; }
 		IInputManager InputManager { get; }
+		ILevelManager LevelManager { get; }
 		IRandomManager RandomManager { get; }
 		IRenderManager RenderManager { get; }
 		IResolutionManager ResolutionManager { get; }
@@ -40,6 +42,7 @@ namespace WindowsGame.Common.TheGame
 	{
 		public GameManager
 		(
+			IBossManager bossManager,
 			IBulletManager bulletManager,
 			ICollisionManager collisionManager,
 			ICommandManager commandManager,
@@ -53,6 +56,7 @@ namespace WindowsGame.Common.TheGame
 			IIconManager iconManager,
 			IImageManager imageManager,
 			IInputManager inputManager,
+			ILevelManager levelManager,
 			IRandomManager randomManager,
 			IRenderManager renderManager,
 			IResolutionManager resolutionManager,
@@ -69,6 +73,7 @@ namespace WindowsGame.Common.TheGame
 			ILogger logger
 		)
 		{
+			BossManager = bossManager;
 			BulletManager = bulletManager;
 			CollisionManager = collisionManager;
 			CommandManager = commandManager;
@@ -82,6 +87,7 @@ namespace WindowsGame.Common.TheGame
 			ImageManager = imageManager;
 			IconManager = iconManager;
 			InputManager = inputManager;
+			LevelManager = levelManager;
 			RandomManager = randomManager;
 			RenderManager = renderManager;
 			ResolutionManager = resolutionManager;
@@ -98,6 +104,7 @@ namespace WindowsGame.Common.TheGame
 			Logger = logger;
 		}
 
+		public IBossManager BossManager { get; private set; }
 		public IBulletManager BulletManager { get; private set; }
 		public ICollisionManager CollisionManager { get; private set; }
 		public ICommandManager CommandManager { get; private set; }
@@ -111,6 +118,7 @@ namespace WindowsGame.Common.TheGame
 		public IIconManager IconManager { get; private set; }
 		public IImageManager ImageManager { get; private set; }
 		public IInputManager InputManager { get; private set; }
+		public ILevelManager LevelManager { get; private set; }
 		public IRandomManager RandomManager { get; private set; }
 		public IRenderManager RenderManager { get; private set; }
 		public IResolutionManager ResolutionManager { get; private set; }

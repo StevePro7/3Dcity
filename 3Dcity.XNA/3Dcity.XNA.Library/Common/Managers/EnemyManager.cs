@@ -13,8 +13,6 @@ namespace WindowsGame.Common.Managers
 		void Reset(LevelType theLevelType, Byte theEnemySpawn, UInt16 minDelay, UInt16 maxDelay);
 		void SpawnAllEnemies();
 		void SpawnOneEnemy(Byte index);
-		//void Spawn(UInt16 frameDelay);
-		//void Start(UInt16 frameDelay);
 		void CheckAllEnemies();
 
 		//void Spawn(UInt16 frameDelay, Vector2 position);
@@ -55,7 +53,6 @@ namespace WindowsGame.Common.Managers
 				enemy.Initialize(Constants.MAX_ENEMYS_FRAME);
 				enemy.SetID(index);
 				enemy.SetSlotID();
-				//enemy.SetBounds(index);		//TODO delete
 				EnemyList.Add(enemy);
 			}
 		}
@@ -132,24 +129,6 @@ namespace WindowsGame.Common.Managers
 			EnemyDict.Add((Byte)slotID, enemy);
 		}
 
-		//public void Spawn(UInt16 frameDelay, Vector2 position)
-		//public void Spawn(UInt16 frameDelay)
-		//{
-		//    for (Byte index = 0; index < maxEnemySpawn; index++)
-		//    {
-		//        //Vector2 position = GetPositioni(index);
-		//        //EnemyList[index].Spawn(frameDelay, position);
-		//    }
-		//}
-
-		//public void Start(UInt16 frameDelay)
-		//{
-		//    for (Byte index = 0; index < maxEnemySpawn; index++)
-		//    {
-		//        EnemyList[index].Start(frameDelay);
-		//    }
-		//}
-
 		public void CheckAllEnemies()
 		{
 			for (Byte index = 0; index < maxEnemySpawn; index++)
@@ -185,18 +164,6 @@ namespace WindowsGame.Common.Managers
 			{
 				EnemyList[index].Draw();
 			}
-		}
-
-		// TODO remove
-		private Vector2 GetPositioni(Byte index)
-		{
-			Single x = 250;
-			if (0 == index%2)
-			{
-				x = 450;
-			}
-
-			return new Vector2(x, 300);
 		}
 
 		private static IList<Rectangle> GetEnemyBounds()

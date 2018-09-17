@@ -11,6 +11,7 @@ namespace WindowsGame.UnitTests
 {
 	public abstract class BaseUnitTests
 	{
+		protected IBossManager BossManager;
 		protected IBulletManager BulletManager;
 		protected ICollisionManager CollisionManager;
 		protected ICommandManager CommandManager;
@@ -24,6 +25,7 @@ namespace WindowsGame.UnitTests
 		protected IIconManager IconManager;
 		protected IImageManager ImageManager;
 		protected IInputManager InputManager;
+		protected ILevelManager LevelManager;
 		protected IRandomManager RandomManager;
 		protected IRenderManager RenderManager;
 		protected IResolutionManager ResolutionManager;
@@ -44,6 +46,7 @@ namespace WindowsGame.UnitTests
 #pragma warning restore 618
 		public void TestFixtureSetUp()
 		{
+			BossManager = MockRepository.GenerateStub<IBossManager>();
 			BulletManager = MockRepository.GenerateStub<IBulletManager>();
 			CollisionManager = MockRepository.GenerateStub<ICollisionManager>();
 			CommandManager = MockRepository.GenerateStub<ICommandManager>();
@@ -57,6 +60,7 @@ namespace WindowsGame.UnitTests
 			IconManager = MockRepository.GenerateStub<IIconManager>();
 			ImageManager = MockRepository.GenerateStub<IImageManager>();
 			InputManager = MockRepository.GenerateStub<IInputManager>();
+			LevelManager = MockRepository.GenerateStub<ILevelManager>();
 			RandomManager = MockRepository.GenerateStub<IRandomManager>();
 			RenderManager = MockRepository.GenerateStub<IRenderManager>();
 			ResolutionManager = MockRepository.GenerateStub<IResolutionManager>();
@@ -77,6 +81,7 @@ namespace WindowsGame.UnitTests
 		{
 			IGameManager manager = new GameManager
 			(
+				BossManager,
 				BulletManager,
 				CollisionManager,
 				CommandManager,
@@ -90,6 +95,7 @@ namespace WindowsGame.UnitTests
 				IconManager,
 				ImageManager,
 				InputManager,
+				LevelManager,
 				RandomManager,
 				RenderManager,
 				ResolutionManager,
@@ -114,6 +120,7 @@ namespace WindowsGame.UnitTests
 #pragma warning restore 618
 		public void TestFixtureTearDown()
 		{
+			BossManager = null;
 			BulletManager = null;
 			CollisionManager = null;
 			CommandManager = null;
@@ -127,6 +134,7 @@ namespace WindowsGame.UnitTests
 			IconManager = null;
 			ImageManager = null;
 			InputManager = null;
+			LevelManager = null;
 			RandomManager = null;
 			RenderManager = null;
 			ResolutionManager = null;

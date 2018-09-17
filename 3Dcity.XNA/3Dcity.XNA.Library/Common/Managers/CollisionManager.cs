@@ -10,8 +10,6 @@ namespace WindowsGame.Common.Managers
 		void ClearCollisionList();
 		void AddToBulletCollisionList(Byte bulletIndex);
 		void AddToEnemysCollisionList(Byte enemysIndex);
-		//void Update(GameTime gameTime);
-		//void Draw();
 
 		IList<Byte> BulletCollisionList { get; }
 		IList<Byte> EnemysCollisionList { get; }
@@ -40,14 +38,6 @@ namespace WindowsGame.Common.Managers
 		{
 			EnemysCollisionList.Add(enemysIndex);
 		}
-
-		//public void Update(GameTime gameTime)
-		//{
-		//}
-
-		//public void Draw()
-		//{
-		//}
 
 		public IList<Byte> BulletCollisionList { get; private set; }
 		public IList<Byte> EnemysCollisionList { get; private set; }
