@@ -26,6 +26,7 @@ namespace WindowsGame.Common.Static
 			IoCContainer.Initialize<IConfigManager, ConfigManager>();
 			IoCContainer.Initialize<IContentManager, ContentManager>();
 			IoCContainer.Initialize<IControlManager, ControlManager>();
+			IoCContainer.Initialize<IDebugManager, DebugManager>();
 			IoCContainer.Initialize<IDeviceManager, DeviceManager>();
 			IoCContainer.Initialize<IEnemyManager, EnemyManager>();
 			IoCContainer.Initialize<IEventManager, EventManager>();

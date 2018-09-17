@@ -29,9 +29,15 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.IconManager.DrawControls();
 			MyGame.Manager.ScoreManager.Draw();
 
+
 			// Sprite sheet #02.
+			MyGame.Manager.DebugManager.Draw();
+
 			MyGame.Manager.EnemyManager.Draw();
 			MyGame.Manager.SpriteManager.Draw();
+
+			MyGame.Manager.ExplosionManager.Draw();
+
 
 			// Text data last!
 			MyGame.Manager.TextManager.Draw(TextDataList);

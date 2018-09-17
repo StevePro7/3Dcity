@@ -18,6 +18,7 @@ namespace WindowsGame.UnitTests
 		protected IConfigManager ConfigManager;
 		protected IContentManager ContentManager;
 		protected IControlManager ControlManager;
+		protected IDebugManager DebugManager;
 		protected IDeviceManager DeviceManager;
 		protected IEnemyManager EnemyManager;
 		protected IEventManager EventManager;
@@ -53,6 +54,7 @@ namespace WindowsGame.UnitTests
 			ConfigManager = MockRepository.GenerateStub<IConfigManager>();
 			ContentManager = MockRepository.GenerateStub<IContentManager>();
 			ControlManager = MockRepository.GenerateStub<IControlManager>();
+			DebugManager = MockRepository.GenerateStub<IDebugManager>();
 			DeviceManager = MockRepository.GenerateStub<IDeviceManager>();
 			EnemyManager = MockRepository.GenerateStub<IEnemyManager>();
 			EventManager = MockRepository.GenerateStub<IEventManager>();
@@ -88,6 +90,7 @@ namespace WindowsGame.UnitTests
 				ConfigManager,
 				ContentManager,
 				ControlManager,
+				DebugManager,
 				DeviceManager,
 				EnemyManager,
 				EventManager,
@@ -127,6 +130,7 @@ namespace WindowsGame.UnitTests
 			ConfigManager = null;
 			ContentManager = null;
 			ControlManager = null;
+			DebugManager = null;
 			DeviceManager = null;
 			EnemyManager = null;
 			EventManager = null;

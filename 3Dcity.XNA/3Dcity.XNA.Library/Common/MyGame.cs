@@ -48,10 +48,12 @@ namespace WindowsGame.Common
 			Manager.ContentManager.LoadContent();
 			Manager.ImageManager.LoadContent();
 
+			Manager.BossManager.Initialize();
 			Manager.BulletManager.Initialize();
 			Manager.CollisionManager.Initialize();
 			Manager.CommandManager.Initialize();
 			Manager.ControlManager.Initialize();
+			Manager.DebugManager.Initialize();
 			Manager.EnemyManager.Initialize();
 			Manager.EventManager.Initialize();
 			Manager.ExplosionManager.Initialize();
@@ -66,6 +68,7 @@ namespace WindowsGame.Common
 			Manager.StorageManager.Initialize();
 			Manager.TextManager.Initialize();
 
+			Manager.BossManager.LoadContent();
 			Manager.BulletManager.LoadContent();
 			Manager.ControlManager.LoadContent();
 			Manager.CommandManager.LoadContent();
