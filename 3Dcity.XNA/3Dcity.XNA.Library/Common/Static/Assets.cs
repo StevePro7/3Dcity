@@ -26,6 +26,9 @@ namespace WindowsGame.Common.Static
 		public static Texture2D SteveProTexture160;
 		public static Texture2D SteveProTexture200;
 
+		public static Texture2D title00;
+		public static Texture2D title01;
+
 		// TODO delete
 		public static Texture2D ZZindigoTexture;
 	}

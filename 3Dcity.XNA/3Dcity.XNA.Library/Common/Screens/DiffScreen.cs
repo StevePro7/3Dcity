@@ -1,5 +1,6 @@
 ﻿using System;
 using WindowsGame.Common.Static;
+using WindowsGame.Master;
 using Microsoft.Xna.Framework;
 using WindowsGame.Master.Interfaces;
 
@@ -9,6 +10,8 @@ namespace WindowsGame.Common.Screens
 	{
 		private Vector2[] cursorPositions;
 		private Vector2 spritePosition;
+		private Vector2 titlePosition;
+
 		private UInt16 delay;
 		private Byte levelType;
 		private Byte iconIndex, moveIndex;
@@ -28,6 +31,9 @@ namespace WindowsGame.Common.Screens
 			cursorPositions = GetCursorPositions();
 			spritePosition = MyGame.Manager.SpriteManager.SmallTarget.Position;
 			spritePosition.X = Constants.CURSOR_OFFSET_X[moveIndex];
+
+			titlePosition = new Vector2((Constants.ScreenWide - 240) / 2.0f, (Constants.ScreenHigh - 160) / 2.0f + Constants.GameOffsetY + 94);
+
 			delay = MyGame.Manager.ConfigManager.GlobalConfigData.SelectDelay;
 
 			levelType = (Byte)MyGame.Manager.LevelManager.LevelType;
@@ -38,6 +44,12 @@ namespace WindowsGame.Common.Screens
 
 		public override Int32 Update(GameTime gameTime)
 		{
+			base.Update(gameTime);
+			if (GamePause)
+			{
+				return (Int32)CurrScreen;
+			}
+
 			if (flag1)
 			{
 				UpdateTimer(gameTime);
@@ -110,6 +122,8 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.IconManager.DrawControls();
 
 			MyGame.Manager.SpriteManager.DrawCursor();
+
+			Engine.SpriteBatch.Draw(Assets.title00, titlePosition, Color.White);
 
 			// Text data last!
 			MyGame.Manager.TextManager.Draw(TextDataList);

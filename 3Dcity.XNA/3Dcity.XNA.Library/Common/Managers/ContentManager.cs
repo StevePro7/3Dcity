@@ -72,6 +72,9 @@ namespace WindowsGame.Common.Managers
 			Assets.SteveProTexture160 = contentFactory.LoadTexture(texturesRoot + "StevePro160");
 			Assets.SteveProTexture200 = contentFactory.LoadTexture(texturesRoot + "StevePro200");
 
+			Assets.title00 = contentFactory.LoadTexture(texturesRoot + "title00");
+			Assets.title01 = contentFactory.LoadTexture(texturesRoot + "title01");
+
 			// TODO delete
 			Assets.ZZindigoTexture = contentFactory.LoadTexture(texturesRoot + "ZZindigo");
 		}
