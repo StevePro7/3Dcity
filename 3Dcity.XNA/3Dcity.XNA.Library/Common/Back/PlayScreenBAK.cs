@@ -15,7 +15,7 @@ namespace WindowsGame.Common.Back
 
 		public override void LoadContent()
 		{
-			MyGame.Manager.SoundManager.PlayMusic();
+			MyGame.Manager.SoundManager.PlayTitleMusic();
 			base.LoadContent();
 		}
 

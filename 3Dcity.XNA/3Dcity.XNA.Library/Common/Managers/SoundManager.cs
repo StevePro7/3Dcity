@@ -2,6 +2,7 @@ using System;
 using WindowsGame.Common.Static;
 using WindowsGame.Master.Factorys;
 using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 
 namespace WindowsGame.Common.Managers
 {
@@ -13,8 +14,11 @@ namespace WindowsGame.Common.Managers
 		void GamePause(Boolean gamePause);
 		void GameQuiet(Boolean gameQuiet);
 
+		void PlayTitleMusic();
+		void PlayMusic(Song song);
+
 		void PlaySoundEffect();
-		void PlayMusic();
+		//void PlayMusic();
 		void PauseMusic();
 		void ResumeMusic();
 		void StopMusic();
@@ -107,8 +111,18 @@ namespace WindowsGame.Common.Managers
 			soundFactory.PlaySoundEffect(value);
 		}
 
-		public void PlayMusic()
+		public void PlayTitleMusic()
 		{
+			PlayMusic(Assets.GameMusicSong);
+		}
+
+		public void PlayMusic(Song song)
+		{
+			if (null == song)
+			{
+				return;
+			}
+
 			SetVolume();
 			soundFactory.PlayMusic(Assets.GameMusicSong);
 		}

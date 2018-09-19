@@ -25,7 +25,7 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.EnemyManager.SpawnAllEnemies();
 
 			MyGame.Manager.ScoreManager.Reset();
-			MyGame.Manager.SoundManager.PlayMusic();
+			MyGame.Manager.SoundManager.PlayTitleMusic();
 			base.LoadContent();
 		}
 
