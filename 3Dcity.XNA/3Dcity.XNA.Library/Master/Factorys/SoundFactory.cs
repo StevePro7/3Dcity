@@ -10,7 +10,8 @@ namespace WindowsGame.Master.Factorys
 		void Initialize();
 		void Initialize(Boolean thePlayMusic, Boolean thePlaySound);
 
-		void SetPlaySound(Boolean playSound);
+		void SetPlayMusic(Boolean playAudio);
+		void SetPlaySound(Boolean playAudio);
 
 		void PlayMusic(Song song);
 		void PlayMusic(Song song, Boolean isRepeating);
@@ -22,6 +23,10 @@ namespace WindowsGame.Master.Factorys
 		void PauseSoundEffect(SoundEffectInstance soundEffect);
 		void ResumeSoundEffect(SoundEffectInstance soundEffect);
 		void StopSoundEffect(SoundEffectInstance soundEffect);
+
+		void SetMinVolume();
+		void SetMaxVolume();
+		void SetVolume(Single volume);
 	}
 
 	public class SoundFactory : ISoundFactory
@@ -40,9 +45,13 @@ namespace WindowsGame.Master.Factorys
 			playSound = thePlaySound;
 		}
 
-		public void SetPlaySound(Boolean thePlaySound)
+		public void SetPlayMusic(Boolean playAudio)
 		{
-			playSound = thePlaySound;
+			playMusic = playAudio;
+		}
+		public void SetPlaySound(Boolean playAudio)
+		{
+			playSound = playAudio;
 		}
 
 		public void PlayMusic(Song song)
@@ -127,6 +136,21 @@ namespace WindowsGame.Master.Factorys
 			{
 				soundEffect.Stop();
 			}
+		}
+
+		public void SetMinVolume()
+		{
+			SetVolume(0);
+		}
+
+		public void SetMaxVolume()
+		{
+			SetVolume(100);
+		}
+
+		public void SetVolume(Single volume)
+		{
+			MediaPlayerX.Volume = volume;
 		}
 
 	}

@@ -11,16 +11,19 @@ namespace WindowsGame.Common.Managers
 
 		void GamePause(Boolean gamePause);
 		void GameQuiet(Boolean gameQuiet);
-		void SetPlaySound(Boolean thePlaySound);
+
+		void SetPlayAudio(Boolean playAudio);
 
 		void PlaySoundEffect();
 		void PlayMusic();
 		void PauseMusic();
 		void ResumeMusic();
 		void StopMusic();
+
+		Boolean PlayAudio { get; }
 	}
 
-	public class SoundManager : ISoundManager 
+	public class SoundManager : ISoundManager
 	{
 		private readonly ISoundFactory soundFactory;
 
@@ -31,14 +34,16 @@ namespace WindowsGame.Common.Managers
 
 		public void Initialize()
 		{
+			PlayAudio = MyGame.Manager.ConfigManager.GlobalConfigData.PlayAudio;
+
 			// TODO revert, refactor, etc.
-			if (MyGame.Manager.ConfigManager.GlobalConfigData.LoadAudio && MyGame.Manager.ConfigManager.GlobalConfigData.PlayAudio)
+			if (MyGame.Manager.ConfigManager.GlobalConfigData.LoadAudio && PlayAudio)
 			{
 				soundFactory.Initialize();
 			}
 			else
 			{
-				soundFactory.Initialize(false, false);
+				soundFactory.Initialize(PlayAudio, PlayAudio);
 			}
 		}
 
@@ -69,12 +74,14 @@ namespace WindowsGame.Common.Managers
 				ResumeAllAudio();
 			}
 
-			SetPlaySound(!gameQuiet);
+			SetPlayAudio(!gameQuiet);
 		}
 
-		public void SetPlaySound(Boolean thePlaySound)
+		public void SetPlayAudio(Boolean playAudio)
 		{
-			soundFactory.SetPlaySound(thePlaySound);
+			PlayAudio = playAudio;
+			soundFactory.SetPlayMusic(playAudio);
+			soundFactory.SetPlaySound(playAudio);
 		}
 
 		public void PlaySoundEffect()
@@ -114,10 +121,11 @@ namespace WindowsGame.Common.Managers
 		private void PauseAllAudio()
 		{
 			PauseMusic();
-			if (!MyGame.Manager.ConfigManager.GlobalConfigData.LoadAudio)
+			if (!MyGame.Manager.ConfigManager.GlobalConfigData.PlayAudio)
 			{
 				return;
 			}
+
 			foreach (SoundEffectInstance soundEffect in Assets.SoundEffectDictionary.Values)
 			{
 				soundFactory.PauseSoundEffect(soundEffect);
@@ -127,15 +135,17 @@ namespace WindowsGame.Common.Managers
 		private void ResumeAllAudio()
 		{
 			ResumeMusic();
-			if (!MyGame.Manager.ConfigManager.GlobalConfigData.LoadAudio)
+			if (!MyGame.Manager.ConfigManager.GlobalConfigData.PlayAudio)
 			{
 				return;
 			}
+
 			foreach (SoundEffectInstance soundEffect in Assets.SoundEffectDictionary.Values)
 			{
 				soundFactory.ResumeSoundEffect(soundEffect);
 			}
 		}
 
+		public Boolean PlayAudio { get; private set; }
 	}
 }

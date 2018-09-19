@@ -63,8 +63,8 @@ namespace WindowsGame.Common.Managers
 			GameSound.LoadContent(MyGame.Manager.ImageManager.GameSoundRectangles);
 
 			// TODO is this correct to set sound icon here?
-			//Byte index = Convert.ToByte(!MyGame.Manager.StateManager.GameSound);
-			//UpdateIcon(GameSound, index);
+			Byte index = Convert.ToByte(MyGame.Manager.StateManager.GameQuiet);
+			UpdateIcon(GameSound, index);
 		}
 
 		public void ToggleIcon(BaseObject icon)

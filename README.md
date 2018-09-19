@@ -86,3 +86,10 @@ LUCASIA
 
 [18]
 ABSYMBEL
+
+
+
+TODO
+StorageManager
+Ensure LoadContent() gets called OnActivated BEFORE IconManager LoadContent()
+because icon manager updates the correct image for sound on / off

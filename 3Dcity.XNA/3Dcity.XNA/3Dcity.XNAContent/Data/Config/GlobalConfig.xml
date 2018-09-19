@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Diff</ScreenType>
+	<ScreenType>Play</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<FramesPerSecond>100</FramesPerSecond>
-	<LoadAudio>false</LoadAudio>
+	<LoadAudio>true</LoadAudio>
 	<PlayAudio>false</PlayAudio>
 	<SplashDelay>0</SplashDelay>
 	<StarDelay>2000</StarDelay>

@@ -26,6 +26,9 @@ namespace WindowsGame.Common
 
 			Manager.ResolutionManager.Initialize();
 			Manager.ScreenManager.Initialize();
+			Manager.SoundManager.Initialize();
+			Manager.StateManager.Initialize();
+			Manager.StorageManager.Initialize();
 			Manager.ThreadManager.Initialize();
 
 			Manager.InputManager.Initialize();
@@ -61,11 +64,8 @@ namespace WindowsGame.Common
 			Manager.RandomManager.Initialize();
 			Manager.RenderManager.Initialize();
 			Manager.ScoreManager.Initialize();
-			Manager.SoundManager.Initialize();
 			Manager.SpriteManager.Initialize();
-			Manager.StateManager.Initialize();
 			Manager.StopwatchManager.Initialize();
-			Manager.StorageManager.Initialize();
 			Manager.TextManager.Initialize();
 
 			Manager.BossManager.LoadContent();
@@ -78,7 +78,6 @@ namespace WindowsGame.Common
 			Manager.ScoreManager.LoadContent();
 			Manager.ScreenManager.LoadContent();
 			Manager.SpriteManager.LoadContent();
-			Manager.StorageManager.LoadContent();
 
 			GC.Collect();
 		}
@@ -116,7 +115,9 @@ namespace WindowsGame.Common
 
 		public static void OnActivated()
 		{
+			Manager.StorageManager.LoadContent();
 		}
+
 		public static void OnDeactivated()
 		{
 
