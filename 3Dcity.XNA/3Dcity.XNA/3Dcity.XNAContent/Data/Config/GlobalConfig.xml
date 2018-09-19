@@ -4,7 +4,7 @@
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<FramesPerSecond>100</FramesPerSecond>
-	<LoadAudio>true</LoadAudio>
+	<LoadAudio>false</LoadAudio>
 	<PlayAudio>true</PlayAudio>
 	<SplashDelay>0</SplashDelay>
 	<StarDelay>2000</StarDelay>

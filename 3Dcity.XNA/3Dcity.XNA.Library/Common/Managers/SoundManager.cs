@@ -22,7 +22,7 @@ namespace WindowsGame.Common.Managers
 
 		void PlaySoundEffect();
 
-		//void SetPlayAudio(Boolean playAudio);
+		void SetPlayAudio(Boolean playAudio);
 		Boolean PlayAudio { get; }
 	}
 
@@ -75,11 +75,11 @@ namespace WindowsGame.Common.Managers
 			SetPlayAudio(!gameQuiet);
 		}
 
-		//public void SetPlayAudio(Boolean playAudio)
-		//{
-		//    PlayAudio = playAudio;
-		//    SetVolume();
-		//}
+		public void SetPlayAudio(Boolean playAudio)
+		{
+			PlayAudio = playAudio;
+			SetVolume();
+		}
 
 		public void PlaySoundEffect()
 		{
@@ -131,11 +131,11 @@ namespace WindowsGame.Common.Managers
 		}
 
 
-		private void SetPlayAudio(Boolean playAudio)
-		{
-			PlayAudio = playAudio;
-			SetVolume();
-		}
+		//private void SetPlayAudio(Boolean playAudio)
+		//{
+		//    PlayAudio = playAudio;
+		//    SetVolume();
+		//}
 
 		private void PauseAllAudio()
 		{

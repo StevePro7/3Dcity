@@ -123,6 +123,8 @@ namespace WindowsGame.Common
 		public static void OnDeactivated()
 		{
 
+			Manager.StorageManager.SaveContent();
+
 #if ANDROID
 			Android.OS.Process.KillProcess(Android.OS.Process.MyPid());
 			System.Environment.Exit(0);

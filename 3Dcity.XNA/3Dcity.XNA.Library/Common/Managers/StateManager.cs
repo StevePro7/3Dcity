@@ -7,6 +7,7 @@ namespace WindowsGame.Common.Managers
 		void Initialize();
 		void ToggleGameState();
 		void ToggleGameSound();
+		void UpdateGameSound();
 
 		Boolean GamePause { get; }
 		Boolean GameQuiet{ get; }
@@ -17,7 +18,7 @@ namespace WindowsGame.Common.Managers
 		public void Initialize()
 		{
 			GamePause = false;
-			GameQuiet = !MyGame.Manager.SoundManager.PlayAudio;
+			UpdateGameSound();
 		}
 
 		public void ToggleGameState()
@@ -28,6 +29,11 @@ namespace WindowsGame.Common.Managers
 		public void ToggleGameSound()
 		{
 			GameQuiet = !GameQuiet;
+		}
+
+		public void UpdateGameSound()
+		{
+			GameQuiet = !MyGame.Manager.SoundManager.PlayAudio;
 		}
 
 		public Boolean GamePause { get; private set; }

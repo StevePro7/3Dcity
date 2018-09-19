@@ -36,37 +36,36 @@ namespace WindowsGame.Common.Managers
 		public void LoadContent()
 		{
 			storagePersistData = storageFactory.LoadContent<StoragePersistData>();
-
 			if (null == storagePersistData)
 			{
 				return;
 			}
 
-			//Boolean playAudio = storagePersistData.PlayAudio;
-			//Boolean playAudio = true;
-			//MyGame.Manager.StateManager.SetGameSound(playAudio);
-			//MyGame.Manager.SoundManager.SetPlayAudio(playAudio);
+			MyGame.Manager.SoundManager.SetPlayAudio(storagePersistData.PlayAudio);
+			MyGame.Manager.StateManager.UpdateGameSound();
 		}
 
 		public void SaveContent()
 		{
-			if (null == storagePersistData)
-			{
-				return;
-			}
-
 			//if (null == storagePersistData)
 			//{
-			//    storagePersistData = new StoragePersistData
-			//    {
-			//        PlayAudio = MyGame.Manager.ConfigManager.GlobalConfigData.PlayAudio
-			//    };
+			//    return;
 			//}
+
+			if (null == storagePersistData)
+			{
+				storagePersistData = new StoragePersistData
+				{
+					PlayAudio = MyGame.Manager.ConfigManager.GlobalConfigData.PlayAudio
+					//LevelType = MyGame.Manager.LevelManager.LevelType;
+				};
+			}
 			//else
 			//{
 			//    storagePersistData.PlayAudio = MyGame.Manager.StateManager.GameSound;
 			//}
 
+			storagePersistData.PlayAudio = MyGame.Manager.SoundManager.PlayAudio;
 			storageFactory.SaveContent(storagePersistData);
 		}
 
