@@ -14,12 +14,14 @@ namespace WindowsGame.SystemTests
 {
 	public abstract class BaseSystemTests
 	{
+		protected IBossManager BossManager;
 		protected IBulletManager BulletManager;
 		protected ICollisionManager CollisionManager;
 		protected ICommandManager CommandManager;
 		protected IConfigManager ConfigManager;
 		protected IContentManager ContentManager;
 		protected IControlManager ControlManager;
+		protected IDebugManager DebugManager;
 		protected IDeviceManager DeviceManager;
 		protected IEnemyManager EnemyManager;
 		protected IEventManager EventManager;
@@ -27,6 +29,7 @@ namespace WindowsGame.SystemTests
 		protected IIconManager IconManager;
 		protected IImageManager ImageManager;
 		protected IInputManager InputManager;
+		protected ILevelManager LevelManager;
 		protected IRandomManager RandomManager;
 		protected IRenderManager RenderManager;
 		protected IResolutionManager ResolutionManager;
