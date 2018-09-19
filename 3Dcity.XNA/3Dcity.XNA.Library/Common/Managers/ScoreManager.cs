@@ -44,7 +44,7 @@ namespace WindowsGame.Common.Managers
 
 		public void Reset()
 		{
-			MissesTotal = 4;
+			MissesTotal = 0;
 			scoreTimer = 0;
 			scoreFlag = true;
 		}
