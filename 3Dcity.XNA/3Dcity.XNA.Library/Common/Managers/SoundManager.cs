@@ -16,14 +16,13 @@ namespace WindowsGame.Common.Managers
 
 		void PlayTitleMusic();
 		void PlayMusic(Song song);
-
-		void PlaySoundEffect();
-		//void PlayMusic();
 		void PauseMusic();
 		void ResumeMusic();
 		void StopMusic();
 
-		void SetPlayAudio(Boolean playAudio);
+		void PlaySoundEffect();
+
+		//void SetPlayAudio(Boolean playAudio);
 		Boolean PlayAudio { get; }
 	}
 
@@ -39,16 +38,6 @@ namespace WindowsGame.Common.Managers
 		public void Initialize()
 		{
 			Initialize(MyGame.Manager.ConfigManager.GlobalConfigData.PlayAudio);
-
-			// TODO revert, refactor, etc.
-			//if (MyGame.Manager.ConfigManager.GlobalConfigData.LoadAudio && PlayAudio)
-			//{
-			//    soundFactory.Initialize();
-			//}
-			//else
-			//{
-			//    soundFactory.Initialize(PlayAudio, PlayAudio);
-			//}
 		}
 
 		public void Initialize(Boolean playAudio)
@@ -86,13 +75,11 @@ namespace WindowsGame.Common.Managers
 			SetPlayAudio(!gameQuiet);
 		}
 
-		public void SetPlayAudio(Boolean playAudio)
-		{
-			PlayAudio = playAudio;
-			SetVolume();
-			//soundFactory.SetPlayMusic(playAudio);
-			//soundFactory.SetPlaySound(playAudio);
-		}
+		//public void SetPlayAudio(Boolean playAudio)
+		//{
+		//    PlayAudio = playAudio;
+		//    SetVolume();
+		//}
 
 		public void PlaySoundEffect()
 		{
@@ -144,15 +131,16 @@ namespace WindowsGame.Common.Managers
 		}
 
 
+		private void SetPlayAudio(Boolean playAudio)
+		{
+			PlayAudio = playAudio;
+			SetVolume();
+		}
+
 		private void PauseAllAudio()
 		{
 			PauseMusic();
 
-			// TODO delete
-			//if (!MyGame.Manager.ConfigManager.GlobalConfigData.PlayAudio)
-			//{
-			//    return;
-			//}
 			if (null == Assets.SoundEffectDictionary)
 			{
 				return;
@@ -168,11 +156,6 @@ namespace WindowsGame.Common.Managers
 		{
 			ResumeMusic();
 
-			// TODO delete
-			//if (!MyGame.Manager.ConfigManager.GlobalConfigData.PlayAudio)
-			//{
-			//    return;
-			//}
 			if (null == Assets.SoundEffectDictionary)
 			{
 				return;

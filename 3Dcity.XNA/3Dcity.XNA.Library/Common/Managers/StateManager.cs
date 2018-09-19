@@ -1,5 +1,4 @@
 ﻿using System;
-using WindowsGame.Common.Static;
 
 namespace WindowsGame.Common.Managers
 {
@@ -11,7 +10,6 @@ namespace WindowsGame.Common.Managers
 
 		Boolean GamePause { get; }
 		Boolean GameQuiet{ get; }
-		//LevelType LevelType { get; }
 	}
 
 	public class StateManager : IStateManager
@@ -19,7 +17,6 @@ namespace WindowsGame.Common.Managers
 		public void Initialize()
 		{
 			GamePause = false;
-			//GameQuiet = false;
 			GameQuiet = !MyGame.Manager.SoundManager.PlayAudio;
 		}
 
@@ -33,7 +30,6 @@ namespace WindowsGame.Common.Managers
 			GameQuiet = !GameQuiet;
 		}
 
-		//public LevelType LevelType { get; private set; }
 		public Boolean GamePause { get; private set; }
 		public Boolean GameQuiet { get; private set; }
 
