@@ -7,11 +7,11 @@ namespace WindowsGame.Master.Factorys
 {
 	public interface ISoundFactory
 	{
-		void Initialize();
-		void Initialize(Boolean thePlayMusic, Boolean thePlaySound);
+		//void Initialize();
+		//void Initialize(Boolean thePlayMusic, Boolean thePlaySound);
 
-		void SetPlayMusic(Boolean playAudio);
-		void SetPlaySound(Boolean playAudio);
+		//void SetPlayMusic(Boolean playAudio);
+		//void SetPlaySound(Boolean playAudio);
 
 		void PlayMusic(Song song);
 		void PlayMusic(Song song, Boolean isRepeating);
@@ -31,28 +31,28 @@ namespace WindowsGame.Master.Factorys
 
 	public class SoundFactory : ISoundFactory
 	{
-		private Boolean playSound;
-		private Boolean playMusic;
+		//private Boolean playSound;
+		//private Boolean playMusic;
 
-		public void Initialize()
-		{
-			Initialize(true, true);
-		}
+		//public void Initialize()
+		//{
+		//    Initialize(true, true);
+		//}
 
-		public void Initialize(Boolean thePlayMusic, Boolean thePlaySound)
-		{
-			playMusic = thePlayMusic;
-			playSound = thePlaySound;
-		}
+		//public void Initialize(Boolean thePlayMusic, Boolean thePlaySound)
+		//{
+		//    playMusic = thePlayMusic;
+		//    playSound = thePlaySound;
+		//}
 
-		public void SetPlayMusic(Boolean playAudio)
-		{
-			playMusic = playAudio;
-		}
-		public void SetPlaySound(Boolean playAudio)
-		{
-			playSound = playAudio;
-		}
+		//public void SetPlayMusic(Boolean playAudio)
+		//{
+		//    playMusic = playAudio;
+		//}
+		//public void SetPlaySound(Boolean playAudio)
+		//{
+		//    playSound = playAudio;
+		//}
 
 		public void PlayMusic(Song song)
 		{
@@ -61,10 +61,10 @@ namespace WindowsGame.Master.Factorys
 
 		public void PlayMusic(Song song, Boolean isRepeating)
 		{
-			if (!playMusic)
-			{
-				return;
-			}
+			//if (!playMusic)
+			//{
+			//    return;
+			//}
 
 			if (MediaState.Playing == MediaPlayerX.State)
 			{
@@ -101,10 +101,10 @@ namespace WindowsGame.Master.Factorys
 
 		public void PlaySoundEffect(SoundEffectInstance soundEffect)
 		{
-			if (!playSound)
-			{
-				return;
-			}
+			//if (!playSound)
+			//{
+			//    return;
+			//}
 
 			if (SoundState.Playing == soundEffect.State)
 			{
