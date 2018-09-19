@@ -1,4 +1,6 @@
 ﻿using System;
+using WindowsGame.Common.Static;
+using WindowsGame.Master;
 using Microsoft.Xna.Framework;
 using WindowsGame.Master.Interfaces;
 
@@ -6,6 +8,8 @@ namespace WindowsGame.Common.Screens
 {
 	public class ReadyScreen : BaseScreen, IScreen
 	{
+		private Vector2[] positions;
+
 		public override void Initialize()
 		{
 			base.Initialize();
@@ -14,6 +18,12 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
+			positions = new Vector2[4];
+			positions[0] = MyGame.Manager.TextManager.GetTextPosition(39, 11);
+			positions[1] = MyGame.Manager.TextManager.GetTextPosition(39, 10);
+			positions[2] = MyGame.Manager.TextManager.GetTextPosition(39, 9);
+			positions[3] = MyGame.Manager.TextManager.GetTextPosition(39, 8);
+
 			MyGame.Manager.ScoreManager.Reset();
 			base.LoadContent();
 		}
@@ -50,6 +60,12 @@ namespace WindowsGame.Common.Screens
 
 			// Text data last!
 			MyGame.Manager.TextManager.Draw(TextDataList);
+
+			//Engine.SpriteBatch.DrawString(Assets.EmulogicFont, "X", positions[0], Color.White);
+			//Engine.SpriteBatch.DrawString(Assets.EmulogicFont, "X", positions[1], Color.White);
+			//Engine.SpriteBatch.DrawString(Assets.EmulogicFont, "X", positions[2], Color.White);
+			//Engine.SpriteBatch.DrawString(Assets.EmulogicFont, "X", positions[3], Color.White);
+
 		}
 
 	}

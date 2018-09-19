@@ -28,6 +28,7 @@ namespace WindowsGame.Common.Static
 		// Maximums.
 		public const Byte MAX_GRID = 3;
 		public const Byte MAX_STAR = 2;
+		public const Byte MAX_MISSES = 4;
 
 		public const Byte MAX_ENEMYS_SPAWN = 8;
 		public const Byte MAX_ENEMYS_FRAME = 13;
