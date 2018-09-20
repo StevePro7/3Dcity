@@ -114,7 +114,7 @@ namespace WindowsGame.Common.Static
 		public const UInt16 ExposeHigh = 480;
 
 		public const Byte GameOffsetX = 0;
-		public const Byte GameOffsetY = 60;
+		public const Byte GameOffsetY = 0;
 #endif
 
 	}
