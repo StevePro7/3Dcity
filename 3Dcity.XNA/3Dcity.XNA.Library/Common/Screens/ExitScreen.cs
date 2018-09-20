@@ -1,30 +1,31 @@
 using System;
-using WindowsGame.Common.Static;
-using WindowsGame.Master.Interfaces;
 using Microsoft.Xna.Framework;
+using WindowsGame.Master;
+using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
 {
 	public class ExitScreen : BaseScreen, IScreen 
 	{
-		public override void Initialize()
-		{
-			base.Initialize();
-		}
-
-		public override void LoadContent()
-		{
-			base.LoadContent();
-		}
-
 		public override Int32 Update(GameTime gameTime)
 		{
-			return (Int32)CurrScreen;
-		}
+			MyGame.Manager.StorageManager.SaveContent();
 
-		public override void Draw()
-		{
-			base.Draw();
+#if ANDROID
+	// Android
+			Android.OS.Process.KillProcess(Android.OS.Process.MyPid());
+			System.Environment.Exit(0);
+			return (Int32)CurrScreen;
+#endif
+#if IOS
+	// iOS
+			throw new System.DivideByZeroException();
+#endif
+#if !IOS && !ANDROID
+			// Default.
+			Engine.Game.Exit();
+			return (Int32) CurrScreen;
+#endif
 		}
 
 	}

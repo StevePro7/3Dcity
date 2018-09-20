@@ -69,7 +69,8 @@ namespace WindowsGame.Common.Screens
 					iconIndex = Convert.ToByte(flag1);
 					MyGame.Manager.IconManager.UpdateIcon(MyGame.Manager.IconManager.JoyButton, iconIndex);
 					MyGame.Manager.LevelManager.SetLevelIndex(levelIndex);
-					return (Int32)ScreenType.Ready;
+					//return (Int32)ScreenType.Ready;
+					return (Int32)ScreenType.Exit;
 				}
 
 				iconIndex = Convert.ToByte(flag1);

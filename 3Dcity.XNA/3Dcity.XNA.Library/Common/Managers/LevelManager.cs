@@ -49,15 +49,14 @@ namespace WindowsGame.Common.Managers
 			String file = String.Format("{0}/{1}.txt", levelRoot, LEVELS_NAMESFILE);
 			LevelNames = MyGame.Manager.FileManager.LoadTxt(file);
 
+			LevelType = MyGame.Manager.ConfigManager.GlobalConfigData.LevelType;
+			LevelIndex = MyGame.Manager.ConfigManager.GlobalConfigData.LevelIndex;
+
 			MaximLevel = MyGame.Manager.ConfigManager.GlobalConfigData.MaximLevel;
 			if (MaximLevel > LevelNames.Count)
 			{
 				MaximLevel = (Byte)LevelNames.Count;
 			}
-
-			// TODO get from storage...
-			SetLevelIndex(0);
-			SetLevelType(LevelType.Easy);
 		}
 
 		public void SetLevelType(LevelType levelType)
@@ -70,6 +69,11 @@ namespace WindowsGame.Common.Managers
 		{
 			LevelIndex = levelIndex;
 			LevelValu = String.Format("[{0}]", (levelIndex + 1).ToString().PadLeft(2, '0'));
+
+			if (null == LevelNames)
+			{
+				return;
+			}
 			LevelName = LevelNames[levelIndex];
 		}
 

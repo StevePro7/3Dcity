@@ -8,6 +8,8 @@
 	<MaximLevel>9</MaximLevel>
 	<LoadAudio>false</LoadAudio>
 	<PlayAudio>false</PlayAudio>
+	<LevelType>Easy</LevelType>
+	<LevelIndex>0</LevelIndex>
 	<SplashDelay>0</SplashDelay>
 	<StarDelay>2000</StarDelay>
 	<GridDelay>200</GridDelay>

@@ -10,6 +10,8 @@ namespace WindowsGame.Common.Data
 		public Byte MaximLevel;
 		public Boolean LoadAudio;
 		public Boolean PlayAudio;
+		public LevelType LevelType;
+		public Byte LevelIndex;
 		public UInt16 SplashDelay;
 		public UInt16 StarDelay;
 		public UInt16 GridDelay;

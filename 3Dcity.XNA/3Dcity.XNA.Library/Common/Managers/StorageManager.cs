@@ -43,29 +43,27 @@ namespace WindowsGame.Common.Managers
 
 			MyGame.Manager.SoundManager.SetPlayAudio(storagePersistData.PlayAudio);
 			MyGame.Manager.StateManager.UpdateGameSound();
+
+			MyGame.Manager.LevelManager.SetLevelType(storagePersistData.LevelType);
+			MyGame.Manager.LevelManager.SetLevelIndex(storagePersistData.LevelIndex);
 		}
 
 		public void SaveContent()
 		{
-			//if (null == storagePersistData)
-			//{
-			//    return;
-			//}
-
 			if (null == storagePersistData)
 			{
 				storagePersistData = new StoragePersistData
 				{
-					PlayAudio = MyGame.Manager.ConfigManager.GlobalConfigData.PlayAudio
-					//LevelType = MyGame.Manager.LevelManager.LevelType;
+					PlayAudio = MyGame.Manager.ConfigManager.GlobalConfigData.PlayAudio,
+					LevelType = MyGame.Manager.ConfigManager.GlobalConfigData.LevelType,
+					LevelIndex = MyGame.Manager.ConfigManager.GlobalConfigData.LevelIndex,
 				};
 			}
-			//else
-			//{
-			//    storagePersistData.PlayAudio = MyGame.Manager.StateManager.GameSound;
-			//}
 
 			storagePersistData.PlayAudio = MyGame.Manager.SoundManager.PlayAudio;
+			storagePersistData.LevelType = MyGame.Manager.LevelManager.LevelType;
+			storagePersistData.LevelIndex = MyGame.Manager.LevelManager.LevelIndex;
+
 			storageFactory.SaveContent(storagePersistData);
 		}
 

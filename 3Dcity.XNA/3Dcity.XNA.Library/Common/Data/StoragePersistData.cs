@@ -7,7 +7,8 @@ namespace WindowsGame.Common.Data
 	{
 		// General game.
 		public Boolean PlayAudio;
-		//public LevelType LevelType;
+		public LevelType LevelType;
+		public Byte LevelIndex;
 		//public UInt32 HighScore;
 	}
 }

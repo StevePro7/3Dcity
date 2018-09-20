@@ -17,12 +17,11 @@ namespace WindowsGame.Common
 		{
 			Manager.Logger.Initialize();
 
-			// Load initial content then config!
-			Manager.ContentManager.Initialize();
-			Manager.ContentManager.LoadContentSplash();
-
 			Manager.ConfigManager.Initialize();
 			Manager.ConfigManager.LoadContent();
+
+			Manager.ContentManager.Initialize();
+			Manager.ContentManager.LoadContentSplash();
 
 			Manager.ResolutionManager.Initialize();
 			Manager.ScreenManager.Initialize();
@@ -41,7 +40,6 @@ namespace WindowsGame.Common
 			Engine.Game.TargetElapsedTime = TimeSpan.FromSeconds(1.0f / framesPerSecond);
 			Engine.Game.IsMouseVisible = Constants.IsMouseVisible;
 			Manager.ResolutionManager.LoadContent(Constants.IsFullScreen, Constants.ScreenWide, Constants.ScreenHigh, Constants.UseExposed, Constants.ExposeWide, Constants.ExposeHigh);
-
 			Manager.InputManager.LoadContent();
 		}
 
@@ -74,12 +72,16 @@ namespace WindowsGame.Common
 			Manager.ControlManager.LoadContent();
 			Manager.CommandManager.LoadContent();
 			Manager.EnemyManager.LoadContent();
-			Manager.IconManager.LoadContent();
+			
 			Manager.LevelManager.LoadContent();
 			Manager.RenderManager.LoadContent();
 			Manager.ScoreManager.LoadContent();
 			Manager.ScreenManager.LoadContent();
 			Manager.SpriteManager.LoadContent();
+			Manager.StorageManager.LoadContent();
+
+			// Invoke icon manager last...!
+			Manager.IconManager.LoadContent();
 
 			GC.Collect();
 		}
@@ -122,7 +124,6 @@ namespace WindowsGame.Common
 
 		public static void OnDeactivated()
 		{
-
 			Manager.StorageManager.SaveContent();
 
 #if ANDROID
