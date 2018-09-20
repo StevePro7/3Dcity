@@ -161,8 +161,10 @@ namespace WindowsGame.Common.Screens
 
 		private void PopulateLevelData(Byte theLevelIndex)
 		{
-			levelName = levelNames[theLevelIndex];
-			levelValu = String.Format("[{0}]", (theLevelIndex + 1).ToString().PadLeft(2, '0'));
+			MyGame.Manager.LevelManager.SetLevelIndex(theLevelIndex);
+
+			levelName = MyGame.Manager.LevelManager.LevelName;
+			levelValu = MyGame.Manager.LevelManager.LevelValu;
 		}
 
 	}

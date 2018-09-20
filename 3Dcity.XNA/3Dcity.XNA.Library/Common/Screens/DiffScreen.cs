@@ -105,6 +105,8 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.SpriteManager.SmallTarget.SetPosition(spritePosition);
 
 			levelType = (Byte) (1 - levelType);
+			MyGame.Manager.LevelManager.SetLevelType((LevelType)levelType);
+
 			flag2 = true;
 			return (Int32)CurrScreen;
 		}
