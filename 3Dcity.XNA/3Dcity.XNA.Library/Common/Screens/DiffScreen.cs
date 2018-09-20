@@ -9,9 +9,9 @@ namespace WindowsGame.Common.Screens
 	{
 		private Vector2[] cursorPositions;
 		private Vector2 spritePosition;
+		private Byte levelType;
 
 		private UInt16 selectDelay;
-		private Byte levelType;
 		private Byte iconIndex, moveIndex;
 		private Boolean flag1, flag2;
 
@@ -23,16 +23,14 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
-			iconIndex = 0;
-			moveIndex = 1;
-
 			cursorPositions = GetCursorPositions();
 			spritePosition = MyGame.Manager.SpriteManager.SmallTarget.Position;
 			spritePosition.X = Constants.CURSOR_OFFSET_X[moveIndex];
+			levelType = (Byte)MyGame.Manager.LevelManager.LevelType;
 
 			selectDelay = MyGame.Manager.ConfigManager.GlobalConfigData.SelectDelay;
-
-			levelType = (Byte)MyGame.Manager.LevelManager.LevelType;
+			iconIndex = 0;
+			moveIndex = 1;
 			flag1 = flag2 = false;
 
 			base.LoadContent();
@@ -55,7 +53,7 @@ namespace WindowsGame.Common.Screens
 					iconIndex = Convert.ToByte(flag1);
 					MyGame.Manager.IconManager.UpdateIcon(MyGame.Manager.IconManager.JoyButton, iconIndex);
 					MyGame.Manager.LevelManager.SetLevelType((LevelType)levelType);
-					return (Int32) ScreenType.Over;			// TODO goto level select screen
+					return (Int32) ScreenType.Level;
 				}
 
 				iconIndex = Convert.ToByte(flag1);

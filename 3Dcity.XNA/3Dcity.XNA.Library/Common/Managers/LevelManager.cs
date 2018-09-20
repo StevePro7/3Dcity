@@ -9,12 +9,14 @@ namespace WindowsGame.Common.Managers
 		void Initialize();
 		void Initialize(String root);
 		void LoadContent();
+
 		void SetLevelType(LevelType levelType);
+		void SetLevelIndex(Byte levelIndex);
 
 		IList<String> LevelNames { get; }
 		LevelType LevelType { get; }
-		Byte MaximLevel { get; }
 		Byte LevelIndex { get; }
+		Byte MaximLevel { get; }
 		String LevelName { get; }
 	}
 
@@ -53,12 +55,17 @@ namespace WindowsGame.Common.Managers
 		{
 			LevelType = levelType;
 		}
-
+		
+		public void SetLevelIndex(Byte levelIndex)
+		{
+			LevelIndex = levelIndex;
+			LevelName = LevelNames[levelIndex];
+		}
 		
 		public IList<String> LevelNames { get; private set; }
 		public LevelType LevelType { get; private set; }
-		public Byte MaximLevel { get; private set; }
 		public Byte LevelIndex { get; private set; }
+		public Byte MaximLevel { get; private set; }
 		public String LevelName { get; private set; }
 	}
 }
