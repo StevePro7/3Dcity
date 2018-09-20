@@ -1,6 +1,4 @@
 ﻿using System;
-using WindowsGame.Common.Static;
-using WindowsGame.Master;
 using Microsoft.Xna.Framework;
 using WindowsGame.Master.Interfaces;
 
@@ -61,6 +59,7 @@ namespace WindowsGame.Common.Screens
 			// Text data last!
 			MyGame.Manager.TextManager.Draw(TextDataList);
 
+			MyGame.Manager.LevelManager.Draw();
 			//Engine.SpriteBatch.DrawString(Assets.EmulogicFont, "X", positions[0], Color.White);
 			//Engine.SpriteBatch.DrawString(Assets.EmulogicFont, "X", positions[1], Color.White);
 			//Engine.SpriteBatch.DrawString(Assets.EmulogicFont, "X", positions[2], Color.White);

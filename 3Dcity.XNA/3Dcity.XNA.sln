@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3Dcity.XNA", "3Dcity.XNA\3Dcity.XNA\3Dcity.XNA.csproj", "{77019C0B-B1A6-4857-838F-4C4899758C51}"
 EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "3Dcity.XNAContent", "3Dcity.XNA\3Dcity.XNAContent\3Dcity.XNAContent.contentproj", "{87F9C637-1CC0-44D8-B409-E70201EB7334}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3Dcity.XNAContent", "3Dcity.XNA\3Dcity.XNAContent\3Dcity.XNAContent.contentproj", "{87F9C637-1CC0-44D8-B409-E70201EB7334}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3Dcity.XNA.Library", "3Dcity.XNA.Library\3Dcity.XNA.Library.csproj", "{A6DF5D74-BD80-4E1C-8649-5F0AE1622164}"
 EndProject

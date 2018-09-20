@@ -18,7 +18,7 @@ namespace WindowsGame.Common.Screens
 		private Byte levelIndex;
 		private Byte maximLevel;
 		private String levelName;
-		private String levelText;
+		private String levelValu;
 
 		private UInt16 selectDelay;
 		private Byte iconIndex, moveIndex;
@@ -69,7 +69,7 @@ namespace WindowsGame.Common.Screens
 					iconIndex = Convert.ToByte(flag1);
 					MyGame.Manager.IconManager.UpdateIcon(MyGame.Manager.IconManager.JoyButton, iconIndex);
 					MyGame.Manager.LevelManager.SetLevelIndex(levelIndex);
-					return (Int32)ScreenType.Cont;
+					return (Int32)ScreenType.Ready;
 				}
 
 				iconIndex = Convert.ToByte(flag1);
@@ -111,7 +111,7 @@ namespace WindowsGame.Common.Screens
 			if (horz < 0)
 			{
 				levelIndex--;
-				if (levelIndex <= 0)
+				if (levelIndex >= Byte.MaxValue)
 				{
 					levelIndex = (Byte) (maximLevel - 1);
 				}
@@ -154,14 +154,14 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.TextManager.Draw(TextDataList);
 
 			MyGame.Manager.TextManager.DrawText(levelName, levelNamePosition);
-			MyGame.Manager.TextManager.DrawText(levelText, levelTextPosition);
+			MyGame.Manager.TextManager.DrawText(levelValu, levelTextPosition);
 			MyGame.Manager.TextManager.DrawText(cursorOptions[moveIndex], cursorPosition);
 		}
 
 		private void PopulateLevelData(Byte theLevelIndex)
 		{
 			levelName = levelNames[theLevelIndex];
-			levelText = String.Format("[{0}]", (theLevelIndex + 1).ToString().PadLeft(2, '0'));
+			levelValu = String.Format("[{0}]", (theLevelIndex + 1).ToString().PadLeft(2, '0'));
 		}
 
 	}
