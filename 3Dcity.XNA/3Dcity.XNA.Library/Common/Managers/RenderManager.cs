@@ -41,7 +41,7 @@ namespace WindowsGame.Common.Managers
 			backPosition = new Vector2(0, 0 + Constants.GameOffsetY);
 			starPosition = new Vector2(0, 80 + Constants.GameOffsetY);
 			gridPosition = new Vector2(0, 240 + Constants.GameOffsetY);
-			titlePosition = new Vector2((Constants.ScreenWide - 240) / 2.0f, (Constants.ScreenHigh - 160) / 2.0f + Constants.GameOffsetY + 94);
+			titlePosition = new Vector2((Constants.ScreenWide - 240) / 2.0f, (Constants.ScreenHigh - 160) / 2.0f + 94);
 			origin = new Vector2(40, 0);
 			rotation = MathHelper.ToRadians(270);
 		}
