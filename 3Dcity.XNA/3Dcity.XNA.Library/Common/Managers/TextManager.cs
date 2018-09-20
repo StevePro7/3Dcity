@@ -21,6 +21,7 @@ namespace WindowsGame.Common.Managers
 		void Draw(IEnumerable<TextData> textDataList);
 		void Draw(TextData textData);
 		void DrawCursor(Vector2 position);
+		void DrawText(String text, Vector2 position);
 	}
 
 	public class TextManager : ITextManager 
@@ -106,7 +107,11 @@ namespace WindowsGame.Common.Managers
 
 		public void DrawCursor(Vector2 position)
 		{
-			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, Globalize.CURSOR_ARROWS, position, Color.White);
+			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, Globalize.CURSOR_RIGHT, position, Color.White);
+		}
+		public void DrawText(String text, Vector2 position)
+		{
+			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, text, position, Color.White);
 		}
 
 		private static Color ConvertFromHex(String hexCode)

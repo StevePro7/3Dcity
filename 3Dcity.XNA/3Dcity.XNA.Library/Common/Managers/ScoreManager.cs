@@ -30,8 +30,7 @@ namespace WindowsGame.Common.Managers
 
 		public void Initialize()
 		{
-			// TODO config
-			scoreDelay = 800;
+			scoreDelay = MyGame.Manager.ConfigManager.GlobalConfigData.ScoreDelay;
 		}
 
 		public void LoadContent()

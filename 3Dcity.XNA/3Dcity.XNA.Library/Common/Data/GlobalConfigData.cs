@@ -7,12 +7,14 @@ namespace WindowsGame.Common.Data
 	{
 		public ScreenType ScreenType;
 		public Byte FramesPerSecond;
+		public Byte MaximLevel;
 		public Boolean LoadAudio;
 		public Boolean PlayAudio;
 		public UInt16 SplashDelay;
 		public UInt16 StarDelay;
 		public UInt16 GridDelay;
 		public UInt16 SelectDelay;
+		public UInt16 ScoreDelay;
 		public Single EventRatio;
 		public Boolean ScoreBlink;
 		public Boolean UpdateStar;

@@ -1,6 +1,5 @@
 ﻿using System;
 using WindowsGame.Common.Static;
-using WindowsGame.Master;
 using Microsoft.Xna.Framework;
 using WindowsGame.Master.Interfaces;
 
@@ -10,9 +9,8 @@ namespace WindowsGame.Common.Screens
 	{
 		private Vector2[] cursorPositions;
 		private Vector2 spritePosition;
-		private Vector2 titlePosition;
 
-		private UInt16 delay;
+		private UInt16 selectDelay;
 		private Byte levelType;
 		private Byte iconIndex, moveIndex;
 		private Boolean flag1, flag2;
@@ -32,9 +30,7 @@ namespace WindowsGame.Common.Screens
 			spritePosition = MyGame.Manager.SpriteManager.SmallTarget.Position;
 			spritePosition.X = Constants.CURSOR_OFFSET_X[moveIndex];
 
-			titlePosition = new Vector2((Constants.ScreenWide - 240) / 2.0f, (Constants.ScreenHigh - 160) / 2.0f + Constants.GameOffsetY + 94);
-
-			delay = MyGame.Manager.ConfigManager.GlobalConfigData.SelectDelay;
+			selectDelay = MyGame.Manager.ConfigManager.GlobalConfigData.SelectDelay;
 
 			levelType = (Byte)MyGame.Manager.LevelManager.LevelType;
 			flag1 = flag2 = false;
@@ -53,7 +49,7 @@ namespace WindowsGame.Common.Screens
 			if (flag1)
 			{
 				UpdateTimer(gameTime);
-				if (Timer > delay * 2)
+				if (Timer > selectDelay * 2)
 				{
 					flag1 = false;
 					iconIndex = Convert.ToByte(flag1);
@@ -70,7 +66,7 @@ namespace WindowsGame.Common.Screens
 			if (flag2)
 			{
 				UpdateTimer(gameTime);
-				if (Timer > delay)
+				if (Timer > selectDelay)
 				{
 					moveIndex = 1;
 					spritePosition.X = Constants.CURSOR_OFFSET_X[moveIndex];
@@ -121,9 +117,11 @@ namespace WindowsGame.Common.Screens
 			base.Draw();
 			MyGame.Manager.IconManager.DrawControls();
 
+			// Sprite sheet #02.
 			MyGame.Manager.SpriteManager.DrawCursor();
 
-			Engine.SpriteBatch.Draw(Assets.title00, titlePosition, Color.White);
+			// Individual texture.
+			MyGame.Manager.RenderManager.DrawTitle();
 
 			// Text data last!
 			MyGame.Manager.TextManager.Draw(TextDataList);

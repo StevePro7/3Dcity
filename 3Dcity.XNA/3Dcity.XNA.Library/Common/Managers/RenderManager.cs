@@ -13,6 +13,7 @@ namespace WindowsGame.Common.Managers
 		void UpdateStar(GameTime gameTime);
 		void UpdateGrid(GameTime gameTime);
 		void Draw();
+		void DrawTitle();
 	}
 
 	public class RenderManager : IRenderManager
@@ -23,6 +24,7 @@ namespace WindowsGame.Common.Managers
 		private Vector2 backPosition;
 		private Vector2 starPosition;
 		private Vector2 gridPosition;
+		private Vector2 titlePosition;
 		private Vector2 origin;
 		private UInt16 starTimer, starDelay;
 		private UInt16 gridTimer, gridDelay;
@@ -39,6 +41,7 @@ namespace WindowsGame.Common.Managers
 			backPosition = new Vector2(0, 0 + Constants.GameOffsetY);
 			starPosition = new Vector2(0, 80 + Constants.GameOffsetY);
 			gridPosition = new Vector2(0, 240 + Constants.GameOffsetY);
+			titlePosition = new Vector2((Constants.ScreenWide - 240) / 2.0f, (Constants.ScreenHigh - 160) / 2.0f + Constants.GameOffsetY + 94);
 			origin = new Vector2(40, 0);
 			rotation = MathHelper.ToRadians(270);
 		}
@@ -98,6 +101,12 @@ namespace WindowsGame.Common.Managers
 			Engine.SpriteBatch.Draw(Assets.SpriteSheet01Texture, backPosition, backRectangle, Color.White);
 			Engine.SpriteBatch.Draw(Assets.SpriteSheet01Texture, gridPosition, gridRectangles[gridIndex], Color.White);
 			Engine.SpriteBatch.Draw(Assets.SpriteSheet01Texture, starPosition, starRectangles[starIndex], Color.White, rotation, origin, 1.0f, SpriteEffects.None, 1.0f);
+		}
+
+		public void DrawTitle()
+		{
+			// TODO update name of this asset!
+			Engine.SpriteBatch.Draw(Assets.title00, titlePosition, Color.White);
 		}
 
 	}
