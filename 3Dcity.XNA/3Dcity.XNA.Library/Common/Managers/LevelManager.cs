@@ -18,6 +18,7 @@ namespace WindowsGame.Common.Managers
 		// Properties.
 		Vector2[] LevelTextPositions { get; }
 		IList<String> LevelNames { get; }
+		IList<String> LevelRoman{ get; }
 		Byte MaximLevel { get; }
 		LevelType LevelType { get; }
 		Byte LevelIndex { get; }
@@ -32,6 +33,7 @@ namespace WindowsGame.Common.Managers
 
 		private const String LEVELS_DIRECTORY = "Levels";
 		private const String LEVELS_NAMESFILE = "LevelNames";
+		private const String LEVELS_ROMANFILE = "LevelRoman";
 
 		public void Initialize()
 		{
@@ -46,8 +48,10 @@ namespace WindowsGame.Common.Managers
 
 		public void LoadContent()
 		{
-			String file = String.Format("{0}/{1}.txt", levelRoot, LEVELS_NAMESFILE);
-			LevelNames = MyGame.Manager.FileManager.LoadTxt(file);
+			String namesFile = String.Format("{0}/{1}.txt", levelRoot, LEVELS_NAMESFILE);
+			String romanFile = String.Format("{0}/{1}.txt", levelRoot, LEVELS_ROMANFILE);
+			LevelNames = MyGame.Manager.FileManager.LoadTxt(namesFile);
+			LevelRoman = MyGame.Manager.FileManager.LoadTxt(romanFile);
 
 			LevelType = MyGame.Manager.ConfigManager.GlobalConfigData.LevelType;
 			LevelIndex = MyGame.Manager.ConfigManager.GlobalConfigData.LevelIndex;
@@ -95,6 +99,7 @@ namespace WindowsGame.Common.Managers
 
 		public Vector2[] LevelTextPositions { get; private set; }
 		public IList<String> LevelNames { get; private set; }
+		public IList<String> LevelRoman { get; private set; }
 		public Byte MaximLevel { get; private set; }
 		public LevelType LevelType { get; private set; }
 		public Byte LevelIndex { get; private set; }

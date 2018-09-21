@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using NUnit.Framework;
 using WindowsGame.Common;
 
@@ -21,10 +22,18 @@ namespace WindowsGame.SystemTests.Common.Managers
 			LevelManager.LoadContent();
 
 			Assert.IsNotNull(LevelManager.LevelNames);
+			Assert.IsNotNull(LevelManager.LevelRoman);
+			Assert.That(LevelManager.LevelNames.Count, Is.EqualTo(LevelManager.LevelRoman.Count));
 
-			foreach (var name in LevelManager.LevelNames)
+			Print(LevelManager.LevelNames);
+			Print(LevelManager.LevelRoman);
+		}
+
+		private void Print(IList<String> lines)
+		{
+			foreach (var line in lines)
 			{
-				Console.WriteLine(name);
+				Console.WriteLine(line);
 			}
 		}
 
