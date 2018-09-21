@@ -93,3 +93,12 @@ TODO
 StorageManager
 Ensure LoadContent() gets called OnActivated BEFORE IconManager LoadContent()
 because icon manager updates the correct image for sound on / off
+
+
+COLLISION detection algorithm
+Enemys vs Target
+
+if not enemys(boundingBox) intersect target(boundingBox) then quit
+if not top or bottom intersect then quit
+calculate midpoint enemy + target
+if distanceSquared <= range then collide
