@@ -17,6 +17,7 @@ namespace WindowsGame.Common.Managers
 		void AddToBulletCollisionList(Byte bulletIndex);
 		void AddToEnemysCollisionList(Byte enemysIndex);
 
+		Boolean EnemyCollideTarget(Vector2 enemysPosition, Vector2 targetPosition);
 
 		IList<Byte> BulletCollisionList { get; }
 		IList<Byte> EnemysCollisionList { get; }
@@ -28,6 +29,11 @@ namespace WindowsGame.Common.Managers
 		{
 			BulletCollisionList = new List<Byte>(Constants.MAX_BULLET_SHOOT);
 			EnemysCollisionList = new List<Byte>(Constants.MAX_ENEMYS_SPAWN);
+		}
+
+		public Boolean EnemyCollideTarget(Vector2 enemysPosition, Vector2 targetPosition)
+		{
+			return false;
 		}
 
 		// TODO give a better name!
