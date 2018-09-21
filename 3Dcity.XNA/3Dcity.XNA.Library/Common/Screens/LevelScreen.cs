@@ -8,7 +8,7 @@ namespace WindowsGame.Common.Screens
 {
 	public class LevelScreen : BaseScreen, IScreen
 	{
-		private String[] cursorOptions = new string[3] { Globalize.CURSOR_LEFTS, "  ", Globalize.CURSOR_RIGHT };
+		private readonly String[] cursorOptions = new string[3] { Globalize.CURSOR_LEFTS, "  ", Globalize.CURSOR_RIGHT };
 		private Vector2 cursorPosition;
 		private Vector2 spritePosition;
 
@@ -32,6 +32,9 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
+			iconIndex = 0;
+			moveIndex = 1;
+
 			cursorPosition = MyGame.Manager.TextManager.GetTextPosition(16, 11);
 			spritePosition = MyGame.Manager.SpriteManager.SmallTarget.Position;
 			spritePosition.X = Constants.CURSOR_OFFSET_X[moveIndex];
@@ -45,8 +48,6 @@ namespace WindowsGame.Common.Screens
 			PopulateLevelData(levelIndex);
 
 			selectDelay = MyGame.Manager.ConfigManager.GlobalConfigData.SelectDelay;
-			iconIndex = 0;
-			moveIndex = 1;
 			flag1 = flag2 = false;
 
 			base.LoadContent();
@@ -60,6 +61,8 @@ namespace WindowsGame.Common.Screens
 				return (Int32)CurrScreen;
 			}
 
+			// TODO add check for Back button on Windows and Android
+			// this would navigate back to the previous Diff screen!
 			if (flag1)
 			{
 				UpdateTimer(gameTime);

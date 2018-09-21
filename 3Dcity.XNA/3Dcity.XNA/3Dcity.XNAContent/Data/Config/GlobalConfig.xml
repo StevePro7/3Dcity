@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Over</ScreenType>
+	<ScreenType>Cont</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<!--<ScreenType>Level</ScreenType>-->
@@ -19,8 +19,8 @@
 	<ScoreBlink>false</ScoreBlink>
 	<UpdateStar>false</UpdateStar>
 	<UpdateGrid>false</UpdateGrid>
-	<RenderBack>false</RenderBack>
-	<RenderIcon>false</RenderIcon>
+	<RenderBack>true</RenderBack>
+	<RenderIcon>true</RenderIcon>
 	<TargetX>0</TargetX>
 	<TargetY>0</TargetY>
 	<EnemysX>100</EnemysX>

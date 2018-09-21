@@ -23,14 +23,15 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
+			iconIndex = 0;
+			moveIndex = 1; 
+
 			cursorPositions = GetCursorPositions();
 			spritePosition = MyGame.Manager.SpriteManager.SmallTarget.Position;
 			spritePosition.X = Constants.CURSOR_OFFSET_X[moveIndex];
 			levelType = (Byte)MyGame.Manager.LevelManager.LevelType;
 
 			selectDelay = MyGame.Manager.ConfigManager.GlobalConfigData.SelectDelay;
-			iconIndex = 0;
-			moveIndex = 1;
 			flag1 = flag2 = false;
 
 			base.LoadContent();
