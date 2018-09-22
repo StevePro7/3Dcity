@@ -9,15 +9,17 @@ namespace WindowsGame.Common.Screens
 {
 	public class OverScreen : BaseScreen, IScreen
 	{
-		private Vector2 enemysPos, enemysMid;
-		private Vector2 targetPos, targetMid;
+		private Vector2 enemysPos;
+		private Vector2 targetPos;
 		private Rectangle enemysRect;
 		private Rectangle targetRect;
+		private Boolean collision;
 
 		public override void Initialize()
 		{
 			base.Initialize();
 			LoadTextData();
+			collision = false;
 		}
 
 		public override void LoadContent()
@@ -44,10 +46,10 @@ namespace WindowsGame.Common.Screens
 
 
 			// LOG if color collision detection or not...
-			SByte number = MyGame.Manager.InputManager.Number();
-			if (Constants.INVALID_INDEX != number)
+			Boolean test = MyGame.Manager.InputManager.Fire();
+			if (test)
 			{
-				Boolean collision = MyGame.Manager.CollisionManager.ColorCollision(enemysPos, targetPos);
+				collision = MyGame.Manager.CollisionManager.ColorCollision(enemysPos, targetPos);
 				MyGame.Manager.Logger.Info(collision.ToString());
 			}
 
@@ -80,6 +82,7 @@ namespace WindowsGame.Common.Screens
 
 			// Text data last!
 			//MyGame.Manager.TextManager.Draw(TextDataList);
+			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, collision.ToString(), Vector2.Zero, Color.White);
 		}
 
 	}

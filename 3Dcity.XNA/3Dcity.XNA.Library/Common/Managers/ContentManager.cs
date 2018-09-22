@@ -68,7 +68,7 @@ namespace WindowsGame.Common.Managers
 			Assets.SpriteSheet02Texture = contentFactory.LoadTexture(texturesRoot + "spritesheet02-1024");
 
 			Assets.Enemy120 = contentFactory.LoadTexture(texturesRoot + "Enemy120");
-			//Assets.Target56 = contentFactory.LoadTexture(texturesRoot + "Target56");
+			Assets.Target56 = contentFactory.LoadTexture(texturesRoot + "Target56");
 			Assets.Target64 = contentFactory.LoadTexture(texturesRoot + "Target64");
 			Assets.GameTitle = contentFactory.LoadTexture(texturesRoot + "3Dcity");
 

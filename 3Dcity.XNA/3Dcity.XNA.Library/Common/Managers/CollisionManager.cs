@@ -47,6 +47,7 @@ namespace WindowsGame.Common.Managers
 			//targetSize = (Byte)(Assets.Target56.Width);
 			targetSize = (Byte)(Assets.Target64.Width);
 			targetSize = Constants.TargetSize;
+
 			EnemysColor = new Color[enemysSize * enemysSize];
 			Assets.Enemy120.GetData(EnemysColor);
 
