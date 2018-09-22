@@ -9,27 +9,33 @@ namespace WindowsGame.Common.Screens
 {
 	public class OverScreen : BaseScreen, IScreen
 	{
+		private Vector2 outputPos;
 		private Vector2 enemysPos;
 		private Vector2 targetPos;
 		private Rectangle enemysRect;
 		private Rectangle targetRect;
+
 		private Boolean collision;
+		private String[] outputText;
 
 		public override void Initialize()
 		{
 			base.Initialize();
 			LoadTextData();
+
 			collision = true;
+			outputText = new string[2] { "FALSE", "TRUE" };
 		}
 
 		public override void LoadContent()
 		{
+			outputPos = MyGame.Manager.TextManager.GetTextPosition(0, 4);
 			GlobalConfigData data = MyGame.Manager.ConfigManager.GlobalConfigData;
 			enemysPos = new Vector2(data.EnemysX, data.EnemysY);
 
 			Single x = (120 - 64) / 2.0f + data.EnemysX;
 			Single y = (120 - 64) / 2.0f + data.EnemysY;
-			targetPos = new Vector2(x - 0,  y - 0);
+			targetPos = new Vector2(x - 0, y - 0);
 
 			enemysRect = MyGame.Manager.ImageManager.EnemyRectangles[7];
 			targetRect = MyGame.Manager.ImageManager.TargetLargeRectangle;
@@ -38,19 +44,24 @@ namespace WindowsGame.Common.Screens
 
 		public override Int32 Update(GameTime gameTime)
 		{
+			//#if DEBUG
+			//            MyGame.Manager.Logger.Info(gameTime.ElapsedGameTime.TotalSeconds.ToString());
+			//#endif
+
 			base.Update(gameTime);
-			if (GamePause)
-			{
-				return (Int32)CurrScreen;
-			}
+			//if (GamePause)
+			//{
+			//    return (Int32)CurrScreen;
+			//}
 
 
 			// LOG if color collision detection or not...
-			Boolean test = MyGame.Manager.InputManager.Fire();
+			//Boolean test = MyGame.Manager.InputManager.Fire();
+			Boolean test = MyGame.Manager.InputManager.GameSound();
 			if (test)
 			{
 				collision = MyGame.Manager.CollisionManager.ColorCollision(enemysPos, targetPos);
-				MyGame.Manager.Logger.Info(collision.ToString());
+				//MyGame.Manager.Logger.Info(collision.ToString());
 			}
 
 
@@ -82,7 +93,7 @@ namespace WindowsGame.Common.Screens
 
 			// Text data last!
 			//MyGame.Manager.TextManager.Draw(TextDataList);
-			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, collision.ToString(), Vector2.Zero, Color.White);
+			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, outputText[Convert.ToByte(collision)], outputPos, Color.White);
 		}
 
 	}

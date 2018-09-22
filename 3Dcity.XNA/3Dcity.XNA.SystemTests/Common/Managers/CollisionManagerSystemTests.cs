@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using WindowsGame.Common;
 
 namespace WindowsGame.SystemTests.Common.Managers
@@ -21,7 +19,6 @@ namespace WindowsGame.SystemTests.Common.Managers
 		{
 			CollisionManager.LoadContentEnemys();
 			Assert.That(CollisionManager.EnemysList, Is.Not.Null);
-			Console.WriteLine(CollisionManager.EnemysList.Count);
 		}
 
 		[Test]
@@ -29,7 +26,6 @@ namespace WindowsGame.SystemTests.Common.Managers
 		{
 			CollisionManager.LoadContentTarget();
 			Assert.That(CollisionManager.TargetList, Is.Not.Null);
-			Console.WriteLine(CollisionManager.TargetList.Count);
 		}
 
 		[TearDown]

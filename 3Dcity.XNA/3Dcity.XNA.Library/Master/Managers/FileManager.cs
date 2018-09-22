@@ -19,21 +19,6 @@ namespace WindowsGame.Master.Managers
 		public IList<String> LoadTxt(String file)
 		{
 			return LoadTxt<String>(file);
-			//IList<String> lines = new List<String>();
-			//using (Stream stream = fileProxy.GetStream(file))
-			//{
-			//    using (StreamReader reader = new StreamReader(stream))
-			//    {
-			//        String line = reader.ReadLine();
-			//        while (line != null)
-			//        {
-			//            lines.Add(line);
-			//            line = reader.ReadLine();
-			//        }
-			//    }
-			//}
-
-			//return lines;
 		}
 
 		public IList<T> LoadTxt<T>(String file)

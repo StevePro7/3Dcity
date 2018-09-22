@@ -20,7 +20,7 @@
 	<UpdateStar>false</UpdateStar>
 	<UpdateGrid>false</UpdateGrid>
 	<RenderBack>false</RenderBack>
-	<RenderIcon>false</RenderIcon>
+	<RenderIcon>true</RenderIcon>
 	<TargetX>0</TargetX>
 	<TargetY>0</TargetY>
 	<EnemysX>400</EnemysX>
