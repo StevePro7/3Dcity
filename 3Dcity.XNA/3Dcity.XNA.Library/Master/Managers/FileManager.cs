@@ -18,7 +18,27 @@ namespace WindowsGame.Master.Managers
 
 		public IList<String> LoadTxt(String file)
 		{
-			IList<String> lines = new List<String>();
+			return LoadTxt<String>(file);
+			//IList<String> lines = new List<String>();
+			//using (Stream stream = fileProxy.GetStream(file))
+			//{
+			//    using (StreamReader reader = new StreamReader(stream))
+			//    {
+			//        String line = reader.ReadLine();
+			//        while (line != null)
+			//        {
+			//            lines.Add(line);
+			//            line = reader.ReadLine();
+			//        }
+			//    }
+			//}
+
+			//return lines;
+		}
+
+		public IList<T> LoadTxt<T>(String file)
+		{
+			IList<T> lines = new List<T>();
 			using (Stream stream = fileProxy.GetStream(file))
 			{
 				using (StreamReader reader = new StreamReader(stream))
@@ -26,7 +46,8 @@ namespace WindowsGame.Master.Managers
 					String line = reader.ReadLine();
 					while (line != null)
 					{
-						lines.Add(line);
+						T data = GetValue<T>(line);
+						lines.Add(data);
 						line = reader.ReadLine();
 					}
 				}
@@ -57,6 +78,12 @@ namespace WindowsGame.Master.Managers
 			}
 
 			return root;
+		}
+
+		// https://stackoverflow.com/questions/732677/converting-from-string-to-t
+		private static T GetValue<T>(String value)
+		{
+			return (T)Convert.ChangeType(value, typeof(T));
 		}
 
 	}
