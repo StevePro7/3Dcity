@@ -238,11 +238,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\title00.png">
-      <Name>title00</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
     <Compile Include="Textures\title01.png">
       <Name>title01</Name>
       <Importer>TextureImporter</Importer>
@@ -264,6 +259,34 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>LevelRoman</Name>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Enemy120.png">
+      <Name>Enemy120</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Target64.png">
+      <Name>Target64</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\3Dcity.png">
+      <Name>3Dcity</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Target56.png">
+      <Name>Target56</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 

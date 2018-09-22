@@ -69,6 +69,17 @@ namespace WindowsGame.Common.Sprites
 			Bounds = bounds;
 		}
 
+		public Vector2 GetMidPoint()
+		{
+			Single midX = SizeW / 2.0f;
+			Single midY = SizeH / 2.0f;
+
+			Vector2 midpoint = new Vector2(Position.X + midX, Position.Y + midY);
+			Midpoint = midpoint;
+
+			return Midpoint;
+		}
+
 		public virtual void Update(GameTime gameTime)
 		{
 		}

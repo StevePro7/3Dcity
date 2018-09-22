@@ -105,8 +105,7 @@ namespace WindowsGame.Common.Managers
 
 		public void DrawTitle()
 		{
-			// TODO update name of this asset!
-			Engine.SpriteBatch.Draw(Assets.title00, titlePosition, Color.White);
+			Engine.SpriteBatch.Draw(Assets.GameTitle, titlePosition, Color.White);
 		}
 
 	}

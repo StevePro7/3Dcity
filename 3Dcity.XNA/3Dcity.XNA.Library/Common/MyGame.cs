@@ -69,6 +69,7 @@ namespace WindowsGame.Common
 
 			Manager.BossManager.LoadContent();
 			Manager.BulletManager.LoadContent();
+			Manager.CollisionManager.LoadContent();
 			Manager.ControlManager.LoadContent();
 			Manager.CommandManager.LoadContent();
 			Manager.EnemyManager.LoadContent();

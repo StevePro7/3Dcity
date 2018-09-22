@@ -102,3 +102,13 @@ if not enemys(boundingBox) intersect target(boundingBox) then quit
 if not top or bottom intersect then quit
 calculate midpoint enemy + target
 if distanceSquared <= range then collide
+
+Biggest value 100 Easy
+Biggest value  90 Hard
+check distance value between 2x midpoints	enemy + target
+if value < range then dead else miss
+
+Range = 80 is good min / max value
+
+Maximum range Hard = 90	left / right couple of pixels away [tough!] but includes more wings collision
+
