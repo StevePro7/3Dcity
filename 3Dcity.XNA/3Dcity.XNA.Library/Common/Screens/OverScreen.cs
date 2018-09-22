@@ -1,10 +1,9 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
-using WindowsGame.Master.Interfaces;
 using WindowsGame.Common.Data;
 using WindowsGame.Common.Static;
 using WindowsGame.Master;
-using Ninject.Planning.Targets;
+using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
 {
@@ -28,11 +27,7 @@ namespace WindowsGame.Common.Screens
 
 			Single x = (120 - 64) / 2.0f + data.EnemysX;
 			Single y = (120 - 64) / 2.0f + data.EnemysY;
-			targetPos = new Vector2(x - 20,  y - 8);
-			//targetPos = new Vector2(data.TargetX, data.TargetY);
-
-			//Process();
-
+			targetPos = new Vector2(x - 0,  y - 0);
 
 			enemysRect = MyGame.Manager.ImageManager.EnemyRectangles[7];
 			targetRect = MyGame.Manager.ImageManager.TargetLargeRectangle;
@@ -42,17 +37,20 @@ namespace WindowsGame.Common.Screens
 		public override Int32 Update(GameTime gameTime)
 		{
 			base.Update(gameTime);
-			Boolean gameState = MyGame.Manager.InputManager.GameState();
-			if (gameState)
+			if (GamePause)
+			{
+				return (Int32)CurrScreen;
+			}
+
+
+			// LOG if color collision detection or not...
+			SByte number = MyGame.Manager.InputManager.Number();
+			if (Constants.INVALID_INDEX != number)
 			{
 				Boolean collision = MyGame.Manager.CollisionManager.ColorCollision(enemysPos, targetPos);
 				MyGame.Manager.Logger.Info(collision.ToString());
 			}
 
-			//if (GamePause)
-			//{
-			//    return (Int32)CurrScreen;
-			//}
 
 			// Move target unconditionally.
 			Single horz = MyGame.Manager.InputManager.Horizontal();
@@ -67,7 +65,6 @@ namespace WindowsGame.Common.Screens
 			tempPos.Y += vert;
 			targetPos = tempPos;
 			MyGame.Manager.SpriteManager.LargeTarget.SetPosition(targetPos);
-			Process();
 
 			return (Int32)CurrScreen;
 		}
@@ -77,40 +74,12 @@ namespace WindowsGame.Common.Screens
 			// Sprite sheet #01.
 			base.Draw();
 			MyGame.Manager.IconManager.DrawControls();
-			//MyGame.Manager.ScoreManager.Draw();
 
 			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, enemysPos, enemysRect, Color.White);
 			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, targetPos, targetRect, Color.White);
 
-			//// Sprite sheet #02.
-			//MyGame.Manager.DebugManager.Draw();
-
-			//MyGame.Manager.EnemyManager.Draw();
-			//MyGame.Manager.SpriteManager.Draw();
-
-			//MyGame.Manager.ExplosionManager.Draw();
-
-
 			// Text data last!
 			//MyGame.Manager.TextManager.Draw(TextDataList);
-		}
-
-		private void Process()
-		{
-			enemysMid = GetMidPoint(enemysPos, 120);
-			targetMid = GetMidPoint(targetPos, 64);
-			float dist = Vector2.Distance(enemysMid, targetMid);
-			float diSq = Vector2.DistanceSquared(enemysMid, targetMid);
-
-			String msg = String.Format("({0},{1})  ({2},{3})  {4}  {5}", enemysMid.X, enemysMid.Y, targetMid.X, targetMid.Y, dist,
-				diSq);
-			MyGame.Manager.Logger.Info(msg);
-		}
-
-		public Vector2 GetMidPoint(Vector2 pos, Single size)
-		{
-			Single half = size / 2.0f;
-			return new Vector2(pos.X + half, pos.Y + half);
 		}
 
 	}

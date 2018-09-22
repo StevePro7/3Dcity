@@ -68,15 +68,16 @@ namespace WindowsGame.Common.Managers
 			Assets.SpriteSheet02Texture = contentFactory.LoadTexture(texturesRoot + "spritesheet02-1024");
 
 			Assets.Enemy120 = contentFactory.LoadTexture(texturesRoot + "Enemy120");
-			Assets.Target56 = contentFactory.LoadTexture(texturesRoot + "Target56");
+			//Assets.Target56 = contentFactory.LoadTexture(texturesRoot + "Target56");
+			Assets.Target64 = contentFactory.LoadTexture(texturesRoot + "Target64");
 			Assets.GameTitle = contentFactory.LoadTexture(texturesRoot + "3Dcity");
 
-			Assets.SteveProTexture40 = contentFactory.LoadTexture(texturesRoot + "StevePro40");
-			Assets.SteveProTexture80 = contentFactory.LoadTexture(texturesRoot + "StevePro80");
-			Assets.SteveProTexture160 = contentFactory.LoadTexture(texturesRoot + "StevePro160");
-			Assets.SteveProTexture200 = contentFactory.LoadTexture(texturesRoot + "StevePro200");
-
 			// TODO delete
+			//Assets.SteveProTexture40 = contentFactory.LoadTexture(texturesRoot + "StevePro40");
+			//Assets.SteveProTexture80 = contentFactory.LoadTexture(texturesRoot + "StevePro80");
+			//Assets.SteveProTexture160 = contentFactory.LoadTexture(texturesRoot + "StevePro160");
+			//Assets.SteveProTexture200 = contentFactory.LoadTexture(texturesRoot + "StevePro200");
+			//Assets.Target64 = contentFactory.LoadTexture(texturesRoot + "Target64");
 			//Assets.title01 = contentFactory.LoadTexture(texturesRoot + "title01");
 			Assets.ZZindigoTexture = contentFactory.LoadTexture(texturesRoot + "ZZindigo");
 		}

@@ -119,6 +119,7 @@
     <Compile Include="Common\Back\EventScreenBAK.cs" />
     <Compile Include="Common\Back\ExplosionScreenBAK.cs" />
     <Compile Include="Common\Back\LevelScreenBAK.cs" />
+    <Compile Include="Common\Back\OverScreenBAK.cs" />
     <Compile Include="Common\Screens\LevelScreen.cs" />
     <Compile Include="Common\Screens\DiffScreen.cs" />
     <Compile Include="Common\Screens\OverScreen.cs" />

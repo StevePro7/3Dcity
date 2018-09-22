@@ -1,4 +1,8 @@
 # 3Dcity
+
+IMPORTANT
+Must replace initial target 64x64 in spritesheet with new one used for the color collision detection 56x56!!
+
 Placeholder for 3Dcity coming soon!
 This is a test line
 

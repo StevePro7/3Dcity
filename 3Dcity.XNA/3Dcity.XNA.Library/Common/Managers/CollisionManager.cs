@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using WindowsGame.Common.Sprites;
 using WindowsGame.Common.Static;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace WindowsGame.Common.Managers
 {
@@ -43,13 +42,18 @@ namespace WindowsGame.Common.Managers
 		public void LoadContent()
 		{
 			enemysSize = (Byte)(Assets.Enemy120.Width);
-			targetSize = (Byte)(Assets.Target56.Width);
+			enemysSize = Constants.EnemySize;
 
-			EnemysColor = new Color[Assets.Enemy120.Width * Assets.Enemy120.Height];
+			//targetSize = (Byte)(Assets.Target56.Width);
+			targetSize = (Byte)(Assets.Target64.Width);
+			targetSize = Constants.TargetSize;
+			EnemysColor = new Color[enemysSize * enemysSize];
 			Assets.Enemy120.GetData(EnemysColor);
 
-			TargetColor = new Color[Assets.Target56.Width * Assets.Target56.Height];
-			Assets.Target56.GetData(TargetColor);
+			//TargetColor = new Color[Assets.Target56.Width * Assets.Target56.Height];
+			TargetColor = new Color[targetSize * targetSize];
+			//Assets.Target56.GetData(TargetColor);
+			Assets.Target64.GetData(TargetColor);
 		}
 
 		public Boolean ColorCollision(Vector2 enemysPosition, Vector2 targetPosition)
