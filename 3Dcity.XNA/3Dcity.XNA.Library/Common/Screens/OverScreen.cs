@@ -19,7 +19,7 @@ namespace WindowsGame.Common.Screens
 		{
 			base.Initialize();
 			LoadTextData();
-			collision = false;
+			collision = true;
 		}
 
 		public override void LoadContent()
