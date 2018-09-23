@@ -104,7 +104,6 @@ namespace WindowsGame.Common.Managers
 			TargetLargeRectangle = new Rectangle(wide, high, targetSize, targetSize);
 			TargetSmallRectangle = new Rectangle(wide + 12, high + targetSize + 12, halfSize, halfSize);
 
-
 			// Bullets.
 			high = 2 * targetSize;
 			BulletRectangles = new Rectangle[Constants.MAX_BULLET_FRAME];
@@ -112,8 +111,6 @@ namespace WindowsGame.Common.Managers
 			{
 				BulletRectangles[index] = new Rectangle(wide, high + index * targetSize, targetSize, targetSize);
 			}
-
-			
 		}
 
 		// Sprite sheet #01.
