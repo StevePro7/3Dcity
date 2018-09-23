@@ -67,8 +67,11 @@ namespace WindowsGame.Common.Managers
 			Assets.SpriteSheet01Texture = contentFactory.LoadTexture(texturesRoot + "spritesheet01-1024");
 			Assets.SpriteSheet02Texture = contentFactory.LoadTexture(texturesRoot + "spritesheet02-1024");
 
-			
 			Assets.GameTitle = contentFactory.LoadTexture(texturesRoot + "3Dcity");
+
+			Assets.OrbGreen32 = contentFactory.LoadTexture(texturesRoot + "OrbGreen32");
+			Assets.OrbRed32 = contentFactory.LoadTexture(texturesRoot + "OrbRed32");
+
 
 			// TODO delete
 			//Assets.Enemy120 = contentFactory.LoadTexture(texturesRoot + "Enemy120");

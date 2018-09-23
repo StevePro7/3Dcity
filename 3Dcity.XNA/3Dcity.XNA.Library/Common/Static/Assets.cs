@@ -22,6 +22,10 @@ namespace WindowsGame.Common.Static
 		public static Texture2D SpriteSheet02Texture;
 		public static Texture2D GameTitle;
 
+		public static Texture2D OrbGreen32;
+		public static Texture2D OrbRed32;
+
+
 		// TODO delete
 		//public static Texture2D Enemy120;
 		//public static Texture2D Target56;

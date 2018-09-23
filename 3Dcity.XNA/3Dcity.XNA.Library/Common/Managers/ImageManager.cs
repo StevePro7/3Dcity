@@ -23,6 +23,8 @@ namespace WindowsGame.Common.Managers
 		Rectangle[] BulletRectangles { get; }
 		Rectangle TargetLargeRectangle { get; }
 		Rectangle TargetSmallRectangle { get; }
+		Rectangle OrbEasyRectangle { get; }
+		Rectangle OrbHardRectangle { get; }
 	}
 
 	public class ImageManager : IImageManager 
@@ -111,6 +113,11 @@ namespace WindowsGame.Common.Managers
 			{
 				BulletRectangles[index] = new Rectangle(wide, high + index * targetSize, targetSize, targetSize);
 			}
+
+			// Orbs.
+			high = (2 + 6) * targetSize;
+			OrbEasyRectangle = new Rectangle(wide, high + (0 * targetSize), targetSize, targetSize);
+			OrbHardRectangle = new Rectangle(wide, high + (1 * targetSize), targetSize, targetSize);
 		}
 
 		// Sprite sheet #01.
@@ -128,6 +135,7 @@ namespace WindowsGame.Common.Managers
 		public Rectangle[] BulletRectangles { get; private set; }
 		public Rectangle TargetLargeRectangle { get; private set; }
 		public Rectangle TargetSmallRectangle { get; private set; }
-
+		public Rectangle OrbEasyRectangle { get; private set; }
+		public Rectangle OrbHardRectangle { get; private set; }
 	}
 }
