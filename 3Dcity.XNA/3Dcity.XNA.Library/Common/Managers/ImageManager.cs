@@ -97,17 +97,23 @@ namespace WindowsGame.Common.Managers
 			}
 
 
+			// Targets.
+			const UInt16 wide = enemySize * Constants.MAX_ENEMYS_SPAWN;
+			high = 0;
+			//const UInt16 wide = (UInt16)(Constants.MAX_BULLET_FRAME * targetSize);
+			TargetLargeRectangle = new Rectangle(wide, high, targetSize, targetSize);
+			TargetSmallRectangle = new Rectangle(wide + 12, high + targetSize + 12, halfSize, halfSize);
+
+
 			// Bullets.
-			high = (UInt16)(3 * baseSize + dbleSize + enemySize);
+			high = 2 * targetSize;
 			BulletRectangles = new Rectangle[Constants.MAX_BULLET_FRAME];
 			for (Byte index = 0; index < Constants.MAX_BULLET_FRAME; index++)
 			{
-				BulletRectangles[index] = new Rectangle(index * targetSize, high, targetSize, targetSize);
+				BulletRectangles[index] = new Rectangle(wide, high + index * targetSize, targetSize, targetSize);
 			}
 
-			const UInt16 wide = (UInt16)(Constants.MAX_BULLET_FRAME * targetSize);
-			TargetLargeRectangle = new Rectangle(wide + 8, high + 8, targetSize, targetSize);
-			TargetSmallRectangle = new Rectangle(wide + baseSize + 20, high + 20, halfSize, halfSize);
+			
 		}
 
 		// Sprite sheet #01.
