@@ -38,7 +38,7 @@ namespace WindowsGame.Common.Back
 		private const Byte borderSize = 4;
 		private String collisionRoot;
 		private Byte enemysSize;
-		private Byte targetSize;
+		//private Byte targetSize;
 		private Byte offsetSize;
 
 		private const String SPRITE_DIRECTORY = "Sprite";
@@ -66,7 +66,7 @@ namespace WindowsGame.Common.Back
 
 			//targetSize = (Byte)(Assets.Target56.Width);
 			//targetSize = (Byte)(Assets.Target64.Width);
-			targetSize = Constants.TargetSize;
+			//targetSize = Constants.TargetSize;
 
 			//targetSize = 56;
 			offsetSize = Constants.TargetSize - 2 * borderSize;
