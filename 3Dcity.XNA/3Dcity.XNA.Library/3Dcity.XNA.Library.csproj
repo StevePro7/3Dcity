@@ -84,6 +84,7 @@
     <Compile Include="Common\Managers\BulletManager.cs" />
     <Compile Include="Common\Managers\CommandManager.cs" />
     <Compile Include="Common\Managers\BossManager.cs" />
+    <Compile Include="Common\Back\CollisionManagerBAK.cs" />
     <Compile Include="Common\Managers\DebugManager.cs" />
     <Compile Include="Common\Managers\LevelManager.cs" />
     <Compile Include="Common\Managers\EventManager.cs" />

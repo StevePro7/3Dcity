@@ -4,9 +4,9 @@ using Microsoft.Xna.Framework;
 using WindowsGame.Common.Sprites;
 using WindowsGame.Common.Static;
 
-namespace WindowsGame.Common.Managers
+namespace WindowsGame.Common.Back
 {
-	public interface ICollisionManager 
+	public interface ICollisionManagerBAK 
 	{
 		void Initialize();
 		void Initialize(String root);
@@ -29,9 +29,11 @@ namespace WindowsGame.Common.Managers
 
 		IList<UInt16> EnemysList { get; }
 		IList<UInt16> TargetList { get; }
+		Color[] EnemysColor { get; }
+		Color[] TargetColor { get; }
 	}
 
-	public class CollisionManager : ICollisionManager
+	public class CollisionManagerBAK : ICollisionManagerBAK
 	{
 		private const Byte borderSize = 4;
 		private String collisionRoot;
@@ -59,9 +61,36 @@ namespace WindowsGame.Common.Managers
 			LoadContentEnemys();
 			LoadContentTarget();
 
+			//enemysSize = (Byte)(Assets.Enemy120.Width);
 			enemysSize = Constants.EnemySize;
+
+			//targetSize = (Byte)(Assets.Target56.Width);
+			//targetSize = (Byte)(Assets.Target64.Width);
 			targetSize = Constants.TargetSize;
+
+			//targetSize = 56;
 			offsetSize = Constants.TargetSize - 2 * borderSize;
+
+			//EnemysColor = new Color[enemysSize * enemysSize];
+			//Assets.Enemy120.GetData(EnemysColor);
+
+			//TargetColor = new Color[Assets.Target56.Width * Assets.Target56.Height];
+			//TargetColor = new Color[targetSize * targetSize];
+			//Assets.Target56.GetData(TargetColor);
+			//Assets.Target64.GetData(TargetColor);
+			//Assets.Target56.GetData(TargetColor);
+
+
+			//IList<UInt16> list1 = Process(EnemysColor, Byte.MinValue);
+			//foreach (UInt16 item in list1)
+			//{
+			//    //Console.WriteLine(item);
+			//}
+			//IList<UInt16> list2 = Process(TargetColor, Byte.MinValue);
+			//foreach (UInt16 item in list2)
+			//{
+			//    //Console.WriteLine(item);
+			//}
 		}
 
 		public void LoadContentEnemys()
@@ -88,8 +117,15 @@ namespace WindowsGame.Common.Managers
 
 			Int16 enemysPosX = (Int16)enemysPosition.X;
 			Int16 enemysPosY = (Int16)enemysPosition.Y;
+			Int16 targetPosX = (Int16)targetPosition.X;
+			Int16 targetPosY = (Int16)targetPosition.Y;
 			Int16 offsetPosX = (Int16) offsetPosition.X;
 			Int16 offsetPosY = (Int16) offsetPosition.Y;
+
+			//Int16 lft = Math.Max(enemysPosX, targetPosX);
+			//Int16 top = Math.Max(enemysPosY, targetPosY);
+			//Int16 rgt = Math.Min((Int16)(enemysPosX + enemysSize), (Int16)(targetPosX + targetSize));
+			//Int16 bot = Math.Min((Int16)(enemysPosY + enemysSize), (Int16)(targetPosY + targetSize));
 
 			Int16 lft = Math.Max(enemysPosX, offsetPosX);
 			Int16 top = Math.Max(enemysPosY, offsetPosY);
@@ -102,6 +138,7 @@ namespace WindowsGame.Common.Managers
 			{
 				for (Int16 x = lft; x < rgt; x++)
 				{
+					//UInt16 targetIndex = (UInt16)((x - targetPosX) + (y - targetPosY) * targetSize);
 					UInt16 targetIndex = (UInt16)((x - offsetPosX) + (y - offsetPosY) * offsetSize);
 					if (!TargetList.Contains(targetIndex))
 					{
@@ -121,6 +158,61 @@ namespace WindowsGame.Common.Managers
 			// No intersection found.
 			return false;
 		}
+
+		/*
+		public Boolean ColorCollisionX(Vector2 enemysPosition, Vector2 targetPosition)
+		{
+			// Use 56 x 56 as target collision thus border offset is 4px on all sides.
+			Vector2 offsetPosition = targetPosition;
+			offsetPosition.X += borderSize;
+			offsetPosition.Y += borderSize;
+
+			Int16 enemysPosX = (Int16)enemysPosition.X;
+			Int16 enemysPosY = (Int16)enemysPosition.Y;
+			Int16 targetPosX = (Int16)targetPosition.X;
+			Int16 targetPosY = (Int16)targetPosition.Y;
+			Int16 offsetPosX = (Int16)offsetPosition.X;
+			Int16 offsetPosY = (Int16)offsetPosition.Y;
+
+			Int16 lft = Math.Max(enemysPosX, targetPosX);
+			Int16 top = Math.Max(enemysPosY, targetPosY);
+			Int16 rgt = Math.Min((Int16)(enemysPosX + enemysSize), (Int16)(targetPosX + targetSize));
+			Int16 bot = Math.Min((Int16)(enemysPosY + enemysSize), (Int16)(targetPosY + targetSize));
+
+			//Int16 rgt = Math.Min((Int16)(enemysPosX + enemysSize), (Int16)(offsetPosX + offsetSize));
+			//Int16 bot = Math.Min((Int16)(enemysPosY + enemysSize), (Int16)(offsetPosY + offsetSize));
+
+
+			// Check every point within the intersection bounds.
+			for (Int16 y = top; y < bot; y++)
+			{
+				for (Int16 x = lft; x < rgt; x++)
+				{
+					UInt16 targetIndex = (UInt16)((x - targetPosX) + (y - targetPosY) * targetSize);
+					//UInt16 offsetIndex = (UInt16)((x - offsetPosX) + (y - offsetPosY) * offsetSize);
+					Color targetColor = TargetColor[targetIndex];
+					//Color offsetColor = TargetColor[offsetIndex];
+					if (0 == targetColor.A)
+					{
+						continue;
+					}
+
+					UInt16 enemysIndex = (UInt16)((x - enemysPosX) + (y - enemysPosY) * enemysSize);
+					Color enemysColor = EnemysColor[enemysIndex];
+					if (0 == enemysColor.A)
+					{
+						continue;
+					}
+
+					// An intersection has been found.
+					return true;
+				}
+			}
+
+			// No intersection found.
+			return false;
+		}
+		*/
 
 		public Boolean EnemyCollideTarget(Vector2 enemysPosition, Vector2 targetPosition)
 		{
@@ -158,11 +250,32 @@ namespace WindowsGame.Common.Managers
 			EnemysCollisionList.Add(enemysIndex);
 		}
 
+		// TODO delete
+		private IList<UInt16> Process(Color[] array, Byte test)
+		{
+			IList<UInt16> list = new List<UInt16>();
+			for (UInt16 index = 0; index < array.Length; index++)
+			{
+				Color color = array[index];
+				Byte alpha = color.A;
+				if (test == alpha)
+				{
+					continue;
+				}
+
+				list.Add(index);
+			}
+
+			return list;
+		}
+
 		public IList<Byte> BulletCollisionList { get; private set; }
 		public IList<Byte> EnemysCollisionList { get; private set; }
 
 		public IList<UInt16> EnemysList { get; private set; }
 		public IList<UInt16> TargetList { get; private set; }
+		public Color[] EnemysColor { get; private set; }
+		public Color[] TargetColor { get; private set; }
 	}
 }
 
