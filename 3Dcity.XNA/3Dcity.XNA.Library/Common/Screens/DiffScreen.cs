@@ -120,6 +120,7 @@ namespace WindowsGame.Common.Screens
 
 			// Sprite sheet #02.
 			MyGame.Manager.SpriteManager.DrawCursor();
+			MyGame.Manager.LevelManager.DrawLevelOrb();
 
 			// Individual texture.
 			MyGame.Manager.RenderManager.DrawTitle();

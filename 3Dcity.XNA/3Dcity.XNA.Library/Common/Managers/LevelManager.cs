@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using WindowsGame.Common.Static;
+using WindowsGame.Master;
 using Microsoft.Xna.Framework;
 
 namespace WindowsGame.Common.Managers
@@ -14,6 +15,7 @@ namespace WindowsGame.Common.Managers
 		void SetLevelType(LevelType levelType);
 		void SetLevelIndex(Byte levelIndex);
 		void Draw();
+		void DrawLevelOrb();
 
 		// Properties.
 		Vector2[] LevelTextPositions { get; }
@@ -30,6 +32,9 @@ namespace WindowsGame.Common.Managers
 	public class LevelManager : ILevelManager 
 	{
 		private String levelRoot;
+		private Vector2 levelOrbPosition;
+		private Rectangle levelOrbPbRectangle;
+		 //private Rectangle diffOrbRectangle;
 
 		private const String LEVELS_DIRECTORY = "Levels";
 		private const String LEVELS_NAMESFILE = "LevelNames";
@@ -44,6 +49,9 @@ namespace WindowsGame.Common.Managers
 		{
 			levelRoot = String.Format("{0}{1}/{2}/{3}", root, Constants.CONTENT_DIRECTORY, Constants.DATA_DIRECTORY, LEVELS_DIRECTORY);
 			LevelTextPositions = GetLevelTextPositions();
+
+			const Byte offset = 48;
+			levelOrbPosition = new Vector2(Constants.ScreenWide - offset - Constants.GameOffsetX - 4, Constants.ScreenHigh - offset - Constants.GameOffsetY);
 		}
 
 		public void LoadContent()
@@ -67,6 +75,13 @@ namespace WindowsGame.Common.Managers
 		{
 			LevelType = levelType;
 			LevelDiff = levelType.ToString().ToUpper();
+
+			if (null == MyGame.Manager.ImageManager.OrbDiffRectangles)
+			{
+				return;
+			}
+
+			levelOrbPbRectangle = MyGame.Manager.ImageManager.OrbDiffRectangles[(Byte)LevelType];
 		}
 		
 		public void SetLevelIndex(Byte levelIndex)
@@ -86,6 +101,11 @@ namespace WindowsGame.Common.Managers
 			MyGame.Manager.TextManager.DrawText(LevelDiff, LevelTextPositions[0]);
 			MyGame.Manager.TextManager.DrawText(LevelValu, LevelTextPositions[1]);
 			MyGame.Manager.TextManager.DrawText(LevelName, LevelTextPositions[2]);
+		}
+
+		public void DrawLevelOrb()
+		{
+			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, levelOrbPosition, levelOrbPbRectangle, Color.White);
 		}
 
 		private static Vector2[] GetLevelTextPositions()

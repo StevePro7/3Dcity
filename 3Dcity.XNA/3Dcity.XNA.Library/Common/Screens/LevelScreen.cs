@@ -149,7 +149,9 @@ namespace WindowsGame.Common.Screens
 			base.Draw();
 			MyGame.Manager.IconManager.DrawControls();
 
+			// Sprite sheet #02.
 			MyGame.Manager.SpriteManager.DrawCursor();
+			MyGame.Manager.LevelManager.DrawLevelOrb();
 
 			// Individual texture.
 			MyGame.Manager.RenderManager.DrawTitle();

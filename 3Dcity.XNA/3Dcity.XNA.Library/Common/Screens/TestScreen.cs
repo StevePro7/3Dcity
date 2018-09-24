@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using WindowsGame.Master;
 using Microsoft.Xna.Framework;
 using WindowsGame.Common.Sprites;
 using WindowsGame.Common.Static;
@@ -10,8 +9,8 @@ namespace WindowsGame.Common.Screens
 {
 	public class TestScreen : BaseScreen, IScreen
 	{
-		private Rectangle orbRectangle;
-		private Vector2 orbPosition;
+		//private Rectangle orbRectangle;
+		//private Vector2 orbPosition;
 		//private SByte number;
 
 		public override void Initialize()
@@ -34,10 +33,11 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.ScoreManager.Reset();
 
 			//orbPosition = new Vector2(Constants.ScreenWide - Constants.TargetSize - Constants.GameOffsetX, Constants.ScreenHigh - Constants.TargetSize - Constants.GameOffsetY);
-			const Byte offset = 32;
-			orbPosition = new Vector2(Constants.ScreenWide - offset - Constants.GameOffsetX-4, Constants.ScreenHigh - offset - Constants.GameOffsetY);
-			orbRectangle = MyGame.Manager.ImageManager.OrbEasyRectangle;
-			orbRectangle = MyGame.Manager.ImageManager.OrbHardRectangle;
+			//const Byte offset = 48;
+			//orbPosition = new Vector2(Constants.ScreenWide - offset - Constants.GameOffsetX - 4, Constants.ScreenHigh - offset - Constants.GameOffsetY);
+			//orbPosition = Vector2.Zero;
+			//orbRectangle = MyGame.Manager.ImageManager.OrbEasyRectangle;
+			//orbRectangle = MyGame.Manager.ImageManager.OrbHardRectangle;
 
 			base.LoadContent();
 		}
@@ -165,13 +165,11 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.SpriteManager.Draw();
 
 			MyGame.Manager.ExplosionManager.Draw();
-
+			MyGame.Manager.LevelManager.DrawLevelOrb();
 			//Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, orbPosition, orbRectangle, Color.White);
 			//Engine.SpriteBatch.Draw(Assets.OrbGreen20, orbPosition, Color.White);
-
 			//Engine.SpriteBatch.Draw(Assets.OrbGreen32, orbPosition, Color.White);
-			Engine.SpriteBatch.Draw(Assets.OrbRed32, orbPosition, Color.White);
-
+			//Engine.SpriteBatch.Draw(Assets.OrbRed32, orbPosition, Color.White);
 			//Engine.SpriteBatch.Draw(Assets.OrbGreen32, new Vector2(0, orbPosition.Y), Color.White);
 
 			// Text data last!

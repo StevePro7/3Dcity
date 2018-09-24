@@ -21,8 +21,10 @@ namespace WindowsGame.Common.Managers
 		Rectangle[][] ExplodeRectangles { get; }
 		Rectangle[] EnemyRectangles { get; }
 		Rectangle[] BulletRectangles { get; }
+		Rectangle[] OrbDiffRectangles { get; }
 		Rectangle TargetLargeRectangle { get; }
 		Rectangle TargetSmallRectangle { get; }
+
 		Rectangle OrbEasyRectangle { get; }
 		Rectangle OrbHardRectangle { get; }
 	}
@@ -115,9 +117,13 @@ namespace WindowsGame.Common.Managers
 			}
 
 			// Orbs.
+			OrbDiffRectangles = new Rectangle[2];
 			high = (2 + 6) * targetSize;
 			OrbEasyRectangle = new Rectangle(wide, high + (0 * targetSize), targetSize, targetSize);
 			OrbHardRectangle = new Rectangle(wide, high + (1 * targetSize), targetSize, targetSize);
+
+			OrbDiffRectangles[(Byte)LevelType.Easy] = new Rectangle(wide, high + (0 * targetSize), targetSize, targetSize);
+			OrbDiffRectangles[(Byte)LevelType.Hard] = new Rectangle(wide, high + (1 * targetSize), targetSize, targetSize);
 		}
 
 		// Sprite sheet #01.
@@ -133,6 +139,7 @@ namespace WindowsGame.Common.Managers
 		public Rectangle[][] ExplodeRectangles { get; private set; }
 		public Rectangle[] EnemyRectangles { get; private set; }
 		public Rectangle[] BulletRectangles { get; private set; }
+		public Rectangle[] OrbDiffRectangles { get; private set; }
 		public Rectangle TargetLargeRectangle { get; private set; }
 		public Rectangle TargetSmallRectangle { get; private set; }
 		public Rectangle OrbEasyRectangle { get; private set; }
