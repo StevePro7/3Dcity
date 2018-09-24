@@ -1,6 +1,7 @@
 ﻿using System;
 using WindowsGame.Common.Data;
 using WindowsGame.Master.Factorys;
+using WindowsGame.Common.Static;
 
 namespace WindowsGame.Common.Managers
 {
@@ -46,6 +47,7 @@ namespace WindowsGame.Common.Managers
 
 			MyGame.Manager.LevelManager.SetLevelType(storagePersistData.LevelType);
 			MyGame.Manager.LevelManager.SetLevelIndex(storagePersistData.LevelIndex);
+			MyGame.Manager.ScoreManager.SetHighScore(storagePersistData.HighScore);
 		}
 
 		public void SaveContent()
@@ -54,15 +56,19 @@ namespace WindowsGame.Common.Managers
 			{
 				storagePersistData = new StoragePersistData
 				{
+					HighScore = Constants.DEF_HIGH_SCORE,
 					PlayAudio = MyGame.Manager.ConfigManager.GlobalConfigData.PlayAudio,
 					LevelType = MyGame.Manager.ConfigManager.GlobalConfigData.LevelType,
 					LevelIndex = MyGame.Manager.ConfigManager.GlobalConfigData.LevelIndex,
 				};
 			}
-
-			storagePersistData.PlayAudio = MyGame.Manager.SoundManager.PlayAudio;
-			storagePersistData.LevelType = MyGame.Manager.LevelManager.LevelType;
-			storagePersistData.LevelIndex = MyGame.Manager.LevelManager.LevelIndex;
+			else
+			{
+				storagePersistData.HighScore = MyGame.Manager.ScoreManager.HighScore;
+				storagePersistData.PlayAudio = MyGame.Manager.SoundManager.PlayAudio;
+				storagePersistData.LevelType = MyGame.Manager.LevelManager.LevelType;
+				storagePersistData.LevelIndex = MyGame.Manager.LevelManager.LevelIndex;
+			}
 
 			storageFactory.SaveContent(storagePersistData);
 		}

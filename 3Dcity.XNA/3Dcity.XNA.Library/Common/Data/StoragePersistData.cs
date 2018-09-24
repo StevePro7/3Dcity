@@ -5,6 +5,9 @@ namespace WindowsGame.Common.Data
 {
 	public class StoragePersistData
 	{
+		// High score.
+		public UInt32 HighScore;
+
 		// General game.
 		public Boolean PlayAudio;
 		public LevelType LevelType;
