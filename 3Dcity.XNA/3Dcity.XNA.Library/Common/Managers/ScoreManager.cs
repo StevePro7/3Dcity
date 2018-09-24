@@ -27,6 +27,7 @@ namespace WindowsGame.Common.Managers
 
 	public class ScoreManager : IScoreManager
 	{
+		private const Byte MAX_LENGTH = 6;
 		private Vector2 gameScorePosition;
 		private Vector2 highScorePosition;
 		private TextData[] missTextData;
@@ -48,7 +49,7 @@ namespace WindowsGame.Common.Managers
 		public void LoadContent()
 		{
 			gameScorePosition = MyGame.Manager.TextManager.GetTextPosition(8, 1);
-			highScorePosition = MyGame.Manager.TextManager.GetTextPosition(31, 1);
+			highScorePosition = MyGame.Manager.TextManager.GetTextPosition(30, 1);
 			missTextData = GetMissTextDataList();
 			Vector2 scorePosition = MyGame.Manager.TextManager.GetTextPosition(4, 1);
 			textData = new TextData(scorePosition, Globalize.PLAYER_FLASH, Color.Yellow);
@@ -57,7 +58,6 @@ namespace WindowsGame.Common.Managers
 
 		public void Reset()
 		{
-			//HighScore = 10000;
 			MissesTotal = 0;
 			gameScore = 0;
 			gameScoreText = GetGameScoreText();
@@ -136,11 +136,11 @@ namespace WindowsGame.Common.Managers
 
 		private String GetGameScoreText()
 		{
-			return gameScore.ToString().PadLeft(5, '0');
+			return gameScore.ToString().PadLeft(MAX_LENGTH, '0');
 		}
 		private String GetHighScoreText()
 		{
-			return HighScore.ToString().PadLeft(5, '0');
+			return HighScore.ToString().PadLeft(MAX_LENGTH, '0');
 		}
 
 		public UInt32 HighScore { get; private set; }
