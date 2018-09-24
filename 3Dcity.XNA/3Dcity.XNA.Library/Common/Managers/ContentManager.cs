@@ -51,8 +51,17 @@ namespace WindowsGame.Common.Managers
 			if (MyGame.Manager.ConfigManager.GlobalConfigData.LoadAudio)
 			{
 				String soundsRoot = String.Format("{0}/{1}/", contentRoot, SOUND_DIRECTORY);
-				Assets.GameMusicSong = Engine.Content.Load<Song>(soundsRoot + "GameMusic");
-				Assets.GameOverSong = Engine.Content.Load<Song>(soundsRoot + "GameOver");
+
+				Assets.SongDictionary = new Dictionary<SongType, Song>();
+				for (SongType key = SongType.BossMusic; key <= SongType.GameTitle; ++key)
+				{
+					String assetName = String.Format("{0}{1}", soundsRoot, key);
+					Song value = contentFactory.LoadSong(assetName);
+					Assets.SongDictionary.Add(key, value);
+				}
+
+				//Assets.GameMusicSong = Engine.Content.Load<Song>(soundsRoot + "GameMusic");
+				//Assets.GameOverSong = Engine.Content.Load<Song>(soundsRoot + "GameOver");
 
 				Assets.SoundEffectDictionary = new Dictionary<SoundEffectType, SoundEffectInstance>();
 				for (SoundEffectType key = SoundEffectType.Funny; key <= SoundEffectType.Early; ++key)

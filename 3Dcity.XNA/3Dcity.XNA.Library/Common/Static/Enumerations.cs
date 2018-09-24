@@ -33,6 +33,15 @@
 		Big = 1
 	}
 
+	public enum SongType
+	{
+		BossMusic,
+		ContMusic,
+		GameMusic,
+		GameOver,
+		GameTitle
+	}
+
 	public enum SoundEffectType
 	{
 		Funny,

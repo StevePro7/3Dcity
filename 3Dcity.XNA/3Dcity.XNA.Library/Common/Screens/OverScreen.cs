@@ -44,11 +44,50 @@ namespace WindowsGame.Common.Screens
 
 		public override Int32 Update(GameTime gameTime)
 		{
+			Boolean gameState = MyGame.Manager.InputManager.GameState();
+			if (gameState)
+			{
+				MyGame.Manager.SoundManager.StopMusic();
+				MyGame.Manager.SoundManager.PlayMusic(SongType.BossMusic);
+			}
+			else
+			{
+				Boolean gameSound = MyGame.Manager.InputManager.GameSound();
+				if (gameSound)
+				{
+					MyGame.Manager.SoundManager.StopMusic();
+					MyGame.Manager.SoundManager.PlayMusic(SongType.ContMusic, false);
+				}
+				else
+				{
+					Boolean fire = MyGame.Manager.InputManager.Fire();
+					if (fire)
+					{
+						MyGame.Manager.SoundManager.StopMusic();
+						MyGame.Manager.SoundManager.PlayMusic(SongType.GameOver, false);
+					}
+					else
+					{
+						Single horz = MyGame.Manager.InputManager.Horizontal();
+						Single vert = MyGame.Manager.InputManager.Vertical();
+						if (0 == horz && 0 == vert)
+						{
+							return (Int32)CurrScreen;
+						}
+						else
+						{
+							MyGame.Manager.SoundManager.StopMusic();
+							MyGame.Manager.SoundManager.PlayMusic(SongType.GameTitle, false);
+						}
+					}
+				}
+			}
+
 			//#if DEBUG
 			//            MyGame.Manager.Logger.Info(gameTime.ElapsedGameTime.TotalSeconds.ToString());
 			//#endif
 
-			base.Update(gameTime);
+			//base.Update(gameTime);
 			//if (GamePause)
 			//{
 			//    return (Int32)CurrScreen;
@@ -57,27 +96,27 @@ namespace WindowsGame.Common.Screens
 
 			// LOG if color collision detection or not...
 			//Boolean test = MyGame.Manager.InputManager.Fire();
-			Boolean test = MyGame.Manager.InputManager.GameSound();
-			if (test)
-			{
-				collision = MyGame.Manager.CollisionManager.ColorCollision(enemysPos, targetPos);
-				//MyGame.Manager.Logger.Info(collision.ToString());
-			}
+			//Boolean test = MyGame.Manager.InputManager.GameSound();
+			//if (test)
+			//{
+			//    collision = MyGame.Manager.CollisionManager.ColorCollision(enemysPos, targetPos);
+			//    MyGame.Manager.Logger.Info(collision.ToString());
+			//}
 
 
 			// Move target unconditionally.
-			Single horz = MyGame.Manager.InputManager.Horizontal();
-			Single vert = MyGame.Manager.InputManager.Vertical();
-			if (0 == horz && 0 == vert)
-			{
-				return (Int32)CurrScreen;
-			}
+			//Single horz = MyGame.Manager.InputManager.Horizontal();
+			//Single vert = MyGame.Manager.InputManager.Vertical();
+			//if (0 == horz && 0 == vert)
+			//{
+			//    return (Int32)CurrScreen;
+			//}
 
-			Vector2 tempPos = targetPos;
-			tempPos.X += horz;
-			tempPos.Y += vert;
-			targetPos = tempPos;
-			MyGame.Manager.SpriteManager.LargeTarget.SetPosition(targetPos);
+			//Vector2 tempPos = targetPos;
+			//tempPos.X += horz;
+			//tempPos.Y += vert;
+			//targetPos = tempPos;
+			//MyGame.Manager.SpriteManager.LargeTarget.SetPosition(targetPos);
 
 			return (Int32)CurrScreen;
 		}

@@ -1,4 +1,5 @@
 ﻿using System;
+using WindowsGame.Common.Static;
 using Microsoft.Xna.Framework;
 using WindowsGame.Common.Screens;
 using WindowsGame.Master.Interfaces;
@@ -15,7 +16,7 @@ namespace WindowsGame.Common.Back
 
 		public override void LoadContent()
 		{
-			MyGame.Manager.SoundManager.PlayTitleMusic();
+			MyGame.Manager.SoundManager.PlayMusic(SongType.GameMusic);
 			base.LoadContent();
 		}
 

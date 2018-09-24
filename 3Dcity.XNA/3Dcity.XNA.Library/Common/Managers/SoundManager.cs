@@ -14,8 +14,8 @@ namespace WindowsGame.Common.Managers
 		void GamePause(Boolean gamePause);
 		void GameQuiet(Boolean gameQuiet);
 
-		void PlayTitleMusic();
-		void PlayMusic(Song song);
+		void PlayMusic(SongType key);
+		void PlayMusic(SongType key, Boolean isRepeating);
 		void PauseMusic();
 		void ResumeMusic();
 		void StopMusic();
@@ -98,20 +98,26 @@ namespace WindowsGame.Common.Managers
 			soundFactory.PlaySoundEffect(value);
 		}
 
-		public void PlayTitleMusic()
+		public void PlayMusic(SongType key)
 		{
-			PlayMusic(Assets.GameMusicSong);
+			PlayMusic(key, true);
 		}
 
-		public void PlayMusic(Song song)
+		public void PlayMusic(SongType key, Boolean isRepeating)
 		{
+			if (null == Assets.SongDictionary)
+			{
+				return;
+			}
+
+			Song song = Assets.SongDictionary[key];
 			if (null == song)
 			{
 				return;
 			}
 
 			SetVolume();
-			soundFactory.PlayMusic(Assets.GameMusicSong);
+			soundFactory.PlayMusic(song, isRepeating);
 		}
 
 		public void PauseMusic()
