@@ -51,7 +51,8 @@ namespace WindowsGame.Common.Screens
 			if (gameState)
 			{
 				MyGame.Manager.SoundManager.StopMusic();
-				MyGame.Manager.SoundManager.PlayMusic(SongType.BossMusic);
+				//MyGame.Manager.SoundManager.PlayMusic(SongType.BossMusic);
+				MyGame.Manager.SoundManager.PlayMusic(SongType.AwesomeMusic, false);
 			}
 			else
 			{

@@ -53,7 +53,7 @@ namespace WindowsGame.Common.Managers
 				String soundsRoot = String.Format("{0}/{1}/", contentRoot, SOUND_DIRECTORY);
 
 				Assets.SongDictionary = new Dictionary<SongType, Song>();
-				for (SongType key = SongType.BossMusic; key <= SongType.GameTitle; ++key)
+				for (SongType key = SongType.AwesomeMusic; key <= SongType.GameTitle; ++key)
 				{
 					String assetName = String.Format("{0}{1}", soundsRoot, key);
 					Song value = contentFactory.LoadSong(assetName);

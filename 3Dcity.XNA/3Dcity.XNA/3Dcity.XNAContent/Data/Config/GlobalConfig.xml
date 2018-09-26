@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Ready</ScreenType>
+	<ScreenType>Over</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<!--<ScreenType>Level</ScreenType>-->
 	<FramesPerSecond>100</FramesPerSecond>
 	<MaximLevel>16</MaximLevel>
-	<LoadAudio>false</LoadAudio>
-	<PlayAudio>false</PlayAudio>
+	<LoadAudio>true</LoadAudio>
+	<PlayAudio>true</PlayAudio>
 	<LevelType>Easy</LevelType>
 	<LevelIndex>0</LevelIndex>
 	<SplashDelay>0</SplashDelay>
