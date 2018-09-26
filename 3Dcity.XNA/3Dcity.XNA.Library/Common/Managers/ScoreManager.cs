@@ -31,7 +31,9 @@ namespace WindowsGame.Common.Managers
 		private Vector2 gameScorePosition;
 		private Vector2 highScorePosition;
 		private TextData[] missTextData;
-		private TextData textData;
+		//private TextData textData;
+		private TextData socreTextData;
+		private TextData highTextData;
 		private String gameScoreText;
 		private String highScoreText;
 		private UInt32 gameScore;
@@ -52,7 +54,9 @@ namespace WindowsGame.Common.Managers
 			highScorePosition = MyGame.Manager.TextManager.GetTextPosition(30, 1);
 			missTextData = GetMissTextDataList();
 			Vector2 scorePosition = MyGame.Manager.TextManager.GetTextPosition(4, 1);
-			textData = new TextData(scorePosition, Globalize.PLAYER_FLASH, Color.Yellow);
+			socreTextData = new TextData(scorePosition, Globalize.PLAYER_FLASH, Color.Yellow);
+			Vector2 highPosition = MyGame.Manager.TextManager.GetTextPosition(27, 1);
+			highTextData = new TextData(highPosition, Globalize.HISCORE_TEXT, Color.Yellow);
 			scoreBlink = MyGame.Manager.ConfigManager.GlobalConfigData.ScoreBlink;
 		}
 
@@ -84,7 +88,7 @@ namespace WindowsGame.Common.Managers
 		{
 			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, gameScoreText, gameScorePosition, Color.White);
 			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, highScoreText, highScorePosition, Color.White);
-
+			MyGame.Manager.TextManager.Draw(highTextData);
 			for (Byte index = 0; index < MissesTotal; index++)
 			{
 				MyGame.Manager.TextManager.Draw(missTextData[index]);
@@ -92,7 +96,7 @@ namespace WindowsGame.Common.Managers
 
 			if (scoreFlag)
 			{
-				MyGame.Manager.TextManager.Draw(textData);
+				MyGame.Manager.TextManager.Draw(socreTextData);
 			}
 		}
 

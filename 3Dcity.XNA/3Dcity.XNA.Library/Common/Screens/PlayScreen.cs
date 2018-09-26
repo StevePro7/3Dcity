@@ -15,6 +15,9 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
+			MyGame.Manager.ScoreManager.Reset();		// TODO delete as resets score - don't want that!
+
+
 			// Not bad settings for default.
 			MyGame.Manager.BulletManager.Reset(10, 200, 100);
 
@@ -24,7 +27,6 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.EnemyManager.Reset(levelType, enemySpawn, 2000, 5000, enemyTotal);
 			MyGame.Manager.EnemyManager.SpawnAllEnemies();
 
-			MyGame.Manager.ScoreManager.Reset();
 			MyGame.Manager.SoundManager.PlayMusic(SongType.GameMusic);
 			base.LoadContent();
 		}
@@ -105,7 +107,6 @@ namespace WindowsGame.Common.Screens
 			// Sprite sheet #01.
 			base.Draw();
 			MyGame.Manager.IconManager.DrawControls();
-			MyGame.Manager.ScoreManager.Draw();
 
 			// Sprite sheet #02.
 			MyGame.Manager.EnemyManager.Draw();
@@ -114,6 +115,7 @@ namespace WindowsGame.Common.Screens
 
 			// Text data last!
 			MyGame.Manager.TextManager.Draw(TextDataList);
+			MyGame.Manager.ScoreManager.Draw();
 		}
 
 	}

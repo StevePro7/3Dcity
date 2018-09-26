@@ -29,6 +29,9 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
+			MyGame.Manager.ScoreManager.Reset();		// TODO delete as resets score - don't want that!
+
+
 			outputPos = MyGame.Manager.TextManager.GetTextPosition(0, 4);
 			GlobalConfigData data = MyGame.Manager.ConfigManager.GlobalConfigData;
 			enemysPos = new Vector2(data.EnemysX, data.EnemysY);
@@ -131,7 +134,11 @@ namespace WindowsGame.Common.Screens
 			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, targetPos, targetRect, Color.White);
 
 			// Text data last!
-			//MyGame.Manager.TextManager.Draw(TextDataList);
+			MyGame.Manager.TextManager.Draw(TextDataList);
+			MyGame.Manager.ScoreManager.Draw();
+
+
+			// TODO delete
 			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, outputText[Convert.ToByte(collision)], outputPos, Color.White);
 		}
 
