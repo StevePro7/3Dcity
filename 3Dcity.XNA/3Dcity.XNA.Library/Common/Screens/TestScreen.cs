@@ -32,13 +32,6 @@ namespace WindowsGame.Common.Screens
 
 			MyGame.Manager.ScoreManager.Reset();
 
-			//orbPosition = new Vector2(Constants.ScreenWide - Constants.TargetSize - Constants.GameOffsetX, Constants.ScreenHigh - Constants.TargetSize - Constants.GameOffsetY);
-			//const Byte offset = 48;
-			//orbPosition = new Vector2(Constants.ScreenWide - offset - Constants.GameOffsetX - 4, Constants.ScreenHigh - offset - Constants.GameOffsetY);
-			//orbPosition = Vector2.Zero;
-			//orbRectangle = MyGame.Manager.ImageManager.OrbEasyRectangle;
-			//orbRectangle = MyGame.Manager.ImageManager.OrbHardRectangle;
-
 			base.LoadContent();
 		}
 

@@ -6,8 +6,8 @@
 	<!--<ScreenType>Level</ScreenType>-->
 	<FramesPerSecond>100</FramesPerSecond>
 	<MaximLevel>16</MaximLevel>
-	<LoadAudio>true</LoadAudio>
-	<PlayAudio>true</PlayAudio>
+	<LoadAudio>false</LoadAudio>
+	<PlayAudio>false</PlayAudio>
 	<LevelType>Easy</LevelType>
 	<LevelIndex>0</LevelIndex>
 	<SplashDelay>0</SplashDelay>

@@ -158,10 +158,10 @@ namespace WindowsGame.Common.Screens
 
 			// Text data last!
 			MyGame.Manager.TextManager.Draw(TextDataList);
-
+			MyGame.Manager.TextManager.DrawText(cursorOptions[moveIndex], cursorPosition);
 			MyGame.Manager.TextManager.DrawText(levelName, levelNamePosition);
 			MyGame.Manager.TextManager.DrawText(levelValu, levelTextPosition);
-			MyGame.Manager.TextManager.DrawText(cursorOptions[moveIndex], cursorPosition);
+			MyGame.Manager.LevelManager.DrawLevelRoman();
 		}
 
 		private void PopulateLevelData(Byte theLevelIndex)

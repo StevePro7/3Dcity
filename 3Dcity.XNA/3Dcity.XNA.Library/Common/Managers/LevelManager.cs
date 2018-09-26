@@ -14,11 +14,12 @@ namespace WindowsGame.Common.Managers
 
 		void SetLevelType(LevelType levelType);
 		void SetLevelIndex(Byte levelIndex);
-		void Draw();
+		//void Draw();							// TODO delete	
+		void DrawLevelRoman();
 		void DrawLevelOrb();
 
 		// Properties.
-		Vector2[] LevelTextPositions { get; }
+		//Vector2[] LevelTextPositions { get; }		// TODO delete
 		IList<String> LevelNames { get; }
 		IList<String> LevelRoman{ get; }
 		Byte MaximLevel { get; }
@@ -32,9 +33,11 @@ namespace WindowsGame.Common.Managers
 	public class LevelManager : ILevelManager 
 	{
 		private String levelRoot;
+		private String levelText;
+		private Vector2 levelRomanPosition;
 		private Vector2 levelOrbPosition;
 		private Rectangle levelOrbPbRectangle;
-		 //private Rectangle diffOrbRectangle;
+		//private Rectangle diffOrbRectangle;	// TODO delete
 
 		private const String LEVELS_DIRECTORY = "Levels";
 		private const String LEVELS_NAMESFILE = "LevelNames";
@@ -48,7 +51,8 @@ namespace WindowsGame.Common.Managers
 		public void Initialize(String root)
 		{
 			levelRoot = String.Format("{0}{1}/{2}/{3}", root, Constants.CONTENT_DIRECTORY, Constants.DATA_DIRECTORY, LEVELS_DIRECTORY);
-			LevelTextPositions = GetLevelTextPositions();
+			levelRomanPosition = MyGame.Manager.TextManager.GetTextPosition(0, 11);
+			//LevelTextPositions = GetLevelTextPositions();
 
 			const Byte offset = 48;
 			levelOrbPosition = new Vector2(Constants.ScreenWide - offset - Constants.GameOffsetX - 4, Constants.ScreenHigh - offset - Constants.GameOffsetY);
@@ -94,28 +98,40 @@ namespace WindowsGame.Common.Managers
 				return;
 			}
 			LevelName = LevelNames[levelIndex];
+
+			if (null == LevelRoman)
+			{
+				return;
+			}
+			levelText = LevelRoman[levelIndex];
 		}
 
-		public void Draw()
+		// TODO delete
+		//public void Draw()
+		//{
+		//    MyGame.Manager.TextManager.DrawText(LevelDiff, LevelTextPositions[0]);
+		//    MyGame.Manager.TextManager.DrawText(LevelValu, LevelTextPositions[1]);
+		//    MyGame.Manager.TextManager.DrawText(LevelName, LevelTextPositions[2]);
+		//}
+
+		public void DrawLevelRoman()
 		{
-			MyGame.Manager.TextManager.DrawText(LevelDiff, LevelTextPositions[0]);
-			MyGame.Manager.TextManager.DrawText(LevelValu, LevelTextPositions[1]);
-			MyGame.Manager.TextManager.DrawText(LevelName, LevelTextPositions[2]);
+			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, levelText, levelRomanPosition, Color.White);
 		}
-
 		public void DrawLevelOrb()
 		{
 			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, levelOrbPosition, levelOrbPbRectangle, Color.White);
 		}
 
-		private static Vector2[] GetLevelTextPositions()
-		{
-			Vector2[] positions = new Vector2[3];
-			positions[0] = MyGame.Manager.TextManager.GetTextPosition(0, 9);
-			positions[1] = MyGame.Manager.TextManager.GetTextPosition(0, 10);
-			positions[2] = MyGame.Manager.TextManager.GetTextPosition(0, 11);
-			return positions;
-		}
+		// TODO delete
+		//private static Vector2[] GetLevelTextPositions()
+		//{
+		//    Vector2[] positions = new Vector2[3];
+		//    positions[0] = MyGame.Manager.TextManager.GetTextPosition(0, 9);
+		//    positions[1] = MyGame.Manager.TextManager.GetTextPosition(0, 10);
+		//    positions[2] = MyGame.Manager.TextManager.GetTextPosition(0, 11);
+		//    return positions;
+		//}
 
 		public Vector2[] LevelTextPositions { get; private set; }
 		public IList<String> LevelNames { get; private set; }
