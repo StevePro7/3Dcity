@@ -54,6 +54,10 @@ namespace WindowsGame.Common.Static
 		public const UInt32 DEF_HIGH_SCORE = 100000;
 		public const Byte MAX_NUM_MISSES = 4;
 
+		public const Byte BOTTOM_SECTOR = 5;
+		public const Byte BOTTOM_OFFSET = 190;
+		public const UInt16 HALFWAY_DOWN = 280;
+
 		// Sizes.
 		public const Byte HalfSize = 40;
 		public const Byte IconSize = 70;

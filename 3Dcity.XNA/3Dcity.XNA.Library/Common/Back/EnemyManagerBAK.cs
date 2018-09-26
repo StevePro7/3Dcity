@@ -4,16 +4,19 @@ using Microsoft.Xna.Framework;
 using WindowsGame.Common.Sprites;
 using WindowsGame.Common.Static;
 
-namespace WindowsGame.Common.Managers
+namespace WindowsGame.Common.Back
 {
-	public interface IEnemyManager 
+	public interface IEnemyManagerBAK
 	{
 		void Initialize();
 		void LoadContent();
 		void Reset(LevelType theLevelType, Byte theEnemySpawn, UInt16 minDelay, UInt16 maxDelay, Byte enemyTotal);
 		void SpawnAllEnemies();
 		void SpawnOneEnemy(Byte index);
+		//void CheckAllEnemies();					// TODO delete
 		Boolean CheckThisEnemy(Byte index);
+		//void CheckThisEnemy(Byte index);
+		//void CheckThisEnemy(Enemy enemy);			// TODO delete
 		Boolean CheckEnemiesNone();
 
 		//void Spawn(UInt16 frameDelay, Vector2 position);
@@ -34,7 +37,7 @@ namespace WindowsGame.Common.Managers
 		Byte EnemyTotal { get; }
 	}
 
-	public class EnemyManager : IEnemyManager
+	public class EnemyManagerBAK : IEnemyManagerBAK
 	{
 		private LevelType levelType;
 		private Byte maxEnemySpawn;
@@ -149,6 +152,38 @@ namespace WindowsGame.Common.Managers
 			EnemySpawn++;
 		}
 
+		// TODO delete
+		//public void CheckAllEnemies()
+		//{
+		//    Boolean test = false;
+		//    for (Byte index = 0; index < maxEnemySpawn; index++)
+		//    {
+		//        Enemy enemy = EnemyList[index];
+		//        if (EnemyType.Test != enemy.EnemyType)
+		//        {
+		//            continue;
+		//        }
+
+		//        SByte slotID = enemy.SlotID;
+		//        if (EnemyDict.ContainsKey((Byte)slotID))
+		//        {
+		//            EnemyDict.Remove((Byte)slotID);
+		//        }
+
+		//        enemy.Reset();
+
+		//        //EnemyCount++;
+		//        //if (EnemyCount > EnemyTotal)
+		//        //{
+		//        //    test = true;
+		//        //    enemy.None();
+		//        //}
+		//        //SpawnOneEnemy(index);
+		//    }
+
+		////	return test;
+		//}
+
 		public Boolean CheckThisEnemy(Byte index)
 		{
 			Boolean check = false;
@@ -176,6 +211,38 @@ namespace WindowsGame.Common.Managers
 
 			return check;
 		}
+
+		//public void CheckThisEnemy(Byte index)
+		//{
+		//    Enemy enemy = EnemyList[index];
+		//    if (EnemyType.Test == enemy.EnemyType || EnemyType.Dead == enemy.EnemyType)
+		//    {
+		//        SByte slotID = enemy.SlotID;
+		//        if (EnemyDict.ContainsKey((Byte)slotID))
+		//        {
+		//            EnemyDict.Remove((Byte)slotID);
+		//        }
+
+		//        enemy.Reset();
+		//    }
+		//}
+
+		// TODO delete
+		//public void CheckThisEnemy(Enemy enemy)
+		//{
+		//    if (EnemyType.Test != enemy.EnemyType)
+		//    {
+		//        return;
+		//    }
+
+		//    SByte slotID = enemy.SlotID;
+		//    if (EnemyDict.ContainsKey((Byte)slotID))
+		//    {
+		//        EnemyDict.Remove((Byte)slotID);
+		//    }
+
+		//    enemy.Reset();
+		//}
 
 		public Boolean CheckEnemiesNone()
 		{
@@ -235,25 +302,17 @@ namespace WindowsGame.Common.Managers
 			const Byte size = 120;
 			const Byte wide = 160;
 			const Byte high = 200;
+			const Byte uppr = 5;
 
-			const Byte inflate = 4;
-			const Byte deflate = 8;
-
-			UInt16 offsetY = 80;
-			offsetY += Constants.GameOffsetY;
-
-			const Byte uppr = Constants.BOTTOM_SECTOR;
 			if (index < uppr)
 			{
-				return new Rectangle((wide * index) + inflate, offsetY + inflate, wide - size - deflate, high - size - deflate);
+				return new Rectangle((wide * index), 80 + Constants.GameOffsetY, (wide - size), (high - size));
 			}
 			else
 			{
 				index -= uppr;
-				offsetY = Constants.HALFWAY_DOWN;
-				offsetY += Constants.GameOffsetY;
-				const Byte offsetX = Constants.BOTTOM_OFFSET;
-				return new Rectangle(offsetX + (wide * index) + inflate, offsetY + inflate, wide - size - deflate, high - size - deflate);
+				const Byte offset = 190;
+				return new Rectangle(offset + wide * index, 280 + Constants.GameOffsetY, (wide - size), (high - size));
 			}
 		}
 

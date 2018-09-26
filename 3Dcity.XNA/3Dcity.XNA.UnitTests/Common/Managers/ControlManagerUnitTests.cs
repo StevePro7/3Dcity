@@ -51,8 +51,8 @@ namespace WindowsGame.UnitTests.Common.Managers
 		[Test]
 		public void ClampPosInRectTest01()
 		{
-		    posX = 250; posY = 200;
-		    sizeX = 0; sizeY = 280; sizeW = 200; sizeH = 200;
+			posX = 250; posY = 200;
+			sizeX = 0; sizeY = 280; sizeW = 200; sizeH = 200;
 
 			Vector2 position = new Vector2(posX, posY);
 			Rectangle bounds = new Rectangle(sizeX, sizeY, sizeW, sizeH);

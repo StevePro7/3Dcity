@@ -116,3 +116,6 @@ Range = 80 is good min / max value
 
 Maximum range Hard = 90	left / right couple of pixels away [tough!] but includes more wings collision
 
+Bullet lookup slot
+pos = {X:316 Y:276}
+pos = {X:288 Y:248}
