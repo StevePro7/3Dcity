@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Over</ScreenType>
+	<ScreenType>Title</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<!--<ScreenType>Level</ScreenType>-->
 	<FramesPerSecond>100</FramesPerSecond>
 	<MaximLevel>16</MaximLevel>
-	<LoadAudio>true</LoadAudio>
-	<PlayAudio>true</PlayAudio>
+	<LoadAudio>false</LoadAudio>
+	<PlayAudio>false</PlayAudio>
 	<LevelType>Easy</LevelType>
 	<LevelIndex>0</LevelIndex>
 	<SplashDelay>0</SplashDelay>
@@ -28,7 +28,7 @@
 	<EnemyFrame>7</EnemyFrame>
 	<EnemyIndex>0</EnemyIndex>
 	<EnemySpawn>1</EnemySpawn>
-	<EnemyTotal>10</EnemyTotal>
+	<EnemyTotal>1</EnemyTotal>
 	<IsGodMode>true</IsGodMode>
 	<QuitsToExit>true</QuitsToExit>
 </GlobalConfigData>

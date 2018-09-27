@@ -63,7 +63,7 @@ namespace WindowsGame.Common.Screens
 			//DrawShip(new Vector2(-2 + 28, 74 + 28));
 			//Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, new Vector2(-2, 74), MyGame.Manager.ImageManager.BulletRectangles[5], Color.White);
 
-			const Byte b = 2;
+			//const Byte b = 2;
 			//DrawShip(new Vector2(160 -120 - 4, 80 + 4));
 			//DrawShip(new Vector2(160 + 4, 80 + 4));
 			//DrawBullet(new Vector2(160 - 4, 80 - 4));
