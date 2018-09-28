@@ -25,54 +25,22 @@ namespace WindowsGame.Common.Screens
 			base.Update(gameTime);
 
 			// Move target unconditionally.
-			//Single horz = MyGame.Manager.InputManager.Horizontal();
-			//Single vert = MyGame.Manager.InputManager.Vertical();
-			//MyGame.Manager.SpriteManager.SetMovement(horz, vert);
-			//MyGame.Manager.SpriteManager.Update(gameTime);
+			Single horz = MyGame.Manager.InputManager.Horizontal();
+			Single vert = MyGame.Manager.InputManager.Vertical();
+			MyGame.Manager.SpriteManager.SetMovement(horz, vert);
+			MyGame.Manager.SpriteManager.Update(gameTime);
 
-			for (Int16 x = -2; x <= 736; x++)
+			Boolean fire = MyGame.Manager.InputManager.Fire();
+			if (fire)
 			{
-				//const UInt16 x = 157;
+				Vector2 pos2 = MyGame.Manager.SpriteManager.LargeTarget.Position;
+				Vector2 pos3 = new Vector2(pos2.X + 28, pos2.Y + 28);
+				SByte index = MyGame.Manager.CollisionManager.DetermineEnemySlot(pos2);
 
-				////Vector2 pos1 = new Vector2(x - 28, 84);
-				Vector2 pos1 = new Vector2(x - 0, 384);
-				MyGame.Manager.SpriteManager.LargeTarget.SetPosition(pos1);
-
-				//Boolean fire = MyGame.Manager.InputManager.Fire();
-				//if (fire)
-				{
-					Vector2 pos2 = MyGame.Manager.SpriteManager.LargeTarget.Position;
-					Vector2 pos3 = new Vector2(pos2.X + 28, pos2.Y + 28);
-					SByte index = MyGame.Manager.CollisionManager.DetermineEnemySlot(pos2);
-
-					String msg = String.Format("({0},{1})  [({2},{3}]] => {4}", pos2.X, pos2.Y, pos3.X, pos3.Y, index);
-					//MyGame.Manager.Logger.Info(msg);
-					Console.WriteLine(msg);
-				}
-
+				String msg = String.Format("({0},{1})  [({2},{3}]] => {4}", pos2.X, pos2.Y, pos3.X, pos3.Y, index);
+				MyGame.Manager.Logger.Info(msg);
 			}
 
-
-			//const UInt16 x = 200;
-
-			////Vector2 pos1 = new Vector2(x - 28, 84);
-			//Vector2 pos1 = new Vector2(x - 0, 280 - 4 - 28);
-			//MyGame.Manager.SpriteManager.LargeTarget.SetPosition(pos1);
-
-			////Boolean fire = MyGame.Manager.InputManager.Fire();
-			////if (fire)
-			//{
-			//    Vector2 pos2 = MyGame.Manager.SpriteManager.LargeTarget.Position;
-			//    Vector2 pos3 = new Vector2(pos2.X + 28, pos2.Y + 28);
-			//    SByte index = MyGame.Manager.CollisionManager.DetermineEnemySlot(pos2);
-
-			//    String msg = String.Format("({0},{1})  [({2},{3}]] => {4}", pos2.X, pos2.Y, pos3.X, pos3.Y, index);
-			//    MyGame.Manager.Logger.Info(msg);
-			//    //Console.WriteLine(msg);
-			//}
-
-
-			Engine.Game.Exit();
 
 			MyGame.Manager.ScoreManager.Update(gameTime);
 			return (Int32) CurrScreen;
@@ -93,26 +61,6 @@ namespace WindowsGame.Common.Screens
 			//DrawShip(pos);
 			//DrawBullet(pos);
 			DrawBullet2(MyGame.Manager.SpriteManager.LargeTarget.Position);
-
-
-			//MyGame.Manager.LevelManager.DrawLevelOrb();
-
-			//Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, new Vector2(-2 + 28, 74 + 28), MyGame.Manager.ImageManager.EnemyRectangles[7], Color.White);
-			//DrawShip(new Vector2(-2 + 28, 74 + 28));
-			//Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, new Vector2(-2, 74), MyGame.Manager.ImageManager.BulletRectangles[5], Color.White);
-
-			//const Byte b = 2;
-			//DrawShip(new Vector2(160 -120 - 4, 80 + 4));
-			//DrawShip(new Vector2(160 + 4, 80 + 4));
-			//DrawBullet(new Vector2(160 - 4, 80 - 4));
-
-			//DrawShip(new Vector2(b * 160 - 120 - 4, 280 - 120 - 4));
-			//DrawShip(new Vector2(b * 160 + 4, 280 - 120 - 4));
-
-			//DrawShip(new Vector2(b * 160 - 120 - 4, 280 + 4));
-			//DrawShip(new Vector2(b * 160 + 4, 280 + 4));
-
-			//DrawBullet(new Vector2(b * 160 - 4, 280 - 4));
 
 			// Individual texture.
 			MyGame.Manager.DebugManager.Draw();

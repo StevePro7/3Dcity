@@ -162,28 +162,6 @@ namespace WindowsGame.Common.Managers
 						return (SByte)index;
 					}
 				}
-
-				// TODO delete!
-				//if (position.X < (1 * 160) - 4)
-				//{
-				//    return 0;
-				//}
-				//if (position.X < (2 * 160) - 4)
-				//{
-				//    return 1;
-				//}
-				//if (position.X < (3 * 160) - 4)
-				//{
-				//    return 2;
-				//}
-				//if (position.X < (4 * 160) - 4)
-				//{
-				//    return 3;
-				//}
-				//if (position.X < (5 * 160) - 4)
-				//{
-				//    return 4;
-				//}
 			}
 
 
@@ -211,40 +189,15 @@ namespace WindowsGame.Common.Managers
 					}
 				}
 
-
-				// TODO test this!
-				//Byte modulo = (Byte)((position.X + Constants.BOTTOM_OFFSET) / Constants.DbleSize);
-				//UInt16 data = (UInt16)((modulo + 1) * Constants.DbleSize);
-
-				//var bob = (Int16)(data - (position.X + Constants.BOTTOM_OFFSET));
-				//if (borderSize == (Int16)(data - (position.X + Constants.BOTTOM_OFFSET)))
-				//{
-				//    return Constants.INVALID_INDEX;
-				//}
-
-				// TODO test this!
+				// Lookup index.
 				for (Byte index = Constants.BOTTOM_SECTOR; index < Constants.MAX_ENEMYS_SPAWN; index++)
 				{
 					Byte value = (Byte)(index - Constants.BOTTOM_SECTOR);
-					//if ((position.X + Constants.BOTTOM_OFFSET) < ((index + 1) * Constants.DbleSize) + Constants.BOTTOM_OFFSET - borderSize)
 					if (position.X < ((value + 1) * Constants.DbleSize) + Constants.BOTTOM_OFFSET - borderSize)
 					{
 						return (SByte)index;
 					}
 				}
-
-				//if (position.X < (1 * 160) + Constants.BOTTOM_OFFSET - borderSize)
-				//{
-				//    return 5;
-				//}
-				//if (position.X < (2 * 160) + Constants.BOTTOM_OFFSET - borderSize)
-				//{
-				//    return 6;
-				//}
-				//if (position.X < (3 * 160) + Constants.BOTTOM_OFFSET - borderSize)
-				//{
-				//    return 7;
-				//}
 
 				return Constants.INVALID_INDEX;
 			}
