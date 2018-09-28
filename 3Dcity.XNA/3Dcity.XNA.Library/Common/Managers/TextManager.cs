@@ -22,11 +22,15 @@ namespace WindowsGame.Common.Managers
 		void Draw(TextData textData);
 		void DrawCursor(Vector2 position);
 		void DrawText(String text, Vector2 position);
+		void DrawTitle();
 	}
 
 	public class TextManager : ITextManager 
 	{
 		private String textFileRoot;
+
+		private String titleText;
+		private Vector2 titlePosition;
 
 		private static Char[] DELIM;
 		private static Char[] PIPES;
@@ -44,6 +48,9 @@ namespace WindowsGame.Common.Managers
 			PIPES = new[] { '|' };
 
 			textFileRoot = String.Format("{0}{1}/{2}/{3}", root, Constants.CONTENT_DIRECTORY, Constants.DATA_DIRECTORY, TEXTS_DIRECTORY);
+
+			titleText = Globalize.GAME_TITLE;
+			titlePosition = GetTextPosition(15, 1);
 		}
 
 		public IList<TextData> LoadTextData(String screen)
@@ -112,6 +119,10 @@ namespace WindowsGame.Common.Managers
 		public void DrawText(String text, Vector2 position)
 		{
 			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, text, position, Color.White);
+		}
+		public void DrawTitle()
+		{
+			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, titleText, titlePosition, Color.White);
 		}
 
 		private static Color ConvertFromHex(String hexCode)

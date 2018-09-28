@@ -72,6 +72,7 @@
 		Splash,
 		Init,
 		Title,
+		Intro,
 		Diff,
 		Level,
 		Ready,

@@ -4,7 +4,7 @@ namespace WindowsGame.Common.Static
 {
 	public static class Globalize
 	{
-		public const String GAME_TITLE = "3D CITY";
+		public const String GAME_TITLE = "--3D CITY--";
 
 		public const String PLAYER_FLASH = "1UP";
 		public const String HISCORE_TEXT = "HI";

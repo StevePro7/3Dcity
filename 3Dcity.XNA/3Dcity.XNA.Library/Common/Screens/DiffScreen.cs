@@ -126,6 +126,7 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.RenderManager.DrawTitle();
 
 			// Text data last!
+			MyGame.Manager.TextManager.DrawTitle();
 			MyGame.Manager.TextManager.Draw(TextDataList);
 			MyGame.Manager.TextManager.DrawCursor(cursorPositions[levelType]);
 		}
