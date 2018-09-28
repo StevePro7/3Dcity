@@ -15,6 +15,7 @@ namespace WindowsGame.Common.Data
 		public UInt16 SplashDelay;
 		public UInt16 StarDelay;
 		public UInt16 GridDelay;
+		public UInt16 IntroDelay;
 		public UInt16 SelectDelay;
 		public UInt16 ScoreDelay;
 		public Single EventRatio;
@@ -23,6 +24,7 @@ namespace WindowsGame.Common.Data
 		public Boolean UpdateGrid;
 		public Boolean RenderBack;
 		public Boolean RenderIcon;
+		public Boolean AwesomeMusic;
 		public UInt16 TargetX;
 		public UInt16 TargetY;
 		public UInt16 EnemysX;

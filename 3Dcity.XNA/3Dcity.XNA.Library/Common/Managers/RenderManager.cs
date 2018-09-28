@@ -14,6 +14,7 @@ namespace WindowsGame.Common.Managers
 		void UpdateGrid(GameTime gameTime);
 		void Draw();
 		void DrawTitle();
+		void DrawTitle(Vector2 position);
 	}
 
 	public class RenderManager : IRenderManager
@@ -105,7 +106,11 @@ namespace WindowsGame.Common.Managers
 
 		public void DrawTitle()
 		{
-			Engine.SpriteBatch.Draw(Assets.GameTitle, titlePosition, Color.White);
+			DrawTitle(titlePosition);
+		}
+		public void DrawTitle(Vector2 position)
+		{
+			Engine.SpriteBatch.Draw(Assets.GameTitle, position, Color.White);
 		}
 
 	}

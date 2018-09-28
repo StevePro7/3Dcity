@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Ready</ScreenType>
+	<ScreenType>Intro</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<!--<ScreenType>Level</ScreenType>-->
+	<!--<ScreenType>Intro</ScreenType>-->
 	<FramesPerSecond>100</FramesPerSecond>
 	<MaximLevel>16</MaximLevel>
 	<LoadAudio>false</LoadAudio>
@@ -14,6 +15,7 @@
 	<StarDelay>2000</StarDelay>
 	<GridDelay>200</GridDelay>
 	<SelectDelay>500</SelectDelay>
+	<IntroDelay>660</IntroDelay>
 	<ScoreDelay>800</ScoreDelay>
 	<EventRatio>1.0</EventRatio>
 	<ScoreBlink>false</ScoreBlink>
@@ -21,6 +23,7 @@
 	<UpdateGrid>false</UpdateGrid>
 	<RenderBack>true</RenderBack>
 	<RenderIcon>true</RenderIcon>
+	<AwesomeMusic>true</AwesomeMusic>
 	<TargetX>0</TargetX>
 	<TargetY>0</TargetY>
 	<EnemysX>400</EnemysX>
