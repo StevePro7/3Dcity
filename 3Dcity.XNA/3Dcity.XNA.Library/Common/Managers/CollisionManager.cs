@@ -128,10 +128,13 @@ namespace WindowsGame.Common.Managers
 
 		public SByte DetermineEnemySlot(Vector2 position)
 		{
-			//Vector2 topLeftPos = position;
-			//topLeftPos.X -= bulletSize;
-			//topLeftPos.Y -= bulletSize;
-			//position = topLeftPos
+			// Position injected is the target postion [top-left]
+			// Bullet is at the same position BUT must offset 28px
+			// Readon: 8x8 bullet is middle of target move 28x28px
+			Vector2 topLeftPos = position;
+			topLeftPos.X += bulletSize;
+			topLeftPos.Y += bulletSize;
+			position = topLeftPos;
 
 			// Bullet exactly in middle thus cannot kill any ships.
 			const UInt16 halfWayOffset = Constants.HALFWAY_DOWN - borderSize;
@@ -152,85 +155,101 @@ namespace WindowsGame.Common.Managers
 					return Constants.INVALID_INDEX;
 				}
 
-				// TODO test this!
-				//for (Byte index = 0; index < Constants.BOTTOM_SECTOR; index++)
-				//{
-				//    if (position.X < ((index + 1) * Constants.DbleSize) - borderSize)
-				//    {
-				//        return (SByte)index;
-				//    }
-				//}
+				for (Byte index = 0; index < Constants.BOTTOM_SECTOR; index++)
+				{
+					if (position.X < ((index + 1) * Constants.DbleSize) - borderSize)
+					{
+						return (SByte)index;
+					}
+				}
 
-				if (position.X < (1 * 160) - 4)
-				{
-					return 0;
-				}
-				if (position.X < (2 * 160) - 4)
-				{
-					return 1;
-				}
-				if (position.X < (3 * 160) - 4)
-				{
-					return 2;
-				}
-				if (position.X < (4 * 160) - 4)
-				{
-					return 3;
-				}
-				if (position.X < (5 * 160) - 4)
-				{
-					return 4;
-				}
+				// TODO delete!
+				//if (position.X < (1 * 160) - 4)
+				//{
+				//    return 0;
+				//}
+				//if (position.X < (2 * 160) - 4)
+				//{
+				//    return 1;
+				//}
+				//if (position.X < (3 * 160) - 4)
+				//{
+				//    return 2;
+				//}
+				//if (position.X < (4 * 160) - 4)
+				//{
+				//    return 3;
+				//}
+				//if (position.X < (5 * 160) - 4)
+				//{
+				//    return 4;
+				//}
 			}
+
 
 			// Bottom section [below middle] - slotID more involved.
 			if (position.Y > halfWayOffset)
 			{
-				if (position.X < Constants.BOTTOM_OFFSET)
+				// Bottom left is invalid.
+				if (position.X <= Constants.BOTTOM_OFFSET - borderSize)
 				{
 					return Constants.INVALID_INDEX;
 				}
-				if (position.X > (3 * Constants.BOTTOM_OFFSET))
+				// Bottom right is invalid.  [Includes 666]
+				if (position.X >= (3 * Constants.DbleSize) + Constants.BOTTOM_OFFSET - borderSize)
 				{
 					return Constants.INVALID_INDEX;
+				}
+
+				// Test 346 or 506 - 2x bottom spots.
+				for (Byte index = 0; index < 2; index++)
+				{
+					UInt16 spot = (UInt16) (((index + 1) * Constants.DbleSize) + Constants.BOTTOM_OFFSET - borderSize); 
+					if (spot == (UInt16)position.X)
+					{
+						return Constants.INVALID_INDEX;
+					}
 				}
 
 
 				// TODO test this!
-				Byte modulo = (Byte)((position.X + Constants.BOTTOM_OFFSET) / Constants.DbleSize);
-				UInt16 data = (UInt16)((modulo + 1) * Constants.DbleSize);
+				//Byte modulo = (Byte)((position.X + Constants.BOTTOM_OFFSET) / Constants.DbleSize);
+				//UInt16 data = (UInt16)((modulo + 1) * Constants.DbleSize);
 
-				var bob = (Int16)(data - (position.X + Constants.BOTTOM_OFFSET));
-				if (borderSize == (Int16)(data - (position.X + Constants.BOTTOM_OFFSET)))
-				{
-					return Constants.INVALID_INDEX;
-				}
-
-				// TODO test this!
-				//for (Byte index = Constants.BOTTOM_SECTOR; index < Constants.MAX_ENEMYS_SPAWN; index++)
+				//var bob = (Int16)(data - (position.X + Constants.BOTTOM_OFFSET));
+				//if (borderSize == (Int16)(data - (position.X + Constants.BOTTOM_OFFSET)))
 				//{
-				//    if ((position.X + Constants.BOTTOM_OFFSET) < ((index + 1) * Constants.DbleSize) + Constants.BOTTOM_OFFSET - borderSize)
-				//    {
-				//        return (SByte)index;
-				//    }
+				//    return Constants.INVALID_INDEX;
 				//}
 
-				if (position.X < (1 * 160) + Constants.BOTTOM_OFFSET - 4)
+				// TODO test this!
+				for (Byte index = Constants.BOTTOM_SECTOR; index < Constants.MAX_ENEMYS_SPAWN; index++)
 				{
-					return 5;
+					Byte value = (Byte)(index - Constants.BOTTOM_SECTOR);
+					//if ((position.X + Constants.BOTTOM_OFFSET) < ((index + 1) * Constants.DbleSize) + Constants.BOTTOM_OFFSET - borderSize)
+					if (position.X < ((value + 1) * Constants.DbleSize) + Constants.BOTTOM_OFFSET - borderSize)
+					{
+						return (SByte)index;
+					}
 				}
-				if (position.X < (2 * 160) + Constants.BOTTOM_OFFSET - 4)
-				{
-					return 6;
-				}
-				if (position.X < (3 * 160) + Constants.BOTTOM_OFFSET - 4)
-				{
-					return 7;
-				}
+
+				//if (position.X < (1 * 160) + Constants.BOTTOM_OFFSET - borderSize)
+				//{
+				//    return 5;
+				//}
+				//if (position.X < (2 * 160) + Constants.BOTTOM_OFFSET - borderSize)
+				//{
+				//    return 6;
+				//}
+				//if (position.X < (3 * 160) + Constants.BOTTOM_OFFSET - borderSize)
+				//{
+				//    return 7;
+				//}
+
+				return Constants.INVALID_INDEX;
 			}
 
-			return SByte.MinValue;
-			//return Constants.INVALID_INDEX;
+			return Constants.INVALID_INDEX;
 		}
 
 		// TODO give a better name!
