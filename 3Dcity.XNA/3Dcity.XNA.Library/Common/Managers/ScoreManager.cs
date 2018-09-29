@@ -45,6 +45,8 @@ namespace WindowsGame.Common.Managers
 		{
 			scoreDelay = MyGame.Manager.ConfigManager.GlobalConfigData.ScoreDelay;
 			SetHighScore(Constants.DEF_HIGH_SCORE);
+
+			Reset();
 		}
 
 		public void LoadContent()

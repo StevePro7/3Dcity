@@ -46,7 +46,6 @@ namespace WindowsGame.Common.Screens
 				// MyGame.Manager.SpriteManager.LargeTarget.Position = {X:-2 Y:74}		// TOP LEFT
 			}
 
-
 			return (Int32)CurrScreen;
 		}
 

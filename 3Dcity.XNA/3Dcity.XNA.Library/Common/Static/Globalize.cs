@@ -13,5 +13,8 @@ namespace WindowsGame.Common.Static
 		public const String CURSOR_LEFTS = "<<";
 		public const String CURSOR_RIGHT = ">>";
 		public const String MISS_TEXT = "X>";
+
+		public const String INSTRUCTION1 = "MOVE TARGET TO CHOOSE";
+		public const String INSTRUCTION2 = "FIRE BUTTON TO SELECT";
 	}
 }

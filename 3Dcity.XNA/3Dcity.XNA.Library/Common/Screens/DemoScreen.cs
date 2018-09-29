@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using WindowsGame.Common.Static;
 using WindowsGame.Master.Interfaces;
+
 namespace WindowsGame.Common.Screens
 {
 	public class DemoScreen : BaseScreen, IScreen
@@ -21,7 +22,7 @@ namespace WindowsGame.Common.Screens
 		public override void Initialize()
 		{
 			base.Initialize();
-			LoadTextData();
+			//LoadTextData();		// TODO delete
 		}
 
 		public override void LoadContent()
@@ -97,7 +98,7 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.SpriteManager.Draw();
 
 			// Text data last!
-			MyGame.Manager.TextManager.Draw(TextDataList);
+			//MyGame.Manager.TextManager.Draw(TextDataList);		// TODO delete
 			MyGame.Manager.TextManager.DrawTitle();
 			MyGame.Manager.TextManager.DrawControls();
 			MyGame.Manager.LevelManager.DrawLevelData();

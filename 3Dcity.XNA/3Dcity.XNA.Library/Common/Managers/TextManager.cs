@@ -21,10 +21,12 @@ namespace WindowsGame.Common.Managers
 
 		void Draw(IEnumerable<TextData> textDataList);
 		void Draw(TextData textData);
-		void DrawCursor(Vector2 position);
 		void DrawText(String text, Vector2 position);
+
+		void DrawCursor(Vector2 position);
 		void DrawTitle();
 		void DrawControls();
+		void DrawInstruct();
 	}
 
 	public class TextManager : ITextManager 
@@ -35,6 +37,7 @@ namespace WindowsGame.Common.Managers
 		private Vector2 titlePosition;
 		private String[] controlText;
 		private Vector2[] controlPosition;
+		private Vector2[] instructPosition;
 
 		private static Char[] DELIM;
 		private static Char[] PIPES;
@@ -60,6 +63,10 @@ namespace WindowsGame.Common.Managers
 			controlPosition = new Vector2[2];
 			controlPosition[0] = GetTextPosition(3, 23);
 			controlPosition[1] = GetTextPosition(34, 23);
+
+			instructPosition = new Vector2[2];
+			instructPosition[0] = GetTextPosition(10, 22);
+			instructPosition[1] = GetTextPosition(10, 23);
 		}
 
 		public IList<TextData> LoadTextData(String screen)
@@ -115,31 +122,33 @@ namespace WindowsGame.Common.Managers
 				Draw(textData);
 			}
 		}
-
 		public void Draw(TextData textData)
 		{
 			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, textData.Text, textData.Position, textData.Color);
+		}
+		public void DrawText(String text, Vector2 position)
+		{
+			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, text, position, Color.White);
 		}
 
 		public void DrawCursor(Vector2 position)
 		{
 			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, Globalize.CURSOR_RIGHT, position, Color.White);
 		}
-		public void DrawText(String text, Vector2 position)
-		{
-			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, text, position, Color.White);
-		}
 		public void DrawTitle()
 		{
 			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, titleText, titlePosition, Color.White);
 		}
-
 		public void DrawControls()
 		{
 			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, controlText[0], controlPosition[0], Color.White);
 			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, controlText[1], controlPosition[1], Color.White);
 		}
-
+		public void DrawInstruct()
+		{
+			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, Globalize.INSTRUCTION1, instructPosition[0], Color.White);
+			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, Globalize.INSTRUCTION2, instructPosition[1], Color.White);
+		}
 		private static Color ConvertFromHex(String hexCode)
 		{
 			Color color = Color.White;

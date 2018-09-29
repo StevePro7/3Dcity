@@ -130,6 +130,7 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.TextManager.DrawCursor(cursorPositions[contType]);
 			MyGame.Manager.TextManager.DrawTitle();
 			MyGame.Manager.TextManager.DrawControls();
+			MyGame.Manager.TextManager.DrawInstruct();
 			MyGame.Manager.LevelManager.DrawLevelData();
 			MyGame.Manager.ScoreManager.Draw();
 		}

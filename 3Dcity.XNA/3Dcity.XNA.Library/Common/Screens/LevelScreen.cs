@@ -73,8 +73,8 @@ namespace WindowsGame.Common.Screens
 					iconIndex = Convert.ToByte(flag1);
 					MyGame.Manager.IconManager.UpdateIcon(MyGame.Manager.IconManager.JoyButton, iconIndex);
 					MyGame.Manager.LevelManager.SetLevelIndex(levelIndex);
-					//return (Int32)ScreenType.Ready;
-					return (Int32)ScreenType.Exit;
+					return (Int32)ScreenType.Ready;
+					//return (Int32)ScreenType.Exit;
 				}
 
 				iconIndex = Convert.ToByte(flag1);
@@ -163,6 +163,8 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.TextManager.DrawText(levelName, levelNamePosition);
 			MyGame.Manager.TextManager.DrawText(levelValu, levelTextPosition);
 			MyGame.Manager.TextManager.DrawTitle();
+			MyGame.Manager.TextManager.DrawControls();
+			MyGame.Manager.TextManager.DrawInstruct();
 			MyGame.Manager.ScoreManager.Draw();
 			//MyGame.Manager.LevelManager.DrawLevelRoman();		// TODO delete
 		}
