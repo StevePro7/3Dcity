@@ -1,6 +1,6 @@
 ﻿using System;
-using WindowsGame.Common.Static;
 using Microsoft.Xna.Framework;
+using WindowsGame.Common.Static;
 using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
@@ -23,6 +23,8 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
+			MyGame.Manager.DebugManager.Reset();
+
 			iconIndex = 0;
 			moveIndex = 1; 
 
@@ -126,10 +128,10 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.RenderManager.DrawTitle();
 
 			// Text data last!
-			MyGame.Manager.TextManager.DrawTitle();
 			MyGame.Manager.TextManager.Draw(TextDataList);
 			MyGame.Manager.TextManager.DrawCursor(cursorPositions[levelType]);
-			//MyGame.Manager.ScoreManager.Draw();
+			MyGame.Manager.TextManager.DrawTitle();
+			MyGame.Manager.ScoreManager.Draw();
 		}
 
 		private static Vector2[] GetCursorPositions()

@@ -1,6 +1,6 @@
 ﻿using System;
-using WindowsGame.Common.Static;
 using Microsoft.Xna.Framework;
+using WindowsGame.Common.Static;
 using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
@@ -46,7 +46,7 @@ namespace WindowsGame.Common.Screens
 			if (startY > titleY)
 			{
 				Single delta = (Single) gameTime.ElapsedGameTime.TotalSeconds;
-				startY -= delta * deltaY * 10;
+				startY -= delta * deltaY * 1;
 				moverPosition.Y = startY;
 			}
 			else
@@ -61,7 +61,8 @@ namespace WindowsGame.Common.Screens
 			// Sprite sheet #01.
 			base.Draw();
 
-			MyGame.Manager.RenderManager.DrawTitle(moverPosition);
+			// Individual texture.
+			MyGame.Manager.RenderManager.DrawTitle();
 
 			// Text data last!
 			MyGame.Manager.TextManager.DrawTitle();

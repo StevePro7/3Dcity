@@ -1,6 +1,6 @@
 ﻿using System;
-using WindowsGame.Common.Static;
 using Microsoft.Xna.Framework;
+using WindowsGame.Common.Static;
 using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
@@ -28,7 +28,10 @@ namespace WindowsGame.Common.Screens
 			iconIndex = 0;
 			moveIndex = 1;
 
-			cursorPositions = GetCursorPositions();
+			cursorPositions = new Vector2[2];
+			cursorPositions[0] = MyGame.Manager.TextManager.GetTextPosition(14, 11);
+			cursorPositions[1] = MyGame.Manager.TextManager.GetTextPosition(23, 11);
+
 			spritePosition = MyGame.Manager.SpriteManager.SmallTarget.Position;
 			spritePosition.X = Constants.CURSOR_OFFSET_X[moveIndex];
 			contType = 0;
@@ -127,15 +130,8 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.TextManager.DrawCursor(cursorPositions[contType]);
 			MyGame.Manager.TextManager.DrawTitle();
 			MyGame.Manager.TextManager.DrawControls();
+			MyGame.Manager.LevelManager.DrawLevelData();
 			MyGame.Manager.ScoreManager.Draw();
-		}
-
-		private static Vector2[] GetCursorPositions()
-		{
-			Vector2[] positions = new Vector2[2];
-			positions[0] = MyGame.Manager.TextManager.GetTextPosition(14, 11);
-			positions[1] = MyGame.Manager.TextManager.GetTextPosition(23, 11);
-			return positions;
 		}
 
 	}

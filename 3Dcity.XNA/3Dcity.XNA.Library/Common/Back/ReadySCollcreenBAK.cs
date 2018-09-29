@@ -93,7 +93,6 @@ namespace WindowsGame.Common.Back
 			//Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, pos, rect, Color.White);
 			DrawEntity(pos, rect);
 		}
-
 		private void DrawEntity(Vector2 pos, Rectangle rect)
 		{
 			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, pos, rect, Color.White);

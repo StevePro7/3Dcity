@@ -130,16 +130,21 @@ namespace WindowsGame.Common.Screens
 			base.Draw();
 			MyGame.Manager.IconManager.DrawControls();
 
-			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, enemysPos, enemysRect, Color.White);
-			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, targetPos, targetRect, Color.White);
+			//Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, enemysPos, enemysRect, Color.White);
+			//Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, targetPos, targetRect, Color.White);
+
+			// Sprite sheet #02.
+			MyGame.Manager.LevelManager.DrawLevelOrb();
 
 			// Text data last!
 			MyGame.Manager.TextManager.Draw(TextDataList);
+			MyGame.Manager.TextManager.DrawTitle();
+			MyGame.Manager.TextManager.DrawControls();
+			MyGame.Manager.LevelManager.DrawLevelData();
 			MyGame.Manager.ScoreManager.Draw();
 
-
 			// TODO delete
-			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, outputText[Convert.ToByte(collision)], outputPos, Color.White);
+			//Engine.SpriteBatch.DrawString(Assets.EmulogicFont, outputText[Convert.ToByte(collision)], outputPos, Color.White);
 		}
 
 	}

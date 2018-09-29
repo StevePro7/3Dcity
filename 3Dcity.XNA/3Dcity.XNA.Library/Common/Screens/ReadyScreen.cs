@@ -1,6 +1,4 @@
 ﻿using System;
-using WindowsGame.Common.Static;
-using WindowsGame.Master;
 using Microsoft.Xna.Framework;
 using WindowsGame.Master.Interfaces;
 
@@ -11,7 +9,7 @@ namespace WindowsGame.Common.Screens
 		public override void Initialize()
 		{
 			base.Initialize();
-			LoadTextData();
+			//LoadTextData();			TODO delete
 		}
 
 		public override void LoadContent()
@@ -53,48 +51,18 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.IconManager.DrawControls();
 
 			// Sprite sheet #02.
-			//Vector2 pos = new Vector2(200, 276);
-			//Vector2 pos = new Vector2(100, 100);
-			//MyGame.Manager.SpriteManager.LargeTarget.SetPosition(pos);
+			MyGame.Manager.LevelManager.DrawLevelOrb();
 			MyGame.Manager.SpriteManager.Draw();
-			//DrawBullet2(pos);
-			//DrawShip(pos);
-			//DrawBullet(pos);
-			DrawBullet2(MyGame.Manager.SpriteManager.LargeTarget.Position);
 
 			// Individual texture.
 			MyGame.Manager.DebugManager.Draw();
 
 			// Text data last!
 			MyGame.Manager.TextManager.DrawTitle();
+			MyGame.Manager.TextManager.DrawControls();
+			MyGame.Manager.LevelManager.DrawLevelData();
 			MyGame.Manager.ScoreManager.Draw();
 		}
 
-		private void DrawBullet(Vector2 pos)
-		{
-			Vector2 pos2 = pos;
-			pos2.X -= 28;
-			pos2.Y -= 28;
-			pos = pos2;
-			Rectangle rect = MyGame.Manager.ImageManager.BulletRectangles[5];
-			//Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, pos, rect, Color.White);
-			DrawEntity(pos, rect);
-		}
-		private void DrawBullet2(Vector2 pos)
-		{
-			Rectangle rect = MyGame.Manager.ImageManager.BulletRectangles[5];
-			DrawEntity(pos, rect);
-		}
-		private void DrawShip(Vector2 pos)
-		{
-			Rectangle rect = MyGame.Manager.ImageManager.EnemyRectangles[7];
-			//Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, pos, rect, Color.White);
-			DrawEntity(pos, rect);
-		}
-
-		private void DrawEntity(Vector2 pos, Rectangle rect)
-		{
-			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, pos, rect, Color.White);
-		}
 	}
 }

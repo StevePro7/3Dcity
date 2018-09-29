@@ -15,8 +15,9 @@ namespace WindowsGame.Common.Managers
 		void SetLevelType(LevelType levelType);
 		void SetLevelIndex(Byte levelIndex);
 		//void Draw();							// TODO delete	
-		void DrawLevelRoman();
+		//void DrawLevelRoman();					// TODO delete
 		void DrawLevelOrb();
+		void DrawLevelData();
 
 		// Properties.
 		//Vector2[] LevelTextPositions { get; }		// TODO delete
@@ -25,7 +26,7 @@ namespace WindowsGame.Common.Managers
 		Byte MaximLevel { get; }
 		LevelType LevelType { get; }
 		Byte LevelIndex { get; }
-		String LevelDiff { get; }
+		//String LevelDiff { get; }					// TODO delete
 		String LevelValu { get; }
 		String LevelName { get; }
 	}
@@ -33,8 +34,12 @@ namespace WindowsGame.Common.Managers
 	public class LevelManager : ILevelManager 
 	{
 		private String levelRoot;
-		private String levelText;
+
+		private String levelDiff;
+		//private String levelText;				// TODO delete
+		private String levelData;
 		private Vector2 levelRomanPosition;
+		private Vector2 levelNumPosition;
 		private Vector2 levelOrbPosition;
 		private Rectangle levelOrbPbRectangle;
 		//private Rectangle diffOrbRectangle;	// TODO delete
@@ -56,14 +61,17 @@ namespace WindowsGame.Common.Managers
 
 			const Byte offset = 48;
 			levelOrbPosition = new Vector2(Constants.ScreenWide - offset - Constants.GameOffsetX - 4, Constants.ScreenHigh - offset - Constants.GameOffsetY);
+			levelNumPosition = MyGame.Manager.TextManager.GetTextPosition(0, 23);
 		}
 
 		public void LoadContent()
 		{
 			String namesFile = String.Format("{0}/{1}.txt", levelRoot, LEVELS_NAMESFILE);
-			String romanFile = String.Format("{0}/{1}.txt", levelRoot, LEVELS_ROMANFILE);
 			LevelNames = MyGame.Manager.FileManager.LoadTxt(namesFile);
-			LevelRoman = MyGame.Manager.FileManager.LoadTxt(romanFile);
+
+			// TODO delete
+			//String romanFile = String.Format("{0}/{1}.txt", levelRoot, LEVELS_ROMANFILE);
+			//LevelRoman = MyGame.Manager.FileManager.LoadTxt(romanFile);
 
 			LevelType = MyGame.Manager.ConfigManager.GlobalConfigData.LevelType;
 			LevelIndex = MyGame.Manager.ConfigManager.GlobalConfigData.LevelIndex;
@@ -78,7 +86,7 @@ namespace WindowsGame.Common.Managers
 		public void SetLevelType(LevelType levelType)
 		{
 			LevelType = levelType;
-			LevelDiff = levelType.ToString().ToUpper();
+			levelDiff = levelType.ToString().ToUpper();
 
 			if (null == MyGame.Manager.ImageManager.OrbDiffRectangles)
 			{
@@ -91,7 +99,9 @@ namespace WindowsGame.Common.Managers
 		public void SetLevelIndex(Byte levelIndex)
 		{
 			LevelIndex = levelIndex;
-			LevelValu = String.Format("[{0}]", (levelIndex + 1).ToString().PadLeft(2, '0'));
+
+			levelData = (levelIndex + 1).ToString().PadLeft(2, '0');
+			LevelValu = String.Format("[{0}]", levelData);
 
 			if (null == LevelNames)
 			{
@@ -99,11 +109,12 @@ namespace WindowsGame.Common.Managers
 			}
 			LevelName = LevelNames[levelIndex];
 
-			if (null == LevelRoman)
-			{
-				return;
-			}
-			levelText = LevelRoman[levelIndex];
+			// TODO delete
+			//if (null == LevelRoman)
+			//{
+			//    return;
+			//}
+			//levelText = LevelRoman[levelIndex];
 		}
 
 		// TODO delete
@@ -114,13 +125,19 @@ namespace WindowsGame.Common.Managers
 		//    MyGame.Manager.TextManager.DrawText(LevelName, LevelTextPositions[2]);
 		//}
 
-		public void DrawLevelRoman()
-		{
-			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, levelText, levelRomanPosition, Color.White);
-		}
+		// TODO delete
+		//public void DrawLevelRoman()
+		//{
+		//    Engine.SpriteBatch.DrawString(Assets.EmulogicFont, levelText, levelRomanPosition, Color.White);
+		//}
 		public void DrawLevelOrb()
 		{
 			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, levelOrbPosition, levelOrbPbRectangle, Color.White);
+		}
+
+		public void DrawLevelData()
+		{
+			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, levelData, levelNumPosition, Color.White);
 		}
 
 		// TODO delete
@@ -139,7 +156,7 @@ namespace WindowsGame.Common.Managers
 		public Byte MaximLevel { get; private set; }
 		public LevelType LevelType { get; private set; }
 		public Byte LevelIndex { get; private set; }
-		public String LevelDiff { get; private set; }
+		//public String LevelDiff { get; private set; }		// TODO delete
 		public String LevelValu { get; private set; }
 		public String LevelName { get; private set; }
 	}

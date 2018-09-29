@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using WindowsGame.Common.Static;
 using WindowsGame.Master.Interfaces;
-using Microsoft.Xna.Framework;
 
 namespace WindowsGame.Common.Screens
 {
@@ -14,7 +13,7 @@ namespace WindowsGame.Common.Screens
 
 		private Vector2 levelNamePosition;
 		private Vector2 levelTextPosition;
-		private IList<String> levelNames;
+		//private IList<String> levelNames;		// TODO delete
 		private Byte levelIndex;
 		private Byte maximLevel;
 		private String levelName;
@@ -32,6 +31,8 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
+			MyGame.Manager.DebugManager.Reset();
+
 			iconIndex = 0;
 			moveIndex = 1;
 
@@ -43,7 +44,7 @@ namespace WindowsGame.Common.Screens
 			levelTextPosition = MyGame.Manager.TextManager.GetTextPosition(12, 11);
 
 			maximLevel = MyGame.Manager.LevelManager.MaximLevel;
-			levelNames = MyGame.Manager.LevelManager.LevelNames;
+			//levelNames = MyGame.Manager.LevelManager.LevelNames;		// TODO delete
 			levelIndex = MyGame.Manager.LevelManager.LevelIndex;
 			PopulateLevelData(levelIndex);
 
@@ -161,7 +162,9 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.TextManager.DrawText(cursorOptions[moveIndex], cursorPosition);
 			MyGame.Manager.TextManager.DrawText(levelName, levelNamePosition);
 			MyGame.Manager.TextManager.DrawText(levelValu, levelTextPosition);
-			MyGame.Manager.LevelManager.DrawLevelRoman();
+			MyGame.Manager.TextManager.DrawTitle();
+			MyGame.Manager.ScoreManager.Draw();
+			//MyGame.Manager.LevelManager.DrawLevelRoman();		// TODO delete
 		}
 
 		private void PopulateLevelData(Byte theLevelIndex)

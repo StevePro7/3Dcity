@@ -1,6 +1,5 @@
 using System;
 using Microsoft.Xna.Framework;
-using WindowsGame.Common.Static;
 using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
@@ -10,11 +9,12 @@ namespace WindowsGame.Common.Screens
 		public override void Initialize()
 		{
 			base.Initialize();
-			LoadTextData();
+			//LoadTextData();		// TODO delete
 		}
 
 		public override void LoadContent()
 		{
+			MyGame.Manager.DebugManager.Reset();
 			base.LoadContent();
 		}
 
@@ -56,16 +56,19 @@ namespace WindowsGame.Common.Screens
 			base.Draw();
 			MyGame.Manager.IconManager.DrawControls();
 
-
 			// Sprite sheet #02.
+			MyGame.Manager.LevelManager.DrawLevelOrb();
 			MyGame.Manager.SpriteManager.Draw();
 
 			// Individual texture.
 			MyGame.Manager.DebugManager.Draw();
 
-
-			// Then bullet and target second.
-			MyGame.Manager.TextManager.Draw(TextDataList);
+			// Text data last!
+			//MyGame.Manager.TextManager.Draw(TextDataList);			// TODO delete
+			MyGame.Manager.TextManager.DrawTitle();
+			MyGame.Manager.TextManager.DrawControls();
+			MyGame.Manager.LevelManager.DrawLevelData();
+			MyGame.Manager.ScoreManager.Draw();
 		}
 
 	}

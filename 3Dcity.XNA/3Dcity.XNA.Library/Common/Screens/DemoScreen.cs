@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using WindowsGame.Common.Static;
 using WindowsGame.Master.Interfaces;
-using Microsoft.Xna.Framework;
 namespace WindowsGame.Common.Screens
 {
 	public class DemoScreen : BaseScreen, IScreen
@@ -26,6 +26,7 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
+			MyGame.Manager.DebugManager.Reset();
 			const Byte commandId = 2;
 
 			eventTimeList = MyGame.Manager.CommandManager.CommandTimeList[commandId];
@@ -91,9 +92,16 @@ namespace WindowsGame.Common.Screens
 			base.Draw();
 			MyGame.Manager.IconManager.DrawControls();
 
+			// Sprite sheet #02.
+			MyGame.Manager.LevelManager.DrawLevelOrb();
 			MyGame.Manager.SpriteManager.Draw();
 
+			// Text data last!
 			MyGame.Manager.TextManager.Draw(TextDataList);
+			MyGame.Manager.TextManager.DrawTitle();
+			MyGame.Manager.TextManager.DrawControls();
+			MyGame.Manager.LevelManager.DrawLevelData();
+			MyGame.Manager.ScoreManager.Draw();
 		}
 
 		private void LoadNewEvents(UInt16 theIndex)

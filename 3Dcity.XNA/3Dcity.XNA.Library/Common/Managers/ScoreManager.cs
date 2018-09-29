@@ -1,9 +1,8 @@
 using System;
-using System.Runtime.Remoting.Messaging;
+using Microsoft.Xna.Framework;
 using WindowsGame.Common.Static;
 using WindowsGame.Master;
 using WindowsGame.Master.Objects;
-using Microsoft.Xna.Framework;
 
 namespace WindowsGame.Common.Managers
 {
