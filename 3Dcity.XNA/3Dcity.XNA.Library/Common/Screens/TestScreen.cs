@@ -148,17 +148,15 @@ namespace WindowsGame.Common.Screens
 			// Sprite sheet #01.
 			base.Draw();
 			MyGame.Manager.IconManager.DrawControls();
-			MyGame.Manager.ScoreManager.Draw();
-
 
 			// Sprite sheet #02.
 			MyGame.Manager.DebugManager.Draw();
-
 			MyGame.Manager.EnemyManager.Draw();
+
+			MyGame.Manager.LevelManager.DrawLevelOrb();
 			MyGame.Manager.SpriteManager.Draw();
 
 			MyGame.Manager.ExplosionManager.Draw();
-			MyGame.Manager.LevelManager.DrawLevelOrb();
 			//Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, orbPosition, orbRectangle, Color.White);
 			//Engine.SpriteBatch.Draw(Assets.OrbGreen20, orbPosition, Color.White);
 			//Engine.SpriteBatch.Draw(Assets.OrbGreen32, orbPosition, Color.White);
@@ -167,6 +165,9 @@ namespace WindowsGame.Common.Screens
 
 			// Text data last!
 			MyGame.Manager.TextManager.Draw(TextDataList);
+			MyGame.Manager.TextManager.DrawTitle();
+			MyGame.Manager.TextManager.DrawControls();
+			MyGame.Manager.ScoreManager.Draw();
 		}
 
 	}

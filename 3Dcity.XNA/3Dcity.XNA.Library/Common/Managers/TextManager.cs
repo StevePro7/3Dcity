@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using WindowsGame.Common.Static;
 using WindowsGame.Master;
 using WindowsGame.Master.Objects;
+using Ninject.Syntax;
 
 namespace WindowsGame.Common.Managers
 {
@@ -23,6 +24,7 @@ namespace WindowsGame.Common.Managers
 		void DrawCursor(Vector2 position);
 		void DrawText(String text, Vector2 position);
 		void DrawTitle();
+		void DrawControls();
 	}
 
 	public class TextManager : ITextManager 
@@ -31,6 +33,8 @@ namespace WindowsGame.Common.Managers
 
 		private String titleText;
 		private Vector2 titlePosition;
+		private String[] controlText;
+		private Vector2[] controlPosition;
 
 		private static Char[] DELIM;
 		private static Char[] PIPES;
@@ -51,6 +55,11 @@ namespace WindowsGame.Common.Managers
 
 			titleText = Globalize.GAME_TITLE;
 			titlePosition = GetTextPosition(15, 1);
+
+			controlText = new String[2] { Globalize.MOVE_TITLE, Globalize.FIRE_TITLE };
+			controlPosition = new Vector2[2];
+			controlPosition[0] = GetTextPosition(3, 23);
+			controlPosition[1] = GetTextPosition(34, 23);
 		}
 
 		public IList<TextData> LoadTextData(String screen)
@@ -123,6 +132,12 @@ namespace WindowsGame.Common.Managers
 		public void DrawTitle()
 		{
 			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, titleText, titlePosition, Color.White);
+		}
+
+		public void DrawControls()
+		{
+			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, controlText[0], controlPosition[0], Color.White);
+			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, controlText[1], controlPosition[1], Color.White);
 		}
 
 		private static Color ConvertFromHex(String hexCode)

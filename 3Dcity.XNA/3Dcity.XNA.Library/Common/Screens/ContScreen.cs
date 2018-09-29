@@ -23,6 +23,8 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
+			MyGame.Manager.DebugManager.Reset();
+
 			iconIndex = 0;
 			moveIndex = 1;
 
@@ -117,11 +119,15 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.IconManager.DrawControls();
 
 			// Sprite sheet #02.
+			MyGame.Manager.LevelManager.DrawLevelOrb();
 			MyGame.Manager.SpriteManager.DrawCursor();
 
 			// Text data last!
 			MyGame.Manager.TextManager.Draw(TextDataList);
 			MyGame.Manager.TextManager.DrawCursor(cursorPositions[contType]);
+			MyGame.Manager.TextManager.DrawTitle();
+			MyGame.Manager.TextManager.DrawControls();
+			MyGame.Manager.ScoreManager.Draw();
 		}
 
 		private static Vector2[] GetCursorPositions()
