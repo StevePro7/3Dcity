@@ -34,6 +34,7 @@ namespace WindowsGame.Common.Data
 		public Byte EnemySpawn;
 		public Byte EnemyTotal;
 		public Boolean IsGodMode;
+		public Boolean DebugTester;
 		public Boolean QuitsToExit;
 	}
 }

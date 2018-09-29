@@ -1,6 +1,5 @@
 ﻿using System;
 using WindowsGame.Common.Static;
-using WindowsGame.Master;
 using Microsoft.Xna.Framework;
 using WindowsGame.Master.Interfaces;
 
@@ -18,7 +17,6 @@ namespace WindowsGame.Common.Screens
 		public override void Initialize()
 		{
 			base.Initialize();
-			//LoadTextData();
 
 			titlePosition = new Vector2((Constants.ScreenWide - 240) / 2.0f, (Constants.ScreenHigh - 160) / 2.0f + 94);
 			startPosition = new Vector2(titlePosition.X, Constants.ScreenHigh - 160);
@@ -34,7 +32,6 @@ namespace WindowsGame.Common.Screens
 			deltaY = introDelay / deltaY;
 			moverPosition = startPosition;
 
-			MyGame.Manager.ScoreManager.Reset();
 			base.LoadContent();
 		}
 
@@ -67,7 +64,6 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.RenderManager.DrawTitle(moverPosition);
 
 			// Text data last!
-			//MyGame.Manager.TextManager.Draw(TextDataList);
 			MyGame.Manager.TextManager.DrawTitle();
 		}
 

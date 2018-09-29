@@ -1,12 +1,13 @@
 ﻿using System;
+using WindowsGame.Common.Screens;
 using WindowsGame.Common.Static;
 using WindowsGame.Master;
 using Microsoft.Xna.Framework;
 using WindowsGame.Master.Interfaces;
 
-namespace WindowsGame.Common.Screens
+namespace WindowsGame.Common.Back
 {
-	public class ReadyScreen : BaseScreen, IScreen
+	public class ReadySCollcreenBAK : BaseScreen, IScreen
 	{
 		public override void Initialize()
 		{
@@ -16,7 +17,7 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
-			MyGame.Manager.DebugManager.Reset();
+			MyGame.Manager.ScoreManager.Reset();
 			base.LoadContent();
 		}
 
@@ -66,7 +67,8 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.DebugManager.Draw();
 
 			// Text data last!
-			MyGame.Manager.TextManager.DrawTitle();
+			MyGame.Manager.TextManager.Draw(TextDataList);
+			//MyGame.Manager.LevelManager.DrawLevelRoman();
 			MyGame.Manager.ScoreManager.Draw();
 		}
 

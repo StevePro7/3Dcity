@@ -84,8 +84,6 @@
     <Compile Include="Common\Managers\BulletManager.cs" />
     <Compile Include="Common\Managers\CommandManager.cs" />
     <Compile Include="Common\Managers\BossManager.cs" />
-    <Compile Include="Common\Back\CollisionManagerBAK.cs" />
-    <Compile Include="Common\Back\EnemyManagerBAK.cs" />
     <Compile Include="Common\Managers\DebugManager.cs" />
     <Compile Include="Common\Managers\LevelManager.cs" />
     <Compile Include="Common\Managers\EventManager.cs" />
@@ -115,14 +113,7 @@
     <Compile Include="Common\Objects\GameState.cs" />
     <Compile Include="Common\Objects\JoypadMove.cs" />
     <Compile Include="Common\Screens\BaseScreen.cs" />
-    <Compile Include="Common\Back\TitleScreenBAK.cs" />
-    <Compile Include="Common\Back\PlayScreenBAK.cs" />
     <Compile Include="Common\Screens\ContScreen.cs" />
-    <Compile Include="Common\Back\EventScreenBAK.cs" />
-    <Compile Include="Common\Back\ExplosionScreenBAK.cs" />
-    <Compile Include="Common\Back\LevelScreenBAK.cs" />
-    <Compile Include="Common\Back\OverScreenBAK.cs" />
-    <Compile Include="Common\Back\ReadyLayoutScreenBAK.cs" />
     <Compile Include="Common\Screens\IntroScreen.cs" />
     <Compile Include="Common\Screens\LevelScreen.cs" />
     <Compile Include="Common\Screens\DiffScreen.cs" />
@@ -173,7 +164,9 @@
     <Compile Include="Master\Static\Registration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Common\Back\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--

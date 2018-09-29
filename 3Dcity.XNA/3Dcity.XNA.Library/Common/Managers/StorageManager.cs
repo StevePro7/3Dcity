@@ -65,6 +65,7 @@ namespace WindowsGame.Common.Managers
 			else
 			{
 				storagePersistData.HighScore = MyGame.Manager.ScoreManager.HighScore;
+				//storagePersistData.HighScore = Constants.DEF_HIGH_SCORE;	// Reset!
 				storagePersistData.PlayAudio = MyGame.Manager.SoundManager.PlayAudio;
 				storagePersistData.LevelType = MyGame.Manager.LevelManager.LevelType;
 				storagePersistData.LevelIndex = MyGame.Manager.LevelManager.LevelIndex;

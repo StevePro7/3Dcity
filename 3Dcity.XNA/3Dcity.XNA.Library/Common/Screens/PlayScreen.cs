@@ -15,8 +15,7 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
-			MyGame.Manager.ScoreManager.Reset();		// TODO delete as resets score - don't want that!
-
+			MyGame.Manager.DebugManager.Reset();
 
 			// Not bad settings for default.
 			MyGame.Manager.BulletManager.Reset(10, 200, 100);
@@ -110,8 +109,10 @@ namespace WindowsGame.Common.Screens
 
 			// Sprite sheet #02.
 			MyGame.Manager.EnemyManager.Draw();
+			MyGame.Manager.LevelManager.DrawLevelOrb();
 			MyGame.Manager.BulletManager.Draw();
 			MyGame.Manager.SpriteManager.Draw();
+			
 
 			// Text data last!
 			MyGame.Manager.TextManager.Draw(TextDataList);

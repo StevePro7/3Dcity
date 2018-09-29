@@ -29,8 +29,7 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
-			MyGame.Manager.ScoreManager.Reset();		// TODO delete as resets score - don't want that!
-
+			MyGame.Manager.DebugManager.Reset();
 
 			outputPos = MyGame.Manager.TextManager.GetTextPosition(0, 4);
 			GlobalConfigData data = MyGame.Manager.ConfigManager.GlobalConfigData;

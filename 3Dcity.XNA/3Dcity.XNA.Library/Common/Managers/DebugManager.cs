@@ -8,6 +8,7 @@ namespace WindowsGame.Common.Managers
 	public interface IDebugManager 
 	{
 		void Initialize();
+		void Reset();
 		void Draw();
 	}
 
@@ -18,6 +19,21 @@ namespace WindowsGame.Common.Managers
 		public void Initialize()
 		{
 			boxPositions = GetBoxPositions();
+		}
+
+		public void Reset()
+		{
+			if (!MyGame.Manager.ConfigManager.GlobalConfigData.DebugTester)
+			{
+				return;
+			}
+
+			// Reset scores for testing scenario.
+			MyGame.Manager.ScoreManager.Reset();
+
+			// Reset levels for testing scenario.
+			MyGame.Manager.LevelManager.SetLevelType(MyGame.Manager.ConfigManager.GlobalConfigData.LevelType);
+			MyGame.Manager.LevelManager.SetLevelIndex(MyGame.Manager.ConfigManager.GlobalConfigData.LevelIndex);
 		}
 
 		public void Draw()

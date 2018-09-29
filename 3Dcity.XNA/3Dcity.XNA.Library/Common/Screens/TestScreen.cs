@@ -22,6 +22,8 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
+			MyGame.Manager.DebugManager.Reset();
+
 			LevelType levelType = MyGame.Manager.LevelManager.LevelType;
 			Byte enemySpawn = MyGame.Manager.ConfigManager.GlobalConfigData.EnemySpawn;	// 1;  // TODO level config
 			Byte enemyTotal = MyGame.Manager.ConfigManager.GlobalConfigData.EnemyTotal;	// 1;  // TODO level config
@@ -29,9 +31,6 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.EnemyManager.SpawnAllEnemies();
 
 			MyGame.Manager.ExplosionManager.Reset(8, 100);
-
-			MyGame.Manager.ScoreManager.Reset();
-
 			base.LoadContent();
 		}
 
