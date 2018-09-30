@@ -95,7 +95,7 @@ namespace WindowsGame.Common.Managers
 		public Boolean BoxesCollision(Byte radius, Vector2 enemysPosition, Vector2 targetPosition)
 		{
 			UInt16 enemysX = (UInt16) enemysPosition.X;
-			UInt16 enemysY = (UInt16) enemysPosition.X;
+			UInt16 enemysY = (UInt16) enemysPosition.Y;
 			UInt16 targetX = (UInt16) targetPosition.X;
 			UInt16 targetY = (UInt16) targetPosition.Y;
 
@@ -115,21 +115,9 @@ namespace WindowsGame.Common.Managers
 			{
 				return false;
 			}
-			//if ((enemysPosition.X - targetPosition.X <= radius) && (enemysPosition.Y - targetPosition.Y <= radius))
-			//{
-			//    return true;
-			//}
-			//if (enemysPosition.Y - targetPosition.Y <= radius)
-			//{
-			//    return true;
-			//}
 
-			// No intersection found.
+			// An intersection found.
 			return true;
-			//Single deltaX = Math.Abs(enemysPosition.X - targetPosition.X);
-			//Single deltaY = Math.Abs(enemysPosition.Y - targetPosition.Y);
-
-			//return deltaX <= radius && deltaY <= radius;
 		}
 
 		public Boolean ColorCollision(Vector2 enemysPosition, Vector2 targetPosition)

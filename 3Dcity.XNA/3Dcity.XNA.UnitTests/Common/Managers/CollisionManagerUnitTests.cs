@@ -19,7 +19,23 @@ namespace WindowsGame.UnitTests.Common.Managers
 		}
 
 		[Test]
-		public void BoxesCollisionTest()
+		public void BoxesCollisionOnceTest()
+		{
+			// Arrange.
+			const Byte radius = 64;
+			Vector2 enemysPosition = new Vector2(354, 141);
+			Vector2 targetPosition = new Vector2(368, 168);
+			Boolean collide = false;
+
+			// Act.
+			collide = CollisionManager.BoxesCollision(radius, enemysPosition, targetPosition);
+
+			// Assert.
+			Assert.True(collide);
+		}
+
+		[Test]
+		public void BoxesCollisionManyTest()
 		{
 			const Byte radius = 64;
 			Vector2 enemysPosition = new Vector2(100, 100);

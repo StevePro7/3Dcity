@@ -16,6 +16,7 @@ namespace WindowsGame.Common.Managers
 
 		void UpdateGameScore(Byte index);
 		void SetHighScore(UInt32 score);
+		void IncrementMisses();
 
 		// Properties.
 		UInt32 HighScore { get; }
@@ -119,6 +120,10 @@ namespace WindowsGame.Common.Managers
 		{
 			HighScore = score;
 			highScoreText = GetHighScoreText();
+		}
+		public void IncrementMisses()
+		{
+			MissesTotal++;
 		}
 
 		private TextData[] GetMissTextDataList()

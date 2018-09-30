@@ -10,6 +10,7 @@ namespace WindowsGame.Common.Screens
 	public class PlayScreen : BaseScreen, IScreen
 	{
 		private Boolean isGodMode;
+		private Boolean checkLevelComplete;
 
 		public override void Initialize()
 		{
@@ -31,7 +32,7 @@ namespace WindowsGame.Common.Screens
 			//const Byte enemyTotal = 3;
 			Byte enemySpawn = MyGame.Manager.ConfigManager.GlobalConfigData.EnemySpawn;	// 1;  // TODO level config
 			Byte enemyTotal = MyGame.Manager.ConfigManager.GlobalConfigData.EnemyTotal;	// 1;  // TODO level config
-			MyGame.Manager.EnemyManager.Reset(levelType, enemySpawn, 2000, 5000, enemyTotal);
+			MyGame.Manager.EnemyManager.Reset(levelType, enemySpawn, 1000, 5000, enemyTotal);
 			MyGame.Manager.EnemyManager.SpawnAllEnemies();
 
 			MyGame.Manager.SoundManager.PlayMusic(SongType.GameMusic);
@@ -46,6 +47,8 @@ namespace WindowsGame.Common.Screens
 				return (Int32)CurrScreen;
 			}
 
+			checkLevelComplete = false;
+
 			// Log delta to monitor performance!
 #if DEBUG
 			//MyGame.Manager.Logger.Info(gameTime.ElapsedGameTime.TotalSeconds.ToString());
@@ -58,12 +61,6 @@ namespace WindowsGame.Common.Screens
 			Single vert = MyGame.Manager.InputManager.Vertical();
 			MyGame.Manager.SpriteManager.SetMovement(horz, vert);
 			MyGame.Manager.SpriteManager.Update(gameTime);
-
-			// TODO delete
-			Vector2 enemyPos = MyGame.Manager.EnemyManager.EnemyList[0].Position;
-			enemyPos.X -= 64;
-			MyGame.Manager.SpriteManager.LargeTarget.SetPosition(enemyPos);
-
 
 			// Test shooting enemy ships.
 			Boolean fire = MyGame.Manager.InputManager.Fire();
@@ -94,26 +91,57 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.EnemyManager.Update(gameTime);
 			if (!isGodMode)
 			{
+				// Enemy has maxed out frames so check for collision.
 				if (MyGame.Manager.EnemyManager.EnemyTest.Count > 0)
 				{
+					checkLevelComplete = true;
+
+					LargeTarget target = MyGame.Manager.SpriteManager.LargeTarget;
 					IList<Enemy> enemyTest = MyGame.Manager.EnemyManager.EnemyTest;
+
 					for (Byte testIndex = 0; testIndex < enemyTest.Count; testIndex++)
 					{
+						// First check if enemy instantly kills target.
 						Enemy enemy = enemyTest[testIndex];
-						Boolean test = ProcessEnemies();
+						Boolean test = CheckEnemyKillTarget(enemy, target);
+
+						// Instant death!	Game Over.
+						if (test)
+						{
+							// Do NOT reset enemy here as we want to see Target killed by Enemy!
+							return (Int32)ScreenType.Dead;
+						}
+
+						// Enemy not kill target but missed so increment miss total.
+						MyGame.Manager.ScoreManager.IncrementMisses();
+						if (MyGame.Manager.ScoreManager.MissesTotal >= Constants.MAX_MISSES)
+						{
+							// If maximum misses then game over.
+							enemy.Reset();
+							return (Int32)ScreenType.Dead;
+						}
+
+						// Finally, check if anymore enemies to spawn...
+						Byte enemyID = enemy.ID;
+						Boolean check = MyGame.Manager.EnemyManager.CheckThisEnemy(enemyID);
+						if (!check)
+						{
+							MyGame.Manager.EnemyManager.SpawnOneEnemy(enemyID);
+						}
 					}
-					
 				}
 			}
 
-			if (MyGame.Manager.EnemyManager.EnemyTest.Count > 0)
-			{
-				Boolean collision = MyGame.Manager.CollisionManager.CheckOne();
-				if (collision)
-				{
-					return (Int32)ScreenType.Over;
-				}
-			}
+
+			// TODO delete
+			//if (MyGame.Manager.EnemyManager.EnemyTest.Count > 0)
+			//{
+			//    Boolean collision = MyGame.Manager.CollisionManager.CheckOne();
+			//    if (collision)
+			//    {
+			//        return (Int32)ScreenType.Over;
+			//    }
+			//}
 			//MyGame.Manager.EnemyManager.CheckAllEnemies();
 			if (MyGame.Manager.CollisionManager.EnemysCollisionList.Count > 0)
 			{
@@ -125,13 +153,34 @@ namespace WindowsGame.Common.Screens
 			Byte canShootIndex = Convert.ToByte(!MyGame.Manager.BulletManager.CanShoot);
 			MyGame.Manager.IconManager.UpdateFireIcon(canShootIndex);
 
+
+			// Finally, check to see if all enemies finished = level complete.
+			if (checkLevelComplete)
+			{
+				Boolean noMoreEnemies = MyGame.Manager.EnemyManager.CheckEnemiesNone();
+				if (noMoreEnemies)
+				{
+					return (Int32)ScreenType.Finish;
+				}
+			}
+
 			MyGame.Manager.ScoreManager.Update(gameTime);
 			return (Int32)CurrScreen;
 		}
 
-		private Boolean ProcessEnemies()
+		private Boolean CheckEnemyKillTarget(Enemy enemy, LargeTarget target)
 		{
-			
+			Boolean test = MyGame.Manager.CollisionManager.BoxesCollision(enemy.Position, target.Position);
+			if (!test)
+			{
+				return false;
+			}
+
+			test = MyGame.Manager.CollisionManager.ColorCollision(enemy.Position, target.Position);
+			if (!test)
+			{
+				return false;
+			}
 
 			return true;
 		}
@@ -143,8 +192,7 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.IconManager.DrawControls();
 
 			// Sprite sheet #02.
-			MyGame.Manager.DebugManager.Draw();
-
+			MyGame.Manager.DebugManager.Draw();		// TODO delete
 			MyGame.Manager.EnemyManager.Draw();
 			MyGame.Manager.LevelManager.DrawLevelOrb();
 			MyGame.Manager.BulletManager.Draw();
