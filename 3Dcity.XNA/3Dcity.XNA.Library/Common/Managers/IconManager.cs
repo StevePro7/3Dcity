@@ -12,6 +12,7 @@ namespace WindowsGame.Common.Managers
 		void LoadContent();
 		void ToggleIcon(BaseObject icon);
 		void UpdateIcon(BaseObject icon, Byte index);
+		void UpdateFireIcon(Byte index);
 		void Draw();
 		void DrawControls();
 
@@ -74,6 +75,10 @@ namespace WindowsGame.Common.Managers
 		public void UpdateIcon(BaseObject icon, Byte index)
 		{
 			icon.UpdateIcon(index);
+		}
+		public void UpdateFireIcon(Byte index)
+		{
+			JoyButton.UpdateIcon(index);
 		}
 
 		public void Draw()

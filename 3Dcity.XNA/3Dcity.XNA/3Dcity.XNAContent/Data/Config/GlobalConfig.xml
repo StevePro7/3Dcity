@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Diff</ScreenType>
+	<ScreenType>Play</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<!--<ScreenType>Level</ScreenType>-->
@@ -33,6 +33,6 @@
 	<EnemySpawn>1</EnemySpawn>
 	<EnemyTotal>1</EnemyTotal>
 	<IsGodMode>true</IsGodMode>
-	<DebugTester>false</DebugTester>
+	<DebugTester>true</DebugTester>
 	<QuitsToExit>true</QuitsToExit>
 </GlobalConfigData>

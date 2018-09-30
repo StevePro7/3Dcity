@@ -94,8 +94,9 @@ namespace WindowsGame.Common.Screens
 
 
 			// Update fire icon.
-			Byte fireIcon = Convert.ToByte(!MyGame.Manager.BulletManager.CanShoot);
-			MyGame.Manager.IconManager.UpdateIcon(MyGame.Manager.IconManager.JoyButton, fireIcon);
+			Byte canShootIndex = Convert.ToByte(!MyGame.Manager.BulletManager.CanShoot);
+			//MyGame.Manager.IconManager.UpdateIcon(MyGame.Manager.IconManager.JoyButton, fireIcon);
+			MyGame.Manager.IconManager.UpdateFireIcon(canShootIndex);
 
 			MyGame.Manager.ScoreManager.Update(gameTime);
 			return (Int32)CurrScreen;
