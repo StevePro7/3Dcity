@@ -1,7 +1,7 @@
-using WindowsGame.Common.Interfaces;
 using NUnit.Framework;
 using Rhino.Mocks;
 using WindowsGame.Common;
+using WindowsGame.Common.Interfaces;
 using WindowsGame.Common.Managers;
 using WindowsGame.Common.TheGame;
 using WindowsGame.Master.Interfaces;

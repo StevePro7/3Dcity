@@ -14,6 +14,8 @@ namespace WindowsGame.Common.Managers
 		void LoadContentEnemys();
 		void LoadContentTarget();
 
+		Boolean BoxesCollision(Vector2 enemysPosition, Vector2 targetPosition);
+		Boolean BoxesCollision(Byte radius, Vector2 enemysPosition, Vector2 targetPosition);
 		Boolean ColorCollision(Vector2 enemysPosition, Vector2 targetPosition);
 		Boolean CheckOne();
 		Boolean CheckOne(Vector2 targetPosition, IList<Enemy> enemyTest);
@@ -34,10 +36,13 @@ namespace WindowsGame.Common.Managers
 
 	public class CollisionManager : ICollisionManager
 	{
-		private const Byte borderSize = 4;
+		//private const Byte borderSize = 4;		// TODO delete
 		private const Byte bulletSize = 28;
+
 		private String collisionRoot;
+		private Byte borderSize;
 		private Byte enemysSize;
+		private Byte targetSize;
 		private Byte offsetSize;
 
 		private const String SPRITE_DIRECTORY = "Sprite";
@@ -53,6 +58,10 @@ namespace WindowsGame.Common.Managers
 			EnemysCollisionList = new List<Byte>(Constants.MAX_ENEMYS_SPAWN);
 
 			collisionRoot = String.Format("{0}{1}/{2}/{3}", root, Constants.CONTENT_DIRECTORY, Constants.DATA_DIRECTORY, SPRITE_DIRECTORY);
+			borderSize = Constants.BorderSize;
+			enemysSize = Constants.EnemySize;
+			targetSize = Constants.TargetSize;
+			offsetSize = (Byte)(targetSize - 2 * borderSize);
 		}
 
 		public void LoadContent()
@@ -61,7 +70,8 @@ namespace WindowsGame.Common.Managers
 			LoadContentTarget();
 
 			enemysSize = Constants.EnemySize;
-			offsetSize = Constants.TargetSize - 2 * borderSize;
+			targetSize = Constants.TargetSize;
+			offsetSize = (Byte)(targetSize - 2 * borderSize);
 		}
 
 		public void LoadContentEnemys()
@@ -78,6 +88,49 @@ namespace WindowsGame.Common.Managers
 			return MyGame.Manager.FileManager.LoadTxt<UInt16>(file);
 		}
 
+		public Boolean BoxesCollision(Vector2 enemysPosition, Vector2 targetPosition)
+		{
+			return BoxesCollision(targetSize, enemysPosition, targetPosition);
+		}
+		public Boolean BoxesCollision(Byte radius, Vector2 enemysPosition, Vector2 targetPosition)
+		{
+			UInt16 enemysX = (UInt16) enemysPosition.X;
+			UInt16 enemysY = (UInt16) enemysPosition.X;
+			UInt16 targetX = (UInt16) targetPosition.X;
+			UInt16 targetY = (UInt16) targetPosition.Y;
+
+			if (targetX + targetSize < enemysX)
+			{
+				return false;
+			}
+			if (targetY + targetSize < enemysY)
+			{
+				return false;
+			}
+			if (targetX > enemysX + enemysSize)
+			{
+				return false;
+			}
+			if (targetY > enemysY + enemysSize)
+			{
+				return false;
+			}
+			//if ((enemysPosition.X - targetPosition.X <= radius) && (enemysPosition.Y - targetPosition.Y <= radius))
+			//{
+			//    return true;
+			//}
+			//if (enemysPosition.Y - targetPosition.Y <= radius)
+			//{
+			//    return true;
+			//}
+
+			// No intersection found.
+			return true;
+			//Single deltaX = Math.Abs(enemysPosition.X - targetPosition.X);
+			//Single deltaY = Math.Abs(enemysPosition.Y - targetPosition.Y);
+
+			//return deltaX <= radius && deltaY <= radius;
+		}
 
 		public Boolean ColorCollision(Vector2 enemysPosition, Vector2 targetPosition)
 		{
@@ -128,16 +181,16 @@ namespace WindowsGame.Common.Managers
 
 		public SByte DetermineEnemySlot(Vector2 position)
 		{
-			// Position injected is the target postion [top-left]
+			// Position injected is the target position [top-left]
 			// Bullet is at the same position BUT must offset 28px
-			// Readon: 8x8 bullet is middle of target move 28x28px
+			// Reason: 8x8 bullet is middle of target move 28x28px
 			Vector2 topLeftPos = position;
 			topLeftPos.X += bulletSize;
 			topLeftPos.Y += bulletSize;
 			position = topLeftPos;
 
 			// Bullet exactly in middle thus cannot kill any ships.
-			const UInt16 halfWayOffset = Constants.HALFWAY_DOWN - borderSize;
+			UInt16 halfWayOffset = (UInt16)(Constants.HALFWAY_DOWN - borderSize);
 			if (halfWayOffset == (UInt16)position.Y)
 			{
 				return Constants.INVALID_INDEX;

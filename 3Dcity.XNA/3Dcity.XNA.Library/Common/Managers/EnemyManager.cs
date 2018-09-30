@@ -139,8 +139,11 @@ namespace WindowsGame.Common.Managers
 			Byte randomY = (Byte)MyGame.Manager.RandomManager.Next(Constants.ENEMY_RANDOM_Y);
 			UInt16 offsetX = EnemyOffsetX[(Byte)slotID];
 			UInt16 offsetY = EnemyOffsetY[(Byte)slotID];
-			position.X = randomX + offsetX;
-			position.Y = randomY + offsetY;
+
+			// TODO check this fits within [160,200] = [40,80] = [32,72] => [32 = 160-120-(2*4)
+			// [32,72] => [32 = 160-120-(2*4), 72 = 200-120-(2*4)]
+			position.X = randomX + offsetX + Constants.BorderSize;
+			position.Y = randomY + offsetY + Constants.BorderSize;
 
 			Rectangle bounds = EnemyBounds[(Byte)slotID];
 			enemy.Spawn((Byte)slotID, frameDelay, position, bounds);

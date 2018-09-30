@@ -10,7 +10,8 @@ namespace WindowsGame.Common.Managers
 		void UpdateGameSound();
 
 		Boolean GamePause { get; }
-		Boolean GameQuiet{ get; }
+		Boolean GameQuiet { get; }
+		Boolean IsGodMode { get; }
 	}
 
 	public class StateManager : IStateManager
@@ -38,6 +39,6 @@ namespace WindowsGame.Common.Managers
 
 		public Boolean GamePause { get; private set; }
 		public Boolean GameQuiet { get; private set; }
-
+		public Boolean IsGodMode { get; private set; }
 	}
 }

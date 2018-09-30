@@ -73,7 +73,6 @@ namespace WindowsGame.Common.Sprites
 				if (FrameCount >= MaxFrames)
 				{
 					EnemyType = EnemyType.Test;
-					//MyGame.Manager.CollisionManager.AddToEnemysCollisionList(ID);		// TODO re-factor!
 				}
 			}
 		}
