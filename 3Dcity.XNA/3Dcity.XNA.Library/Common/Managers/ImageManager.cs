@@ -9,9 +9,11 @@ namespace WindowsGame.Common.Managers
 		void LoadContent();
 
 		// Sprite sheet #01.
+		Rectangle BackRectangle { get; }
 		Rectangle[] GridRectangles { get; }
 		Rectangle[] StarRectangles { get; }
-		Rectangle BackRectangle { get; }
+
+		Rectangle TitleRectangle { get; }
 		Rectangle JoypadRectangle { get; }
 		Rectangle[] JoyButtonRectangles { get; }
 		Rectangle[] GameStateRectangles { get; }
@@ -39,7 +41,7 @@ namespace WindowsGame.Common.Managers
 			const Byte dbleSize = Constants.DbleSize;
 			const Byte enemySize = Constants.EnemySize;
 			const Byte targetSize = Constants.TargetSize;
-			const UInt16 left = Constants.ScreenWide + baseSize;
+			const UInt16 left = Constants.ScreenWide + 64;
 
 			// Sprite sheet #01.
 			GridRectangles = new Rectangle[Constants.MAX_GRID];
@@ -48,23 +50,24 @@ namespace WindowsGame.Common.Managers
 			GridRectangles[2] = new Rectangle(0, Constants.GridHeight * 3, Constants.ScreenWide, Constants.GridHeight);
 
 			StarRectangles = new Rectangle[Constants.MAX_STAR];
-			StarRectangles[0] = new Rectangle(Constants.ScreenWide + halfSize * 0, dbleSize, halfSize, Constants.ScreenWide);
-			StarRectangles[1] = new Rectangle(Constants.ScreenWide + halfSize * 1, dbleSize, halfSize, Constants.ScreenWide);
+			StarRectangles[0] = new Rectangle(0, 80, Constants.ScreenWide, halfSize);
+			StarRectangles[1] = new Rectangle(0, 960, Constants.ScreenWide, halfSize);
 
 			BackRectangle = new Rectangle(0, Constants.GridHeight * 0, Constants.ScreenWide, Constants.GridHeight);
 
-			JoypadRectangle = new Rectangle(Constants.ScreenWide, 0, dbleSize, dbleSize);
+			TitleRectangle = new Rectangle(Constants.ScreenWide, 0, 224, 160);
+			JoypadRectangle = new Rectangle(left, baseSize * 2, dbleSize, dbleSize);
 			JoyButtonRectangles = new Rectangle[2];
-			JoyButtonRectangles[0] = new Rectangle(left, baseSize * 2, baseSize, baseSize);
-			JoyButtonRectangles[1] = new Rectangle(left, baseSize * 3, baseSize, baseSize);
+			JoyButtonRectangles[0] = new Rectangle(left + (0 * baseSize), baseSize * 4, baseSize, baseSize);
+			JoyButtonRectangles[1] = new Rectangle(left + (1 * baseSize), baseSize * 4, baseSize, baseSize);
 
 			GameStateRectangles = new Rectangle[2];
-			GameStateRectangles[0] = new Rectangle(left, baseSize * 4, iconSize, iconSize);
-			GameStateRectangles[1] = new Rectangle(left, baseSize * 5, iconSize, iconSize);
+			GameStateRectangles[0] = new Rectangle(left + (0 * baseSize), baseSize * 5, iconSize, iconSize);
+			GameStateRectangles[1] = new Rectangle(left + (1 * baseSize), baseSize * 5, iconSize, iconSize);
 
 			GameSoundRectangles = new Rectangle[2];
-			GameSoundRectangles[0] = new Rectangle(left, baseSize * 6, iconSize, iconSize);
-			GameSoundRectangles[1] = new Rectangle(left, baseSize * 7, iconSize, iconSize);
+			GameSoundRectangles[0] = new Rectangle(left + (0 * baseSize), baseSize * 6, iconSize, iconSize);
+			GameSoundRectangles[1] = new Rectangle(left + (1 * baseSize), baseSize * 6, iconSize, iconSize);
 
 
 			// Sprite sheet #02.
@@ -127,9 +130,10 @@ namespace WindowsGame.Common.Managers
 		}
 
 		// Sprite sheet #01.
+		public Rectangle BackRectangle { get; private set; }
 		public Rectangle[] GridRectangles { get; private set; }
 		public Rectangle[] StarRectangles { get; private set; }
-		public Rectangle BackRectangle { get; private set; }
+		public Rectangle TitleRectangle { get; private set; }
 		public Rectangle JoypadRectangle { get; private set; }
 		public Rectangle[] JoyButtonRectangles { get; private set; }
 		public Rectangle[] GameStateRectangles { get; private set; }

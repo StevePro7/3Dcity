@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Play</ScreenType>
+	<ScreenType>Beat</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<!--<ScreenType>Level</ScreenType>-->
@@ -14,7 +14,7 @@
 	<EnemysDelay>400</EnemysDelay>
 	<SplashDelay>0</SplashDelay>
 	<StarDelay>2000</StarDelay>
-	<GridDelay>200</GridDelay>
+	<GridDelay>300</GridDelay>
 	<SelectDelay>500</SelectDelay>
 	<IntroDelay>660</IntroDelay>
 	<ScoreDelay>800</ScoreDelay>

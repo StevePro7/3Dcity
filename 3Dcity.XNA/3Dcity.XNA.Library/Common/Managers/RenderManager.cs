@@ -101,7 +101,9 @@ namespace WindowsGame.Common.Managers
 		{
 			Engine.SpriteBatch.Draw(Assets.SpriteSheet01Texture, backPosition, backRectangle, Color.White);
 			Engine.SpriteBatch.Draw(Assets.SpriteSheet01Texture, gridPosition, gridRectangles[gridIndex], Color.White);
-			Engine.SpriteBatch.Draw(Assets.SpriteSheet01Texture, starPosition, starRectangles[starIndex], Color.White, rotation, origin, 1.0f, SpriteEffects.None, 1.0f);
+			Engine.SpriteBatch.Draw(Assets.SpriteSheet01Texture, starPosition, starRectangles[starIndex], Color.White);
+			//TODO delete old draw.
+			//Engine.SpriteBatch.Draw(Assets.SpriteSheet01Texture, starPosition, starRectangles[starIndex], Color.White, rotation, origin, 1.0f, SpriteEffects.None, 1.0f);
 		}
 
 		public void DrawTitle()

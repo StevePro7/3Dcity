@@ -1,6 +1,9 @@
 ﻿using System;
+using WindowsGame.Common.Static;
+using WindowsGame.Master;
 using Microsoft.Xna.Framework;
 using WindowsGame.Master.Interfaces;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace WindowsGame.Common.Screens
 {
@@ -24,6 +27,8 @@ namespace WindowsGame.Common.Screens
 				return (Int32)CurrScreen;
 			}
 
+			//MyGame.Manager.RenderManager.UpdateStar(gameTime);
+			//MyGame.Manager.RenderManager.UpdateGrid(gameTime);
 			return (Int32)CurrScreen;
 		}
 
@@ -31,6 +36,8 @@ namespace WindowsGame.Common.Screens
 		{
 			// Sprite sheet #01.
 			base.Draw();
+
+			Engine.SpriteBatch.Draw(Assets.SpriteSheet01Texture, Vector2.Zero, MyGame.Manager.ImageManager.TitleRectangle, Color.White);
 		}
 
 	}

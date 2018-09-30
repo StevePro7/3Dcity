@@ -51,7 +51,7 @@ namespace WindowsGame.Common.Screens
 
 			// Log delta to monitor performance!
 #if DEBUG
-			//MyGame.Manager.Logger.Info(gameTime.ElapsedGameTime.TotalSeconds.ToString());
+			MyGame.Manager.Logger.Info(gameTime.ElapsedGameTime.TotalSeconds.ToString());
 #endif
 
 			MyGame.Manager.CollisionManager.ClearCollisionList();
