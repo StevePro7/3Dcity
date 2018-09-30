@@ -1,8 +1,8 @@
 using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using WindowsGame.Common.Static;
 using WindowsGame.Master;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace WindowsGame.Common.Managers
 {
@@ -15,6 +15,7 @@ namespace WindowsGame.Common.Managers
 		void Draw();
 		void DrawTitle();
 		void DrawTitle(Vector2 position);
+		void DrawBottom();
 	}
 
 	public class RenderManager : IRenderManager
@@ -26,7 +27,8 @@ namespace WindowsGame.Common.Managers
 		private Vector2 starPosition;
 		private Vector2 gridPosition;
 		private Vector2 titlePosition;
-		private Vector2 origin;
+		private Vector2 bottomPosition;
+		//private Vector2 origin;				// TODO delete
 		private UInt16 starTimer, starDelay;
 		private UInt16 gridTimer, gridDelay;
 		private Single rotation;
@@ -43,7 +45,12 @@ namespace WindowsGame.Common.Managers
 			starPosition = new Vector2(0, 80 + Constants.GameOffsetY);
 			gridPosition = new Vector2(0, 240 + Constants.GameOffsetY);
 			titlePosition = new Vector2((Constants.ScreenWide - 240) / 2.0f, (Constants.ScreenHigh - 160) / 2.0f + 94);
-			origin = new Vector2(40, 0);
+
+			const UInt16 gameHigh = Constants.ScreenHigh - (2 * Constants.GameOffsetY);
+			const UInt16 bottHigh = gameHigh + Constants.GameOffsetY;
+			bottomPosition = new Vector2(0, bottHigh + Constants.TargetSize);
+
+			//origin = new Vector2(40, 0);		// TODO delete
 			rotation = MathHelper.ToRadians(270);
 		}
 
@@ -102,8 +109,6 @@ namespace WindowsGame.Common.Managers
 			Engine.SpriteBatch.Draw(Assets.SpriteSheet01Texture, backPosition, backRectangle, Color.White);
 			Engine.SpriteBatch.Draw(Assets.SpriteSheet01Texture, gridPosition, gridRectangles[gridIndex], Color.White);
 			Engine.SpriteBatch.Draw(Assets.SpriteSheet01Texture, starPosition, starRectangles[starIndex], Color.White);
-			//TODO delete old draw.
-			//Engine.SpriteBatch.Draw(Assets.SpriteSheet01Texture, starPosition, starRectangles[starIndex], Color.White, rotation, origin, 1.0f, SpriteEffects.None, 1.0f);
 		}
 
 		public void DrawTitle()
@@ -115,5 +120,9 @@ namespace WindowsGame.Common.Managers
 			Engine.SpriteBatch.Draw(Assets.GameTitle, position, Color.White);
 		}
 
+		public void DrawBottom()
+		{
+			Engine.SpriteBatch.Draw(Assets.SpriteSheet01Texture, bottomPosition, MyGame.Manager.ImageManager.BottomRectangle, Color.White, rotation, Vector2.Zero, 1.0f, SpriteEffects.None, 1.0f);
+		}
 	}
 }

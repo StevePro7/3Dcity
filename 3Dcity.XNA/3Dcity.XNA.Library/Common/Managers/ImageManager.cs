@@ -18,6 +18,7 @@ namespace WindowsGame.Common.Managers
 		Rectangle[] JoyButtonRectangles { get; }
 		Rectangle[] GameStateRectangles { get; }
 		Rectangle[] GameSoundRectangles { get; }
+		Rectangle BottomRectangle { get; }
 
 		// Sprite sheet #02.
 		Rectangle[][] ExplodeRectangles { get; }
@@ -41,7 +42,7 @@ namespace WindowsGame.Common.Managers
 			const Byte dbleSize = Constants.DbleSize;
 			const Byte enemySize = Constants.EnemySize;
 			const Byte targetSize = Constants.TargetSize;
-			const UInt16 left = Constants.ScreenWide + 64;
+			const UInt16 left = Constants.ScreenWide + targetSize;
 
 			// Sprite sheet #01.
 			GridRectangles = new Rectangle[Constants.MAX_GRID];
@@ -69,6 +70,7 @@ namespace WindowsGame.Common.Managers
 			GameSoundRectangles[0] = new Rectangle(left + (0 * baseSize), baseSize * 6, iconSize, iconSize);
 			GameSoundRectangles[1] = new Rectangle(left + (1 * baseSize), baseSize * 6, iconSize, iconSize);
 
+			BottomRectangle = new Rectangle(Constants.ScreenWide, (2 * baseSize), targetSize, Constants.ScreenWide);
 
 			// Sprite sheet #02.
 
@@ -138,6 +140,7 @@ namespace WindowsGame.Common.Managers
 		public Rectangle[] JoyButtonRectangles { get; private set; }
 		public Rectangle[] GameStateRectangles { get; private set; }
 		public Rectangle[] GameSoundRectangles { get; private set; }
+		public Rectangle BottomRectangle { get; private set; }
 
 		// Sprite sheet #02.
 		public Rectangle[][] ExplodeRectangles { get; private set; }
