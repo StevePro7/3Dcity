@@ -113,7 +113,10 @@
     <Compile Include="Common\Objects\GameState.cs" />
     <Compile Include="Common\Objects\JoypadMove.cs" />
     <Compile Include="Common\Screens\BaseScreen.cs" />
+    <Compile Include="Common\Screens\BeatScreen.cs" />
     <Compile Include="Common\Screens\ContScreen.cs" />
+    <Compile Include="Common\Screens\DeadScreen.cs" />
+    <Compile Include="Common\Screens\FinishScreen.cs" />
     <Compile Include="Common\Screens\IntroScreen.cs" />
     <Compile Include="Common\Screens\LevelScreen.cs" />
     <Compile Include="Common\Screens\DiffScreen.cs" />
@@ -123,6 +126,7 @@
     <Compile Include="Common\Screens\InitScreen.cs" />
     <Compile Include="Common\Screens\PlayScreen.cs" />
     <Compile Include="Common\Screens\ReadyScreen.cs" />
+    <Compile Include="Common\Screens\ResumeScreen.cs" />
     <Compile Include="Common\Screens\SplashScreen.cs" />
     <Compile Include="Common\Screens\TestScreen.cs" />
     <Compile Include="Common\Screens\TitleScreen.cs" />
