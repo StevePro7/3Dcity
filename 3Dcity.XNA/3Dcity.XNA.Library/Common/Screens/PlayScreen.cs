@@ -89,27 +89,27 @@ namespace WindowsGame.Common.Screens
 			// ENEMYS.
 			// Update enemies and test collisions.
 			MyGame.Manager.EnemyManager.Update(gameTime);
-			if (!isGodMode)
+			if (MyGame.Manager.EnemyManager.EnemyTest.Count > 0)
 			{
 				// Enemy has maxed out frames so check for collision.
-				if (MyGame.Manager.EnemyManager.EnemyTest.Count > 0)
+				checkLevelComplete = true;
+
+				LargeTarget target = MyGame.Manager.SpriteManager.LargeTarget;
+				IList<Enemy> enemyTest = MyGame.Manager.EnemyManager.EnemyTest;
+
+				for (Byte testIndex = 0; testIndex < enemyTest.Count; testIndex++)
 				{
-					checkLevelComplete = true;
-
-					LargeTarget target = MyGame.Manager.SpriteManager.LargeTarget;
-					IList<Enemy> enemyTest = MyGame.Manager.EnemyManager.EnemyTest;
-
-					for (Byte testIndex = 0; testIndex < enemyTest.Count; testIndex++)
+					Enemy enemy = enemyTest[testIndex];
+					if (!isGodMode)
 					{
 						// First check if enemy instantly kills target.
-						Enemy enemy = enemyTest[testIndex];
 						Boolean test = CheckEnemyKillTarget(enemy, target);
 
 						// Instant death!	Game Over.
 						if (test)
 						{
 							// Do NOT reset enemy here as we want to see Target killed by Enemy!
-							return (Int32)ScreenType.Dead;
+							return (Int32) ScreenType.Dead;
 						}
 
 						// Enemy not kill target but missed so increment miss total.
@@ -118,19 +118,63 @@ namespace WindowsGame.Common.Screens
 						{
 							// If maximum misses then game over.
 							enemy.Reset();
-							return (Int32)ScreenType.Dead;
+							return (Int32) ScreenType.Dead;
 						}
+					}
 
-						// Finally, check if anymore enemies to spawn...
-						Byte enemyID = enemy.ID;
-						Boolean check = MyGame.Manager.EnemyManager.CheckThisEnemy(enemyID);
-						if (!check)
-						{
-							MyGame.Manager.EnemyManager.SpawnOneEnemy(enemyID);
-						}
+					// Finally, check if anymore enemies to spawn...
+					Byte enemyID = enemy.ID;
+					Boolean check = MyGame.Manager.EnemyManager.CheckThisEnemy(enemyID);
+					if (!check)
+					{
+						MyGame.Manager.EnemyManager.SpawnOneEnemy(enemyID);
 					}
 				}
 			}
+
+
+			//if (!isGodMode)
+			//{
+			//    // Enemy has maxed out frames so check for collision.
+			//    if (MyGame.Manager.EnemyManager.EnemyTest.Count > 0)
+			//    {
+			//        checkLevelComplete = true;
+
+			//        LargeTarget target = MyGame.Manager.SpriteManager.LargeTarget;
+			//        IList<Enemy> enemyTest = MyGame.Manager.EnemyManager.EnemyTest;
+
+			//        for (Byte testIndex = 0; testIndex < enemyTest.Count; testIndex++)
+			//        {
+			//            // First check if enemy instantly kills target.
+			//            Enemy enemy = enemyTest[testIndex];
+			//            Boolean test = CheckEnemyKillTarget(enemy, target);
+
+			//            // Instant death!	Game Over.
+			//            if (test)
+			//            {
+			//                // Do NOT reset enemy here as we want to see Target killed by Enemy!
+			//                return (Int32)ScreenType.Dead;
+			//            }
+
+			//            // Enemy not kill target but missed so increment miss total.
+			//            MyGame.Manager.ScoreManager.IncrementMisses();
+			//            if (MyGame.Manager.ScoreManager.MissesTotal >= Constants.MAX_MISSES)
+			//            {
+			//                // If maximum misses then game over.
+			//                enemy.Reset();
+			//                return (Int32)ScreenType.Dead;
+			//            }
+
+			//            // Finally, check if anymore enemies to spawn...
+			//            Byte enemyID = enemy.ID;
+			//            Boolean check = MyGame.Manager.EnemyManager.CheckThisEnemy(enemyID);
+			//            if (!check)
+			//            {
+			//                MyGame.Manager.EnemyManager.SpawnOneEnemy(enemyID);
+			//            }
+			//        }
+			//    }
+			//}
 
 
 			// TODO delete
@@ -168,7 +212,7 @@ namespace WindowsGame.Common.Screens
 			return (Int32)CurrScreen;
 		}
 
-		private Boolean CheckEnemyKillTarget(Enemy enemy, LargeTarget target)
+		private static Boolean CheckEnemyKillTarget(Enemy enemy, LargeTarget target)
 		{
 			Boolean test = MyGame.Manager.CollisionManager.BoxesCollision(enemy.Position, target.Position);
 			if (!test)

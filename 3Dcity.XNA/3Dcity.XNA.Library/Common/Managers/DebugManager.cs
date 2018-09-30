@@ -34,6 +34,8 @@ namespace WindowsGame.Common.Managers
 			// Reset levels for testing scenario.
 			MyGame.Manager.LevelManager.SetLevelType(MyGame.Manager.ConfigManager.GlobalConfigData.LevelType);
 			MyGame.Manager.LevelManager.SetLevelIndex(MyGame.Manager.ConfigManager.GlobalConfigData.LevelIndex);
+
+			MyGame.Manager.StateManager.SetIsGodMode(MyGame.Manager.ConfigManager.GlobalConfigData.IsGodMode);
 		}
 
 		public void Draw()

@@ -9,6 +9,8 @@ namespace WindowsGame.Common.Managers
 		void ToggleGameSound();
 		void UpdateGameSound();
 
+		void SetIsGodMode(Boolean isGodMode);
+
 		Boolean GamePause { get; }
 		Boolean GameQuiet { get; }
 		Boolean IsGodMode { get; }
@@ -35,6 +37,11 @@ namespace WindowsGame.Common.Managers
 		public void UpdateGameSound()
 		{
 			GameQuiet = !MyGame.Manager.SoundManager.PlayAudio;
+		}
+
+		public void SetIsGodMode(Boolean isGodMode)
+		{
+			IsGodMode = isGodMode;
 		}
 
 		public Boolean GamePause { get; private set; }

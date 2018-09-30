@@ -38,6 +38,7 @@ namespace WindowsGame.Common.Managers
 	{
 		private LevelType levelType;
 		private Byte maxEnemySpawn;
+		private UInt16 testFrameDelay;
 
 		public void Initialize()
 		{
@@ -71,6 +72,9 @@ namespace WindowsGame.Common.Managers
 				Enemy enemy = EnemyList[index];
 				enemy.LoadContent(MyGame.Manager.ImageManager.EnemyRectangles);
 			}
+
+			// TODO enemy frame delay will be injected..
+			testFrameDelay = MyGame.Manager.ConfigManager.GlobalConfigData.EnemysDelay;
 		}
 
 		public void Reset(LevelType theLevelType, Byte theEnemySpawn, UInt16 minDelay, UInt16 maxDelay, Byte enemyTotal)
@@ -80,6 +84,12 @@ namespace WindowsGame.Common.Managers
 			if (maxEnemySpawn > Constants.MAX_ENEMYS_SPAWN)
 			{
 				maxEnemySpawn = Constants.MAX_ENEMYS_SPAWN;
+			}
+
+			// Ensure max total takes precedence over spawn.
+			if (maxEnemySpawn > enemyTotal)
+			{
+				maxEnemySpawn = enemyTotal;
 			}
 
 			MinDelay = minDelay;
@@ -94,11 +104,13 @@ namespace WindowsGame.Common.Managers
 			EnemyTest.Clear();
 			EnemyDict.Clear();
 
-			// Ensure total at least the max.
-			if (enemyTotal < maxEnemySpawn)
-			{
-				enemyTotal = maxEnemySpawn;
-			}
+			// TODO delete
+			//// Ensure total at least the max.
+			//if (enemyTotal < maxEnemySpawn)
+			//{
+			//    enemyTotal = maxEnemySpawn;
+			//}
+
 			EnemyTotal = enemyTotal;
 			EnemySpawn = 0;
 		}
@@ -108,14 +120,15 @@ namespace WindowsGame.Common.Managers
 			for (Byte index = 0; index < maxEnemySpawn; index++)
 			{
 				SpawnOneEnemy(index);
-				EnemyList[index].Start((UInt16)(Constants.TestFrameDelay + 3* Constants.TestFrameDelay * index));		// TODO tweak configurable numbers
+				// TODO tweak configurable numbers
+				EnemyList[index].Start((UInt16)(testFrameDelay + 3* testFrameDelay * index));
 			}
 		}
 
 		public void SpawnOneEnemy(Byte index)
 		{
 			// TODO work out better the frame delay.
-			UInt16 frameDelay = Constants.TestFrameDelay;
+			UInt16 frameDelay = testFrameDelay;//Constants.TestFrameDelay;
 			//UInt16 frameDelay = MyGame.Manager.RandomManager.Next(MinDelay, MaxDelay);
 
 			SByte slotID = Constants.INVALID_INDEX;

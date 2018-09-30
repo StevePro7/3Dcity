@@ -11,6 +11,7 @@
 	<PlayAudio>false</PlayAudio>
 	<LevelType>Easy</LevelType>
 	<LevelIndex>0</LevelIndex>
+	<EnemysDelay>400</EnemysDelay>
 	<SplashDelay>0</SplashDelay>
 	<StarDelay>2000</StarDelay>
 	<GridDelay>200</GridDelay>
@@ -30,8 +31,8 @@
 	<EnemysY>100</EnemysY>
 	<EnemyFrame>7</EnemyFrame>
 	<EnemyIndex>0</EnemyIndex>
-	<EnemySpawn>1</EnemySpawn>
-	<EnemyTotal>1</EnemyTotal>
+	<EnemySpawn>9</EnemySpawn>
+	<EnemyTotal>4</EnemyTotal>
 	<IsGodMode>true</IsGodMode>
 	<DebugTester>true</DebugTester>
 	<QuitsToExit>true</QuitsToExit>
