@@ -23,7 +23,7 @@ namespace WindowsGame.Master.Inputs
 		// Properties.
 		Int32 CurrMouseX { get; }
 		Int32 CurrMouseY { get; }
-		Vector2 MosuePosition { get; }
+		Vector2 MousePosition { get; }
 	}
 
 	public class MouseScreenInput : IMouseScreenInput
@@ -38,7 +38,7 @@ namespace WindowsGame.Master.Inputs
 		{
 			CurrMouseX = 0;
 			CurrMouseY = 0;
-			MosuePosition = Vector2.Zero;
+			MousePosition = Vector2.Zero;
 			maxInputs = 0;
 		}
 
@@ -59,7 +59,7 @@ namespace WindowsGame.Master.Inputs
 			Vector2 mousePosition = Vector2.Zero;
 			mousePosition.X = CurrMouseX;
 			mousePosition.Y = CurrMouseY;
-			MosuePosition = mousePosition;
+			MousePosition = mousePosition;
 
 			currLeftButtonState = mouseState.LeftButton;
 			currRightButtonState = mouseState.RightButton;
@@ -105,7 +105,7 @@ namespace WindowsGame.Master.Inputs
 		// Properties.
 		public Int32 CurrMouseX { get; private set; }
 		public Int32 CurrMouseY { get; private set; }
-		public Vector2 MosuePosition { get; private set; }
+		public Vector2 MousePosition { get; private set; }
 
 	}
 }

@@ -31,6 +31,7 @@ namespace WindowsGame.Master.Factorys
 				{
 					if (storage.FileExists(myFileName))
 					{
+						// FileStream m_FullPath
 						using (IsolatedStorageFileStream fileStream = new IsolatedStorageFileStream(myFileName, FileMode.Open, storage))
 						{
 							XmlSerializer serializer = new XmlSerializer(typeof(T));

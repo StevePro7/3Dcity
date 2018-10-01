@@ -136,49 +136,6 @@ namespace WindowsGame.Common.Screens
 			}
 
 
-			//if (!isGodMode)
-			//{
-			//    // Enemy has maxed out frames so check for collision.
-			//    if (MyGame.Manager.EnemyManager.EnemyTest.Count > 0)
-			//    {
-			//        checkLevelComplete = true;
-
-			//        LargeTarget target = MyGame.Manager.SpriteManager.LargeTarget;
-			//        IList<Enemy> enemyTest = MyGame.Manager.EnemyManager.EnemyTest;
-
-			//        for (Byte testIndex = 0; testIndex < enemyTest.Count; testIndex++)
-			//        {
-			//            // First check if enemy instantly kills target.
-			//            Enemy enemy = enemyTest[testIndex];
-			//            Boolean test = CheckEnemyKillTarget(enemy, target);
-
-			//            // Instant death!	Game Over.
-			//            if (test)
-			//            {
-			//                // Do NOT reset enemy here as we want to see Target killed by Enemy!
-			//                return (Int32)ScreenType.Dead;
-			//            }
-
-			//            // Enemy not kill target but missed so increment miss total.
-			//            MyGame.Manager.ScoreManager.IncrementMisses();
-			//            if (MyGame.Manager.ScoreManager.MissesTotal >= Constants.MAX_MISSES)
-			//            {
-			//                // If maximum misses then game over.
-			//                enemy.Reset();
-			//                return (Int32)ScreenType.Dead;
-			//            }
-
-			//            // Finally, check if anymore enemies to spawn...
-			//            Byte enemyID = enemy.ID;
-			//            Boolean check = MyGame.Manager.EnemyManager.CheckThisEnemy(enemyID);
-			//            if (!check)
-			//            {
-			//                MyGame.Manager.EnemyManager.SpawnOneEnemy(enemyID);
-			//            }
-			//        }
-			//    }
-			//}
-
 
 			// TODO delete
 			//if (MyGame.Manager.EnemyManager.EnemyTest.Count > 0)

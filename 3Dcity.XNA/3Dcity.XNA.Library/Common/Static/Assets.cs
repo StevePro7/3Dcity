@@ -13,21 +13,18 @@ namespace WindowsGame.Common.Static
 		// Sound.
 		public static IDictionary<SoundEffectType, SoundEffectInstance> SoundEffectDictionary;
 		public static IDictionary<SongType, Song> SongDictionary;
-		//public static Song GameMusicSong;
-		//public static Song GameOverSong;
 
 		// Textures.
 		public static Texture2D SplashTexture;
 
 		public static Texture2D SpriteSheet01Texture;
 		public static Texture2D SpriteSheet02Texture;
-		public static Texture2D GameTitle;
-
-		public static Texture2D OrbGreen32;
-		public static Texture2D OrbRed32;
 
 
 		// TODO delete
+		//public static Texture2D GameTitle;
+		//public static Texture2D OrbGreen32;
+		//public static Texture2D OrbRed32;
 		//public static Texture2D Enemy120;
 		//public static Texture2D Target56;
 		//public static Texture2D Target64;

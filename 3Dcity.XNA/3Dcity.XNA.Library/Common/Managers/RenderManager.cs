@@ -117,7 +117,7 @@ namespace WindowsGame.Common.Managers
 		}
 		public void DrawTitle(Vector2 position)
 		{
-			Engine.SpriteBatch.Draw(Assets.GameTitle, position, Color.White);
+			Engine.SpriteBatch.Draw(Assets.SpriteSheet01Texture, position, MyGame.Manager.ImageManager.TitleRectangle, Color.White);
 		}
 
 		public void DrawBottom()

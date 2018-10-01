@@ -53,15 +53,12 @@ namespace WindowsGame.Common.Managers
 				String soundsRoot = String.Format("{0}/{1}/", contentRoot, SOUND_DIRECTORY);
 
 				Assets.SongDictionary = new Dictionary<SongType, Song>();
-				for (SongType key = SongType.AwesomeMusic; key <= SongType.GameTitle; ++key)
+				for (SongType key = SongType.BossMusic; key <= SongType.GameTitle; ++key)
 				{
 					String assetName = String.Format("{0}{1}", soundsRoot, key);
 					Song value = contentFactory.LoadSong(assetName);
 					Assets.SongDictionary.Add(key, value);
 				}
-
-				//Assets.GameMusicSong = Engine.Content.Load<Song>(soundsRoot + "GameMusic");
-				//Assets.GameOverSong = Engine.Content.Load<Song>(soundsRoot + "GameOver");
 
 				Assets.SoundEffectDictionary = new Dictionary<SoundEffectType, SoundEffectInstance>();
 				for (SoundEffectType key = SoundEffectType.Funny; key <= SoundEffectType.Early; ++key)
@@ -76,13 +73,11 @@ namespace WindowsGame.Common.Managers
 			Assets.SpriteSheet01Texture = contentFactory.LoadTexture(texturesRoot + "spritesheet01-1024");
 			Assets.SpriteSheet02Texture = contentFactory.LoadTexture(texturesRoot + "spritesheet02-1024");
 
-			Assets.GameTitle = contentFactory.LoadTexture(texturesRoot + "3Dcity");
-
-			Assets.OrbGreen32 = contentFactory.LoadTexture(texturesRoot + "OrbGreen32");
-			Assets.OrbRed32 = contentFactory.LoadTexture(texturesRoot + "OrbRed32");
-
 
 			// TODO delete
+			//Assets.GameTitle = contentFactory.LoadTexture(texturesRoot + "3Dcity");
+			//Assets.OrbGreen32 = contentFactory.LoadTexture(texturesRoot + "OrbGreen32");
+			//Assets.OrbRed32 = contentFactory.LoadTexture(texturesRoot + "OrbRed32");
 			//Assets.Enemy120 = contentFactory.LoadTexture(texturesRoot + "Enemy120");
 			//Assets.Target56 = contentFactory.LoadTexture(texturesRoot + "Target56");
 			//Assets.Target64 = contentFactory.LoadTexture(texturesRoot + "Target64");
