@@ -13,13 +13,14 @@ namespace WindowsGame.Common.Screens
 		private Single startY;
 		private Single titleY;
 		private Single deltaY;
+		private Boolean coolMusic;
 
 		public override void Initialize()
 		{
 			base.Initialize();
 
-			titlePosition = new Vector2((Constants.ScreenWide - 240) / 2.0f, (Constants.ScreenHigh - 160) / 2.0f + 94);
-			startPosition = new Vector2(titlePosition.X, Constants.ScreenHigh - 160);
+			titlePosition = new Vector2((Constants.ScreenWide - 240) / 2.0f, (Constants.ScreenHigh - Constants.DbleSize) / 2.0f + 94);
+			startPosition = new Vector2(titlePosition.X, Constants.ScreenHigh - Constants.GameOffsetY + 10);
 
 			startY = startPosition.Y;
 			titleY = titlePosition.Y;
@@ -31,12 +32,16 @@ namespace WindowsGame.Common.Screens
 			deltaY = startY - titleY;
 			deltaY = introDelay / deltaY;
 			moverPosition = startPosition;
-
+			coolMusic = MyGame.Manager.StateManager.CoolMusic;
+			SongType song = coolMusic ? SongType.CoolMusic : SongType.GameTitle;
+			MyGame.Manager.SoundManager.PlayMusic(song, false);
 			base.LoadContent();
 		}
 
 		public override Int32 Update(GameTime gameTime)
 		{
+			Timer += (UInt16)gameTime.ElapsedGameTime.Milliseconds;
+
 			base.Update(gameTime);
 			if (GamePause)
 			{
@@ -46,13 +51,11 @@ namespace WindowsGame.Common.Screens
 			if (startY > titleY)
 			{
 				Single delta = (Single) gameTime.ElapsedGameTime.TotalSeconds;
-				startY -= delta * deltaY * 1;
+				//startY -= delta * deltaY * 24;
+				startY -= delta * deltaY * 8;
 				moverPosition.Y = startY;
 			}
-			else
-			{
-				return (Int32) ScreenType.Diff;
-			}
+
 			return (Int32) CurrScreen;
 		}
 
@@ -60,12 +63,15 @@ namespace WindowsGame.Common.Screens
 		{
 			// Sprite sheet #01.
 			base.Draw();
+			
 
 			// Individual texture.
-			MyGame.Manager.RenderManager.DrawTitle();
+			MyGame.Manager.RenderManager.DrawTitle(moverPosition);
+			MyGame.Manager.RenderManager.DrawBottom();
 
 			// Text data last!
 			MyGame.Manager.TextManager.DrawTitle();
+			MyGame.Manager.ScoreManager.Draw();
 		}
 
 	}

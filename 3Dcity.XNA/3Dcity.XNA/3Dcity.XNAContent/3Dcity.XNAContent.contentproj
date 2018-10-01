@@ -362,8 +362,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sound\AwesomeMusic.mp3">
-      <Name>AwesomeMusic</Name>
+    <Compile Include="Sound\CoolMusic.mp3">
+      <Name>CoolMusic</Name>
       <Importer>Mp3Importer</Importer>
       <Processor>SongProcessor</Processor>
     </Compile>

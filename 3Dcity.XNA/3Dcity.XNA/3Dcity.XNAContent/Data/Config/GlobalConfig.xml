@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Play</ScreenType>
+	<ScreenType>Intro</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<!--<ScreenType>Level</ScreenType>-->
 	<!--<ScreenType>Intro</ScreenType>-->
 	<FramesPerSecond>100</FramesPerSecond>
 	<MaximLevel>16</MaximLevel>
-	<LoadAudio>false</LoadAudio>
-	<PlayAudio>false</PlayAudio>
+	<LoadAudio>true</LoadAudio>
+	<PlayAudio>true</PlayAudio>
 	<LevelType>Easy</LevelType>
 	<LevelIndex>0</LevelIndex>
 	<EnemysDelay>400</EnemysDelay>
-	<SplashDelay>0</SplashDelay>
+	<SplashDelay>3000</SplashDelay>
 	<StarDelay>2000</StarDelay>
 	<GridDelay>300</GridDelay>
 	<SelectDelay>500</SelectDelay>
@@ -24,7 +24,7 @@
 	<UpdateGrid>false</UpdateGrid>
 	<RenderBack>true</RenderBack>
 	<RenderIcon>true</RenderIcon>
-	<AwesomeMusic>true</AwesomeMusic>
+	<CoolMusic>false</CoolMusic>
 	<TargetX>0</TargetX>
 	<TargetY>0</TargetY>
 	<EnemysX>400</EnemysX>

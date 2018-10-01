@@ -9,21 +9,28 @@ namespace WindowsGame.Common.Screens
 	public class InitScreen : IScreen
 	{
 		private Vector2 bannerPosition;
+		private Vector2 annualPosition;
+		private Vector2 musicPosition;
+
 		private Int32 nextScreen;
 		private UInt16 splashDelay;
 		private UInt16 splashTimer;
 		private Boolean join;
+		private Boolean flag;
 
 		public void Initialize()
 		{
 			Single wide = (Constants.ScreenWide - Assets.SplashTexture.Width) / 2.0f;
 			Single high = (Constants.ScreenHigh - Assets.SplashTexture.Height) / 2.0f;
 			bannerPosition = new Vector2(wide, high);
+			annualPosition = MyGame.Manager.TextManager.GetTextPosition(32, 23);
+			musicPosition = MyGame.Manager.TextManager.GetTextPosition(0, 23);
 
 			nextScreen = GetNextScreen();
 			splashDelay = MyGame.Manager.ConfigManager.GlobalConfigData.SplashDelay;
 			splashTimer = 0;
 			join = false;
+			flag = false;
 		}
 
 		public void LoadContent()
@@ -48,12 +55,41 @@ namespace WindowsGame.Common.Screens
 				return nextScreen;
 			}
 
+			if (!flag)
+			{
+				Boolean test = MyGame.Manager.InputManager.Fire();
+				if (test)
+				{
+					flag = true;
+					MyGame.Manager.StateManager.SetCoolMusic(!MyGame.Manager.StateManager.CoolMusic);
+				}
+			}
+			
 			return (Int32)ScreenType.Init;
 		}
 
 		public void Draw()
 		{
 			Engine.SpriteBatch.Draw(Assets.SplashTexture, bannerPosition, Color.White);
+			if (0 == splashDelay)
+			{
+				return;
+			}
+
+			if (!join)
+			{
+				return;
+			}
+
+			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, Globalize.YEAR_TITLE, annualPosition, Color.White);
+
+			if (!flag)
+			{
+				return;
+			}
+
+			String text = MyGame.Manager.StateManager.CoolMusic ? Globalize.CURSOR_LEFTS : Globalize.CURSOR_RIGHT;
+			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, text, musicPosition, Color.White);
 		}
 
 		private static Int32 GetNextScreen()

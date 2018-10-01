@@ -35,9 +35,9 @@
 
 	public enum SongType
 	{
-		AwesomeMusic,
 		BossMusic,
 		ContMusic,
+		CoolMusic,
 		GameMusic,
 		GameOver,
 		GameTitle

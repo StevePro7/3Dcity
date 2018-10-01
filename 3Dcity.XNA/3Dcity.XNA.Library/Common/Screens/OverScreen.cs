@@ -47,7 +47,7 @@ namespace WindowsGame.Common.Screens
 			{
 				MyGame.Manager.SoundManager.StopMusic();
 				//MyGame.Manager.SoundManager.PlayMusic(SongType.BossMusic);
-				MyGame.Manager.SoundManager.PlayMusic(SongType.AwesomeMusic, false);
+				MyGame.Manager.SoundManager.PlayMusic(SongType.CoolMusic, false);
 			}
 			else
 			{

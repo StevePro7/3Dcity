@@ -45,6 +45,7 @@ namespace WindowsGame.Common.Managers
 			MyGame.Manager.SoundManager.SetPlayAudio(storagePersistData.PlayAudio);
 			MyGame.Manager.StateManager.UpdateGameSound();
 
+			MyGame.Manager.StateManager.SetCoolMusic(storagePersistData.CoolMusic);
 			MyGame.Manager.LevelManager.SetLevelType(storagePersistData.LevelType);
 			MyGame.Manager.LevelManager.SetLevelIndex(storagePersistData.LevelIndex);
 			MyGame.Manager.ScoreManager.SetHighScore(storagePersistData.HighScore);
@@ -58,6 +59,7 @@ namespace WindowsGame.Common.Managers
 				{
 					HighScore = Constants.DEF_HIGH_SCORE,
 					PlayAudio = MyGame.Manager.ConfigManager.GlobalConfigData.PlayAudio,
+					CoolMusic = MyGame.Manager.ConfigManager.GlobalConfigData.CoolMusic,
 					LevelType = MyGame.Manager.ConfigManager.GlobalConfigData.LevelType,
 					LevelIndex = MyGame.Manager.ConfigManager.GlobalConfigData.LevelIndex,
 				};
@@ -67,6 +69,7 @@ namespace WindowsGame.Common.Managers
 				storagePersistData.HighScore = MyGame.Manager.ScoreManager.HighScore;
 				//storagePersistData.HighScore = Constants.DEF_HIGH_SCORE;	// Reset!
 				storagePersistData.PlayAudio = MyGame.Manager.SoundManager.PlayAudio;
+				storagePersistData.CoolMusic = MyGame.Manager.StateManager.CoolMusic;
 				storagePersistData.LevelType = MyGame.Manager.LevelManager.LevelType;
 				storagePersistData.LevelIndex = MyGame.Manager.LevelManager.LevelIndex;
 			}
