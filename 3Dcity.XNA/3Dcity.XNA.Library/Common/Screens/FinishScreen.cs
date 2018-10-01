@@ -24,6 +24,9 @@ namespace WindowsGame.Common.Screens
 				return (Int32)CurrScreen;
 			}
 
+			// Update bullets to finish off..
+			MyGame.Manager.BulletManager.Update(gameTime);
+
 			return (Int32)CurrScreen;
 		}
 

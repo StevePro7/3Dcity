@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using WindowsGame.Common.Data;
 using WindowsGame.Common.Static;
 using WindowsGame.Master;
 using Microsoft.Xna.Framework;
@@ -11,6 +12,7 @@ namespace WindowsGame.Common.Managers
 		void Initialize();
 		void Initialize(String root);
 		void LoadContent();
+		void LoadLevelConfigData(LevelType levelType, Byte levelIndex);
 
 		void SetLevelType(LevelType levelType);
 		void SetLevelIndex(Byte levelIndex);
@@ -22,7 +24,8 @@ namespace WindowsGame.Common.Managers
 		// Properties.
 		//Vector2[] LevelTextPositions { get; }		// TODO delete
 		IList<String> LevelNames { get; }
-		IList<String> LevelRoman{ get; }
+		IList<String> LevelRoman { get; }
+		LevelConfigData LevelConfigData { get; }
 		Byte MaximLevel { get; }
 		LevelType LevelType { get; }
 		Byte LevelIndex { get; }
@@ -81,6 +84,13 @@ namespace WindowsGame.Common.Managers
 			{
 				MaximLevel = (Byte)LevelNames.Count;
 			}
+		}
+
+		public void LoadLevelConfigData(LevelType levelType, Byte levelIndex)
+		{
+			String levelValue = (levelIndex + 1).ToString().PadLeft(2, '0');
+			String file = String.Format("{0}/{1}/{2}-{1}.xml", levelRoot, levelType, levelValue);
+			LevelConfigData = MyGame.Manager.FileManager.LoadXml<LevelConfigData>(file);
 		}
 
 		public void SetLevelType(LevelType levelType)
@@ -153,6 +163,7 @@ namespace WindowsGame.Common.Managers
 		public Vector2[] LevelTextPositions { get; private set; }
 		public IList<String> LevelNames { get; private set; }
 		public IList<String> LevelRoman { get; private set; }
+		public LevelConfigData LevelConfigData { get; private set; }
 		public Byte MaximLevel { get; private set; }
 		public LevelType LevelType { get; private set; }
 		public Byte LevelIndex { get; private set; }

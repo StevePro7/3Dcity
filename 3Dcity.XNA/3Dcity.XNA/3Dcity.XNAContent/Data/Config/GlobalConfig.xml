@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Beat</ScreenType>
+	<ScreenType>Play</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<!--<ScreenType>Level</ScreenType>-->
@@ -31,8 +31,8 @@
 	<EnemysY>100</EnemysY>
 	<EnemyFrame>7</EnemyFrame>
 	<EnemyIndex>0</EnemyIndex>
-	<EnemySpawn>9</EnemySpawn>
-	<EnemyTotal>4</EnemyTotal>
+	<EnemySpawn>1</EnemySpawn>
+	<EnemyTotal>1</EnemyTotal>
 	<IsGodMode>true</IsGodMode>
 	<DebugTester>true</DebugTester>
 	<QuitsToExit>true</QuitsToExit>

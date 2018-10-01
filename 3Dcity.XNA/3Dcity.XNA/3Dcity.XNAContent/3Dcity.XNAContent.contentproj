@@ -244,10 +244,7 @@
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\Levels\Easy\" />
-    <Folder Include="Data\Levels\Hard\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Data\Levels\LevelNames.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -375,6 +372,22 @@
     <None Include="Data\Texts\IntroScreen.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>IntroScreen</Name>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\Levels\Hard\01-Hard.xml">
+      <Name>01-Hard</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\Levels\Easy\01-Easy.xml">
+      <Name>01-Easy</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

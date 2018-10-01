@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework;
 using WindowsGame.Common.Data;
 using WindowsGame.Common.Static;
-using WindowsGame.Master;
 using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
@@ -14,8 +13,6 @@ namespace WindowsGame.Common.Screens
 		private Vector2 targetPos;
 		private Rectangle enemysRect;
 		private Rectangle targetRect;
-
-		private Boolean collision;
 		private String[] outputText;
 
 		public override void Initialize()
@@ -23,7 +20,6 @@ namespace WindowsGame.Common.Screens
 			base.Initialize();
 			LoadTextData();
 
-			collision = true;
 			outputText = new string[2] { "FALSE", "TRUE" };
 		}
 

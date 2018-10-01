@@ -28,6 +28,9 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.BulletManager.Reset(10, 200, 100);
 
 			LevelType levelType = MyGame.Manager.LevelManager.LevelType;
+			Byte levelIndex = MyGame.Manager.LevelManager.LevelIndex;
+			MyGame.Manager.LevelManager.LoadLevelConfigData(levelType, levelIndex);
+
 			//const Byte enemySpawn = 1;
 			//const Byte enemyTotal = 3;
 			Byte enemySpawn = MyGame.Manager.ConfigManager.GlobalConfigData.EnemySpawn;	// 1;  // TODO level config

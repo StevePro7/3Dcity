@@ -1,5 +1,22 @@
 # 3Dcity
 
+TODO
+LevelManager
+
+Bullet
+MaxBullets
+FrameDelay
+ShootDelay
+
+Enemys
+EnemySpawn
+EnemyTotal
+FrameDelay	min/max
+StartDelay
+DecrementDelay	how much to decrease each time
+VelocityX?
+VelocityY?
+
 IMPORTANT
 Must replace initial target 64x64 in spritesheet with new one used for the color collision detection 56x56!!
 
