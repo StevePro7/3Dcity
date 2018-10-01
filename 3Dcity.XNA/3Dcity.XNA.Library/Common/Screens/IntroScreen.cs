@@ -1,4 +1,5 @@
 ﻿using System;
+using WindowsGame.Master;
 using Microsoft.Xna.Framework;
 using WindowsGame.Common.Static;
 using WindowsGame.Master.Interfaces;
@@ -10,6 +11,7 @@ namespace WindowsGame.Common.Screens
 		private Vector2 startPosition;
 		private Vector2 titlePosition;
 		private Vector2 moverPosition;
+		private Vector2 buildPosition;
 		private Single startY;
 		private Single titleY;
 		private Single deltaY;
@@ -28,6 +30,7 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
+			buildPosition = MyGame.Manager.TextManager.GetTextPosition(35, 23);
 			UInt16 introDelay = MyGame.Manager.ConfigManager.GlobalConfigData.IntroDelay;
 			deltaY = startY - titleY;
 			deltaY = introDelay / deltaY;
@@ -72,6 +75,7 @@ namespace WindowsGame.Common.Screens
 			// Text data last!
 			MyGame.Manager.TextManager.DrawTitle();
 			MyGame.Manager.ScoreManager.Draw();
+			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, Globalize.BUILD_DATA, buildPosition, Color.White);
 		}
 
 	}

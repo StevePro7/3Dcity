@@ -12,7 +12,7 @@
 	<LevelType>Easy</LevelType>
 	<LevelIndex>0</LevelIndex>
 	<EnemysDelay>400</EnemysDelay>
-	<SplashDelay>3000</SplashDelay>
+	<SplashDelay>5000</SplashDelay>
 	<StarDelay>2000</StarDelay>
 	<GridDelay>300</GridDelay>
 	<SelectDelay>500</SelectDelay>
@@ -20,7 +20,7 @@
 	<ScoreDelay>800</ScoreDelay>
 	<EventRatio>1.0</EventRatio>
 	<ScoreBlink>false</ScoreBlink>
-	<UpdateStar>false</UpdateStar>
+	<UpdateStar>true</UpdateStar>
 	<UpdateGrid>false</UpdateGrid>
 	<RenderBack>true</RenderBack>
 	<RenderIcon>true</RenderIcon>

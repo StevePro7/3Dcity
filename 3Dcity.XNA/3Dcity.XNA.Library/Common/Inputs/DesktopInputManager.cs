@@ -53,7 +53,7 @@ namespace WindowsGame.Common.Inputs
 			// Mouse.
 			if (mouseScreenInput.LeftButtonPress())
 			{
-				horz = controlManager.CheckJoyPadHorz(mouseScreenInput.MosuePosition);
+				horz = controlManager.CheckJoyPadHorz(mouseScreenInput.MousePosition);
 				if (Math.Abs(horz) > Single.Epsilon)
 				{
 					return horz;
@@ -97,7 +97,7 @@ namespace WindowsGame.Common.Inputs
 			// Mouse.
 			if (mouseScreenInput.LeftButtonPress())
 			{
-				vert = controlManager.CheckJoyPadVert(mouseScreenInput.MosuePosition);
+				vert = controlManager.CheckJoyPadVert(mouseScreenInput.MousePosition);
 				if (Math.Abs(vert) > Single.Epsilon)
 				{
 					return vert;
@@ -143,7 +143,7 @@ namespace WindowsGame.Common.Inputs
 			}
 			if (mouseScreenInput.LeftButtonPress())
 			{
-				Boolean test = controlManager.CheckJoyPadFire(mouseScreenInput.MosuePosition);
+				Boolean test = controlManager.CheckJoyPadFire(mouseScreenInput.MousePosition);
 				if (test)
 				{
 					return true;
@@ -170,7 +170,7 @@ namespace WindowsGame.Common.Inputs
 			// Mouse.
 			if (mouseScreenInput.LeftButtonHold())
 			{
-				Boolean test = controlManager.CheckGameState(mouseScreenInput.MosuePosition);
+				Boolean test = controlManager.CheckGameState(mouseScreenInput.MousePosition);
 				if (test)
 				{
 					return true;
@@ -197,7 +197,7 @@ namespace WindowsGame.Common.Inputs
 			// Mouse.
 			if (mouseScreenInput.LeftButtonHold())
 			{
-				Boolean test = controlManager.CheckGameSound(mouseScreenInput.MosuePosition);
+				Boolean test = controlManager.CheckGameSound(mouseScreenInput.MousePosition);
 				if (test)
 				{
 					return true;
@@ -212,6 +212,33 @@ namespace WindowsGame.Common.Inputs
 
 			// Keyboard.
 			if (keyboardInput.KeyHold(Keys.S))
+			{
+				return true;
+			}
+
+			return false;
+		}
+
+		public Boolean CenterPos()
+		{
+			// Mouse.
+			if (mouseScreenInput.LeftButtonHold())
+			{
+				Boolean test = controlManager.CheckCenterPos(mouseScreenInput.MousePosition);
+				if (test)
+				{
+					return true;
+				}
+			}
+
+			// Joystick.
+			if (joystickInput.JoyHold(Buttons.A) || joystickInput.JoyHold(Buttons.Start))
+			{
+				return true;
+			}
+
+			// Keyboard.
+			if (keyboardInput.KeyHold(Keys.Enter) || keyboardInput.KeyHold(Keys.Space))
 			{
 				return true;
 			}

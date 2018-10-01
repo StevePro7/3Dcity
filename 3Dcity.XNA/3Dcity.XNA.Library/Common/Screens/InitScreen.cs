@@ -23,8 +23,6 @@ namespace WindowsGame.Common.Screens
 			Single wide = (Constants.ScreenWide - Assets.SplashTexture.Width) / 2.0f;
 			Single high = (Constants.ScreenHigh - Assets.SplashTexture.Height) / 2.0f;
 			bannerPosition = new Vector2(wide, high);
-			annualPosition = MyGame.Manager.TextManager.GetTextPosition(32, 23);
-			musicPosition = MyGame.Manager.TextManager.GetTextPosition(0, 23);
 
 			nextScreen = GetNextScreen();
 			splashDelay = MyGame.Manager.ConfigManager.GlobalConfigData.SplashDelay;
@@ -35,7 +33,9 @@ namespace WindowsGame.Common.Screens
 
 		public void LoadContent()
 		{
-			splashTimer = 0;
+			annualPosition = MyGame.Manager.TextManager.GetTextPosition(32, 23);
+			musicPosition = MyGame.Manager.TextManager.GetTextPosition(0, 23);
+
 			MyGame.Manager.ThreadManager.LoadContentAsync();
 		}
 
@@ -63,6 +63,12 @@ namespace WindowsGame.Common.Screens
 					flag = true;
 					MyGame.Manager.StateManager.SetCoolMusic(!MyGame.Manager.StateManager.CoolMusic);
 				}
+			}
+
+			Boolean next = MyGame.Manager.InputManager.CenterPos();
+			if (next)
+			{
+				return nextScreen;
 			}
 			
 			return (Int32)ScreenType.Init;

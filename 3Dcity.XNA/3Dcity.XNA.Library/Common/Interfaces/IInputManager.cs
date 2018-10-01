@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input.Touch;
 
 namespace WindowsGame.Common.Interfaces
 {
@@ -17,6 +16,7 @@ namespace WindowsGame.Common.Interfaces
 		Boolean Fire();
 		Boolean GameState();
 		Boolean GameSound();
+		Boolean CenterPos();
 		SByte Number();
 	}
 }

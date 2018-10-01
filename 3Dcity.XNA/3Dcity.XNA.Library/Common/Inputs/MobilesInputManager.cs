@@ -111,6 +111,11 @@ namespace WindowsGame.Common.Inputs
 			return MyPressFunc(controlManager.CheckGameSound);
 		}
 
+		public Boolean CenterPos()
+		{
+			return MyPressFunc(controlManager.CheckCenterPos);
+		}
+
 		public SByte Number()
 		{
 			return Constants.INVALID_INDEX;
