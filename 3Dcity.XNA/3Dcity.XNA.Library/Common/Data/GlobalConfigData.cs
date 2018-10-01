@@ -25,7 +25,7 @@ namespace WindowsGame.Common.Data
 		public Boolean UpdateGrid;
 		public Boolean RenderBack;
 		public Boolean RenderIcon;
-		public Boolean AwesomeMusic;
+		public Boolean CoolMusic;
 		public UInt16 TargetX;
 		public UInt16 TargetY;
 		public UInt16 EnemysX;
