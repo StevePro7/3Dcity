@@ -76,10 +76,10 @@
     <Compile Include="Common\Data\PlatformConfigData.cs" />
     <Compile Include="Common\Data\StoragePersistData.cs" />
     <Compile Include="Common\Devices\MobilesDeviceFactory.cs" />
-    <Compile Include="Common\Devices\WindowsDeviceFactory.cs" />
+    <Compile Include="Common\Devices\DesktopDeviceFactory.cs" />
     <Compile Include="Common\Inputs\DesktopInputManager.cs" />
     <Compile Include="Common\Inputs\MobilesInputManager.cs" />
-    <Compile Include="Common\Interfaces\IDeviceFactory.cs" />
+    <Compile Include="Common\Interfaces\IDeviceManager.cs" />
     <Compile Include="Common\Interfaces\IInputManager.cs" />
     <Compile Include="Common\Managers\BulletManager.cs" />
     <Compile Include="Common\Managers\CommandManager.cs" />
@@ -100,7 +100,6 @@
     <Compile Include="Common\Managers\CollisionManager.cs" />
     <Compile Include="Common\Managers\ConfigManager.cs" />
     <Compile Include="Common\Managers\ContentManager.cs" />
-    <Compile Include="Common\Managers\DeviceManager.cs" />
     <Compile Include="Common\Managers\ImageManager.cs" />
     <Compile Include="Common\Managers\ScoreManager.cs" />
     <Compile Include="Common\Managers\ScreenManager.cs" />

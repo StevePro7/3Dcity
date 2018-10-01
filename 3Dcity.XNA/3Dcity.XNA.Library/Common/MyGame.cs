@@ -55,6 +55,7 @@ namespace WindowsGame.Common
 			Manager.CommandManager.Initialize();
 			Manager.ControlManager.Initialize();
 			Manager.DebugManager.Initialize();
+			Manager.DeviceManager.Initialize();
 			Manager.EnemyManager.Initialize();
 			Manager.EventManager.Initialize();
 			Manager.ExplosionManager.Initialize();

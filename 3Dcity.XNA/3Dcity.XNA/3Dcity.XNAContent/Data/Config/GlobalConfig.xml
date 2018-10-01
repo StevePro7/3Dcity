@@ -7,12 +7,12 @@
 	<!--<ScreenType>Intro</ScreenType>-->
 	<FramesPerSecond>100</FramesPerSecond>
 	<MaximLevel>16</MaximLevel>
-	<LoadAudio>true</LoadAudio>
+	<LoadAudio>false</LoadAudio>
 	<PlayAudio>true</PlayAudio>
 	<LevelType>Easy</LevelType>
 	<LevelIndex>0</LevelIndex>
 	<EnemysDelay>400</EnemysDelay>
-	<SplashDelay>5000</SplashDelay>
+	<SplashDelay>0</SplashDelay>
 	<StarDelay>2000</StarDelay>
 	<GridDelay>300</GridDelay>
 	<SelectDelay>500</SelectDelay>

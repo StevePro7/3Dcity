@@ -27,7 +27,6 @@ namespace WindowsGame.Common.Static
 			IoCContainer.Initialize<IContentManager, ContentManager>();
 			IoCContainer.Initialize<IControlManager, ControlManager>();
 			IoCContainer.Initialize<IDebugManager, DebugManager>();
-			IoCContainer.Initialize<IDeviceManager, DeviceManager>();
 			IoCContainer.Initialize<IEnemyManager, EnemyManager>();
 			IoCContainer.Initialize<IEventManager, EventManager>();
 			IoCContainer.Initialize<IExplosionManager, ExplosionManager>();
@@ -46,30 +45,16 @@ namespace WindowsGame.Common.Static
 
 
 #if WINDOWS
-			IoCContainer.Initialize<IDeviceFactory, WindowsDeviceFactory>();
+			IoCContainer.Initialize<IDeviceManager, DesktopDeviceManager>();
 			IoCContainer.Initialize<IInputManager, DesktopInputManager>();
 			IoCContainer.Initialize<ILogger, ProdLogger>();
 #endif
 
 #if !WINDOWS
-			IoCContainer.Initialize<IDeviceFactory, MobilesDeviceFactory>();
+			IoCContainer.Initialize<IDeviceManager, MobilesDeviceManager>();
 			IoCContainer.Initialize<IInputManager, MobilesInputManager>();
 			IoCContainer.Initialize<ILogger, TestLogger>();
 #endif
-
-//            IoCContainer.Initialize<IDeviceFactory, MobilesDeviceFactory>();
-//            IoCContainer.Initialize<IInputFactory, WindowsInputFactory>();
-//            IoCContainer.Initialize<ILogger, Logger.Implementation.RealLogger>();
-//#elif WINDOWS
-//            IoCContainer.Initialize<IDeviceFactory, WindowsDeviceFactory>();
-//            IoCContainer.Initialize<IInputFactory, WindowsInputFactory>();
-//            IoCContainer.Initialize<ILogger, ProdLogger>();
-//#endif
-//#if !WINDOWS
-//            IoCContainer.Initialize<IDeviceFactory, MobilesDeviceFactory>();
-//            IoCContainer.Initialize<IInputFactory, MobilesInputFactory>();
-//            IoCContainer.Initialize<ILogger, Library.Implementation.TestLogger>();
-//#endif
 
 		}
 	}

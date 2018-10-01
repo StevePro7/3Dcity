@@ -1,7 +1,7 @@
 ﻿using System;
-using WindowsGame.Master;
 using Microsoft.Xna.Framework;
 using WindowsGame.Common.Static;
+using WindowsGame.Master;
 using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
@@ -16,6 +16,7 @@ namespace WindowsGame.Common.Screens
 		private Single titleY;
 		private Single deltaY;
 		private Boolean coolMusic;
+		private String buildVersion;
 
 		public override void Initialize()
 		{
@@ -38,6 +39,7 @@ namespace WindowsGame.Common.Screens
 			coolMusic = MyGame.Manager.StateManager.CoolMusic;
 			SongType song = coolMusic ? SongType.CoolMusic : SongType.GameTitle;
 			MyGame.Manager.SoundManager.PlayMusic(song, false);
+			buildVersion = MyGame.Manager.DeviceManager.BuildVersion;
 			base.LoadContent();
 		}
 
@@ -75,7 +77,7 @@ namespace WindowsGame.Common.Screens
 			// Text data last!
 			MyGame.Manager.TextManager.DrawTitle();
 			MyGame.Manager.ScoreManager.Draw();
-			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, Globalize.BUILD_DATA, buildPosition, Color.White);
+			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, buildVersion, buildPosition, Color.White);
 		}
 
 	}
