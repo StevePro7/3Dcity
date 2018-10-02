@@ -26,6 +26,72 @@ maxX
 enemyFrame	enemyPosX	enemySize	-bulletOffset	-enemyFrameOffset	bulletSize	EASY		HARD
 
 
+minX = enemyPosX 	-bulletOffset	-enemyFrameOffset
+172  = 200		-28		-0
+184  = 200		-28		-12
+
+
+Enemy
+200,200
+
+FR:7	MIDX=228
+EASY
+TL	172,172		-28,-28
+TR	284,172		+84,-28		EX+120-28-8	EY-28		8=width bullet
+BL	172,284
+BR	284,284
+
+HARD
+same as above but 4 deflate
+TL	176,176
+TR	280,176
+BL	176,280
+BR	280,280		
+
+
+176 = 172 + 4
+280 = 284 - 4
+
+
+FR:6
+EASY
+200,200
+inflate		12
+200-28+12
+200+120-28-8-12=272
+
+TL	184,184		184=200-28+12
+TR	272,184
+BL	184,272
+BR	272,272
+
+HARD
+same as above but 2 deflate
+TL	186,186		184=200-28+12+2
+TR	270,186
+BL	186,270
+BR	270,270
+
+
+FR:5
+EASY
+200,200
+inflate		20
+200-28+20	192
+200+120-28-8-20	264
+
+TL	192,192		
+TR	264,192
+BL	192,264
+BR	264,264
+
+2x values
+min
+max
+
+200+120-28-8-
+
+
 TODO
 LevelManager
 
