@@ -121,7 +121,9 @@ namespace WindowsGame.Common.Managers
 			{
 				SpawnOneEnemy(index);
 				// TODO tweak configurable numbers
-				EnemyList[index].Start((UInt16)(testFrameDelay + 3* testFrameDelay * index));
+
+				//EnemyList[index].Start((UInt16)(testFrameDelay + 3* testFrameDelay * index));
+				EnemyList[index].Start(1000);		// stevepro - remove hard code start
 			}
 		}
 
