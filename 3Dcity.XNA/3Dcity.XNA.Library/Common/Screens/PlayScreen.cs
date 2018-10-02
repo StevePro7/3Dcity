@@ -25,7 +25,8 @@ namespace WindowsGame.Common.Screens
 			isGodMode = MyGame.Manager.StateManager.IsGodMode;
 
 			// Not bad settings for default.
-			MyGame.Manager.BulletManager.Reset(10, 200, 100);
+			//MyGame.Manager.BulletManager.Reset(10, 200, 100);
+			MyGame.Manager.BulletManager.Reset(1, 200, 500);
 
 			LevelType levelType = MyGame.Manager.LevelManager.LevelType;
 			Byte levelIndex = MyGame.Manager.LevelManager.LevelIndex;
@@ -54,10 +55,11 @@ namespace WindowsGame.Common.Screens
 
 			// Log delta to monitor performance!
 #if DEBUG
-			MyGame.Manager.Logger.Info(gameTime.ElapsedGameTime.TotalSeconds.ToString());
+			//MyGame.Manager.Logger.Info(gameTime.ElapsedGameTime.TotalSeconds.ToString());
 #endif
 
-			MyGame.Manager.CollisionManager.ClearCollisionList();
+			// TODO delete
+			//MyGame.Manager.CollisionManager.ClearCollisionList();
 
 			// Move target unconditionally.
 			Single horz = MyGame.Manager.InputManager.Horizontal();
@@ -69,12 +71,12 @@ namespace WindowsGame.Common.Screens
 			Boolean fire = MyGame.Manager.InputManager.Fire();
 			if (fire)
 			{
-				// TODO delete
-				MyGame.Manager.SoundManager.PlaySoundEffect();
-
 				SByte bulletIndex = MyGame.Manager.BulletManager.CheckBullets();
 				if (Constants.INVALID_INDEX != bulletIndex)
 				{
+					// TODO check!
+					MyGame.Manager.SoundManager.PlaySoundEffect();
+
 					Vector2 position = MyGame.Manager.SpriteManager.LargeTarget.Position;
 					MyGame.Manager.BulletManager.Shoot((Byte)bulletIndex, position);
 				}
@@ -83,10 +85,30 @@ namespace WindowsGame.Common.Screens
 			// BULLETS.
 			// Update bullets and test collision.
 			MyGame.Manager.BulletManager.Update(gameTime);
-			if (MyGame.Manager.CollisionManager.BulletCollisionList.Count > 0)
+			if (MyGame.Manager.BulletManager.BulletTest.Count > 0)
 			{
-				// Check collisions here.
+				IList<Bullet> bulletTest = MyGame.Manager.BulletManager.BulletTest;
+				for (Byte testIndex = 0; testIndex < bulletTest.Count; testIndex++)
+				{
+					Bullet bullet = bulletTest[testIndex];
+					SByte slotID = MyGame.Manager.CollisionManager.DetermineEnemySlot(bullet.Position);
+
+					// Check to ensure bullet will something.
+					if (Constants.INVALID_INDEX == slotID)
+					{
+						continue;
+					}
+					// Check to ensure bullet in same slot as enemy.
+					if (!MyGame.Manager.EnemyManager.EnemyDict.ContainsKey((Byte)slotID))
+					{
+						continue;
+					}
+				}
 			}
+			//if (MyGame.Manager.CollisionManager.BulletCollisionList.Count > 0)
+			//{
+			//    // Check collisions here.
+			//}
 
 
 			// ENEMYS.
@@ -147,10 +169,10 @@ namespace WindowsGame.Common.Screens
 			//    }
 			//}
 			//MyGame.Manager.EnemyManager.CheckAllEnemies();
-			if (MyGame.Manager.CollisionManager.EnemysCollisionList.Count > 0)
-			{
-				// Check collisions here.
-			}
+			//if (MyGame.Manager.CollisionManager.EnemysCollisionList.Count > 0)
+			//{
+			//    // Check collisions here.
+			//}
 
 
 			// Update fire icon.

@@ -18,6 +18,7 @@ namespace WindowsGame.Common.Managers
 		void Draw();
 
 		IList<Bullet> BulletList { get; }
+		IList<Bullet> BulletTest { get; }
 		Boolean CanShoot { get; }
 		UInt16 ShootDelay { get; }
 		Single ShootTimer { get; }
@@ -30,6 +31,8 @@ namespace WindowsGame.Common.Managers
 		public void Initialize()
 		{
 			BulletList = new List<Bullet>(Constants.MAX_BULLET_SHOOT);
+			BulletTest = new List<Bullet>(Constants.MAX_BULLET_SHOOT);
+
 			for (Byte index = 0; index < Constants.MAX_BULLET_SHOOT; index++)
 			{
 				Bullet bullet = new Bullet();
@@ -64,6 +67,7 @@ namespace WindowsGame.Common.Managers
 				bullet.Reset(frameDelay);
 			}
 
+			BulletTest.Clear();
 			ShootDelay = shootDelay;
 			ShootTimer = 0;
 			CanShoot = true;
@@ -103,12 +107,17 @@ namespace WindowsGame.Common.Managers
 				}
 			}
 
+			BulletTest.Clear();
 			for (Byte index = 0; index < maxBulletShoot; index++)
 			{
 				Bullet bullet = BulletList[index];
 				if (bullet.IsFiring)
 				{
 					bullet.Update(gameTime);
+					if (!bullet.IsFiring)
+					{
+						BulletTest.Add(bullet);
+					}
 				}
 			}
 		}
@@ -132,6 +141,7 @@ namespace WindowsGame.Common.Managers
 		}
 
 		public IList<Bullet> BulletList { get; private set; }
+		public IList<Bullet> BulletTest { get; private set; }
 		public Boolean CanShoot { get; private set; }
 		public UInt16 ShootDelay { get; private set; }
 		public Single ShootTimer { get; private set; }
