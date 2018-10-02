@@ -20,15 +20,17 @@ namespace WindowsGame.Common.Managers
 		Boolean CheckOne();
 		Boolean CheckOne(Vector2 targetPosition, IList<Enemy> enemyTest);
 
-		void ClearCollisionList();
-		void AddToBulletCollisionList(Byte bulletIndex);
-		void AddToEnemysCollisionList(Byte enemysIndex);
+		// TODO delete
+		//void ClearCollisionList();
+		//void AddToBulletCollisionList(Byte bulletIndex);
+		//void AddToEnemysCollisionList(Byte enemysIndex);
 
 		Boolean EnemyCollideTarget(Vector2 enemysPosition, Vector2 targetPosition);
 		SByte DetermineEnemySlot(Vector2 position);
 
-		IList<Byte> BulletCollisionList { get; }
-		IList<Byte> EnemysCollisionList { get; }
+		// TODO delete
+		//IList<Byte> BulletCollisionList { get; }
+		//IList<Byte> EnemysCollisionList { get; }
 
 		IList<UInt16> EnemysList { get; }
 		IList<UInt16> TargetList { get; }
@@ -54,8 +56,8 @@ namespace WindowsGame.Common.Managers
 
 		public void Initialize(String root)
 		{
-			BulletCollisionList = new List<Byte>(Constants.MAX_BULLET_SHOOT);
-			EnemysCollisionList = new List<Byte>(Constants.MAX_ENEMYS_SPAWN);
+			//BulletCollisionList = new List<Byte>(Constants.MAX_BULLET_SHOOT);
+			//EnemysCollisionList = new List<Byte>(Constants.MAX_ENEMYS_SPAWN);
 
 			collisionRoot = String.Format("{0}{1}/{2}/{3}", root, Constants.CONTENT_DIRECTORY, Constants.DATA_DIRECTORY, SPRITE_DIRECTORY);
 			borderSize = Constants.BorderSize;
@@ -261,24 +263,22 @@ namespace WindowsGame.Common.Managers
 			return false;
 		}
 
-		public void ClearCollisionList()
-		{
-			BulletCollisionList.Clear();
-			EnemysCollisionList.Clear();
-		}
+		//public void ClearCollisionList()
+		//{
+		//    BulletCollisionList.Clear();
+		//    EnemysCollisionList.Clear();
+		//}
+		//public void AddToBulletCollisionList(Byte bulletIndex)
+		//{
+		//    BulletCollisionList.Add(bulletIndex);
+		//}
+		//public void AddToEnemysCollisionList(Byte enemysIndex)
+		//{
+		//    EnemysCollisionList.Add(enemysIndex);
+		//}
 
-		public void AddToBulletCollisionList(Byte bulletIndex)
-		{
-			BulletCollisionList.Add(bulletIndex);
-		}
-
-		public void AddToEnemysCollisionList(Byte enemysIndex)
-		{
-			EnemysCollisionList.Add(enemysIndex);
-		}
-
-		public IList<Byte> BulletCollisionList { get; private set; }
-		public IList<Byte> EnemysCollisionList { get; private set; }
+		//public IList<Byte> BulletCollisionList { get; private set; }
+		//public IList<Byte> EnemysCollisionList { get; private set; }
 
 		public IList<UInt16> EnemysList { get; private set; }
 		public IList<UInt16> TargetList { get; private set; }

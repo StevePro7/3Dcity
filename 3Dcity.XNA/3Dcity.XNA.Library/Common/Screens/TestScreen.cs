@@ -80,10 +80,10 @@ namespace WindowsGame.Common.Screens
 
 			// TODO - is this redundant because Enemy "kill" target [ABOVE]
 			//MyGame.Manager.EnemyManager.CheckAllEnemies();
-			if (MyGame.Manager.CollisionManager.EnemysCollisionList.Count > 0)
-			{
-				// Check collisions here.
-			}
+			//if (MyGame.Manager.CollisionManager.EnemysCollisionList.Count > 0)
+			//{
+			//    // Check collisions here.
+			//}
 
 
 			// TODO - implement bullet logic... for now simulate slotID of bullet on last frame
