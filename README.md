@@ -1,5 +1,31 @@
 # 3Dcity
 
+02/10/2018
+search for adriana and stevepro
+
+minX
+7	200	120	-28	0	8	284		
+6	200	120	-28	12	8	272		
+5	200	120	-28	20	8	264		
+4	200	120	-28	28	8	256		
+3	200	120	-28	35	8	249		
+2	200	120	-28	40	8	244		
+1	200	120	-28	44	8	240		
+0	200	120	-28	46	8	238		
+enemyFrame	enemyPosX	enemySize	-bulletOffset	-enemyFrameOffset	bulletSize	EASY		
+								
+maxX								
+7	200	120	-28	0	8	284	4	280
+6	200	120	-28	12	8	272	2	270
+5	200	120	-28	20	8	264	0	264
+4	200	120	-28	28	8	256	0	256
+3	200	120	-28	35	8	249	0	249
+2	200	120	-28	40	8	244	0	244
+1	200	120	-28	44	8	240	0	240
+0	200	120	-28	46	8	238	0	238
+enemyFrame	enemyPosX	enemySize	-bulletOffset	-enemyFrameOffset	bulletSize	EASY		HARD
+
+
 TODO
 LevelManager
 

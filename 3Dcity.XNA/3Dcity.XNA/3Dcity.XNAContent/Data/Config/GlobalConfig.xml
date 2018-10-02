@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Play</ScreenType>
+	<ScreenType>Resume</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<!--<ScreenType>Level</ScreenType>-->
@@ -25,12 +25,12 @@
 	<RenderBack>true</RenderBack>
 	<RenderIcon>true</RenderIcon>
 	<CoolMusic>false</CoolMusic>
-	<TargetX>0</TargetX>
-	<TargetY>0</TargetY>
-	<EnemysX>400</EnemysX>
-	<EnemysY>100</EnemysY>
-	<EnemyFrame>7</EnemyFrame>
-	<EnemyIndex>0</EnemyIndex>
+	<TargetX>228</TargetX>
+	<TargetY>264</TargetY>
+	<EnemysX>1</EnemysX>
+	<EnemysY>0</EnemysY>
+	<EnemyFrame>5</EnemyFrame>
+	<EnemyIndex>2</EnemyIndex>
 	<EnemySpawn>1</EnemySpawn>
 	<EnemyTotal>1</EnemyTotal>
 	<IsGodMode>true</IsGodMode>
