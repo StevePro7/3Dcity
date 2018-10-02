@@ -6,8 +6,13 @@ namespace WindowsGame.Common.Screens
 {
 	public class ResumeScreen : BaseScreen, IScreen
 	{
+		private UInt16 delay;
+		private Byte goal;
+
 		public override void Initialize()
 		{
+			delay = 1000;
+			goal = 100;
 			base.Initialize();
 		}
 
@@ -18,11 +23,12 @@ namespace WindowsGame.Common.Screens
 
 		public override Int32 Update(GameTime gameTime)
 		{
-			base.Update(gameTime);
-			if (GamePause)
-			{
-				return (Int32)CurrScreen;
-			}
+			//base.Update(gameTime);
+			//if (GamePause)
+			//{
+			//    return (Int32)CurrScreen;
+			//}
+
 
 			return (Int32)CurrScreen;
 		}
@@ -30,7 +36,7 @@ namespace WindowsGame.Common.Screens
 		public override void Draw()
 		{
 			// Sprite sheet #01.
-			base.Draw();
+			//base.Draw();
 		}
 
 	}

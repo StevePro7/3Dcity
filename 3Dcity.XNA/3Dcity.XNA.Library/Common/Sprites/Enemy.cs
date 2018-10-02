@@ -84,6 +84,12 @@ namespace WindowsGame.Common.Sprites
 			//    return;
 			//}
 
+			if (EnemyType.Dead == EnemyType)
+			{
+				return;
+			}
+
+
 			if (blinkFrame.Contains(FrameCount))
 			{
 				return;
