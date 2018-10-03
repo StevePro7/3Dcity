@@ -98,6 +98,7 @@ namespace WindowsGame.Common.Managers
 			LevelType = levelType;
 			levelDiff = levelType.ToString().ToUpper();
 
+			// TODO refactor?  Into 2x methods and put this in second?
 			if (null == MyGame.Manager.ImageManager.OrbDiffRectangles)
 			{
 				return;

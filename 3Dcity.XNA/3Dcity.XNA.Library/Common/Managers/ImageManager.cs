@@ -25,11 +25,9 @@ namespace WindowsGame.Common.Managers
 		Rectangle[] EnemyRectangles { get; }
 		Rectangle[] BulletRectangles { get; }
 		Rectangle[] OrbDiffRectangles { get; }
+		Rectangle[] ProgressRectangles { get; }
 		Rectangle TargetLargeRectangle { get; }
 		Rectangle TargetSmallRectangle { get; }
-
-		Rectangle OrbEasyRectangle { get; }
-		Rectangle OrbHardRectangle { get; }
 	}
 
 	public class ImageManager : IImageManager 
@@ -107,7 +105,7 @@ namespace WindowsGame.Common.Managers
 
 
 			// Targets.
-			const UInt16 wide = enemySize * Constants.MAX_ENEMYS_SPAWN;
+			const ushort wide = enemySize * Constants.MAX_ENEMYS_SPAWN;
 			high = 0;
 			//const UInt16 wide = (UInt16)(Constants.MAX_BULLET_FRAME * targetSize);
 			TargetLargeRectangle = new Rectangle(wide, high, targetSize, targetSize);
@@ -124,11 +122,21 @@ namespace WindowsGame.Common.Managers
 			// Orbs.
 			OrbDiffRectangles = new Rectangle[2];
 			high = (2 + 6) * targetSize;
-			OrbEasyRectangle = new Rectangle(wide, high + (0 * targetSize), targetSize, targetSize);
-			OrbHardRectangle = new Rectangle(wide, high + (1 * targetSize), targetSize, targetSize);
 
 			OrbDiffRectangles[(Byte)LevelType.Easy] = new Rectangle(wide, high + (0 * targetSize), targetSize, targetSize);
 			OrbDiffRectangles[(Byte)LevelType.Hard] = new Rectangle(wide, high + (1 * targetSize), targetSize, targetSize);
+
+			// Progress.
+			const Byte statusBars = 5;
+			const Byte statusWide = 100;
+			const Byte statusHigh = 20;
+
+			ProgressRectangles = new Rectangle[statusBars];
+			high = 1000;
+			for (Byte statusIndex = 0; statusIndex < statusBars; statusIndex++)
+			{
+				ProgressRectangles[statusIndex] = new Rectangle(statusIndex * statusWide, high, statusWide, statusHigh);
+			}
 		}
 
 		// Sprite sheet #01.
@@ -147,9 +155,8 @@ namespace WindowsGame.Common.Managers
 		public Rectangle[] EnemyRectangles { get; private set; }
 		public Rectangle[] BulletRectangles { get; private set; }
 		public Rectangle[] OrbDiffRectangles { get; private set; }
+		public Rectangle[] ProgressRectangles { get; private set; }
 		public Rectangle TargetLargeRectangle { get; private set; }
 		public Rectangle TargetSmallRectangle { get; private set; }
-		public Rectangle OrbEasyRectangle { get; private set; }
-		public Rectangle OrbHardRectangle { get; private set; }
 	}
 }

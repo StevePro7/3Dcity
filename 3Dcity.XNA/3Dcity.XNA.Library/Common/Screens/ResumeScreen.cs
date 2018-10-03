@@ -11,12 +11,16 @@ namespace WindowsGame.Common.Screens
 		private Vector2[] boundsPos;
 		private Vector2 targetPos;
 		private Vector2 enemysPos;
+		private Vector2 statusPos;
 
 		//private UInt16 delay;
 		//private Byte goal;
 
 		public override void Initialize()
 		{
+			base.Initialize();
+			LoadTextData();
+
 			//delay = 1000;
 			//goal = 100;
 
@@ -40,6 +44,8 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.BulletManager.BulletList[0].SetPosition(targetPos);
 			MyGame.Manager.BulletManager.BulletList[0].Reset(0);
 			MyGame.Manager.SpriteManager.LargeTarget.SetPosition(targetPos);
+
+			statusPos = new Vector2(15 * 20, Constants.ScreenHigh - 20);
 			base.Initialize();
 		}
 
@@ -50,11 +56,11 @@ namespace WindowsGame.Common.Screens
 
 		public override Int32 Update(GameTime gameTime)
 		{
-			//base.Update(gameTime);
-			//if (GamePause)
-			//{
-			//    return (Int32)CurrScreen;
-			//}
+			base.Update(gameTime);
+			if (GamePause)
+			{
+				return (Int32)CurrScreen;
+			}
 
 
 			return (Int32)CurrScreen;
@@ -63,11 +69,12 @@ namespace WindowsGame.Common.Screens
 		public override void Draw()
 		{
 			// Sprite sheet #01.
-			//base.Draw();
+			base.Draw();
+			MyGame.Manager.IconManager.DrawControls();
 
 			for (int i = 0; i < 4; i++)
 			{
-				Engine.SpriteBatch.Draw(Assets.SpriteSheet01Texture, boundsPos[i], MyGame.Manager.ImageManager.JoyButtonRectangles[0], Color.White);
+				//Engine.SpriteBatch.Draw(Assets.SpriteSheet01Texture, boundsPos[i], MyGame.Manager.ImageManager.JoyButtonRectangles[0], Color.White);
 			}
 
 			MyGame.Manager.EnemyManager.EnemyList[0].Draw();
@@ -77,6 +84,23 @@ namespace WindowsGame.Common.Screens
 			{
 				MyGame.Manager.SpriteManager.LargeTarget.Draw();
 			}
+			MyGame.Manager.LevelManager.DrawLevelOrb();
+
+			byte color = 1;
+			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, statusPos, MyGame.Manager.ImageManager.ProgressRectangles[0], Color.White);
+			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, new Vector2(statusPos.X + 100.0f, statusPos.Y), MyGame.Manager.ImageManager.ProgressRectangles[0], Color.White);
+			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, statusPos, MyGame.Manager.ImageManager.ProgressRectangles[color], Color.White);
+
+			Rectangle rect = MyGame.Manager.ImageManager.ProgressRectangles[color];
+			rect.Width = 50;
+			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, new Vector2(statusPos.X + 100.0f, statusPos.Y), rect, Color.White);
+
+			// Text data last!
+			MyGame.Manager.TextManager.Draw(TextDataList);
+			MyGame.Manager.TextManager.DrawTitle();
+			MyGame.Manager.TextManager.DrawControls();
+			MyGame.Manager.LevelManager.DrawLevelData();
+			MyGame.Manager.ScoreManager.Draw();
 		}
 
 	}
