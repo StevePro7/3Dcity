@@ -19,19 +19,6 @@ namespace WindowsGame.UnitTests.Common.Managers
 		}
 
 		[Test]
-		public void BulletCollideEnemyTest()
-		{
-			Vector2 enemysPosition = new Vector2(200, 100);
-			Vector2 bulletPosition = new Vector2(228, 165);
-			const LevelType levelType = LevelType.Hard;
-			const Byte enemyFrame = 5;
-
-			Boolean collide = CollisionManager.BulletCollideEnemy(enemysPosition, bulletPosition, levelType, enemyFrame);
-
-			Assert.That(collide, Is.True);
-		}
-
-		[Test]
 		public void BoxesCollisionOnceTest()
 		{
 			// Arrange.
@@ -88,7 +75,20 @@ namespace WindowsGame.UnitTests.Common.Managers
 			Assert.True(collide);
 		}
 
-		//[Test]
+		[Test]
+		public void BulletCollideEnemyTest()
+		{
+			Vector2 enemysPosition = new Vector2(200, 100);
+			Vector2 bulletPosition = new Vector2(228, 164);
+			const LevelType levelType = LevelType.Easy;
+			const Byte enemyFrame = 5;
+
+			Boolean collide = CollisionManager.BulletCollideEnemy(enemysPosition, bulletPosition, levelType, enemyFrame);
+
+			Assert.That(collide, Is.True);
+		}
+
+		[Test]
 		public void DetermineEnemySlotTest()
 		{
 			Vector2 position = Vector2.Zero;
@@ -101,12 +101,6 @@ namespace WindowsGame.UnitTests.Common.Managers
 			position = new Vector2(157, 175);
 			index = CollisionManager.DetermineEnemySlot(position);
 			Assert.That(index, Is.EqualTo(1));
-
-			//Vector2 position = new Vector2(156 + (4 * 160), 275);
-			//Vector2 position = new Vector2(156 + (4 * 160), 277);
-			
-			//Assert.That(Constants.INVALID_INDEX, Is.EqualTo(index));
-			
 		}
 
 		[TearDown]
