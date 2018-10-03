@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Resume</ScreenType>
+	<ScreenType>Play</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<!--<ScreenType>Level</ScreenType>-->
@@ -32,8 +32,8 @@
 	<EnemysY>0</EnemysY>
 	<EnemyFrame>5</EnemyFrame>
 	<EnemyIndex>2</EnemyIndex>
-	<EnemySpawn>2</EnemySpawn>
-	<EnemyTotal>2</EnemyTotal>
+	<EnemySpawn>1</EnemySpawn>
+	<EnemyTotal>5</EnemyTotal>
 	<IsGodMode>false</IsGodMode>
 	<DebugTester>true</DebugTester>
 	<QuitsToExit>true</QuitsToExit>
