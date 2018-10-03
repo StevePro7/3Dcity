@@ -11,7 +11,7 @@ namespace WindowsGame.Common.Screens
 	{
 		private Boolean isGodMode;
 		private Boolean checkLevelComplete;
-
+		private LevelType levelType;
 		public override void Initialize()
 		{
 			base.Initialize();
@@ -28,7 +28,7 @@ namespace WindowsGame.Common.Screens
 			//MyGame.Manager.BulletManager.Reset(10, 200, 100);
 			MyGame.Manager.BulletManager.Reset(1, 200, 500);
 
-			LevelType levelType = MyGame.Manager.LevelManager.LevelType;
+			levelType = MyGame.Manager.LevelManager.LevelType;
 			Byte levelIndex = MyGame.Manager.LevelManager.LevelIndex;
 			MyGame.Manager.LevelManager.LoadLevelConfigData(levelType, levelIndex);
 
@@ -38,6 +38,7 @@ namespace WindowsGame.Common.Screens
 			Byte enemyTotal = MyGame.Manager.ConfigManager.GlobalConfigData.EnemyTotal;	// 1;  // TODO level config
 			MyGame.Manager.EnemyManager.Reset(levelType, enemySpawn, 1000, 5000, enemyTotal);
 			MyGame.Manager.EnemyManager.SpawnAllEnemies();
+			MyGame.Manager.ExplosionManager.Reset(enemySpawn, MyGame.Manager.ConfigManager.GlobalConfigData.ExplodeDelay);
 
 			MyGame.Manager.SoundManager.PlayMusic(SongType.GameMusic);
 			base.LoadContent();
@@ -91,34 +92,79 @@ namespace WindowsGame.Common.Screens
 				for (Byte testIndex = 0; testIndex < bulletTest.Count; testIndex++)
 				{
 					Bullet bullet = bulletTest[testIndex];
-					SByte slotID = MyGame.Manager.CollisionManager.DetermineEnemySlot(bullet.Position);
+					SByte testID = MyGame.Manager.CollisionManager.DetermineEnemySlot(bullet.Position);
 
 					// Check to ensure bullet will something.
-					if (Constants.INVALID_INDEX == slotID)
+					if (Constants.INVALID_INDEX == testID)
 					{
 						continue;
 					}
+
 					// Check to ensure bullet in same slot as enemy.
-					if (!MyGame.Manager.EnemyManager.EnemyDict.ContainsKey((Byte)slotID))
+					Byte slotID = (Byte) testID;
+					if (!MyGame.Manager.EnemyManager.EnemyDict.ContainsKey(slotID))
 					{
 						continue;
+					}
+
+					// Can kill initial enemy [at frame count = 0] because enemy will be "hidden".
+					Enemy enemy = MyGame.Manager.EnemyManager.EnemyDict[slotID];
+					Byte enemyCount = enemy.FrameCount;
+					if (0 == enemy.FrameCount)
+					{
+						continue;
+					}
+
+					// Check if bullet collides with enemy.
+					Byte enemyFrame = enemy.FrameIndex;
+					Boolean collide = MyGame.Manager.CollisionManager.BulletCollideEnemy(enemy.Position, bullet.Position, levelType, enemyFrame);
+					if (!collide)
+					{
+						continue;
+					}
+
+					// Collision!	Enemy dead and trigger explode...
+					MyGame.Manager.ScoreManager.UpdateGameScore(enemyFrame);
+
+					// TODO if DiffType == HARD and enemy.FrameCount = 9 OR 11 then enemy dead?
+					ExplodeType explodeType = enemy.FrameIndex < 4 ? ExplodeType.Small : ExplodeType.Big;
+					Byte enemyID = enemy.ID;
+					MyGame.Manager.ExplosionManager.LoadContent(enemyID, explodeType);
+					MyGame.Manager.ExplosionManager.Explode(enemyID, explodeType, enemy.Position);
+					enemy.Dead();
+				}
+			}
+			
+			// EXPLOSIONS.
+			MyGame.Manager.ExplosionManager.Update(gameTime);
+			if (MyGame.Manager.ExplosionManager.ExplosionTest.Count > 0)
+			{
+				// Iterate all enemy ships to test and add to misses.
+				IList<Byte> explosionTest = MyGame.Manager.ExplosionManager.ExplosionTest;
+				for (Byte testIndex = 0; testIndex < explosionTest.Count; testIndex++)
+				{
+					Byte enemyID = explosionTest[testIndex];
+					Boolean check = MyGame.Manager.EnemyManager.CheckThisEnemy(enemyID);
+					if (!check)
+					{
+						MyGame.Manager.EnemyManager.SpawnOneEnemy(enemyID);
+					}
+					else
+					{
+						checkLevelComplete = true;
 					}
 				}
 			}
-			//if (MyGame.Manager.CollisionManager.BulletCollisionList.Count > 0)
-			//{
-			//    // Check collisions here.
-			//}
-
 
 			// ENEMYS.
 			// Update enemies and test collisions.
 			MyGame.Manager.EnemyManager.Update(gameTime);
 			if (MyGame.Manager.EnemyManager.EnemyTest.Count > 0)
 			{
-				// Enemy has maxed out frames so check for collision.
-				checkLevelComplete = true;
+				// TODO delete
+				//checkLevelComplete = true;
 
+				// Enemy has maxed out frames so check for collision.
 				LargeTarget target = MyGame.Manager.SpriteManager.LargeTarget;
 				IList<Enemy> enemyTest = MyGame.Manager.EnemyManager.EnemyTest;
 
@@ -153,6 +199,10 @@ namespace WindowsGame.Common.Screens
 					if (!check)
 					{
 						MyGame.Manager.EnemyManager.SpawnOneEnemy(enemyID);
+					}
+					else
+					{
+						checkLevelComplete = true;
 					}
 				}
 			}
@@ -220,6 +270,8 @@ namespace WindowsGame.Common.Screens
 			// Sprite sheet #02.
 			MyGame.Manager.DebugManager.Draw();		// TODO delete
 			MyGame.Manager.EnemyManager.Draw();
+			MyGame.Manager.ExplosionManager.Draw();
+
 			MyGame.Manager.LevelManager.DrawLevelOrb();
 			MyGame.Manager.BulletManager.Draw();
 			MyGame.Manager.SpriteManager.Draw();
