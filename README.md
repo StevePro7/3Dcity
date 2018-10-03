@@ -1,5 +1,17 @@
 # 3Dcity
 
+03/10/2018
+Prototyping the progress bars
+100x20 is not wide enough... should be 200px wide!
+i.e. 20x10
+Get the value as percentage and multiply by 2x
+this is the width of the yellow / red inner rectangle
+
+Also, 20px not high enough should be higher
+in fact believe that can go to 24px [max] in sprite sheet 02 [at bottom]
+and will "sit" nicely between the bottom of the screen and the grid line
+
+
 02/10/2018
 search for adriana and stevepro
 
