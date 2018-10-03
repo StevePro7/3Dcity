@@ -39,8 +39,12 @@ namespace WindowsGame.Common.Managers
 
 	public class CollisionManager : ICollisionManager
 	{
-		public static readonly Byte[] enemyFrameOffsets = new Byte[Constants.MAX_OFFSET_FRAME] { 46, 44, 40, 35, 28, 20, 12, 0 };
+		// TODO have 2x versions of this array : 1x for easy and 1x for hard
+		// Use the current smaller offsets for Hard + add include frame 6 / 7
+		// Tweak bigger offsets for Easy esp. for the earlier frames [smaller]
+		private Byte[][] enemyFrameOffsets;
 
+		// Magic number = 28 = TargetSize (64) - smallest bullet size (8) divided by 2 [half-way]
 		private const Byte bulletOffset = 28;
 		private String collisionRoot;
 		private Byte borderSize;
@@ -54,6 +58,10 @@ namespace WindowsGame.Common.Managers
 		public void Initialize()
 		{
 			Initialize(String.Empty);
+
+			enemyFrameOffsets = new Byte[2][];
+			enemyFrameOffsets[(Byte)LevelType.Easy] = new Byte[] { 46, 44, 40, 35, 28, 20, 12, 0 };
+			enemyFrameOffsets[(Byte)LevelType.Hard] = new Byte[] { 46, 44, 40, 35, 28, 20, 12, 0 };
 		}
 
 		public void Initialize(String root)
@@ -249,7 +257,7 @@ namespace WindowsGame.Common.Managers
 
 		public Boolean BulletCollideEnemy(Vector2 enemysPosition, Vector2 bulletPosition, LevelType levelType, Byte enemyFrame)
 		{
-			Byte enemyFrameOffset = enemyFrameOffsets[enemyFrame];
+			Byte enemyFrameOffset = enemyFrameOffsets[(Byte)levelType][enemyFrame];
 
 			SByte deltaX = (SByte)(-bulletOffset + enemyFrameOffset);
 			SByte deltaY = (SByte)(enemysSize - bulletSize - bulletOffset - enemyFrameOffset);

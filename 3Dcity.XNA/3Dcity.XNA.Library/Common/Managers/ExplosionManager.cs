@@ -68,7 +68,6 @@ namespace WindowsGame.Common.Managers
 			keys.Clear();
 		}
 
-		//public void Explode(Byte slotID, Byte enemyID, ExplodeType explodeType, Vector2 position)
 		public void Explode(Byte enemyID, ExplodeType explodeType, Vector2 position)
 		{
 			Explosion explosion = ExplosionList[enemyID];
