@@ -9,9 +9,9 @@ namespace WindowsGame.Common.Managers
 	public interface IExplosionManager 
 	{
 		void Initialize();
-		void LoadContent(Byte slotID, ExplodeType explodeType);
+		void LoadContent(Byte enemyID, ExplodeType explodeType);
 		void Reset(Byte theBombsExplode, UInt16 frameDelay);
-		void Explode(Byte slotID, Byte enemyID, ExplodeType explodeType, Vector2 position);
+		void Explode(Byte enemyID, ExplodeType explodeType, Vector2 position);
 		void Update(GameTime gameTime);
 		void Draw();
 
@@ -43,10 +43,10 @@ namespace WindowsGame.Common.Managers
 			maxBombsExplode = Constants.MAX_EXPLODE_SPAWN;
 		}
 
-		public void LoadContent(Byte slotID, ExplodeType explodeType)
+		public void LoadContent(Byte enemyID, ExplodeType explodeType)
 		{
 			// Load the explosion rectangles on demand.
-			Explosion explosion = ExplosionList[slotID];
+			Explosion explosion = ExplosionList[enemyID];
 			explosion.LoadContent(MyGame.Manager.ImageManager.ExplodeRectangles[(Byte)explodeType]);
 		}
 
@@ -68,21 +68,22 @@ namespace WindowsGame.Common.Managers
 			keys.Clear();
 		}
 
-		public void Explode(Byte slotID, Byte enemyID, ExplodeType explodeType, Vector2 position)
+		//public void Explode(Byte slotID, Byte enemyID, ExplodeType explodeType, Vector2 position)
+		public void Explode(Byte enemyID, ExplodeType explodeType, Vector2 position)
 		{
-			Explosion explosion = ExplosionList[slotID];
+			Explosion explosion = ExplosionList[enemyID];
 			if (explosion.IsExploding)
 			{
 				return;
 			}
 
 			Vector2 newPosition = position;
-			newPosition.X += Constants.EXPLODE_OFFSET_X[(Byte) explodeType];
+			newPosition.X += Constants.EXPLODE_OFFSET_X[(Byte)explodeType];
 			newPosition.Y += Constants.EXPLODE_OFFSET_Y[(Byte)explodeType];
 			explosion.SetPosition(newPosition);
 			explosion.Explode(enemyID);
 
-			ExplosionDict.Add(slotID, explosion);
+			ExplosionDict.Add(enemyID, explosion);
 		}
 
 		public void Update(GameTime gameTime)

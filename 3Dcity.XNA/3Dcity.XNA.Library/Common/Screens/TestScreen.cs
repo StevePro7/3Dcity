@@ -99,11 +99,14 @@ namespace WindowsGame.Common.Screens
 					Enemy enemy = MyGame.Manager.EnemyManager.EnemyDict[slotID];
 					if (0 != enemy.FrameCount)
 					{
+						// Collision!	Enemy dead and trigger explode...
 						MyGame.Manager.ScoreManager.UpdateGameScore(enemy.FrameIndex);
+
 						// TODO if DiffType == HARD and enemy.FrameCount = 9 OR 11 then enemy dead?
 						ExplodeType explodeType = enemy.FrameIndex < 4 ? ExplodeType.Small : ExplodeType.Big;
-						MyGame.Manager.ExplosionManager.LoadContent(slotID, explodeType);
-						MyGame.Manager.ExplosionManager.Explode(slotID, enemy.ID, explodeType, enemy.Position);
+						Byte enemyID = enemy.ID;
+						MyGame.Manager.ExplosionManager.LoadContent(enemyID, explodeType);
+						MyGame.Manager.ExplosionManager.Explode(enemyID, explodeType, enemy.Position);
 						enemy.Dead();
 					}
 				}
