@@ -10,7 +10,7 @@ namespace WindowsGame.Common.Managers
 	{
 		void Initialize();
 		void LoadContent(Byte slotID, ExplodeType explodeType);
-		void Reset(Byte theBulletShoot, UInt16 frameDelay);
+		void Reset(Byte theBombsExplode, UInt16 frameDelay);
 		void Explode(Byte slotID, Byte enemyID, ExplodeType explodeType, Vector2 position);
 		void Update(GameTime gameTime);
 		void Draw();

@@ -123,7 +123,7 @@ namespace WindowsGame.Common.Managers
 				// TODO tweak configurable numbers
 
 				//EnemyList[index].Start((UInt16)(testFrameDelay + 3* testFrameDelay * index));
-				EnemyList[index].Start(1000);		// stevepro - remove hard code start
+				EnemyList[index].Start(testFrameDelay);		// stevepro - remove hard code start
 			}
 		}
 
