@@ -28,6 +28,8 @@ namespace WindowsGame.Common.Managers
 		Boolean EnemyCollideTarget(Vector2 enemysPosition, Vector2 targetPosition);
 		SByte DetermineEnemySlot(Vector2 position);
 
+		Boolean BulletCollideEnemy(Vector2 enemysPosition, Vector2 bulletPosition, LevelType levelType, Byte enemyFrame);
+
 		// TODO delete
 		//IList<Byte> BulletCollisionList { get; }
 		//IList<Byte> EnemysCollisionList { get; }
@@ -38,16 +40,54 @@ namespace WindowsGame.Common.Managers
 
 	public class CollisionManager : ICollisionManager
 	{
-		//private const Byte borderSize = 4;		// TODO delete
-		private const Byte bulletSize = 28;
+		public static readonly Byte[] enemyFrameOffsets = new Byte[Constants.MAX_OFFSET_FRAME] { 46, 44, 40, 35, 28, 20, 12, 0 };
 
+		private const Byte bulletOffset = 28;
 		private String collisionRoot;
 		private Byte borderSize;
 		private Byte enemysSize;
 		private Byte targetSize;
+		private Byte bulletSize;
 		private Byte offsetSize;
 
 		private const String SPRITE_DIRECTORY = "Sprite";
+
+		public Boolean BulletCollideEnemy(Vector2 enemysPosition, Vector2 bulletPosition, LevelType levelType, Byte enemyFrame)
+		{
+			Byte enemyFrameOffset = enemyFrameOffsets[enemyFrame];
+			
+			SByte deltaX = (SByte) (-bulletOffset + enemyFrameOffset);
+			SByte deltaY = (SByte) (enemysSize - bulletSize - bulletOffset - enemyFrameOffset);
+			//Int16 minX = (Int16)(enemysPosition.X - bulletOffset + enemyFrameOffset);
+			//Int16 minY = (Int16)(enemysPosition.Y - bulletOffset + enemyFrameOffset);
+
+			Int16 minX = (Int16) (enemysPosition.X + deltaX);
+			Int16 minY = (Int16) (enemysPosition.Y + deltaX);
+			Int16 maxX = (Int16) (enemysPosition.X + deltaY);
+			Int16 maxY = (Int16) (enemysPosition.Y + deltaY);
+
+			if (LevelType.Hard == levelType)
+			{
+				// More difficult for Hard when frame = 6 or 7.
+				if (enemyFrameOffsets.Length - 1 == enemyFrame)
+				{
+					minX += 4;
+					maxX -= 4;
+				}
+				else if (enemyFrameOffsets.Length - 2 == enemyFrame)
+				{
+					minX += 2;
+					maxX -= 2;
+				}
+			}
+
+			return bulletPosition.X >= minX && 
+			       bulletPosition.X <= maxX && 
+				   bulletPosition.Y >= minY &&
+			       bulletPosition.Y <= maxY;
+
+			//return false;
+		}
 
 		public void Initialize()
 		{
@@ -63,6 +103,7 @@ namespace WindowsGame.Common.Managers
 			borderSize = Constants.BorderSize;
 			enemysSize = Constants.EnemySize;
 			targetSize = Constants.TargetSize;
+			bulletSize = (Byte)(2 * borderSize);
 			offsetSize = (Byte)(targetSize - 2 * borderSize);
 		}
 
@@ -71,9 +112,10 @@ namespace WindowsGame.Common.Managers
 			LoadContentEnemys();
 			LoadContentTarget();
 
-			enemysSize = Constants.EnemySize;
-			targetSize = Constants.TargetSize;
-			offsetSize = (Byte)(targetSize - 2 * borderSize);
+			// TODO delete
+			//enemysSize = Constants.EnemySize;
+			//targetSize = Constants.TargetSize;
+			//offsetSize = (Byte)(targetSize - 2 * borderSize);
 		}
 
 		public void LoadContentEnemys()
@@ -175,8 +217,8 @@ namespace WindowsGame.Common.Managers
 			// Bullet is at the same position BUT must offset 28px
 			// Reason: 8x8 bullet is middle of target move 28x28px
 			Vector2 topLeftPos = position;
-			topLeftPos.X += bulletSize;
-			topLeftPos.Y += bulletSize;
+			topLeftPos.X += bulletOffset;
+			topLeftPos.Y += bulletOffset;
 			position = topLeftPos;
 
 			// Bullet exactly in middle thus cannot kill any ships.

@@ -23,6 +23,7 @@ namespace WindowsGame.Common.Sprites
 			FrameCount = 0;
 			FrameIndex = 0;
 			FrameTimer = 0;
+
 			FrameCount = 12;															// adriana
 			FrameIndex = MyGame.Manager.ConfigManager.GlobalConfigData.EnemyFrame;		// adriana
 		}

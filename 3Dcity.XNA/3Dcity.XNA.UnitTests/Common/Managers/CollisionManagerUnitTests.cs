@@ -19,6 +19,19 @@ namespace WindowsGame.UnitTests.Common.Managers
 		}
 
 		[Test]
+		public void BulletCollideEnemyTest()
+		{
+			Vector2 enemysPosition = new Vector2(200, 100);
+			Vector2 bulletPosition = new Vector2(228, 165);
+			const LevelType levelType = LevelType.Hard;
+			const Byte enemyFrame = 5;
+
+			Boolean collide = CollisionManager.BulletCollideEnemy(enemysPosition, bulletPosition, levelType, enemyFrame);
+
+			Assert.That(collide, Is.True);
+		}
+
+		[Test]
 		public void BoxesCollisionOnceTest()
 		{
 			// Arrange.

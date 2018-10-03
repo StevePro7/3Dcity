@@ -26,7 +26,7 @@
 	<RenderIcon>true</RenderIcon>
 	<CoolMusic>false</CoolMusic>
 	<TargetX>228</TargetX>
-	<TargetY>264</TargetY>
+	<TargetY>164</TargetY>
 	<EnemysX>1</EnemysX>
 	<EnemysY>0</EnemysY>
 	<EnemyFrame>5</EnemyFrame>

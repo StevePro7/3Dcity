@@ -12,13 +12,13 @@ namespace WindowsGame.Common.Screens
 		private Vector2 targetPos;
 		private Vector2 enemysPos;
 
-		private UInt16 delay;
-		private Byte goal;
+		//private UInt16 delay;
+		//private Byte goal;
 
 		public override void Initialize()
 		{
-			delay = 1000;
-			goal = 100;
+			//delay = 1000;
+			//goal = 100;
 
 			int x = 200;
 			int y = 100;
