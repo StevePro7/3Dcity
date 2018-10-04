@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Resume</ScreenType>
+	<ScreenType>Play</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<!--<ScreenType>Level</ScreenType>-->
-	<!--<ScreenType>Intro</ScreenType>-->
+	<!--<ScreenType>Resume</ScreenType>-->
 	<FramesPerSecond>100</FramesPerSecond>
 	<MaximLevel>16</MaximLevel>
 	<LoadAudio>false</LoadAudio>
 	<PlayAudio>true</PlayAudio>
-	<LevelType>Hard</LevelType>
+	<LevelType>Easy</LevelType>
 	<LevelIndex>0</LevelIndex>
-	<EnemysDelay>2000</EnemysDelay>
+	<EnemysDelay>500</EnemysDelay>
 	<ExplodeDelay>300</ExplodeDelay>
 	<SplashDelay>0</SplashDelay>
 	<StarDelay>2000</StarDelay>
@@ -22,7 +22,7 @@
 	<EventRatio>1.0</EventRatio>
 	<ScoreBlink>false</ScoreBlink>
 	<UpdateStar>true</UpdateStar>
-	<UpdateGrid>false</UpdateGrid>
+	<UpdateGrid>true</UpdateGrid>
 	<RenderBack>true</RenderBack>
 	<RenderIcon>true</RenderIcon>
 	<CoolMusic>false</CoolMusic>
@@ -32,8 +32,8 @@
 	<EnemysY>0</EnemysY>
 	<EnemyFrame>5</EnemyFrame>
 	<EnemyIndex>2</EnemyIndex>
-	<EnemySpawn>1</EnemySpawn>
-	<EnemyTotal>5</EnemyTotal>
+	<EnemySpawn>2</EnemySpawn>
+	<EnemyTotal>4</EnemyTotal>
 	<IsGodMode>false</IsGodMode>
 	<DebugTester>true</DebugTester>
 	<QuitsToExit>true</QuitsToExit>

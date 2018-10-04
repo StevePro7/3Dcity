@@ -32,6 +32,10 @@ namespace WindowsGame.Common.Managers
 		UInt16 MaxDelay { get; }
 		Byte EnemySpawn { get; }
 		Byte EnemyTotal { get; }
+		Byte EnemyStart { get; }
+		Single EnemyPercentage { get; }
+		String EnemyTotalText { get; }
+		String EnemyStartText { get; }
 	}
 
 	public class EnemyManager : IEnemyManager
@@ -111,8 +115,10 @@ namespace WindowsGame.Common.Managers
 			//    enemyTotal = maxEnemySpawn;
 			//}
 
-			EnemyTotal = enemyTotal;
+			EnemyStart = 0;
 			EnemySpawn = 0;
+			EnemyTotal = enemyTotal;
+			EnemyTotalText = EnemyTotal.ToString().PadLeft(2, '0');
 		}
 
 		public void SpawnAllEnemies()
@@ -123,7 +129,7 @@ namespace WindowsGame.Common.Managers
 				// TODO tweak configurable numbers
 
 				//EnemyList[index].Start((UInt16)(testFrameDelay + 3* testFrameDelay * index));
-				EnemyList[index].Start(testFrameDelay);		// stevepro - remove hard code start
+				EnemyList[index].Start((UInt16)((index + 1) * testFrameDelay));		// stevepro - remove hard code start
 			}
 		}
 
@@ -214,16 +220,29 @@ namespace WindowsGame.Common.Managers
 
 		public void Update(GameTime gameTime)
 		{
+			Boolean launchCheck = false;
 			EnemyTest.Clear();
 			for (Byte index = 0; index < maxEnemySpawn; index++)
 			{
 				Enemy enemy = EnemyList[index];
 				enemy.Update(gameTime);
 
+				if (enemy.EnemyLaunch)
+				{
+					launchCheck = true;
+					EnemyStart++;
+					enemy.ResetLaunch();
+				}
 				if (EnemyType.Test == enemy.EnemyType)
 				{
 					EnemyTest.Add(enemy);
 				}
+			}
+
+			if (launchCheck)
+			{
+				EnemyStartText = EnemyStart.ToString().PadLeft(2, '0');
+				EnemyPercentage = ((Single)EnemyStart / (Single)EnemyTotal) * 100.0f;
 			}
 		}
 
@@ -281,9 +300,13 @@ namespace WindowsGame.Common.Managers
 		public IList<Rectangle> EnemyBounds { get; private set; }
 		public UInt16[] EnemyOffsetX { get; private set; }
 		public UInt16[] EnemyOffsetY { get; private set; }
-		public Byte EnemySpawn { get; private set; }
-		public Byte EnemyTotal { get; private set; }
 		public UInt16 MinDelay { get; private set; }
 		public UInt16 MaxDelay { get; private set; }
+		public Byte EnemySpawn { get; private set; }
+		public Byte EnemyTotal { get; private set; }
+		public Byte EnemyStart { get; private set; }
+		public Single EnemyPercentage { get; private set; }
+		public String EnemyTotalText { get; private set; }
+		public String EnemyStartText { get; private set; }
 	}
 }

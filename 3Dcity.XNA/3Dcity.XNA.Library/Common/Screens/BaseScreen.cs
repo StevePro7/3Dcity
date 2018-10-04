@@ -12,8 +12,10 @@ namespace WindowsGame.Common.Screens
 		protected UInt16 Timer { get; set; }
 		protected IList<TextData> TextDataList { get; private set; }
 		protected ScreenType CurrScreen { get; set; }
-		protected ScreenType NextScreen { get; set; }
+		//protected ScreenType NextScreen { get; set; }			// TODO delete
 		protected Boolean GamePause { get; set; }
+		protected Boolean UpdateStar { get; set; }
+		protected Boolean UpdateGrid { get; set; }
 
 		public virtual void Initialize()
 		{
@@ -26,6 +28,9 @@ namespace WindowsGame.Common.Screens
 		public virtual void LoadContent()
 		{
 			Timer = 0;
+
+			UpdateStar = MyGame.Manager.ConfigManager.GlobalConfigData.UpdateStar;
+			UpdateGrid = MyGame.Manager.ConfigManager.GlobalConfigData.UpdateGrid;
 		}
 
 		public virtual Int32 Update(GameTime gameTime)
@@ -63,12 +68,12 @@ namespace WindowsGame.Common.Screens
 			}
 
 			// Update grid + stars.
-			if (MyGame.Manager.ConfigManager.GlobalConfigData.UpdateStar)
+			if (UpdateStar)
 			{
 				MyGame.Manager.RenderManager.UpdateStar(gameTime);
 			}
 
-			if (MyGame.Manager.ConfigManager.GlobalConfigData.UpdateGrid)
+			if (UpdateGrid)
 			{
 				MyGame.Manager.RenderManager.UpdateGrid(gameTime);
 			}

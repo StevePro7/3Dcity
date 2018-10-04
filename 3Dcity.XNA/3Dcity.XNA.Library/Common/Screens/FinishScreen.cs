@@ -1,4 +1,5 @@
 ﻿using System;
+using WindowsGame.Common.Static;
 using Microsoft.Xna.Framework;
 using WindowsGame.Master.Interfaces;
 
@@ -14,6 +15,7 @@ namespace WindowsGame.Common.Screens
 		public override void LoadContent()
 		{
 			base.LoadContent();
+			UpdateGrid = false;
 		}
 
 		public override Int32 Update(GameTime gameTime)
@@ -37,11 +39,13 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.IconManager.DrawControls();
 
 			// Sprite sheet #02.
-			MyGame.Manager.DebugManager.Draw();		// TODO delete
+			//MyGame.Manager.DebugManager.Draw();		// TODO delete
 			MyGame.Manager.EnemyManager.Draw();
 			MyGame.Manager.LevelManager.DrawLevelOrb();
 			MyGame.Manager.BulletManager.Draw();
 			MyGame.Manager.SpriteManager.Draw();
+			MyGame.Manager.RenderManager.DrawStatusOuter();
+			MyGame.Manager.RenderManager.DrawStatusInner(StatusType.Yellow, MyGame.Manager.EnemyManager.EnemyPercentage);
 
 			// Text data last!
 			MyGame.Manager.TextManager.DrawTitle();

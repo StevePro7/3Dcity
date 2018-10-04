@@ -208,23 +208,6 @@ namespace WindowsGame.Common.Screens
 			}
 
 
-
-			// TODO delete
-			//if (MyGame.Manager.EnemyManager.EnemyTest.Count > 0)
-			//{
-			//    Boolean collision = MyGame.Manager.CollisionManager.CheckOne();
-			//    if (collision)
-			//    {
-			//        return (Int32)ScreenType.Over;
-			//    }
-			//}
-			//MyGame.Manager.EnemyManager.CheckAllEnemies();
-			//if (MyGame.Manager.CollisionManager.EnemysCollisionList.Count > 0)
-			//{
-			//    // Check collisions here.
-			//}
-
-
 			// Update fire icon.
 			Byte canShootIndex = Convert.ToByte(!MyGame.Manager.BulletManager.CanShoot);
 			MyGame.Manager.IconManager.UpdateFireIcon(canShootIndex);
@@ -268,13 +251,15 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.IconManager.DrawControls();
 
 			// Sprite sheet #02.
-			MyGame.Manager.DebugManager.Draw();		// TODO delete
+			//MyGame.Manager.DebugManager.Draw();		// TODO delete
 			MyGame.Manager.EnemyManager.Draw();
 			MyGame.Manager.ExplosionManager.Draw();
 
 			MyGame.Manager.LevelManager.DrawLevelOrb();
 			MyGame.Manager.BulletManager.Draw();
 			MyGame.Manager.SpriteManager.Draw();
+			MyGame.Manager.RenderManager.DrawStatusOuter();
+			MyGame.Manager.RenderManager.DrawStatusInner(StatusType.Yellow, MyGame.Manager.EnemyManager.EnemyPercentage);
 
 			// Text data last!
 			//MyGame.Manager.TextManager.Draw(TextDataList);		// TODO delete

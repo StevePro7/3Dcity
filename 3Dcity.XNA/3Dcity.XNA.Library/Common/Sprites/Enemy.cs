@@ -23,6 +23,7 @@ namespace WindowsGame.Common.Sprites
 			FrameCount = 0;
 			FrameIndex = 0;
 			FrameTimer = 0;
+			EnemyLaunch = false;
 
 			// TODO uncomment for testing collision offsets on Resume screen.
 			//FrameCount = 1;
@@ -50,6 +51,7 @@ namespace WindowsGame.Common.Sprites
 			FrameCount = 0;
 			FrameTimer = 0;
 			FrameIndex = FrameImage[FrameCount];
+			EnemyLaunch = false;
 		}
 
 		public void Start(UInt16 frameDelay)
@@ -73,6 +75,12 @@ namespace WindowsGame.Common.Sprites
 				FrameTimer -= frameDelay;
 				FrameCount++;
 
+				// Signal when enemy first visible
+				if (1 == FrameCount)
+				{
+					EnemyLaunch = true;
+				}
+
 				// Check for collision after final frame complete!
 				if (FrameCount >= MaxFrames)
 				{
@@ -93,7 +101,6 @@ namespace WindowsGame.Common.Sprites
 				return;
 			}
 
-
 			if (blinkFrame.Contains(FrameCount))
 			{
 				return;
@@ -111,6 +118,11 @@ namespace WindowsGame.Common.Sprites
 			EnemyType = EnemyType.None;
 		}
 
+		public void ResetLaunch()
+		{
+			EnemyLaunch = false;
+		}
+
 		public void SetSlotID()
 		{
 			SlotID = Constants.INVALID_INDEX;
@@ -125,5 +137,6 @@ namespace WindowsGame.Common.Sprites
 		public Byte[] FrameImage { get; private set; }
 		public Byte FrameCount { get; private set; }
 		public EnemyType EnemyType { get; private set; }
+		public Boolean EnemyLaunch { get; private set; }
 	}
 }

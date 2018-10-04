@@ -17,7 +17,7 @@ namespace WindowsGame.Common.Managers
 		void DrawTitle(Vector2 position);
 		void DrawBottom();
 		void DrawStatusOuter();
-		void DrawStatusInner(StatusType statusType, Byte percentage);
+		void DrawStatusInner(StatusType statusType, Single percentage);
 	}
 
 	public class RenderManager : IRenderManager
@@ -139,11 +139,11 @@ namespace WindowsGame.Common.Managers
 			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, statusPosition, statusRectangle, Color.White);
 		}
 
-		public void DrawStatusInner(StatusType statusType, Byte percentage)
+		public void DrawStatusInner(StatusType statusType, Single percentage)
 		{
 			Byte statusValu = (Byte) statusType;
 			Rectangle statusRectangle = statusRectangles[(Byte)statusValu];
-			statusRectangle.Width = (percentage*2) + 2;
+			statusRectangle.Width = (Byte)((percentage * 2) + 2);
 			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, statusPosition, statusRectangle, Color.White);
 		}
 	}
