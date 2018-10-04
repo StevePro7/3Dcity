@@ -75,6 +75,9 @@ namespace WindowsGame.Common.Managers
 
 
 			// TODO delete
+			Assets.BlackBar = contentFactory.LoadTexture(texturesRoot + "blackbar");
+			Assets.YellowBar = contentFactory.LoadTexture(texturesRoot + "baryellow");
+			Assets.RedBar = contentFactory.LoadTexture(texturesRoot + "barred");
 			//Assets.GameTitle = contentFactory.LoadTexture(texturesRoot + "3Dcity");
 			//Assets.OrbGreen32 = contentFactory.LoadTexture(texturesRoot + "OrbGreen32");
 			//Assets.OrbRed32 = contentFactory.LoadTexture(texturesRoot + "OrbRed32");

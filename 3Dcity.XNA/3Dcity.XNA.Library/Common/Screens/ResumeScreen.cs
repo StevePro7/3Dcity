@@ -45,7 +45,7 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.BulletManager.BulletList[0].Reset(0);
 			MyGame.Manager.SpriteManager.LargeTarget.SetPosition(targetPos);
 
-			statusPos = new Vector2(15 * 20, Constants.ScreenHigh - 20 - Constants.GameOffsetY - 0);
+			statusPos = new Vector2(15 * 20 - 2, Constants.ScreenHigh - 20 - Constants.GameOffsetY - 4);
 			base.Initialize();
 		}
 
@@ -62,6 +62,9 @@ namespace WindowsGame.Common.Screens
 				return (Int32)CurrScreen;
 			}
 
+#if DEBUG
+			MyGame.Manager.Logger.Info(gameTime.ElapsedGameTime.TotalSeconds.ToString());
+#endif
 
 			return (Int32)CurrScreen;
 		}
@@ -86,15 +89,19 @@ namespace WindowsGame.Common.Screens
 			}
 			MyGame.Manager.LevelManager.DrawLevelOrb();
 
-			const byte color = 2;
-			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, statusPos, MyGame.Manager.ImageManager.ProgressRectangles[0], Color.White);
-			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, new Vector2(statusPos.X + 100.0f, statusPos.Y), MyGame.Manager.ImageManager.ProgressRectangles[0], Color.White);
 
-			Rectangle rect = MyGame.Manager.ImageManager.ProgressRectangles[color];
-			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, new Vector2(statusPos.X + 0.0f, statusPos.Y), rect, Color.White);
-			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, new Vector2(statusPos.X + 50.0f, statusPos.Y), rect, Color.White);
-			rect.Width = 50;
-			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, new Vector2(statusPos.X + 100.0f, statusPos.Y), rect, Color.White);
+			Engine.SpriteBatch.Draw(Assets.BlackBar, statusPos, Color.White);
+			Engine.SpriteBatch.Draw(Assets.YellowBar, statusPos, Color.White);
+
+			//const byte color = 2;
+			//Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, statusPos, MyGame.Manager.ImageManager.ProgressRectangles[0], Color.White);
+			//Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, new Vector2(statusPos.X + 100.0f, statusPos.Y), MyGame.Manager.ImageManager.ProgressRectangles[0], Color.White);
+
+			//Rectangle rect = MyGame.Manager.ImageManager.ProgressRectangles[color];
+			//Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, new Vector2(statusPos.X + 0.0f, statusPos.Y), rect, Color.White);
+			//Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, new Vector2(statusPos.X + 50.0f, statusPos.Y), rect, Color.White);
+			//rect.Width = 50;
+			//Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, new Vector2(statusPos.X + 100.0f, statusPos.Y), rect, Color.White);
 
 			// Text data last!
 			MyGame.Manager.TextManager.Draw(TextDataList);

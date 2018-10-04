@@ -22,6 +22,9 @@ namespace WindowsGame.Common.Static
 
 
 		// TODO delete
+		public static Texture2D BlackBar;
+		public static Texture2D YellowBar;
+		public static Texture2D RedBar;
 		//public static Texture2D GameTitle;
 		//public static Texture2D OrbGreen32;
 		//public static Texture2D OrbRed32;
