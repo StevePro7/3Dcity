@@ -25,7 +25,7 @@ namespace WindowsGame.Common.Screens
 			//goal = 100;
 
 			int x = 200;
-			int y = 100;
+			int y = 200;
 			int s = 120;
 			int u = 80;
 			int v = 80;
@@ -73,11 +73,11 @@ namespace WindowsGame.Common.Screens
 		{
 			// Sprite sheet #01.
 			base.Draw();
-			MyGame.Manager.IconManager.DrawControls();
+			//MyGame.Manager.IconManager.DrawControls();
 
 			for (int i = 0; i < 4; i++)
 			{
-				//Engine.SpriteBatch.Draw(Assets.SpriteSheet01Texture, boundsPos[i], MyGame.Manager.ImageManager.JoyButtonRectangles[0], Color.White);
+				Engine.SpriteBatch.Draw(Assets.SpriteSheet01Texture, boundsPos[i], MyGame.Manager.ImageManager.JoyButtonRectangles[0], Color.White);
 			}
 
 			MyGame.Manager.EnemyManager.EnemyList[0].Draw();
@@ -87,11 +87,11 @@ namespace WindowsGame.Common.Screens
 			{
 				MyGame.Manager.SpriteManager.LargeTarget.Draw();
 			}
-			MyGame.Manager.LevelManager.DrawLevelOrb();
+			//MyGame.Manager.LevelManager.DrawLevelOrb();
 
 
-			Engine.SpriteBatch.Draw(Assets.BlackBar, statusPos, Color.White);
-			Engine.SpriteBatch.Draw(Assets.YellowBar, statusPos, Color.White);
+			//Engine.SpriteBatch.Draw(Assets.BlackBar, statusPos, Color.White);
+			//Engine.SpriteBatch.Draw(Assets.YellowBar, statusPos, Color.White);
 
 			//const byte color = 2;
 			//Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, statusPos, MyGame.Manager.ImageManager.ProgressRectangles[0], Color.White);
@@ -104,11 +104,11 @@ namespace WindowsGame.Common.Screens
 			//Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, new Vector2(statusPos.X + 100.0f, statusPos.Y), rect, Color.White);
 
 			// Text data last!
-			MyGame.Manager.TextManager.Draw(TextDataList);
-			MyGame.Manager.TextManager.DrawTitle();
-			MyGame.Manager.TextManager.DrawControls();
-			MyGame.Manager.LevelManager.DrawLevelData();
-			MyGame.Manager.ScoreManager.Draw();
+			//MyGame.Manager.TextManager.Draw(TextDataList);
+			//MyGame.Manager.TextManager.DrawTitle();
+			//MyGame.Manager.TextManager.DrawControls();
+			//MyGame.Manager.LevelManager.DrawLevelData();
+			//MyGame.Manager.ScoreManager.Draw();
 		}
 
 	}

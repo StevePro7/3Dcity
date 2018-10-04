@@ -23,6 +23,10 @@ namespace WindowsGame.Common.Sprites
 			FrameCount = 0;
 			FrameIndex = 0;
 			FrameTimer = 0;
+
+			// TODO uncomment for testing collision offsets on Resume screen.
+			//FrameCount = 1;
+			//FrameIndex = MyGame.Manager.ConfigManager.GlobalConfigData.EnemyFrame;
 		}
 
 		public void Spawn(Byte slotID, UInt16 frameDelay, Vector2 position, Rectangle bounds)

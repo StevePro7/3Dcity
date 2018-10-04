@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Resume</ScreenType>
+	<ScreenType>Play</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<!--<ScreenType>Level</ScreenType>-->
@@ -23,8 +23,8 @@
 	<ScoreBlink>false</ScoreBlink>
 	<UpdateStar>true</UpdateStar>
 	<UpdateGrid>false</UpdateGrid>
-	<RenderBack>true</RenderBack>
-	<RenderIcon>true</RenderIcon>
+	<RenderBack>false</RenderBack>
+	<RenderIcon>false</RenderIcon>
 	<CoolMusic>false</CoolMusic>
 	<TargetX>228</TargetX>
 	<TargetY>164</TargetY>

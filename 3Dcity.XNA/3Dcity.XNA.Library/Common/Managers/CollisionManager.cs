@@ -60,8 +60,8 @@ namespace WindowsGame.Common.Managers
 			Initialize(String.Empty);
 
 			enemyFrameOffsets = new Byte[2][];
-			enemyFrameOffsets[(Byte)LevelType.Easy] = new Byte[] { 46, 44, 40, 35, 28, 20, 12, 0 };
-			enemyFrameOffsets[(Byte)LevelType.Hard] = new Byte[] { 46, 44, 40, 35, 28, 20, 12, 0 };
+			enemyFrameOffsets[(Byte)LevelType.Easy] = new Byte[] { 42, 40, 36, 32, 28, 20, 12, 0 };
+			enemyFrameOffsets[(Byte)LevelType.Hard] = new Byte[] { 46, 44, 40, 35, 28, 20, 14, 4 };
 		}
 
 		public void Initialize(String root)
@@ -259,13 +259,13 @@ namespace WindowsGame.Common.Managers
 		{
 			Byte enemyFrameOffset = enemyFrameOffsets[(Byte)levelType][enemyFrame];
 
-			SByte deltaX = (SByte)(-bulletOffset + enemyFrameOffset);
-			SByte deltaY = (SByte)(enemysSize - bulletSize - bulletOffset - enemyFrameOffset);
+			SByte deltaMin = (SByte)(-bulletOffset + enemyFrameOffset);
+			SByte deltaMax = (SByte)(enemysSize - bulletSize - bulletOffset - enemyFrameOffset);
 
-			Int16 minX = (Int16)(enemysPosition.X + deltaX);
-			Int16 minY = (Int16)(enemysPosition.Y + deltaX);
-			Int16 maxX = (Int16)(enemysPosition.X + deltaY);
-			Int16 maxY = (Int16)(enemysPosition.Y + deltaY);
+			Int16 minX = (Int16)(enemysPosition.X + deltaMin);
+			Int16 minY = (Int16)(enemysPosition.Y + deltaMin);
+			Int16 maxX = (Int16)(enemysPosition.X + deltaMax);
+			Int16 maxY = (Int16)(enemysPosition.Y + deltaMax);
 
 			// More difficult for Hard when frame = 6 or 7.
 			if (enemyFrame >= enemyFrameOffsets.Length - 2)
