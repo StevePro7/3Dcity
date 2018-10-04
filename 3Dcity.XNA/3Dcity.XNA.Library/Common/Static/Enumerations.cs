@@ -33,6 +33,14 @@
 		Big = 1
 	}
 
+	public enum StatusType
+	{
+		Black = 0,
+		Yellow = 1,
+		Red = 2,
+		Blue = 3
+	}
+
 	public enum SongType
 	{
 		BossMusic,

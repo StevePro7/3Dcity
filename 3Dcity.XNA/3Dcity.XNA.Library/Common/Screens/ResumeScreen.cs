@@ -89,7 +89,10 @@ namespace WindowsGame.Common.Screens
 			}
 			//MyGame.Manager.LevelManager.DrawLevelOrb();
 
+			MyGame.Manager.RenderManager.DrawStatusOuter();
+			MyGame.Manager.RenderManager.DrawStatusInner(StatusType.Yellow, 10);
 
+			//Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, statusPos, MyGame.Manager.ImageManager.ProgressRectangles[0], Color.White);
 			//Engine.SpriteBatch.Draw(Assets.BlackBar, statusPos, Color.White);
 			//Engine.SpriteBatch.Draw(Assets.YellowBar, statusPos, Color.White);
 

@@ -25,7 +25,7 @@ namespace WindowsGame.Common.Managers
 		Rectangle[] EnemyRectangles { get; }
 		Rectangle[] BulletRectangles { get; }
 		Rectangle[] OrbDiffRectangles { get; }
-		Rectangle[] ProgressRectangles { get; }
+		Rectangle[] StatusRectangles { get; }
 		Rectangle TargetLargeRectangle { get; }
 		Rectangle TargetSmallRectangle { get; }
 	}
@@ -127,15 +127,16 @@ namespace WindowsGame.Common.Managers
 			OrbDiffRectangles[(Byte)LevelType.Hard] = new Rectangle(wide, high + (1 * targetSize), targetSize, targetSize);
 
 			// Progress.
-			const Byte statusBars = 5;
-			const Byte statusWide = 100;
-			const Byte statusHigh = 20;
+			const Byte statusBars = 4;
+			const Byte statusSpce = 240;
+			const Byte statusWide = 204;
+			const Byte statusHigh = 24;
 
-			ProgressRectangles = new Rectangle[statusBars];
+			StatusRectangles = new Rectangle[statusBars];
 			high = 1000;
 			for (Byte statusIndex = 0; statusIndex < statusBars; statusIndex++)
 			{
-				ProgressRectangles[statusIndex] = new Rectangle(statusIndex * statusWide, high, statusWide, statusHigh);
+				StatusRectangles[statusIndex] = new Rectangle(statusIndex * statusSpce, high, statusWide, statusHigh);
 			}
 		}
 
@@ -155,7 +156,7 @@ namespace WindowsGame.Common.Managers
 		public Rectangle[] EnemyRectangles { get; private set; }
 		public Rectangle[] BulletRectangles { get; private set; }
 		public Rectangle[] OrbDiffRectangles { get; private set; }
-		public Rectangle[] ProgressRectangles { get; private set; }
+		public Rectangle[] StatusRectangles { get; private set; }
 		public Rectangle TargetLargeRectangle { get; private set; }
 		public Rectangle TargetSmallRectangle { get; private set; }
 	}

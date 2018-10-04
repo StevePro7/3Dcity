@@ -16,18 +16,23 @@ namespace WindowsGame.Common.Managers
 		void DrawTitle();
 		void DrawTitle(Vector2 position);
 		void DrawBottom();
+		void DrawStatusOuter();
+		void DrawStatusInner(StatusType statusType, Byte percentage);
 	}
 
 	public class RenderManager : IRenderManager
 	{
 		private Rectangle[] gridRectangles;
 		private Rectangle[] starRectangles;
+		private Rectangle[] statusRectangles;
 		private Rectangle backRectangle;
 		private Vector2 backPosition;
 		private Vector2 starPosition;
 		private Vector2 gridPosition;
 		private Vector2 titlePosition;
 		private Vector2 bottomPosition;
+		private Vector2 statusPosition;
+
 		//private Vector2 origin;				// TODO delete
 		private UInt16 starTimer, starDelay;
 		private UInt16 gridTimer, gridDelay;
@@ -49,7 +54,8 @@ namespace WindowsGame.Common.Managers
 			const UInt16 gameHigh = Constants.ScreenHigh - (2 * Constants.GameOffsetY);
 			const UInt16 bottHigh = gameHigh + Constants.GameOffsetY;
 			bottomPosition = new Vector2(0, bottHigh + Constants.TargetSize);
-
+			statusPosition = new Vector2(15 * 20 - 2, Constants.ScreenHigh - 20 - Constants.GameOffsetY - 4);
+ 
 			//origin = new Vector2(40, 0);		// TODO delete
 			rotation = MathHelper.ToRadians(270);
 		}
@@ -74,6 +80,8 @@ namespace WindowsGame.Common.Managers
 
 			gridRectangles[1] = MyGame.Manager.ImageManager.GridRectangles[1];
 			gridRectangles[2] = MyGame.Manager.ImageManager.GridRectangles[2];
+
+			statusRectangles = MyGame.Manager.ImageManager.StatusRectangles;
 		}
 
 		public void UpdateStar(GameTime gameTime)
@@ -123,6 +131,20 @@ namespace WindowsGame.Common.Managers
 		public void DrawBottom()
 		{
 			Engine.SpriteBatch.Draw(Assets.SpriteSheet01Texture, bottomPosition, MyGame.Manager.ImageManager.BottomRectangle, Color.White, rotation, Vector2.Zero, 1.0f, SpriteEffects.None, 1.0f);
+		}
+
+		public void DrawStatusOuter()
+		{
+			Rectangle statusRectangle = statusRectangles[(Byte)StatusType.Black];
+			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, statusPosition, statusRectangle, Color.White);
+		}
+
+		public void DrawStatusInner(StatusType statusType, Byte percentage)
+		{
+			Byte statusValu = (Byte) statusType;
+			Rectangle statusRectangle = statusRectangles[(Byte)statusValu];
+			statusRectangle.Width = (percentage*2) + 2;
+			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, statusPosition, statusRectangle, Color.White);
 		}
 	}
 }
