@@ -27,6 +27,12 @@
 		None
 	}
 
+	public enum ShipType
+	{
+		Ship = 0,
+		Boss = 1
+	}
+
 	public enum ExplodeType
 	{
 		Small = 0,

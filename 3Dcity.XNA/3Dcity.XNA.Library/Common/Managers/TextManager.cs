@@ -27,6 +27,8 @@ namespace WindowsGame.Common.Managers
 		void DrawTitle();
 		void DrawControls();
 		void DrawInstruct();
+		void DrawProgress();
+		void DrawProgress(ShipType shipType);
 	}
 
 	public class TextManager : ITextManager 
@@ -38,6 +40,8 @@ namespace WindowsGame.Common.Managers
 		private String[] controlText;
 		private Vector2[] controlPosition;
 		private Vector2[] instructPosition;
+		private Vector2 shipTypePosition;
+		public static readonly String[] shipTypeText = new String[2] { Globalize.SHIP_TYPE, Globalize.BOSS_TYPE }; 
 
 		private static Char[] DELIM;
 		private static Char[] PIPES;
@@ -67,6 +71,8 @@ namespace WindowsGame.Common.Managers
 			instructPosition = new Vector2[2];
 			instructPosition[0] = GetTextPosition(10, 22);
 			instructPosition[1] = GetTextPosition(10, 23);
+
+			shipTypePosition = GetTextPosition(10, 23);
 		}
 
 		public IList<TextData> LoadTextData(String screen)
@@ -149,6 +155,15 @@ namespace WindowsGame.Common.Managers
 			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, Globalize.INSTRUCTION1, instructPosition[0], Color.White);
 			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, Globalize.INSTRUCTION2, instructPosition[1], Color.White);
 		}
+		public void DrawProgress()
+		{
+			DrawProgress(ShipType.Ship);
+		}
+		public void DrawProgress(ShipType shipType)
+		{
+			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, shipTypeText[(Byte)shipType], shipTypePosition, Color.White);
+		}
+
 		private static Color ConvertFromHex(String hexCode)
 		{
 			Color color = Color.White;

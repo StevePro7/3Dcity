@@ -107,11 +107,11 @@ namespace WindowsGame.Common.Screens
 			//Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, new Vector2(statusPos.X + 100.0f, statusPos.Y), rect, Color.White);
 
 			// Text data last!
-			//MyGame.Manager.TextManager.Draw(TextDataList);
-			//MyGame.Manager.TextManager.DrawTitle();
-			//MyGame.Manager.TextManager.DrawControls();
-			//MyGame.Manager.LevelManager.DrawLevelData();
-			//MyGame.Manager.ScoreManager.Draw();
+			MyGame.Manager.TextManager.Draw(TextDataList);
+			MyGame.Manager.TextManager.DrawTitle();
+			MyGame.Manager.TextManager.DrawControls();
+			MyGame.Manager.LevelManager.DrawLevelData();
+			MyGame.Manager.ScoreManager.Draw();
 		}
 
 	}

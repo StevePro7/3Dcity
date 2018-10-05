@@ -265,6 +265,8 @@ namespace WindowsGame.Common.Screens
 			//MyGame.Manager.TextManager.Draw(TextDataList);		// TODO delete
 			MyGame.Manager.TextManager.DrawTitle();
 			MyGame.Manager.TextManager.DrawControls();
+			MyGame.Manager.TextManager.DrawProgress();
+			MyGame.Manager.EnemyManager.DrawProgress();
 			MyGame.Manager.LevelManager.DrawLevelData();
 			MyGame.Manager.ScoreManager.Draw();
 		}

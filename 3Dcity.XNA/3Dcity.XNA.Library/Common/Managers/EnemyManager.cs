@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using WindowsGame.Common.Sprites;
 using WindowsGame.Common.Static;
+using WindowsGame.Master;
 
 namespace WindowsGame.Common.Managers
 {
@@ -19,6 +20,7 @@ namespace WindowsGame.Common.Managers
 		//void Spawn(UInt16 frameDelay, Vector2 position);
 		void Update(GameTime gameTime);
 		void Draw();
+		void DrawProgress();
 
 		IList<Enemy> EnemyList { get; }
 		IList<Enemy> EnemyTest { get; }
@@ -43,6 +45,7 @@ namespace WindowsGame.Common.Managers
 		private LevelType levelType;
 		private Byte maxEnemySpawn;
 		private UInt16 testFrameDelay;
+		private Vector2[] progressPosition;
 
 		public void Initialize()
 		{
@@ -67,6 +70,11 @@ namespace WindowsGame.Common.Managers
 				enemy.SetSlotID();
 				EnemyList.Add(enemy);
 			}
+
+			progressPosition = new Vector2[3];
+			progressPosition[0] = MyGame.Manager.TextManager.GetTextPosition(26, 23);
+			progressPosition[1] = MyGame.Manager.TextManager.GetTextPosition(28, 23);
+			progressPosition[2] = MyGame.Manager.TextManager.GetTextPosition(29, 23);
 		}
 
 		public void LoadContent()
@@ -118,6 +126,7 @@ namespace WindowsGame.Common.Managers
 			EnemyStart = 0;
 			EnemySpawn = 0;
 			EnemyTotal = enemyTotal;
+			EnemyStartText = EnemyStart.ToString().PadLeft(2, '0');
 			EnemyTotalText = EnemyTotal.ToString().PadLeft(2, '0');
 		}
 
@@ -252,6 +261,13 @@ namespace WindowsGame.Common.Managers
 			{
 				EnemyList[index].Draw();
 			}
+		}
+
+		public void DrawProgress()
+		{
+			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, EnemyStartText, progressPosition[0], Color.White);
+			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, Globalize.SEPARATOR, progressPosition[1], Color.White);
+			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, EnemyTotalText, progressPosition[2], Color.White);
 		}
 
 		private static IList<Rectangle> GetEnemyBounds()

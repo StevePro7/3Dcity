@@ -15,7 +15,11 @@ namespace WindowsGame.Common.Static
 		public const String HISCORE_TEXT = "HI";
 		public const String CURSOR_LEFTS = "<<";
 		public const String CURSOR_RIGHT = ">>";
-		public const String MISS_TEXT = "X>";
+		public const String MISS_TEXT = "X";
+		public const String SEPARATOR = "/";
+
+		public const String SHIP_TYPE = "SHIP";
+		public const String BOSS_TYPE = "BOSS";
 
 		public const String INSTRUCTION1 = "MOVE TARGET TO CHOOSE";
 		public const String INSTRUCTION2 = "FIRE BUTTON TO SELECT";

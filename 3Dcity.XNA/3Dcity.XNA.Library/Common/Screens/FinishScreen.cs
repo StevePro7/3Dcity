@@ -50,6 +50,8 @@ namespace WindowsGame.Common.Screens
 			// Text data last!
 			MyGame.Manager.TextManager.DrawTitle();
 			MyGame.Manager.TextManager.DrawControls();
+			MyGame.Manager.TextManager.DrawProgress();
+			MyGame.Manager.EnemyManager.DrawProgress();
 			MyGame.Manager.LevelManager.DrawLevelData();
 			MyGame.Manager.ScoreManager.Draw();
 		}
