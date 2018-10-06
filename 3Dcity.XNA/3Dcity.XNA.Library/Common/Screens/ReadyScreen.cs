@@ -6,12 +6,6 @@ namespace WindowsGame.Common.Screens
 {
 	public class ReadyScreen : BaseScreen, IScreen
 	{
-		public override void Initialize()
-		{
-			base.Initialize();
-			//LoadTextData();			TODO delete
-		}
-
 		public override void LoadContent()
 		{
 			MyGame.Manager.DebugManager.Reset();
@@ -58,7 +52,6 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.DebugManager.Draw();
 
 			// Text data last!
-			//MyGame.Manager.TextManager.Draw(TextDataList);		// TODO delete
 			MyGame.Manager.TextManager.DrawTitle();
 			MyGame.Manager.TextManager.DrawControls();
 			MyGame.Manager.LevelManager.DrawLevelData();

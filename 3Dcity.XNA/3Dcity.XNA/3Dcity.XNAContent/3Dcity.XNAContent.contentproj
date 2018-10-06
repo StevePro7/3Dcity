@@ -37,16 +37,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Data\Texts\PlayScreen.txt">
-      <Name>PlayScreen</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Data\Texts\ReadyScreen.txt">
-      <Name>ReadyScreen</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Data\Config\GlobalConfig.xml">
       <Name>GlobalConfig</Name>
       <Importer>XmlImporter</Importer>
@@ -167,12 +157,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Data\Texts\TitleScreen.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Name>TitleScreen</Name>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Data\Events\02.txt">
       <Name>02</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -182,12 +166,6 @@
     <None Include="Data\Events\00.txt">
       <Name>00</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Data\Texts\DemoScreen.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Name>DemoScreen</Name>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -306,12 +284,6 @@
       <Importer>Mp3Importer</Importer>
       <Processor>SongProcessor</Processor>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Data\Texts\IntroScreen.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Name>IntroScreen</Name>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Data\Levels\Hard\01-Hard.xml">

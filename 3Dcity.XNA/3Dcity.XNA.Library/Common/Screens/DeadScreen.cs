@@ -7,11 +7,6 @@ namespace WindowsGame.Common.Screens
 {
 	public class DeadScreen : BaseScreen, IScreen
 	{
-		public override void Initialize()
-		{
-			base.Initialize();
-		}
-
 		public override void LoadContent()
 		{
 			base.LoadContent();
@@ -36,7 +31,6 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.IconManager.DrawControls();
 
 			// Sprite sheet #02.
-			//MyGame.Manager.DebugManager.Draw();		// TODO delete
 			MyGame.Manager.EnemyManager.Draw();
 			MyGame.Manager.LevelManager.DrawLevelOrb();
 			MyGame.Manager.BulletManager.Draw();
