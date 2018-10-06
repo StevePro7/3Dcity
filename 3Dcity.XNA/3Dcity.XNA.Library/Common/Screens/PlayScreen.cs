@@ -26,7 +26,8 @@ namespace WindowsGame.Common.Screens
 
 			// Not bad settings for default.
 			//MyGame.Manager.BulletManager.Reset(10, 200, 100);
-			MyGame.Manager.BulletManager.Reset(7, 200, 500);
+			MyGame.Manager.BulletManager.Reset(5, 200, 500);
+			//MyGame.Manager.BulletManager.Reset(100, 20, 50);		// TODO remove - extreme!
 
 			levelType = MyGame.Manager.LevelManager.LevelType;
 			Byte levelIndex = MyGame.Manager.LevelManager.LevelIndex;
@@ -56,7 +57,10 @@ namespace WindowsGame.Common.Screens
 
 			// Log delta to monitor performance!
 #if DEBUG
-			//MyGame.Manager.Logger.Info(gameTime.ElapsedGameTime.TotalSeconds.ToString());
+			//string time = gameTime.ElapsedGameTime.TotalSeconds.ToString();
+			//MyGame.Manager.Logger.Info(time);
+			//Console.WriteLine(time);
+			//System.Diagnostics.Debug.WriteLine(time);
 #endif
 
 			// TODO delete
@@ -107,8 +111,14 @@ namespace WindowsGame.Common.Screens
 						continue;
 					}
 
-					// Can kill initial enemy [at frame count = 0] because enemy will be "hidden".
+					// It could be possible that the enemy in this slot is already dead!
 					Enemy enemy = MyGame.Manager.EnemyManager.EnemyDict[slotID];
+					if (EnemyType.Dead == enemy.EnemyType)
+					{
+						continue;
+					}
+
+					// Can kill initial enemy [at frame count = 0] because enemy will be "hidden".
 					Byte enemyCount = enemy.FrameCount;
 					if (0 == enemy.FrameCount)
 					{
