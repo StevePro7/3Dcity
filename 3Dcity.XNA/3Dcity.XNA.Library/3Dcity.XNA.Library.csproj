@@ -114,6 +114,7 @@
     <Compile Include="Common\Screens\BaseScreen.cs" />
     <Compile Include="Common\Screens\BeatScreen.cs" />
     <Compile Include="Common\Screens\ContScreen.cs" />
+    <Compile Include="Common\Screens\StartScreen.cs" />
     <Compile Include="Common\Screens\DeadScreen.cs" />
     <Compile Include="Common\Screens\FinishScreen.cs" />
     <Compile Include="Common\Screens\IntroScreen.cs" />

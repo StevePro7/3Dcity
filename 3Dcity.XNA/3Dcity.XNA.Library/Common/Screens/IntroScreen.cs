@@ -69,8 +69,6 @@ namespace WindowsGame.Common.Screens
 		{
 			// Sprite sheet #01.
 			base.Draw();
-
-			// Individual texture.
 			MyGame.Manager.RenderManager.DrawTitle(moverPosition);
 			MyGame.Manager.RenderManager.DrawBottom();
 

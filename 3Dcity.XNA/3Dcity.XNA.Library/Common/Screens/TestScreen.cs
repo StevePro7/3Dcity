@@ -154,18 +154,13 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.IconManager.DrawControls();
 
 			// Sprite sheet #02.
-			MyGame.Manager.DebugManager.Draw();
 			MyGame.Manager.EnemyManager.Draw();
-
 			MyGame.Manager.LevelManager.DrawLevelOrb();
 			MyGame.Manager.SpriteManager.Draw();
-
 			MyGame.Manager.ExplosionManager.Draw();
-			//Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, orbPosition, orbRectangle, Color.White);
-			//Engine.SpriteBatch.Draw(Assets.OrbGreen20, orbPosition, Color.White);
-			//Engine.SpriteBatch.Draw(Assets.OrbGreen32, orbPosition, Color.White);
-			//Engine.SpriteBatch.Draw(Assets.OrbRed32, orbPosition, Color.White);
-			//Engine.SpriteBatch.Draw(Assets.OrbGreen32, new Vector2(0, orbPosition.Y), Color.White);
+
+			// Individual texture.
+			MyGame.Manager.DebugManager.Draw();
 
 			// Text data last!
 			MyGame.Manager.TextManager.Draw(TextDataList);

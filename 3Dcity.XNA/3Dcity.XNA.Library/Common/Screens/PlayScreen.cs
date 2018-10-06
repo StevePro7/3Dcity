@@ -256,7 +256,6 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.IconManager.DrawControls();
 
 			// Sprite sheet #02.
-			//MyGame.Manager.DebugManager.Draw();		// TODO delete
 			MyGame.Manager.RenderManager.DrawStatusOuter();
 			MyGame.Manager.RenderManager.DrawStatusInner(StatusType.Yellow, MyGame.Manager.EnemyManager.EnemyPercentage);
 
@@ -265,6 +264,9 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.LevelManager.DrawLevelOrb();
 			MyGame.Manager.BulletManager.Draw();
 			MyGame.Manager.SpriteManager.Draw();
+
+			// Individual texture.
+			//MyGame.Manager.DebugManager.Draw();		// TODO delete
 
 			// Text data last!
 			MyGame.Manager.TextManager.DrawTitle();

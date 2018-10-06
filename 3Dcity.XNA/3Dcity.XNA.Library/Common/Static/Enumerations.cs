@@ -87,6 +87,7 @@
 		Init,
 		Title,
 		Intro,
+		Start,
 		Diff,
 		Level,
 		Ready,

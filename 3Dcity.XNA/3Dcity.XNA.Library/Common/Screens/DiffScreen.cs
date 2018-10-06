@@ -123,13 +123,11 @@ namespace WindowsGame.Common.Screens
 			// Sprite sheet #01.
 			base.Draw();
 			MyGame.Manager.IconManager.DrawControls();
+			MyGame.Manager.RenderManager.DrawTitle();
 
 			// Sprite sheet #02.
 			MyGame.Manager.LevelManager.DrawLevelOrb();
 			MyGame.Manager.SpriteManager.DrawCursor();
-
-			// Individual texture.
-			MyGame.Manager.RenderManager.DrawTitle();
 
 			// Text data last!
 			MyGame.Manager.TextManager.Draw(TextDataList);
