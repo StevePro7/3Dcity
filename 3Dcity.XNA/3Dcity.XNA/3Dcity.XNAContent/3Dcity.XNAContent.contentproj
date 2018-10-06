@@ -236,18 +236,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Data\Sprite\Target64.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Name>Target64</Name>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Data\Sprite\Target56.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Name>Target56</Name>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Textures\240.png">
       <Name>240</Name>
       <Importer>TextureImporter</Importer>
