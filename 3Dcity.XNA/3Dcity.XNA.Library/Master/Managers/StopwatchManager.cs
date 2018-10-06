@@ -12,6 +12,7 @@ namespace WindowsGame.Master.Managers
 		Int64 ElapsedMilliseconds { get; }
 	}
 
+#if WINDOWS
 	public class StopwatchManager : IStopwatchManager
 	{
 		private Stopwatch stopwatch;
@@ -36,4 +37,28 @@ namespace WindowsGame.Master.Managers
 			get { return stopwatch.ElapsedMilliseconds; }
 		}
 	}
+#endif
+
+#if !WINDOWS
+	public class StopwatchManager : IStopwatchManager
+	{
+		public void Initialize()
+		{
+		}
+
+		public void Start()
+		{
+		}
+
+		public void Stop()
+		{
+		}
+
+		public Int64 ElapsedMilliseconds
+		{
+			get { return 0; }
+		}
+	}
+#endif
+
 }

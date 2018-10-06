@@ -32,8 +32,8 @@
 	<EnemysY>0</EnemysY>
 	<EnemyFrame>5</EnemyFrame>
 	<EnemyIndex>2</EnemyIndex>
-	<EnemySpawn>8</EnemySpawn>
-	<EnemyTotal>100</EnemyTotal>
+	<EnemySpawn>1</EnemySpawn>
+	<EnemyTotal>1</EnemyTotal>
 	<IsGodMode>true</IsGodMode>
 	<DebugTester>true</DebugTester>
 	<QuitsToExit>true</QuitsToExit>

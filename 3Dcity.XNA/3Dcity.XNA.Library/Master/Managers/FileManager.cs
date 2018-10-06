@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Xml.Linq;
 using System.Xml.Serialization;
@@ -68,7 +69,7 @@ namespace WindowsGame.Master.Managers
 		// https://stackoverflow.com/questions/732677/converting-from-string-to-t
 		private static T GetValue<T>(String value)
 		{
-			return (T)Convert.ChangeType(value, typeof(T));
+			return (T)Convert.ChangeType(value, typeof(T), CultureInfo.InvariantCulture);
 		}
 
 	}
