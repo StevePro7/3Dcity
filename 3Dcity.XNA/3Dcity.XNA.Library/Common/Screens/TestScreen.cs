@@ -155,7 +155,7 @@ namespace WindowsGame.Common.Screens
 
 			// Sprite sheet #02.
 			MyGame.Manager.EnemyManager.Draw();
-			MyGame.Manager.LevelManager.DrawLevelOrb();
+			MyGame.Manager.LevelManager.Draw();
 			MyGame.Manager.SpriteManager.Draw();
 			MyGame.Manager.ExplosionManager.Draw();
 
@@ -166,7 +166,7 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.TextManager.Draw(TextDataList);
 			MyGame.Manager.TextManager.DrawTitle();
 			MyGame.Manager.TextManager.DrawControls();
-			MyGame.Manager.LevelManager.DrawLevelData();
+			MyGame.Manager.LevelManager.DrawTextData();
 			MyGame.Manager.ScoreManager.Draw();
 		}
 

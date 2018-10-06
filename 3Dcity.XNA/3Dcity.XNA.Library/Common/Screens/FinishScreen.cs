@@ -43,7 +43,7 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.RenderManager.DrawStatusInner(StatusType.Yellow, MyGame.Manager.EnemyManager.EnemyPercentage);
 
 			MyGame.Manager.EnemyManager.Draw();
-			MyGame.Manager.LevelManager.DrawLevelOrb();
+			MyGame.Manager.LevelManager.Draw();
 			MyGame.Manager.BulletManager.Draw();
 			MyGame.Manager.SpriteManager.Draw();
 
@@ -52,7 +52,7 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.TextManager.DrawControls();
 			MyGame.Manager.TextManager.DrawProgress();
 			MyGame.Manager.EnemyManager.DrawProgress();
-			MyGame.Manager.LevelManager.DrawLevelData();
+			MyGame.Manager.LevelManager.DrawTextData();
 			MyGame.Manager.ScoreManager.Draw();
 		}
 

@@ -88,7 +88,7 @@ namespace WindowsGame.Common.Screens
 			{
 				MyGame.Manager.SpriteManager.LargeTarget.Draw();
 			}
-			//MyGame.Manager.LevelManager.DrawLevelOrb();
+			//MyGame.Manager.LevelManager.Draw();
 
 			//MyGame.Manager.RenderManager.DrawStatusOuter();
 			//MyGame.Manager.RenderManager.DrawStatusInner(StatusType.Yellow, 0);
@@ -117,7 +117,7 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.TextManager.DrawControls();
 			MyGame.Manager.TextManager.DrawProgress();
 			MyGame.Manager.EnemyManager.DrawProgress();
-			MyGame.Manager.LevelManager.DrawLevelData();
+			MyGame.Manager.LevelManager.DrawTextData();
 			MyGame.Manager.ScoreManager.Draw();
 		}
 

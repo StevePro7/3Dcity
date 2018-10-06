@@ -56,7 +56,7 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.IconManager.DrawControls();
 
 			// Sprite sheet #02.
-			MyGame.Manager.LevelManager.DrawLevelOrb();
+			MyGame.Manager.LevelManager.Draw();
 			MyGame.Manager.SpriteManager.Draw();
 
 			// Individual texture.
@@ -65,7 +65,7 @@ namespace WindowsGame.Common.Screens
 			// Text data last!
 			MyGame.Manager.TextManager.DrawTitle();
 			MyGame.Manager.TextManager.DrawControls();
-			MyGame.Manager.LevelManager.DrawLevelData();
+			MyGame.Manager.LevelManager.DrawTextData();
 			MyGame.Manager.ScoreManager.Draw();
 		}
 

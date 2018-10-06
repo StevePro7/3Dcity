@@ -131,13 +131,13 @@ namespace WindowsGame.Common.Screens
 			//Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, targetPos, targetRect, Color.White);
 
 			// Sprite sheet #02.
-			MyGame.Manager.LevelManager.DrawLevelOrb();
+			MyGame.Manager.LevelManager.Draw();
 
 			// Text data last!
 			MyGame.Manager.TextManager.Draw(TextDataList);
 			MyGame.Manager.TextManager.DrawTitle();
 			MyGame.Manager.TextManager.DrawControls();
-			MyGame.Manager.LevelManager.DrawLevelData();
+			MyGame.Manager.LevelManager.DrawTextData();
 			MyGame.Manager.ScoreManager.Draw();
 
 			// TODO delete

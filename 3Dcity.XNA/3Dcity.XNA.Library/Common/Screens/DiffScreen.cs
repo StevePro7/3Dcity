@@ -126,7 +126,7 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.RenderManager.DrawTitle();
 
 			// Sprite sheet #02.
-			MyGame.Manager.LevelManager.DrawLevelOrb();
+			MyGame.Manager.LevelManager.Draw();
 			MyGame.Manager.SpriteManager.DrawCursor();
 
 			// Text data last!

@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using WindowsGame.Common.Data;
 using WindowsGame.Common.Static;
 using WindowsGame.Master;
-using Microsoft.Xna.Framework;
 
 namespace WindowsGame.Common.Managers
 {
@@ -18,8 +18,8 @@ namespace WindowsGame.Common.Managers
 		void SetLevelIndex(Byte levelIndex);
 		//void Draw();							// TODO delete	
 		//void DrawLevelRoman();					// TODO delete
-		void DrawLevelOrb();
-		void DrawLevelData();
+		void Draw();
+		void DrawTextData();
 
 		// Properties.
 		//Vector2[] LevelTextPositions { get; }		// TODO delete
@@ -141,12 +141,12 @@ namespace WindowsGame.Common.Managers
 		//{
 		//    Engine.SpriteBatch.DrawString(Assets.EmulogicFont, levelText, levelRomanPosition, Color.White);
 		//}
-		public void DrawLevelOrb()
+		public void Draw()
 		{
 			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, levelOrbPosition, levelOrbPbRectangle, Color.White);
 		}
 
-		public void DrawLevelData()
+		public void DrawTextData()
 		{
 			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, levelData, levelNumPosition, Color.White);
 		}
