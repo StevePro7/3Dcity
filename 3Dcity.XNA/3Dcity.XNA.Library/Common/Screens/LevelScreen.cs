@@ -72,13 +72,13 @@ namespace WindowsGame.Common.Screens
 				{
 					flag1 = false;
 					iconIndex = Convert.ToByte(flag1);
-					MyGame.Manager.IconManager.UpdateIcon(MyGame.Manager.IconManager.JoyButton, iconIndex);
+					MyGame.Manager.IconManager.UpdateFireIcon(iconIndex);
 					MyGame.Manager.LevelManager.SetLevelIndex(levelIndex);
 					return (Int32)ScreenType.Ready;
 				}
 
 				iconIndex = Convert.ToByte(flag1);
-				MyGame.Manager.IconManager.UpdateIcon(MyGame.Manager.IconManager.JoyButton, iconIndex);
+				MyGame.Manager.IconManager.UpdateFireIcon(iconIndex);
 				return (Int32)CurrScreen;
 			}
 
