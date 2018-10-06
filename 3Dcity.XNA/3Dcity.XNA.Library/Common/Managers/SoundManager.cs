@@ -92,8 +92,9 @@ namespace WindowsGame.Common.Managers
 			{
 				return;
 			}
-			SoundEffectType key = SoundEffectType.Funny;
-			//SoundEffectType key = SoundEffectType.Cheat;
+			// TODO implement correct sound effect!
+			//SoundEffectType key = SoundEffectType.Funny;
+			//SoundEffectType key = SoundEffectType.Cheat;		
 			SoundEffectInstance value = Assets.SoundEffectDictionary[key];
 			soundFactory.PlaySoundEffect(value);
 		}
