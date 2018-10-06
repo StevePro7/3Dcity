@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using WindowsGame.Master;
 using WindowsGame.Master.Factorys;
 using WindowsGame.Common.Static;
 using Microsoft.Xna.Framework.Audio;
@@ -75,9 +74,9 @@ namespace WindowsGame.Common.Managers
 
 
 			// TODO delete
-			Assets.BlackBar = contentFactory.LoadTexture(texturesRoot + "blackbar");
-			Assets.YellowBar = contentFactory.LoadTexture(texturesRoot + "baryellow");
-			Assets.RedBar = contentFactory.LoadTexture(texturesRoot + "barred");
+			//Assets.BlackBar = contentFactory.LoadTexture(texturesRoot + "blackbar");
+			//Assets.YellowBar = contentFactory.LoadTexture(texturesRoot + "baryellow");
+			//Assets.RedBar = contentFactory.LoadTexture(texturesRoot + "barred");
 			//Assets.GameTitle = contentFactory.LoadTexture(texturesRoot + "3Dcity");
 			//Assets.OrbGreen32 = contentFactory.LoadTexture(texturesRoot + "OrbGreen32");
 			//Assets.OrbRed32 = contentFactory.LoadTexture(texturesRoot + "OrbRed32");
@@ -96,7 +95,7 @@ namespace WindowsGame.Common.Managers
 		public void LoadContentSplash()
 		{
 			// TODO revert!
-			String splash = (0 == MyGame.Manager.ConfigManager.GlobalConfigData.SplashDelay) ? "StevePro160" : "Splash";
+			String splash = (0 == MyGame.Manager.ConfigManager.GlobalConfigData.SplashDelay) ? "SplashBlank" : "Splash";
 			Assets.SplashTexture = contentFactory.LoadTexture(texturesRoot + splash);
 		}
 
