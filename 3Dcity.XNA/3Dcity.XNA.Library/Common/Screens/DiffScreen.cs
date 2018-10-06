@@ -19,6 +19,7 @@ namespace WindowsGame.Common.Screens
 		{
 			base.Initialize();
 			LoadTextData();
+			UpdateGrid = false;
 		}
 
 		public override void LoadContent()

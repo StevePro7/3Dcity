@@ -20,6 +20,7 @@ namespace WindowsGame.Common.Screens
 		{
 			base.Initialize();
 			LoadTextData();
+			UpdateGrid = false;
 
 			//delay = 1000;
 			//goal = 100;
@@ -46,7 +47,6 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.SpriteManager.LargeTarget.SetPosition(targetPos);
 
 			statusPos = new Vector2(15 * 20 - 2, Constants.ScreenHigh - 20 - Constants.GameOffsetY - 4);
-			base.Initialize();
 		}
 
 		public override void LoadContent()

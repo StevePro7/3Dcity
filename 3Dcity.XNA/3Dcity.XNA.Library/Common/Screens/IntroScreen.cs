@@ -21,6 +21,7 @@ namespace WindowsGame.Common.Screens
 		public override void Initialize()
 		{
 			base.Initialize();
+			UpdateGrid = false;
 
 			titlePosition = new Vector2((Constants.ScreenWide - 240) / 2.0f, (Constants.ScreenHigh - Constants.DbleSize) / 2.0f + 94);
 			startPosition = new Vector2(titlePosition.X, Constants.ScreenHigh - Constants.GameOffsetY + 10);
@@ -57,7 +58,7 @@ namespace WindowsGame.Common.Screens
 			{
 				Single delta = (Single) gameTime.ElapsedGameTime.TotalSeconds;
 				//startY -= delta * deltaY * 24;
-				startY -= delta * deltaY * 8;
+				startY -= delta * deltaY * 8;			// TODO make configurable??
 				moverPosition.Y = startY;
 			}
 
@@ -76,7 +77,7 @@ namespace WindowsGame.Common.Screens
 
 			// Text data last!
 			MyGame.Manager.TextManager.DrawTitle();
-			MyGame.Manager.ScoreManager.Draw();
+			//MyGame.Manager.ScoreManager.Draw();		// TODO - leave out for now...
 			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, buildVersion, buildPosition, Color.White);
 		}
 

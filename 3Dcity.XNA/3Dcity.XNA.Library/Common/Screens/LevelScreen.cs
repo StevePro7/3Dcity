@@ -27,6 +27,7 @@ namespace WindowsGame.Common.Screens
 		{
 			base.Initialize();
 			LoadTextData();
+			UpdateGrid = false;
 		}
 
 		public override void LoadContent()
@@ -165,6 +166,7 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.TextManager.DrawTitle();
 			MyGame.Manager.TextManager.DrawControls();
 			MyGame.Manager.TextManager.DrawInstruct();
+			MyGame.Manager.LevelManager.DrawLevelData();
 			MyGame.Manager.ScoreManager.Draw();
 			//MyGame.Manager.LevelManager.DrawLevelRoman();		// TODO delete
 		}

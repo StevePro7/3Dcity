@@ -21,16 +21,15 @@ namespace WindowsGame.Common.Screens
 		{
 			String screenName = GetType().Name.ToLower();
 			screenName = screenName.Replace("screen", String.Empty);
-
 			CurrScreen = (ScreenType)Enum.Parse(typeof(ScreenType), screenName, true);
+
+			UpdateStar = MyGame.Manager.ConfigManager.GlobalConfigData.UpdateStar;
+			UpdateGrid = MyGame.Manager.ConfigManager.GlobalConfigData.UpdateGrid;
 		}
 
 		public virtual void LoadContent()
 		{
 			Timer = 0;
-
-			UpdateStar = MyGame.Manager.ConfigManager.GlobalConfigData.UpdateStar;
-			UpdateGrid = MyGame.Manager.ConfigManager.GlobalConfigData.UpdateGrid;
 		}
 
 		public virtual Int32 Update(GameTime gameTime)

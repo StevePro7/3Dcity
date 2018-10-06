@@ -10,6 +10,7 @@ namespace WindowsGame.Common.Screens
 		{
 			base.Initialize();
 			//LoadTextData();		// TODO delete
+			UpdateGrid = false;
 		}
 
 		public override void LoadContent()

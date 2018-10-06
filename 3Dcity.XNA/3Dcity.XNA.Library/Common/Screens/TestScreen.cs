@@ -17,6 +17,7 @@ namespace WindowsGame.Common.Screens
 		{
 			base.Initialize();
 			LoadTextData();
+			UpdateGrid = false;
 			//number = Constants.INVALID_INDEX;
 		}
 
