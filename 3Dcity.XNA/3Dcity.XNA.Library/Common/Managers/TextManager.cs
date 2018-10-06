@@ -27,7 +27,8 @@ namespace WindowsGame.Common.Managers
 		void DrawBuild();
 		void DrawTitle();
 		void DrawControls();
-		
+
+		void DrawGameInfo();
 		void DrawInstruct();
 		void DrawProgress();
 		void DrawProgress(ShipType shipType);
@@ -41,7 +42,7 @@ namespace WindowsGame.Common.Managers
 		private Vector2 titlePosition;
 		private String[] controlText;
 		private Vector2[] controlPosition;
-		private Vector2[] instructPosition;
+		private Vector2[] generalPosition;
 		private Vector2 shipTypePosition;
 		private Vector2 buildNumPosition;
 
@@ -72,9 +73,9 @@ namespace WindowsGame.Common.Managers
 			controlPosition[0] = GetTextPosition(3, 23);
 			controlPosition[1] = GetTextPosition(34, 23);
 
-			instructPosition = new Vector2[2];
-			instructPosition[0] = GetTextPosition(10, 22);
-			instructPosition[1] = GetTextPosition(10, 23);
+			generalPosition = new Vector2[2];
+			generalPosition[0] = GetTextPosition(10, 22);
+			generalPosition[1] = GetTextPosition(10, 23);
 
 			shipTypePosition = GetTextPosition(9, 23);
 			buildNumPosition = GetTextPosition(35, 23);
@@ -159,11 +160,16 @@ namespace WindowsGame.Common.Managers
 			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, controlText[0], controlPosition[0], Color.White);
 			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, controlText[1], controlPosition[1], Color.White);
 		}
-		
+
+		public void DrawGameInfo()
+		{
+			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, Globalize.INTRO_TEXT1, generalPosition[0], Color.White);
+			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, Globalize.INTRO_TEXT2, generalPosition[1], Color.White);
+		}
 		public void DrawInstruct()
 		{
-			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, Globalize.INSTRUCTION1, instructPosition[0], Color.White);
-			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, Globalize.INSTRUCTION2, instructPosition[1], Color.White);
+			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, Globalize.INSTRUCTION1, generalPosition[0], Color.White);
+			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, Globalize.INSTRUCTION2, generalPosition[1], Color.White);
 		}
 		public void DrawProgress()
 		{

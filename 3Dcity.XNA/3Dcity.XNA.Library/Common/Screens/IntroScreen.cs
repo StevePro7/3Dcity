@@ -57,11 +57,15 @@ namespace WindowsGame.Common.Screens
 			if (startY > titleY)
 			{
 				Single delta = (Single) gameTime.ElapsedGameTime.TotalSeconds;
-				//startY -= delta * deltaY * 24;
-				startY -= delta * deltaY * 8;			// TODO make configurable??
+				startY -= delta * deltaY * 24;
+				//startY -= delta * deltaY * 8;			// TODO make configurable??
 				moverPosition.Y = startY;
 			}
-
+			else
+			{
+				// TODO once at final location - sit for a couple of seconds then show text (and score)
+				return (Int32) ScreenType.Begin;
+			}
 			return (Int32) CurrScreen;
 		}
 
@@ -75,6 +79,7 @@ namespace WindowsGame.Common.Screens
 			// Text data last!
 			MyGame.Manager.TextManager.DrawBuild();
 			MyGame.Manager.TextManager.DrawTitle();
+			MyGame.Manager.TextManager.DrawGameInfo();
 			//MyGame.Manager.ScoreManager.Draw();		// TODO - leave out for now...
 			//Engine.SpriteBatch.DrawString(Assets.EmulogicFont, buildVersion, buildPosition, Color.White);
 		}

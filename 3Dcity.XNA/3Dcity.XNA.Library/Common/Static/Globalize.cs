@@ -21,6 +21,9 @@ namespace WindowsGame.Common.Static
 		public const String SHIP_TYPE = "SHIP";
 		public const String BOSS_TYPE = "BOSS";
 
+		public const String INTRO_TEXT1 = "CLASSIC SHOOT 'EM UP!";
+		public const String INTRO_TEXT2 = "FROM STEVEPRO STUDIOS";
+
 		public const String INSTRUCTION1 = "MOVE TARGET TO CHOOSE";
 		public const String INSTRUCTION2 = "FIRE BUTTON TO SELECT";
 

@@ -89,6 +89,7 @@ namespace WindowsGame.Common.Screens
 			// Text data last!
 			MyGame.Manager.TextManager.DrawBuild();
 			MyGame.Manager.TextManager.DrawTitle();
+			MyGame.Manager.TextManager.DrawGameInfo();
 			MyGame.Manager.ScoreManager.Draw();
 
 			if (flag2)
