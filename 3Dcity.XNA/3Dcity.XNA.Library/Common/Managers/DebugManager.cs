@@ -36,6 +36,11 @@ namespace WindowsGame.Common.Managers
 			MyGame.Manager.LevelManager.SetLevelIndex(MyGame.Manager.ConfigManager.GlobalConfigData.LevelIndex);
 
 			MyGame.Manager.StateManager.SetIsGodMode(MyGame.Manager.ConfigManager.GlobalConfigData.IsGodMode);
+
+			LevelType levelType = MyGame.Manager.ConfigManager.GlobalConfigData.LevelType;
+			Byte enemySpawn = MyGame.Manager.ConfigManager.GlobalConfigData.EnemySpawn;
+			Byte enemyTotal = MyGame.Manager.ConfigManager.GlobalConfigData.EnemyTotal;
+			MyGame.Manager.EnemyManager.Reset(levelType, enemySpawn, 1000, 5000, enemyTotal);
 		}
 
 		public void Draw()

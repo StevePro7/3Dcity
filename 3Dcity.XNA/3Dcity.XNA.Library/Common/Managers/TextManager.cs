@@ -72,7 +72,7 @@ namespace WindowsGame.Common.Managers
 			instructPosition[0] = GetTextPosition(10, 22);
 			instructPosition[1] = GetTextPosition(10, 23);
 
-			shipTypePosition = GetTextPosition(10, 23);
+			shipTypePosition = GetTextPosition(9, 23);
 		}
 
 		public IList<TextData> LoadTextData(String screen)

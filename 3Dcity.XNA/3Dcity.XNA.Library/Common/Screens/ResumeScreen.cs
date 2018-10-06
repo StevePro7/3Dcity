@@ -51,6 +51,7 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
+			MyGame.Manager.DebugManager.Reset();
 			base.LoadContent();
 		}
 
@@ -89,8 +90,11 @@ namespace WindowsGame.Common.Screens
 			}
 			//MyGame.Manager.LevelManager.DrawLevelOrb();
 
+			//MyGame.Manager.RenderManager.DrawStatusOuter();
+			//MyGame.Manager.RenderManager.DrawStatusInner(StatusType.Yellow, 0);
+
 			MyGame.Manager.RenderManager.DrawStatusOuter();
-			MyGame.Manager.RenderManager.DrawStatusInner(StatusType.Yellow, 10);
+			MyGame.Manager.RenderManager.DrawStatusInner(StatusType.Yellow, MyGame.Manager.EnemyManager.EnemyPercentage);
 
 			//Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, statusPos, MyGame.Manager.ImageManager.ProgressRectangles[0], Color.White);
 			//Engine.SpriteBatch.Draw(Assets.BlackBar, statusPos, Color.White);
@@ -110,6 +114,8 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.TextManager.Draw(TextDataList);
 			MyGame.Manager.TextManager.DrawTitle();
 			MyGame.Manager.TextManager.DrawControls();
+			MyGame.Manager.TextManager.DrawProgress();
+			MyGame.Manager.EnemyManager.DrawProgress();
 			MyGame.Manager.LevelManager.DrawLevelData();
 			MyGame.Manager.ScoreManager.Draw();
 		}

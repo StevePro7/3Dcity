@@ -54,7 +54,7 @@ namespace WindowsGame.Common.Managers
 			const UInt16 gameHigh = Constants.ScreenHigh - (2 * Constants.GameOffsetY);
 			const UInt16 bottHigh = gameHigh + Constants.GameOffsetY;
 			bottomPosition = new Vector2(0, bottHigh + Constants.TargetSize);
-			statusPosition = new Vector2(15 * 20 - 2, Constants.ScreenHigh - 20 - Constants.GameOffsetY - 4);
+			statusPosition = new Vector2(14 * 20 - 2, Constants.ScreenHigh - 20 - Constants.GameOffsetY - 4);
  
 			//origin = new Vector2(40, 0);		// TODO delete
 			rotation = MathHelper.ToRadians(270);
@@ -135,7 +135,11 @@ namespace WindowsGame.Common.Managers
 
 		public void DrawStatusOuter()
 		{
-			Rectangle statusRectangle = statusRectangles[(Byte)StatusType.Black];
+			Rectangle statusRectangle;
+			statusRectangle = statusRectangles[(Byte)StatusType.Black];
+			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, statusPosition, statusRectangle, Color.White);
+
+			statusRectangle = statusRectangles[(Byte)StatusType.Blue];
 			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, statusPosition, statusRectangle, Color.White);
 		}
 

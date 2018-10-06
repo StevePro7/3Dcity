@@ -72,7 +72,7 @@ namespace WindowsGame.Common.Managers
 			}
 
 			progressPosition = new Vector2[3];
-			progressPosition[0] = MyGame.Manager.TextManager.GetTextPosition(26, 23);
+			progressPosition[0] = MyGame.Manager.TextManager.GetTextPosition(25, 23);
 			progressPosition[1] = MyGame.Manager.TextManager.GetTextPosition(28, 23);
 			progressPosition[2] = MyGame.Manager.TextManager.GetTextPosition(29, 23);
 		}
@@ -126,8 +126,8 @@ namespace WindowsGame.Common.Managers
 			EnemyStart = 0;
 			EnemySpawn = 0;
 			EnemyTotal = enemyTotal;
-			EnemyStartText = EnemyStart.ToString().PadLeft(2, '0');
-			EnemyTotalText = EnemyTotal.ToString().PadLeft(2, '0');
+			EnemyStartText = EnemyStart.ToString().PadLeft(3, '0');
+			EnemyTotalText = EnemyTotal.ToString().PadLeft(3, '0');
 		}
 
 		public void SpawnAllEnemies()
@@ -250,7 +250,7 @@ namespace WindowsGame.Common.Managers
 
 			if (launchCheck)
 			{
-				EnemyStartText = EnemyStart.ToString().PadLeft(2, '0');
+				EnemyStartText = EnemyStart.ToString().PadLeft(3, '0');
 				EnemyPercentage = ((Single)EnemyStart / (Single)EnemyTotal) * 100.0f;
 			}
 		}

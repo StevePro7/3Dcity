@@ -26,7 +26,7 @@ namespace WindowsGame.Common.Screens
 
 			// Not bad settings for default.
 			//MyGame.Manager.BulletManager.Reset(10, 200, 100);
-			MyGame.Manager.BulletManager.Reset(1, 200, 500);
+			MyGame.Manager.BulletManager.Reset(7, 200, 500);
 
 			levelType = MyGame.Manager.LevelManager.LevelType;
 			Byte levelIndex = MyGame.Manager.LevelManager.LevelIndex;
