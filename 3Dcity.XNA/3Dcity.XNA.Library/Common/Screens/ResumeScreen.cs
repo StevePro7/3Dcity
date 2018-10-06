@@ -94,7 +94,8 @@ namespace WindowsGame.Common.Screens
 			//MyGame.Manager.RenderManager.DrawStatusInner(StatusType.Yellow, 0);
 
 			MyGame.Manager.RenderManager.DrawStatusOuter();
-			MyGame.Manager.RenderManager.DrawStatusInner(StatusType.Yellow, MyGame.Manager.EnemyManager.EnemyPercentage);
+			MyGame.Manager.RenderManager.DrawStatusInner(StatusType.Red, 70);
+			//MyGame.Manager.RenderManager.DrawStatusInner(StatusType.Yellow, MyGame.Manager.EnemyManager.EnemyPercentage);
 
 			//Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, statusPos, MyGame.Manager.ImageManager.ProgressRectangles[0], Color.White);
 			//Engine.SpriteBatch.Draw(Assets.BlackBar, statusPos, Color.White);
