@@ -24,8 +24,10 @@ namespace WindowsGame.Common.Managers
 		void DrawText(String text, Vector2 position);
 
 		void DrawCursor(Vector2 position);
+		void DrawBuild();
 		void DrawTitle();
 		void DrawControls();
+		
 		void DrawInstruct();
 		void DrawProgress();
 		void DrawProgress(ShipType shipType);
@@ -41,6 +43,8 @@ namespace WindowsGame.Common.Managers
 		private Vector2[] controlPosition;
 		private Vector2[] instructPosition;
 		private Vector2 shipTypePosition;
+		private Vector2 buildNumPosition;
+
 		public static readonly String[] shipTypeText = new String[2] { Globalize.SHIP_TYPE, Globalize.BOSS_TYPE }; 
 
 		private static Char[] DELIM;
@@ -73,6 +77,7 @@ namespace WindowsGame.Common.Managers
 			instructPosition[1] = GetTextPosition(10, 23);
 
 			shipTypePosition = GetTextPosition(9, 23);
+			buildNumPosition = GetTextPosition(35, 23);
 		}
 
 		public IList<TextData> LoadTextData(String screen)
@@ -141,6 +146,10 @@ namespace WindowsGame.Common.Managers
 		{
 			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, Globalize.CURSOR_RIGHT, position, Color.White);
 		}
+		public void DrawBuild()
+		{
+			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, MyGame.Manager.DeviceManager.BuildVersion, buildNumPosition, Color.White);
+		}
 		public void DrawTitle()
 		{
 			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, titleText, titlePosition, Color.White);
@@ -150,6 +159,7 @@ namespace WindowsGame.Common.Managers
 			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, controlText[0], controlPosition[0], Color.White);
 			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, controlText[1], controlPosition[1], Color.White);
 		}
+		
 		public void DrawInstruct()
 		{
 			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, Globalize.INSTRUCTION1, instructPosition[0], Color.White);

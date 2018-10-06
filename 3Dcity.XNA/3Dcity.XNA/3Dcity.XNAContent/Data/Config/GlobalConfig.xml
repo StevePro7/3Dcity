@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Diff</ScreenType>
+	<ScreenType>Begin</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
-	<!--<ScreenType>Level</ScreenType>-->
+	<!--<ScreenType>Intro</ScreenType>-->
 	<!--<ScreenType>Resume</ScreenType>-->
 	<FramesPerSecond>100</FramesPerSecond>
 	<MaximLevel>18</MaximLevel>
@@ -11,14 +11,15 @@
 	<PlayAudio>true</PlayAudio>
 	<LevelType>Easy</LevelType>
 	<LevelIndex>0</LevelIndex>
+	<StarDelay>2000</StarDelay>
+	<GridDelay>300</GridDelay>
 	<EnemysDelay>500</EnemysDelay>
 	<ExplodeDelay>300</ExplodeDelay>
 	<SplashDelay>0</SplashDelay>
-	<StarDelay>2000</StarDelay>
-	<GridDelay>300</GridDelay>
 	<SelectDelay>500</SelectDelay>
 	<IntroDelay>660</IntroDelay>
-	<ScoreDelay>800</ScoreDelay>
+	<BeginDelay>800</BeginDelay>
+	<ScoreDelay>600</ScoreDelay>
 	<EventRatio>1.0</EventRatio>
 	<ScoreBlink>true</ScoreBlink>
 	<UpdateStar>true</UpdateStar>

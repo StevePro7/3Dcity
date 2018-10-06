@@ -12,13 +12,14 @@ namespace WindowsGame.Common.Data
 		public Boolean PlayAudio;
 		public LevelType LevelType;
 		public Byte LevelIndex;
+		public UInt16 StarDelay;
+		public UInt16 GridDelay;
 		public UInt16 EnemysDelay;
 		public UInt16 ExplodeDelay;
 		public UInt16 SplashDelay;
-		public UInt16 StarDelay;
-		public UInt16 GridDelay;
-		public UInt16 IntroDelay;
 		public UInt16 SelectDelay;
+		public UInt16 IntroDelay;
+		public UInt16 BeginDelay;
 		public UInt16 ScoreDelay;
 		public Single EventRatio;
 		public Boolean ScoreBlink;

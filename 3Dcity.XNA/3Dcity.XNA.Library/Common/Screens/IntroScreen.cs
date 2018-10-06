@@ -11,12 +11,12 @@ namespace WindowsGame.Common.Screens
 		private Vector2 startPosition;
 		private Vector2 titlePosition;
 		private Vector2 moverPosition;
-		private Vector2 buildPosition;
+		//private Vector2 buildPosition;
 		private Single startY;
 		private Single titleY;
 		private Single deltaY;
 		private Boolean coolMusic;
-		private String buildVersion;
+		//private String buildVersion;
 
 		public override void Initialize()
 		{
@@ -32,7 +32,7 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
-			buildPosition = MyGame.Manager.TextManager.GetTextPosition(35, 23);
+			//buildPosition = MyGame.Manager.TextManager.GetTextPosition(35, 23);
 			UInt16 introDelay = MyGame.Manager.ConfigManager.GlobalConfigData.IntroDelay;
 			deltaY = startY - titleY;
 			deltaY = introDelay / deltaY;
@@ -40,7 +40,7 @@ namespace WindowsGame.Common.Screens
 			coolMusic = MyGame.Manager.StateManager.CoolMusic;
 			SongType song = coolMusic ? SongType.CoolMusic : SongType.GameTitle;
 			MyGame.Manager.SoundManager.PlayMusic(song, false);
-			buildVersion = MyGame.Manager.DeviceManager.BuildVersion;
+			//buildVersion = MyGame.Manager.DeviceManager.BuildVersion;
 			base.LoadContent();
 		}
 
@@ -73,9 +73,10 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.RenderManager.DrawBottom();
 
 			// Text data last!
+			MyGame.Manager.TextManager.DrawBuild();
 			MyGame.Manager.TextManager.DrawTitle();
 			//MyGame.Manager.ScoreManager.Draw();		// TODO - leave out for now...
-			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, buildVersion, buildPosition, Color.White);
+			//Engine.SpriteBatch.DrawString(Assets.EmulogicFont, buildVersion, buildPosition, Color.White);
 		}
 
 	}

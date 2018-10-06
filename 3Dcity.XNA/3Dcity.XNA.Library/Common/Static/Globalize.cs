@@ -23,5 +23,7 @@ namespace WindowsGame.Common.Static
 
 		public const String INSTRUCTION1 = "MOVE TARGET TO CHOOSE";
 		public const String INSTRUCTION2 = "FIRE BUTTON TO SELECT";
+
+		public const String INSERT_COINS = "INSERT COIN(S)";
 	}
 }
