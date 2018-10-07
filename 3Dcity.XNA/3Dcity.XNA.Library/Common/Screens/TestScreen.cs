@@ -23,7 +23,14 @@ namespace WindowsGame.Common.Screens
 			base.LoadContent();
 
 			// TODO delete
-			//MyGame.Manager.BulletManager.Reset(2, 500, 200);
+			MyGame.Manager.BulletManager.Reset(2, 100, 200);
+
+			Byte enemySpawn = MyGame.Manager.ConfigManager.GlobalConfigData.EnemySpawn;	// 1;  // TODO level config
+			Byte enemyTotal = MyGame.Manager.ConfigManager.GlobalConfigData.EnemyTotal;	// 1;  // TODO level config
+			MyGame.Manager.EnemyManager.Reset(LevelType, enemySpawn, 1000, 5000, enemyTotal);
+			MyGame.Manager.EnemyManager.SpawnAllEnemies();
+
+			MyGame.Manager.ExplosionManager.Reset(enemySpawn, MyGame.Manager.ConfigManager.GlobalConfigData.ExplodeDelay);
 		}
 
 		public override Int32 Update(GameTime gameTime)
@@ -35,6 +42,7 @@ namespace WindowsGame.Common.Screens
 			}
 
 			CheckLevelComplete = false;
+			NextScreen = CurrScreen;
 
 			// Target.
 			DetectTarget(gameTime);
@@ -75,6 +83,7 @@ namespace WindowsGame.Common.Screens
 		public override void Draw()
 		{
 			base.Draw();
+			MyGame.Manager.DebugManager.Draw();
 		}
 
 	}
