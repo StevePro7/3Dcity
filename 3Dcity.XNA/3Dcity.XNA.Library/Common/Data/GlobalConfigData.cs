@@ -8,6 +8,7 @@ namespace WindowsGame.Common.Data
 		public ScreenType ScreenType;
 		public Byte FramesPerSecond;
 		public Byte MaximLevel;
+		public Byte MaxBullets;
 		public Boolean LoadAudio;
 		public Boolean PlayAudio;
 		public LevelType LevelType;

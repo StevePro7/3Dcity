@@ -26,14 +26,17 @@ namespace WindowsGame.Common.Managers
 
 	public class BulletManager : IBulletManager 
 	{
+		private Byte allBulletShoot;
 		private Byte maxBulletShoot;
 
 		public void Initialize()
 		{
-			BulletList = new List<Bullet>(Constants.MAX_BULLET_SHOOT);
-			BulletTest = new List<Bullet>(Constants.MAX_BULLET_SHOOT);
+			allBulletShoot = MyGame.Manager.ConfigManager.GlobalConfigData.MaxBullets;
 
-			for (Byte index = 0; index < Constants.MAX_BULLET_SHOOT; index++)
+			BulletList = new List<Bullet>(allBulletShoot);
+			BulletTest = new List<Bullet>(allBulletShoot);
+
+			for (Byte index = 0; index < allBulletShoot; index++)
 			{
 				Bullet bullet = new Bullet();
 				bullet.SetID(index);
@@ -41,12 +44,12 @@ namespace WindowsGame.Common.Managers
 				BulletList.Add(bullet);
 			}
 
-			maxBulletShoot = Constants.MAX_BULLET_SHOOT;
+			maxBulletShoot = allBulletShoot;
 		}
 
 		public void LoadContent()
 		{
-			for (Byte index = 0; index < Constants.MAX_BULLET_SHOOT; index++)
+			for (Byte index = 0; index < allBulletShoot; index++)
 			{
 				Bullet bullet = BulletList[index];
 				bullet.LoadContent(MyGame.Manager.ImageManager.BulletRectangles);
@@ -56,9 +59,9 @@ namespace WindowsGame.Common.Managers
 		public void Reset(Byte theBulletShoot, UInt16 frameDelay, UInt16 shootDelay)
 		{
 			maxBulletShoot = theBulletShoot;
-			if (maxBulletShoot > Constants.MAX_BULLET_SHOOT)
+			if (maxBulletShoot > allBulletShoot)
 			{
-				maxBulletShoot = Constants.MAX_BULLET_SHOOT;
+				maxBulletShoot = allBulletShoot;
 			}
 
 			for (Byte index = 0; index < maxBulletShoot; index++)

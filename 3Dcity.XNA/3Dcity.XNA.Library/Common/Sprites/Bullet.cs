@@ -12,7 +12,6 @@ namespace WindowsGame.Common.Sprites
 			IsFiring = false;
 			FrameIndex = 0;
 			FrameTimer = 0;
-			FrameIndex = 5;		// stevepro
 		}
 
 		public void Shoot(Vector2 position)
