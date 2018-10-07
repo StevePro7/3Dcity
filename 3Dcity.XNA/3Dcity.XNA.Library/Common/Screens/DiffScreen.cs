@@ -20,6 +20,7 @@ namespace WindowsGame.Common.Screens
 			base.Initialize();
 			LoadTextData();
 			UpdateGrid = false;
+			NextScreen = ScreenType.Level;
 		}
 
 		public override void LoadContent()
@@ -60,7 +61,7 @@ namespace WindowsGame.Common.Screens
 					iconIndex = Convert.ToByte(flag1);
 					MyGame.Manager.IconManager.UpdateFireIcon(iconIndex);
 					MyGame.Manager.LevelManager.SetLevelType((LevelType)levelType);
-					return (Int32) ScreenType.Level;
+					return (Int32)NextScreen;
 				}
 
 				iconIndex = Convert.ToByte(flag1);

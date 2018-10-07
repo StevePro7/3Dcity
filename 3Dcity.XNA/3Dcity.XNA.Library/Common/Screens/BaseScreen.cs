@@ -12,7 +12,7 @@ namespace WindowsGame.Common.Screens
 		protected UInt16 Timer { get; set; }
 		protected IList<TextData> TextDataList { get; private set; }
 		protected ScreenType CurrScreen { get; set; }
-		//protected ScreenType NextScreen { get; set; }			// TODO delete
+		protected ScreenType NextScreen { get; set; }
 		protected Boolean GamePause { get; set; }
 		protected Boolean UpdateStar { get; set; }
 		protected Boolean UpdateGrid { get; set; }
