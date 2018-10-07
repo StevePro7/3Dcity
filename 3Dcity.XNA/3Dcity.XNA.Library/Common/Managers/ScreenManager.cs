@@ -22,14 +22,14 @@ namespace WindowsGame.Common.Managers
 		private IDictionary<Int32, IScreen> screens;
 		private Int32 currScreen = (Int32)ScreenType.Splash;
 		private Int32 nextScreen = (Int32)ScreenType.Splash;
-		private Color color;
+		private readonly Color color = Color.Black;
 
 		public void Initialize()
 		{
 			screens = GetScreens();
 			screens[(Int32)ScreenType.Splash].Initialize();
 			screens[(Int32)ScreenType.Init].Initialize();
-			color = GetColor();
+			//color = GetColor();
 		}
 
 		public void LoadContent()
@@ -51,7 +51,7 @@ namespace WindowsGame.Common.Managers
 			{
 				currScreen = nextScreen;
 				screens[currScreen].LoadContent();
-				color = GetColor();
+				//color = GetColor();
 			}
 
 			nextScreen = screens[currScreen].Update(gameTime);
@@ -65,10 +65,11 @@ namespace WindowsGame.Common.Managers
 			Engine.SpriteBatch.End();
 		}
 
-		private Color GetColor()
-		{
-			return Color.Black;
-		}
+		// TODO delete
+		//private Color GetColor()
+		//{
+		//    return Color.Black;
+		//}
 
 		private static Dictionary<Int32, IScreen> GetScreens()
 		{

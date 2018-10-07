@@ -31,7 +31,7 @@ namespace WindowsGame.SystemTests.Common.Managers
 			Print(LevelManager.LevelNames);
 			//Print(LevelManager.LevelRoman);
 		}
-		private static void Print(IList<String> lines)
+		private static void Print(IEnumerable<string> lines)
 		{
 			foreach (var line in lines)
 			{
@@ -58,7 +58,7 @@ namespace WindowsGame.SystemTests.Common.Managers
 			foreach (FieldInfo field in fields)
 			{
 				object obj = field.GetValue(data);
-				Console.WriteLine(obj);
+				Console.WriteLine(field.Name + "\t\t" + obj);
 			}
 		}
 

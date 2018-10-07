@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using WindowsGame.Common.Data;
 using Microsoft.Xna.Framework;
 using WindowsGame.Common.Sprites;
 using WindowsGame.Common.Static;
@@ -9,24 +10,31 @@ namespace WindowsGame.Common.Screens
 {
 	public class PlayScreen : BaseScreen, IScreen
 	{
-		private Boolean isGodMode;
-		private Boolean checkLevelComplete;
 		private LevelType levelType;
+		private Byte levelIndex;
+		private LevelConfigData levelConfigData;
+		private Boolean invincibile;
+		private Boolean checkLevelComplete;
 
 		public override void LoadContent()
 		{
 			MyGame.Manager.DebugManager.Reset();
 
-			isGodMode = MyGame.Manager.StateManager.IsGodMode;
+			// Load the configuration for level type + index.
+			levelType = MyGame.Manager.LevelManager.LevelType;
+			levelIndex = MyGame.Manager.LevelManager.LevelIndex;
+			MyGame.Manager.LevelManager.LoadLevelConfigData(levelType, levelIndex);
+			levelConfigData = MyGame.Manager.LevelManager.LevelConfigData;
+
+			Boolean isGodMode = MyGame.Manager.StateManager.IsGodMode;
+			invincibile = isGodMode || levelConfigData.BonudLevel;
 
 			// Not bad settings for default.
 			//MyGame.Manager.BulletManager.Reset(10, 200, 100);
 			MyGame.Manager.BulletManager.Reset(5, 200, 500);
 			//MyGame.Manager.BulletManager.Reset(100, 20, 50);		// TODO remove - extreme!
 
-			levelType = MyGame.Manager.LevelManager.LevelType;
-			Byte levelIndex = MyGame.Manager.LevelManager.LevelIndex;
-			MyGame.Manager.LevelManager.LoadLevelConfigData(levelType, levelIndex);
+			
 
 			//const Byte enemySpawn = 1;
 			//const Byte enemyTotal = 3;
@@ -176,7 +184,7 @@ namespace WindowsGame.Common.Screens
 				for (Byte testIndex = 0; testIndex < enemyTest.Count; testIndex++)
 				{
 					Enemy enemy = enemyTest[testIndex];
-					if (!isGodMode)
+					if (!invincibile)
 					{
 						// First check if enemy instantly kills target.
 						Boolean test = CheckEnemyKillTarget(enemy, target);

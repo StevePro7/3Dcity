@@ -6,6 +6,7 @@ namespace WindowsGame.Common.Data
 	{
 		public Byte LevelNo;
 		public String LevelName;
+		public Boolean BonudLevel;
 		public UInt16 StartTimer;
 	}
 }

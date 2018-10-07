@@ -2,5 +2,6 @@
 <LevelConfigData>
 	<LevelNo>01</LevelNo>
 	<LevelName>MOOT</LevelName>
+	<BonudLevel>false</BonudLevel>
 	<StartTimer>2000</StartTimer>
 </LevelConfigData>
