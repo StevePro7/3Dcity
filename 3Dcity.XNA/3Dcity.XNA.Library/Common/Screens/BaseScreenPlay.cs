@@ -9,9 +9,9 @@ namespace WindowsGame.Common.Screens
 {
 	public abstract class BaseScreenPlay : BaseScreen
 	{
-		protected LevelType LevelType { get; private set; }
-		protected Byte LevelIndex { get; private set; }
-		protected LevelConfigData LevelConfigData { get; private set; }
+		protected LevelType LevelType { get; set; }
+		protected Byte LevelIndex { get; set; }
+		protected LevelConfigData LevelConfigData { get; set; }
 		protected Boolean Invincibile { get; set; }
 		protected Boolean CheckLevelComplete { get; set; }
 
@@ -20,25 +20,10 @@ namespace WindowsGame.Common.Screens
 		//    base.Initialize();
 		//}
 
-		public override void LoadContent()
-		{
-			// Load the configuration for level type + index.
-			LevelType = MyGame.Manager.LevelManager.LevelType;
-			LevelIndex = MyGame.Manager.LevelManager.LevelIndex;
-			MyGame.Manager.LevelManager.LoadLevelConfigData(LevelType, LevelIndex);
-			LevelConfigData = MyGame.Manager.LevelManager.LevelConfigData;
-
-			Boolean isGodMode = MyGame.Manager.StateManager.IsGodMode;
-			Invincibile = isGodMode || LevelConfigData.BonusLevel;
-
-			// Bullets.
-			Byte bulletMaximumNum = LevelConfigData.BulletMaximumNum;
-			UInt16 bulletFrameDelay = LevelConfigData.BulletFrameDelay;
-			UInt16 bulletShootDelay = LevelConfigData.BulletShootDelay;
-			MyGame.Manager.BulletManager.Reset(bulletMaximumNum, bulletFrameDelay, bulletShootDelay);
-
-			base.LoadContent();
-		}
+		//public override void LoadContent()
+		//{
+		//    base.LoadContent();
+		//}
 
 		//public override Int32 Update(GameTime gameTime)
 		//{
@@ -285,6 +270,40 @@ namespace WindowsGame.Common.Screens
 			}
 		}
 
+
+		protected void DrawSheet01()
+		{
+			// Sprite sheet #01.
+			base.Draw();
+			MyGame.Manager.IconManager.DrawControls();
+		}
+
+		protected void DrawSheet02()
+		{
+			// Sprite sheet #02.
+			MyGame.Manager.RenderManager.DrawStatusOuter();
+			MyGame.Manager.RenderManager.DrawStatusInner(StatusType.Yellow, MyGame.Manager.EnemyManager.EnemyPercentage);
+
+			MyGame.Manager.EnemyManager.Draw();
+			MyGame.Manager.ExplosionManager.Draw();
+			MyGame.Manager.LevelManager.Draw();
+			MyGame.Manager.BulletManager.Draw();
+			//MyGame.Manager.SpriteManager.Draw();
+			MyGame.Manager.SpriteManager.SmallTarget.Draw();
+		}
+
+
+		protected void DrawText()
+		{
+			// Text data last!
+			//MyGame.Manager.TextManager.Draw(TextDataList);
+			MyGame.Manager.TextManager.DrawTitle();
+			MyGame.Manager.TextManager.DrawControls();
+			MyGame.Manager.TextManager.DrawProgress();
+			MyGame.Manager.EnemyManager.DrawProgress();
+			MyGame.Manager.LevelManager.DrawTextData();
+			MyGame.Manager.ScoreManager.Draw();
+		}
 
 		public override void Draw()
 		{
