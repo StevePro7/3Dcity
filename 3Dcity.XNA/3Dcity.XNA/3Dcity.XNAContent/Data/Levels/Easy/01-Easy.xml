@@ -2,6 +2,9 @@
 <LevelConfigData>
 	<LevelNo>01</LevelNo>
 	<LevelName>MOOT</LevelName>
-	<BonudLevel>false</BonudLevel>
+	<BonusLevel>false</BonusLevel>
+	<BulletMaximumNum>10</BulletMaximumNum>
+	<BulletFrameDelay>2000</BulletFrameDelay>	<!-- how fast bullet travels -->
+	<BulletShootDelay>200</BulletShootDelay>	<!-- delay between bullet shots -->
 	<StartTimer>2000</StartTimer>
 </LevelConfigData>

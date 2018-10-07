@@ -27,7 +27,7 @@ namespace WindowsGame.Common.Screens
 			levelConfigData = MyGame.Manager.LevelManager.LevelConfigData;
 
 			Boolean isGodMode = MyGame.Manager.StateManager.IsGodMode;
-			invincibile = isGodMode || levelConfigData.BonudLevel;
+			invincibile = isGodMode || levelConfigData.BonusLevel;
 
 			// Not bad settings for default.
 			//MyGame.Manager.BulletManager.Reset(10, 200, 100);
@@ -75,6 +75,7 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.SpriteManager.SetMovement(horz, vert);
 			MyGame.Manager.SpriteManager.Update(gameTime);
 
+
 			// Test shooting enemy ships.
 			Boolean fire = MyGame.Manager.InputManager.Fire();
 			if (fire)
@@ -89,6 +90,7 @@ namespace WindowsGame.Common.Screens
 					MyGame.Manager.BulletManager.Shoot((Byte)bulletIndex, position);
 				}
 			}
+
 
 			// BULLETS.
 			// Update bullets and test collision.

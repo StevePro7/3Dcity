@@ -33,7 +33,7 @@ namespace WindowsGame.Common.Screens
 			levelConfigData = MyGame.Manager.LevelManager.LevelConfigData;
 
 			Boolean isGodMode = MyGame.Manager.StateManager.IsGodMode;
-			invincibile = isGodMode || levelConfigData.BonudLevel;
+			invincibile = isGodMode || levelConfigData.BonusLevel;
 
 			base.LoadContent();
 		}

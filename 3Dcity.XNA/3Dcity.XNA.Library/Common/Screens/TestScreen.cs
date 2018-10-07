@@ -12,7 +12,7 @@ namespace WindowsGame.Common.Screens
 		public override void Initialize()
 		{
 			base.Initialize();
-			LoadTextData();
+			//LoadTextData();
 			UpdateGrid = false;
 		}
 
@@ -21,6 +21,9 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.DebugManager.Reset();
 
 			base.LoadContent();
+
+			// TODO delete
+			//MyGame.Manager.BulletManager.Reset(2, 500, 200);
 		}
 
 		public override Int32 Update(GameTime gameTime)
@@ -31,30 +34,47 @@ namespace WindowsGame.Common.Screens
 				return (Int32)CurrScreen;
 			}
 
+			CheckLevelComplete = false;
+
+			// Target.
+			DetectTarget(gameTime);
+
+			// Bullets.
+			DetectBullets();
+			UpdateBullets(gameTime);
+			VerifyBullets();
+
+			// Explosions.
+			UpdateExplosions(gameTime);
+			VerifyExplosions();
+
+			// Enemies.
+			UpdateEnemies(gameTime);
+			VerifyEnemies();
+			if (NextScreen != CurrScreen)
+			{
+				return (Int32)NextScreen;
+			}
+
+			// Icons.
+			UpdateIcons();
+
+			// Score.
+			UpdateScore(gameTime);
+
+			// Summary.
+			UpdateLevel();
+			if (NextScreen != CurrScreen)
+			{
+				return (Int32)NextScreen;
+			}
+
 			return (Int32)CurrScreen;
 		}
 
 		public override void Draw()
 		{
-			// Sprite sheet #01.
 			base.Draw();
-			MyGame.Manager.IconManager.DrawControls();
-
-			// Sprite sheet #02.
-			MyGame.Manager.EnemyManager.Draw();
-			MyGame.Manager.LevelManager.Draw();
-			MyGame.Manager.SpriteManager.Draw();
-			MyGame.Manager.ExplosionManager.Draw();
-
-			// Individual texture.
-			MyGame.Manager.DebugManager.Draw();
-
-			// Text data last!
-			MyGame.Manager.TextManager.Draw(TextDataList);
-			MyGame.Manager.TextManager.DrawTitle();
-			MyGame.Manager.TextManager.DrawControls();
-			MyGame.Manager.LevelManager.DrawTextData();
-			MyGame.Manager.ScoreManager.Draw();
 		}
 
 	}
