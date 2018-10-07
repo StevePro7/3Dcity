@@ -1,5 +1,9 @@
 # 3Dcity
 
+07/10/2018
+Enemy slot 5,6,7 GetEnemyBounds and reduce 72 to 52 to not 
+overlap with status bar and text and the bottom of screen
+
 03/10/2018
 Prototyping the progress bars
 100x20 is not wide enough... should be 200px wide!

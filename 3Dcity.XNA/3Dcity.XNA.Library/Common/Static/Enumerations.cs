@@ -92,6 +92,7 @@
 		Level,
 		Ready,
 		Play,
+		Quit,
 		Finish,
 		Dead,
 		Cont,
