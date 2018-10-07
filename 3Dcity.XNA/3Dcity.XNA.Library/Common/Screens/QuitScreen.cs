@@ -36,6 +36,9 @@ namespace WindowsGame.Common.Screens
 		{
 			// Sprite sheet #01.
 			base.Draw();
+
+			// Text data last!
+			MyGame.Manager.TextManager.Draw(TextDataList);
 		}
 
 	}

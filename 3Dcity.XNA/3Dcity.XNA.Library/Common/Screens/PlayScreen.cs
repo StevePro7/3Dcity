@@ -42,6 +42,7 @@ namespace WindowsGame.Common.Screens
 			Byte enemyTotal = MyGame.Manager.ConfigManager.GlobalConfigData.EnemyTotal;	// 1;  // TODO level config
 			MyGame.Manager.EnemyManager.Reset(levelType, enemySpawn, 1000, 5000, enemyTotal);
 			MyGame.Manager.EnemyManager.SpawnAllEnemies();
+
 			MyGame.Manager.ExplosionManager.Reset(enemySpawn, MyGame.Manager.ConfigManager.GlobalConfigData.ExplodeDelay);
 
 			MyGame.Manager.SoundManager.PlayMusic(SongType.GameMusic);
