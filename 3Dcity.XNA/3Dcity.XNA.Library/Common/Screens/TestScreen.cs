@@ -9,28 +9,54 @@ namespace WindowsGame.Common.Screens
 {
 	public class TestScreen : BaseScreenPlay, IScreen
 	{
+		private UInt16 delay1, delay2;
+		private Boolean flag;
+
 		public override void Initialize()
 		{
 			base.Initialize();
 			//LoadTextData();
 			UpdateGrid = false;
+
+			delay1 = 1000;
+			delay2 = 5000;
 		}
 
 		public override void LoadContent()
 		{
-			MyGame.Manager.DebugManager.Reset();
-
 			base.LoadContent();
 
+			MyGame.Manager.DebugManager.Reset();
+
+			// Load the configuration for level type + index.
+			LevelType = MyGame.Manager.LevelManager.LevelType;
+			LevelIndex = MyGame.Manager.LevelManager.LevelIndex;
+			MyGame.Manager.LevelManager.LoadLevelConfigData(LevelType, LevelIndex);
+			LevelConfigData = MyGame.Manager.LevelManager.LevelConfigData;
+
+			Boolean isGodMode = MyGame.Manager.StateManager.IsGodMode;
+			Invincibile = isGodMode || LevelConfigData.BonusLevel;
+
+			// Bullets.
+			Byte bulletMaxim = LevelConfigData.BulletMaxim;
+			UInt16 bulletFrame = LevelConfigData.BulletFrame;
+			UInt16 bulletShoot = LevelConfigData.BulletShoot;
+			MyGame.Manager.BulletManager.Reset(bulletMaxim, bulletFrame, bulletShoot);
 			// TODO delete
 			MyGame.Manager.BulletManager.Reset(2, 100, 200);
 
-			Byte enemySpawn = MyGame.Manager.ConfigManager.GlobalConfigData.EnemySpawn;	// 1;  // TODO level config
-			Byte enemyTotal = MyGame.Manager.ConfigManager.GlobalConfigData.EnemyTotal;	// 1;  // TODO level config
+			// Enemies.
+			Byte enemySpawn = LevelConfigData.EnemySpawn;
+			Byte enemyTotal = LevelConfigData.EnemyTotal;
 			MyGame.Manager.EnemyManager.Reset(LevelType, enemySpawn, 1000, 5000, enemyTotal);
 			MyGame.Manager.EnemyManager.SpawnAllEnemies();
 
-			MyGame.Manager.ExplosionManager.Reset(enemySpawn, MyGame.Manager.ConfigManager.GlobalConfigData.ExplodeDelay);
+			// Explosions.
+			UInt16 explodeDelay = LevelConfigData.ExplodeDelay;
+			MyGame.Manager.ExplosionManager.Reset(LevelConfigData.EnemySpawn, explodeDelay);
+
+			// Resume screen cannot die
+			Invincibile = true;
 		}
 
 		public override Int32 Update(GameTime gameTime)
@@ -40,6 +66,8 @@ namespace WindowsGame.Common.Screens
 			{
 				return (Int32)CurrScreen;
 			}
+
+			UpdateTimer(gameTime);
 
 			CheckLevelComplete = false;
 			NextScreen = CurrScreen;
@@ -82,8 +110,17 @@ namespace WindowsGame.Common.Screens
 
 		public override void Draw()
 		{
-			base.Draw();
-			MyGame.Manager.DebugManager.Draw();
+			DrawSheet01();
+
+			DrawSheet02();
+			if (flag)
+			{
+				MyGame.Manager.SpriteManager.LargeTarget.Draw();
+			}
+
+			DrawText();
+			//base.Draw();
+			//MyGame.Manager.DebugManager.Draw();
 		}
 
 	}
