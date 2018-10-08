@@ -21,6 +21,7 @@ namespace WindowsGame.Common.Screens
 
 		public override void Initialize()
 		{
+			MyGame.Manager.DebugManager.Reset();
 			base.Initialize();
 			//LoadTextData();		// TODO delete
 		}

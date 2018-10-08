@@ -1,9 +1,6 @@
 ﻿using System;
-using WindowsGame.Common.Static;
-using WindowsGame.Master;
 using Microsoft.Xna.Framework;
 using WindowsGame.Master.Interfaces;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace WindowsGame.Common.Screens
 {
@@ -11,6 +8,7 @@ namespace WindowsGame.Common.Screens
 	{
 		public override void Initialize()
 		{
+			MyGame.Manager.DebugManager.Reset();
 			base.Initialize();
 			UpdateGrid = false;
 		}

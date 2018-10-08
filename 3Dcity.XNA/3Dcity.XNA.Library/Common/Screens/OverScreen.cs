@@ -17,17 +17,17 @@ namespace WindowsGame.Common.Screens
 
 		public override void Initialize()
 		{
+			MyGame.Manager.DebugManager.Reset();
 			base.Initialize();
 			LoadTextData();
 			UpdateGrid = false;
 
+			// TODO delete!
 			outputText = new string[2] { "FALSE", "TRUE" };
 		}
 
 		public override void LoadContent()
 		{
-			MyGame.Manager.DebugManager.Reset();
-
 			outputPos = MyGame.Manager.TextManager.GetTextPosition(0, 4);
 			GlobalConfigData data = MyGame.Manager.ConfigManager.GlobalConfigData;
 			enemysPos = new Vector2(data.EnemysX, data.EnemysY);

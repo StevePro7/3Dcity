@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Quit</ScreenType>
+	<ScreenType>Play</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<!--<ScreenType>Level</ScreenType>-->
@@ -15,7 +15,7 @@
 	<StarDelay>2000</StarDelay>
 	<GridDelay>300</GridDelay>
 	<EnemysDelay>500</EnemysDelay>
-	<ExplodeDelay>300</ExplodeDelay>
+	<ExplodeDelay>100</ExplodeDelay>
 	<SplashDelay>0</SplashDelay>
 	<SelectDelay>500</SelectDelay>
 	<IntroDelay>660</IntroDelay>

@@ -9,15 +9,14 @@ namespace WindowsGame.Common.Screens
 	{
 		public override void Initialize()
 		{
+			MyGame.Manager.DebugManager.Reset();
 			base.Initialize();
-			//LoadTextData();
 			UpdateGrid = false;
+			//LoadTextData();
 		}
 
 		public override void LoadContent()
 		{
-			MyGame.Manager.DebugManager.Reset();
-
 			base.LoadContent();
 		}
 

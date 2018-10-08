@@ -16,8 +16,10 @@ namespace WindowsGame.Common.Screens
 
 		public override void Initialize()
 		{
+			MyGame.Manager.DebugManager.Reset();
 			base.Initialize();
 			UpdateGrid = false;
+
 			promptPosition = MyGame.Manager.TextManager.GetTextPosition(14, 11);
 			promptPosition.X -= 7.5f;
 			promptDelay = MyGame.Manager.ConfigManager.GlobalConfigData.BeginDelay;
@@ -26,7 +28,6 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
-			MyGame.Manager.DebugManager.Reset();
 			iconIndex = 0;
 
 			flag1 = false;
@@ -59,7 +60,6 @@ namespace WindowsGame.Common.Screens
 				return (Int32)CurrScreen;
 			}
 
-			
 			if (Timer > promptDelay)
 			{
 				flag2 = !flag2;
@@ -75,7 +75,6 @@ namespace WindowsGame.Common.Screens
 				Timer = 0;
 			}
 
-			// TODO check if tap the center or hit the fire button to proceed.
 			return (Int32)CurrScreen;
 		}
 
@@ -87,8 +86,9 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.RenderManager.DrawTitle();
 
 			// Text data last!
-			MyGame.Manager.TextManager.DrawBuild();
+			//MyGame.Manager.TextManager.DrawBuild();
 			MyGame.Manager.TextManager.DrawTitle();
+			MyGame.Manager.TextManager.DrawControls();
 			MyGame.Manager.TextManager.DrawGameInfo();
 			MyGame.Manager.ScoreManager.Draw();
 

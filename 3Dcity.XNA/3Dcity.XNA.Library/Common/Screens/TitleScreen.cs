@@ -8,13 +8,13 @@ namespace WindowsGame.Common.Screens
 	{
 		public override void Initialize()
 		{
+			MyGame.Manager.DebugManager.Reset();
 			base.Initialize();
 			UpdateGrid = false;
 		}
 
 		public override void LoadContent()
 		{
-			MyGame.Manager.DebugManager.Reset();
 			base.LoadContent();
 		}
 

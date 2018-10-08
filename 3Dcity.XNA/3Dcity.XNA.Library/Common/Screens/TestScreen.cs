@@ -1,6 +1,6 @@
 ﻿using System;
-using WindowsGame.Common.Static;
 using Microsoft.Xna.Framework;
+using WindowsGame.Common.Static;
 using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
@@ -12,6 +12,7 @@ namespace WindowsGame.Common.Screens
 
 		public override void Initialize()
 		{
+			MyGame.Manager.DebugManager.Reset();
 			base.Initialize();
 			UpdateGrid = true;
 
@@ -23,8 +24,6 @@ namespace WindowsGame.Common.Screens
 		public override void LoadContent()
 		{
 			base.LoadContent();
-
-			MyGame.Manager.DebugManager.Reset();
 
 			// Load the configuration for level type + index.
 			LevelType = MyGame.Manager.LevelManager.LevelType;

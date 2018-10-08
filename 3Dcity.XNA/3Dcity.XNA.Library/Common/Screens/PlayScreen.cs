@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using WindowsGame.Common.Data;
 using Microsoft.Xna.Framework;
+using WindowsGame.Common.Data;
 using WindowsGame.Common.Sprites;
 using WindowsGame.Common.Static;
 using WindowsGame.Master.Interfaces;
@@ -16,10 +16,14 @@ namespace WindowsGame.Common.Screens
 		private Boolean invincibile;
 		private Boolean checkLevelComplete;
 
-		public override void LoadContent()
+		public override void Initialize()
 		{
 			MyGame.Manager.DebugManager.Reset();
+			base.Initialize();
+		}
 
+		public override void LoadContent()
+		{
 			// Load the configuration for level type + index.
 			levelType = MyGame.Manager.LevelManager.LevelType;
 			levelIndex = MyGame.Manager.LevelManager.LevelIndex;
@@ -31,7 +35,7 @@ namespace WindowsGame.Common.Screens
 
 			// Not bad settings for default.
 			//MyGame.Manager.BulletManager.Reset(10, 200, 100);
-			MyGame.Manager.BulletManager.Reset(5, 200, 500);
+			MyGame.Manager.BulletManager.Reset(5, 50, 100);
 			//MyGame.Manager.BulletManager.Reset(100, 20, 50);		// TODO remove - extreme!
 
 			

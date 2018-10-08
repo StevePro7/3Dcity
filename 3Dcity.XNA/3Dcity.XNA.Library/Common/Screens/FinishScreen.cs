@@ -9,13 +9,14 @@ namespace WindowsGame.Common.Screens
 	{
 		public override void Initialize()
 		{
+			MyGame.Manager.DebugManager.Reset();
 			base.Initialize();
+			UpdateGrid = false;
 		}
 
 		public override void LoadContent()
 		{
 			base.LoadContent();
-			UpdateGrid = false;
 		}
 
 		public override Int32 Update(GameTime gameTime)

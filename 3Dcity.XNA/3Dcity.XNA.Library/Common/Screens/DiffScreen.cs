@@ -9,6 +9,7 @@ namespace WindowsGame.Common.Screens
 	{
 		public override void Initialize()
 		{
+			MyGame.Manager.DebugManager.Reset();
 			base.Initialize();
 
 			CursorPositions = new Vector2[2];
@@ -19,7 +20,6 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
-			MyGame.Manager.DebugManager.Reset();
 			base.LoadContent();
 			SelectType = (Byte)MyGame.Manager.LevelManager.LevelType;
 		}

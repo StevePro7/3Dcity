@@ -20,6 +20,7 @@ namespace WindowsGame.Common.Screens
 
 		public override void Initialize()
 		{
+			MyGame.Manager.DebugManager.Reset();
 			base.Initialize();
 			UpdateGrid = false;
 
@@ -77,9 +78,9 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.RenderManager.DrawBottom();
 
 			// Text data last!
-			MyGame.Manager.TextManager.DrawBuild();
+			//MyGame.Manager.TextManager.DrawBuild();
 			MyGame.Manager.TextManager.DrawTitle();
-			MyGame.Manager.TextManager.DrawGameInfo();
+			//MyGame.Manager.TextManager.DrawGameInfo();
 			//MyGame.Manager.ScoreManager.Draw();		// TODO - leave out for now...
 			//Engine.SpriteBatch.DrawString(Assets.EmulogicFont, buildVersion, buildPosition, Color.White);
 		}
