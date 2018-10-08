@@ -15,27 +15,6 @@ namespace WindowsGame.Common.Screens
 		protected Boolean Invincibile { get; set; }
 		protected Boolean CheckLevelComplete { get; set; }
 
-		//public override void Initialize()
-		//{
-		//    base.Initialize();
-		//}
-
-		//public override void LoadContent()
-		//{
-		//    base.LoadContent();
-		//}
-
-		//public override Int32 Update(GameTime gameTime)
-		//{
-		//    base.Update(gameTime);
-		//    if (GamePause)
-		//    {
-		//        return (Int32)CurrScreen;
-		//    }
-
-		//    return (Int32)CurrScreen;
-		//}
-
 
 		// Target.
 		protected static void DetectTarget(GameTime gameTime)
@@ -192,7 +171,6 @@ namespace WindowsGame.Common.Screens
 						// Do NOT reset enemy here as we want to see Target killed by Enemy!
 						NextScreen = ScreenType.Dead;
 						return;
-						//return (Int32)ScreenType.Dead;
 					}
 
 					// Enemy not kill target but missed so increment miss total.
@@ -203,7 +181,6 @@ namespace WindowsGame.Common.Screens
 						enemy.Reset();
 						NextScreen = ScreenType.Dead;
 						return;
-						//return (Int32)ScreenType.Dead;
 					}
 				}
 
@@ -273,14 +250,17 @@ namespace WindowsGame.Common.Screens
 
 		protected void DrawSheet01()
 		{
-			// Sprite sheet #01.
 			base.Draw();
 			MyGame.Manager.IconManager.DrawControls();
 		}
 
 		protected void DrawSheet02()
 		{
-			// Sprite sheet #02.
+			DrawSheet02(false);
+		}
+
+		protected void DrawSheet02(Boolean flag)
+		{
 			MyGame.Manager.RenderManager.DrawStatusOuter();
 			MyGame.Manager.RenderManager.DrawStatusInner(StatusType.Yellow, MyGame.Manager.EnemyManager.EnemyPercentage);
 
@@ -288,44 +268,15 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.ExplosionManager.Draw();
 			MyGame.Manager.LevelManager.Draw();
 			MyGame.Manager.BulletManager.Draw();
-			//MyGame.Manager.SpriteManager.Draw();
 			MyGame.Manager.SpriteManager.SmallTarget.Draw();
+			if (flag)
+			{
+				MyGame.Manager.SpriteManager.LargeTarget.Draw();
+			}
 		}
-
 
 		protected void DrawText()
 		{
-			// Text data last!
-			//MyGame.Manager.TextManager.Draw(TextDataList);
-			MyGame.Manager.TextManager.DrawTitle();
-			MyGame.Manager.TextManager.DrawControls();
-			MyGame.Manager.TextManager.DrawProgress();
-			MyGame.Manager.EnemyManager.DrawProgress();
-			MyGame.Manager.LevelManager.DrawTextData();
-			MyGame.Manager.ScoreManager.Draw();
-		}
-
-		public override void Draw()
-		{
-			// Sprite sheet #01.
-			base.Draw();
-			MyGame.Manager.IconManager.DrawControls();
-
-			// Sprite sheet #02.
-			MyGame.Manager.RenderManager.DrawStatusOuter();
-			MyGame.Manager.RenderManager.DrawStatusInner(StatusType.Yellow, MyGame.Manager.EnemyManager.EnemyPercentage);
-
-			MyGame.Manager.EnemyManager.Draw();
-			MyGame.Manager.ExplosionManager.Draw();
-			MyGame.Manager.LevelManager.Draw();
-			MyGame.Manager.BulletManager.Draw();
-			MyGame.Manager.SpriteManager.Draw();
-
-			// Individual texture.
-			//MyGame.Manager.DebugManager.Draw();
-
-			// Text data last!
-			//MyGame.Manager.TextManager.Draw(TextDataList);
 			MyGame.Manager.TextManager.DrawTitle();
 			MyGame.Manager.TextManager.DrawControls();
 			MyGame.Manager.TextManager.DrawProgress();

@@ -199,12 +199,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Data\Texts\ResumeScreen.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Name>ResumeScreen</Name>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Data\Levels\LevelNames.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>LevelNames</Name>

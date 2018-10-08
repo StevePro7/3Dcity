@@ -49,7 +49,7 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.SpriteManager.Draw();
 
 			// Individual texture.
-			MyGame.Manager.DebugManager.Draw();
+			//MyGame.Manager.DebugManager.Draw();
 
 			// Text data last!
 			MyGame.Manager.TextManager.DrawTitle();

@@ -18,7 +18,7 @@ namespace WindowsGame.Common.Screens
 		public override void Initialize()
 		{
 			base.Initialize();
-			LoadTextData();
+			//LoadTextData();
 			UpdateGrid = false;
 		}
 
@@ -62,7 +62,7 @@ namespace WindowsGame.Common.Screens
 			
 			
 			// Text data last!
-			MyGame.Manager.TextManager.Draw(TextDataList);
+			//MyGame.Manager.TextManager.Draw(TextDataList);
 			MyGame.Manager.TextManager.DrawTitle();
 			MyGame.Manager.TextManager.DrawControls();
 			MyGame.Manager.TextManager.DrawProgress();

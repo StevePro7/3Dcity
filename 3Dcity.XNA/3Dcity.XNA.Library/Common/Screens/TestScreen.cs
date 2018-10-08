@@ -1,24 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using WindowsGame.Common.Sprites;
 using WindowsGame.Common.Static;
+using Microsoft.Xna.Framework;
 using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
 {
 	public class TestScreen : BaseScreenPlay, IScreen
 	{
-		private UInt16 delay1, delay2;
+		private UInt16 delay1, delay2, timer;
 		private Boolean flag;
 
 		public override void Initialize()
 		{
 			base.Initialize();
-			//LoadTextData();
-			UpdateGrid = false;
+			UpdateGrid = true;
 
-			delay1 = 1000;
+			// TODO make delay values configurable!
+			delay1 = 200;
 			delay2 = 5000;
 		}
 
@@ -33,9 +31,6 @@ namespace WindowsGame.Common.Screens
 			LevelIndex = MyGame.Manager.LevelManager.LevelIndex;
 			MyGame.Manager.LevelManager.LoadLevelConfigData(LevelType, LevelIndex);
 			LevelConfigData = MyGame.Manager.LevelManager.LevelConfigData;
-
-			Boolean isGodMode = MyGame.Manager.StateManager.IsGodMode;
-			Invincibile = isGodMode || LevelConfigData.BonusLevel;
 
 			// Bullets.
 			Byte bulletMaxim = LevelConfigData.BulletMaxim;
@@ -56,7 +51,11 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.ExplosionManager.Reset(LevelConfigData.EnemySpawn, explodeDelay);
 
 			// Resume screen cannot die
+			//Boolean isGodMode = MyGame.Manager.StateManager.IsGodMode;
+			//Invincibile = isGodMode || LevelConfigData.BonusLevel;
 			Invincibile = true;
+			timer = 0;
+			flag = true;
 		}
 
 		public override Int32 Update(GameTime gameTime)
@@ -68,6 +67,17 @@ namespace WindowsGame.Common.Screens
 			}
 
 			UpdateTimer(gameTime);
+			if (Timer > delay1)
+			{
+				timer += Timer;
+				if (timer > delay2)
+				{
+					return (Int32)ScreenType.Ready;
+				}
+
+				Timer -= delay1;
+				flag = !flag;
+			}
 
 			CheckLevelComplete = false;
 			NextScreen = CurrScreen;
@@ -76,7 +86,7 @@ namespace WindowsGame.Common.Screens
 			DetectTarget(gameTime);
 
 			// Bullets.
-			DetectBullets();
+			//DetectBullets();
 			UpdateBullets(gameTime);
 			VerifyBullets();
 
@@ -110,17 +120,19 @@ namespace WindowsGame.Common.Screens
 
 		public override void Draw()
 		{
+			// Sprite sheet #01.
+			base.Draw();
 			DrawSheet01();
 
-			DrawSheet02();
+			// Sprite sheet #02.
+			DrawSheet02(flag);
 			if (flag)
 			{
 				MyGame.Manager.SpriteManager.LargeTarget.Draw();
 			}
 
+			// Text data last!
 			DrawText();
-			//base.Draw();
-			//MyGame.Manager.DebugManager.Draw();
 		}
 
 	}
