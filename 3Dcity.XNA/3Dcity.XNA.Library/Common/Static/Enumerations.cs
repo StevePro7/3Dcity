@@ -90,6 +90,7 @@
 		Begin,
 		Diff,
 		Level,
+		Load,
 		Ready,
 		Play,
 		Quit,

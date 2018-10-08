@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Diff</ScreenType>
+	<ScreenType>Load</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
-	<!--<ScreenType>Intro</ScreenType>-->
+	<!--<ScreenType>Level</ScreenType>-->
 	<!--<ScreenType>Resume</ScreenType>-->
 	<FramesPerSecond>100</FramesPerSecond>
 	<MaximLevel>18</MaximLevel>

@@ -11,10 +11,9 @@ namespace WindowsGame.Common.Back
 		private readonly String[] cursorOptions = new string[3] { Globalize.CURSOR_LEFTS, "  ", Globalize.CURSOR_RIGHT };
 		private Vector2 cursorPosition;
 		private Vector2 spritePosition;
-
 		private Vector2 levelNamePosition;
 		private Vector2 levelTextPosition;
-		//private IList<String> levelNames;		// TODO delete
+
 		private Byte levelIndex;
 		private Byte maximLevel;
 		private String levelName;
