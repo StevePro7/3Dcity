@@ -32,7 +32,10 @@ namespace WindowsGame.Common.Sprites
 			{
 				vert= 0.0f;
 			}
-
+			if (0 == horz && 0 == vert)
+			{
+				return;
+			}
 
 			if (Math.Abs(horz) < Single.Epsilon && Math.Abs(vert) < Single.Epsilon)
 			{

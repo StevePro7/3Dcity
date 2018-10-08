@@ -32,7 +32,10 @@ namespace WindowsGame.Common.Sprites
 			{
 				vert = 0.0f;
 			}
-
+			if (0 == horz && 0 == vert)
+			{
+				return;
+			}
 
 			Single val1 = horz * 100.0f;
 			Single val2 = val1 / 2.0f;

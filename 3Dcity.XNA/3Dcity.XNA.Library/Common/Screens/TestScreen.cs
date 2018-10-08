@@ -4,7 +4,7 @@ using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
 {
-	public class TestScreen : BaseScreen , IScreen
+	public class TestScreen : BaseScreenPlay , IScreen
 	{
 		public override void Initialize()
 		{
@@ -26,6 +26,8 @@ namespace WindowsGame.Common.Screens
 				return (Int32)CurrScreen;
 			}
 
+			DetectTarget(gameTime);
+
 			return (Int32)CurrScreen;
 		}
 
@@ -33,9 +35,10 @@ namespace WindowsGame.Common.Screens
 		{
 			// Sprite sheet #01.
 			base.Draw();
+			MyGame.Manager.IconManager.DrawControls();
 
 			// Sprite sheet #02.
-
+			MyGame.Manager.SpriteManager.Draw();
 			// Text data last!
 		}
 

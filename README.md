@@ -1,5 +1,21 @@
 # 3Dcity
 
+08/10/2018
+Movement tolerance
+
+Mobile
+Vector2 position = movePositions[index];
+Single temp = func(position);
+if (Math.Abs(temp) > 0.4f)//Single.Epsilon)
+{
+}
+
+Desktop
+horz = controlManager.CheckJoyPadHorz(mouseScreenInput.MousePosition);
+if (Math.Abs(horz) > 0.4f)//Single.Epsilon)
+{
+}
+
 07/10/2018
 Enemy slot 5,6,7 GetEnemyBounds and reduce 72 to 52 to not 
 overlap with status bar and text and the bottom of screen
