@@ -59,7 +59,7 @@ namespace WindowsGame.Common.Screens
 			{
 				Flag1 = false;
 				IconIndex = Convert.ToByte(Flag1);
-				MyGame.Manager.IconManager.UpdateIcon(MyGame.Manager.IconManager.JoyButton, IconIndex);
+				MyGame.Manager.IconManager.UpdateFireIcon(IconIndex);
 				Selected = true;
 				return;
 				//ScreenType screenType = contType == 0 ? ScreenType.Play : ScreenType.Over;
@@ -67,7 +67,7 @@ namespace WindowsGame.Common.Screens
 			}
 
 			IconIndex = Convert.ToByte(Flag1);
-			MyGame.Manager.IconManager.UpdateIcon(MyGame.Manager.IconManager.JoyButton, IconIndex);
+			MyGame.Manager.IconManager.UpdateFireIcon(IconIndex);
 		}
 
 		protected void UpdateFlag2(GameTime gameTime)
@@ -79,18 +79,20 @@ namespace WindowsGame.Common.Screens
 
 			IsMoving = true;
 			UpdateTimer(gameTime);
-			if (Timer > SelectDelay)
+			if (Timer <= SelectDelay)
 			{
-				MoveIndex = 1;
-
-				spritePosition = SpritePosition;
-				spritePosition.X = Constants.CURSOR_OFFSET_X[MoveIndex];
-				SpritePosition = spritePosition;
-				MyGame.Manager.SpriteManager.SmallTarget.SetPosition(SpritePosition);
-
-				Timer = 0;
-				Flag2 = false;
+				return;
 			}
+
+			MoveIndex = 1;
+
+			spritePosition = SpritePosition;
+			spritePosition.X = Constants.CURSOR_OFFSET_X[MoveIndex];
+			SpritePosition = spritePosition;
+			MyGame.Manager.SpriteManager.SmallTarget.SetPosition(SpritePosition);
+
+			Timer = 0;
+			Flag2 = false;
 		}
 
 		protected void DetectFire()

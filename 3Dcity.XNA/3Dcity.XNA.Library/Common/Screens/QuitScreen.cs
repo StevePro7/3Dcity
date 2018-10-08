@@ -10,8 +10,6 @@ namespace WindowsGame.Common.Screens
 		public override void Initialize()
 		{
 			base.Initialize();
-			LoadTextData();
-			UpdateGrid = false;
 
 			CursorPositions = new Vector2[2];
 			CursorPositions[0] = MyGame.Manager.TextManager.GetTextPosition(14, 11);
@@ -22,7 +20,7 @@ namespace WindowsGame.Common.Screens
 		{
 			MyGame.Manager.DebugManager.Reset();
 			base.LoadContent();
-			SelectType = 0;
+			SelectType = 1;
 		}
 
 		public override Int32 Update(GameTime gameTime)
@@ -37,7 +35,7 @@ namespace WindowsGame.Common.Screens
 			UpdateFlag1(gameTime);
 			if (Selected)
 			{
-				ScreenType screenType = SelectType == 0 ? ScreenType.Resume : ScreenType.Over;
+				ScreenType screenType = SelectType == 0 ? ScreenType.Over : ScreenType.Resume;
 				return (Int32)screenType;
 			}
 			if (Flag1)
