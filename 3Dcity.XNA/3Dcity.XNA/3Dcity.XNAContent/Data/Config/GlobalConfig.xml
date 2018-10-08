@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Title</ScreenType>
+	<ScreenType>Play</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<!--<ScreenType>Level</ScreenType>-->
@@ -38,5 +38,5 @@
 	<EnemyTotal>5</EnemyTotal>
 	<IsGodMode>false</IsGodMode>
 	<DebugTester>true</DebugTester>
-	<QuitsToExit>true</QuitsToExit>
+	<QuitsToExit>false</QuitsToExit>
 </GlobalConfigData>

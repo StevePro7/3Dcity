@@ -87,7 +87,7 @@
 		Init,
 		Title,
 		Intro,
-		Begin,
+		//Begin,		// TODO delete
 		Diff,
 		Level,
 		Load,
