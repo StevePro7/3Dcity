@@ -33,6 +33,31 @@ namespace WindowsGame.Common.Screens
 				return (Int32)CurrScreen;
 			}
 
+			IsMoving = false;
+			UpdateFlag1(gameTime);
+			if (Selected)
+			{
+				ScreenType screenType = SelectType == 0 ? ScreenType.Resume : ScreenType.Over;
+				return (Int32)screenType;
+			}
+			if (Flag1)
+			{
+				return (Int32)CurrScreen;
+			}
+
+			UpdateFlag2(gameTime);
+			if (IsMoving)
+			{
+				return (Int32)CurrScreen;
+			}
+
+			DetectFire();
+			if (Flag1)
+			{
+				return (Int32)CurrScreen;
+			}
+
+			DetectMove();
 			return (Int32)CurrScreen;
 		}
 
