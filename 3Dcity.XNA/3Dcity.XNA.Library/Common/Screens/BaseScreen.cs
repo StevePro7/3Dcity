@@ -13,6 +13,7 @@ namespace WindowsGame.Common.Screens
 		protected IList<TextData> TextDataList { get; private set; }
 		protected ScreenType CurrScreen { get; set; }
 		protected ScreenType NextScreen { get; set; }
+		protected ScreenType PrevScreen { get; set; }
 		protected Boolean GamePause { get; set; }
 		protected Boolean UpdateStar { get; set; }
 		protected Boolean UpdateGrid { get; set; }
@@ -22,6 +23,8 @@ namespace WindowsGame.Common.Screens
 			String screenName = GetType().Name.ToLower();
 			screenName = screenName.Replace("screen", String.Empty);
 			CurrScreen = (ScreenType)Enum.Parse(typeof(ScreenType), screenName, true);
+			NextScreen = CurrScreen;
+			PrevScreen = CurrScreen;
 
 			UpdateStar = MyGame.Manager.ConfigManager.GlobalConfigData.UpdateStar;
 			UpdateGrid = MyGame.Manager.ConfigManager.GlobalConfigData.UpdateGrid;

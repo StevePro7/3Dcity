@@ -29,6 +29,9 @@ namespace WindowsGame.Common.Screens
 
 			startY = startPosition.Y;
 			titleY = titlePosition.Y;
+
+			NextScreen = ScreenType.Title;
+			PrevScreen = ScreenType.Exit;
 		}
 
 		public override void LoadContent()
@@ -47,13 +50,25 @@ namespace WindowsGame.Common.Screens
 
 		public override Int32 Update(GameTime gameTime)
 		{
-			Timer += (UInt16)gameTime.ElapsedGameTime.Milliseconds;
 
 			base.Update(gameTime);
 			if (GamePause)
 			{
-				return (Int32)CurrScreen;
+				return (Int32) CurrScreen;
 			}
+
+			Boolean escape = MyGame.Manager.InputManager.Escape();
+			if (escape)
+			{
+				return (Int32) PrevScreen;
+			}
+			Boolean midd = MyGame.Manager.InputManager.CenterPos();
+			if (midd)
+			{
+				return (Int32) NextScreen;
+			}
+
+			UpdateTimer(gameTime);
 
 			if (startY > titleY)
 			{
@@ -65,7 +80,7 @@ namespace WindowsGame.Common.Screens
 			else
 			{
 				// TODO once at final location - sit for a couple of seconds then show text (and score)
-				return (Int32) ScreenType.Begin;
+				return (Int32) NextScreen;
 			}
 			return (Int32) CurrScreen;
 		}

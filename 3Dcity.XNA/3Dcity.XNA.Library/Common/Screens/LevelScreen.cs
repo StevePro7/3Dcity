@@ -24,6 +24,7 @@ namespace WindowsGame.Common.Screens
 			CursorPositions = new Vector2[1];
 			CursorPositions[0] = MyGame.Manager.TextManager.GetTextPosition(16, 11);
 			NextScreen = ScreenType.Load;
+			PrevScreen = ScreenType.Diff;
 		}
 
 		public override void LoadContent()
@@ -42,34 +43,37 @@ namespace WindowsGame.Common.Screens
 			base.Update(gameTime);
 			if (GamePause)
 			{
-				return (Int32)CurrScreen;
+				return (Int32) CurrScreen;
 			}
 
-			// TODO add check for Back button on Windows and Android
-			// this would navigate back to the previous Diff screen!
+			Boolean escape = MyGame.Manager.InputManager.Escape();
+			if (escape)
+			{
+				return (Int32) PrevScreen;
+			}
 
 			IsMoving = false;
 			UpdateFlag1(gameTime);
 			if (Selected)
 			{
 				MyGame.Manager.LevelManager.SetLevelIndex(levelIndex);
-				return (Int32)NextScreen;
+				return (Int32) NextScreen;
 			}
 			if (Flag1)
 			{
-				return (Int32)CurrScreen;
+				return (Int32) CurrScreen;
 			}
 
 			UpdateFlag2(gameTime);
 			if (IsMoving)
 			{
-				return (Int32)CurrScreen;
+				return (Int32) CurrScreen;
 			}
 
 			DetectFire();
 			if (Flag1)
 			{
-				return (Int32)CurrScreen;
+				return (Int32) CurrScreen;
 			}
 
 			DetectMove();
@@ -94,7 +98,7 @@ namespace WindowsGame.Common.Screens
 				PopulateLevelData(levelIndex);
 			}
 
-			return (Int32)CurrScreen;
+			return (Int32) CurrScreen;
 		}
 
 		private void PopulateLevelData(Byte theLevelIndex)

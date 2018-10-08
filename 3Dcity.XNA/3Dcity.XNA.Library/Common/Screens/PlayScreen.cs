@@ -20,6 +20,7 @@ namespace WindowsGame.Common.Screens
 		{
 			MyGame.Manager.DebugManager.Reset();
 			base.Initialize();
+			PrevScreen = ScreenType.Quit;
 		}
 
 		public override void LoadContent()
@@ -58,7 +59,13 @@ namespace WindowsGame.Common.Screens
 			base.Update(gameTime);
 			if (GamePause)
 			{
-				return (Int32)CurrScreen;
+				return (Int32) CurrScreen;
+			}
+
+			Boolean escape = MyGame.Manager.InputManager.Escape();
+			if (escape)
+			{
+				return (Int32)PrevScreen;
 			}
 
 			checkLevelComplete = false;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 using WindowsGame.Common.Interfaces;
 using WindowsGame.Common.Managers;
@@ -83,7 +84,7 @@ namespace WindowsGame.Common.Inputs
 
 		public Boolean Escape()
 		{
-			return false;
+			return joystickInput.JoyHold(Buttons.Back);
 		}
 
 		public Single Horizontal()

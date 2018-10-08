@@ -43,7 +43,7 @@ namespace WindowsGame.Common.Inputs
 
 		public Boolean Escape()
 		{
-			return keyboardInput.KeyHold(Keys.Escape) || joystickInput.JoyHold(Buttons.Back);
+			return keyboardInput.KeyHold(Keys.Escape) || joystickInput.JoyHold(Buttons.Back) || joystickInput.JoyHold(Buttons.B);
 		}
 
 		public Single Horizontal()

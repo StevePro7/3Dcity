@@ -100,14 +100,15 @@ namespace WindowsGame.Common
 
 			Manager.InputManager.Update(gameTime);
 
-#if WINDOWS
-			Boolean escape = Microsoft.Xna.Framework.Input.Keyboard.GetState().IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Escape);
-			//Boolean escape = Manager.InputManager.Escape();
+#if WINDOWS && DEBUG
+			Boolean escape = Manager.InputManager.Escape();
 			if (escape)
 			{
-				MyGame.Manager.EventManager.SerializeAllEvents();
-				Engine.Game.Exit();
-				return;
+				if (Manager.ConfigManager.GlobalConfigData.QuitsToExit)
+				{
+					Engine.Game.Exit();
+					return;
+				}
 			}
 #endif
 

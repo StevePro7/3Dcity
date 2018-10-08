@@ -20,20 +20,18 @@ namespace WindowsGame.Common.Screens
 			base.Initialize();
 			UpdateGrid = false;
 
-			MyGame.Manager.DebugManager.Reset();
-			base.Initialize();
-			UpdateGrid = false;
-
 			promptPosition = MyGame.Manager.TextManager.GetTextPosition(14, 11);
 			promptPosition.X -= 7.5f;
 			promptDelay = MyGame.Manager.ConfigManager.GlobalConfigData.BeginDelay;
 			selectDelay = MyGame.Manager.ConfigManager.GlobalConfigData.SelectDelay;
+
+			NextScreen = ScreenType.Diff;
+			PrevScreen = ScreenType.Exit;
 		}
 
 		public override void LoadContent()
 		{
 			iconIndex = 0;
-
 			flag1 = false;
 			flag2 = true;
 
@@ -45,7 +43,13 @@ namespace WindowsGame.Common.Screens
 			base.Update(gameTime);
 			if (GamePause)
 			{
-				return (Int32)CurrScreen;
+				return (Int32) CurrScreen;
+			}
+
+			Boolean escape = MyGame.Manager.InputManager.Escape();
+			if (escape)
+			{
+				return (Int32) PrevScreen;
 			}
 
 			UpdateTimer(gameTime);
@@ -56,12 +60,12 @@ namespace WindowsGame.Common.Screens
 					flag1 = false;
 					iconIndex = Convert.ToByte(flag1);
 					MyGame.Manager.IconManager.UpdateFireIcon(iconIndex);
-					return (Int32)ScreenType.Diff;
+					return (Int32) NextScreen;
 				}
 
 				iconIndex = Convert.ToByte(flag1);
 				MyGame.Manager.IconManager.UpdateFireIcon(iconIndex);
-				return (Int32)CurrScreen;
+				return (Int32) CurrScreen;
 			}
 
 			if (Timer > promptDelay)
@@ -79,7 +83,7 @@ namespace WindowsGame.Common.Screens
 				Timer = 0;
 			}
 
-			return (Int32)CurrScreen;
+			return (Int32) CurrScreen;
 		}
 
 		public override void Draw()
