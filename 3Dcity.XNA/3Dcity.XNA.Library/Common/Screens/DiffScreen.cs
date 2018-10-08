@@ -16,6 +16,7 @@ namespace WindowsGame.Common.Screens
 			CursorPositions[0] = MyGame.Manager.TextManager.GetTextPosition(12, 11);
 			CursorPositions[1] = MyGame.Manager.TextManager.GetTextPosition(23, 11);
 			NextScreen = ScreenType.Level;
+			PrevScreen = ScreenType.Title;
 		}
 
 		public override void LoadContent()
@@ -30,6 +31,12 @@ namespace WindowsGame.Common.Screens
 			if (GamePause)
 			{
 				return (Int32)CurrScreen;
+			}
+
+			Boolean escape = MyGame.Manager.InputManager.Escape();
+			if (escape)
+			{
+				return (Int32) PrevScreen;
 			}
 
 			IsMoving = false;

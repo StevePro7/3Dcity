@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
-using WindowsGame.Common.Data;
 using WindowsGame.Common.Static;
 using WindowsGame.Master.Interfaces;
 
@@ -80,7 +79,6 @@ namespace WindowsGame.Common.Screens
 			}
 
 			CheckLevelComplete = false;
-			NextScreen = CurrScreen;
 
 			// Target.
 			DetectTarget(gameTime);
