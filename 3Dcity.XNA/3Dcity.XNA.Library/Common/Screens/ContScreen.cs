@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Serialization;
 using Microsoft.Xna.Framework;
 using WindowsGame.Common.Static;
 using WindowsGame.Master.Interfaces;
@@ -56,6 +57,11 @@ namespace WindowsGame.Common.Screens
 			}
 
 			DetectMove();
+			if (0 != MoveValue)
+			{
+				SelectType = (Byte)(1 - SelectType);
+			}
+
 			return (Int32)CurrScreen;
 		}
 

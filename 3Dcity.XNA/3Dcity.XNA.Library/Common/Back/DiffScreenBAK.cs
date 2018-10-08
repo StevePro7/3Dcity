@@ -6,19 +6,11 @@ using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Back
 {
-	public class LevelScreenBAK : BaseScreen, IScreen
+	public class DiffScreenBAK : BaseScreen, IScreen
 	{
-		private readonly String[] cursorOptions = new string[3] { Globalize.CURSOR_LEFTS, "  ", Globalize.CURSOR_RIGHT };
-		private Vector2 cursorPosition;
+		private Vector2[] cursorPositions;
 		private Vector2 spritePosition;
-
-		private Vector2 levelNamePosition;
-		private Vector2 levelTextPosition;
-		//private IList<String> levelNames;		// TODO delete
-		private Byte levelIndex;
-		private Byte maximLevel;
-		private String levelName;
-		private String levelValu;
+		private Byte levelType;
 
 		private UInt16 selectDelay;
 		private Byte iconIndex, moveIndex;
@@ -29,7 +21,7 @@ namespace WindowsGame.Common.Back
 			base.Initialize();
 			LoadTextData();
 			UpdateGrid = false;
-			NextScreen = ScreenType.Ready;
+			NextScreen = ScreenType.Level;
 		}
 
 		public override void LoadContent()
@@ -37,19 +29,15 @@ namespace WindowsGame.Common.Back
 			MyGame.Manager.DebugManager.Reset();
 
 			iconIndex = 0;
-			moveIndex = 1;
+			moveIndex = 1; 
 
-			cursorPosition = MyGame.Manager.TextManager.GetTextPosition(16, 11);
+			cursorPositions = new Vector2[2];
+			cursorPositions[0] = MyGame.Manager.TextManager.GetTextPosition(12, 11);
+			cursorPositions[1] = MyGame.Manager.TextManager.GetTextPosition(23, 11);
+
 			spritePosition = MyGame.Manager.SpriteManager.SmallTarget.Position;
 			spritePosition.X = Constants.CURSOR_OFFSET_X[moveIndex];
-
-			levelNamePosition = MyGame.Manager.TextManager.GetTextPosition(19, 11);
-			levelTextPosition = MyGame.Manager.TextManager.GetTextPosition(12, 11);
-
-			maximLevel = MyGame.Manager.LevelManager.MaximLevel;
-			//levelNames = MyGame.Manager.LevelManager.LevelNames;		// TODO delete
-			levelIndex = MyGame.Manager.LevelManager.LevelIndex;
-			PopulateLevelData(levelIndex);
+			levelType = (Byte)MyGame.Manager.LevelManager.LevelType;
 
 			selectDelay = MyGame.Manager.ConfigManager.GlobalConfigData.SelectDelay;
 			flag1 = flag2 = false;
@@ -65,8 +53,6 @@ namespace WindowsGame.Common.Back
 				return (Int32)CurrScreen;
 			}
 
-			// TODO add check for Back button on Windows and Android
-			// this would navigate back to the previous Diff screen!
 			if (flag1)
 			{
 				UpdateTimer(gameTime);
@@ -75,7 +61,7 @@ namespace WindowsGame.Common.Back
 					flag1 = false;
 					iconIndex = Convert.ToByte(flag1);
 					MyGame.Manager.IconManager.UpdateFireIcon(iconIndex);
-					MyGame.Manager.LevelManager.SetLevelIndex(levelIndex);
+					MyGame.Manager.LevelManager.SetLevelType((LevelType)levelType);
 					return (Int32)NextScreen;
 				}
 
@@ -117,31 +103,19 @@ namespace WindowsGame.Common.Back
 
 			if (horz < 0)
 			{
-				levelIndex--;
-				if (levelIndex >= Byte.MaxValue)
-				{
-					levelIndex = (Byte) (maximLevel - 1);
-				}
-
-				PopulateLevelData(levelIndex);
 				moveIndex = 0;
 			}
 			if (horz > 0)
 			{
-				levelIndex++;
-				if (levelIndex >= maximLevel)
-				{
-					levelIndex = 0;
-				}
-
-				PopulateLevelData(levelIndex);
 				moveIndex = 2;
 			}
 
 			spritePosition.X = Constants.CURSOR_OFFSET_X[moveIndex];
 			MyGame.Manager.SpriteManager.SmallTarget.SetPosition(spritePosition);
 
-			//levelType = (Byte)(1 - levelType);
+			levelType = (Byte) (1 - levelType);
+			MyGame.Manager.LevelManager.SetLevelType((LevelType)levelType);
+
 			flag2 = true;
 			return (Int32)CurrScreen;
 		}
@@ -159,22 +133,11 @@ namespace WindowsGame.Common.Back
 
 			// Text data last!
 			MyGame.Manager.TextManager.Draw(TextDataList);
-			MyGame.Manager.TextManager.DrawText(cursorOptions[moveIndex], cursorPosition);
-			MyGame.Manager.TextManager.DrawText(levelName, levelNamePosition);
-			MyGame.Manager.TextManager.DrawText(levelValu, levelTextPosition);
+			MyGame.Manager.TextManager.DrawCursor(cursorPositions[levelType]);
 			MyGame.Manager.TextManager.DrawTitle();
 			MyGame.Manager.TextManager.DrawControls();
 			MyGame.Manager.TextManager.DrawInstruct();
-			MyGame.Manager.LevelManager.DrawTextData();
 			MyGame.Manager.ScoreManager.Draw();
-		}
-
-		private void PopulateLevelData(Byte theLevelIndex)
-		{
-			MyGame.Manager.LevelManager.SetLevelIndex(theLevelIndex);
-
-			levelName = MyGame.Manager.LevelManager.LevelName;
-			levelValu = MyGame.Manager.LevelManager.LevelValu;
 		}
 
 	}

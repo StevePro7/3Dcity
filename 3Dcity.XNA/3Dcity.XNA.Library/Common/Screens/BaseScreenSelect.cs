@@ -7,17 +7,18 @@ namespace WindowsGame.Common.Screens
 	public class BaseScreenSelect : BaseScreen
 	{
 		protected Vector2[] CursorPositions { get; set; }
-		protected Vector2 SpritePosition { get; private set; }
-
-		protected UInt16 SelectDelay { get; private set; }
 		protected Boolean Selected { get; private set; }
 		protected Boolean IsMoving { get; set; }
 		protected Byte SelectType { get; set; }
+		protected Single MoveValue { get; private set; }
+		protected Boolean Flag1 { get; private set; }
 
-		protected Byte IconIndex;
-		protected Byte MoveIndex;
-		protected Boolean Flag1;
-		protected Boolean Flag2;
+
+		private UInt16 SelectDelay;
+		private Vector2 SpritePosition;
+		private Boolean Flag2;
+		private Byte IconIndex;
+		private Byte MoveIndex;
 
 		private Vector2 spritePosition;
 
@@ -36,6 +37,7 @@ namespace WindowsGame.Common.Screens
 
 			IconIndex = 0;
 			MoveIndex = 1;
+			MoveValue = 0.0f;
 
 			spritePosition = SpritePosition;
 			spritePosition = MyGame.Manager.SpriteManager.SmallTarget.Position;
@@ -62,8 +64,6 @@ namespace WindowsGame.Common.Screens
 				MyGame.Manager.IconManager.UpdateFireIcon(IconIndex);
 				Selected = true;
 				return;
-				//ScreenType screenType = contType == 0 ? ScreenType.Play : ScreenType.Over;
-				//return (Int32)screenType;
 			}
 
 			IconIndex = Convert.ToByte(Flag1);
@@ -108,17 +108,17 @@ namespace WindowsGame.Common.Screens
 		protected void DetectMove()
 		{
 			// Check move second.
-			Single horz = MyGame.Manager.InputManager.Horizontal();
-			if (0 == horz)
+			MoveValue = MyGame.Manager.InputManager.Horizontal();
+			if (0 == MoveValue)
 			{
 				return;
 			}
 
-			if (horz < 0)
+			if (MoveValue < 0)
 			{
 				MoveIndex = 0;
 			}
-			if (horz > 0)
+			if (MoveValue > 0)
 			{
 				MoveIndex = 2;
 			}
@@ -127,7 +127,7 @@ namespace WindowsGame.Common.Screens
 			spritePosition.X = Constants.CURSOR_OFFSET_X[MoveIndex];
 			SpritePosition = spritePosition;
 			MyGame.Manager.SpriteManager.SmallTarget.SetPosition(SpritePosition);
-			SelectType = (Byte)(1 - SelectType);
+			//SelectType = (Byte)(1 - SelectType);
 
 			Flag2 = true;
 		}

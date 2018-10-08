@@ -56,6 +56,11 @@ namespace WindowsGame.Common.Screens
 			}
 
 			DetectMove();
+			if (0 != MoveValue)
+			{
+				SelectType = (Byte)(1 - SelectType);
+			}
+
 			return (Int32)CurrScreen;
 		}
 
