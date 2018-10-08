@@ -5,55 +5,36 @@ using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
 {
-	public class LevelScreen : BaseScreen, IScreen
+	public class LevelScreen : BaseScreenSelect, IScreen
 	{
 		private readonly String[] cursorOptions = new string[3] { Globalize.CURSOR_LEFTS, "  ", Globalize.CURSOR_RIGHT };
-		private Vector2 cursorPosition;
-		private Vector2 spritePosition;
-
 		private Vector2 levelNamePosition;
 		private Vector2 levelTextPosition;
-		//private IList<String> levelNames;		// TODO delete
+
 		private Byte levelIndex;
 		private Byte maximLevel;
 		private String levelName;
 		private String levelValu;
 
-		private UInt16 selectDelay;
-		private Byte iconIndex, moveIndex;
-		private Boolean flag1, flag2;
-
 		public override void Initialize()
 		{
+			MyGame.Manager.DebugManager.Reset();
 			base.Initialize();
-			LoadTextData();
-			UpdateGrid = false;
-			NextScreen = ScreenType.Ready;
+
+			CursorPositions = new Vector2[1];
+			CursorPositions[0] = MyGame.Manager.TextManager.GetTextPosition(16, 11);
+			NextScreen = ScreenType.Load;
 		}
 
 		public override void LoadContent()
 		{
-			MyGame.Manager.DebugManager.Reset();
-
-			iconIndex = 0;
-			moveIndex = 1;
-
-			cursorPosition = MyGame.Manager.TextManager.GetTextPosition(16, 11);
-			spritePosition = MyGame.Manager.SpriteManager.SmallTarget.Position;
-			spritePosition.X = Constants.CURSOR_OFFSET_X[moveIndex];
-
+			base.LoadContent();
 			levelNamePosition = MyGame.Manager.TextManager.GetTextPosition(19, 11);
 			levelTextPosition = MyGame.Manager.TextManager.GetTextPosition(12, 11);
 
 			maximLevel = MyGame.Manager.LevelManager.MaximLevel;
-			//levelNames = MyGame.Manager.LevelManager.LevelNames;		// TODO delete
 			levelIndex = MyGame.Manager.LevelManager.LevelIndex;
 			PopulateLevelData(levelIndex);
-
-			selectDelay = MyGame.Manager.ConfigManager.GlobalConfigData.SelectDelay;
-			flag1 = flag2 = false;
-
-			base.LoadContent();
 		}
 
 		public override Int32 Update(GameTime gameTime)
@@ -66,66 +47,43 @@ namespace WindowsGame.Common.Screens
 
 			// TODO add check for Back button on Windows and Android
 			// this would navigate back to the previous Diff screen!
-			if (flag1)
+
+			IsMoving = false;
+			UpdateFlag1(gameTime);
+			if (Selected)
 			{
-				UpdateTimer(gameTime);
-				if (Timer > selectDelay * 2)
-				{
-					flag1 = false;
-					iconIndex = Convert.ToByte(flag1);
-					MyGame.Manager.IconManager.UpdateFireIcon(iconIndex);
-					MyGame.Manager.LevelManager.SetLevelIndex(levelIndex);
-					return (Int32)NextScreen;
-				}
-
-				iconIndex = Convert.ToByte(flag1);
-				MyGame.Manager.IconManager.UpdateFireIcon(iconIndex);
-				return (Int32)CurrScreen;
+				MyGame.Manager.LevelManager.SetLevelIndex(levelIndex);
+				return (Int32)NextScreen;
 			}
-
-			if (flag2)
-			{
-				UpdateTimer(gameTime);
-				if (Timer > selectDelay)
-				{
-					moveIndex = 1;
-					spritePosition.X = Constants.CURSOR_OFFSET_X[moveIndex];
-					MyGame.Manager.SpriteManager.SmallTarget.SetPosition(spritePosition);
-
-					Timer = 0;
-					flag2 = false;
-				}
-
-				return (Int32)CurrScreen;
-			}
-
-			// Check fire first.
-			Boolean fire = MyGame.Manager.InputManager.Fire();
-			if (fire)
-			{
-				flag1 = true;
-				return (Int32)CurrScreen;
-			}
-
-			// Check move second.
-			Single horz = MyGame.Manager.InputManager.Horizontal();
-			if (0 == horz)
+			if (Flag1)
 			{
 				return (Int32)CurrScreen;
 			}
 
-			if (horz < 0)
+			UpdateFlag2(gameTime);
+			if (IsMoving)
+			{
+				return (Int32)CurrScreen;
+			}
+
+			DetectFire();
+			if (Flag1)
+			{
+				return (Int32)CurrScreen;
+			}
+
+			DetectMove();
+			if (MoveValue < 0)
 			{
 				levelIndex--;
 				if (levelIndex >= Byte.MaxValue)
 				{
-					levelIndex = (Byte) (maximLevel - 1);
+					levelIndex = (Byte)(maximLevel - 1);
 				}
 
 				PopulateLevelData(levelIndex);
-				moveIndex = 0;
 			}
-			if (horz > 0)
+			if (MoveValue > 0)
 			{
 				levelIndex++;
 				if (levelIndex >= maximLevel)
@@ -134,38 +92,9 @@ namespace WindowsGame.Common.Screens
 				}
 
 				PopulateLevelData(levelIndex);
-				moveIndex = 2;
 			}
 
-			spritePosition.X = Constants.CURSOR_OFFSET_X[moveIndex];
-			MyGame.Manager.SpriteManager.SmallTarget.SetPosition(spritePosition);
-
-			//levelType = (Byte)(1 - levelType);
-			flag2 = true;
 			return (Int32)CurrScreen;
-		}
-
-		public override void Draw()
-		{
-			// Sprite sheet #01.
-			base.Draw();
-			MyGame.Manager.IconManager.DrawControls();
-			MyGame.Manager.RenderManager.DrawTitle();
-
-			// Sprite sheet #02.
-			MyGame.Manager.LevelManager.Draw();
-			MyGame.Manager.SpriteManager.DrawCursor();
-
-			// Text data last!
-			MyGame.Manager.TextManager.Draw(TextDataList);
-			MyGame.Manager.TextManager.DrawText(cursorOptions[moveIndex], cursorPosition);
-			MyGame.Manager.TextManager.DrawText(levelName, levelNamePosition);
-			MyGame.Manager.TextManager.DrawText(levelValu, levelTextPosition);
-			MyGame.Manager.TextManager.DrawTitle();
-			MyGame.Manager.TextManager.DrawControls();
-			MyGame.Manager.TextManager.DrawInstruct();
-			MyGame.Manager.LevelManager.DrawTextData();
-			MyGame.Manager.ScoreManager.Draw();
 		}
 
 		private void PopulateLevelData(Byte theLevelIndex)
@@ -174,6 +103,27 @@ namespace WindowsGame.Common.Screens
 
 			levelName = MyGame.Manager.LevelManager.LevelName;
 			levelValu = MyGame.Manager.LevelManager.LevelValu;
+		}
+
+		public override void Draw()
+		{
+			// Sprite sheet #01.
+			base.Draw();
+			DrawSheet01();
+			MyGame.Manager.RenderManager.DrawTitle();
+
+			// Sprite sheet #02.
+			MyGame.Manager.LevelManager.Draw();
+			MyGame.Manager.SpriteManager.DrawCursor();
+
+			// Text data last!
+			DrawText();
+			MyGame.Manager.TextManager.DrawText(cursorOptions[MoveIndex], CursorPositions[0]);
+			MyGame.Manager.TextManager.DrawText(levelName, levelNamePosition);
+			MyGame.Manager.TextManager.DrawText(levelValu, levelTextPosition);
+			MyGame.Manager.TextManager.DrawInstruct();
+			MyGame.Manager.LevelManager.DrawTextData();
+			MyGame.Manager.ScoreManager.Draw();
 		}
 
 	}

@@ -1,25 +1,24 @@
 ﻿using System;
-using WindowsGame.Common.Static;
 using Microsoft.Xna.Framework;
+using WindowsGame.Common.Static;
 
 namespace WindowsGame.Common.Screens
 {
 	public class BaseScreenSelect : BaseScreen
 	{
 		protected Vector2[] CursorPositions { get; set; }
-		protected Boolean Selected { get; private set; }
 		protected Boolean IsMoving { get; set; }
 		protected Byte SelectType { get; set; }
+
+		protected Boolean Selected { get; private set; }
+		protected Byte MoveIndex { get; private set; }
 		protected Single MoveValue { get; private set; }
 		protected Boolean Flag1 { get; private set; }
-
 
 		private UInt16 SelectDelay;
 		private Vector2 SpritePosition;
 		private Boolean Flag2;
 		private Byte IconIndex;
-		private Byte MoveIndex;
-
 		private Vector2 spritePosition;
 
 		public override void Initialize()
@@ -39,7 +38,6 @@ namespace WindowsGame.Common.Screens
 			MoveIndex = 1;
 			MoveValue = 0.0f;
 
-			spritePosition = SpritePosition;
 			spritePosition = MyGame.Manager.SpriteManager.SmallTarget.Position;
 			spritePosition.X = Constants.CURSOR_OFFSET_X[MoveIndex];
 			SpritePosition = spritePosition;
@@ -127,20 +125,18 @@ namespace WindowsGame.Common.Screens
 			spritePosition.X = Constants.CURSOR_OFFSET_X[MoveIndex];
 			SpritePosition = spritePosition;
 			MyGame.Manager.SpriteManager.SmallTarget.SetPosition(SpritePosition);
-			//SelectType = (Byte)(1 - SelectType);
 
 			Flag2 = true;
 		}
 
 
-		protected void DrawSheet01()
+		protected static void DrawSheet01()
 		{
 			MyGame.Manager.IconManager.DrawControls();
 		}
 
-		protected void DrawSheet02()
+		protected static void DrawSheet02()
 		{
-			// Sprite sheet #02.
 			MyGame.Manager.EnemyManager.Draw();
 			MyGame.Manager.ExplosionManager.Draw();
 			MyGame.Manager.LevelManager.Draw();
