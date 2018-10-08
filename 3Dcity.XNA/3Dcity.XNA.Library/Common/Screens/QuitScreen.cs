@@ -5,20 +5,24 @@ using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
 {
-	public class QuitScreen : BaseScreen, IScreen
+	public class QuitScreen : BaseScreenSelect, IScreen
 	{
 		public override void Initialize()
 		{
 			base.Initialize();
 			LoadTextData();
 			UpdateGrid = false;
+
+			CursorPositions = new Vector2[2];
+			CursorPositions[0] = MyGame.Manager.TextManager.GetTextPosition(14, 11);
+			CursorPositions[1] = MyGame.Manager.TextManager.GetTextPosition(23, 11);
 		}
 
 		public override void LoadContent()
 		{
 			MyGame.Manager.DebugManager.Reset();
-
 			base.LoadContent();
+			SelectType = 0;
 		}
 
 		public override Int32 Update(GameTime gameTime)
@@ -36,9 +40,21 @@ namespace WindowsGame.Common.Screens
 		{
 			// Sprite sheet #01.
 			base.Draw();
+			DrawSheet01();
+
+			// Sprite sheet #02.
+			MyGame.Manager.RenderManager.DrawStatusOuter();
+			MyGame.Manager.RenderManager.DrawStatusInner(StatusType.Yellow, MyGame.Manager.EnemyManager.EnemyPercentage);
+			DrawSheet02();
+			MyGame.Manager.SpriteManager.LargeTarget.Draw();
+
 
 			// Text data last!
-			MyGame.Manager.TextManager.Draw(TextDataList);
+			DrawText();
+			MyGame.Manager.TextManager.DrawCursor(CursorPositions[SelectType]);
+			MyGame.Manager.TextManager.DrawProgress();
+			MyGame.Manager.EnemyManager.DrawProgress();
+			MyGame.Manager.LevelManager.DrawTextData();
 		}
 
 	}

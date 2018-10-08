@@ -7,35 +7,57 @@ using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
 {
-	public class ResumeScreen : BaseScreen, IScreen
+	public class ResumeScreen : BaseScreenPlay, IScreen
 	{
-		private LevelType levelType;
-		private Byte levelIndex;
-		private LevelConfigData levelConfigData;
-		private Boolean invincibile;
-		private Boolean checkLevelComplete;
+		private UInt16 delay1, delay2, timer;
+		private Boolean flag;
 
 		public override void Initialize()
 		{
 			base.Initialize();
-			//LoadTextData();
-			UpdateGrid = false;
+			UpdateGrid = true;
+
+			// TODO make delay values configurable!
+			delay1 = 200;
+			delay2 = 5000;
 		}
 
 		public override void LoadContent()
 		{
+			base.LoadContent();
+
 			MyGame.Manager.DebugManager.Reset();
 
 			// Load the configuration for level type + index.
-			levelType = MyGame.Manager.LevelManager.LevelType;
-			levelIndex = MyGame.Manager.LevelManager.LevelIndex;
-			MyGame.Manager.LevelManager.LoadLevelConfigData(levelType, levelIndex);
-			levelConfigData = MyGame.Manager.LevelManager.LevelConfigData;
+			LevelType = MyGame.Manager.LevelManager.LevelType;
+			LevelIndex = MyGame.Manager.LevelManager.LevelIndex;
+			MyGame.Manager.LevelManager.LoadLevelConfigData(LevelType, LevelIndex);
+			LevelConfigData = MyGame.Manager.LevelManager.LevelConfigData;
 
-			Boolean isGodMode = MyGame.Manager.StateManager.IsGodMode;
-			invincibile = isGodMode || levelConfigData.BonusLevel;
+			// Bullets.
+			Byte bulletMaxim = LevelConfigData.BulletMaxim;
+			UInt16 bulletFrame = LevelConfigData.BulletFrame;
+			UInt16 bulletShoot = LevelConfigData.BulletShoot;
+			MyGame.Manager.BulletManager.Reset(bulletMaxim, bulletFrame, bulletShoot);
+			// TODO delete
+			MyGame.Manager.BulletManager.Reset(2, 100, 200);
 
-			base.LoadContent();
+			// Enemies.
+			Byte enemySpawn = LevelConfigData.EnemySpawn;
+			Byte enemyTotal = LevelConfigData.EnemyTotal;
+			MyGame.Manager.EnemyManager.Reset(LevelType, enemySpawn, 1000, 5000, enemyTotal);
+			MyGame.Manager.EnemyManager.SpawnAllEnemies();
+
+			// Explosions.
+			UInt16 explodeDelay = LevelConfigData.ExplodeDelay;
+			MyGame.Manager.ExplosionManager.Reset(LevelConfigData.EnemySpawn, explodeDelay);
+
+			// Resume screen cannot die
+			//Boolean isGodMode = MyGame.Manager.StateManager.IsGodMode;
+			//Invincibile = isGodMode || LevelConfigData.BonusLevel;
+			Invincibile = true;
+			timer = 0;
+			flag = true;
 		}
 
 		public override Int32 Update(GameTime gameTime)
@@ -46,11 +68,54 @@ namespace WindowsGame.Common.Screens
 				return (Int32)CurrScreen;
 			}
 
-			// Move target unconditionally.
-			Single horz = MyGame.Manager.InputManager.Horizontal();
-			Single vert = MyGame.Manager.InputManager.Vertical();
-			MyGame.Manager.SpriteManager.SetMovement(horz, vert);
-			MyGame.Manager.SpriteManager.Update(gameTime);
+			UpdateTimer(gameTime);
+			if (Timer > delay1)
+			{
+				timer += Timer;
+				if (timer > delay2)
+				{
+					return (Int32)ScreenType.Ready;
+				}
+
+				Timer -= delay1;
+				flag = !flag;
+			}
+
+			CheckLevelComplete = false;
+			NextScreen = CurrScreen;
+
+			// Target.
+			DetectTarget(gameTime);
+
+			// Bullets.
+			//DetectBullets();
+			UpdateBullets(gameTime);
+			VerifyBullets();
+
+			// Explosions.
+			UpdateExplosions(gameTime);
+			VerifyExplosions();
+
+			// Enemies.
+			UpdateEnemies(gameTime);
+			VerifyEnemies();
+			if (NextScreen != CurrScreen)
+			{
+				return (Int32)NextScreen;
+			}
+
+			// Icons.
+			UpdateIcons();
+
+			// Score.
+			UpdateScore(gameTime);
+
+			// Summary.
+			UpdateLevel();
+			if (NextScreen != CurrScreen)
+			{
+				return (Int32)NextScreen;
+			}
 
 			return (Int32)CurrScreen;
 		}
@@ -59,16 +124,17 @@ namespace WindowsGame.Common.Screens
 		{
 			// Sprite sheet #01.
 			base.Draw();
-			
-			
+			DrawSheet01();
+
+			// Sprite sheet #02.
+			DrawSheet02(flag);
+			if (flag)
+			{
+				MyGame.Manager.SpriteManager.LargeTarget.Draw();
+			}
+
 			// Text data last!
-			//MyGame.Manager.TextManager.Draw(TextDataList);
-			MyGame.Manager.TextManager.DrawTitle();
-			MyGame.Manager.TextManager.DrawControls();
-			MyGame.Manager.TextManager.DrawProgress();
-			MyGame.Manager.EnemyManager.DrawProgress();
-			MyGame.Manager.LevelManager.DrawTextData();
-			MyGame.Manager.ScoreManager.Draw();
+			DrawText();
 		}
 
 	}
