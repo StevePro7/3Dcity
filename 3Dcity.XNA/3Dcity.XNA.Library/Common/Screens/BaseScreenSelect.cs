@@ -27,7 +27,6 @@ namespace WindowsGame.Common.Screens
 			LoadTextData();
 
 			SelectDelay = MyGame.Manager.ConfigManager.GlobalConfigData.SelectDelay;
-			UpdateGrid = false;
 		}
 
 		public override void LoadContent()

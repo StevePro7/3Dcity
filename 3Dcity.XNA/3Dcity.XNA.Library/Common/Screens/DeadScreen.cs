@@ -1,6 +1,6 @@
 ﻿using System;
-using WindowsGame.Common.Static;
 using Microsoft.Xna.Framework;
+using WindowsGame.Common.Static;
 using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
@@ -10,7 +10,6 @@ namespace WindowsGame.Common.Screens
 		public override void Initialize()
 		{
 			base.Initialize();
-			UpdateGrid = false;
 
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}

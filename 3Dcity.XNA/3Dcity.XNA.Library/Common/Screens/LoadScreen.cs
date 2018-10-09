@@ -11,7 +11,6 @@ namespace WindowsGame.Common.Screens
 		{
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 			base.Initialize();
-			UpdateGrid = false;
 			//LoadTextData();
 
 			MyGame.Manager.DebugManager.Reset(CurrScreen);

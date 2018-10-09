@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using WindowsGame.Common.Static;
-using WindowsGame.Master;
 using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
@@ -21,7 +20,6 @@ namespace WindowsGame.Common.Screens
 		public override void Initialize()
 		{
 			base.Initialize();
-			UpdateGrid = false;
 
 			titlePosition = new Vector2((Constants.ScreenWide - 240) / 2.0f, (Constants.ScreenHigh - Constants.DbleSize) / 2.0f + 94);
 			startPosition = new Vector2(titlePosition.X, Constants.ScreenHigh - Constants.GameOffsetY + 10);

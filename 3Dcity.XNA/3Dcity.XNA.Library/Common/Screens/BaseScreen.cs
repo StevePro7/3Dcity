@@ -27,7 +27,7 @@ namespace WindowsGame.Common.Screens
 			PrevScreen = CurrScreen;
 
 			UpdateStar = MyGame.Manager.ConfigManager.GlobalConfigData.UpdateStar;
-			UpdateGrid = MyGame.Manager.ConfigManager.GlobalConfigData.UpdateGrid;
+			UpdateGrid = false;
 		}
 
 		public virtual void LoadContent()

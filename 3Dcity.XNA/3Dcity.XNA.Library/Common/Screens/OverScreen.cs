@@ -20,7 +20,6 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 			base.Initialize();
 			LoadTextData();
-			UpdateGrid = false;
 
 			// TODO delete!
 			outputText = new string[2] { "FALSE", "TRUE" };

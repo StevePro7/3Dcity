@@ -1,7 +1,7 @@
 using System;
-using WindowsGame.Master;
 using Microsoft.Xna.Framework;
 using WindowsGame.Common.Static;
+using WindowsGame.Master;
 using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
@@ -17,7 +17,6 @@ namespace WindowsGame.Common.Screens
 		public override void Initialize()
 		{
 			base.Initialize();
-			UpdateGrid = false;
 
 			promptPosition = MyGame.Manager.TextManager.GetTextPosition(14, 11);
 			promptPosition.X -= 7.5f;

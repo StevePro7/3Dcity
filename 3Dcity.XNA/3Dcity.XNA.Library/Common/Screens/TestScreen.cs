@@ -9,8 +9,6 @@ namespace WindowsGame.Common.Screens
 		public override void Initialize()
 		{
 			base.Initialize();
-			UpdateGrid = false;
-
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
 

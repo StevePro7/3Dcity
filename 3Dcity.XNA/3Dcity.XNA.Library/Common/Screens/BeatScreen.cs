@@ -10,7 +10,6 @@ namespace WindowsGame.Common.Screens
 		{
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 			base.Initialize();
-			UpdateGrid = false;
 		}
 
 		public override void LoadContent()
