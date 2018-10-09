@@ -27,6 +27,10 @@ namespace WindowsGame.Common.Screens
 
 			DetectTarget(gameTime);
 
+			Boolean test = MyGame.Manager.InputManager.StatusBar();
+			if (test)
+			{
+			}
 			return (Int32)CurrScreen;
 		}
 
@@ -38,7 +42,14 @@ namespace WindowsGame.Common.Screens
 
 			// Sprite sheet #02.
 			MyGame.Manager.SpriteManager.Draw();
+
 			// Text data last!
+			MyGame.Manager.TextManager.DrawTitle();
+			MyGame.Manager.TextManager.DrawControls();
+			MyGame.Manager.TextManager.DrawProgress();
+			MyGame.Manager.EnemyManager.DrawProgress();
+			MyGame.Manager.LevelManager.DrawTextData();
+			MyGame.Manager.ScoreManager.Draw();
 		}
 
 	}

@@ -46,9 +46,12 @@ namespace WindowsGame.Common.Managers
 
 			const UInt16 half = Constants.ScreenWide / 2;
 			const Byte qtr = Constants.ScreenWide / 4;
-			const Byte eth = Constants.ScreenWide / 8;
 			centerPosCollision = new Rectangle(qtr, Constants.BaseSize + Constants.GameOffsetY, half, half);
-			statusBarCollision = new Rectangle(qtr, Constants.GameOffsetY, half, eth);
+
+			const UInt16 left = 250;
+			const UInt16 wide = 300;
+			const UInt16 high = 75;
+			statusBarCollision = new Rectangle(left, Constants.GameOffsetY, wide, high);
 		}
 
 		public Single CheckJoyPadHorz(Vector2 position)
