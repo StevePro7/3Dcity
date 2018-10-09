@@ -22,11 +22,13 @@ namespace WindowsGame.Common.Screens
 			base.Initialize();
 			LoadTextData();
 
+			UpdateGrid = MyGame.Manager.ConfigManager.GlobalConfigData.UpdateGrid;
+			NextScreen = ScreenType.Ready;
+
 			enemyTotalPosition = MyGame.Manager.TextManager.GetTextPosition(25, 10);
 			levelNamePosition = MyGame.Manager.TextManager.GetTextPosition(19, 11);
 			levelTextPosition = MyGame.Manager.TextManager.GetTextPosition(12, 11);
 			loadDelay = MyGame.Manager.ConfigManager.GlobalConfigData.LoadDelay;
-			NextScreen = ScreenType.Ready;
 
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
@@ -50,7 +52,12 @@ namespace WindowsGame.Common.Screens
 			levelName = MyGame.Manager.LevelManager.LevelName;
 			levelValu = MyGame.Manager.LevelManager.LevelValu;
 			base.LoadContent();
+
+			// Must set this after base load content.
 			enemyTotalText = EnemyTotal.ToString().PadLeft(3, '0');
+
+			MyGame.Manager.RenderManager.SetGridDelay((UInt16)(LevelConfigData.GridDelay * 2));
+			MyGame.Manager.SoundManager.PlayMusic(SongType.GameMusic);
 		}
 
 		public override Int32 Update(GameTime gameTime)

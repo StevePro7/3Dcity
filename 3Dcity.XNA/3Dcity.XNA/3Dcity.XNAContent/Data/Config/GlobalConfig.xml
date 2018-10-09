@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Load</ScreenType>
+	<ScreenType>Level</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<!--<ScreenType>Level</ScreenType>-->
@@ -10,7 +10,7 @@
 	<FramesPerSecond>100</FramesPerSecond>
 	<MaximLevel>18</MaximLevel>
 	<MaxBullets>20</MaxBullets>
-	<LoadAudio>false</LoadAudio>
+	<LoadAudio>true</LoadAudio>
 	<PlayAudio>true</PlayAudio>
 	<StarDelay>2000</StarDelay>
 	<GridDelay>300</GridDelay>
@@ -20,8 +20,8 @@
 	<SelectDelay>500</SelectDelay>
 	<IntroDelay>660</IntroDelay>
 	<TitleDelay>800</TitleDelay>
-	<LoadDelay>3000</LoadDelay>
-	<ReadyDelay>3000</ReadyDelay>
+	<LoadDelay>2000</LoadDelay>
+	<ReadyDelay>2000</ReadyDelay>
 	<ScoreDelay>600</ScoreDelay>
 	<EventRatio>1.0</EventRatio>
 	<ScoreBlink>true</ScoreBlink>

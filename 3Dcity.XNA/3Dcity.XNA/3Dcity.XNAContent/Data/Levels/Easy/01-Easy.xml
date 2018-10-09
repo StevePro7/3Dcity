@@ -5,7 +5,7 @@
 	<BonusLevel>false</BonusLevel>
 	<GridDelay>300</GridDelay>
 	<BulletMaxim>5</BulletMaxim>
-	<BulletFrame>50</BulletFrame>	<!-- how fast bullet travels -->
+	<BulletFrame>75</BulletFrame>	<!-- how fast bullet travels -->
 	<BulletShoot>100</BulletShoot>	<!-- delay between bullet shots -->
 	<EnemySpawn>2</EnemySpawn>
 	<EnemyTotal>4</EnemyTotal>

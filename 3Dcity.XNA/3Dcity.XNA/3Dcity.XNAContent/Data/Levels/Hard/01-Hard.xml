@@ -2,5 +2,17 @@
 <LevelConfigData>
 	<LevelNo>01</LevelNo>
 	<LevelName>MOOT</LevelName>
-	<StartTimer>1000</StartTimer>
+	<BonusLevel>false</BonusLevel>
+	<GridDelay>200</GridDelay>
+	<BulletMaxim>10</BulletMaxim>
+	<BulletFrame>50</BulletFrame>
+	<!-- how fast bullet travels -->
+	<BulletShoot>50</BulletShoot>
+	<!-- delay between bullet shots -->
+	<EnemySpawn>5</EnemySpawn>
+	<EnemyTotal>10</EnemyTotal>
+	<EnemyDelay>1000</EnemyDelay>
+	<EnemyStart>5000</EnemyStart>
+	<ExplodeDelay>100</ExplodeDelay>
+	<StartTimer>2000</StartTimer>
 </LevelConfigData>

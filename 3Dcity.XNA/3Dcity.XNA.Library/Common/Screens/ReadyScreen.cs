@@ -13,15 +13,20 @@ namespace WindowsGame.Common.Screens
 		{
 			base.Initialize();
 			LoadTextData();
+
+			UpdateGrid = MyGame.Manager.ConfigManager.GlobalConfigData.UpdateGrid;
 			NextScreen = ScreenType.Play;
+
+			readyDelay = MyGame.Manager.ConfigManager.GlobalConfigData.ReadyDelay;
+
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
 
 		public override void LoadContent()
 		{
 			base.LoadContent();
-			UpdateGrid = MyGame.Manager.ConfigManager.GlobalConfigData.UpdateGrid;
-			readyDelay = MyGame.Manager.ConfigManager.GlobalConfigData.ReadyDelay;
+
+			MyGame.Manager.RenderManager.SetGridDelay((UInt16)(LevelConfigData.GridDelay * 2));
 
 			// TODO "Get Ready!"
 			MyGame.Manager.SoundManager.PlaySoundEffect();

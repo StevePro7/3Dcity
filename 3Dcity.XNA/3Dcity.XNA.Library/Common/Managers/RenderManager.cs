@@ -1,8 +1,8 @@
 using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using WindowsGame.Common.Static;
 using WindowsGame.Master;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace WindowsGame.Common.Managers
 {
@@ -12,6 +12,8 @@ namespace WindowsGame.Common.Managers
 		void LoadContent();
 		void UpdateStar(GameTime gameTime);
 		void UpdateGrid(GameTime gameTime);
+		void SetGridDelay(UInt16 theGridDelay);
+
 		void Draw();
 		void DrawTitle();
 		void DrawTitle(Vector2 position);
@@ -42,7 +44,7 @@ namespace WindowsGame.Common.Managers
 		public void Initialize()
 		{
 			starDelay = MyGame.Manager.ConfigManager.GlobalConfigData.StarDelay;
-			gridDelay = MyGame.Manager.ConfigManager.GlobalConfigData.GridDelay;
+			gridDelay = 0;// TODO delete MyGame.Manager.ConfigManager.GlobalConfigData.GridDelay;
 			starTimer = gridTimer = 0;
 			starIndex = gridIndex = 0;
 
@@ -72,12 +74,7 @@ namespace WindowsGame.Common.Managers
 			}
 
 			gridRectangles = new Rectangle[Constants.MAX_GRID];
-			gridRectangles[0] = gridRectangles[1] = gridRectangles[2] = MyGame.Manager.ImageManager.GridRectangles[0];
-			if (0 == gridDelay)
-			{
-				return;
-			}
-
+			gridRectangles[0] = MyGame.Manager.ImageManager.GridRectangles[0];
 			gridRectangles[1] = MyGame.Manager.ImageManager.GridRectangles[1];
 			gridRectangles[2] = MyGame.Manager.ImageManager.GridRectangles[2];
 
@@ -110,6 +107,11 @@ namespace WindowsGame.Common.Managers
 			{
 				gridIndex = 0;
 			}
+		}
+
+		public void SetGridDelay(UInt16 theGridDelay)
+		{
+			gridDelay = theGridDelay;
 		}
 
 		public void Draw()

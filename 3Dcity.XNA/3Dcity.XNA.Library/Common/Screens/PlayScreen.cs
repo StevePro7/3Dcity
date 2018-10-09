@@ -8,7 +8,7 @@ using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
 {
-	public class PlayScreen : BaseScreen, IScreen
+	public class PlayScreen : BaseScreenPlay, IScreen
 	{
 		private LevelType levelType;
 		private Byte levelIndex;
@@ -27,6 +27,8 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
+			base.LoadContent();
+
 			// Load the configuration for level type + index.
 			levelType = MyGame.Manager.LevelManager.LevelType;
 			levelIndex = MyGame.Manager.LevelManager.LevelIndex;
@@ -54,8 +56,8 @@ namespace WindowsGame.Common.Screens
 
 			MyGame.Manager.ExplosionManager.Reset(enemySpawn, MyGame.Manager.ConfigManager.GlobalConfigData.ExplodeDelay);
 
-			MyGame.Manager.SoundManager.PlayMusic(SongType.GameMusic);
-			base.LoadContent();
+			MyGame.Manager.RenderManager.SetGridDelay((UInt16)(LevelConfigData.GridDelay));
+			
 		}
 
 		public override Int32 Update(GameTime gameTime)
