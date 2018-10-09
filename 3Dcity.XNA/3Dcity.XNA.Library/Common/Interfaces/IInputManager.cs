@@ -17,6 +17,7 @@ namespace WindowsGame.Common.Interfaces
 		Boolean GameState();
 		Boolean GameSound();
 		Boolean CenterPos();
+		Boolean StatusBar();
 		SByte Number();
 	}
 }

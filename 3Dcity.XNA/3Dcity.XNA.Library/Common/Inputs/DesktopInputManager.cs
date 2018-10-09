@@ -246,6 +246,33 @@ namespace WindowsGame.Common.Inputs
 			return false;
 		}
 
+		public Boolean StatusBar()
+		{
+			// Mouse.
+			if (mouseScreenInput.LeftButtonHold())
+			{
+				Boolean test = controlManager.CheckStatusBar(mouseScreenInput.MousePosition);
+				if (test)
+				{
+					return true;
+				}
+			}
+
+			// Joystick.
+			if (joystickInput.JoyHold(Buttons.Y))
+			{
+				return true;
+			}
+
+			// Keyboard.
+			if (keyboardInput.KeyHold(Keys.F1))
+			{
+				return true;
+			}
+
+			return false;
+		}
+
 		public SByte Number()
 		{
 			if (keyboardInput.KeyHold(Keys.D1))

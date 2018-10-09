@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using WindowsGame.Common.Sprites;
 using WindowsGame.Common.Static;
 
 namespace WindowsGame.Common.Managers
@@ -17,8 +16,10 @@ namespace WindowsGame.Common.Managers
 		Boolean BoxesCollision(Vector2 enemysPosition, Vector2 targetPosition);
 		Boolean BoxesCollision(Byte radius, Vector2 enemysPosition, Vector2 targetPosition);
 		Boolean ColorCollision(Vector2 enemysPosition, Vector2 targetPosition);
-		Boolean CheckOne();
-		Boolean CheckOne(Vector2 targetPosition, IList<Enemy> enemyTest);
+
+		// TODO delete
+		//Boolean CheckOne();
+		//Boolean CheckOne(Vector2 targetPosition, IList<Enemy> enemyTest);
 
 		// TODO delete
 		//void ClearCollisionList();
@@ -292,20 +293,20 @@ namespace WindowsGame.Common.Managers
 		}
 
 
-		// TODO give a better name!
-		public Boolean CheckOne()
-		{
-			Vector2 targetPosition = MyGame.Manager.SpriteManager.LargeTarget.Position;
-			IList<Enemy> enemyTest = MyGame.Manager.EnemyManager.EnemyTest;
+		// // TODO delete
+		//public Boolean CheckOne()
+		//{
+		//    Vector2 targetPosition = MyGame.Manager.SpriteManager.LargeTarget.Position;
+		//    IList<Enemy> enemyTest = MyGame.Manager.EnemyManager.EnemyTest;
 
-			return CheckOne(targetPosition, enemyTest);
-		}
+		//    return CheckOne(targetPosition, enemyTest);
+		//}
 
-		public Boolean CheckOne(Vector2 targetPosition, IList<Enemy> EnemyTest)
-		{
-			// TODO implement collision logic between enemies to test and target.
-			return false;
-		}
+		//public Boolean CheckOne(Vector2 targetPosition, IList<Enemy> EnemyTest)
+		//{
+		//    // TODO implement collision logic between enemies to test and target.
+		//    return false;
+		//}
 
 		//public void ClearCollisionList()
 		//{

@@ -15,6 +15,7 @@ namespace WindowsGame.Common.Managers
 		Boolean CheckGameState(Vector2 position);
 		Boolean CheckGameSound(Vector2 position);
 		Boolean CheckCenterPos(Vector2 position);
+		Boolean CheckStatusBar(Vector2 position);
 
 		Boolean CheckPosInRect(Vector2 position, Rectangle collision);
 		Vector2 ClampPosInRect(Vector2 position, Rectangle bounds);
@@ -29,6 +30,7 @@ namespace WindowsGame.Common.Managers
 		private Rectangle gameStateCollision;
 		private Rectangle gameSoundCollision;
 		private Rectangle centerPosCollision;
+		private Rectangle statusBarCollision;
 
 		public void Initialize()
 		{
@@ -43,8 +45,10 @@ namespace WindowsGame.Common.Managers
 			gameSoundCollision = MyGame.Manager.IconManager.GameSound.Collision;
 
 			const UInt16 half = Constants.ScreenWide / 2;
-			const UInt16 qtr = Constants.ScreenWide / 4;
+			const Byte qtr = Constants.ScreenWide / 4;
+			const Byte eth = Constants.ScreenWide / 8;
 			centerPosCollision = new Rectangle(qtr, Constants.BaseSize + Constants.GameOffsetY, half, half);
+			statusBarCollision = new Rectangle(qtr, Constants.GameOffsetY, half, eth);
 		}
 
 		public Single CheckJoyPadHorz(Vector2 position)
@@ -144,5 +148,9 @@ namespace WindowsGame.Common.Managers
 			return CheckPosInRect(position, centerPosCollision);
 		}
 
+		public Boolean CheckStatusBar(Vector2 position)
+		{
+			return CheckPosInRect(position, statusBarCollision);
+		}
 	}
 }

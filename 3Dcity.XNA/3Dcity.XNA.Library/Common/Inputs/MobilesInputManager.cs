@@ -117,6 +117,11 @@ namespace WindowsGame.Common.Inputs
 			return MyPressFunc(controlManager.CheckCenterPos);
 		}
 
+		public Boolean StatusBar()
+		{
+			return MyPressFunc(controlManager.CheckStatusBar);
+		}
+
 		public SByte Number()
 		{
 			return Constants.INVALID_INDEX;
