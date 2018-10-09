@@ -11,17 +11,17 @@
 	<MaximLevel>18</MaximLevel>
 	<MaxBullets>20</MaxBullets>
 	<LoadAudio>true</LoadAudio>
-	<PlayAudio>true</PlayAudio>
+	<PlayAudio>false</PlayAudio>
 	<StarDelay>2000</StarDelay>
-	<GridDelay>300</GridDelay>
+	<GridDelay>300</GridDelay>			<!-- TODO delete -->
 	<EnemysDelay>500</EnemysDelay>
 	<ExplodeDelay>100</ExplodeDelay>
 	<SplashDelay>0</SplashDelay>
 	<SelectDelay>500</SelectDelay>
 	<IntroDelay>660</IntroDelay>
 	<TitleDelay>800</TitleDelay>
-	<LoadDelay>2000</LoadDelay>
-	<ReadyDelay>2000</ReadyDelay>
+	<LoadDelay>2500</LoadDelay>
+	<ReadyDelay>2500</ReadyDelay>
 	<ScoreDelay>600</ScoreDelay>
 	<EventRatio>1.0</EventRatio>
 	<ScoreBlink>true</ScoreBlink>
