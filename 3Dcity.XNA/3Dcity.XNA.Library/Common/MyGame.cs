@@ -106,6 +106,8 @@ namespace WindowsGame.Common
 			{
 				if (Manager.ConfigManager.GlobalConfigData.QuitsToExit)
 				{
+					//TODO remove in the final build!!!
+					//MyGame.Manager.EventManager.SerializeAllEvents();
 					Engine.Game.Exit();
 					return;
 				}

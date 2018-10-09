@@ -1,62 +1,69 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using WindowsGame.Common.Static;
 using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
 {
-	public class ReadyScreen : BaseScreen, IScreen
+	public class ReadyScreen : BaseScreenPlay, IScreen
 	{
+		private UInt16 readyDelay;
+
+		public override void Initialize()
+		{
+			base.Initialize();
+			LoadTextData();
+			NextScreen = ScreenType.Play;
+			MyGame.Manager.DebugManager.Reset(CurrScreen);
+		}
+
 		public override void LoadContent()
 		{
 			base.LoadContent();
 			UpdateGrid = MyGame.Manager.ConfigManager.GlobalConfigData.UpdateGrid;
-			MyGame.Manager.DebugManager.Reset(CurrScreen);
+			readyDelay = MyGame.Manager.ConfigManager.GlobalConfigData.ReadyDelay;
+
+			// TODO "Get Ready!"
+			MyGame.Manager.SoundManager.PlaySoundEffect();
 		}
 
 		public override Int32 Update(GameTime gameTime)
 		{
 			base.Update(gameTime);
-
-			// Move target unconditionally.
-			Single horz = MyGame.Manager.InputManager.Horizontal();
-			Single vert = MyGame.Manager.InputManager.Vertical();
-			MyGame.Manager.SpriteManager.SetMovement(horz, vert);
-			MyGame.Manager.SpriteManager.Update(gameTime);
-
-			Boolean fire = MyGame.Manager.InputManager.Fire();
-			if (fire)
+			if (GamePause)
 			{
-				Vector2 pos2 = MyGame.Manager.SpriteManager.LargeTarget.Position;
-				Vector2 pos3 = new Vector2(pos2.X + 28, pos2.Y + 28);
-				SByte index = MyGame.Manager.CollisionManager.DetermineEnemySlot(pos2);
-
-				String msg = String.Format("({0},{1})  [({2},{3}]] => {4}", pos2.X, pos2.Y, pos3.X, pos3.Y, index);
-				MyGame.Manager.Logger.Info(msg);
+				return (Int32)CurrScreen;
 			}
 
+			UpdateTimer(gameTime);
+			if (Timer >= readyDelay)
+			{
+				return (Int32)NextScreen;
+			}
 
-			MyGame.Manager.ScoreManager.Update(gameTime);
+			Boolean statusBar = MyGame.Manager.InputManager.StatusBar();
+			if (statusBar)
+			{
+				return (Int32)NextScreen;
+			}
+
+			DetectTarget(gameTime);
+
+			//MyGame.Manager.ScoreManager.Update(gameTime);
 			return (Int32) CurrScreen;
 		}
 
 		public override void Draw()
 		{
 			// Sprite sheet #01.
-			base.Draw();
-			MyGame.Manager.IconManager.DrawControls();
+			DrawSheet01();
 
 			// Sprite sheet #02.
-			MyGame.Manager.LevelManager.Draw();
-			MyGame.Manager.SpriteManager.Draw();
-
-			// Individual texture.
-			//MyGame.Manager.DebugManager.Draw();
+			DrawSheet02();
 
 			// Text data last!
-			MyGame.Manager.TextManager.DrawTitle();
-			MyGame.Manager.TextManager.DrawControls();
-			MyGame.Manager.LevelManager.DrawTextData();
-			MyGame.Manager.ScoreManager.Draw();
+			DrawText();
+			MyGame.Manager.TextManager.Draw(TextDataList);
 		}
 
 	}
