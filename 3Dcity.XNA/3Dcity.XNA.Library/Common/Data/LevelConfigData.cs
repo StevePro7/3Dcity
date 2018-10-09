@@ -7,12 +7,16 @@ namespace WindowsGame.Common.Data
 		public Byte LevelNo;
 		public String LevelName;
 		public Boolean BonusLevel;
+		public UInt16 GridDelay;
 		public Byte BulletMaxim;
 		public UInt16 BulletFrame;
 		public UInt16 BulletShoot;
 		public Byte EnemySpawn;
 		public Byte EnemyTotal;
+		public UInt16 EnemyDelay;
+		public UInt16 EnemyStart;
 		public UInt16 ExplodeDelay;
 		public UInt16 StartTimer;
+		
 	}
 }
