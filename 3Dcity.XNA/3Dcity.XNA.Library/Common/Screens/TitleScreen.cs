@@ -20,7 +20,7 @@ namespace WindowsGame.Common.Screens
 
 			promptPosition = MyGame.Manager.TextManager.GetTextPosition(14, 11);
 			promptPosition.X -= 7.5f;
-			promptDelay = MyGame.Manager.ConfigManager.GlobalConfigData.BeginDelay;
+			promptDelay = MyGame.Manager.ConfigManager.GlobalConfigData.TitleDelay;
 			selectDelay = MyGame.Manager.ConfigManager.GlobalConfigData.SelectDelay;
 
 			NextScreen = ScreenType.Diff;

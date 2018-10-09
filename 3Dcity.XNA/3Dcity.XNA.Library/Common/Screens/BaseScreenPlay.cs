@@ -273,17 +273,27 @@ namespace WindowsGame.Common.Screens
 
 		protected void DrawSheet01()
 		{
+			// Sprite sheet #01.
 			base.Draw();
 			MyGame.Manager.IconManager.DrawControls();
 		}
 
 		protected void DrawSheet02()
 		{
-			DrawSheet02(false);
+			// Sprite sheet #02.
+			MyGame.Manager.RenderManager.DrawStatusOuter();
+			MyGame.Manager.RenderManager.DrawStatusInner(StatusType.Yellow, MyGame.Manager.EnemyManager.EnemyPercentage);
+
+			MyGame.Manager.EnemyManager.Draw();
+			MyGame.Manager.ExplosionManager.Draw();
+			MyGame.Manager.LevelManager.Draw();
+			MyGame.Manager.BulletManager.Draw();
+			MyGame.Manager.SpriteManager.Draw();
 		}
 
 		protected void DrawSheet02(Boolean flag)
 		{
+			// Sprite sheet #02.
 			MyGame.Manager.RenderManager.DrawStatusOuter();
 			MyGame.Manager.RenderManager.DrawStatusInner(StatusType.Yellow, MyGame.Manager.EnemyManager.EnemyPercentage);
 
@@ -298,8 +308,9 @@ namespace WindowsGame.Common.Screens
 			}
 		}
 
-		protected void DrawText()
+		protected static void DrawText()
 		{
+			// Text data last!
 			MyGame.Manager.TextManager.DrawTitle();
 			MyGame.Manager.TextManager.DrawControls();
 			MyGame.Manager.TextManager.DrawProgress();

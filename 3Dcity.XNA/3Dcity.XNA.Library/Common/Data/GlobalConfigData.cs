@@ -20,7 +20,8 @@ namespace WindowsGame.Common.Data
 		public UInt16 SplashDelay;
 		public UInt16 SelectDelay;
 		public UInt16 IntroDelay;
-		public UInt16 BeginDelay;
+		public UInt16 TitleDelay;
+		public UInt16 LoadDelay;
 		public UInt16 ScoreDelay;
 		public Single EventRatio;
 		public Boolean ScoreBlink;

@@ -1,8 +1,7 @@
 ﻿using System;
-using WindowsGame.Common.Data;
-using WindowsGame.Master;
 using Microsoft.Xna.Framework;
 using WindowsGame.Common.Static;
+using WindowsGame.Master;
 using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
@@ -16,6 +15,7 @@ namespace WindowsGame.Common.Screens
 		private Vector2 levelTextPosition;
 		private String levelName;
 		private String levelValu;
+		private UInt16 loadDelay;
 
 		public override void Initialize()
 		{
@@ -25,6 +25,8 @@ namespace WindowsGame.Common.Screens
 			enemyTotalPosition = MyGame.Manager.TextManager.GetTextPosition(25, 10);
 			levelNamePosition = MyGame.Manager.TextManager.GetTextPosition(19, 11);
 			levelTextPosition = MyGame.Manager.TextManager.GetTextPosition(12, 11);
+			loadDelay = MyGame.Manager.ConfigManager.GlobalConfigData.LoadDelay;
+			NextScreen = ScreenType.Ready;
 
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
@@ -59,31 +61,36 @@ namespace WindowsGame.Common.Screens
 				return (Int32)CurrScreen;
 			}
 
+			UpdateTimer(gameTime);
+			if (Timer >= loadDelay)
+			{
+				return (Int32)NextScreen; 
+			}
+
+			Boolean statusBar = MyGame.Manager.InputManager.StatusBar();
+			if (statusBar)
+			{
+				return (Int32)NextScreen; 
+			}
+
+			DetectTarget(gameTime);
+
 			return (Int32)CurrScreen;
 		}
 
 		public override void Draw()
 		{
 			// Sprite sheet #01.
-			base.Draw();
-			MyGame.Manager.IconManager.DrawControls();
+			DrawSheet01();
 
 			// Sprite sheet #02.
-			MyGame.Manager.RenderManager.DrawStatusOuter();
-			MyGame.Manager.RenderManager.DrawStatusInner(StatusType.Yellow, MyGame.Manager.EnemyManager.EnemyPercentage);
-			MyGame.Manager.LevelManager.Draw();
-			MyGame.Manager.SpriteManager.Draw();
+			DrawSheet02();
 
 			// Text data last!
+			DrawText();
 			MyGame.Manager.TextManager.Draw(TextDataList);
 			MyGame.Manager.TextManager.DrawText(levelName, levelNamePosition);
 			MyGame.Manager.TextManager.DrawText(levelValu, levelTextPosition);
-			MyGame.Manager.TextManager.DrawTitle();
-			MyGame.Manager.TextManager.DrawControls();
-			MyGame.Manager.TextManager.DrawProgress();
-			MyGame.Manager.EnemyManager.DrawProgress();
-			MyGame.Manager.LevelManager.DrawTextData();
-			MyGame.Manager.ScoreManager.Draw();
 			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, enemyTotalText, enemyTotalPosition, Color.White);
 		}
 
