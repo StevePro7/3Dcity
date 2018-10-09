@@ -117,6 +117,7 @@
     <Compile Include="Common\Screens\BeginScreen.cs" />
     <Compile Include="Common\Screens\BaseScreenPlay.cs" />
     <Compile Include="Common\Screens\BaseScreenSelect.cs" />
+    <Compile Include="Common\Back\ResumeScreenBAK2.cs" />
     <Compile Include="Common\Screens\LoadScreen.cs" />
     <Compile Include="Common\Screens\QuitScreen.cs" />
     <Compile Include="Common\Screens\DeadScreen.cs" />
@@ -172,9 +173,7 @@
     <Compile Include="Master\Static\Registration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Common\Back\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--
