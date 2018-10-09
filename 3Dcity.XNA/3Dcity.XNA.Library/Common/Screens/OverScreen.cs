@@ -17,13 +17,15 @@ namespace WindowsGame.Common.Screens
 
 		public override void Initialize()
 		{
-			MyGame.Manager.DebugManager.Reset();
+			MyGame.Manager.DebugManager.Reset(CurrScreen);
 			base.Initialize();
 			LoadTextData();
 			UpdateGrid = false;
 
 			// TODO delete!
 			outputText = new string[2] { "FALSE", "TRUE" };
+
+			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
 
 		public override void LoadContent()

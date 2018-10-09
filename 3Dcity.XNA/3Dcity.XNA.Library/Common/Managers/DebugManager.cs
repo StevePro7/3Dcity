@@ -8,7 +8,7 @@ namespace WindowsGame.Common.Managers
 	public interface IDebugManager 
 	{
 		void Initialize();
-		void Reset();
+		void Reset(ScreenType screenType);
 		void Draw();
 	}
 
@@ -21,9 +21,13 @@ namespace WindowsGame.Common.Managers
 			boxPositions = GetBoxPositions();
 		}
 
-		public void Reset()
+		public void Reset(ScreenType screenType)
 		{
 			if (!MyGame.Manager.ConfigManager.GlobalConfigData.DebugTester)
+			{
+				return;
+			}
+			if (MyGame.Manager.ConfigManager.GlobalConfigData.ScreenType != screenType)
 			{
 				return;
 			}

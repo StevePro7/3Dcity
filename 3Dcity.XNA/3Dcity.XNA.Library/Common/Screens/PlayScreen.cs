@@ -18,9 +18,11 @@ namespace WindowsGame.Common.Screens
 
 		public override void Initialize()
 		{
-			MyGame.Manager.DebugManager.Reset();
 			base.Initialize();
+			UpdateGrid = MyGame.Manager.ConfigManager.GlobalConfigData.UpdateGrid;
 			PrevScreen = ScreenType.Quit;
+
+			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
 
 		public override void LoadContent()

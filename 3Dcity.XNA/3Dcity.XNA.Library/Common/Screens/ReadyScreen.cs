@@ -8,8 +8,9 @@ namespace WindowsGame.Common.Screens
 	{
 		public override void LoadContent()
 		{
-			MyGame.Manager.DebugManager.Reset();
 			base.LoadContent();
+			UpdateGrid = MyGame.Manager.ConfigManager.GlobalConfigData.UpdateGrid;
+			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
 
 		public override Int32 Update(GameTime gameTime)

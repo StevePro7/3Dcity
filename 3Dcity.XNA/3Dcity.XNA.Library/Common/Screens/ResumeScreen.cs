@@ -12,13 +12,14 @@ namespace WindowsGame.Common.Screens
 
 		public override void Initialize()
 		{
-			MyGame.Manager.DebugManager.Reset();
 			base.Initialize();
 			UpdateGrid = true;
 
 			// TODO make delay values configurable!
 			delay1 = 200;
 			delay2 = 5000;
+
+			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
 
 		public override void LoadContent()

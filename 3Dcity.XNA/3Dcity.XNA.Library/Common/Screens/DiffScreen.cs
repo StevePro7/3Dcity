@@ -9,7 +9,6 @@ namespace WindowsGame.Common.Screens
 	{
 		public override void Initialize()
 		{
-			MyGame.Manager.DebugManager.Reset();
 			base.Initialize();
 
 			CursorPositions = new Vector2[2];
@@ -17,6 +16,8 @@ namespace WindowsGame.Common.Screens
 			CursorPositions[1] = MyGame.Manager.TextManager.GetTextPosition(23, 11);
 			NextScreen = ScreenType.Level;
 			PrevScreen = ScreenType.Title;
+
+			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
 
 		public override void LoadContent()

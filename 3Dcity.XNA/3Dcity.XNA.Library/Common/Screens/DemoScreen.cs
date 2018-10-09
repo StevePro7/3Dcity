@@ -21,14 +21,15 @@ namespace WindowsGame.Common.Screens
 
 		public override void Initialize()
 		{
-			MyGame.Manager.DebugManager.Reset();
 			base.Initialize();
 			//LoadTextData();		// TODO delete
+
+			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
 
 		public override void LoadContent()
 		{
-			MyGame.Manager.DebugManager.Reset();
+			MyGame.Manager.DebugManager.Reset(CurrScreen);
 			const Byte commandId = 2;
 
 			eventTimeList = MyGame.Manager.CommandManager.CommandTimeList[commandId];

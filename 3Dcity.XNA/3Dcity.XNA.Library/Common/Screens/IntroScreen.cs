@@ -20,7 +20,6 @@ namespace WindowsGame.Common.Screens
 
 		public override void Initialize()
 		{
-			MyGame.Manager.DebugManager.Reset();
 			base.Initialize();
 			UpdateGrid = false;
 
@@ -32,6 +31,8 @@ namespace WindowsGame.Common.Screens
 
 			NextScreen = ScreenType.Title;
 			PrevScreen = ScreenType.Exit;
+
+			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
 
 		public override void LoadContent()

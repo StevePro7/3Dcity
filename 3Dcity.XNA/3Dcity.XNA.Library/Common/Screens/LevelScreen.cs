@@ -18,13 +18,14 @@ namespace WindowsGame.Common.Screens
 
 		public override void Initialize()
 		{
-			MyGame.Manager.DebugManager.Reset();
 			base.Initialize();
 
 			CursorPositions = new Vector2[1];
 			CursorPositions[0] = MyGame.Manager.TextManager.GetTextPosition(16, 11);
 			NextScreen = ScreenType.Load;
 			PrevScreen = ScreenType.Diff;
+
+			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
 
 		public override void LoadContent()
