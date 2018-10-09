@@ -5,7 +5,7 @@ using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
 {
-	public class FinishScreen : BaseScreen, IScreen
+	public class FinishScreen : BaseScreenPlay, IScreen
 	{
 		public override void Initialize()
 		{

@@ -11,11 +11,13 @@ namespace WindowsGame.Common.Managers
 
 		void SetCoolMusic(Boolean coolMusic);
 		void SetIsGodMode(Boolean isGodMode);
+		void SetCheatGame(Boolean cheatGame);
 
 		Boolean GamePause { get; }
 		Boolean GameQuiet { get; }
 		Boolean CoolMusic { get; }
 		Boolean IsGodMode { get; }
+		Boolean CheatGame { get; }
 	}
 
 	public class StateManager : IStateManager
@@ -51,9 +53,15 @@ namespace WindowsGame.Common.Managers
 			IsGodMode = isGodMode;
 		}
 
+		public void SetCheatGame(Boolean cheatGame)
+		{
+			CheatGame = cheatGame;
+		}
+
 		public Boolean GamePause { get; private set; }
 		public Boolean GameQuiet { get; private set; }
 		public Boolean CoolMusic { get; private set; }
 		public Boolean IsGodMode { get; private set; }
+		public Boolean CheatGame { get; private set; }
 	}
 }

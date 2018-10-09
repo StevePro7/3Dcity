@@ -1,4 +1,5 @@
 using System;
+using WindowsGame.Common.Data;
 using Microsoft.Xna.Framework;
 using WindowsGame.Common.Static;
 using WindowsGame.Master;
@@ -36,15 +37,34 @@ namespace WindowsGame.Common.Managers
 			MyGame.Manager.ScoreManager.Reset();
 
 			// Reset levels for testing scenario.
-			MyGame.Manager.LevelManager.SetLevelType(MyGame.Manager.ConfigManager.GlobalConfigData.LevelType);
-			MyGame.Manager.LevelManager.SetLevelIndex(MyGame.Manager.ConfigManager.GlobalConfigData.LevelIndex);
+			LevelType LevelType = MyGame.Manager.ConfigManager.GlobalConfigData.LevelType;
+			Byte LevelIndex = MyGame.Manager.ConfigManager.GlobalConfigData.LevelIndex;
+			MyGame.Manager.LevelManager.SetLevelType(LevelType);
+			MyGame.Manager.LevelManager.SetLevelIndex(LevelIndex);
+
+
+			// Load level configuration data.
+			MyGame.Manager.LevelManager.LoadLevelConfigData(LevelType, LevelIndex);
+			LevelConfigData LevelConfigData = MyGame.Manager.LevelManager.LevelConfigData;
+
+			// Bullets.
+			MyGame.Manager.BulletManager.Reset(LevelConfigData.BulletMaxim, LevelConfigData.BulletFrame, LevelConfigData.BulletShoot);
+
+			// Enemies.
+			MyGame.Manager.EnemyManager.Reset(LevelType, LevelConfigData.EnemySpawn, 1000, 5000, LevelConfigData.EnemyTotal);
+
+			// Explosions.
+			MyGame.Manager.ExplosionManager.Reset(LevelConfigData.EnemySpawn, LevelConfigData.ExplodeDelay);
+
 
 			MyGame.Manager.StateManager.SetIsGodMode(MyGame.Manager.ConfigManager.GlobalConfigData.IsGodMode);
+			
 
-			LevelType levelType = MyGame.Manager.ConfigManager.GlobalConfigData.LevelType;
-			Byte enemySpawn = MyGame.Manager.ConfigManager.GlobalConfigData.EnemySpawn;
-			Byte enemyTotal = MyGame.Manager.ConfigManager.GlobalConfigData.EnemyTotal;
-			MyGame.Manager.EnemyManager.Reset(levelType, enemySpawn, 1000, 5000, enemyTotal);
+
+			//LevelType levelType = MyGame.Manager.ConfigManager.GlobalConfigData.LevelType;
+			//Byte enemySpawn = MyGame.Manager.ConfigManager.GlobalConfigData.EnemySpawn;
+			//Byte enemyTotal = MyGame.Manager.ConfigManager.GlobalConfigData.EnemyTotal;
+			//MyGame.Manager.EnemyManager.Reset(levelType, enemySpawn, 1000, 5000, enemyTotal);
 		}
 
 		public void Draw()

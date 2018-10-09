@@ -6,13 +6,13 @@ namespace WindowsGame.Common.Data
 	public struct GlobalConfigData
 	{
 		public ScreenType ScreenType;
+		public LevelType LevelType;
+		public Byte LevelIndex;
 		public Byte FramesPerSecond;
 		public Byte MaximLevel;
 		public Byte MaxBullets;
 		public Boolean LoadAudio;
 		public Boolean PlayAudio;
-		public LevelType LevelType;
-		public Byte LevelIndex;
 		public UInt16 StarDelay;
 		public UInt16 GridDelay;
 		public UInt16 EnemysDelay;

@@ -25,15 +25,15 @@ namespace WindowsGame.Common.Screens
 			NextScreen = ScreenType.Load;
 			PrevScreen = ScreenType.Diff;
 
+			levelNamePosition = MyGame.Manager.TextManager.GetTextPosition(19, 11);
+			levelTextPosition = MyGame.Manager.TextManager.GetTextPosition(12, 11);
+
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
 
 		public override void LoadContent()
 		{
 			base.LoadContent();
-			levelNamePosition = MyGame.Manager.TextManager.GetTextPosition(19, 11);
-			levelTextPosition = MyGame.Manager.TextManager.GetTextPosition(12, 11);
-
 			maximLevel = MyGame.Manager.LevelManager.MaximLevel;
 			levelIndex = MyGame.Manager.LevelManager.LevelIndex;
 			PopulateLevelData(levelIndex);

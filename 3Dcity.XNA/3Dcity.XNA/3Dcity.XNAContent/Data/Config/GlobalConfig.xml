@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Test</ScreenType>
+	<ScreenType>Level</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<!--<ScreenType>Level</ScreenType>-->
 	<!--<ScreenType>Resume</ScreenType>-->
+	<LevelType>Easy</LevelType>
+	<LevelIndex>0</LevelIndex>
 	<FramesPerSecond>100</FramesPerSecond>
 	<MaximLevel>18</MaximLevel>
 	<MaxBullets>20</MaxBullets>
 	<LoadAudio>false</LoadAudio>
 	<PlayAudio>true</PlayAudio>
-	<LevelType>Easy</LevelType>
-	<LevelIndex>0</LevelIndex>
 	<StarDelay>2000</StarDelay>
 	<GridDelay>300</GridDelay>
 	<EnemysDelay>500</EnemysDelay>

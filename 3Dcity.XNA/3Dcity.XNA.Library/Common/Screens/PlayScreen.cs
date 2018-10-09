@@ -30,6 +30,8 @@ namespace WindowsGame.Common.Screens
 			// Load the configuration for level type + index.
 			levelType = MyGame.Manager.LevelManager.LevelType;
 			levelIndex = MyGame.Manager.LevelManager.LevelIndex;
+			levelConfigData = MyGame.Manager.LevelManager.LevelConfigData;
+
 			MyGame.Manager.LevelManager.LoadLevelConfigData(levelType, levelIndex);
 			levelConfigData = MyGame.Manager.LevelManager.LevelConfigData;
 

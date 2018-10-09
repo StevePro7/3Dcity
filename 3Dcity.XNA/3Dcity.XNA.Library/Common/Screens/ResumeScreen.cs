@@ -26,11 +26,13 @@ namespace WindowsGame.Common.Screens
 		{
 			base.LoadContent();
 
+			// TODO delete
 			// Load the configuration for level type + index.
-			LevelType = MyGame.Manager.LevelManager.LevelType;
-			LevelIndex = MyGame.Manager.LevelManager.LevelIndex;
-			MyGame.Manager.LevelManager.LoadLevelConfigData(LevelType, LevelIndex);
-			LevelConfigData = MyGame.Manager.LevelManager.LevelConfigData;
+			//LevelType = MyGame.Manager.LevelManager.LevelType;
+			//LevelIndex = MyGame.Manager.LevelManager.LevelIndex;
+			//MyGame.Manager.LevelManager.LoadLevelConfigData(LevelType, LevelIndex);
+			//LevelConfigData = MyGame.Manager.LevelManager.LevelConfigData;
+			// TODO delete
 
 			// Bullets.
 			Byte bulletMaxim = LevelConfigData.BulletMaxim;
@@ -50,9 +52,7 @@ namespace WindowsGame.Common.Screens
 			UInt16 explodeDelay = LevelConfigData.ExplodeDelay;
 			MyGame.Manager.ExplosionManager.Reset(LevelConfigData.EnemySpawn, explodeDelay);
 
-			// Resume screen cannot die
-			//Boolean isGodMode = MyGame.Manager.StateManager.IsGodMode;
-			//Invincibile = isGodMode || LevelConfigData.BonusLevel;
+			// Resume screen cannot die not matter what!
 			Invincibile = true;
 			timer = 0;
 			flag = true;

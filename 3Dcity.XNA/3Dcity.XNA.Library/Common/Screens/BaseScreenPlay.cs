@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using WindowsGame.Common.Data;
 using WindowsGame.Common.Sprites;
 using WindowsGame.Common.Static;
-using Microsoft.Xna.Framework;
 
 namespace WindowsGame.Common.Screens
 {
@@ -12,8 +12,31 @@ namespace WindowsGame.Common.Screens
 		protected LevelType LevelType { get; set; }
 		protected Byte LevelIndex { get; set; }
 		protected LevelConfigData LevelConfigData { get; set; }
+
 		protected Boolean Invincibile { get; set; }
+
+		//protected Byte EnemySpawn { get; private set; }
+		protected Byte EnemyTotal { get; private set; }
+
+		//protected UInt16 ExplodeDelay { get; private set; }
+
 		protected Boolean CheckLevelComplete { get; set; }
+
+
+		public override void LoadContent()
+		{
+			// Load the configuration for level type + index.
+			LevelType = MyGame.Manager.LevelManager.LevelType;
+			LevelIndex = MyGame.Manager.LevelManager.LevelIndex;
+			LevelConfigData = MyGame.Manager.LevelManager.LevelConfigData;
+
+			Invincibile = MyGame.Manager.StateManager.IsGodMode || MyGame.Manager.StateManager.CheatGame;
+
+			//EnemySpawn = MyGame.Manager.EnemyManager.EnemySpawn;
+			EnemyTotal = MyGame.Manager.EnemyManager.EnemyTotal;
+
+			base.LoadContent();
+		}
 
 
 		// Target.
