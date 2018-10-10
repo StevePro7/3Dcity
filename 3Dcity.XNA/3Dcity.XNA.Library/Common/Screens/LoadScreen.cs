@@ -40,6 +40,9 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.LevelManager.LoadLevelConfigData(LevelType, LevelIndex);
 			LevelConfigData = MyGame.Manager.LevelManager.LevelConfigData;
 
+			// Resets all relevant score level info,
+			MyGame.Manager.ScoreManager.ResetLevel();
+
 			// Bullets.
 			MyGame.Manager.BulletManager.Reset(LevelConfigData.BulletMaxim, LevelConfigData.BulletFrame, LevelConfigData.BulletShoot);
 

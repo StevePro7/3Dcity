@@ -11,8 +11,10 @@ namespace WindowsGame.Common.Managers
 		void Initialize();
 		void LoadContent();
 		void Reset();
+		void ResetLevel();
 		void Update(GameTime gameTime);
 		void Draw();
+		void DrawBlink();
 
 		void UpdateGameScore(Byte index);
 		void SetHighScore(UInt32 score);
@@ -64,8 +66,18 @@ namespace WindowsGame.Common.Managers
 		public void Reset()
 		{
 			MissesTotal = 0;
+			ScoreAvoid = 0;
+			ScoreKills = 0;
 			gameScore = 0;
 			gameScoreText = GetGameScoreText();
+			scoreTimer = 0;
+			scoreFlag = true;
+		}
+		public void ResetLevel()
+		{
+			MissesTotal = 0;
+			ScoreAvoid = 0;
+			ScoreKills = 0;
 			scoreTimer = 0;
 			scoreFlag = true;
 		}
@@ -87,6 +99,21 @@ namespace WindowsGame.Common.Managers
 
 		public void Draw()
 		{
+			DrawCommon();
+			MyGame.Manager.TextManager.Draw(socreTextData);
+		}
+
+		public void DrawBlink()
+		{
+			DrawCommon();
+			if (scoreFlag)
+			{
+				MyGame.Manager.TextManager.Draw(socreTextData);
+			}
+		}
+
+		private void DrawCommon()
+		{
 			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, gameScoreText, gameScorePosition, Color.White);
 			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, highScoreText, highScorePosition, Color.White);
 			MyGame.Manager.TextManager.Draw(highTextData);
@@ -94,15 +121,11 @@ namespace WindowsGame.Common.Managers
 			{
 				MyGame.Manager.TextManager.Draw(missTextData[index]);
 			}
-
-			if (scoreFlag)
-			{
-				MyGame.Manager.TextManager.Draw(socreTextData);
-			}
 		}
 
 		public void UpdateGameScore(Byte index)
 		{
+			ScoreKills++;
 			gameScore += Constants.ENEMYS_SCORE[index];
 			if (gameScore >= Constants.MAX_HIGH_SCORE)
 			{
@@ -124,9 +147,10 @@ namespace WindowsGame.Common.Managers
 		public void IncrementMisses()
 		{
 			MissesTotal++;
+			ScoreAvoid++;
 		}
 
-		private TextData[] GetMissTextDataList()
+		private static TextData[] GetMissTextDataList()
 		{
 			TextData[] data = new TextData[Constants.MAX_MISSES];
 			for (Byte index = 0; index < Constants.MAX_MISSES; index++)

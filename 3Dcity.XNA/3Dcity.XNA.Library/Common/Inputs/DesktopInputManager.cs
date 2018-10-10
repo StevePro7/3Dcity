@@ -60,6 +60,10 @@ namespace WindowsGame.Common.Inputs
 			}
 
 			// Keyboard.
+			if (keyboardInput.KeyHold(Keys.B))
+			{
+				return true;
+			}
 			if (keyboardInput.KeyHold(Keys.Escape))
 			{
 				return true;
