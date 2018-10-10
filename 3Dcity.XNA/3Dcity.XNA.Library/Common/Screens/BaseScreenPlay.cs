@@ -20,7 +20,7 @@ namespace WindowsGame.Common.Screens
 
 		//protected UInt16 ExplodeDelay { get; private set; }
 
-		protected Boolean CheckLevelComplete { get; set; }
+		protected Boolean CheckLevelComplete { private get; set; }
 
 
 		public override void LoadContent()
@@ -108,7 +108,6 @@ namespace WindowsGame.Common.Screens
 				}
 
 				// Can kill initial enemy [at frame count = 0] because enemy will be "hidden".
-				Byte enemyCount = enemy.FrameCount;
 				if (0 == enemy.FrameCount)
 				{
 					continue;
@@ -265,8 +264,6 @@ namespace WindowsGame.Common.Screens
 			if (noMoreEnemies)
 			{
 				NextScreen = ScreenType.Finish;
-				return;
-				//return (Int32)ScreenType.Finish;
 			}
 		}
 
@@ -311,12 +308,18 @@ namespace WindowsGame.Common.Screens
 		protected static void DrawText()
 		{
 			// Text data last!
+			DrawTextCommon();
+			MyGame.Manager.ScoreManager.Draw();
+		}
+
+		protected static void DrawTextCommon()
+		{
+			// Text data last!
 			MyGame.Manager.TextManager.DrawTitle();
 			MyGame.Manager.TextManager.DrawControls();
 			MyGame.Manager.TextManager.DrawProgress();
 			MyGame.Manager.EnemyManager.DrawProgress();
 			MyGame.Manager.LevelManager.DrawTextData();
-			MyGame.Manager.ScoreManager.Draw();
 		}
 
 	}

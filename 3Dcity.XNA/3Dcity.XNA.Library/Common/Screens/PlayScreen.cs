@@ -10,10 +10,10 @@ namespace WindowsGame.Common.Screens
 {
 	public class PlayScreen : BaseScreenPlay, IScreen
 	{
-		private LevelType levelType;
-		private Byte levelIndex;
-		private LevelConfigData levelConfigData;
-		private Boolean invincibile;
+		//private LevelType levelType;
+		//private Byte levelIndex;
+		//private LevelConfigData levelConfigData;
+		//private Boolean invincibile;
 		private Boolean checkLevelComplete;
 
 		public override void Initialize()
@@ -29,34 +29,8 @@ namespace WindowsGame.Common.Screens
 		{
 			base.LoadContent();
 
-			// Load the configuration for level type + index.
-			levelType = MyGame.Manager.LevelManager.LevelType;
-			levelIndex = MyGame.Manager.LevelManager.LevelIndex;
-			levelConfigData = MyGame.Manager.LevelManager.LevelConfigData;
-
-			MyGame.Manager.LevelManager.LoadLevelConfigData(levelType, levelIndex);
-			levelConfigData = MyGame.Manager.LevelManager.LevelConfigData;
-
-			Boolean isGodMode = MyGame.Manager.StateManager.IsGodMode;
-			invincibile = isGodMode || levelConfigData.BonusLevel;
-
-			// Not bad settings for default.
-			//MyGame.Manager.BulletManager.Reset(10, 200, 100);
-			MyGame.Manager.BulletManager.Reset(5, 50, 100);
-			//MyGame.Manager.BulletManager.Reset(100, 20, 50);		// TODO remove - extreme!
-
-			
-
-			//const Byte enemySpawn = 1;
-			//const Byte enemyTotal = 3;
-			Byte enemySpawn = MyGame.Manager.ConfigManager.GlobalConfigData.EnemySpawn;	// 1;  // TODO level config
-			Byte enemyTotal = MyGame.Manager.ConfigManager.GlobalConfigData.EnemyTotal;	// 1;  // TODO level config
-			MyGame.Manager.EnemyManager.Reset(levelType, enemySpawn, 1000, 5000, enemyTotal);
-			MyGame.Manager.EnemyManager.SpawnAllEnemies();
-
-			MyGame.Manager.ExplosionManager.Reset(enemySpawn, MyGame.Manager.ConfigManager.GlobalConfigData.ExplodeDelay);
-
-			MyGame.Manager.RenderManager.SetGridDelay((UInt16)(LevelConfigData.GridDelay));
+//			MyGame.Manager.EnemyManager.SpawnAllEnemies();
+			MyGame.Manager.RenderManager.SetGridDelay(LevelConfigData.GridDelay);
 			
 		}
 
@@ -68,8 +42,8 @@ namespace WindowsGame.Common.Screens
 				return (Int32) CurrScreen;
 			}
 
-			Boolean escape = MyGame.Manager.InputManager.Escape();
-			if (escape)
+			Boolean back = MyGame.Manager.InputManager.Back();
+			if (back)
 			{
 				return (Int32)PrevScreen;
 			}
@@ -142,7 +116,6 @@ namespace WindowsGame.Common.Screens
 					}
 
 					// Can kill initial enemy [at frame count = 0] because enemy will be "hidden".
-					Byte enemyCount = enemy.FrameCount;
 					if (0 == enemy.FrameCount)
 					{
 						continue;
@@ -150,7 +123,7 @@ namespace WindowsGame.Common.Screens
 
 					// Check if bullet collides with enemy.
 					Byte enemyFrame = enemy.FrameIndex;
-					Boolean collide = MyGame.Manager.CollisionManager.BulletCollideEnemy(enemy.Position, bullet.Position, levelType, enemyFrame);
+					Boolean collide = MyGame.Manager.CollisionManager.BulletCollideEnemy(enemy.Position, bullet.Position, LevelType, enemyFrame);
 					if (!collide)
 					{
 						continue;
@@ -159,7 +132,6 @@ namespace WindowsGame.Common.Screens
 					// Collision!	Enemy dead and trigger explode...
 					MyGame.Manager.ScoreManager.UpdateGameScore(enemyFrame);
 
-					// TODO if DiffType == HARD and enemy.FrameCount = 9 OR 11 then enemy dead?
 					ExplodeType explodeType = enemy.FrameIndex < 4 ? ExplodeType.Small : ExplodeType.Big;
 					Byte enemyID = enemy.ID;
 					MyGame.Manager.ExplosionManager.LoadContent(enemyID, explodeType);
@@ -204,7 +176,7 @@ namespace WindowsGame.Common.Screens
 				for (Byte testIndex = 0; testIndex < enemyTest.Count; testIndex++)
 				{
 					Enemy enemy = enemyTest[testIndex];
-					if (!invincibile)
+					if (!Invincibile)
 					{
 						// First check if enemy instantly kills target.
 						Boolean test = CheckEnemyKillTarget(enemy, target);
@@ -281,28 +253,14 @@ namespace WindowsGame.Common.Screens
 		{
 			// Sprite sheet #01.
 			base.Draw();
-			MyGame.Manager.IconManager.DrawControls();
+			DrawSheet01();
 
 			// Sprite sheet #02.
-			MyGame.Manager.RenderManager.DrawStatusOuter();
-			MyGame.Manager.RenderManager.DrawStatusInner(StatusType.Yellow, MyGame.Manager.EnemyManager.EnemyPercentage);
-
-			MyGame.Manager.EnemyManager.Draw();
-			MyGame.Manager.ExplosionManager.Draw();
-			MyGame.Manager.LevelManager.Draw();
-			MyGame.Manager.BulletManager.Draw();
-			MyGame.Manager.SpriteManager.Draw();
-
-			// Individual texture.
-			//MyGame.Manager.DebugManager.Draw();		// TODO delete
+			DrawSheet02();
 
 			// Text data last!
-			MyGame.Manager.TextManager.DrawTitle();
-			MyGame.Manager.TextManager.DrawControls();
-			MyGame.Manager.TextManager.DrawProgress();
-			MyGame.Manager.EnemyManager.DrawProgress();
-			MyGame.Manager.LevelManager.DrawTextData();
-			MyGame.Manager.ScoreManager.Draw();
+			DrawTextCommon();
+			MyGame.Manager.ScoreManager.DrawBlink();
 		}
 
 	}

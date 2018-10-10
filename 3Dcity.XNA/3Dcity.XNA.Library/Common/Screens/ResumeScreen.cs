@@ -26,32 +26,6 @@ namespace WindowsGame.Common.Screens
 		{
 			base.LoadContent();
 
-			// TODO delete
-			// Load the configuration for level type + index.
-			//LevelType = MyGame.Manager.LevelManager.LevelType;
-			//LevelIndex = MyGame.Manager.LevelManager.LevelIndex;
-			//MyGame.Manager.LevelManager.LoadLevelConfigData(LevelType, LevelIndex);
-			//LevelConfigData = MyGame.Manager.LevelManager.LevelConfigData;
-			// TODO delete
-
-			// Bullets.
-			//Byte bulletMaxim = LevelConfigData.BulletMaxim;
-			//UInt16 bulletFrame = LevelConfigData.BulletFrame;
-			//UInt16 bulletShoot = LevelConfigData.BulletShoot;
-			//MyGame.Manager.BulletManager.Reset(bulletMaxim, bulletFrame, bulletShoot);
-			// TODO delete
-			//MyGame.Manager.BulletManager.Reset(2, 100, 200);
-
-			// Enemies.
-			//Byte enemySpawn = LevelConfigData.EnemySpawn;
-			//Byte enemyTotal = LevelConfigData.EnemyTotal;
-			//MyGame.Manager.EnemyManager.Reset(LevelType, enemySpawn, 1000, 5000, enemyTotal);
-			//MyGame.Manager.EnemyManager.SpawnAllEnemies();
-
-			// Explosions.
-			//UInt16 explodeDelay = LevelConfigData.ExplodeDelay;
-			//MyGame.Manager.ExplosionManager.Reset(LevelConfigData.EnemySpawn, explodeDelay);
-
 			// Resume screen cannot die not matter what!
 			Invincibile = true;
 			timer = 0;
