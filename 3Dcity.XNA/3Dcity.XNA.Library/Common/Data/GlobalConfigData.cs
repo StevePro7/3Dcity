@@ -15,7 +15,6 @@ namespace WindowsGame.Common.Data
 		public Boolean PlayAudio;
 		public UInt16 StarDelay;
 		public UInt16 GridDelay;		// TODO delete
-		public UInt16 EnemysDelay;
 		public UInt16 ExplodeDelay;
 		public UInt16 SplashDelay;
 		public UInt16 SelectDelay;

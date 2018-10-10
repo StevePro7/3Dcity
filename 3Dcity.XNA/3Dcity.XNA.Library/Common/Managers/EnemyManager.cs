@@ -54,7 +54,6 @@ namespace WindowsGame.Common.Managers
 		private LevelConfigData levelConfigData;
 		private IDictionary<Byte, UInt16> enemyDelays;
 		private Byte maxEnemySpawn;
-		private UInt16 testFrameDelay;
 		private Vector2[] progressPosition;
 		private String enemiesRoot;
 
@@ -106,9 +105,6 @@ namespace WindowsGame.Common.Managers
 			}
 
 			LoadEnemyWaves();
-
-			// TODO enemy frame delay will be injected..
-			testFrameDelay = MyGame.Manager.ConfigManager.GlobalConfigData.EnemysDelay;
 		}
 
 		//public void Reset(LevelType theLevelType, Byte theEnemySpawn, UInt16 minDelay, UInt16 maxDelay, Byte enemyTotal)
@@ -229,37 +225,16 @@ namespace WindowsGame.Common.Managers
 
 			return delay;
 		}
-		private UInt16 GetWaveFrameDelayX(UInt16 enemyFrameDelay, UInt16 enemyFrameRange, UInt16 enemyFrameMinim)
-		{
-			// 360 degrees in sine wave.
-			Byte index = (Byte)MyGame.Manager.RandomManager.Next(360);
-			Single value = EnemyWaves[index];
-			Int16 delay = (Int16)(value * enemyFrameRange);
-
-			UInt16 frame = (UInt16)(enemyFrameDelay + delay);
-			if (frame < enemyFrameMinim)
-			{
-				frame = enemyFrameMinim;
-			}
-
-			return frame;
-		}
 
 		private static UInt16 GetFastFrameDelay()
 		{
-			return 0;
+			return 666;
 		}
 
 		public void SpawnOneEnemy(Byte index)
 		{
-			var bob = EnemySpawn;
-			
-			// TODO work out better the frame delay.
-			UInt16 frameDelay = testFrameDelay;//Constants.TestFrameDelay;
-			//UInt16 frameDelay = MyGame.Manager.RandomManager.Next(MinDelay, MaxDelay);
-
-
-			SByte slotID = Constants.INVALID_INDEX;
+			UInt16 frameDelay = enemyDelays[EnemySpawn];
+			SByte slotID;
 			while (true)
 			{
 				slotID = (SByte)MyGame.Manager.RandomManager.Next(Constants.MAX_ENEMYS_SPAWN);
