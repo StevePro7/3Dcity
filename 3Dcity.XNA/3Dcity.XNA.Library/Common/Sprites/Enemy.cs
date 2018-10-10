@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using WindowsGame.Common.Static;
 using Microsoft.Xna.Framework;
+using WindowsGame.Common.Static;
 
 namespace WindowsGame.Common.Sprites
 {
@@ -24,10 +24,6 @@ namespace WindowsGame.Common.Sprites
 			FrameIndex = 0;
 			FrameTimer = 0;
 			EnemyLaunch = false;
-
-			// TODO uncomment for testing collision offsets on Resume screen.
-			//FrameCount = 1;
-			//FrameIndex = MyGame.Manager.ConfigManager.GlobalConfigData.EnemyFrame;
 		}
 
 		public void Spawn(Byte slotID, UInt16 frameDelay, Vector2 position, Rectangle bounds)
@@ -54,10 +50,9 @@ namespace WindowsGame.Common.Sprites
 			EnemyLaunch = false;
 		}
 
-		public void Start(UInt16 frameDelay)
+		public void Start(UInt16 startFrameDelay)
 		{
-			// Longer delay for initial move.
-			FrameDelay[0] = frameDelay;
+			FrameDelay[0] = startFrameDelay;
 		}
 
 		public override void Update(GameTime gameTime)

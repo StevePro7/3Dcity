@@ -25,7 +25,6 @@ namespace WindowsGame.Common.Screens
 
 			MyGame.Manager.EnemyManager.SpawnAllEnemies();
 			MyGame.Manager.RenderManager.SetGridDelay(LevelConfigData.GridDelay);
-			
 		}
 
 		public override Int32 Update(GameTime gameTime)

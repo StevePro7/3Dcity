@@ -27,6 +27,13 @@
 		None
 	}
 
+	public enum SpeedType
+	{
+		None = 0,
+		Wave = 1,
+		Fast = 2
+	}
+
 	public enum ShipType
 	{
 		Ship = 0,

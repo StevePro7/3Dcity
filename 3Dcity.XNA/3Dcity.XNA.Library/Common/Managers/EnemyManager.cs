@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using WindowsGame.Common.Data;
 using Microsoft.Xna.Framework;
 using WindowsGame.Common.Sprites;
 using WindowsGame.Common.Static;
@@ -12,7 +13,8 @@ namespace WindowsGame.Common.Managers
 		void Initialize();
 		void Initialize(String root);
 		void LoadContent();
-		void Reset(LevelType theLevelType, Byte theEnemySpawn, UInt16 minDelay, UInt16 maxDelay, Byte enemyTotal);
+		//void Reset(LevelType theLevelType, Byte theEnemySpawn, UInt16 minDelay, UInt16 maxDelay, Byte enemyTotal);
+		void Reset(LevelConfigData theLevelConfigData);
 		void SpawnAllEnemies();
 		void SpawnOneEnemy(Byte index);
 		void LoadEnemyWaves();
@@ -34,8 +36,9 @@ namespace WindowsGame.Common.Managers
 		UInt16[] EnemyOffsetY { get; }
 
 		IList<Single> EnemyWaves { get; }
-		UInt16 MinDelay { get; }
-		UInt16 MaxDelay { get; }
+		//TODO delete
+		//UInt16 MinDelay { get; }
+		//UInt16 MaxDelay { get; }
 		Byte EnemySpawn { get; }
 		Byte EnemyTotal { get; }
 		Byte EnemyStart { get; }
@@ -46,7 +49,8 @@ namespace WindowsGame.Common.Managers
 
 	public class EnemyManager : IEnemyManager
 	{
-		private LevelType levelType;
+		//private LevelType levelType;		// TODO delete as is not needed?  Everytihng injected in LevelConfigData
+		private LevelConfigData levelConfigData;
 		private Byte maxEnemySpawn;
 		private UInt16 testFrameDelay;
 		private Vector2[] progressPosition;
@@ -102,23 +106,25 @@ namespace WindowsGame.Common.Managers
 			testFrameDelay = MyGame.Manager.ConfigManager.GlobalConfigData.EnemysDelay;
 		}
 
-		public void Reset(LevelType theLevelType, Byte theEnemySpawn, UInt16 minDelay, UInt16 maxDelay, Byte enemyTotal)
+		//public void Reset(LevelType theLevelType, Byte theEnemySpawn, UInt16 minDelay, UInt16 maxDelay, Byte enemyTotal)
+		public void Reset(LevelConfigData theLevelConfigData)
 		{
-			levelType = theLevelType;
-			maxEnemySpawn = theEnemySpawn;
+			//levelType = theLevelType;		// TODO delete as is not needed?  Everytihng injected in LevelConfigData
+			levelConfigData = theLevelConfigData;
+			maxEnemySpawn = levelConfigData.EnemySpawn;
 			if (maxEnemySpawn > Constants.MAX_ENEMYS_SPAWN)
 			{
 				maxEnemySpawn = Constants.MAX_ENEMYS_SPAWN;
 			}
 
 			// Ensure max total takes precedence over spawn.
-			if (maxEnemySpawn > enemyTotal)
+			if (maxEnemySpawn > levelConfigData.EnemyTotal)
 			{
-				maxEnemySpawn = enemyTotal;
+				maxEnemySpawn = levelConfigData.EnemyTotal;
 			}
 
-			MinDelay = minDelay;
-			MaxDelay = maxDelay;
+			//MinDelay = minDelay;
+			//MaxDelay = maxDelay;
 
 			// Reset all enemies but not the list as will clear.
 			for (Byte index = 0; index < maxEnemySpawn; index++)
@@ -129,16 +135,9 @@ namespace WindowsGame.Common.Managers
 			EnemyTest.Clear();
 			EnemyDict.Clear();
 
-			// TODO delete
-			//// Ensure total at least the max.
-			//if (enemyTotal < maxEnemySpawn)
-			//{
-			//    enemyTotal = maxEnemySpawn;
-			//}
-
 			EnemyStart = 0;
 			EnemySpawn = 0;
-			EnemyTotal = enemyTotal;
+			EnemyTotal = levelConfigData.EnemyTotal;
 			EnemyStartText = EnemyStart.ToString().PadLeft(3, '0');
 			EnemyTotalText = EnemyTotal.ToString().PadLeft(3, '0');
 		}
@@ -150,9 +149,20 @@ namespace WindowsGame.Common.Managers
 				SpawnOneEnemy(index);
 				// TODO tweak configurable numbers
 
+				UInt16 startFrameDelay = GetStartFrameDelay(index, levelConfigData.EnemyStartDelay, levelConfigData.EnemyStartDelta);
+				EnemyList[index].Start(startFrameDelay);
+
 				//EnemyList[index].Start((UInt16)(testFrameDelay + 3* testFrameDelay * index));
-				EnemyList[index].Start((UInt16)((index + 1) * testFrameDelay));		// stevepro - remove hard code start
+				//EnemyList[index].Start((UInt16)((index + 1) * testFrameDelay));		// stevepro - remove hard code start
 			}
+		}
+
+		private static UInt16 GetStartFrameDelay(Byte index, UInt16 enemyStartDelay, UInt16 enemyStartDelta)
+		{
+			UInt16 delay = (UInt16)((index + 1) * enemyStartDelay);
+			UInt16 delta = (UInt16)MyGame.Manager.RandomManager.Next(enemyStartDelta);
+
+			return (UInt16)(delay + delta);
 		}
 
 		public void SpawnOneEnemy(Byte index)
@@ -173,7 +183,7 @@ namespace WindowsGame.Common.Managers
 
 			// TODO delete
 			//slotID = 0;		// hard code slotID to test.
-			MyGame.Manager.Logger.Info((slotID+1).ToString());
+			//MyGame.Manager.Logger.Info((slotID+1).ToString());
 
 			Enemy enemy = EnemyList[index];
 
@@ -183,7 +193,7 @@ namespace WindowsGame.Common.Managers
 			UInt16 offsetX = EnemyOffsetX[(Byte)slotID];
 			UInt16 offsetY = EnemyOffsetY[(Byte)slotID];
 
-			// TODO check this fits within [160,200] = [40,80] = [32,72] => [32 = 160-120-(2*4)
+			// TODO check this fits within [160,200] = [40,80] = [32,72] => [32 = 160-120-(2*4)]
 			// [32,72] => [32 = 160-120-(2*4), 72 = 200-120-(2*4)]
 			position.X = randomX + offsetX + Constants.BorderSize;
 			position.Y = randomY + offsetY + Constants.BorderSize;
@@ -338,8 +348,9 @@ namespace WindowsGame.Common.Managers
 
 		
 		public IList<Single> EnemyWaves { get; private set; }
-		public UInt16 MinDelay { get; private set; }
-		public UInt16 MaxDelay { get; private set; }
+		//TODO delete
+		//public UInt16 MinDelay { get; private set; }
+		//public UInt16 MaxDelay { get; private set; }
 		public Byte EnemySpawn { get; private set; }
 		public Byte EnemyTotal { get; private set; }
 		public Byte EnemyStart { get; private set; }

@@ -51,20 +51,14 @@ namespace WindowsGame.Common.Managers
 			MyGame.Manager.BulletManager.Reset(LevelConfigData.BulletMaxim, LevelConfigData.BulletFrame, LevelConfigData.BulletShoot);
 
 			// Enemies.
-			MyGame.Manager.EnemyManager.Reset(LevelType, LevelConfigData.EnemySpawn, 1000, 5000, LevelConfigData.EnemyTotal);
+			//MyGame.Manager.EnemyManager.Reset(LevelType, LevelConfigData.EnemySpawn, 1000, 5000, LevelConfigData.EnemyTotal);
+			MyGame.Manager.EnemyManager.Reset(LevelConfigData);
 
 			// Explosions.
 			MyGame.Manager.ExplosionManager.Reset(LevelConfigData.EnemySpawn, LevelConfigData.ExplodeDelay);
 
-
+			// TODO update this logic for god mode [global] vs. local cheat...!
 			MyGame.Manager.StateManager.SetIsGodMode(MyGame.Manager.ConfigManager.GlobalConfigData.IsGodMode);
-			
-
-
-			//LevelType levelType = MyGame.Manager.ConfigManager.GlobalConfigData.LevelType;
-			//Byte enemySpawn = MyGame.Manager.ConfigManager.GlobalConfigData.EnemySpawn;
-			//Byte enemyTotal = MyGame.Manager.ConfigManager.GlobalConfigData.EnemyTotal;
-			//MyGame.Manager.EnemyManager.Reset(levelType, enemySpawn, 1000, 5000, enemyTotal);
 		}
 
 		public void Draw()

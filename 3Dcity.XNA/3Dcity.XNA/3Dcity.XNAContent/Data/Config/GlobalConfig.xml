@@ -14,7 +14,7 @@
 	<PlayAudio>false</PlayAudio>
 	<StarDelay>2000</StarDelay>
 	<GridDelay>300</GridDelay>			<!-- TODO delete -->
-	<EnemysDelay>500</EnemysDelay>
+	<EnemysDelay>1000</EnemysDelay>
 	<ExplodeDelay>100</ExplodeDelay>
 	<SplashDelay>0</SplashDelay>
 	<SelectDelay>500</SelectDelay>
@@ -38,7 +38,7 @@
 	<EnemyIndex>2</EnemyIndex>
 	<EnemySpawn>1</EnemySpawn>
 	<EnemyTotal>5</EnemyTotal>
-	<IsGodMode>false</IsGodMode>
+	<IsGodMode>true</IsGodMode>
 	<DebugTester>true</DebugTester>
 	<QuitsToExit>true</QuitsToExit>
 </GlobalConfigData>
