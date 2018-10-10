@@ -246,24 +246,6 @@ namespace WindowsGame.Common.Managers
 			Int16 maxX = (Int16)(enemysPosition.X + deltaMax);
 			Int16 maxY = (Int16)(enemysPosition.Y + deltaMax);
 
-			// More difficult for Hard when frame = 6 or 7.
-			if (enemyFrame >= enemyFrameOffsets.Length - 2)
-			{
-				if (LevelType.Hard == levelType)
-				{
-					if (enemyFrameOffsets.Length - 1 == enemyFrame)
-					{
-						minX += 4;
-						maxX -= 4;
-					}
-					else if (enemyFrameOffsets.Length - 2 == enemyFrame)
-					{
-						minX += 2;
-						maxX -= 2;
-					}
-				}
-			}
-
 			return bulletPosition.X >= minX &&
 			       bulletPosition.X <= maxX &&
 			       bulletPosition.Y >= minY &&
