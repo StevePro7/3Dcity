@@ -26,7 +26,7 @@ namespace WindowsGame.Common.Sprites
 			EnemyLaunch = false;
 		}
 
-		public void Spawn(Byte slotID, UInt16 frameDelay, Vector2 position, Rectangle bounds)
+		public void Spawn(Byte slotID, UInt16 frameDelay, Vector2 position, Rectangle bounds, LevelType levelType)
 		{
 			SetSlotID(slotID);
 
@@ -34,9 +34,15 @@ namespace WindowsGame.Common.Sprites
 			for (Byte index = 0; index < Constants.MAX_ENEMYS_FRAME; index++)
 			{
 				FrameDelay[index] = frameDelay;
-				if (blinkFrame.Contains(index))
+			}
+
+			// TODO maybe only half the blink delay on Hard level type.
+			if (LevelType.Hard == levelType)
+			{
+				for (Byte index = 1; index < blinkFrame.Count; index++)
 				{
-					FrameDelay[index] /= 2;
+					Byte value = blinkFrame[index];
+					FrameDelay[value] /= 2;
 				}
 			}
 

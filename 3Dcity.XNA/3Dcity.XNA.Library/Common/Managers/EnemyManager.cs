@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Messaging;
 using WindowsGame.Common.Data;
 using Microsoft.Xna.Framework;
 using WindowsGame.Common.Sprites;
@@ -14,7 +15,7 @@ namespace WindowsGame.Common.Managers
 		void Initialize(String root);
 		void LoadContent();
 		//void Reset(LevelType theLevelType, Byte theEnemySpawn, UInt16 minDelay, UInt16 maxDelay, Byte enemyTotal);
-		void Reset(LevelConfigData theLevelConfigData);
+		void Reset(LevelType theLevelType, LevelConfigData theLevelConfigData);
 		void SpawnAllEnemies();
 		void SpawnOneEnemy(Byte index);
 		void LoadEnemyWaves();
@@ -49,7 +50,7 @@ namespace WindowsGame.Common.Managers
 
 	public class EnemyManager : IEnemyManager
 	{
-		//private LevelType levelType;		// TODO delete as is not needed?  Everytihng injected in LevelConfigData
+		private LevelType levelType;		// TODO delete as is not needed?  Everytihng injected in LevelConfigData
 		private LevelConfigData levelConfigData;
 		private IDictionary<Byte, UInt16> enemyDelays;
 		private Byte maxEnemySpawn;
@@ -109,9 +110,9 @@ namespace WindowsGame.Common.Managers
 		}
 
 		//public void Reset(LevelType theLevelType, Byte theEnemySpawn, UInt16 minDelay, UInt16 maxDelay, Byte enemyTotal)
-		public void Reset(LevelConfigData theLevelConfigData)
+		public void Reset(LevelType theLevelType, LevelConfigData theLevelConfigData)
 		{
-			//levelType = theLevelType;		// TODO delete as is not needed?  Everytihng injected in LevelConfigData
+			levelType = theLevelType;		// TODO delete as is not needed?  Everytihng injected in LevelConfigData
 			levelConfigData = theLevelConfigData;
 			maxEnemySpawn = levelConfigData.EnemySpawn;
 			if (maxEnemySpawn > Constants.MAX_ENEMYS_SPAWN)
@@ -167,18 +168,37 @@ namespace WindowsGame.Common.Managers
 		{
 			// Calculate frame delays for all enemy ships.
 			ResetEnemyDelays();
+			CalcdEnemyDelays();
 
 			for (Byte index = 0; index < maxEnemySpawn; index++)
 			{
 				SpawnOneEnemy(index);
-				// TODO tweak configurable numbers
 
+				// Set the start delay for the initial spawned enemies.
 				UInt16 startFrameDelay = GetStartFrameDelay(index, levelConfigData.EnemyStartDelay, levelConfigData.EnemyStartDelta);
 				EnemyList[index].Start(startFrameDelay);
-
-				//EnemyList[index].Start((UInt16)(testFrameDelay + 3* testFrameDelay * index));
-				//EnemyList[index].Start((UInt16)((index + 1) * testFrameDelay));		// stevepro - remove hard code start
 			}
+		}
+
+		private void CalcdEnemyDelays()
+		{
+			UInt16 enemyFrameDelay = levelConfigData.EnemyFrameDelay;
+			UInt16 enemyFrameDelta = levelConfigData.EnemyFrameDelta;
+
+			UInt16 noneFrameDelay = GetNoneFrameDelay(enemyFrameDelay, enemyFrameDelta);
+			for (Byte key = 0; key < EnemyTotal; key++)
+			{
+				SpeedType speedType = (SpeedType) enemyDelays[key];
+				if (SpeedType.None == speedType)
+				{
+					enemyDelays[key] = noneFrameDelay;
+				}
+			}
+		}
+		private static UInt16 GetNoneFrameDelay(UInt16 enemyFrameDelay, UInt16 enemyFrameDelta)
+		{
+			UInt16 delta = (UInt16)MyGame.Manager.RandomManager.Next(enemyFrameDelta);
+			return (UInt16)(enemyFrameDelay + delta);
 		}
 
 		public void SpawnOneEnemy(Byte index)
@@ -218,7 +238,7 @@ namespace WindowsGame.Common.Managers
 			position.Y = randomY + offsetY + Constants.BorderSize;
 
 			Rectangle bounds = EnemyBounds[(Byte)slotID];
-			enemy.Spawn((Byte)slotID, frameDelay, position, bounds);
+			enemy.Spawn((Byte)slotID, frameDelay, position, bounds, levelType);
 			EnemyDict.Add((Byte)slotID, enemy);
 
 			EnemySpawn++;
@@ -368,26 +388,24 @@ namespace WindowsGame.Common.Managers
 		private void ResetEnemyDelays()
 		{
 			enemyDelays.Clear();
-
-			Byte enemyTotal = levelConfigData.EnemyTotal;
-			for (Byte index = 0; index < enemyTotal; index++)
+			for (Byte index = 0; index < EnemyTotal; index++)
 			{
 				enemyDelays.Add(index, (Byte)SpeedType.None);
 			}
 
 			Byte enemySpeedWave = (Byte)(levelConfigData.EnemySpeedWave / 100.0f * levelConfigData.EnemyTotal);
-			ResetEnemySpeedTypes(enemySpeedWave, SpeedType.Wave, enemyTotal);
+			ResetEnemySpeedTypes(enemySpeedWave, SpeedType.Wave);
 
 			Byte enemySpeedFast = (Byte)(levelConfigData.EnemySpeedFast / 100.0f * levelConfigData.EnemyTotal);
-			ResetEnemySpeedTypes(enemySpeedFast, SpeedType.Fast, enemyTotal);
+			ResetEnemySpeedTypes(enemySpeedFast, SpeedType.Fast);
 		}
-		private void ResetEnemySpeedTypes(Byte count, SpeedType speedType, Byte enemyTotal)
+		private void ResetEnemySpeedTypes(Byte count, SpeedType speedType)
 		{
 			for (Byte index = 0; index < count; index++)
 			{
 				while (true)
 				{
-					Byte key = (Byte)MyGame.Manager.RandomManager.Next(enemyTotal);
+					Byte key = (Byte)MyGame.Manager.RandomManager.Next(EnemyTotal);
 					if ((Byte)SpeedType.None == enemyDelays[key])
 					{
 						enemyDelays[key] = (Byte)speedType;

@@ -52,7 +52,7 @@ namespace WindowsGame.Common.Managers
 
 			// Enemies.
 			//MyGame.Manager.EnemyManager.Reset(LevelType, LevelConfigData.EnemySpawn, 1000, 5000, LevelConfigData.EnemyTotal);
-			MyGame.Manager.EnemyManager.Reset(LevelConfigData);
+			MyGame.Manager.EnemyManager.Reset(LevelType, LevelConfigData);
 
 			// Explosions.
 			MyGame.Manager.ExplosionManager.Reset(LevelConfigData.EnemySpawn, LevelConfigData.ExplodeDelay);
