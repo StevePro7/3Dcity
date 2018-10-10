@@ -8,14 +8,16 @@
 	<BulletFrame>80</BulletFrame>	<!-- how fast bullet travels -->
 	<BulletShoot>120</BulletShoot>	<!-- delay between bullet shots -->
 	<EnemySpawn>1</EnemySpawn>
-	<EnemyTotal>2</EnemyTotal>
+	<EnemyTotal>10</EnemyTotal>
 	<EnemyFrameDelay>1000</EnemyFrameDelay>
 	<EnemyFrameDelta>0</EnemyFrameDelta>
+	<EnemyFrameMinim>500</EnemyFrameMinim>
+	<EnemyFrameRange>200</EnemyFrameRange>
 	<EnemyStartDelay>2000</EnemyStartDelay>
 	<EnemyStartDelta>0</EnemyStartDelta>
-	<EnemySpeedNone>100</EnemySpeedNone>
-	<EnemySpeedWave>0</EnemySpeedWave>
-	<EnemySpeedFast>0</EnemySpeedFast>
+	<EnemySpeedNone>60</EnemySpeedNone>
+	<EnemySpeedWave>30</EnemySpeedWave>
+	<EnemySpeedFast>10</EnemySpeedFast>
 	<!--
 	<EnemyDelay>1000</EnemyDelay>
 	<EnemyStart>5000</EnemyStart>

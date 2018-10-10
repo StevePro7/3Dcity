@@ -16,6 +16,8 @@ namespace WindowsGame.Common.Data
 
 		public UInt16 EnemyFrameDelay;
 		public UInt16 EnemyFrameDelta;
+		public UInt16 EnemyFrameMinim;
+		public UInt16 EnemyFrameRange;
 		public UInt16 EnemyStartDelay;
 		public UInt16 EnemyStartDelta;
 

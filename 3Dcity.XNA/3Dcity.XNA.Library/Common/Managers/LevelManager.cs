@@ -75,9 +75,9 @@ namespace WindowsGame.Common.Managers
 			// TODO delete
 			//String romanFile = String.Format("{0}/{1}.txt", levelRoot, LEVELS_ROMANFILE);
 			//LevelRoman = MyGame.Manager.FileManager.LoadTxt(romanFile);
-
-			LevelType = MyGame.Manager.ConfigManager.GlobalConfigData.LevelType;
-			LevelIndex = MyGame.Manager.ConfigManager.GlobalConfigData.LevelIndex;
+			//LevelType = MyGame.Manager.ConfigManager.GlobalConfigData.LevelType;
+			//LevelIndex = MyGame.Manager.ConfigManager.GlobalConfigData.LevelIndex;
+			// TODO delete
 
 			MaximLevel = MyGame.Manager.ConfigManager.GlobalConfigData.MaximLevel;
 			if (MaximLevel > LevelNames.Count)

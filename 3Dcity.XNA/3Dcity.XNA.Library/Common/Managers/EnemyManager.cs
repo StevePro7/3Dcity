@@ -105,6 +105,8 @@ namespace WindowsGame.Common.Managers
 				enemy.LoadContent(MyGame.Manager.ImageManager.EnemyRectangles);
 			}
 
+			LoadEnemyWaves();
+
 			// TODO enemy frame delay will be injected..
 			testFrameDelay = MyGame.Manager.ConfigManager.GlobalConfigData.EnemysDelay;
 		}
@@ -189,9 +191,20 @@ namespace WindowsGame.Common.Managers
 			for (Byte key = 0; key < EnemyTotal; key++)
 			{
 				SpeedType speedType = (SpeedType) enemyDelays[key];
-				if (SpeedType.None == speedType)
+				switch (speedType)
 				{
-					enemyDelays[key] = noneFrameDelay;
+					case SpeedType.None:
+						enemyDelays[key] = noneFrameDelay;
+						break;
+					case SpeedType.Wave:
+						enemyDelays[key] = GetWaveFrameDelay(enemyFrameDelay, levelConfigData.EnemyFrameRange, levelConfigData.EnemyFrameMinim);
+						break;
+					case SpeedType.Fast:
+						enemyDelays[key] = GetFastFrameDelay();
+						break;
+					default:
+						enemyDelays[key] = noneFrameDelay;
+						break;
 				}
 			}
 		}
@@ -199,6 +212,42 @@ namespace WindowsGame.Common.Managers
 		{
 			UInt16 delta = (UInt16)MyGame.Manager.RandomManager.Next(enemyFrameDelta);
 			return (UInt16)(enemyFrameDelay + delta);
+		}
+		private UInt16 GetWaveFrameDelay(UInt16 enemyFrameDelay, UInt16 enemyFrameRange, UInt16 enemyFrameMinim)
+		{
+			// 360 degrees in sine wave.
+			Byte index = (Byte)MyGame.Manager.RandomManager.Next(360);
+			Single value = EnemyWaves[index];
+			Int16 multi = (Int16)(value * enemyFrameRange);
+			UInt16 delay = (UInt16)(enemyFrameDelay + multi);
+
+			// Prevent from too fast...!
+			if (delay < enemyFrameMinim)
+			{
+				delay = enemyFrameMinim;
+			}
+
+			return delay;
+		}
+		private UInt16 GetWaveFrameDelayX(UInt16 enemyFrameDelay, UInt16 enemyFrameRange, UInt16 enemyFrameMinim)
+		{
+			// 360 degrees in sine wave.
+			Byte index = (Byte)MyGame.Manager.RandomManager.Next(360);
+			Single value = EnemyWaves[index];
+			Int16 delay = (Int16)(value * enemyFrameRange);
+
+			UInt16 frame = (UInt16)(enemyFrameDelay + delay);
+			if (frame < enemyFrameMinim)
+			{
+				frame = enemyFrameMinim;
+			}
+
+			return frame;
+		}
+
+		private static UInt16 GetFastFrameDelay()
+		{
+			return 0;
 		}
 
 		public void SpawnOneEnemy(Byte index)
