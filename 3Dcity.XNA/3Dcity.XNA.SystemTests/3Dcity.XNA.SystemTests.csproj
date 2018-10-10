@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="BaseSystemTests.cs" />
     <Compile Include="Common\Managers\CollisionManagerSystemTests.cs" />
+    <Compile Include="Common\Managers\EnemyManagerSystemTests.cs" />
     <Compile Include="Common\Managers\LevelManagerSystemTests.cs" />
     <Compile Include="Master\Implementation\TestFileProxy.cs" />
     <Compile Include="Common\Managers\CommandManagerSystemTests.cs" />

@@ -10,10 +10,13 @@ namespace WindowsGame.Common.Managers
 	public interface IEnemyManager 
 	{
 		void Initialize();
+		void Initialize(String root);
 		void LoadContent();
 		void Reset(LevelType theLevelType, Byte theEnemySpawn, UInt16 minDelay, UInt16 maxDelay, Byte enemyTotal);
 		void SpawnAllEnemies();
 		void SpawnOneEnemy(Byte index);
+		void LoadEnemyWaves();
+
 		Boolean CheckThisEnemy(Byte index);
 		Boolean CheckEnemiesNone();
 
@@ -29,7 +32,8 @@ namespace WindowsGame.Common.Managers
 		IList<Rectangle> EnemyBounds { get; }
 		UInt16[] EnemyOffsetX { get; }
 		UInt16[] EnemyOffsetY { get; }
-		
+
+		IList<Single> EnemyWaves { get; }
 		UInt16 MinDelay { get; }
 		UInt16 MaxDelay { get; }
 		Byte EnemySpawn { get; }
@@ -46,9 +50,18 @@ namespace WindowsGame.Common.Managers
 		private Byte maxEnemySpawn;
 		private UInt16 testFrameDelay;
 		private Vector2[] progressPosition;
+		private String enemiesRoot;
+
+		private const String MATHS_DIRECTORY = "Maths";
 
 		public void Initialize()
 		{
+			Initialize(String.Empty);
+		}
+
+		public void Initialize(String root)
+		{
+			enemiesRoot = String.Format("{0}{1}/{2}/{3}", root, Constants.CONTENT_DIRECTORY, Constants.DATA_DIRECTORY, MATHS_DIRECTORY);
 			maxEnemySpawn = Constants.MAX_ENEMYS_SPAWN;
 
 			EnemyList = new List<Enemy>(maxEnemySpawn);
@@ -180,6 +193,12 @@ namespace WindowsGame.Common.Managers
 			EnemyDict.Add((Byte)slotID, enemy);
 
 			EnemySpawn++;
+		}
+
+		public void LoadEnemyWaves()
+		{
+			String file = String.Format("{0}/EnemyWaves.txt", enemiesRoot);
+			EnemyWaves = MyGame.Manager.FileManager.LoadTxt<Single>(file);
 		}
 
 		public Boolean CheckThisEnemy(Byte index)
@@ -316,6 +335,9 @@ namespace WindowsGame.Common.Managers
 		public IList<Rectangle> EnemyBounds { get; private set; }
 		public UInt16[] EnemyOffsetX { get; private set; }
 		public UInt16[] EnemyOffsetY { get; private set; }
+
+		
+		public IList<Single> EnemyWaves { get; private set; }
 		public UInt16 MinDelay { get; private set; }
 		public UInt16 MaxDelay { get; private set; }
 		public Byte EnemySpawn { get; private set; }

@@ -260,3 +260,14 @@ Maximum range Hard = 90	left / right couple of pixels away [tough!] but includes
 Bullet lookup slot
 pos = {X:316 Y:276}
 pos = {X:288 Y:248}
+
+
+Sine Waves code
+for (int d = 0; d < 360; d++)
+{
+	float r = MathHelper.ToRadians(d);
+	double s = Math.Sin(r);
+	double a = Math.Round(s, 2);
+	string t = a.ToString();
+	System.Diagnostics.Debug.WriteLine(t);
+}
