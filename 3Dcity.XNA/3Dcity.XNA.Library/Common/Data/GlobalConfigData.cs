@@ -35,12 +35,13 @@ namespace WindowsGame.Common.Data
 		public UInt16 TargetY;
 		public UInt16 EnemysX;
 		public UInt16 EnemysY;
-		public Byte EnemyFrame;
-		public Byte EnemyIndex;
-		public Byte EnemySpawn;
-		public Byte EnemyTotal;
+		//public Byte EnemyFrame;
+		//public Byte EnemyIndex;
+		//public Byte EnemySpawn;
+		//public Byte EnemyTotal;
 		public Boolean IsGodMode;
 		public Boolean DebugTester;
+		public Boolean DonotSave;
 		public Boolean QuitsToExit;
 	}
 }

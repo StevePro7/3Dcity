@@ -36,6 +36,12 @@ namespace WindowsGame.Common.Managers
 
 		public void LoadContent()
 		{
+			// TODO remove!  Only used for testing get data from config!
+			if (MyGame.Manager.ConfigManager.GlobalConfigData.DonotSave)
+			{
+				return;
+			}
+
 			storagePersistData = storageFactory.LoadContent<StoragePersistData>();
 			if (null == storagePersistData)
 			{
@@ -53,6 +59,12 @@ namespace WindowsGame.Common.Managers
 
 		public void SaveContent()
 		{
+			// TODO remove!  Only used for testing get data from config!
+			if (MyGame.Manager.ConfigManager.GlobalConfigData.DonotSave)
+			{
+				return;
+			}
+
 			if (null == storagePersistData)
 			{
 				storagePersistData = new StoragePersistData

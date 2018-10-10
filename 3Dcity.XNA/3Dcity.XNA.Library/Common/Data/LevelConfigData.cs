@@ -14,7 +14,7 @@ namespace WindowsGame.Common.Data
 		public Byte EnemySpawn;
 		public Byte EnemyTotal;
 
-		public UInt16 EnemyFrameyDelay;
+		public UInt16 EnemyFrameDelay;
 		public UInt16 EnemyFrameDelta;
 		public UInt16 EnemyStartDelay;
 		public UInt16 EnemyStartDelta;
