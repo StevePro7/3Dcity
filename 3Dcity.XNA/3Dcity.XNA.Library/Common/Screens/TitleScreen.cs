@@ -46,10 +46,19 @@ namespace WindowsGame.Common.Screens
 				return (Int32) CurrScreen;
 			}
 
-			Boolean escape = MyGame.Manager.InputManager.Escape();
-			if (escape)
+			// Check to go back first.
+			Boolean back = MyGame.Manager.InputManager.Back();
+			if (back)
 			{
-				return (Int32) PrevScreen;
+				return (Int32)PrevScreen;
+			}
+			// Check to go forward second.
+			Boolean fire = MyGame.Manager.InputManager.Fire();
+			Boolean midd = MyGame.Manager.InputManager.CenterPos();
+			if (fire || midd)
+			{
+				flag1 = true;
+				Timer = 0;
 			}
 
 			UpdateTimer(gameTime);
@@ -72,15 +81,6 @@ namespace WindowsGame.Common.Screens
 			{
 				flag2 = !flag2;
 				Timer -= promptDelay;
-			}
-
-			// Check fire first.
-			Boolean fire = MyGame.Manager.InputManager.Fire();
-			Boolean midd = MyGame.Manager.InputManager.CenterPos();
-			if (fire || midd)
-			{
-				flag1 = true;
-				Timer = 0;
 			}
 
 			return (Int32) CurrScreen;

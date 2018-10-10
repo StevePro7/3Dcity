@@ -82,6 +82,11 @@ namespace WindowsGame.Common.Inputs
 			}
 		}
 
+		public Boolean Back()
+		{
+			return Escape() || StatusBar();
+		}
+
 		public Boolean Escape()
 		{
 			return joystickInput.JoyHold(Buttons.Back);

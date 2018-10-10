@@ -47,8 +47,9 @@ namespace WindowsGame.Common.Screens
 				return (Int32) CurrScreen;
 			}
 
-			Boolean escape = MyGame.Manager.InputManager.Escape();
-			if (escape)
+			// Check to go back first.
+			Boolean back = MyGame.Manager.InputManager.Back();
+			if (back)
 			{
 				return (Int32) PrevScreen;
 			}
@@ -58,6 +59,7 @@ namespace WindowsGame.Common.Screens
 			if (Selected)
 			{
 				MyGame.Manager.LevelManager.SetLevelIndex(levelIndex);
+				MyGame.Manager.ScoreManager.Reset();
 				return (Int32) NextScreen;
 			}
 			if (Flag1)

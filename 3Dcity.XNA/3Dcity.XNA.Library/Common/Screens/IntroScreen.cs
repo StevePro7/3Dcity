@@ -49,18 +49,19 @@ namespace WindowsGame.Common.Screens
 
 		public override Int32 Update(GameTime gameTime)
 		{
-
 			base.Update(gameTime);
 			if (GamePause)
 			{
 				return (Int32) CurrScreen;
 			}
 
-			Boolean escape = MyGame.Manager.InputManager.Escape();
-			if (escape)
+			// Check to go back first.
+			Boolean back = MyGame.Manager.InputManager.Back();
+			if (back)
 			{
 				return (Int32) PrevScreen;
 			}
+			// Check to go forward second.
 			Boolean midd = MyGame.Manager.InputManager.CenterPos();
 			if (midd)
 			{

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Level</ScreenType>
+	<ScreenType>Title</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<!--<ScreenType>Level</ScreenType>-->
@@ -10,7 +10,7 @@
 	<FramesPerSecond>100</FramesPerSecond>
 	<MaximLevel>18</MaximLevel>
 	<MaxBullets>20</MaxBullets>
-	<LoadAudio>true</LoadAudio>
+	<LoadAudio>false</LoadAudio>
 	<PlayAudio>false</PlayAudio>
 	<StarDelay>2000</StarDelay>
 	<GridDelay>300</GridDelay>			<!-- TODO delete -->

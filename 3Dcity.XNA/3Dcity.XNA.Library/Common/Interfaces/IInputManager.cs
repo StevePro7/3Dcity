@@ -9,6 +9,7 @@ namespace WindowsGame.Common.Interfaces
 		void LoadContent();
 		void Update(GameTime gameTime);
 
+		Boolean Back();
 		Boolean Escape();
 
 		Single Horizontal();
