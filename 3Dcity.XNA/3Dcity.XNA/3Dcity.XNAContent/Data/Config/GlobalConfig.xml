@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Resume</ScreenType>
+	<ScreenType>Load</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<!--<ScreenType>Level</ScreenType>-->
@@ -24,7 +24,7 @@
 	<ReadyDelay>2500</ReadyDelay>
 	<ScoreDelay>600</ScoreDelay>
 	<EventRatio>1.0</EventRatio>
-	<ScoreBlink>true</ScoreBlink>
+	<ScoreBlink>false</ScoreBlink>
 	<UpdateStar>true</UpdateStar>
 	<UpdateGrid>false</UpdateGrid>
 	<RenderBack>true</RenderBack>

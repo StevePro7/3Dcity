@@ -23,7 +23,7 @@ namespace WindowsGame.Common.Screens
 		{
 			base.LoadContent();
 
-//			MyGame.Manager.EnemyManager.SpawnAllEnemies();
+			MyGame.Manager.EnemyManager.SpawnAllEnemies();
 			MyGame.Manager.RenderManager.SetGridDelay(LevelConfigData.GridDelay);
 			
 		}
