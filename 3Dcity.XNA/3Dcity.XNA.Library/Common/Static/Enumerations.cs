@@ -66,11 +66,13 @@
 
 	public enum SoundEffectType
 	{
-		Funny,
+		Aaargh,
+		Bonus,
+		Cheat,
+		Over,
+		Ready,
 		Right,
 		Wrong,
-		Cheat,
-		Early
 	}
 
 	public enum EventType

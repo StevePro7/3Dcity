@@ -60,7 +60,7 @@ namespace WindowsGame.Common.Managers
 				}
 
 				Assets.SoundEffectDictionary = new Dictionary<SoundEffectType, SoundEffectInstance>();
-				for (SoundEffectType key = SoundEffectType.Funny; key <= SoundEffectType.Early; ++key)
+				for (SoundEffectType key = SoundEffectType.Aaargh; key <= SoundEffectType.Wrong; ++key)
 				{
 					String assetName = String.Format("{0}{1}", soundsRoot, key);
 					SoundEffectInstance value = contentFactory.LoadSoundEffectInstance(assetName);
