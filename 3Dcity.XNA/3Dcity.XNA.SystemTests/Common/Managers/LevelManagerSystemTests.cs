@@ -44,7 +44,12 @@ namespace WindowsGame.SystemTests.Common.Managers
 
 			LevelManager.LoadLevelConfigData(levelType, levelIndex);
 
-			Assert.IsNotNull(LevelManager.LevelConfigData);
+			Assert.That(LevelManager.LevelConfigData, Is.Not.Null);
+
+			// Ensure that enemy frame delay proportions work.
+			LevelConfigData data = LevelManager.LevelConfigData;
+			Byte sum = (Byte) (data.EnemySpeedNone + data.EnemySpeedWave + data.EnemySpeedFast);
+			Assert.That(100, Is.EqualTo(sum));
 
 			PrintData(LevelManager.LevelConfigData);
 		}

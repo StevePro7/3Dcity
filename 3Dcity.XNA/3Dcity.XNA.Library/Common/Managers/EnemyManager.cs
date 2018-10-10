@@ -51,6 +51,7 @@ namespace WindowsGame.Common.Managers
 	{
 		//private LevelType levelType;		// TODO delete as is not needed?  Everytihng injected in LevelConfigData
 		private LevelConfigData levelConfigData;
+		private IDictionary<Byte, UInt16> enemyDelays;
 		private Byte maxEnemySpawn;
 		private UInt16 testFrameDelay;
 		private Vector2[] progressPosition;
@@ -88,6 +89,7 @@ namespace WindowsGame.Common.Managers
 				EnemyList.Add(enemy);
 			}
 
+			enemyDelays = new Dictionary<Byte, UInt16>(Constants.MAX_ENEMYS_TOTAL);
 			progressPosition = new Vector2[3];
 			progressPosition[0] = MyGame.Manager.TextManager.GetTextPosition(25, 23);
 			progressPosition[1] = MyGame.Manager.TextManager.GetTextPosition(28, 23);
@@ -134,16 +136,38 @@ namespace WindowsGame.Common.Managers
 
 			EnemyTest.Clear();
 			EnemyDict.Clear();
+			enemyDelays.Clear();
 
 			EnemyStart = 0;
 			EnemySpawn = 0;
 			EnemyTotal = levelConfigData.EnemyTotal;
 			EnemyStartText = EnemyStart.ToString().PadLeft(3, '0');
 			EnemyTotalText = EnemyTotal.ToString().PadLeft(3, '0');
+
+			// Validate enemy frame proportions add to 100%
+			if (100 == levelConfigData.EnemySpeedNone + levelConfigData.EnemySpeedWave + levelConfigData.EnemySpeedFast)
+			{
+				return;
+			}
+
+			//TODO Maybe have a better validation algorithm if totals > 100%
+			if (levelConfigData.EnemySpeedWave > 100)
+			{
+				levelConfigData.EnemySpeedWave = 50;
+			}
+			if (levelConfigData.EnemySpeedFast > 100)
+			{
+				levelConfigData.EnemySpeedFast /= 50;
+			}
+			// Otherwise halve the values and subtract from 100%.
+			levelConfigData.EnemySpeedNone = (Byte)(100 - (levelConfigData.EnemySpeedWave + levelConfigData.EnemySpeedFast));
 		}
 
 		public void SpawnAllEnemies()
 		{
+			// Calculate frame delays for all enemy ships.
+			ResetEnemyDelays();
+
 			for (Byte index = 0; index < maxEnemySpawn; index++)
 			{
 				SpawnOneEnemy(index);
@@ -157,19 +181,14 @@ namespace WindowsGame.Common.Managers
 			}
 		}
 
-		private static UInt16 GetStartFrameDelay(Byte index, UInt16 enemyStartDelay, UInt16 enemyStartDelta)
-		{
-			UInt16 delay = (UInt16)((index + 1) * enemyStartDelay);
-			UInt16 delta = (UInt16)MyGame.Manager.RandomManager.Next(enemyStartDelta);
-
-			return (UInt16)(delay + delta);
-		}
-
 		public void SpawnOneEnemy(Byte index)
 		{
+			var bob = EnemySpawn;
+			
 			// TODO work out better the frame delay.
 			UInt16 frameDelay = testFrameDelay;//Constants.TestFrameDelay;
 			//UInt16 frameDelay = MyGame.Manager.RandomManager.Next(MinDelay, MaxDelay);
+
 
 			SByte slotID = Constants.INVALID_INDEX;
 			while (true)
@@ -310,7 +329,6 @@ namespace WindowsGame.Common.Managers
 
 			return enemyBounds;
 		}
-
 		private static Rectangle GetEnemyBound(Byte index)
 		{
 			// High + wide max enemy.
@@ -336,6 +354,46 @@ namespace WindowsGame.Common.Managers
 				offsetY += Constants.GameOffsetY;
 				const Byte offsetX = Constants.BOTTOM_OFFSET;
 				return new Rectangle(offsetX + (wide * index) + inflate, offsetY + inflate, wide - size - deflate, high - size - deflate);
+			}
+		}
+
+		private static UInt16 GetStartFrameDelay(Byte index, UInt16 enemyStartDelay, UInt16 enemyStartDelta)
+		{
+			UInt16 delay = (UInt16)((index + 1) * enemyStartDelay);
+			UInt16 delta = (UInt16)MyGame.Manager.RandomManager.Next(enemyStartDelta);
+
+			return (UInt16)(delay + delta);
+		}
+
+		private void ResetEnemyDelays()
+		{
+			enemyDelays.Clear();
+
+			Byte enemyTotal = levelConfigData.EnemyTotal;
+			for (Byte index = 0; index < enemyTotal; index++)
+			{
+				enemyDelays.Add(index, (Byte)SpeedType.None);
+			}
+
+			Byte enemySpeedWave = (Byte)(levelConfigData.EnemySpeedWave / 100.0f * levelConfigData.EnemyTotal);
+			ResetEnemySpeedTypes(enemySpeedWave, SpeedType.Wave, enemyTotal);
+
+			Byte enemySpeedFast = (Byte)(levelConfigData.EnemySpeedFast / 100.0f * levelConfigData.EnemyTotal);
+			ResetEnemySpeedTypes(enemySpeedFast, SpeedType.Fast, enemyTotal);
+		}
+		private void ResetEnemySpeedTypes(Byte count, SpeedType speedType, Byte enemyTotal)
+		{
+			for (Byte index = 0; index < count; index++)
+			{
+				while (true)
+				{
+					Byte key = (Byte)MyGame.Manager.RandomManager.Next(enemyTotal);
+					if ((Byte)SpeedType.None == enemyDelays[key])
+					{
+						enemyDelays[key] = (Byte)speedType;
+						break;
+					}
+				}
 			}
 		}
 

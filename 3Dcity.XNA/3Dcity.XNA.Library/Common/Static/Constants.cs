@@ -27,11 +27,11 @@ namespace WindowsGame.Common.Static
 		public const SByte INVALID_INDEX = -1;
 
 		// Maximums.
-		public const Byte MAX_LEVELS = 16;
 		public const Byte MAX_GRID = 3;
 		public const Byte MAX_STAR = 2;
 		public const Byte MAX_MISSES = 4;
 
+		public const Byte MAX_ENEMYS_TOTAL = 250;
 		public const Byte MAX_ENEMYS_SPAWN = 8;
 		public const Byte MAX_ENEMYS_FRAME = 13;
 		public const Byte MAX_OFFSET_FRAME = 8;

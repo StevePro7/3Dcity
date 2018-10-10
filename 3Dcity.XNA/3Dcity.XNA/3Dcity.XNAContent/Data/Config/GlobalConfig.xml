@@ -14,7 +14,7 @@
 	<PlayAudio>false</PlayAudio>
 	<StarDelay>2000</StarDelay>
 	<GridDelay>300</GridDelay>			<!-- TODO delete -->
-	<EnemysDelay>1000</EnemysDelay>
+	<EnemysDelay>500</EnemysDelay>
 	<ExplodeDelay>100</ExplodeDelay>
 	<SplashDelay>0</SplashDelay>
 	<SelectDelay>500</SelectDelay>

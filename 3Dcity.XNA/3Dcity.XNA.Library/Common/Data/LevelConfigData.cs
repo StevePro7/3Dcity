@@ -19,6 +19,10 @@ namespace WindowsGame.Common.Data
 		public UInt16 EnemyStartDelay;
 		public UInt16 EnemyStartDelta;
 
+		public Byte EnemySpeedNone;
+		public Byte EnemySpeedWave;
+		public Byte EnemySpeedFast;
+
 		//public UInt16 EnemyDelay;
 		//public UInt16 EnemyStart;
 		public UInt16 ExplodeDelay;
