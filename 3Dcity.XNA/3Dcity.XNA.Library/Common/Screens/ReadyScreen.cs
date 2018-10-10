@@ -40,14 +40,15 @@ namespace WindowsGame.Common.Screens
 				return (Int32)CurrScreen;
 			}
 
-			UpdateTimer(gameTime);
-			if (Timer >= readyDelay)
+			// Check status bar to fast forward.
+			Boolean statusBar = MyGame.Manager.InputManager.StatusBar();
+			if (statusBar)
 			{
 				return (Int32)NextScreen;
 			}
 
-			Boolean statusBar = MyGame.Manager.InputManager.StatusBar();
-			if (statusBar)
+			UpdateTimer(gameTime);
+			if (Timer >= readyDelay)
 			{
 				return (Int32)NextScreen;
 			}

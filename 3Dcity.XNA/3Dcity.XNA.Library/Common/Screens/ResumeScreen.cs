@@ -41,6 +41,13 @@ namespace WindowsGame.Common.Screens
 				return (Int32)CurrScreen;
 			}
 
+			// Check status bar to fast forward.
+			Boolean statusBar = MyGame.Manager.InputManager.StatusBar();
+			if (statusBar)
+			{
+				return (Int32)NextScreen;
+			}
+
 			UpdateTimer(gameTime);
 			if (Timer > delay1)
 			{
@@ -78,7 +85,7 @@ namespace WindowsGame.Common.Screens
 			}
 
 			// Icons.
-			UpdateIcons();
+			//UpdateIcons();
 
 			// Score.
 			UpdateScore(gameTime);
