@@ -17,22 +17,8 @@ namespace WindowsGame.Common.Managers
 		Boolean BoxesCollision(Byte radius, Vector2 enemysPosition, Vector2 targetPosition);
 		Boolean ColorCollision(Vector2 enemysPosition, Vector2 targetPosition);
 
-		// TODO delete
-		//Boolean CheckOne();
-		//Boolean CheckOne(Vector2 targetPosition, IList<Enemy> enemyTest);
-
-		// TODO delete
-		//void ClearCollisionList();
-		//void AddToBulletCollisionList(Byte bulletIndex);
-		//void AddToEnemysCollisionList(Byte enemysIndex);
-		//Boolean EnemyCollideTarget(Vector2 enemysPosition, Vector2 targetPosition);
-
 		SByte DetermineEnemySlot(Vector2 position);
 		Boolean BulletCollideEnemy(Vector2 enemysPosition, Vector2 bulletPosition, LevelType levelType, Byte enemyFrame);
-
-		// TODO delete
-		//IList<Byte> BulletCollisionList { get; }
-		//IList<Byte> EnemysCollisionList { get; }
 
 		IList<UInt16> EnemysList { get; }
 		IList<UInt16> TargetList { get; }
@@ -67,9 +53,6 @@ namespace WindowsGame.Common.Managers
 
 		public void Initialize(String root)
 		{
-			//BulletCollisionList = new List<Byte>(Constants.MAX_BULLET_SHOOT);
-			//EnemysCollisionList = new List<Byte>(Constants.MAX_ENEMYS_SPAWN);
-
 			collisionRoot = String.Format("{0}{1}/{2}/{3}", root, Constants.CONTENT_DIRECTORY, Constants.DATA_DIRECTORY, SPRITE_DIRECTORY);
 			borderSize = Constants.BorderSize;
 			enemysSize = Constants.EnemySize;
@@ -82,11 +65,6 @@ namespace WindowsGame.Common.Managers
 		{
 			LoadContentEnemys();
 			LoadContentTarget();
-
-			// TODO delete
-			//enemysSize = Constants.EnemySize;
-			//targetSize = Constants.TargetSize;
-			//offsetSize = (Byte)(targetSize - 2 * borderSize);
 		}
 
 		public void LoadContentEnemys()
@@ -291,43 +269,6 @@ namespace WindowsGame.Common.Managers
 			       bulletPosition.Y >= minY &&
 			       bulletPosition.Y <= maxY;
 		}
-
-
-		// // TODO delete
-		//public Boolean CheckOne()
-		//{
-		//    Vector2 targetPosition = MyGame.Manager.SpriteManager.LargeTarget.Position;
-		//    IList<Enemy> enemyTest = MyGame.Manager.EnemyManager.EnemyTest;
-
-		//    return CheckOne(targetPosition, enemyTest);
-		//}
-
-		//public Boolean CheckOne(Vector2 targetPosition, IList<Enemy> EnemyTest)
-		//{
-		//    // TODO implement collision logic between enemies to test and target.
-		//    return false;
-		//}
-
-		//public void ClearCollisionList()
-		//{
-		//    BulletCollisionList.Clear();
-		//    EnemysCollisionList.Clear();
-		//}
-		//public void AddToBulletCollisionList(Byte bulletIndex)
-		//{
-		//    BulletCollisionList.Add(bulletIndex);
-		//}
-		//public void AddToEnemysCollisionList(Byte enemysIndex)
-		//{
-		//    EnemysCollisionList.Add(enemysIndex);
-		//}
-		//public Boolean EnemyCollideTarget(Vector2 enemysPosition, Vector2 targetPosition)
-		//{
-		//    return false;
-		//}
-
-		//public IList<Byte> BulletCollisionList { get; private set; }
-		//public IList<Byte> EnemysCollisionList { get; private set; }
 
 		public IList<UInt16> EnemysList { get; private set; }
 		public IList<UInt16> TargetList { get; private set; }
