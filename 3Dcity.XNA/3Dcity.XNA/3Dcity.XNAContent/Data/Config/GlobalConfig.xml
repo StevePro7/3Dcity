@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Play</ScreenType>
+	<ScreenType>Resume</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<!--<ScreenType>Level</ScreenType>-->
@@ -26,7 +26,7 @@
 	<EventRatio>1.0</EventRatio>
 	<ScoreBlink>true</ScoreBlink>
 	<UpdateStar>true</UpdateStar>
-	<UpdateGrid>true</UpdateGrid>
+	<UpdateGrid>false</UpdateGrid>
 	<RenderBack>true</RenderBack>
 	<RenderIcon>true</RenderIcon>
 	<CoolMusic>false</CoolMusic>

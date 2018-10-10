@@ -52,9 +52,12 @@ namespace WindowsGame.Common.Screens
 				return (Int32)NextScreen;
 			}
 
+			// Target.
 			DetectTarget(gameTime);
 
-			//MyGame.Manager.ScoreManager.Update(gameTime);
+			// Score.
+			UpdateScore(gameTime);
+
 			return (Int32) CurrScreen;
 		}
 
@@ -67,7 +70,8 @@ namespace WindowsGame.Common.Screens
 			DrawSheet02();
 
 			// Text data last!
-			DrawText();
+			DrawTextCommon();
+			MyGame.Manager.ScoreManager.DrawBlink();
 			MyGame.Manager.TextManager.Draw(TextDataList);
 		}
 

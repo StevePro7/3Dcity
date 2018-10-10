@@ -13,7 +13,8 @@ namespace WindowsGame.Common.Screens
 		public override void Initialize()
 		{
 			base.Initialize();
-			UpdateGrid = true;
+			//UpdateGrid = true;
+			UpdateGrid = MyGame.Manager.ConfigManager.GlobalConfigData.UpdateGrid;
 
 			// TODO make delay values configurable!
 			delay1 = 200;
@@ -53,6 +54,7 @@ namespace WindowsGame.Common.Screens
 				flag = !flag;
 			}
 
+			// Begin common code...
 			CheckLevelComplete = false;
 
 			// Target.
@@ -105,7 +107,8 @@ namespace WindowsGame.Common.Screens
 			}
 
 			// Text data last!
-			DrawText();
+			DrawTextCommon();
+			MyGame.Manager.ScoreManager.DrawBlink();
 		}
 
 	}
