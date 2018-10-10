@@ -38,16 +38,6 @@ namespace WindowsGame.SystemTests.Common.Managers
 			ShowConfigData(data);
 		}
 
-		[Test]
-		public void LoadLevelConfigDataTest()
-		{
-			ConfigManager.LoadLevelConfigData(LevelType.Easy);
-			LevelConfigData data = ConfigManager.LevelConfigData;
-
-			Assert.IsNotNull(data);
-			ShowConfigData(data);
-		}
-
 		private static void ShowConfigData(object data)
 		{
 			var fields = data.GetType().GetFields();

@@ -25,11 +25,8 @@ namespace WindowsGame.SystemTests.Common.Managers
 			LevelManager.LoadContent();
 
 			Assert.IsNotNull(LevelManager.LevelNames);
-			//Assert.IsNotNull(LevelManager.LevelRoman);
-			//Assert.That(LevelManager.LevelNames.Count, Is.EqualTo(LevelManager.LevelRoman.Count));
 
 			Print(LevelManager.LevelNames);
-			//Print(LevelManager.LevelRoman);
 		}
 		private static void Print(IEnumerable<string> lines)
 		{
@@ -51,7 +48,6 @@ namespace WindowsGame.SystemTests.Common.Managers
 
 			PrintData(LevelManager.LevelConfigData);
 		}
-
 		private static void PrintData(LevelConfigData data)
 		{
 			var fields = data.GetType().GetFields();

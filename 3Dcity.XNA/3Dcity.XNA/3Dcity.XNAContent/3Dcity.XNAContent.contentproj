@@ -80,20 +80,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Data\Config\LevelConfigEasy.xml">
-      <Name>LevelConfigEasy</Name>
-      <Importer>XmlImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Data\Config\LevelConfigHard.xml">
-      <Name>LevelConfigHard</Name>
-      <Importer>XmlImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Sound\Cheat.wav">
       <Name>Cheat</Name>
       <Importer>WavImporter</Importer>

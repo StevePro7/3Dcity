@@ -11,11 +11,9 @@ namespace WindowsGame.Common.Managers
 		void LoadContent();
 		void LoadGlobalConfigData();
 		void LoadPlaformConfigData(PlatformType platformType);
-		void LoadLevelConfigData(LevelType levelType);
 
 		GlobalConfigData GlobalConfigData { get; }
 		PlatformConfigData PlatformConfigData { get; }
-		LevelConfigData LevelConfigData { get; }
 	}
 
 	public class ConfigManager : IConfigManager 
@@ -55,16 +53,7 @@ namespace WindowsGame.Common.Managers
 			PlatformConfigData = MyGame.Manager.FileManager.LoadXml<PlatformConfigData>(file);
 		}
 
-		public void LoadLevelConfigData(LevelType levelType)
-		{
-			String name = LEVEL_CONFIG_FILENAME.Replace("{0}", levelType.ToString());
-			String file = String.Format("{0}/{1}", configRoot, name);
-			LevelConfigData = MyGame.Manager.FileManager.LoadXml<LevelConfigData>(file);
-		}
-
 		public GlobalConfigData GlobalConfigData { get; private set; }
 		public PlatformConfigData PlatformConfigData { get; private set; }
-		public LevelConfigData LevelConfigData { get; private set; }
-
 	}
 }

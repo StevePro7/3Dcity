@@ -24,7 +24,7 @@ namespace WindowsGame.Common.Managers
 		// Properties.
 		//Vector2[] LevelTextPositions { get; }		// TODO delete
 		IList<String> LevelNames { get; }
-		IList<String> LevelRoman { get; }
+		//IList<String> LevelRoman { get; }			// TODO delete
 		LevelConfigData LevelConfigData { get; }
 		Byte MaximLevel { get; }
 		LevelType LevelType { get; }
@@ -163,7 +163,7 @@ namespace WindowsGame.Common.Managers
 
 		public Vector2[] LevelTextPositions { get; private set; }
 		public IList<String> LevelNames { get; private set; }
-		public IList<String> LevelRoman { get; private set; }
+		//public IList<String> LevelRoman { get; private set; }		// TODO delete
 		public LevelConfigData LevelConfigData { get; private set; }
 		public Byte MaximLevel { get; private set; }
 		public LevelType LevelType { get; private set; }

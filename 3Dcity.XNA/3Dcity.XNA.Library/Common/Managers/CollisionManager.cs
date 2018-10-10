@@ -45,10 +45,6 @@ namespace WindowsGame.Common.Managers
 		public void Initialize()
 		{
 			Initialize(String.Empty);
-
-			enemyFrameOffsets = new Byte[2][];
-			enemyFrameOffsets[(Byte)LevelType.Easy] = new Byte[] { 42, 40, 36, 32, 28, 20, 12, 0 };
-			enemyFrameOffsets[(Byte)LevelType.Hard] = new Byte[] { 46, 44, 40, 35, 28, 20, 14, 4 };
 		}
 
 		public void Initialize(String root)
@@ -59,6 +55,10 @@ namespace WindowsGame.Common.Managers
 			targetSize = Constants.TargetSize;
 			bulletSize = (Byte)(2 * borderSize);
 			offsetSize = (Byte)(targetSize - 2 * borderSize);
+
+			enemyFrameOffsets = new Byte[2][];
+			enemyFrameOffsets[(Byte)LevelType.Easy] = new Byte[] { 42, 40, 36, 32, 28, 20, 12, 0 };
+			enemyFrameOffsets[(Byte)LevelType.Hard] = new Byte[] { 46, 44, 40, 35, 28, 20, 14, 4 };
 		}
 
 		public void LoadContent()
