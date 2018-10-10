@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Runtime.Remoting.Messaging;
-using WindowsGame.Common.Data;
 using Microsoft.Xna.Framework;
+using WindowsGame.Common.Data;
 using WindowsGame.Common.Sprites;
 using WindowsGame.Common.Static;
 using WindowsGame.Master;
@@ -58,6 +57,7 @@ namespace WindowsGame.Common.Managers
 		private String enemiesRoot;
 
 		private const String MATHS_DIRECTORY = "Maths";
+		public const UInt16 DEGREES_PER_CIRCLE = 360;
 
 		public void Initialize()
 		{
@@ -196,7 +196,7 @@ namespace WindowsGame.Common.Managers
 						enemyDelays[key] = GetWaveFrameDelay(enemyFrameDelay, levelConfigData.EnemyFrameRange, levelConfigData.EnemyFrameMinim);
 						break;
 					case SpeedType.Fast:
-						enemyDelays[key] = GetFastFrameDelay();
+						enemyDelays[key] = GetFastFrameDelay(key, EnemyTotal, enemyFrameDelay, levelConfigData.EnemyFrameRange, levelConfigData.EnemyFrameMinim);
 						break;
 					default:
 						enemyDelays[key] = noneFrameDelay;
@@ -212,7 +212,7 @@ namespace WindowsGame.Common.Managers
 		private UInt16 GetWaveFrameDelay(UInt16 enemyFrameDelay, UInt16 enemyFrameRange, UInt16 enemyFrameMinim)
 		{
 			// 360 degrees in sine wave.
-			Byte index = (Byte)MyGame.Manager.RandomManager.Next(360);
+			UInt16 index = (Byte)MyGame.Manager.RandomManager.Next(DEGREES_PER_CIRCLE);
 			Single value = EnemyWaves[index];
 			Int16 multi = (Int16)(value * enemyFrameRange);
 			UInt16 delay = (UInt16)(enemyFrameDelay + multi);
@@ -225,10 +225,28 @@ namespace WindowsGame.Common.Managers
 
 			return delay;
 		}
-
-		private static UInt16 GetFastFrameDelay()
+		private UInt16 GetFastFrameDelay(Byte key, Byte enemyTotal, UInt16 enemyFrameDelay, UInt16 enemyFrameRange, UInt16 enemyFrameMinim)
 		{
-			return 666;
+			Single percentage = 0;
+			if (0 != enemyTotal)
+			{
+				percentage = (Single)(key + 1) / enemyTotal;
+			}
+
+			UInt16 index = (Byte)MyGame.Manager.RandomManager.Next(DEGREES_PER_CIRCLE);
+			Single value = EnemyWaves[index];
+			value = Math.Abs(value);
+			value += percentage;
+			Int16 multi = (Int16)(value * enemyFrameRange);
+			UInt16 delay = (UInt16)(enemyFrameDelay - multi);
+
+			// Prevent from too fast...!
+			if (delay < enemyFrameMinim)
+			{
+				delay = enemyFrameMinim;
+			}
+
+			return delay;
 		}
 
 		public void SpawnOneEnemy(Byte index)
