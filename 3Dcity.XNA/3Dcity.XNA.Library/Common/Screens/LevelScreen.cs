@@ -59,11 +59,12 @@ namespace WindowsGame.Common.Screens
 			if (Selected)
 			{
 				MyGame.Manager.LevelManager.SetLevelIndex(levelIndex);
-				MyGame.Manager.ScoreManager.Reset();
+				MyGame.Manager.ScoreManager.ResetAll();
 				return (Int32) NextScreen;
 			}
 			if (Flag1)
 			{
+				MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Right);
 				return (Int32) CurrScreen;
 			}
 

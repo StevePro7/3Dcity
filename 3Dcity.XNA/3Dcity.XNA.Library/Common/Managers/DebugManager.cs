@@ -34,7 +34,7 @@ namespace WindowsGame.Common.Managers
 			}
 
 			// Reset scores for testing scenario.
-			MyGame.Manager.ScoreManager.Reset();
+			MyGame.Manager.ScoreManager.ResetAll();
 
 			// Reset levels for testing scenario.
 			LevelType LevelType = MyGame.Manager.ConfigManager.GlobalConfigData.LevelType;

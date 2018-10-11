@@ -10,8 +10,11 @@ namespace WindowsGame.Common.Managers
 	{
 		void Initialize();
 		void LoadContent();
-		void Reset();
+		void ResetAll();
 		void ResetLevel();
+		void ResetMisses();
+		void ResetStats();
+		void ResetTimer();
 		void Update(GameTime gameTime);
 		void Draw();
 		void DrawBlink();
@@ -33,7 +36,6 @@ namespace WindowsGame.Common.Managers
 		private Vector2 gameScorePosition;
 		private Vector2 highScorePosition;
 		private TextData[] missTextData;
-		//private TextData textData;
 		private TextData socreTextData;
 		private TextData highTextData;
 		private String gameScoreText;
@@ -48,7 +50,7 @@ namespace WindowsGame.Common.Managers
 		{
 			scoreDelay = MyGame.Manager.ConfigManager.GlobalConfigData.ScoreDelay;
 			SetHighScore(Constants.DEF_HIGH_SCORE);
-			Reset();
+			ResetAll();
 		}
 
 		public void LoadContent()
@@ -63,24 +65,36 @@ namespace WindowsGame.Common.Managers
 			scoreBlink = MyGame.Manager.ConfigManager.GlobalConfigData.ScoreBlink;
 		}
 
-		public void Reset()
+		public void ResetAll()
 		{
-			MissesTotal = 0;
-			ScoreAvoid = 0;
-			ScoreKills = 0;
+			ResetMisses();
+			ResetStats();
+			ResetTimer();
+
 			gameScore = 0;
 			gameScoreText = GetGameScoreText();
-			scoreTimer = 0;
-			scoreFlag = true;
 		}
 		public void ResetLevel()
 		{
+			ResetMisses();
+			ResetStats();
+			ResetTimer();
+		}
+		public void ResetMisses()
+		{
 			MissesTotal = 0;
+		}
+		public void ResetStats()
+		{
 			ScoreAvoid = 0;
 			ScoreKills = 0;
+		}
+		public void ResetTimer()
+		{
 			scoreTimer = 0;
 			scoreFlag = true;
 		}
+
 
 		public void Update(GameTime gameTime)
 		{

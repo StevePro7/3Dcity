@@ -14,7 +14,7 @@ namespace WindowsGame.Common.Data
 		public Boolean LoadAudio;
 		public Boolean PlayAudio;
 		public UInt16 StarDelay;
-		public UInt16 GridDelay;		// TODO delete
+		//public UInt16 GridDelay;		// TODO delete
 		public UInt16 ExplodeDelay;
 		public UInt16 SplashDelay;
 		public UInt16 SelectDelay;
@@ -23,6 +23,7 @@ namespace WindowsGame.Common.Data
 		public UInt16 LoadDelay;
 		public UInt16 ReadyDelay;
 		public UInt16 DeadDelay;
+		public UInt16 ResumeDelay;
 		public UInt16 OverDelay;
 		public UInt16 ScoreDelay;
 		public Single EventRatio;
