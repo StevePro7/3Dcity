@@ -7,13 +7,25 @@ namespace WindowsGame.Common.Sprites
 {
 	public class Enemy : BaseSprite
 	{
-		private readonly IList<Byte> blinkFrame;
+		private IList<Byte> blinkFrame;
 
 		public Enemy()
 		{
 			FrameDelay = new UInt16[Constants.MAX_ENEMYS_FRAME];
 			FrameImage = new Byte[] { 0, 0, 1, 2, 3, 4, 5, 6, 7, 7, 7, 7, 7 };
-			blinkFrame = new List<Byte>{ 0, 9, 11 };
+		}
+
+		public void SetBlinkd(Boolean enemyBlink)
+		{
+			// Facility to disable blink for testing.
+			blinkFrame = new List<Byte> { 0 };
+			if (!enemyBlink)
+			{
+				return;
+			}
+
+			blinkFrame.Add(9);
+			blinkFrame.Add(11);
 		}
 
 		public void Reset()

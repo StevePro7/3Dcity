@@ -24,6 +24,7 @@ namespace WindowsGame.Common.Data
 		public UInt16 ReadyDelay;
 		public UInt16 ScoreDelay;
 		public Single EventRatio;
+		public Boolean EnemyBlink;
 		public Boolean ScoreBlink;
 		public Boolean UpdateStar;
 		public Boolean UpdateGrid;

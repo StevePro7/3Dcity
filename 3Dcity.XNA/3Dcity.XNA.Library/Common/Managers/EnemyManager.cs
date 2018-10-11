@@ -57,6 +57,7 @@ namespace WindowsGame.Common.Managers
 			EnemyOffsetX = new UInt16[maxEnemySpawn];
 			EnemyOffsetY = new UInt16[maxEnemySpawn];
 
+			Boolean enemyBlink = MyGame.Manager.ConfigManager.GlobalConfigData.EnemyBlink;
 			for (Byte index = 0; index < maxEnemySpawn; index++)
 			{
 				EnemyOffsetX[index] = (UInt16)(Constants.ENEMY_OFFSET_X[index] + Constants.GameOffsetX);
@@ -66,6 +67,7 @@ namespace WindowsGame.Common.Managers
 				enemy.Initialize(Constants.MAX_ENEMYS_FRAME);
 				enemy.SetID(index);
 				enemy.SetSlotID();
+				enemy.SetBlinkd(enemyBlink);
 				EnemyList.Add(enemy);
 			}
 
