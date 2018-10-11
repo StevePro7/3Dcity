@@ -1,5 +1,9 @@
 # 3Dcity
 
+THINGS TO Check
+When hold down arrow key and game over - the small target does not reset to center
+When instant death the miss count increments - need to refactor this for invincibility
+
 Update code so that once quit and resume DON'T go to ready
 [because currently goes to Play next and spawn all enemies]
 
