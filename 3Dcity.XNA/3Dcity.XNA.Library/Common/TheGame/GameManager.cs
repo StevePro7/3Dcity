@@ -15,6 +15,7 @@ namespace WindowsGame.Common.TheGame
 		IContentManager ContentManager { get; }
 		IControlManager ControlManager { get; }
 		IDebugManager DebugManager { get; }
+		IDelayManager DelayManager { get; }
 		IDeviceManager DeviceManager { get; }
 		IEnemyManager EnemyManager { get; }
 		IEventManager EventManager { get; }
@@ -51,6 +52,7 @@ namespace WindowsGame.Common.TheGame
 			IContentManager contentManager,
 			IControlManager controlManager,
 			IDebugManager debugManager,
+			IDelayManager delayManager,
 			IDeviceManager deviceManager,
 			IEnemyManager enemyManager,
 			IEventManager eventManager,
@@ -83,6 +85,7 @@ namespace WindowsGame.Common.TheGame
 			ContentManager = contentManager;
 			ControlManager = controlManager;
 			DebugManager = debugManager;
+			DelayManager = delayManager;
 			DeviceManager = deviceManager;
 			EnemyManager = enemyManager;
 			EventManager = eventManager;
@@ -115,6 +118,7 @@ namespace WindowsGame.Common.TheGame
 		public IContentManager ContentManager { get; private set; }
 		public IControlManager ControlManager { get; private set; }
 		public IDebugManager DebugManager { get; private set; }
+		public IDelayManager DelayManager { get; private set; }
 		public IDeviceManager DeviceManager { get; private set; }
 		public IEnemyManager EnemyManager { get; private set; }
 		public IEventManager EventManager { get; private set; }

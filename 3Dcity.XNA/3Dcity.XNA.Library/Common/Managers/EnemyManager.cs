@@ -11,12 +11,10 @@ namespace WindowsGame.Common.Managers
 	public interface IEnemyManager 
 	{
 		void Initialize();
-		void Initialize(String root);
 		void LoadContent();
 		void Reset(LevelType theLevelType, LevelConfigData theLevelConfigData);
 		void SpawnAllEnemies();
 		void SpawnOneEnemy(Byte index);
-		void LoadEnemyWaves();
 		Boolean CheckThisEnemy(Byte index);
 		Boolean CheckEnemiesNone();
 		void Update(GameTime gameTime);
@@ -31,7 +29,6 @@ namespace WindowsGame.Common.Managers
 		UInt16[] EnemyOffsetX { get; }
 		UInt16[] EnemyOffsetY { get; }
 
-		IList<Single> EnemyWaves { get; }
 		Byte EnemySpawn { get; }
 		Byte EnemyTotal { get; }
 		Byte EnemyStart { get; }
@@ -47,19 +44,9 @@ namespace WindowsGame.Common.Managers
 		private IDictionary<Byte, UInt16> enemyDelays;
 		private Byte maxEnemySpawn;
 		private Vector2[] progressPosition;
-		private String enemiesRoot;
-
-		private const String MATHS_DIRECTORY = "Maths";
-		public const UInt16 DEGREES_PER_CIRCLE = 360;
 
 		public void Initialize()
 		{
-			Initialize(String.Empty);
-		}
-
-		public void Initialize(String root)
-		{
-			enemiesRoot = String.Format("{0}{1}/{2}/{3}", root, Constants.CONTENT_DIRECTORY, Constants.DATA_DIRECTORY, MATHS_DIRECTORY);
 			maxEnemySpawn = Constants.MAX_ENEMYS_SPAWN;
 
 			EnemyList = new List<Enemy>(maxEnemySpawn);
@@ -96,8 +83,6 @@ namespace WindowsGame.Common.Managers
 				Enemy enemy = EnemyList[index];
 				enemy.LoadContent(MyGame.Manager.ImageManager.EnemyRectangles);
 			}
-
-			LoadEnemyWaves();
 		}
 
 		public void Reset(LevelType theLevelType, LevelConfigData theLevelConfigData)
@@ -154,17 +139,28 @@ namespace WindowsGame.Common.Managers
 		public void SpawnAllEnemies()
 		{
 			// Calculate frame delays for all enemy ships.
-			ResetEnemyDelays();
-			CalcdEnemyDelays();
+			MyGame.Manager.DelayManager.ResetEnemyDelays(enemyDelays, levelConfigData, EnemyTotal);
+			MyGame.Manager.DelayManager.CalcdEnemyDelays(enemyDelays, levelConfigData, EnemyTotal);
 
 			for (Byte index = 0; index < maxEnemySpawn; index++)
 			{
 				SpawnOneEnemy(index);
 
+				//REPEAT
 				// Set the start delay for the initial spawned enemies.
-				UInt16 startFrameDelay = GetStartFrameDelay(index, levelConfigData.EnemyStartDelay, levelConfigData.EnemyStartDelta);
-				EnemyList[index].Start(startFrameDelay);
+				//UInt16 startFrameDelay = GetStartFrameDelay(index, levelConfigData.EnemyStartDelay, levelConfigData.EnemyStartDelta);
+				//EnemyList[index].Start(startFrameDelay);
 			}
+
+			const Byte first = 0;
+			UInt16 startFrameDelay = GetStartFrameDelay(first, levelConfigData.EnemyStartDelay, levelConfigData.EnemyStartDelta);
+			EnemyList[first].Start(startFrameDelay);
+			UInt16 totalDelay = GetTotalDelay(first);
+		}
+
+		private UInt16 GetTotalDelay(Byte index)
+		{
+			return 0;
 		}
 
 		public void SpawnOneEnemy(Byte index)
@@ -202,12 +198,6 @@ namespace WindowsGame.Common.Managers
 			EnemyDict.Add((Byte)slotID, enemy);
 
 			EnemySpawn++;
-		}
-
-		public void LoadEnemyWaves()
-		{
-			String file = String.Format("{0}/EnemyWaves.txt", enemiesRoot);
-			EnemyWaves = MyGame.Manager.FileManager.LoadTxt<Single>(file);
 		}
 
 		public Boolean CheckThisEnemy(Byte index)
@@ -345,107 +335,6 @@ namespace WindowsGame.Common.Managers
 			return (UInt16)(delay + delta);
 		}
 
-		private void ResetEnemyDelays()
-		{
-			enemyDelays.Clear();
-			for (Byte index = 0; index < EnemyTotal; index++)
-			{
-				enemyDelays.Add(index, (Byte)SpeedType.None);
-			}
-
-			Byte enemySpeedWave = (Byte)(levelConfigData.EnemySpeedWave / 100.0f * levelConfigData.EnemyTotal);
-			ResetEnemySpeedTypes(enemySpeedWave, SpeedType.Wave);
-
-			Byte enemySpeedFast = (Byte)(levelConfigData.EnemySpeedFast / 100.0f * levelConfigData.EnemyTotal);
-			ResetEnemySpeedTypes(enemySpeedFast, SpeedType.Fast);
-		}
-		private void ResetEnemySpeedTypes(Byte count, SpeedType speedType)
-		{
-			for (Byte index = 0; index < count; index++)
-			{
-				while (true)
-				{
-					Byte key = (Byte)MyGame.Manager.RandomManager.Next(EnemyTotal);
-					if ((Byte)SpeedType.None == enemyDelays[key])
-					{
-						enemyDelays[key] = (Byte)speedType;
-						break;
-					}
-				}
-			}
-		}
-
-		private void CalcdEnemyDelays()
-		{
-			UInt16 enemyFrameDelay = levelConfigData.EnemyFrameDelay;
-			UInt16 enemyFrameDelta = levelConfigData.EnemyFrameDelta;
-
-			UInt16 noneFrameDelay = GetNoneFrameDelay(enemyFrameDelay, enemyFrameDelta);
-			for (Byte key = 0; key < EnemyTotal; key++)
-			{
-				SpeedType speedType = (SpeedType)enemyDelays[key];
-				switch (speedType)
-				{
-					case SpeedType.None:
-						enemyDelays[key] = noneFrameDelay;
-						break;
-					case SpeedType.Wave:
-						enemyDelays[key] = GetWaveFrameDelay(enemyFrameDelay, levelConfigData.EnemyFrameRange, levelConfigData.EnemyFrameMinim);
-						break;
-					case SpeedType.Fast:
-						enemyDelays[key] = GetFastFrameDelay(key, EnemyTotal, enemyFrameDelay, levelConfigData.EnemyFrameRange, levelConfigData.EnemyFrameMinim);
-						break;
-					default:
-						enemyDelays[key] = noneFrameDelay;
-						break;
-				}
-			}
-		}
-		private static UInt16 GetNoneFrameDelay(UInt16 enemyFrameDelay, UInt16 enemyFrameDelta)
-		{
-			UInt16 delta = (UInt16)MyGame.Manager.RandomManager.Next(enemyFrameDelta);
-			return (UInt16)(enemyFrameDelay + delta);
-		}
-		private UInt16 GetWaveFrameDelay(UInt16 enemyFrameDelay, UInt16 enemyFrameRange, UInt16 enemyFrameMinim)
-		{
-			// 360 degrees in sine wave.
-			UInt16 index = (Byte)MyGame.Manager.RandomManager.Next(DEGREES_PER_CIRCLE);
-			Single value = EnemyWaves[index];
-			Int16 multi = (Int16)(value * enemyFrameRange);
-			UInt16 delay = (UInt16)(enemyFrameDelay + multi);
-
-			// Prevent from too fast...!
-			if (delay < enemyFrameMinim)
-			{
-				delay = enemyFrameMinim;
-			}
-
-			return delay;
-		}
-		private UInt16 GetFastFrameDelay(Byte key, Byte enemyTotal, UInt16 enemyFrameDelay, UInt16 enemyFrameRange, UInt16 enemyFrameMinim)
-		{
-			Single percentage = 0;
-			if (0 != enemyTotal)
-			{
-				percentage = (Single)(key + 1) / enemyTotal;
-			}
-
-			UInt16 index = (Byte)MyGame.Manager.RandomManager.Next(DEGREES_PER_CIRCLE);
-			Single value = EnemyWaves[index];
-			value = Math.Abs(value);
-			value += percentage;
-			Int16 multi = (Int16)(value * enemyFrameRange);
-			UInt16 delay = (UInt16)(enemyFrameDelay - multi);
-
-			// Prevent from too fast...!
-			if (delay < enemyFrameMinim)
-			{
-				delay = enemyFrameMinim;
-			}
-
-			return delay;
-		}
-
 
 		public IList<Enemy> EnemyList { get; private set; }
 		public IList<Enemy> EnemyTest { get; private set; }
@@ -454,7 +343,6 @@ namespace WindowsGame.Common.Managers
 		public UInt16[] EnemyOffsetX { get; private set; }
 		public UInt16[] EnemyOffsetY { get; private set; }
 
-		public IList<Single> EnemyWaves { get; private set; }
 		public Byte EnemySpawn { get; private set; }
 		public Byte EnemyTotal { get; private set; }
 		public Byte EnemyStart { get; private set; }

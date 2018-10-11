@@ -19,6 +19,7 @@ namespace WindowsGame.UnitTests
 		protected IContentManager ContentManager;
 		protected IControlManager ControlManager;
 		protected IDebugManager DebugManager;
+		protected IDelayManager DelayManager;
 		protected IDeviceManager DeviceManager;
 		protected IEnemyManager EnemyManager;
 		protected IEventManager EventManager;
@@ -55,6 +56,7 @@ namespace WindowsGame.UnitTests
 			ContentManager = MockRepository.GenerateStub<IContentManager>();
 			ControlManager = MockRepository.GenerateStub<IControlManager>();
 			DebugManager = MockRepository.GenerateStub<IDebugManager>();
+			DelayManager = MockRepository.GenerateStub<IDelayManager>();
 			DeviceManager = MockRepository.GenerateStub<IDeviceManager>();
 			EnemyManager = MockRepository.GenerateStub<IEnemyManager>();
 			EventManager = MockRepository.GenerateStub<IEventManager>();
@@ -91,6 +93,7 @@ namespace WindowsGame.UnitTests
 				ContentManager,
 				ControlManager,
 				DebugManager,
+				DelayManager,
 				DeviceManager,
 				EnemyManager,
 				EventManager,
@@ -131,6 +134,7 @@ namespace WindowsGame.UnitTests
 			ContentManager = null;
 			ControlManager = null;
 			DebugManager = null;
+			DelayManager = null;
 			DeviceManager = null;
 			EnemyManager = null;
 			EventManager = null;

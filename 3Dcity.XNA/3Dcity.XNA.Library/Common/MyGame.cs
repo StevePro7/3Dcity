@@ -55,6 +55,7 @@ namespace WindowsGame.Common
 			Manager.CommandManager.Initialize();
 			Manager.ControlManager.Initialize();
 			Manager.DebugManager.Initialize();
+			Manager.DelayManager.Initialize();
 			Manager.DeviceManager.Initialize();
 			Manager.EnemyManager.Initialize();
 			Manager.EventManager.Initialize();
@@ -73,6 +74,7 @@ namespace WindowsGame.Common
 			Manager.CollisionManager.LoadContent();
 			Manager.ControlManager.LoadContent();
 			Manager.CommandManager.LoadContent();
+			Manager.DelayManager.LoadContent();
 			Manager.EnemyManager.LoadContent();
 			
 			Manager.LevelManager.LoadContent();

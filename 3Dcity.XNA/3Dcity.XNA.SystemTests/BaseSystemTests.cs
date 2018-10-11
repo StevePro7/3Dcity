@@ -22,6 +22,7 @@ namespace WindowsGame.SystemTests
 		protected IContentManager ContentManager;
 		protected IControlManager ControlManager;
 		protected IDebugManager DebugManager;
+		protected IDelayManager DelayManager;
 		protected IDeviceManager DeviceManager;
 		protected IEnemyManager EnemyManager;
 		protected IEventManager EventManager;

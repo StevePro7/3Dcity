@@ -7,7 +7,7 @@
 	<BulletMaxim>5</BulletMaxim>
 	<BulletFrame>80</BulletFrame>	<!-- how fast bullet travels -->
 	<BulletShoot>120</BulletShoot>	<!-- delay between bullet shots -->
-	<EnemySpawn>5</EnemySpawn>
+	<EnemySpawn>3</EnemySpawn>
 	<EnemyTotal>10</EnemyTotal>
 	<EnemyFrameDelay>1000</EnemyFrameDelay>
 	<EnemyFrameDelta>0</EnemyFrameDelta>
@@ -15,9 +15,9 @@
 	<EnemyFrameRange>200</EnemyFrameRange>
 	<EnemyStartDelay>2000</EnemyStartDelay>
 	<EnemyStartDelta>0</EnemyStartDelta>
-	<EnemySpeedNone>0</EnemySpeedNone>
-	<EnemySpeedWave>0</EnemySpeedWave>
-	<EnemySpeedFast>100</EnemySpeedFast>
+	<EnemySpeedNone>60</EnemySpeedNone>
+	<EnemySpeedWave>20</EnemySpeedWave>
+	<EnemySpeedFast>20</EnemySpeedFast>
 	<!--
 	<EnemyDelay>1000</EnemyDelay>
 	<EnemyStart>5000</EnemyStart>

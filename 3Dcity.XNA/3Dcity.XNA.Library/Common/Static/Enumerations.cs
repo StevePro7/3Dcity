@@ -34,6 +34,20 @@
 		Fast = 2
 	}
 
+	public enum SpawnType
+	{
+		Repeat,
+		Spaced
+	}
+
+	public enum MoveType
+	{
+		None,
+		Horz,
+		Vert,
+		Both
+	}
+
 	public enum ShipType
 	{
 		Ship = 0,

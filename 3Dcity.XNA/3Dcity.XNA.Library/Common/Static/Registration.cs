@@ -27,6 +27,7 @@ namespace WindowsGame.Common.Static
 			IoCContainer.Initialize<IContentManager, ContentManager>();
 			IoCContainer.Initialize<IControlManager, ControlManager>();
 			IoCContainer.Initialize<IDebugManager, DebugManager>();
+			IoCContainer.Initialize<IDelayManager, DelayManager>();
 			IoCContainer.Initialize<IEnemyManager, EnemyManager>();
 			IoCContainer.Initialize<IEventManager, EventManager>();
 			IoCContainer.Initialize<IExplosionManager, ExplosionManager>();
