@@ -1,4 +1,5 @@
 ﻿using System;
+using WindowsGame.Common.Sprites;
 using Microsoft.Xna.Framework;
 using WindowsGame.Common.Static;
 using WindowsGame.Master.Interfaces;
@@ -9,6 +10,7 @@ namespace WindowsGame.Common.Screens
 	{
 		private UInt16 bigDelay, medDelay, smlDelay;
 
+		private Enemy deadEnemy;
 		private Vector2 deathPosition;
 		private String deathText;
 
@@ -35,9 +37,14 @@ namespace WindowsGame.Common.Screens
 		{
 			MyGame.Manager.SoundManager.StopMusic();
 
+			deadEnemy = MyGame.Manager.StateManager.DeadEnemy;
 			Boolean miss = Constants.MAX_MISSES == MyGame.Manager.ScoreManager.MissesTotal;
 			deathText = miss ? Globalize.DEAD_OPTION1 : Globalize.DEAD_OPTION2;
 			smlDelay = miss ? (UInt16) 600 : Constants.SLIGHT_PAUSE;
+
+			Boolean dead = Constants.MAX_MISSES != MyGame.Manager.ScoreManager.MissesTotal;
+			deathText = dead ? Globalize.DEAD_OPTION2 : Globalize.DEAD_OPTION1;
+			smlDelay = dead ? Constants.SLIGHT_PAUSE : (UInt16) 600;
 
 			base.LoadContent();
 		}
@@ -72,14 +79,11 @@ namespace WindowsGame.Common.Screens
 
 			// Now can check to pro actively goto next screen.
 			Boolean status = MyGame.Manager.InputManager.StatusBar();
-			if (status)
-			{
-				return (Int32) NextScreen;
-			}
 
 			// Time expired so advance.
-			if (Timer > bigDelay)
+			if (status || Timer > bigDelay)
 			{
+				MyGame.Manager.StateManager.SetDeadEnemy(null);
 				return (Int32) NextScreen;
 			}
 
@@ -95,6 +99,13 @@ namespace WindowsGame.Common.Screens
 			// Sprite sheet #02.
 			MyGame.Manager.RenderManager.DrawStatusOuter();
 			MyGame.Manager.RenderManager.DrawStatusInner(StatusType.Yellow, MyGame.Manager.EnemyManager.EnemyPercentage);
+
+			// Draw dead enemy on instant death only.
+			if (null != deadEnemy)
+			{
+				deadEnemy.Draw();
+			}
+
 			DrawSheet02();
 			MyGame.Manager.SpriteManager.LargeTarget.Draw();
 			DrawBacked();

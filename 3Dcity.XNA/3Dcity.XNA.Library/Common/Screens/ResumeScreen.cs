@@ -20,9 +20,8 @@ namespace WindowsGame.Common.Screens
 			bigDelay = MyGame.Manager.ConfigManager.GlobalConfigData.ResumeDelay;
 			smlDelay = 200;
 
-			// Resume screen cannot die not matter what!
-			Invincibile = true;
-			PrevScreen = ScreenType.Ready;
+			//PrevScreen = ScreenType.Ready;
+			PrevScreen = ScreenType.Play;
 
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
@@ -30,6 +29,9 @@ namespace WindowsGame.Common.Screens
 		public override void LoadContent()
 		{
 			base.LoadContent();
+
+			// Resume screen cannot die not matter what!
+			Invincibile = true;
 			NextScreen = CurrScreen;
 
 			timer = 0;
@@ -48,7 +50,7 @@ namespace WindowsGame.Common.Screens
 			Boolean statusBar = MyGame.Manager.InputManager.StatusBar();
 			if (statusBar)
 			{
-				return (Int32)NextScreen;
+				return (Int32) NextScreen;
 			}
 
 			// Be careful on this screen as re-use logic from PlayScreen:
@@ -74,11 +76,6 @@ namespace WindowsGame.Common.Screens
 			// Target.
 			DetectTarget(gameTime);
 
-			// Bullets.
-			//DetectBullets();
-			//UpdateBullets(gameTime);
-			//VerifyBullets();
-
 			// Explosions.
 			UpdateExplosions(gameTime);
 			VerifyExplosions();
@@ -90,9 +87,6 @@ namespace WindowsGame.Common.Screens
 			{
 				return (Int32) NextScreen;
 			}
-
-			// Icons.
-			//UpdateIcons();
 
 			// Score.
 			UpdateScore(gameTime);

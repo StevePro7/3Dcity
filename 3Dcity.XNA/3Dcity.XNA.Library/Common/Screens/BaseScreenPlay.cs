@@ -191,8 +191,9 @@ namespace WindowsGame.Common.Screens
 					if (test)
 					{
 						// Do NOT reset enemy here as we want to see Target killed by Enemy!
+						MyGame.Manager.StateManager.SetDeadEnemy(enemy);
 						NextScreen = ScreenType.Dead;
-						return;
+						//return;
 					}
 
 					// Enemy not kill target but missed so increment miss total.
@@ -203,7 +204,7 @@ namespace WindowsGame.Common.Screens
 						// If maximum misses then game over.
 						enemy.Reset();
 						NextScreen = ScreenType.Dead;
-						return;
+						//return;
 					}
 				}
 

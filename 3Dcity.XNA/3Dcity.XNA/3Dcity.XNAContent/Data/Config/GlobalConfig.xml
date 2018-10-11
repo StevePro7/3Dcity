@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Quit</ScreenType>
+	<ScreenType>Load</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<!--<ScreenType>Level</ScreenType>-->
@@ -26,7 +26,7 @@
 	<OverDelay>16000</OverDelay>		<!-- 16000 is a keeper !-->
 	<ScoreDelay>600</ScoreDelay>
 	<EventRatio>1.0</EventRatio>
-	<EnemyBlink>true</EnemyBlink>
+	<EnemyBlink>false</EnemyBlink>
 	<ScoreBlink>true</ScoreBlink>
 	<UpdateStar>true</UpdateStar>
 	<UpdateGrid>true</UpdateGrid>
