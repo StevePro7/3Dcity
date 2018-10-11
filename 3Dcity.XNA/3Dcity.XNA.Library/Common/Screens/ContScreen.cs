@@ -7,6 +7,8 @@ namespace WindowsGame.Common.Screens
 {
 	public class ContScreen : BaseScreenSelect, IScreen
 	{
+		private Vector2 killspace;
+
 		public override void Initialize()
 		{
 			base.Initialize();
@@ -29,6 +31,9 @@ namespace WindowsGame.Common.Screens
 			NextScreen = CurrScreen;
 			SelectType = 0;
 
+			killspace = MyGame.Manager.StateManager.KillSpace;
+			MyGame.Manager.SpriteManager.KillEnemy.SetPosition(killspace);
+
 			MyGame.Manager.SoundManager.PlayMusic(SongType.ContMusic, true);
 		}
 
@@ -45,6 +50,8 @@ namespace WindowsGame.Common.Screens
 			if (Selected)
 			{
 				MyGame.Manager.ScoreManager.ResetMisses();
+				MyGame.Manager.StateManager.SetKillSpace(Vector2.Zero);
+
 				NextScreen = SelectType == 0 ? ScreenType.Resume : ScreenType.Over;
 				return (Int32) NextScreen;
 			}
@@ -84,6 +91,13 @@ namespace WindowsGame.Common.Screens
 			// Sprite sheet #02.
 			MyGame.Manager.RenderManager.DrawStatusOuter();
 			MyGame.Manager.RenderManager.DrawStatusInner(StatusType.Yellow, MyGame.Manager.EnemyManager.EnemyPercentage);
+
+			// Draw dead enemy on instant death only.
+			if (Vector2.Zero != killspace)
+			{
+				MyGame.Manager.SpriteManager.KillEnemy.Draw();
+			}
+
 			DrawSheet02();
 			MyGame.Manager.SpriteManager.LargeTarget.Draw();
 			DrawBacked();

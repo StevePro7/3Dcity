@@ -61,7 +61,7 @@ namespace WindowsGame.Common.Screens
 			enemyTotalText = EnemyTotal.ToString().PadLeft(3, '0');
 
 			MyGame.Manager.RenderManager.SetGridDelay((UInt16)(LevelConfigData.GridDelay * 2));
-			MyGame.Manager.StateManager.SetDeadEnemy(null);
+			MyGame.Manager.StateManager.SetKillSpace(Vector2.Zero);
 			MyGame.Manager.EnemyManager.SpawnAllEnemies();
 			//MyGame.Manager.SoundManager.PlayMusic(SongType.GameMusic);
 		}

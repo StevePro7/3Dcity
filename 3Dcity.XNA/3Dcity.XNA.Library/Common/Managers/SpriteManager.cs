@@ -21,6 +21,7 @@ namespace WindowsGame.Common.Managers
 		// Properties.
 		SmallTarget SmallTarget { get; }
 		LargeTarget LargeTarget { get; }
+		Enemy KillEnemy { get; }
 	}
 
 	public class SpriteManager : ISpriteManager
@@ -34,12 +35,17 @@ namespace WindowsGame.Common.Managers
 			smallPosition = new Vector2(80, 360 + Constants.GameOffsetY);
 			largePosition = new Vector2((Constants.ScreenWide - 64) / 2.0f, 250 + Constants.GameOffsetY);
 			TheInit();
+
+			KillEnemy = new Enemy();
+			KillEnemy.SetDeath();
+			KillEnemy.SetBlinkd(false);
 		}
 
 		public void LoadContent()
 		{
 			LargeTarget.LoadContent(MyGame.Manager.ImageManager.TargetLargeRectangle);
 			SmallTarget.LoadContent(MyGame.Manager.ImageManager.TargetSmallRectangle);
+			KillEnemy.LoadContent(MyGame.Manager.ImageManager.EnemyRectangles);
 		}
 
 		public void Reset()
@@ -102,6 +108,6 @@ namespace WindowsGame.Common.Managers
 
 		public SmallTarget SmallTarget { get; private set; }
 		public LargeTarget LargeTarget { get; private set; }
-
+		public Enemy KillEnemy { get; private set; }
 	}
 }

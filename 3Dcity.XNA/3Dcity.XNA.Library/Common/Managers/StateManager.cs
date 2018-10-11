@@ -1,5 +1,6 @@
 ﻿using System;
 using WindowsGame.Common.Sprites;
+using Microsoft.Xna.Framework;
 
 namespace WindowsGame.Common.Managers
 {
@@ -13,14 +14,14 @@ namespace WindowsGame.Common.Managers
 		void SetCoolMusic(Boolean coolMusic);
 		void SetIsGodMode(Boolean isGodMode);
 		void SetCheatGame(Boolean cheatGame);
-		void SetDeadEnemy(Enemy enemy);
+		void SetKillSpace(Vector2 position);
 
 		Boolean GamePause { get; }
 		Boolean GameQuiet { get; }
 		Boolean CoolMusic { get; }
 		Boolean IsGodMode { get; }
 		Boolean CheatGame { get; }
-		Enemy DeadEnemy { get; }
+		Vector2 KillSpace { get; }
 	}
 
 	public class StateManager : IStateManager
@@ -61,9 +62,9 @@ namespace WindowsGame.Common.Managers
 			CheatGame = cheatGame;
 		}
 
-		public void SetDeadEnemy(Enemy enemy)
+		public void SetKillSpace(Vector2 position)
 		{
-			DeadEnemy = enemy;
+			KillSpace = position;
 		}
 
 		public Boolean GamePause { get; private set; }
@@ -71,6 +72,6 @@ namespace WindowsGame.Common.Managers
 		public Boolean CoolMusic { get; private set; }
 		public Boolean IsGodMode { get; private set; }
 		public Boolean CheatGame { get; private set; }
-		public Enemy DeadEnemy { get; private set; }
+		public Vector2 KillSpace { get; private set; }
 	}
 }

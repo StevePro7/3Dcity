@@ -191,7 +191,7 @@ namespace WindowsGame.Common.Screens
 					if (test)
 					{
 						// Do NOT reset enemy here as we want to see Target killed by Enemy!
-						MyGame.Manager.StateManager.SetDeadEnemy(enemy);
+						MyGame.Manager.StateManager.SetKillSpace(enemy.Position);
 						NextScreen = ScreenType.Dead;
 						//return;
 					}

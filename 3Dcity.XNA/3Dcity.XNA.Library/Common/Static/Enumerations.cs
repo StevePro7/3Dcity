@@ -24,6 +24,7 @@
 		Move,
 		Test,
 		Dead,
+		Kill,
 		None
 	}
 

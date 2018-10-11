@@ -1,5 +1,4 @@
 ﻿using System;
-using WindowsGame.Common.Sprites;
 using Microsoft.Xna.Framework;
 using WindowsGame.Common.Static;
 using WindowsGame.Master.Interfaces;
@@ -10,7 +9,7 @@ namespace WindowsGame.Common.Screens
 	{
 		private UInt16 bigDelay, medDelay, smlDelay;
 
-		private Enemy deadEnemy;
+		private Vector2 killspace;
 		private Vector2 deathPosition;
 		private String deathText;
 
@@ -37,7 +36,9 @@ namespace WindowsGame.Common.Screens
 		{
 			MyGame.Manager.SoundManager.StopMusic();
 
-			deadEnemy = MyGame.Manager.StateManager.DeadEnemy;
+			killspace = MyGame.Manager.StateManager.KillSpace;
+			MyGame.Manager.SpriteManager.KillEnemy.SetPosition(killspace);
+
 			Boolean miss = Constants.MAX_MISSES == MyGame.Manager.ScoreManager.MissesTotal;
 			deathText = miss ? Globalize.DEAD_OPTION1 : Globalize.DEAD_OPTION2;
 			smlDelay = miss ? (UInt16) 600 : Constants.SLIGHT_PAUSE;
@@ -83,7 +84,6 @@ namespace WindowsGame.Common.Screens
 			// Time expired so advance.
 			if (status || Timer > bigDelay)
 			{
-				MyGame.Manager.StateManager.SetDeadEnemy(null);
 				return (Int32) NextScreen;
 			}
 
@@ -101,9 +101,9 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.RenderManager.DrawStatusInner(StatusType.Yellow, MyGame.Manager.EnemyManager.EnemyPercentage);
 
 			// Draw dead enemy on instant death only.
-			if (null != deadEnemy)
+			if (Vector2.Zero != killspace)
 			{
-				deadEnemy.Draw();
+				MyGame.Manager.SpriteManager.KillEnemy.Draw();
 			}
 
 			DrawSheet02();

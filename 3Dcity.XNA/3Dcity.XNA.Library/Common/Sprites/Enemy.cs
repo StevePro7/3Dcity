@@ -38,6 +38,14 @@ namespace WindowsGame.Common.Sprites
 			EnemyLaunch = false;
 		}
 
+		public void SetDeath()
+		{
+			Position = Vector2.Zero;
+			EnemyType = EnemyType.Kill;
+			FrameCount = 12;
+			FrameIndex = FrameImage[FrameCount];
+		}
+
 		public void Spawn(Byte slotID, UInt16 frameDelay, Vector2 position, Rectangle bounds, LevelType levelType)
 		{
 			SetSlotID(slotID);
@@ -104,11 +112,6 @@ namespace WindowsGame.Common.Sprites
 
 		public override void Draw()
 		{
-			//if (EnemyType.Move != EnemyType)
-			//{
-			//    return;
-			//}
-
 			if (EnemyType.Dead == EnemyType)
 			{
 				return;
