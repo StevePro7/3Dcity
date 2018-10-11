@@ -64,7 +64,7 @@ namespace WindowsGame.Common.Screens
 				}
 
 				// TODO check!
-				MyGame.Manager.SoundManager.PlaySoundEffect();
+				//MyGame.Manager.SoundManager.PlaySoundEffect(Bullet);
 
 				Vector2 position = MyGame.Manager.SpriteManager.LargeTarget.Position;
 				MyGame.Manager.BulletManager.Shoot((Byte)bulletIndex, position);
@@ -196,6 +196,7 @@ namespace WindowsGame.Common.Screens
 					}
 
 					// Enemy not kill target but missed so increment miss total.
+					MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Wrong);
 					MyGame.Manager.ScoreManager.IncrementMisses();
 					if (MyGame.Manager.ScoreManager.MissesTotal >= Constants.MAX_MISSES)
 					{

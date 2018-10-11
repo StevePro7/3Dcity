@@ -22,6 +22,7 @@ namespace WindowsGame.Common.Data
 		public UInt16 TitleDelay;
 		public UInt16 LoadDelay;
 		public UInt16 ReadyDelay;
+		public UInt16 DeadDelay;
 		public UInt16 ScoreDelay;
 		public Single EventRatio;
 		public Boolean EnemyBlink;
