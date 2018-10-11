@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Play</ScreenType>
+	<ScreenType>Over</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<!--<ScreenType>Level</ScreenType>-->
@@ -21,7 +21,8 @@
 	<TitleDelay>800</TitleDelay>
 	<LoadDelay>2500</LoadDelay>
 	<ReadyDelay>2500</ReadyDelay>
-	<DeadDelay>8000</DeadDelay>
+	<DeadDelay>3000</DeadDelay>
+	<OverDelay>16000</OverDelay>
 	<ScoreDelay>600</ScoreDelay>
 	<EventRatio>1.0</EventRatio>
 	<EnemyBlink>true</EnemyBlink>
@@ -42,6 +43,7 @@
 	<EnemyTotal>5</EnemyTotal>
 	-->
 	<IsGodMode>false</IsGodMode>
+	<UnlimitedCont>false</UnlimitedCont>
 	<DebugTester>true</DebugTester>
 	<DonotSave>true</DonotSave>
 	<QuitsToExit>true</QuitsToExit>

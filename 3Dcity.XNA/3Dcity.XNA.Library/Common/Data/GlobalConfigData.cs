@@ -23,6 +23,7 @@ namespace WindowsGame.Common.Data
 		public UInt16 LoadDelay;
 		public UInt16 ReadyDelay;
 		public UInt16 DeadDelay;
+		public UInt16 OverDelay;
 		public UInt16 ScoreDelay;
 		public Single EventRatio;
 		public Boolean EnemyBlink;
@@ -41,6 +42,7 @@ namespace WindowsGame.Common.Data
 		//public Byte EnemySpawn;
 		//public Byte EnemyTotal;
 		public Boolean IsGodMode;
+		public Boolean UnlimitedCont;
 		public Boolean DebugTester;
 		public Boolean DonotSave;
 		public Boolean QuitsToExit;
