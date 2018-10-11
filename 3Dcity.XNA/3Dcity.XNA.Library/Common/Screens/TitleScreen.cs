@@ -57,6 +57,7 @@ namespace WindowsGame.Common.Screens
 			Boolean midd = MyGame.Manager.InputManager.CenterPos();
 			if (fire || midd)
 			{
+				MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Right);
 				flag1 = true;
 				Timer = 0;
 			}

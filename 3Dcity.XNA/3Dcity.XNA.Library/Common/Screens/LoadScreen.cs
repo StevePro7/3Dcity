@@ -47,7 +47,6 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.BulletManager.Reset(LevelConfigData.BulletMaxim, LevelConfigData.BulletFrame, LevelConfigData.BulletShoot);
 
 			// Enemies.
-			//MyGame.Manager.EnemyManager.Reset(LevelType, LevelConfigData.EnemySpawn, 1000, 5000, LevelConfigData.EnemyTotal);
 			MyGame.Manager.EnemyManager.Reset(LevelType, LevelConfigData);
 
 			// Explosions.
@@ -61,7 +60,8 @@ namespace WindowsGame.Common.Screens
 			enemyTotalText = EnemyTotal.ToString().PadLeft(3, '0');
 
 			MyGame.Manager.RenderManager.SetGridDelay((UInt16)(LevelConfigData.GridDelay * 2));
-			MyGame.Manager.SoundManager.PlayMusic(SongType.GameMusic);
+			MyGame.Manager.EnemyManager.SpawnAllEnemies();
+			//MyGame.Manager.SoundManager.PlayMusic(SongType.GameMusic);
 		}
 
 		public override Int32 Update(GameTime gameTime)
@@ -75,7 +75,7 @@ namespace WindowsGame.Common.Screens
 			UpdateTimer(gameTime);
 			if (Timer >= loadDelay)
 			{
-				return (Int32)NextScreen; 
+				return (Int32)NextScreen;
 			}
 
 			Boolean statusBar = MyGame.Manager.InputManager.StatusBar();
@@ -84,6 +84,7 @@ namespace WindowsGame.Common.Screens
 				return (Int32)NextScreen; 
 			}
 
+			// Target.
 			DetectTarget(gameTime);
 
 			return (Int32)CurrScreen;
