@@ -28,8 +28,7 @@ namespace WindowsGame.Common.Screens
 
 			MyGame.Manager.RenderManager.SetGridDelay((UInt16)(LevelConfigData.GridDelay * 2));
 
-			// TODO "Get Ready!"
-			MyGame.Manager.SoundManager.PlaySoundEffect();
+			MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Ready);
 		}
 
 		public override Int32 Update(GameTime gameTime)

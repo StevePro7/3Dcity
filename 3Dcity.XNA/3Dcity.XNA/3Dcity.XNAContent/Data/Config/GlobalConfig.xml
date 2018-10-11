@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Dead</ScreenType>
+	<ScreenType>Play</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<!--<ScreenType>Level</ScreenType>-->
@@ -10,7 +10,7 @@
 	<FramesPerSecond>100</FramesPerSecond>
 	<MaximLevel>18</MaximLevel>
 	<MaxBullets>20</MaxBullets>
-	<LoadAudio>false</LoadAudio>
+	<LoadAudio>true</LoadAudio>
 	<PlayAudio>true</PlayAudio>
 	<StarDelay>2000</StarDelay>
 	<GridDelay>300</GridDelay>			<!-- TODO delete -->
@@ -21,9 +21,10 @@
 	<TitleDelay>800</TitleDelay>
 	<LoadDelay>2500</LoadDelay>
 	<ReadyDelay>2500</ReadyDelay>
+	<DeadDelay>8000</DeadDelay>
 	<ScoreDelay>600</ScoreDelay>
 	<EventRatio>1.0</EventRatio>
-	<EnemyBlink>false</EnemyBlink>
+	<EnemyBlink>true</EnemyBlink>
 	<ScoreBlink>false</ScoreBlink>
 	<UpdateStar>true</UpdateStar>
 	<UpdateGrid>false</UpdateGrid>
@@ -40,7 +41,7 @@
 	<EnemySpawn>1</EnemySpawn>
 	<EnemyTotal>5</EnemyTotal>
 	-->
-	<IsGodMode>true</IsGodMode>
+	<IsGodMode>false</IsGodMode>
 	<DebugTester>true</DebugTester>
 	<DonotSave>true</DonotSave>
 	<QuitsToExit>true</QuitsToExit>

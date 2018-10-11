@@ -20,7 +20,8 @@ namespace WindowsGame.Common.Managers
 		void ResumeMusic();
 		void StopMusic();
 
-		void PlaySoundEffect();
+		void PlaySoundEffect(SoundEffectType key);
+		void StopSoundEffect(SoundEffectType key);
 
 		void SetPlayAudio(Boolean playAudio);
 		Boolean PlayAudio { get; }
@@ -81,7 +82,7 @@ namespace WindowsGame.Common.Managers
 			SetVolume();
 		}
 
-		public void PlaySoundEffect()
+		public void PlaySoundEffect(SoundEffectType key)
 		{
 			if (null == Assets.SoundEffectDictionary)
 			{
@@ -92,11 +93,25 @@ namespace WindowsGame.Common.Managers
 			{
 				return;
 			}
-			// TODO implement correct sound effect!
-			//SoundEffectType key = SoundEffectType.Funny;
-			//SoundEffectType key = SoundEffectType.Cheat;
-			//SoundEffectInstance value = Assets.SoundEffectDictionary[key];
-			//soundFactory.PlaySoundEffect(value);
+
+			SoundEffectInstance value = Assets.SoundEffectDictionary[key];
+			soundFactory.PlaySoundEffect(value);
+		}
+
+		public void StopSoundEffect(SoundEffectType key)
+		{
+			if (null == Assets.SoundEffectDictionary)
+			{
+				return;
+			}
+
+			if (!PlayAudio)
+			{
+				return;
+			}
+
+			SoundEffectInstance value = Assets.SoundEffectDictionary[key];
+			soundFactory.StopSoundEffect(value);
 		}
 
 		public void PlayMusic(SongType key)
