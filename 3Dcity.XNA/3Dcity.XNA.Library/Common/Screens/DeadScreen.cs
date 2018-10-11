@@ -7,10 +7,10 @@ namespace WindowsGame.Common.Screens
 {
 	public class DeadScreen : BaseScreenSelect, IScreen
 	{
+		private UInt16 bigDelay, medDelay, smlDelay;
+
 		private Vector2 deathPosition;
 		private String deathText;
-		private UInt16 delay1;
-		private UInt16 delay2;
 
 		public override void Initialize()
 		{
@@ -22,7 +22,8 @@ namespace WindowsGame.Common.Screens
 			BackedPositions[1] = new Vector2(290, 217 + Constants.GameOffsetY);
 
 			deathPosition = MyGame.Manager.TextManager.GetTextPosition(15, 11);
-			delay1 = MyGame.Manager.ConfigManager.GlobalConfigData.DeadDelay;
+			bigDelay = MyGame.Manager.ConfigManager.GlobalConfigData.DeadDelay;
+			medDelay = 1500;
 
 			Boolean unlimitedCont = MyGame.Manager.ConfigManager.GlobalConfigData.UnlimitedCont;
 			NextScreen = unlimitedCont ? NextScreen = ScreenType.Cont : NextScreen = ScreenType.Over;
@@ -36,7 +37,7 @@ namespace WindowsGame.Common.Screens
 
 			Boolean miss = Constants.MAX_MISSES == MyGame.Manager.ScoreManager.MissesTotal;
 			deathText = miss ? Globalize.DEAD_OPTION1 : Globalize.DEAD_OPTION2;
-			delay2 = miss ? (UInt16) 600 : Constants.SLIGHT_PAUSE;
+			smlDelay = miss ? (UInt16) 600 : Constants.SLIGHT_PAUSE;
 
 			base.LoadContent();
 		}
@@ -52,7 +53,19 @@ namespace WindowsGame.Common.Screens
 			UpdateTimer(gameTime);
 
 			// Initial pause.
-			if (Timer <= delay2)
+			if (Timer <= smlDelay)
+			{
+				return (Int32)CurrScreen;
+			}
+
+			if (!Flag1)
+			{
+				// Ensure sound effect once.
+				MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Aaargh);
+				Flag1 = true;
+			}
+
+			if (Timer <= medDelay)
 			{
 				return (Int32)CurrScreen;
 			}
@@ -65,19 +78,10 @@ namespace WindowsGame.Common.Screens
 			}
 
 			// Time expired so advance.
-			if (Timer > delay1)
+			if (Timer > bigDelay)
 			{
 				return (Int32) NextScreen;
 			}
-
-			// Ensure sound effect once.
-			if (Flag1)
-			{
-				return (Int32)CurrScreen;
-			}
-
-			MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Aaargh);
-			Flag1 = true;
 
 			return (Int32) CurrScreen;
 		}

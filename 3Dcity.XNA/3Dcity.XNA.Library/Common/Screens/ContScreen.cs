@@ -27,6 +27,8 @@ namespace WindowsGame.Common.Screens
 		{
 			base.LoadContent();
 			SelectType = 0;
+
+			MyGame.Manager.SoundManager.PlayMusic(SongType.ContMusic, true);
 		}
 
 		public override Int32 Update(GameTime gameTime)
@@ -58,6 +60,7 @@ namespace WindowsGame.Common.Screens
 			DetectFire();
 			if (Flag1)
 			{
+				MyGame.Manager.SoundManager.StopMusic();
 				return (Int32)CurrScreen;
 			}
 

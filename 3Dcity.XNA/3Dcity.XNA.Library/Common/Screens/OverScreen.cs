@@ -7,8 +7,7 @@ namespace WindowsGame.Common.Screens
 {
 	public class OverScreen : BaseScreenSelect, IScreen
 	{
-		private UInt16 delay1;
-		private UInt16 delay2;
+		private UInt16 bigDelay, medDelay, smlDelay;
 
 		public override void Initialize()
 		{
@@ -19,16 +18,13 @@ namespace WindowsGame.Common.Screens
 			BackedPositions[0] = new Vector2(290, 215 + Constants.GameOffsetY);
 			BackedPositions[1] = new Vector2(290, 220 + Constants.GameOffsetY);
 
-			delay1 = MyGame.Manager.ConfigManager.GlobalConfigData.OverDelay;
-			delay2 = 3000;
+			bigDelay = MyGame.Manager.ConfigManager.GlobalConfigData.OverDelay;
+			medDelay = 3000;
+			smlDelay = Constants.SLIGHT_PAUSE*4;
+
 			NextScreen = ScreenType.Title;
 
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
-		}
-
-		public override void LoadContent()
-		{
-			base.LoadContent();
 		}
 
 		public override Int32 Update(GameTime gameTime)
@@ -42,7 +38,7 @@ namespace WindowsGame.Common.Screens
 			UpdateTimer(gameTime);
 
 			// Initial pause.
-			if (Timer <= Constants.SLIGHT_PAUSE * 4)
+			if (Timer <= smlDelay)
 			{
 				return (Int32)CurrScreen;
 			}
@@ -54,7 +50,7 @@ namespace WindowsGame.Common.Screens
 				Flag1 = true;
 			}
 
-			if (Timer <= delay2)
+			if (Timer <= medDelay)
 			{
 				return (Int32)CurrScreen;
 			}
@@ -75,7 +71,7 @@ namespace WindowsGame.Common.Screens
 			}
 
 			// Time expired so advance.
-			if (Timer > delay1)
+			if (Timer > bigDelay)
 			{
 				MyGame.Manager.SoundManager.StopMusic();
 				return (Int32) NextScreen;
