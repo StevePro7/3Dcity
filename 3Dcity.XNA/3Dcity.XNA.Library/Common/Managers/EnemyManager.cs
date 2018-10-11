@@ -147,30 +147,14 @@ namespace WindowsGame.Common.Managers
 			for (Byte index = 0; index < maxEnemySpawn; index++)
 			{
 				SpawnOneEnemy(index);
-
-				//REPEAT
-				// Set the start delay for the initial spawned enemies.
-				//UInt16 startFrameDelay = GetStartFrameDelay(index, levelConfigData.EnemyStartDelay, levelConfigData.EnemyStartDelta);
-				//EnemyList[index].Start(startFrameDelay);
 			}
 
 			const Byte first = 0;
 			UInt16 startDelay = MyGame.Manager.DelayManager.GetStartDelay(first, levelConfigData.EnemyStartDelay, levelConfigData.EnemyStartDelta);
-			//EnemyList[first].Start(startFrameDelay);
-
-			//if (maxEnemySpawn <= 1)
-			//{
-			//    return;
-			//}
-
 			UInt16 totalDelay = MyGame.Manager.DelayManager.GetTotalDelay(EnemyList[first].FrameDelay);
 			UInt16 parseDelay = (UInt16) (totalDelay / maxEnemySpawn);
 
-			// Can't go faster than the base start delay.
-			//if (parseDelay < levelConfigData.EnemyStartDelay)
-			//{
-			//    //parseDelay = levelConfigData.EnemyStartDelay;
-			//}
+			// Displace evenly spawned ships from start delay...
 			for (Byte index = 0; index < maxEnemySpawn; index++)
 			{
 				EnemyList[index].Start((UInt16)(index * parseDelay + startDelay));

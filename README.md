@@ -1,5 +1,24 @@
 # 3Dcity
 
+11/10/2018
+Enemy delay algorithms:
+
+01. NONE
+frameDelay - Random(0, frameDelta) 
+
+02. WAVE
+frameDelay +/- Sine(random(0,360)) * frameRange
+1000 +/- [-1 to 1] * 200 => [800 - 1200]
+check (frameDelay < frameMinim [500]) { frameDelay = frameMinim }
+
+03.
+frameDelay - "formula"
+formula = %level [10-100%] => [0.1-1.0] + Abs(Sine(random(0,360)))) [0-1]
+i.e. range [0.1 - 2.0] * frameRange [200]
+frameCalcd - [2-400]
+frameDelay = 1000 - 400 => [998 - 600]
+
+
 08/10/2018
 Movement tolerance
 

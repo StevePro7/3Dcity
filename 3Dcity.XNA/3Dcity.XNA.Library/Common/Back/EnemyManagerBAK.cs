@@ -111,8 +111,20 @@ namespace WindowsGame.Common.Back
 			for (Byte index = 0; index < maxEnemySpawn; index++)
 			{
 				SpawnOneEnemy(index);
-				EnemyList[index].Start((UInt16)(Constants.TestFrameDelay + 3* Constants.TestFrameDelay * index));		// TODO tweak configurable numbers
+				//EnemyList[index].Start((UInt16)(Constants.TestFrameDelay + 3* Constants.TestFrameDelay * index));		// TODO tweak configurable numbers
+
+				//REPEAT - initial "algorithm" but changed because this did not space out enemy ships evenly!
+				// Set the start delay for the initial spawned enemies.
+				UInt16 startFrameDelay = GetStartFrameDelay(index, levelConfigData.EnemyStartDelay, levelConfigData.EnemyStartDelta);
+				EnemyList[index].Start(startFrameDelay);
 			}
+		}
+		private UInt16 GetStartFrameDelay(Byte index, UInt16 enemyStartDelay, UInt16 enemyStartDelta)
+		{
+			UInt16 delay = (UInt16)((index + 1) * enemyStartDelay);
+			UInt16 delta = (UInt16)MyGame.Manager.RandomManager.Next(enemyStartDelta);
+
+			return (UInt16)(delay - delta);
 		}
 
 		public void SpawnOneEnemy(Byte index)
