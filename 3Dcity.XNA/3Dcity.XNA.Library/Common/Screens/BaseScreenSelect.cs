@@ -14,11 +14,12 @@ namespace WindowsGame.Common.Screens
 		protected Boolean Selected { get; private set; }
 		protected Byte MoveIndex { get; private set; }
 		protected Single MoveValue { get; private set; }
-		protected Boolean Flag1 { get; private set; }
+		protected Boolean Flag1 { get; set; }
+		protected Boolean Flag2 { get; set; }
 
 		private UInt16 SelectDelay;
 		private Vector2 SpritePosition;
-		private Boolean Flag2;
+		
 		private Byte IconIndex;
 		private Vector2 spritePosition;
 

@@ -116,7 +116,7 @@ namespace WindowsGame.Common.Managers
 
 		public void PlayMusic(SongType key)
 		{
-			PlayMusic(key, true);
+			PlayMusic(key, false);
 		}
 
 		public void PlayMusic(SongType key, Boolean isRepeating)

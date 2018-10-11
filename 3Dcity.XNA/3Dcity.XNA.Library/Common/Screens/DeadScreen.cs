@@ -11,7 +11,6 @@ namespace WindowsGame.Common.Screens
 		private String deathText;
 		private UInt16 delay1;
 		private UInt16 delay2;
-		private bool flag;
 
 		public override void Initialize()
 		{
@@ -23,23 +22,22 @@ namespace WindowsGame.Common.Screens
 			BackedPositions[1] = new Vector2(290, 217 + Constants.GameOffsetY);
 
 			deathPosition = MyGame.Manager.TextManager.GetTextPosition(15, 11);
-
 			delay1 = MyGame.Manager.ConfigManager.GlobalConfigData.DeadDelay;
 
-			// TODO Unlimited continues?
-			NextScreen = ScreenType.Cont;
-			//NextScreen = ScreenType.Over;
+			Boolean unlimitedCont = MyGame.Manager.ConfigManager.GlobalConfigData.UnlimitedCont;
+			NextScreen = unlimitedCont ? NextScreen = ScreenType.Cont : NextScreen = ScreenType.Over;
 
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
 
 		public override void LoadContent()
 		{
+			MyGame.Manager.SoundManager.StopMusic();
+
 			Boolean miss = Constants.MAX_MISSES == MyGame.Manager.ScoreManager.MissesTotal;
 			deathText = miss ? Globalize.DEAD_OPTION1 : Globalize.DEAD_OPTION2;
-			delay2 = miss ? (UInt16) 600 : (UInt16) 100;
+			delay2 = miss ? (UInt16) 600 : Constants.SLIGHT_PAUSE;
 
-			flag = false;
 			base.LoadContent();
 		}
 
@@ -52,21 +50,34 @@ namespace WindowsGame.Common.Screens
 			}
 
 			UpdateTimer(gameTime);
+
+			// Initial pause.
+			if (Timer <= delay2)
+			{
+				return (Int32)CurrScreen;
+			}
+
+			// Now can check to pro actively goto next screen.
+			Boolean status = MyGame.Manager.InputManager.StatusBar();
+			if (status)
+			{
+				return (Int32)NextScreen;
+			}
+
+			// Time expired so advance.
 			if (Timer > delay1)
 			{
 				return (Int32) NextScreen;
 			}
 
-			if (flag)
+			// Ensure sound effect once.
+			if (Flag1)
 			{
 				return (Int32)CurrScreen;
 			}
 
-			if (Timer > delay2)
-			{
-				MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Aaargh);
-				flag = true;
-			}
+			MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Aaargh);
+			Flag1 = true;
 
 			return (Int32) CurrScreen;
 		}
@@ -92,7 +103,7 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.EnemyManager.DrawProgress();
 			MyGame.Manager.LevelManager.DrawTextData();
 
-			if (!flag)
+			if (!Flag1)
 			{
 				return;
 			}
