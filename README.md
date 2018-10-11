@@ -1,5 +1,8 @@
 # 3Dcity
 
+Update code so that once quit and resume DON'T go to ready
+[because currently goes to Play next and spawn all enemies]
+
 Co-ordinate system for touching mid screen text to choose
 [instead of left / right / fire]
 EASY

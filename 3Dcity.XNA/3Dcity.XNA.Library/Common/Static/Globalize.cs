@@ -28,5 +28,8 @@ namespace WindowsGame.Common.Static
 		public const String INSTRUCTION2 = "FIRE BUTTON TO SELECT";
 
 		public const String INSERT_COINS = "INSERT COIN(S)";
+
+		public const String DEAD_OPTION1 = "4X MISSES";
+		public const String DEAD_OPTION2 = "YOU DIED";
 	}
 }
