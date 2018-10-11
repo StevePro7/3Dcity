@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Cont</ScreenType>
+	<ScreenType>Quit</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<!--<ScreenType>Level</ScreenType>-->
@@ -10,25 +10,26 @@
 	<FramesPerSecond>100</FramesPerSecond>
 	<MaximLevel>18</MaximLevel>
 	<MaxBullets>20</MaxBullets>
-	<LoadAudio>true</LoadAudio>
+	<LoadAudio>false</LoadAudio>
 	<PlayAudio>true</PlayAudio>
 	<StarDelay>2000</StarDelay>
-	<GridDelay>300</GridDelay>			<!-- TODO delete -->
+	<!-- <GridDelay>300</GridDelay>			TODO delete -->
 	<ExplodeDelay>100</ExplodeDelay>
 	<SplashDelay>0</SplashDelay>
 	<SelectDelay>500</SelectDelay>
 	<IntroDelay>660</IntroDelay>
 	<TitleDelay>800</TitleDelay>
-	<LoadDelay>2500</LoadDelay>
-	<ReadyDelay>2500</ReadyDelay>
+	<LoadDelay>3000</LoadDelay>			<!-- 2500 -->
+	<ReadyDelay>3000</ReadyDelay>		<!-- 2500 -->
 	<DeadDelay>3000</DeadDelay>			<!-- between 3000-5000ms -->
+	<ResumeDelay>5000</ResumeDelay>
 	<OverDelay>16000</OverDelay>		<!-- 16000 is a keeper !-->
 	<ScoreDelay>600</ScoreDelay>
 	<EventRatio>1.0</EventRatio>
 	<EnemyBlink>true</EnemyBlink>
-	<ScoreBlink>false</ScoreBlink>
+	<ScoreBlink>true</ScoreBlink>
 	<UpdateStar>true</UpdateStar>
-	<UpdateGrid>false</UpdateGrid>
+	<UpdateGrid>true</UpdateGrid>
 	<RenderBack>true</RenderBack>
 	<RenderIcon>true</RenderIcon>
 	<CoolMusic>false</CoolMusic>
