@@ -153,14 +153,26 @@ namespace WindowsGame.Common.Managers
 			}
 
 			const Byte first = 0;
-			UInt16 startFrameDelay = GetStartFrameDelay(first, levelConfigData.EnemyStartDelay, levelConfigData.EnemyStartDelta);
-			EnemyList[first].Start(startFrameDelay);
-			UInt16 totalDelay = GetTotalDelay(first);
-		}
+			UInt16 startDelay = MyGame.Manager.DelayManager.GetStartDelay(first, levelConfigData.EnemyStartDelay, levelConfigData.EnemyStartDelta);
+			//EnemyList[first].Start(startFrameDelay);
 
-		private UInt16 GetTotalDelay(Byte index)
-		{
-			return 0;
+			//if (maxEnemySpawn <= 1)
+			//{
+			//    return;
+			//}
+
+			UInt16 totalDelay = MyGame.Manager.DelayManager.GetTotalDelay(EnemyList[first].FrameDelay);
+			UInt16 parseDelay = (UInt16) (totalDelay / maxEnemySpawn);
+
+			// Can't go faster than the base start delay.
+			//if (parseDelay < levelConfigData.EnemyStartDelay)
+			//{
+			//    //parseDelay = levelConfigData.EnemyStartDelay;
+			//}
+			for (Byte index = 0; index < maxEnemySpawn; index++)
+			{
+				EnemyList[index].Start((UInt16)(index * parseDelay + startDelay));
+			}
 		}
 
 		public void SpawnOneEnemy(Byte index)
@@ -327,13 +339,14 @@ namespace WindowsGame.Common.Managers
 			}
 		}
 
-		private static UInt16 GetStartFrameDelay(Byte index, UInt16 enemyStartDelay, UInt16 enemyStartDelta)
-		{
-			UInt16 delay = (UInt16)((index + 1) * enemyStartDelay);
-			UInt16 delta = (UInt16)MyGame.Manager.RandomManager.Next(enemyStartDelta);
 
-			return (UInt16)(delay + delta);
-		}
+		//private static UInt16 GetStartFrameDelay(Byte index, UInt16 enemyStartDelay, UInt16 enemyStartDelta)
+		//{
+		//    UInt16 delay = (UInt16)((index + 1) * enemyStartDelay);
+		//    UInt16 delta = (UInt16)MyGame.Manager.RandomManager.Next(enemyStartDelta);
+
+		//    return (UInt16)(delay + delta);
+		//}
 
 
 		public IList<Enemy> EnemyList { get; private set; }

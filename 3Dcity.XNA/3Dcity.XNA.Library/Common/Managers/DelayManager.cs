@@ -12,8 +12,8 @@ namespace WindowsGame.Common.Managers
 		void Initialize(String root);
 		void LoadContent();
 
-		UInt16 GetStartFrameDelay(Byte index, UInt16 enemyStartDelay, UInt16 enemyStartDelta);
-		UInt16 GetTotalFrameDelay(UInt16[] frameDelays);
+		UInt16 GetStartDelay(Byte index, UInt16 enemyStartDelay, UInt16 enemyStartDelta);
+		UInt16 GetTotalDelay(UInt16[] frameDelays);
 
 		void ResetEnemyDelays(IDictionary<Byte, UInt16> enemyDelays, LevelConfigData levelConfigData, Byte enemyTotal);
 		void CalcdEnemyDelays(IDictionary<Byte, UInt16> enemyDelays, LevelConfigData levelConfigData, Byte enemyTotal);
@@ -44,7 +44,7 @@ namespace WindowsGame.Common.Managers
 			DelayWaves = MyGame.Manager.FileManager.LoadTxt<Single>(file);
 		}
 
-		public UInt16 GetStartFrameDelay(Byte index, UInt16 enemyStartDelay, UInt16 enemyStartDelta)
+		public UInt16 GetStartDelay(Byte index, UInt16 enemyStartDelay, UInt16 enemyStartDelta)
 		{
 			UInt16 delay = (UInt16)((index + 1) * enemyStartDelay);
 			UInt16 delta = (UInt16)MyGame.Manager.RandomManager.Next(enemyStartDelta);
@@ -52,10 +52,10 @@ namespace WindowsGame.Common.Managers
 			return (UInt16)(delay - delta);
 		}
 
-		public UInt16 GetTotalFrameDelay(UInt16[] frameDelays)
+		public UInt16 GetTotalDelay(UInt16[] frameDelays)
 		{
 			UInt16 total = 0;
-			for (Byte index = 0; index < frameDelays.Length; index++)
+			for (Byte index = 1; index < frameDelays.Length; index++)
 			{
 				total += frameDelays[index];
 			}
@@ -79,11 +79,13 @@ namespace WindowsGame.Common.Managers
 		}
 		private static void ResetEnemySpeedTypes(IDictionary<Byte, UInt16> enemyDelays, Byte enemyTotal, Byte count, SpeedType speedType)
 		{
+			const Byte first = 1;
 			for (Byte index = 0; index < count; index++)
 			{
 				while (true)
 				{
-					Byte key = (Byte)MyGame.Manager.RandomManager.Next(enemyTotal);
+					// Always want first [0th] enemy to be None so random starts >= first.
+					Byte key = (Byte)MyGame.Manager.RandomManager.Next(first, enemyTotal);
 					if ((Byte)SpeedType.None == enemyDelays[key])
 					{
 						enemyDelays[key] = (Byte)speedType;
