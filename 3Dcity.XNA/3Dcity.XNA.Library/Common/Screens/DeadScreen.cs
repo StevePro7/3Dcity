@@ -26,7 +26,7 @@ namespace WindowsGame.Common.Screens
 			medDelay = 1500;
 
 			Boolean unlimitedCont = MyGame.Manager.ConfigManager.GlobalConfigData.UnlimitedCont;
-			NextScreen = unlimitedCont ? NextScreen = ScreenType.Cont : NextScreen = ScreenType.Over;
+			NextScreen = unlimitedCont ? ScreenType.Cont : ScreenType.Over;
 
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
@@ -47,7 +47,7 @@ namespace WindowsGame.Common.Screens
 			base.Update(gameTime);
 			if (GamePause)
 			{
-				return (Int32)CurrScreen;
+				return (Int32) CurrScreen;
 			}
 
 			UpdateTimer(gameTime);
@@ -55,7 +55,7 @@ namespace WindowsGame.Common.Screens
 			// Initial pause.
 			if (Timer <= smlDelay)
 			{
-				return (Int32)CurrScreen;
+				return (Int32) CurrScreen;
 			}
 
 			if (!Flag1)
@@ -67,14 +67,14 @@ namespace WindowsGame.Common.Screens
 
 			if (Timer <= medDelay)
 			{
-				return (Int32)CurrScreen;
+				return (Int32) CurrScreen;
 			}
 
 			// Now can check to pro actively goto next screen.
 			Boolean status = MyGame.Manager.InputManager.StatusBar();
 			if (status)
 			{
-				return (Int32)NextScreen;
+				return (Int32) NextScreen;
 			}
 
 			// Time expired so advance.

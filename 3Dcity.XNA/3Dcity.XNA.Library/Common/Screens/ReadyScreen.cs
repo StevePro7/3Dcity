@@ -15,9 +15,8 @@ namespace WindowsGame.Common.Screens
 			LoadTextData();
 
 			UpdateGrid = MyGame.Manager.ConfigManager.GlobalConfigData.UpdateGrid;
-			NextScreen = ScreenType.Play;
-
 			readyDelay = MyGame.Manager.ConfigManager.GlobalConfigData.ReadyDelay;
+			NextScreen = ScreenType.Play;
 
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
@@ -25,10 +24,12 @@ namespace WindowsGame.Common.Screens
 		public override void LoadContent()
 		{
 			base.LoadContent();
+			
 
 			MyGame.Manager.RenderManager.SetGridDelay((UInt16)(LevelConfigData.GridDelay * 2));
 
 			MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Ready);
+
 		}
 
 		public override Int32 Update(GameTime gameTime)
@@ -43,13 +44,13 @@ namespace WindowsGame.Common.Screens
 			Boolean statusBar = MyGame.Manager.InputManager.StatusBar();
 			if (statusBar)
 			{
-				return (Int32)NextScreen;
+				return (Int32) NextScreen;
 			}
 
 			UpdateTimer(gameTime);
 			if (Timer >= readyDelay)
 			{
-				return (Int32)NextScreen;
+				return (Int32) NextScreen;
 			}
 
 			// Target.

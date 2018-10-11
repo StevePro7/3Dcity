@@ -24,13 +24,13 @@ namespace WindowsGame.Common.Screens
 			base.Update(gameTime);
 			if (GamePause)
 			{
-				return (Int32)CurrScreen;
+				return (Int32) CurrScreen;
 			}
 
 			// Update bullets to finish off..
 			MyGame.Manager.BulletManager.Update(gameTime);
 
-			return (Int32)CurrScreen;
+			return (Int32) CurrScreen;
 		}
 
 		public override void Draw()

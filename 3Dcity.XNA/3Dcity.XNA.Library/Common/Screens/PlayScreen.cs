@@ -22,9 +22,9 @@ namespace WindowsGame.Common.Screens
 		public override void LoadContent()
 		{
 			base.LoadContent();
-
-			MyGame.Manager.EnemyManager.SpawnAllEnemies();
+			NextScreen = CurrScreen;
 			MyGame.Manager.RenderManager.SetGridDelay(LevelConfigData.GridDelay);
+			//MyGame.Manager.EnemyManager.SpawnAllEnemies();
 		}
 
 		public override Int32 Update(GameTime gameTime)
@@ -72,7 +72,7 @@ namespace WindowsGame.Common.Screens
 			VerifyEnemies();
 			if (NextScreen != CurrScreen)
 			{
-				return (Int32)NextScreen;
+				return (Int32) NextScreen;
 			}
 
 			// Icons.
@@ -85,7 +85,7 @@ namespace WindowsGame.Common.Screens
 			UpdateLevel();
 			if (NextScreen != CurrScreen)
 			{
-				return (Int32)NextScreen;
+				return (Int32) NextScreen;
 			}
 
 			return (Int32)CurrScreen;

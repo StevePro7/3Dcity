@@ -7,18 +7,22 @@ namespace WindowsGame.Common.Screens
 {
 	public class ResumeScreen : BaseScreenPlay, IScreen
 	{
-		private UInt16 delay1, delay2, timer;
+		private UInt16 bigDelay, smlDelay;
+		private UInt16 timer;
 		private Boolean flag;
 
 		public override void Initialize()
 		{
 			base.Initialize();
-			//UpdateGrid = true;
 			UpdateGrid = MyGame.Manager.ConfigManager.GlobalConfigData.UpdateGrid;
 
 			// TODO make delay values configurable!
-			delay1 = 200;
-			delay2 = 5000;
+			bigDelay = MyGame.Manager.ConfigManager.GlobalConfigData.ResumeDelay;
+			smlDelay = 200;
+
+			// Resume screen cannot die not matter what!
+			Invincibile = true;
+			PrevScreen = ScreenType.Ready;
 
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
@@ -26,9 +30,8 @@ namespace WindowsGame.Common.Screens
 		public override void LoadContent()
 		{
 			base.LoadContent();
+			NextScreen = CurrScreen;
 
-			// Resume screen cannot die not matter what!
-			Invincibile = true;
 			timer = 0;
 			flag = true;
 		}
@@ -48,16 +51,20 @@ namespace WindowsGame.Common.Screens
 				return (Int32)NextScreen;
 			}
 
+			// Be careful on this screen as re-use logic from PlayScreen:
+			// Next could be Dead but won't because you'll be invincible;
+			// Next could be Finish if all enemies complete during blink.
+			// Therefore, previous should be used to go "back" to Ready!
 			UpdateTimer(gameTime);
-			if (Timer > delay1)
+			if (Timer > smlDelay)
 			{
 				timer += Timer;
-				if (timer > delay2)
+				if (timer > bigDelay)
 				{
-					return (Int32)ScreenType.Ready;
+					return (Int32) PrevScreen;
 				}
 
-				Timer -= delay1;
+				Timer -= smlDelay;
 				flag = !flag;
 			}
 
@@ -69,8 +76,8 @@ namespace WindowsGame.Common.Screens
 
 			// Bullets.
 			//DetectBullets();
-			UpdateBullets(gameTime);
-			VerifyBullets();
+			//UpdateBullets(gameTime);
+			//VerifyBullets();
 
 			// Explosions.
 			UpdateExplosions(gameTime);
@@ -81,7 +88,7 @@ namespace WindowsGame.Common.Screens
 			VerifyEnemies();
 			if (NextScreen != CurrScreen)
 			{
-				return (Int32)NextScreen;
+				return (Int32) NextScreen;
 			}
 
 			// Icons.
@@ -94,7 +101,7 @@ namespace WindowsGame.Common.Screens
 			UpdateLevel();
 			if (NextScreen != CurrScreen)
 			{
-				return (Int32)NextScreen;
+				return (Int32) NextScreen;
 			}
 
 			return (Int32)CurrScreen;

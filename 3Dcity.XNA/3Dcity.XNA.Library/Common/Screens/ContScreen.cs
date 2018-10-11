@@ -26,6 +26,7 @@ namespace WindowsGame.Common.Screens
 		public override void LoadContent()
 		{
 			base.LoadContent();
+			NextScreen = CurrScreen;
 			SelectType = 0;
 
 			MyGame.Manager.SoundManager.PlayMusic(SongType.ContMusic, true);
@@ -36,32 +37,33 @@ namespace WindowsGame.Common.Screens
 			base.Update(gameTime);
 			if (GamePause)
 			{
-				return (Int32)CurrScreen;
+				return (Int32) CurrScreen;
 			}
 
 			IsMoving = false;
 			UpdateFlag1(gameTime);
 			if (Selected)
 			{
-				ScreenType screenType = SelectType == 0 ? ScreenType.Resume : ScreenType.Over;
-				return (Int32)screenType;
+				MyGame.Manager.ScoreManager.ResetMisses();
+				NextScreen = SelectType == 0 ? ScreenType.Resume : ScreenType.Over;
+				return (Int32) NextScreen;
 			}
 			if (Flag1)
 			{
-				return (Int32)CurrScreen;
+				return (Int32) CurrScreen;
 			}
 
 			UpdateFlag2(gameTime);
 			if (IsMoving)
 			{
-				return (Int32)CurrScreen;
+				return (Int32) CurrScreen;
 			}
 
 			DetectFire();
 			if (Flag1)
 			{
 				MyGame.Manager.SoundManager.StopMusic();
-				return (Int32)CurrScreen;
+				return (Int32) CurrScreen;
 			}
 
 			DetectMove();
@@ -70,7 +72,7 @@ namespace WindowsGame.Common.Screens
 				SelectType = (Byte)(1 - SelectType);
 			}
 
-			return (Int32)CurrScreen;
+			return (Int32) CurrScreen;
 		}
 
 		public override void Draw()

@@ -52,7 +52,7 @@ namespace WindowsGame.Common.Screens
 
 			if (Timer <= medDelay)
 			{
-				return (Int32)CurrScreen;
+				return (Int32) CurrScreen;
 			}
 
 			if (!Flag2)
@@ -67,7 +67,7 @@ namespace WindowsGame.Common.Screens
 			if (status)
 			{
 				MyGame.Manager.SoundManager.StopMusic();
-				return (Int32)NextScreen;
+				return (Int32) NextScreen;
 			}
 
 			// Time expired so advance.
