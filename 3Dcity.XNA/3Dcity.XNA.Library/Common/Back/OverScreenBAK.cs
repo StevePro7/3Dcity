@@ -1,38 +1,41 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using WindowsGame.Common.Data;
-using WindowsGame.Common.Screens;
 using WindowsGame.Common.Static;
-using WindowsGame.Master;
 using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Back
 {
 	public class OverScreen : BaseScreen, IScreen
 	{
-		private Vector2 enemysPos, enemysMid;
-		private Vector2 targetPos, targetMid;
+		private Vector2 outputPos;
+		private Vector2 enemysPos;
+		private Vector2 targetPos;
 		private Rectangle enemysRect;
 		private Rectangle targetRect;
+		private String[] outputText;
 
 		public override void Initialize()
 		{
+			MyGame.Manager.DebugManager.Reset(CurrScreen);
 			base.Initialize();
 			LoadTextData();
+
+			// TODO delete!
+			outputText = new string[2] { "FALSE", "TRUE" };
+
+			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
 
 		public override void LoadContent()
 		{
+			outputPos = MyGame.Manager.TextManager.GetTextPosition(0, 4);
 			GlobalConfigData data = MyGame.Manager.ConfigManager.GlobalConfigData;
 			enemysPos = new Vector2(data.EnemysX, data.EnemysY);
 
 			Single x = (120 - 64) / 2.0f + data.EnemysX;
 			Single y = (120 - 64) / 2.0f + data.EnemysY;
-			targetPos = new Vector2(x - 20,  y - 8);
-			//targetPos = new Vector2(data.TargetX, data.TargetY);
-
-			//Process();
-
+			targetPos = new Vector2(x - 0, y - 0);
 
 			enemysRect = MyGame.Manager.ImageManager.EnemyRectangles[7];
 			targetRect = MyGame.Manager.ImageManager.TargetLargeRectangle;
@@ -41,33 +44,45 @@ namespace WindowsGame.Common.Back
 
 		public override Int32 Update(GameTime gameTime)
 		{
-			base.Update(gameTime);
 			Boolean gameState = MyGame.Manager.InputManager.GameState();
 			if (gameState)
 			{
-				Boolean collision = MyGame.Manager.CollisionManager.ColorCollision(enemysPos, targetPos);
-				MyGame.Manager.Logger.Info(collision.ToString());
+				MyGame.Manager.SoundManager.StopMusic();
+				//MyGame.Manager.SoundManager.PlayMusic(SongType.BossMusic);
+				MyGame.Manager.SoundManager.PlayMusic(SongType.CoolMusic, false);
 			}
-
-			//if (GamePause)
-			//{
-			//    return (Int32)CurrScreen;
-			//}
-
-			// Move target unconditionally.
-			Single horz = MyGame.Manager.InputManager.Horizontal();
-			Single vert = MyGame.Manager.InputManager.Vertical();
-			if (0 == horz && 0 == vert)
+			else
 			{
-				return (Int32)CurrScreen;
+				Boolean gameSound = MyGame.Manager.InputManager.GameSound();
+				if (gameSound)
+				{
+					MyGame.Manager.SoundManager.StopMusic();
+					MyGame.Manager.SoundManager.PlayMusic(SongType.ContMusic, false);
+				}
+				else
+				{
+					Boolean fire = MyGame.Manager.InputManager.Fire();
+					if (fire)
+					{
+						MyGame.Manager.SoundManager.StopMusic();
+						MyGame.Manager.SoundManager.PlayMusic(SongType.GameOver, false);
+					}
+					else
+					{
+						Single horz = MyGame.Manager.InputManager.Horizontal();
+						Single vert = MyGame.Manager.InputManager.Vertical();
+						if (0 == horz && 0 == vert)
+						{
+							return (Int32)CurrScreen;
+						}
+						else
+						{
+							MyGame.Manager.SoundManager.StopMusic();
+							MyGame.Manager.SoundManager.PlayMusic(SongType.GameTitle, false);
+						}
+					}
+				}
 			}
-
-			Vector2 tempPos = targetPos;
-			tempPos.X += horz;
-			tempPos.Y += vert;
-			targetPos = tempPos;
-			MyGame.Manager.SpriteManager.LargeTarget.SetPosition(targetPos);
-			Process();
 
 			return (Int32)CurrScreen;
 		}
@@ -77,22 +92,22 @@ namespace WindowsGame.Common.Back
 			// Sprite sheet #01.
 			base.Draw();
 			MyGame.Manager.IconManager.DrawControls();
-			//MyGame.Manager.ScoreManager.Draw();
 
-			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, enemysPos, enemysRect, Color.White);
-			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, targetPos, targetRect, Color.White);
+			//Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, enemysPos, enemysRect, Color.White);
+			//Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, targetPos, targetRect, Color.White);
 
-			//// Sprite sheet #02.
-			//MyGame.Manager.DebugManager.Draw();
-
-			//MyGame.Manager.EnemyManager.Draw();
-			//MyGame.Manager.SpriteManager.Draw();
-
-			//MyGame.Manager.ExplosionManager.Draw();
-
+			// Sprite sheet #02.
+			MyGame.Manager.LevelManager.Draw();
 
 			// Text data last!
-			//MyGame.Manager.TextManager.Draw(TextDataList);
+			MyGame.Manager.TextManager.Draw(TextDataList);
+			MyGame.Manager.TextManager.DrawTitle();
+			MyGame.Manager.TextManager.DrawControls();
+			MyGame.Manager.LevelManager.DrawTextData();
+			MyGame.Manager.ScoreManager.Draw();
+
+			// TODO delete
+			//Engine.SpriteBatch.DrawString(Assets.EmulogicFont, outputText[Convert.ToByte(collision)], outputPos, Color.White);
 		}
 
 		private void Process()
