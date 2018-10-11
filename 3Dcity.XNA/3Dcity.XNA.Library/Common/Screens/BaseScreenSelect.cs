@@ -7,6 +7,7 @@ namespace WindowsGame.Common.Screens
 	public class BaseScreenSelect : BaseScreen
 	{
 		protected Vector2[] CursorPositions { get; set; }
+		protected Vector2[] BackedPositions { get; set; }
 		protected Boolean IsMoving { get; set; }
 		protected Byte SelectType { get; set; }
 
@@ -141,6 +142,15 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.LevelManager.Draw();
 			MyGame.Manager.BulletManager.Draw();
 			MyGame.Manager.SpriteManager.DrawCursor();
+		}
+
+		protected void DrawBacked()
+		{
+			const StatusType statusType = StatusType.Black;
+			for (Byte index = 0; index < BackedPositions.Length; index++)
+			{
+				MyGame.Manager.RenderManager.DrawStatusPosition(statusType, BackedPositions[index]);
+			}
 		}
 
 		protected void DrawText()

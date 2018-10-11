@@ -20,6 +20,7 @@ namespace WindowsGame.Common.Managers
 		void DrawBottom();
 		void DrawStatusOuter();
 		void DrawStatusInner(StatusType statusType, Single percentage);
+		void DrawStatusPosition(StatusType statusType, Vector2 position);
 	}
 
 	public class RenderManager : IRenderManager
@@ -146,9 +147,16 @@ namespace WindowsGame.Common.Managers
 			// Status bar is 200px i.e. 2 * 100%
 			// Adding 2px to offset as 204 wide.
 			Byte statusValu = (Byte) statusType;
-			Rectangle statusRectangle = statusRectangles[(Byte)statusValu];
+			Rectangle statusRectangle = statusRectangles[statusValu];
 			statusRectangle.Width = (Byte)((percentage * 2) + 2);
 			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, statusPosition, statusRectangle, Color.White);
+		}
+
+		public void DrawStatusPosition(StatusType statusType, Vector2 position)
+		{
+			Byte statusValu = (Byte)statusType;
+			Rectangle statusRectangle = statusRectangles[statusValu];
+			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, position, statusRectangle, Color.White);
 		}
 	}
 }

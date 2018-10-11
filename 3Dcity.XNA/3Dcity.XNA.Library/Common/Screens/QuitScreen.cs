@@ -15,6 +15,12 @@ namespace WindowsGame.Common.Screens
 			CursorPositions[0] = MyGame.Manager.TextManager.GetTextPosition(14, 11);
 			CursorPositions[1] = MyGame.Manager.TextManager.GetTextPosition(23, 11);
 
+			BackedPositions = new Vector2[4];
+			BackedPositions[0] = new Vector2(275, 197 + Constants.GameOffsetY);
+			BackedPositions[1] = new Vector2(275, 217 + Constants.GameOffsetY);
+			BackedPositions[2] = new Vector2(365, 197 + Constants.GameOffsetY);
+			BackedPositions[3] = new Vector2(365, 217 + Constants.GameOffsetY);
+
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
 
@@ -76,7 +82,7 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.RenderManager.DrawStatusInner(StatusType.Yellow, MyGame.Manager.EnemyManager.EnemyPercentage);
 			DrawSheet02();
 			MyGame.Manager.SpriteManager.LargeTarget.Draw();
-
+			DrawBacked();
 
 			// Text data last!
 			DrawText();
