@@ -1,5 +1,20 @@
 # 3Dcity
 
+Co-ordinate system for touching mid screen text to choose
+[instead of left / right / fire]
+EASY
+220,190
+320,190
+
+YES NO
+240-340
+440-540
+
+Level
+200-300
+370-480
+
+
 11/10/2018
 Enemy delay algorithms:
 
@@ -19,6 +34,31 @@ frameCalcd - [2-400]
 frameDelay = 1000 - 400 => [998 - 600]
 
 
+10/10/2018
+Polish...!
+01.DONE
+Check BulletCollideEnemy()
+for Hard and frame 6 or 7
+should now be encapsulated in the offset so remove that code
+if (enemyFrame >= enemyFrameOffsets.Length - 2)
+
+02.
+Check score avoid and score kills values to ensure reconcile to total!
+
+03.
+For select screens I'd like to make joy pad collision smaller
+OR take precedence for tapping the letters left / right first
+
+04.DONE
+Enemy none / wave / fast
+Maybe have a better validation algorithm if totals > 100%
+
+05.
+Decide on sound Title vs. GameTitle for music
+
+
+polish code
+(Int32)CurrScreen;	(Int32) CurrScreen;
 08/10/2018
 Movement tolerance
 

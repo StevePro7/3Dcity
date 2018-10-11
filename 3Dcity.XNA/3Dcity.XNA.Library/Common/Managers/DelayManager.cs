@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using WindowsGame.Common.Sprites;
-using WindowsGame.Common.Static;
 using WindowsGame.Common.Data;
+using WindowsGame.Common.Static;
 
 namespace WindowsGame.Common.Managers
 {
