@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using WindowsGame.Common.Sprites;
 using WindowsGame.Common.Static;
 using WindowsGame.Common.Data;
 
@@ -12,6 +13,8 @@ namespace WindowsGame.Common.Managers
 		void LoadContent();
 
 		UInt16 GetStartFrameDelay(Byte index, UInt16 enemyStartDelay, UInt16 enemyStartDelta);
+		UInt16 GetTotalFrameDelay(UInt16[] frameDelays);
+
 		void ResetEnemyDelays(IDictionary<Byte, UInt16> enemyDelays, LevelConfigData levelConfigData, Byte enemyTotal);
 		void CalcdEnemyDelays(IDictionary<Byte, UInt16> enemyDelays, LevelConfigData levelConfigData, Byte enemyTotal);
 
@@ -46,7 +49,18 @@ namespace WindowsGame.Common.Managers
 			UInt16 delay = (UInt16)((index + 1) * enemyStartDelay);
 			UInt16 delta = (UInt16)MyGame.Manager.RandomManager.Next(enemyStartDelta);
 
-			return (UInt16)(delay + delta);
+			return (UInt16)(delay - delta);
+		}
+
+		public UInt16 GetTotalFrameDelay(UInt16[] frameDelays)
+		{
+			UInt16 total = 0;
+			for (Byte index = 0; index < frameDelays.Length; index++)
+			{
+				total += frameDelays[index];
+			}
+
+			return total;
 		}
 
 		public void ResetEnemyDelays(IDictionary<Byte, UInt16> enemyDelays, LevelConfigData levelConfigData, Byte enemyTotal)
@@ -91,7 +105,7 @@ namespace WindowsGame.Common.Managers
 				switch (speedType)
 				{
 					case SpeedType.None:
-						enemyDelays[key] = noneFrameDelay;
+						enemyDelays[key] = GetNoneFrameDelay(enemyFrameDelay, enemyFrameDelta);
 						break;
 					case SpeedType.Wave:
 						enemyDelays[key] = GetWaveFrameDelay(enemyFrameDelay, levelConfigData.EnemyFrameRange, levelConfigData.EnemyFrameMinim);
@@ -108,7 +122,7 @@ namespace WindowsGame.Common.Managers
 		private static UInt16 GetNoneFrameDelay(UInt16 enemyFrameDelay, UInt16 enemyFrameDelta)
 		{
 			UInt16 delta = (UInt16)MyGame.Manager.RandomManager.Next(enemyFrameDelta);
-			return (UInt16)(enemyFrameDelay + delta);
+			return (UInt16)(enemyFrameDelay - delta);
 		}
 		private UInt16 GetWaveFrameDelay(UInt16 enemyFrameDelay, UInt16 enemyFrameRange, UInt16 enemyFrameMinim)
 		{
@@ -116,7 +130,7 @@ namespace WindowsGame.Common.Managers
 			UInt16 index = (Byte)MyGame.Manager.RandomManager.Next(DEGREES_PER_CIRCLE);
 			Single value = DelayWaves[index];
 			Int16 multi = (Int16)(value * enemyFrameRange);
-			UInt16 delay = (UInt16)(enemyFrameDelay + multi);
+			UInt16 delay = (UInt16)(enemyFrameDelay - multi);
 
 			// Prevent from too fast...!
 			if (delay < enemyFrameMinim)
