@@ -325,16 +325,6 @@ namespace WindowsGame.Common.Managers
 			}
 		}
 
-
-		//private static UInt16 GetStartFrameDelay(Byte index, UInt16 enemyStartDelay, UInt16 enemyStartDelta)
-		//{
-		//    UInt16 delay = (UInt16)((index + 1) * enemyStartDelay);
-		//    UInt16 delta = (UInt16)MyGame.Manager.RandomManager.Next(enemyStartDelta);
-
-		//    return (UInt16)(delay + delta);
-		//}
-
-
 		public IList<Enemy> EnemyList { get; private set; }
 		public IList<Enemy> EnemyTest { get; private set; }
 		public IDictionary<Byte, Enemy> EnemyDict { get; private set; }
