@@ -3,12 +3,12 @@
 	<LevelNo>01</LevelNo>
 	<LevelName>MOOT</LevelName>
 	<BonusLevel>false</BonusLevel>
-	<GridDelay>1000</GridDelay>
+	<GridDelay>500</GridDelay>
 	<BulletMaxim>5</BulletMaxim>
 	<BulletFrame>80</BulletFrame>	<!-- how fast bullet travels -->
 	<BulletShoot>120</BulletShoot>	<!-- delay between bullet shots -->
 	<EnemySpawn>1</EnemySpawn>
-	<EnemyTotal>4</EnemyTotal>
+	<EnemyTotal>10</EnemyTotal>
 	<EnemyStartDelay>600</EnemyStartDelay>
 	<EnemyStartDelta>0</EnemyStartDelta>
 	<EnemyFrameDelay>100</EnemyFrameDelay>

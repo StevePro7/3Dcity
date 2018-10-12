@@ -31,6 +31,7 @@ namespace WindowsGame.Common.Sprites
 			BaseX = (UInt16)(position.X);
 			BaseY = (UInt16)(position.Y);
 			Position = position;
+			HomeSpot = position;
 			//Collision = collision;
 			Bounds = bounds;
 
@@ -67,6 +68,11 @@ namespace WindowsGame.Common.Sprites
 		public void SetBounds(Rectangle bounds)
 		{
 			Bounds = bounds;
+		}
+
+		public void SetHomeSpot()
+		{
+			Position = HomeSpot;
 		}
 
 		public Vector2 GetMidPoint()
@@ -112,6 +118,7 @@ namespace WindowsGame.Common.Sprites
 		public UInt16 SizeH { get; private set; }
 		public Vector2 Position { get; protected set; }
 		public Vector2 Midpoint { get; private set; }
+		public Vector2 HomeSpot { get; protected set; }
 		//public Rectangle Collision { get; private set; }
 
 	}

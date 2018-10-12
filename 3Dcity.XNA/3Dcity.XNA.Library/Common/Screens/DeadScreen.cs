@@ -35,6 +35,7 @@ namespace WindowsGame.Common.Screens
 		public override void LoadContent()
 		{
 			MyGame.Manager.SoundManager.StopMusic();
+			MyGame.Manager.SpriteManager.SmallTarget.SetHomeSpot();
 
 			killspace = MyGame.Manager.StateManager.KillSpace;
 			MyGame.Manager.SpriteManager.KillEnemy.SetPosition(killspace);

@@ -72,9 +72,10 @@ namespace WindowsGame.Common.Screens
 
 			// Now can check to pro actively goto next screen.
 			Boolean status = MyGame.Manager.InputManager.StatusBar();
+			Boolean center = MyGame.Manager.InputManager.CenterPos();
 
 			// Time expired so advance.
-			if (status || Timer > bigDelay)
+			if (status || center || Timer > bigDelay)
 			{
 				MyGame.Manager.StateManager.SetKillSpace(Vector2.Zero);
 				MyGame.Manager.ScoreManager.ResetMisses();

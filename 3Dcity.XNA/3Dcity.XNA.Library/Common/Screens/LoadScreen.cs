@@ -60,7 +60,7 @@ namespace WindowsGame.Common.Screens
 			// Must set this after base load content.
 			enemyTotalText = EnemyTotal.ToString().PadLeft(3, '0');
 
-			MyGame.Manager.RenderManager.SetGridDelay((UInt16)(LevelConfigData.GridDelay * 2));
+			MyGame.Manager.RenderManager.SetGridDelay(LevelConfigData.GridDelay);
 			MyGame.Manager.StateManager.SetKillSpace(Vector2.Zero);
 			MyGame.Manager.EnemyManager.SpawnAllEnemies();
 			//MyGame.Manager.SoundManager.PlayMusic(SongType.GameMusic);

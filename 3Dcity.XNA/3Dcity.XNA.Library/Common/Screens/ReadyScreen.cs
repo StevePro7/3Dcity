@@ -24,12 +24,9 @@ namespace WindowsGame.Common.Screens
 		public override void LoadContent()
 		{
 			base.LoadContent();
-			
 
-			MyGame.Manager.RenderManager.SetGridDelay((UInt16)(LevelConfigData.GridDelay * 2));
-
+			MyGame.Manager.RenderManager.SetGridDelay(LevelConfigData.GridDelay);
 			MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Ready);
-
 		}
 
 		public override Int32 Update(GameTime gameTime)

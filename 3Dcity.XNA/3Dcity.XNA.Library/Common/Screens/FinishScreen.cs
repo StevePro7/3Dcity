@@ -16,6 +16,8 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
+			//MyGame.Manager.SoundManager.StopMusic();
+			MyGame.Manager.SpriteManager.SmallTarget.SetHomeSpot();
 			base.LoadContent();
 		}
 
