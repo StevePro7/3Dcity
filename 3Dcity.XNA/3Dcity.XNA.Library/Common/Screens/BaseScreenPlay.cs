@@ -186,6 +186,7 @@ namespace WindowsGame.Common.Screens
 				{
 					// First check if enemy instantly kills target.
 					Boolean test = CheckEnemyKillTarget(enemy, target);
+					MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Wrong);
 
 					// Instant death!	Game Over.
 					if (test)
@@ -195,16 +196,17 @@ namespace WindowsGame.Common.Screens
 						NextScreen = ScreenType.Dead;
 						//return;
 					}
-
-					// Enemy not kill target but missed so increment miss total.
-					MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Wrong);
-					MyGame.Manager.ScoreManager.IncrementMisses();
-					if (MyGame.Manager.ScoreManager.MissesTotal >= Constants.MAX_MISSES)
+					else
 					{
-						// If maximum misses then game over.
-						enemy.Reset();
-						NextScreen = ScreenType.Dead;
-						//return;
+						// Enemy not kill target but missed so increment miss total.
+						MyGame.Manager.ScoreManager.IncrementMisses();
+						if (MyGame.Manager.ScoreManager.MissesTotal >= Constants.MAX_MISSES)
+						{
+							// If maximum misses then game over.
+							enemy.Reset();
+							NextScreen = ScreenType.Dead;
+							//return;
+						}
 					}
 				}
 
