@@ -4,7 +4,10 @@ THINGS TO Check
 When hold down arrow key and game over - the small target does not reset to center
 When instant death the miss count increments - need to refactor this for invincibility
 
-Update code so that once quit and resume DON'T go to ready
+Add in feature to reset misses when 20,000 "free man" stage - use CK logic for this
+Update resume screen so can shoot bullets and kill enemies but you don't accumulate points
+Update grid so yes or no and yes always goes at grid speed
+Update code so that once quit and resume DON'T go to ready - maybe change back...
 [because currently goes to Play next and spawn all enemies]
 
 Co-ordinate system for touching mid screen text to choose
