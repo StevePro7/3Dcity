@@ -20,8 +20,7 @@ namespace WindowsGame.Common.Screens
 			bigDelay = MyGame.Manager.ConfigManager.GlobalConfigData.ResumeDelay;
 			smlDelay = 200;
 
-			//PrevScreen = ScreenType.Ready;
-			PrevScreen = ScreenType.Play;
+			PrevScreen = ScreenType.Ready;
 
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}

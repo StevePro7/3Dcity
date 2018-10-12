@@ -23,8 +23,7 @@ namespace WindowsGame.Common.Screens
 			LoadTextData();
 
 			UpdateGrid = MyGame.Manager.ConfigManager.GlobalConfigData.UpdateGrid;
-			//NextScreen = ScreenType.Ready;
-			NextScreen = ScreenType.Play;
+			NextScreen = ScreenType.Ready;
 
 			enemyTotalPosition = MyGame.Manager.TextManager.GetTextPosition(25, 10);
 			levelNamePosition = MyGame.Manager.TextManager.GetTextPosition(19, 11);
@@ -63,7 +62,7 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.RenderManager.SetGridDelay(LevelConfigData.GridDelay);
 			MyGame.Manager.StateManager.SetKillSpace(Vector2.Zero);
 			MyGame.Manager.EnemyManager.SpawnAllEnemies();
-			//MyGame.Manager.SoundManager.PlayMusic(SongType.GameMusic);
+			MyGame.Manager.SoundManager.PlayMusic(SongType.GameMusic);
 		}
 
 		public override Int32 Update(GameTime gameTime)

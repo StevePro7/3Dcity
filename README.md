@@ -1,5 +1,10 @@
 # 3Dcity
 
+TODO again
+Do I want to wrap Diff + Level screen with yellow border like Cont / Dead / Over screen
+Rule : flash is OK e.g. Title and Finish screens
+Also want to add fire button push update icon to screen on Over like the others...
+
 THINGS TO Check
 Add in feature to reset misses when 20,000 "free man" stage - use CK logic for this
 Update resume screen so can shoot bullets and kill enemies but you don't accumulate points
