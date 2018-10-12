@@ -8,6 +8,7 @@ namespace WindowsGame.Common.Screens
 	{
 		protected Vector2[] CursorPositions { get; set; }
 		protected Vector2[] BackedPositions { get; set; }
+		protected Vector2 Killspace { get; set; }
 		protected Boolean IsMoving { get; set; }
 		protected Byte SelectType { get; set; }
 

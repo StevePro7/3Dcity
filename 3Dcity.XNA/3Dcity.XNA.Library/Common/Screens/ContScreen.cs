@@ -7,8 +7,6 @@ namespace WindowsGame.Common.Screens
 {
 	public class ContScreen : BaseScreenSelect, IScreen
 	{
-		private Vector2 killspace;
-
 		public override void Initialize()
 		{
 			base.Initialize();
@@ -22,6 +20,7 @@ namespace WindowsGame.Common.Screens
 			BackedPositions[1] = new Vector2(275, 217 + Constants.GameOffsetY);
 			BackedPositions[2] = new Vector2(365, 197 + Constants.GameOffsetY);
 			BackedPositions[3] = new Vector2(365, 217 + Constants.GameOffsetY);
+
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
 
@@ -31,8 +30,8 @@ namespace WindowsGame.Common.Screens
 			NextScreen = CurrScreen;
 			SelectType = 0;
 
-			killspace = MyGame.Manager.StateManager.KillSpace;
-			MyGame.Manager.SpriteManager.KillEnemy.SetPosition(killspace);
+			Killspace = MyGame.Manager.StateManager.KillSpace;
+			MyGame.Manager.SpriteManager.KillEnemy.SetPosition(Killspace);
 
 			MyGame.Manager.SoundManager.PlayMusic(SongType.ContMusic, true);
 		}
@@ -49,10 +48,24 @@ namespace WindowsGame.Common.Screens
 			UpdateFlag1(gameTime);
 			if (Selected)
 			{
-				MyGame.Manager.ScoreManager.ResetMisses();
-				MyGame.Manager.StateManager.SetKillSpace(Vector2.Zero);
-
+				// If game over then leave things as they are...
 				NextScreen = SelectType == 0 ? ScreenType.Resume : ScreenType.Over;
+				if (ScreenType.Over == NextScreen)
+				{
+					return (Int32) NextScreen;
+				}
+
+				// Otherwise clear kill enemy and misses.
+				MyGame.Manager.StateManager.SetKillSpace(Vector2.Zero);
+				MyGame.Manager.ScoreManager.ResetMisses();
+				
+				// Edge case; check if this was last enemy in level...!
+				Boolean noMoreEnemies = MyGame.Manager.EnemyManager.CheckEnemiesNone();
+				if (noMoreEnemies)
+				{
+					NextScreen = ScreenType.Finish;
+				}
+
 				return (Int32) NextScreen;
 			}
 			if (Flag1)
@@ -93,7 +106,7 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.RenderManager.DrawStatusInner(StatusType.Yellow, MyGame.Manager.EnemyManager.EnemyPercentage);
 
 			// Draw dead enemy on instant death only.
-			if (Vector2.Zero != killspace)
+			if (Vector2.Zero != Killspace)
 			{
 				MyGame.Manager.SpriteManager.KillEnemy.Draw();
 			}

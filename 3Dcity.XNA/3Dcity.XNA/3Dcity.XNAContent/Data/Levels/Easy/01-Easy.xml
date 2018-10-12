@@ -8,7 +8,7 @@
 	<BulletFrame>80</BulletFrame>	<!-- how fast bullet travels -->
 	<BulletShoot>120</BulletShoot>	<!-- delay between bullet shots -->
 	<EnemySpawn>1</EnemySpawn>
-	<EnemyTotal>1</EnemyTotal>
+	<EnemyTotal>4</EnemyTotal>
 	<EnemyStartDelay>600</EnemyStartDelay>
 	<EnemyStartDelta>0</EnemyStartDelta>
 	<EnemyFrameDelay>100</EnemyFrameDelay>

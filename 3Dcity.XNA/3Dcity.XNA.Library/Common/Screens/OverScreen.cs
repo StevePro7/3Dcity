@@ -27,6 +27,14 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
 
+		public override void LoadContent()
+		{
+			base.LoadContent();
+
+			Killspace = MyGame.Manager.StateManager.KillSpace;
+			MyGame.Manager.SpriteManager.KillEnemy.SetPosition(Killspace);
+		}
+
 		public override Int32 Update(GameTime gameTime)
 		{
 			base.Update(gameTime);
@@ -64,15 +72,12 @@ namespace WindowsGame.Common.Screens
 
 			// Now can check to pro actively goto next screen.
 			Boolean status = MyGame.Manager.InputManager.StatusBar();
-			if (status)
-			{
-				MyGame.Manager.SoundManager.StopMusic();
-				return (Int32) NextScreen;
-			}
 
 			// Time expired so advance.
-			if (Timer > bigDelay)
+			if (status || Timer > bigDelay)
 			{
+				MyGame.Manager.StateManager.SetKillSpace(Vector2.Zero);
+				MyGame.Manager.ScoreManager.ResetMisses();
 				MyGame.Manager.SoundManager.StopMusic();
 				return (Int32) NextScreen;
 			}
@@ -89,6 +94,13 @@ namespace WindowsGame.Common.Screens
 			// Sprite sheet #02.
 			MyGame.Manager.RenderManager.DrawStatusOuter();
 			MyGame.Manager.RenderManager.DrawStatusInner(StatusType.Yellow, MyGame.Manager.EnemyManager.EnemyPercentage);
+
+			// Draw dead enemy on instant death only.
+			if (Vector2.Zero != Killspace)
+			{
+				MyGame.Manager.SpriteManager.KillEnemy.Draw();
+			}
+
 			DrawSheet02();
 			MyGame.Manager.SpriteManager.LargeTarget.Draw();
 			DrawBacked();

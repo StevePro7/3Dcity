@@ -191,10 +191,10 @@ namespace WindowsGame.Common.Screens
 					// Instant death!	Game Over.
 					if (test)
 					{
-						// Do NOT reset enemy here as we want to see Target killed by Enemy!
+						// Do NOT reset enemy here as CheckThisEnemy() will remove from dictionary and reset there.
+						// Set the enemy position so can be rendered by the additional "kill" enemy to show death!
 						MyGame.Manager.StateManager.SetKillSpace(enemy.Position);
 						NextScreen = ScreenType.Dead;
-						//return;
 					}
 					else
 					{
@@ -203,9 +203,8 @@ namespace WindowsGame.Common.Screens
 						if (MyGame.Manager.ScoreManager.MissesTotal >= Constants.MAX_MISSES)
 						{
 							// If maximum misses then game over.
-							enemy.Reset();
+							// Do NOT reset enemy here as CheckThisEnemy() will remove from dictionary and reset there.
 							NextScreen = ScreenType.Dead;
-							//return;
 						}
 					}
 				}

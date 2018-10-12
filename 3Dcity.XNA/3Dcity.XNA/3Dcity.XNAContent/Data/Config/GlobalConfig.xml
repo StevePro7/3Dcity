@@ -19,7 +19,7 @@
 	<SelectDelay>500</SelectDelay>
 	<IntroDelay>660</IntroDelay>
 	<TitleDelay>800</TitleDelay>
-	<LoadDelay>3000</LoadDelay>			<!-- 2500 -->
+	<LoadDelay>300</LoadDelay>			<!-- 2500 -->
 	<ReadyDelay>3000</ReadyDelay>		<!-- 2500 -->
 	<DeadDelay>3000</DeadDelay>			<!-- between 3000-5000ms -->
 	<ResumeDelay>5000</ResumeDelay>
