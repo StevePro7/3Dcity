@@ -41,6 +41,7 @@ namespace WindowsGame.Common.Screens
 			deltaY = introDelay / deltaY;
 			moverPosition = startPosition;
 			coolMusic = MyGame.Manager.StateManager.CoolMusic;
+			coolMusic = true;	// TODO revert...!
 			SongType song = coolMusic ? SongType.CoolMusic : SongType.GameTitle;
 			MyGame.Manager.SoundManager.PlayMusic(song, false);
 			//buildVersion = MyGame.Manager.DeviceManager.BuildVersion;

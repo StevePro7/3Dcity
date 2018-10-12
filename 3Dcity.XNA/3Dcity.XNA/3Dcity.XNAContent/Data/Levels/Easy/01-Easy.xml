@@ -5,15 +5,15 @@
 	<BonusLevel>false</BonusLevel>
 	<GridDelay>500</GridDelay>
 	<BulletMaxim>5</BulletMaxim>
-	<BulletFrame>80</BulletFrame>
+	<BulletFrame>100</BulletFrame>
 	<!-- how fast bullet travels -->
-	<BulletShoot>120</BulletShoot>
+	<BulletShoot>200</BulletShoot>
 	<!-- delay between bullet shots -->
 	<EnemySpawn>1</EnemySpawn>
 	<EnemyTotal>10</EnemyTotal>
-	<EnemyStartDelay>600</EnemyStartDelay>
+	<EnemyStartDelay>2000</EnemyStartDelay>
 	<EnemyStartDelta>0</EnemyStartDelta>
-	<EnemyFrameDelay>100</EnemyFrameDelay>
+	<EnemyFrameDelay>1000</EnemyFrameDelay>
 	<EnemyFrameDelta>0</EnemyFrameDelta>
 	<EnemyFrameMinim>500</EnemyFrameMinim>
 	<EnemyFrameRange>200</EnemyFrameRange>
