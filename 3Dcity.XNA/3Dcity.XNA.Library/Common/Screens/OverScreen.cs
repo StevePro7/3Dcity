@@ -14,9 +14,11 @@ namespace WindowsGame.Common.Screens
 			base.Initialize();
 			LoadTextData();
 
-			BackedPositions = new Vector2[2];
-			BackedPositions[0] = new Vector2(290, 215 + Constants.GameOffsetY);
-			BackedPositions[1] = new Vector2(290, 220 + Constants.GameOffsetY);
+			//BackedPositions = new Vector2[2];
+			//BackedPositions[0] = new Vector2(290, 215 + Constants.GameOffsetY);
+			//BackedPositions[1] = new Vector2(290, 220 + Constants.GameOffsetY);
+
+			CalcTwoBorders(290, 215, 220);
 
 			bigDelay = MyGame.Manager.ConfigManager.GlobalConfigData.OverDelay;
 			medDelay = 3000;
@@ -72,7 +74,8 @@ namespace WindowsGame.Common.Screens
 
 			// Now can check to pro actively goto next screen.
 			Boolean status = MyGame.Manager.InputManager.StatusBar();
-			Boolean center = MyGame.Manager.InputManager.CenterPos();
+			//Boolean center = MyGame.Manager.InputManager.CenterPos();
+			const Boolean center = false;		// TODO perfect transition...
 
 			// Time expired so advance.
 			if (status || center || Timer > bigDelay)

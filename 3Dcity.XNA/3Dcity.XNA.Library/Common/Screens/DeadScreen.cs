@@ -18,9 +18,7 @@ namespace WindowsGame.Common.Screens
 			base.Initialize();
 			LoadTextData();
 
-			BackedPositions = new Vector2[2];
-			BackedPositions[0] = new Vector2(290, 197 + Constants.GameOffsetY);
-			BackedPositions[1] = new Vector2(290, 217 + Constants.GameOffsetY);
+			CalcTwoBorders(285, 197, 217);
 
 			deathPosition = MyGame.Manager.TextManager.GetTextPosition(15, 11);
 			bigDelay = MyGame.Manager.ConfigManager.GlobalConfigData.DeadDelay;
@@ -109,7 +107,11 @@ namespace WindowsGame.Common.Screens
 
 			DrawSheet02();
 			MyGame.Manager.SpriteManager.LargeTarget.Draw();
-			DrawBacked();
+
+			if (Flag1)
+			{
+				DrawBacked();
+			}
 
 			// Text data last!
 			MyGame.Manager.TextManager.DrawTitle();
