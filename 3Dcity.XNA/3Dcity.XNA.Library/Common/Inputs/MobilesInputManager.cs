@@ -33,7 +33,7 @@ namespace WindowsGame.Common.Inputs
 		{
 			const GestureType gestureType = GestureType.Tap | GestureType.DoubleTap | GestureType.Hold | GestureType.HorizontalDrag | GestureType.VerticalDrag;
 			touchScreenInput.Initialize(gestureType);
-
+			joystickInput.Initialize();
 			maxInputs = 0;
 		}
 

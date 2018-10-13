@@ -172,10 +172,11 @@ namespace WindowsGame.Common.Screens
 
 		protected void DrawBacked()
 		{
-			for (Byte index = 0; index < YellowPositions.Length; index++)
-			{
-				MyGame.Manager.RenderManager.DrawStatusPosition(StatusType.Yellow, YellowPositions[index]);
-			}
+			//TODO fix this as renders strangely on mobile!
+			//for (Byte index = 0; index < YellowPositions.Length; index++)
+			//{
+			//	MyGame.Manager.RenderManager.DrawStatusPosition(StatusType.Yellow, YellowPositions[index]);
+			//}
 			for (Byte index = 0; index < BackedPositions.Length; index++)
 			{
 				MyGame.Manager.RenderManager.DrawStatusPosition(StatusType.Black, BackedPositions[index]);
