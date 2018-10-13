@@ -119,6 +119,7 @@
 		Play,
 		Quit,
 		Finish,
+		Boss,
 		Dead,
 		Cont,
 		Over,

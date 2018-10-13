@@ -87,6 +87,7 @@ namespace WindowsGame.Common.Managers
 				{(Int32)ScreenType.Play, new PlayScreen()},
 				{(Int32)ScreenType.Quit, new QuitScreen()},
 				{(Int32)ScreenType.Finish, new FinishScreen()},
+				{(Int32)ScreenType.Boss, new BossScreen()},
 				{(Int32)ScreenType.Dead, new DeadScreen()},
 				{(Int32)ScreenType.Cont, new ContScreen()},
 				{(Int32)ScreenType.Over, new OverScreen()},
