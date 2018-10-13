@@ -5,21 +5,21 @@
 	<BonusLevel>false</BonusLevel>
 	<GridDelay>300</GridDelay>
 	<BulletMaxim>5</BulletMaxim>
-	<BulletFrame>80</BulletFrame>
+	<BulletFrame>50</BulletFrame>
 	<!-- how fast bullet travels -->
-	<BulletShoot>120</BulletShoot>
+	<BulletShoot>100</BulletShoot>
 	<!-- delay between bullet shots -->
-	<EnemySpawn>8</EnemySpawn>
-	<EnemyTotal>10</EnemyTotal>
+	<EnemySpawn>4</EnemySpawn>
+	<EnemyTotal>50</EnemyTotal>
 	<EnemyStartDelay>2000</EnemyStartDelay>
 	<EnemyStartDelta>0</EnemyStartDelta>
 	<EnemyFrameDelay>1000</EnemyFrameDelay>
 	<EnemyFrameDelta>0</EnemyFrameDelta>
-	<EnemyFrameMinim>500</EnemyFrameMinim>
+	<EnemyFrameMinim>600</EnemyFrameMinim>
 	<EnemyFrameRange>200</EnemyFrameRange>
-	<EnemySpeedNone>100</EnemySpeedNone>
-	<EnemySpeedWave>0</EnemySpeedWave>
-	<EnemySpeedFast>0</EnemySpeedFast>
+	<EnemySpeedNone>70</EnemySpeedNone>
+	<EnemySpeedWave>20</EnemySpeedWave>
+	<EnemySpeedFast>10</EnemySpeedFast>
 	<!--
 	<EnemyDelay>1000</EnemyDelay>
 	<EnemyStart>5000</EnemyStart>

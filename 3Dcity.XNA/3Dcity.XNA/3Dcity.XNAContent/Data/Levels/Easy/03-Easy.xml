@@ -10,12 +10,12 @@
 	<BulletShoot>120</BulletShoot>
 	<!-- delay between bullet shots -->
 	<EnemySpawn>5</EnemySpawn>
-	<EnemyTotal>10</EnemyTotal>
-	<EnemyStartDelay>500</EnemyStartDelay>
+	<EnemyTotal>30</EnemyTotal>
+	<EnemyStartDelay>2000</EnemyStartDelay>
 	<EnemyStartDelta>0</EnemyStartDelta>
 	<EnemyFrameDelay>750</EnemyFrameDelay>
 	<EnemyFrameDelta>0</EnemyFrameDelta>
-	<EnemyFrameMinim>500</EnemyFrameMinim>
+	<EnemyFrameMinim>600</EnemyFrameMinim>
 	<EnemyFrameRange>200</EnemyFrameRange>
 	<EnemySpeedNone>60</EnemySpeedNone>
 	<EnemySpeedWave>30</EnemySpeedWave>

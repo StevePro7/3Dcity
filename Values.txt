@@ -1,0 +1,13 @@
+VALUES
+13/10/2018
+
+BULLETS
+1 bullet at a time
+<BulletMaxim>1</BulletMaxim>
+<BulletFrame>100</BulletFrame>
+<BulletShoot>500</BulletShoot>
+
+4 nicely spaced [no more]
+<BulletMaxim>4</BulletMaxim>
+<BulletFrame>200</BulletFrame>
+<BulletShoot>500</BulletShoot>
