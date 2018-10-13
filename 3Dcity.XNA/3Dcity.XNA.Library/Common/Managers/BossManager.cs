@@ -11,6 +11,9 @@ namespace WindowsGame.Common.Managers
 		void LoadContent();
 		void Update(GameTime gameTime);
 		void Draw();
+		void DrawMedBoss();
+		void DrawMedBoss(Byte index);
+		void DrawBigBoss();
 		void DrawProgress();
 	}
 
@@ -19,10 +22,16 @@ namespace WindowsGame.Common.Managers
 		private Vector2 progressPosition;
 		private String bossProgressText;
 
+		private Vector2 bossMedPosition;
+		private Vector2 bossBigPosition;
+
 		public void Initialize()
 		{
 			progressPosition = MyGame.Manager.TextManager.GetTextPosition(25, 23);
 			bossProgressText = "[100%]";
+
+			bossMedPosition = new Vector2(480, 120);
+			bossBigPosition = new Vector2(200, 80);
 		}
 
 		public void LoadContent()
@@ -37,6 +46,18 @@ namespace WindowsGame.Common.Managers
 		{
 		}
 
+		public void DrawMedBoss()
+		{
+			DrawMedBoss(0);
+		}
+		public void DrawMedBoss(Byte index)
+		{
+			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, bossMedPosition, MyGame.Manager.ImageManager.BossMedRectangles[index], Color.White);
+		}
+		public void DrawBigBoss()
+		{
+			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, bossBigPosition, MyGame.Manager.ImageManager.BossBigRectangle, Color.White);
+		}
 		public void DrawProgress()
 		{
 			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, bossProgressText, progressPosition, Color.White);

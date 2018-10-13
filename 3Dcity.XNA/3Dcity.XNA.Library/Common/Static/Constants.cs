@@ -34,6 +34,7 @@ namespace WindowsGame.Common.Static
 		public const Byte MAX_ENEMYS_TOTAL = 250;
 		public const Byte MAX_ENEMYS_SPAWN = 8;
 		public const Byte MAX_ENEMYS_FRAME = 13;
+		public const Byte MAX_BOSSES_FRAME = 4;
 		public const Byte MAX_OFFSET_FRAME = 8;
 		//public const Byte MAX_BULLET_SHOOT = 10;
 		public const Byte MAX_BULLET_FRAME = 6;
@@ -68,6 +69,8 @@ namespace WindowsGame.Common.Static
 		public const Byte DbleSize = 160;
 		public const Byte TargetSize = 64;
 		public const Byte EnemySize = 120;
+		public const Byte BossMedSize = 240;
+		public const UInt16 BossBigSize = 360;
 
 
 		// Delimiters.

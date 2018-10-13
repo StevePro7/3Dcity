@@ -34,6 +34,7 @@ namespace WindowsGame.Common.Data
 		public Boolean RenderBack;
 		public Boolean RenderIcon;
 		public Boolean CoolMusic;
+		public Boolean BossBig;
 		public UInt16 TargetX;
 		public UInt16 TargetY;
 		public UInt16 EnemysX;

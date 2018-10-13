@@ -23,6 +23,8 @@ namespace WindowsGame.Common.Managers
 		// Sprite sheet #02.
 		Rectangle[][] ExplodeRectangles { get; }
 		Rectangle[] EnemyRectangles { get; }
+		Rectangle[] BossMedRectangles { get; }
+		Rectangle BossBigRectangle { get; }
 		Rectangle[] BulletRectangles { get; }
 		Rectangle[] OrbDiffRectangles { get; }
 		Rectangle[] StatusRectangles { get; }
@@ -39,6 +41,8 @@ namespace WindowsGame.Common.Managers
 			const Byte baseSize = Constants.BaseSize;
 			const Byte dbleSize = Constants.DbleSize;
 			const Byte enemySize = Constants.EnemySize;
+			const Byte bossMedSize = Constants.BossMedSize;
+			const UInt16 bossBigSize = Constants.BossBigSize;
 			const Byte targetSize = Constants.TargetSize;
 			const UInt16 left = Constants.ScreenWide + targetSize;
 
@@ -103,6 +107,16 @@ namespace WindowsGame.Common.Managers
 				EnemyRectangles[index] = new Rectangle(index * enemySize, high, enemySize, enemySize);
 			}
 
+			// Bosses.
+			high += enemySize;
+			BossMedRectangles = new Rectangle[Constants.MAX_BOSSES_FRAME];
+			BossMedRectangles[0] = new Rectangle(0 * bossMedSize, high + 0 * bossMedSize, bossMedSize, bossMedSize);
+			BossMedRectangles[1] = new Rectangle(1 * bossMedSize, high + 0 * bossMedSize, bossMedSize, bossMedSize);
+			BossMedRectangles[2] = new Rectangle(0 * bossMedSize, high + 1 * bossMedSize, bossMedSize, bossMedSize);
+			BossMedRectangles[3] = new Rectangle(1 * bossMedSize, high + 1 * bossMedSize, bossMedSize, bossMedSize);
+
+			const Byte half = enemySize / 2;
+			BossBigRectangle = new Rectangle(2 * bossMedSize + half, high + 0 * bossMedSize + half, bossBigSize, bossBigSize);
 
 			// Targets.
 			const ushort wide = enemySize * Constants.MAX_ENEMYS_SPAWN;
@@ -154,6 +168,8 @@ namespace WindowsGame.Common.Managers
 		// Sprite sheet #02.
 		public Rectangle[][] ExplodeRectangles { get; private set; }
 		public Rectangle[] EnemyRectangles { get; private set; }
+		public Rectangle[] BossMedRectangles { get; private set; }
+		public Rectangle BossBigRectangle { get; private set; }
 		public Rectangle[] BulletRectangles { get; private set; }
 		public Rectangle[] OrbDiffRectangles { get; private set; }
 		public Rectangle[] StatusRectangles { get; private set; }

@@ -33,6 +33,7 @@
 	<RenderBack>true</RenderBack>
 	<RenderIcon>true</RenderIcon>
 	<CoolMusic>true</CoolMusic>
+	<BossBig>true</BossBig>
 	<TargetX>228</TargetX>
 	<TargetY>164</TargetY>
 	<EnemysX>1</EnemysX>

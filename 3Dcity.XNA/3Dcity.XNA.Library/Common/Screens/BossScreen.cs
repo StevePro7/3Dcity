@@ -7,6 +7,8 @@ namespace WindowsGame.Common.Screens
 {
 	public class BossScreen : BaseScreenPlay, IScreen
 	{
+		private Boolean bossBig;
+
 		public override void Initialize()
 		{
 			base.Initialize();
@@ -18,6 +20,8 @@ namespace WindowsGame.Common.Screens
 		{
 			// TODO read this from boss level config file.
 			MyGame.Manager.BulletManager.Reset(10, 100, 100);
+			bossBig = MyGame.Manager.ConfigManager.GlobalConfigData.BossBig;
+
 			base.LoadContent();
 		}
 
@@ -52,7 +56,16 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.RenderManager.DrawStatusOuter();
 			MyGame.Manager.RenderManager.DrawStatusInner(StatusType.Red, 100.0f);
 
-			MyGame.Manager.EnemyManager.Draw();
+			//MyGame.Manager.EnemyManager.Draw();
+			if (bossBig)
+			{
+				MyGame.Manager.BossManager.DrawBigBoss();
+			}
+			else
+			{
+				MyGame.Manager.BossManager.DrawMedBoss();
+			}
+
 			MyGame.Manager.ExplosionManager.Draw();
 			MyGame.Manager.LevelManager.Draw();
 			MyGame.Manager.BulletManager.Draw();
