@@ -12,8 +12,8 @@ namespace WindowsGame.Common.Screens
 			base.Initialize();
 
 			CursorPositions = new Vector2[2];
-			CursorPositions[0] = MyGame.Manager.TextManager.GetTextPosition(14, 11);
-			CursorPositions[1] = MyGame.Manager.TextManager.GetTextPosition(23, 11);
+			CursorPositions[0] = MyGame.Manager.TextManager.GetTextPosition(13, 11);
+			CursorPositions[1] = MyGame.Manager.TextManager.GetTextPosition(22, 11);
 
 			CalcFourBorders(255, 197, 345, 217);
 
