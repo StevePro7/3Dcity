@@ -3,7 +3,7 @@
 	<LevelNo>01</LevelNo>
 	<LevelName>MOOT</LevelName>
 	<BonusLevel>false</BonusLevel>
-	<GridDelay>300</GridDelay>
+	<GridDelay>200</GridDelay>
 	<BulletMaxim>5</BulletMaxim>
 	<BulletFrame>50</BulletFrame>
 	<!-- how fast bullet travels -->

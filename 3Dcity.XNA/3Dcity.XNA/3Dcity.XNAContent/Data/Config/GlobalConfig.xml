@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Boss</ScreenType>
+	<ScreenType>Load</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<!--<ScreenType>Level</ScreenType>-->
 	<!--<ScreenType>Resume</ScreenType>-->
 	<LevelType>Easy</LevelType>
-	<LevelIndex>0</LevelIndex>
+	<LevelIndex>2</LevelIndex>
 	<FramesPerSecond>100</FramesPerSecond>
 	<MaximLevel>3</MaximLevel>
 	<MaxBullets>20</MaxBullets>
-	<LoadAudio>false</LoadAudio>
+	<LoadAudio>true</LoadAudio>
 	<PlayAudio>true</PlayAudio>
 	<StarDelay>2000</StarDelay>
 	<!-- <GridDelay>300</GridDelay>			TODO delete -->
@@ -26,7 +26,7 @@
 	<OverDelay>16000</OverDelay>		<!-- 16000 is a keeper !-->
 	<ScoreDelay>600</ScoreDelay>
 	<EventRatio>1.0</EventRatio>
-	<EnemyBlink>false</EnemyBlink>
+	<EnemyBlink>true</EnemyBlink>
 	<ScoreBlink>true</ScoreBlink>
 	<UpdateStar>true</UpdateStar>
 	<UpdateGrid>true</UpdateGrid>
