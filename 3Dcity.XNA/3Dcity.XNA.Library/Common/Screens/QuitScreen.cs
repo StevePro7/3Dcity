@@ -23,6 +23,7 @@ namespace WindowsGame.Common.Screens
 		public override void LoadContent()
 		{
 			base.LoadContent();
+			NextScreen = CurrScreen;
 			SelectType = 1;
 		}
 
@@ -31,31 +32,39 @@ namespace WindowsGame.Common.Screens
 			base.Update(gameTime);
 			if (GamePause)
 			{
-				return (Int32)CurrScreen;
+				return (Int32) CurrScreen;
 			}
 
 			IsMoving = false;
 			UpdateFlag1(gameTime);
 			if (Selected)
 			{
-				ScreenType screenType = SelectType == 0 ? ScreenType.Over : ScreenType.Resume;
-				return (Int32)screenType;
+				NextScreen = SelectType == 0 ? ScreenType.Over : ScreenType.Play;
+				if (ScreenType.Over == NextScreen)
+				{
+					return (Int32) NextScreen;
+				}
+
+				//TODO enable music on back
+				//MyGame.Manager.SoundManager.ResumeMusic();
+				return (Int32) NextScreen;
 			}
 			if (Flag1)
 			{
-				return (Int32)CurrScreen;
+				MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Right);
+				return (Int32) CurrScreen;
 			}
 
 			UpdateFlag2(gameTime);
 			if (IsMoving)
 			{
-				return (Int32)CurrScreen;
+				return (Int32) CurrScreen;
 			}
 
 			DetectFire();
 			if (Flag1)
 			{
-				return (Int32)CurrScreen;
+				return (Int32) CurrScreen;
 			}
 
 			DetectMove();

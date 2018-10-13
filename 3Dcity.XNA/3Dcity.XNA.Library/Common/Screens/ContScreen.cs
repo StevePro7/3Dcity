@@ -79,6 +79,7 @@ namespace WindowsGame.Common.Screens
 			if (Flag1)
 			{
 				MyGame.Manager.SoundManager.StopMusic();
+				MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Right);
 				return (Int32) CurrScreen;
 			}
 

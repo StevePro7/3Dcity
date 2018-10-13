@@ -62,6 +62,8 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.RenderManager.SetGridDelay(LevelConfigData.GridDelay);
 			MyGame.Manager.StateManager.SetKillSpace(Vector2.Zero);
 			MyGame.Manager.EnemyManager.SpawnAllEnemies();
+
+			MyGame.Manager.SoundManager.StopMusic();
 			MyGame.Manager.SoundManager.PlayMusic(SongType.GameMusic);
 		}
 
