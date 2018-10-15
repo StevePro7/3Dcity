@@ -21,7 +21,7 @@
 	<TitleDelay>800</TitleDelay>
 	<LoadDelay>3000</LoadDelay>			<!-- 2500 -->
 	<ReadyDelay>1000</ReadyDelay>		<!-- 2500 -->
-	<DeadDelay>5000</DeadDelay>			<!-- between 3000-5000ms -->
+	<DeadDelay>4000</DeadDelay>			<!-- between 3000-5000ms -->
 	<ResumeDelay>5000</ResumeDelay>
 	<OverDelay>16000</OverDelay>		<!-- 16000 is a keeper !-->
 	<ScoreDelay>600</ScoreDelay>
