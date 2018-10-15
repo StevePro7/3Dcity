@@ -53,6 +53,10 @@ namespace WindowsGame.Common.Screens
 			{
 				return (Int32)CurrScreen;
 			}
+			if (UpdateGrid)
+			{
+				MyGame.Manager.RenderManager.UpdateGrid(gameTime);
+			}
 
 
 			Boolean statusBar = MyGame.Manager.InputManager.StatusBar();
@@ -60,7 +64,7 @@ namespace WindowsGame.Common.Screens
 			{
 				NextScreen = ScreenType.Play;
 				MyGame.Manager.SoundManager.ResumeMusic();
-				return (Int32)NextScreen;
+				return (Int32) NextScreen;
 			}
 
 			IsMoving = false;

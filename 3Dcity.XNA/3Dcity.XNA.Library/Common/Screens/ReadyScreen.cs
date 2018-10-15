@@ -16,7 +16,6 @@ namespace WindowsGame.Common.Screens
 
 			UpdateGrid = MyGame.Manager.ConfigManager.GlobalConfigData.UpdateGrid;
 			readyDelay = MyGame.Manager.ConfigManager.GlobalConfigData.ReadyDelay;
-			NextScreen = ScreenType.Play;
 
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
@@ -25,6 +24,7 @@ namespace WindowsGame.Common.Screens
 		{
 			base.LoadContent();
 
+			NextScreen = CurrScreen;
 			MyGame.Manager.RenderManager.SetGridDelay(LevelConfigData.GridDelay);
 			MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Ready);
 		}
@@ -34,27 +34,56 @@ namespace WindowsGame.Common.Screens
 			base.Update(gameTime);
 			if (GamePause)
 			{
-				return (Int32)CurrScreen;
+				return (Int32) CurrScreen;
 			}
 
 			// Check status bar to fast forward.
 			Boolean statusBar = MyGame.Manager.InputManager.StatusBar();
 			if (statusBar)
 			{
+				NextScreen = ScreenType.Play;
 				return (Int32) NextScreen;
 			}
 
 			UpdateTimer(gameTime);
 			if (Timer >= readyDelay)
 			{
+				NextScreen = ScreenType.Play;
 				return (Int32) NextScreen;
 			}
+
+			// Begin common code...
+			CheckLevelComplete = false;
 
 			// Target.
 			DetectTarget(gameTime);
 
+			// Bullets.
+			DetectBullets();
+			UpdateBullets(gameTime);
+			VerifyBullets(false);
+
+			// Explosions.
+			UpdateExplosions(gameTime);
+			VerifyExplosions();
+
+			// Enemies.
+			UpdateEnemies(gameTime);
+			VerifyEnemies();
+			if (NextScreen != CurrScreen)
+			{
+				return (Int32) NextScreen;
+			}
+
 			// Score.
 			UpdateScore(gameTime);
+
+			// Summary.
+			UpdateLevel();
+			if (NextScreen != CurrScreen)
+			{
+				return (Int32)NextScreen;
+			}
 
 			return (Int32) CurrScreen;
 		}

@@ -74,7 +74,13 @@ namespace WindowsGame.Common.Screens
 		{
 			MyGame.Manager.BulletManager.Update(gameTime);
 		}
+
 		protected void VerifyBullets()
+		{
+			VerifyBullets(true);
+		}
+
+		protected void VerifyBullets(Boolean updateScore)
 		{
 			if (0 == MyGame.Manager.BulletManager.BulletTest.Count)
 			{
@@ -122,7 +128,10 @@ namespace WindowsGame.Common.Screens
 				}
 
 				// Collision!	Enemy dead and trigger explode...
-				MyGame.Manager.ScoreManager.UpdateGameScore(enemyFrame);
+				if (updateScore)
+				{
+					MyGame.Manager.ScoreManager.UpdateGameScore(enemyFrame);
+				}
 
 				ExplodeType explodeType = enemy.FrameIndex < 4 ? ExplodeType.Small : ExplodeType.Big;
 				Byte enemyID = enemy.ID;

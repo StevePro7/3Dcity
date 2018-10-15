@@ -29,6 +29,7 @@ namespace WindowsGame.Common.Screens
 		{
 			base.LoadContent();
 			MyGame.Manager.RenderManager.SetGridDelay(LevelConfigData.GridDelay);
+			MyGame.Manager.ScoreManager.ResetTimer();
 
 			// Resume screen cannot die not matter what!
 			Invincibile = true;
@@ -53,6 +54,7 @@ namespace WindowsGame.Common.Screens
 			Boolean statusBar = MyGame.Manager.InputManager.StatusBar();
 			if (statusBar)
 			{
+				NextScreen = ScreenType.Ready;
 				return (Int32) NextScreen;
 			}
 
@@ -79,6 +81,11 @@ namespace WindowsGame.Common.Screens
 			// Target.
 			DetectTarget(gameTime);
 
+			// Bullets.
+			DetectBullets();
+			UpdateBullets(gameTime);
+			VerifyBullets(false);
+
 			// Explosions.
 			UpdateExplosions(gameTime);
 			VerifyExplosions();
@@ -101,7 +108,7 @@ namespace WindowsGame.Common.Screens
 				return (Int32) NextScreen;
 			}
 
-			return (Int32)CurrScreen;
+			return (Int32) CurrScreen;
 		}
 
 		public override void Draw()
