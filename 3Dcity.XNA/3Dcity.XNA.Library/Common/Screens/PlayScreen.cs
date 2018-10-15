@@ -24,7 +24,6 @@ namespace WindowsGame.Common.Screens
 			base.LoadContent();
 			NextScreen = CurrScreen;
 			MyGame.Manager.RenderManager.SetGridDelay(LevelConfigData.GridDelay);
-			//MyGame.Manager.EnemyManager.SpawnAllEnemies();
 		}
 
 		public override Int32 Update(GameTime gameTime)
@@ -39,8 +38,7 @@ namespace WindowsGame.Common.Screens
 			Boolean back = MyGame.Manager.InputManager.Back();
 			if (back)
 			{
-				//TODO disable music on back
-				//MyGame.Manager.SoundManager.PauseMusic();
+				MyGame.Manager.SoundManager.PauseMusic();
 				return (Int32)PrevScreen;
 			}
 

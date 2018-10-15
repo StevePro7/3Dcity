@@ -84,7 +84,8 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.RenderManager.DrawTitle();
 
 			// Sprite sheet #02.
-			DrawSheet02();
+			MyGame.Manager.LevelManager.Draw();
+			MyGame.Manager.SpriteManager.DrawCursor();
 
 			// Text data last!
 			DrawText();
