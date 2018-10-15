@@ -98,6 +98,9 @@ namespace WindowsGame.Common.Screens
 				return (Int32) NextScreen;
 			}
 
+			// Icons.
+			UpdateIcons();
+
 			// Score.
 			UpdateScore(gameTime);
 

@@ -91,23 +91,6 @@ namespace WindowsGame.Common.Screens
 			return (Int32)CurrScreen;
 		}
 
-		private static Boolean CheckEnemyKillTarget(Enemy enemy, LargeTarget target)
-		{
-			Boolean test = MyGame.Manager.CollisionManager.BoxesCollision(enemy.Position, target.Position);
-			if (!test)
-			{
-				return false;
-			}
-
-			test = MyGame.Manager.CollisionManager.ColorCollision(enemy.Position, target.Position);
-			if (!test)
-			{
-				return false;
-			}
-
-			return true;
-		}
-
 		public override void Draw()
 		{
 			// Sprite sheet #01.
