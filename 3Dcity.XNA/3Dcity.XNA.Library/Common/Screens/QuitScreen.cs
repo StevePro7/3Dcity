@@ -1,4 +1,5 @@
 ﻿using System;
+using WindowsGame.Common.Objects;
 using Microsoft.Xna.Framework;
 using WindowsGame.Common.Static;
 using WindowsGame.Master.Interfaces;
@@ -29,10 +30,37 @@ namespace WindowsGame.Common.Screens
 
 		public override Int32 Update(GameTime gameTime)
 		{
-			base.Update(gameTime);
+			// IMPORTANT - customize pause / sound on Quit screen
+			// because would like to unconditionally pause music.
+			// Plus do not want to be able to resume so don't check sound button tap!
+
+			// Check if game is paused.
+			Boolean gameState = MyGame.Manager.InputManager.GameState();
+			if (gameState)
+			{
+				MyGame.Manager.StateManager.ToggleGameState();
+				GamePause = MyGame.Manager.StateManager.GamePause;
+				//MyGame.Manager.SoundManager.GamePause(GamePause);
+
+				BaseObject icon = MyGame.Manager.IconManager.GameState;
+				MyGame.Manager.IconManager.ToggleIcon(icon);
+
+				return (Int32)CurrScreen;
+			}
+
+			// If game paused then do not check for sound.
 			if (GamePause)
 			{
-				return (Int32) CurrScreen;
+				return (Int32)CurrScreen;
+			}
+
+
+			Boolean statusBar = MyGame.Manager.InputManager.StatusBar();
+			if (statusBar)
+			{
+				NextScreen = ScreenType.Play;
+				MyGame.Manager.SoundManager.ResumeMusic();
+				return (Int32)NextScreen;
 			}
 
 			IsMoving = false;
@@ -45,8 +73,7 @@ namespace WindowsGame.Common.Screens
 					return (Int32) NextScreen;
 				}
 
-				//TODO enable music on back
-				//MyGame.Manager.SoundManager.ResumeMusic();
+				MyGame.Manager.SoundManager.ResumeMusic();
 				return (Int32) NextScreen;
 			}
 			if (Flag1)
@@ -73,7 +100,7 @@ namespace WindowsGame.Common.Screens
 				SelectType = (Byte)(1 - SelectType);
 			}
 
-			return (Int32)CurrScreen;
+			return (Int32) CurrScreen;
 		}
 
 		public override void Draw()
