@@ -59,10 +59,12 @@ namespace WindowsGame.Master.Factorys
 
 		public void StopMusic()
 		{
-			if (MediaState.Playing == MediaPlayerX.State)
-			{
-				MediaPlayerX.Stop();
-			}
+			//if (MediaState.Playing == MediaPlayerX.State)
+			//{
+			//    MediaPlayerX.Stop();
+			//}
+
+			MediaPlayerX.Stop();
 		}
 
 		public void PlaySoundEffect(SoundEffectInstance soundEffect)

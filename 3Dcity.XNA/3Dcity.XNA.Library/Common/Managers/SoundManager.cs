@@ -1,8 +1,8 @@
 using System;
-using WindowsGame.Common.Static;
-using WindowsGame.Master.Factorys;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
+using WindowsGame.Common.Static;
+using WindowsGame.Master.Factorys;
 
 namespace WindowsGame.Common.Managers
 {
@@ -24,6 +24,10 @@ namespace WindowsGame.Common.Managers
 		void StopSoundEffect(SoundEffectType key);
 
 		void SetPlayAudio(Boolean playAudio);
+		void SetMinVolume();
+		void SetMaxVolume();
+		void SetVolume(Single volume);
+
 		Boolean PlayAudio { get; }
 	}
 
@@ -74,12 +78,6 @@ namespace WindowsGame.Common.Managers
 			}
 
 			SetPlayAudio(!gameQuiet);
-		}
-
-		public void SetPlayAudio(Boolean playAudio)
-		{
-			PlayAudio = playAudio;
-			SetVolume();
 		}
 
 		public void PlaySoundEffect(SoundEffectType key)
@@ -152,13 +150,6 @@ namespace WindowsGame.Common.Managers
 			soundFactory.StopMusic();
 		}
 
-
-		//private void SetPlayAudio(Boolean playAudio)
-		//{
-		//    PlayAudio = playAudio;
-		//    SetVolume();
-		//}
-
 		private void PauseAllAudio()
 		{
 			PauseMusic();
@@ -199,6 +190,27 @@ namespace WindowsGame.Common.Managers
 			{
 				soundFactory.SetMinVolume();
 			}
+		}
+
+		public void SetPlayAudio(Boolean playAudio)
+		{
+			PlayAudio = playAudio;
+			SetVolume();
+		}
+
+		public void SetMinVolume()
+		{
+			soundFactory.SetMinVolume();
+		}
+
+		public void SetMaxVolume()
+		{
+			soundFactory.SetMaxVolume();
+		}
+
+		public void SetVolume(Single volume)
+		{
+			soundFactory.SetVolume(volume);
 		}
 
 		public Boolean PlayAudio { get; private set; }

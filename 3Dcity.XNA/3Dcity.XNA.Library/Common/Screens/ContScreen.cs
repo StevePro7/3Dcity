@@ -44,6 +44,8 @@ namespace WindowsGame.Common.Screens
 			UpdateFlag1(gameTime);
 			if (Selected)
 			{
+				MyGame.Manager.SoundManager.StopMusic();
+
 				// If game over then leave things as they are...
 				NextScreen = SelectType == 0 ? ScreenType.Resume : ScreenType.Over;
 				if (ScreenType.Over == NextScreen)

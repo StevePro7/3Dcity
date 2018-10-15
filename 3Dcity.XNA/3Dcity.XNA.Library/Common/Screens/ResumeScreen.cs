@@ -36,6 +36,9 @@ namespace WindowsGame.Common.Screens
 
 			timer = 0;
 			flag = true;
+
+			MyGame.Manager.SoundManager.StopMusic();
+			MyGame.Manager.SoundManager.PlayMusic(SongType.GameMusic);
 		}
 
 		public override Int32 Update(GameTime gameTime)
