@@ -28,6 +28,7 @@ namespace WindowsGame.Common.Screens
 		public override void LoadContent()
 		{
 			base.LoadContent();
+			MyGame.Manager.RenderManager.SetGridDelay(LevelConfigData.GridDelay);
 
 			// Resume screen cannot die not matter what!
 			Invincibile = true;

@@ -8,6 +8,7 @@ namespace WindowsGame.Common.Screens
 	public class OverScreen : BaseScreenSelect, IScreen
 	{
 		private UInt16 bigDelay, medDelay, smlDelay;
+		private Boolean flag1, flag2;
 
 		public override void Initialize()
 		{
@@ -45,7 +46,23 @@ namespace WindowsGame.Common.Screens
 				return (Int32)CurrScreen;
 			}
 
-			UpdateTimer(gameTime);
+			if (Selected)
+			{
+				// If game over then leave things as they are...
+				MyGame.Manager.StateManager.SetKillSpace(Vector2.Zero);
+				MyGame.Manager.ScoreManager.ResetMisses();
+				MyGame.Manager.SoundManager.StopMusic();
+				return (Int32) NextScreen;
+			}
+
+			if (Flag1)
+			{
+				UpdateFlag1(gameTime);
+			}
+			else
+			{
+				UpdateTimer(gameTime);
+			}
 
 			// Initial pause.
 			if (Timer <= smlDelay)
@@ -53,11 +70,12 @@ namespace WindowsGame.Common.Screens
 				return (Int32)CurrScreen;
 			}
 
-			if (!Flag1)
+			if (!flag1)
 			{
 				// Ensure sound effect once.
 				MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Over);
-				Flag1 = true;
+				flag1 = true;
+				return (Int32)CurrScreen;
 			}
 
 			if (Timer <= medDelay)
@@ -65,20 +83,31 @@ namespace WindowsGame.Common.Screens
 				return (Int32) CurrScreen;
 			}
 
-			if (!Flag2)
+			if (!flag2)
 			{
 				// Ensure sound effect once.
 				MyGame.Manager.SoundManager.PlayMusic(SongType.GameOver);
-				Flag2 = true;
+				flag2 = true;
+				return (Int32)CurrScreen;
 			}
 
 			// Now can check to pro actively goto next screen.
-			Boolean status = MyGame.Manager.InputManager.StatusBar();
+			//Boolean status = MyGame.Manager.InputManager.StatusBar();
 			//Boolean center = MyGame.Manager.InputManager.CenterPos();
-			const Boolean center = false;		// TODO perfect transition...
+			//const Boolean center = false;		// TODO perfect transition...
+
+			DetectFire();
+			if (Flag1)
+			{
+				Timer = 0;
+				MyGame.Manager.SoundManager.StopMusic();
+				MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Right);
+				return (Int32)CurrScreen;
+			}
 
 			// Time expired so advance.
-			if (status || center || Timer > bigDelay)
+			//if (status || center || Timer > bigDelay)
+			if (Timer > bigDelay)
 			{
 				MyGame.Manager.StateManager.SetKillSpace(Vector2.Zero);
 				MyGame.Manager.ScoreManager.ResetMisses();
