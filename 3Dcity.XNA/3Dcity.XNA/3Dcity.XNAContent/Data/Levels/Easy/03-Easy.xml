@@ -1,29 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <LevelConfigData>
-	<LevelNo>01</LevelNo>
-	<LevelName>MOOT</LevelName>
+	<LevelNo>03</LevelNo>
+	<LevelName>AMAR</LevelName>
 	<BonusLevel>false</BonusLevel>
-	<GridDelay>400</GridDelay>
+	<GridDelay>450</GridDelay>
+
 	<BulletMaxim>5</BulletMaxim>
 	<BulletFrame>80</BulletFrame>
-	<!-- how fast bullet travels -->
 	<BulletShoot>120</BulletShoot>
-	<!-- delay between bullet shots -->
-	<EnemySpawn>5</EnemySpawn>
-	<EnemyTotal>30</EnemyTotal>
+
+	<EnemySpawn>3</EnemySpawn>
+	<EnemyTotal>20</EnemyTotal>
+
 	<EnemyStartDelay>2000</EnemyStartDelay>
 	<EnemyStartDelta>0</EnemyStartDelta>
-	<EnemyFrameDelay>750</EnemyFrameDelay>
+	<EnemyFrameDelay>1000</EnemyFrameDelay>
 	<EnemyFrameDelta>0</EnemyFrameDelta>
-	<EnemyFrameMinim>600</EnemyFrameMinim>
-	<EnemyFrameRange>200</EnemyFrameRange>
-	<EnemySpeedNone>60</EnemySpeedNone>
-	<EnemySpeedWave>30</EnemySpeedWave>
-	<EnemySpeedFast>10</EnemySpeedFast>
-	<!--
-	<EnemyDelay>1000</EnemyDelay>
-	<EnemyStart>5000</EnemyStart>
-	-->
+	<EnemyFrameMinim>500</EnemyFrameMinim>
+	<EnemyFrameRange>600</EnemyFrameRange>
+
+	<EnemySpeedNone>90</EnemySpeedNone>
+	<EnemySpeedWave>10</EnemySpeedWave>
+	<EnemySpeedFast>0</EnemySpeedFast>
+
 	<ExplodeDelay>100</ExplodeDelay>
-	<StartTimer>2000</StartTimer>
 </LevelConfigData>
