@@ -45,8 +45,13 @@ namespace WindowsGame.Common.Screens
 			UpdateFlag1(gameTime);
 			if (Selected)
 			{
-				MyGame.Manager.LevelManager.SetLevelType((LevelType)SelectType);
+				//TODO delete as already level already set below...
+				//MyGame.Manager.LevelManager.SetLevelType((LevelType)SelectType);
 				return (Int32)NextScreen;
+			}
+			if (Flag1)
+			{
+				return (Int32) CurrScreen;
 			}
 
 			UpdateFlag2(gameTime);
@@ -57,7 +62,7 @@ namespace WindowsGame.Common.Screens
 
 			if (Lefts || Right)
 			{
-				return (Int32)CurrScreen;
+				return (Int32) CurrScreen;
 			}
 			DetectLefts();
 			if (Lefts)
@@ -72,13 +77,14 @@ namespace WindowsGame.Common.Screens
 			if (Lefts || Right)
 			{
 				PlaySoundEffect();
+				MyGame.Manager.LevelManager.SetLevelType((LevelType)SelectType);
 				return (Int32) CurrScreen;
 			}
 
 			DetectFire();
 			if (Flag1)
 			{
-				MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Right);
+				PlaySoundEffect();
 				return (Int32) CurrScreen;
 			}
 
@@ -102,7 +108,6 @@ namespace WindowsGame.Common.Screens
 			// Sprite sheet #02.
 			MyGame.Manager.LevelManager.Draw();
 			MyGame.Manager.SpriteManager.DrawCursor();
-			DrawTarget();
 
 			// Text data last!
 			DrawText();

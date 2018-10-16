@@ -58,7 +58,7 @@ namespace WindowsGame.Common.Managers
 			statusBarCollision = new Rectangle(left, Constants.GameOffsetY, wide, high);
 
 			leftsSideCollision = GetMidSectionCollision(0, 180);
-			rightSideCollision = GetMidSectionCollision(420, 180);
+			rightSideCollision = GetMidSectionCollision(410, 180);
 		}
 
 		public Single CheckJoyPadHorz(Vector2 position)
@@ -175,7 +175,7 @@ namespace WindowsGame.Common.Managers
 
 		private static Rectangle GetMidSectionCollision(UInt16 lft, UInt16 top)
 		{
-			const UInt16 wide = 380;
+			const UInt16 wide = 390;
 			const Byte high = 80;
 
 			return new Rectangle(lft, top + Constants.GameOffsetX, wide, high);

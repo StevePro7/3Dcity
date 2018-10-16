@@ -77,11 +77,31 @@ namespace WindowsGame.Common.Screens
 				return (Int32) CurrScreen;
 			}
 
+			if (Lefts || Right)
+			{
+				return (Int32)CurrScreen;
+			}
+			DetectLefts();
+			if (Lefts)
+			{
+				SelectType = 0;
+			}
+			DetectRight();
+			if (Right)
+			{
+				SelectType = 1;
+			}
+			if (Lefts || Right)
+			{
+				PlaySoundEffect();
+				return (Int32)CurrScreen;
+			}
+
 			DetectFire();
 			if (Flag1)
 			{
 				MyGame.Manager.SoundManager.StopMusic();
-				MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Right);
+				PlaySoundEffect();
 				return (Int32) CurrScreen;
 			}
 

@@ -64,7 +64,6 @@ namespace WindowsGame.Common.Screens
 			}
 			if (Flag1)
 			{
-				MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Right);
 				return (Int32) CurrScreen;
 			}
 
@@ -74,9 +73,22 @@ namespace WindowsGame.Common.Screens
 				return (Int32) CurrScreen;
 			}
 
+			if (Lefts || Right)
+			{
+				return (Int32)CurrScreen;
+			}
+			DetectLefts();
+			DetectRight();
+			if (Lefts || Right)
+			{
+				PlaySoundEffect();
+				return (Int32)CurrScreen;
+			}
+
 			DetectFire();
 			if (Flag1)
 			{
+				PlaySoundEffect();
 				return (Int32) CurrScreen;
 			}
 
