@@ -304,6 +304,38 @@ namespace WindowsGame.Common.Inputs
 			return false;
 		}
 
+		public Boolean LeftsSide()
+		{
+			// Mouse.
+			if (!mouseScreenInput.LeftButtonHold())
+			{
+				return false;
+			}
+			Boolean test = controlManager.CheckLeftsSide(mouseScreenInput.MousePosition);
+			if (test)
+			{
+				return true;
+			}
+
+			return false;
+		}
+
+		public Boolean RightSide()
+		{
+			// Mouse.
+			if (!mouseScreenInput.LeftButtonHold())
+			{
+				return false;
+			}
+			Boolean test = controlManager.CheckRightSide(mouseScreenInput.MousePosition);
+			if (test)
+			{
+				return true;
+			}
+
+			return false;
+		}
+
 		public SByte Number()
 		{
 			if (keyboardInput.KeyHold(Keys.D1))

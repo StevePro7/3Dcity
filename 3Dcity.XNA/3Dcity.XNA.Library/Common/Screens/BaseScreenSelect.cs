@@ -18,12 +18,16 @@ namespace WindowsGame.Common.Screens
 		protected Single MoveValue { get; private set; }
 		protected Boolean Flag1 { get; set; }
 		protected Boolean Flag2 { get; set; }
+		protected Boolean Lefts { get; set; }
+		protected Boolean Right { get; set; }
 
 		private UInt16 SelectDelay;
 		private Vector2 SpritePosition;
 		
 		private Byte IconIndex;
 		private Vector2 spritePosition;
+
+		protected Vector2 TargetPosition { get; set; }
 
 		public override void Initialize()
 		{
@@ -48,6 +52,12 @@ namespace WindowsGame.Common.Screens
 			Selected = false;
 			IsMoving = false;
 			Flag1 = Flag2 = false;
+			Lefts = Right = false;
+
+			UInt16 targetX = MyGame.Manager.ConfigManager.GlobalConfigData.TargetX;
+			UInt16 targetY = MyGame.Manager.ConfigManager.GlobalConfigData.TargetY;
+			TargetPosition = new Vector2(targetX, targetY);
+			MyGame.Manager.SpriteManager.LargeTarget.SetPosition(TargetPosition);
 		}
 
 		protected void UpdateFlag1(GameTime gameTime)
@@ -94,6 +104,33 @@ namespace WindowsGame.Common.Screens
 
 			Timer = 0;
 			Flag2 = false;
+		}
+
+		protected void PlaySoundEffect()
+		{
+			MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Right);
+		}
+
+		protected void DetectLefts()
+		{
+			// Check fire first.
+			Boolean lefts = MyGame.Manager.InputManager.LeftsSide();
+			if (lefts)
+			{
+				Lefts = true;
+				Flag1 = true;
+			}
+		}
+
+		protected void DetectRight()
+		{
+			// Check fire first.
+			Boolean right = MyGame.Manager.InputManager.RightSide();
+			if (right)
+			{
+				Right = true;
+				Flag1 = true;
+			}
 		}
 
 		protected void DetectFire()
@@ -168,6 +205,12 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.LevelManager.Draw();
 			MyGame.Manager.BulletManager.Draw();
 			MyGame.Manager.SpriteManager.DrawCursor();
+			MyGame.Manager.SpriteManager.LargeTarget.Draw();
+		}
+
+		protected static void DrawTarget()
+		{
+			MyGame.Manager.SpriteManager.LargeTarget.Draw();
 		}
 
 		protected void DrawBacked()

@@ -127,6 +127,16 @@ namespace WindowsGame.Common.Inputs
 			return MyPressFunc(controlManager.CheckStatusBar);
 		}
 
+		public Boolean LeftsSide()
+		{
+			return MyPressFunc(controlManager.CheckLeftsSide);
+		}
+
+		public Boolean RightSide()
+		{
+			return MyPressFunc(controlManager.CheckRightSide);
+		}
+
 		public SByte Number()
 		{
 			return Constants.INVALID_INDEX;

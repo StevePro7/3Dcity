@@ -48,11 +48,6 @@ namespace WindowsGame.Common.Screens
 				MyGame.Manager.LevelManager.SetLevelType((LevelType)SelectType);
 				return (Int32)NextScreen;
 			}
-			if (Flag1)
-			{
-				MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Right);
-				return (Int32)CurrScreen;
-			}
 
 			UpdateFlag2(gameTime);
 			if (IsMoving)
@@ -60,10 +55,31 @@ namespace WindowsGame.Common.Screens
 				return (Int32)CurrScreen;
 			}
 
+			if (Lefts || Right)
+			{
+				return (Int32)CurrScreen;
+			}
+			DetectLefts();
+			if (Lefts)
+			{
+				SelectType = 0;
+			}
+			DetectRight();
+			if (Right)
+			{
+				SelectType = 1;
+			}
+			if (Lefts || Right)
+			{
+				PlaySoundEffect();
+				return (Int32) CurrScreen;
+			}
+
 			DetectFire();
 			if (Flag1)
 			{
-				return (Int32)CurrScreen;
+				MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Right);
+				return (Int32) CurrScreen;
 			}
 
 			DetectMove();
@@ -73,7 +89,7 @@ namespace WindowsGame.Common.Screens
 				MyGame.Manager.LevelManager.SetLevelType((LevelType)SelectType);
 			}
 
-			return (Int32)CurrScreen;
+			return (Int32) CurrScreen;
 		}
 
 		public override void Draw()
@@ -86,6 +102,7 @@ namespace WindowsGame.Common.Screens
 			// Sprite sheet #02.
 			MyGame.Manager.LevelManager.Draw();
 			MyGame.Manager.SpriteManager.DrawCursor();
+			DrawTarget();
 
 			// Text data last!
 			DrawText();
