@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Load</ScreenType>
+	<ScreenType>Cont</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<!--<ScreenType>Level</ScreenType>-->
@@ -19,11 +19,15 @@
 	<SelectDelay>500</SelectDelay>
 	<IntroDelay>660</IntroDelay>
 	<TitleDelay>800</TitleDelay>
-	<LoadDelay>3000</LoadDelay>			<!-- 2500 -->
-	<ReadyDelay>1000</ReadyDelay>		<!-- 2500 -->
-	<DeadDelay>4000</DeadDelay>			<!-- between 3000-5000ms -->
+	<LoadDelay>3000</LoadDelay>
+	<!-- 2500 -->
+	<ReadyDelay>1000</ReadyDelay>
+	<!-- 2500 -->
+	<DeadDelay>4000</DeadDelay>
+	<!-- between 3000-5000ms -->
 	<ResumeDelay>5000</ResumeDelay>
-	<OverDelay>16000</OverDelay>		<!-- 16000 is a keeper !-->
+	<OverDelay>16000</OverDelay>
+	<!-- 16000 is a keeper !-->
 	<ScoreDelay>600</ScoreDelay>
 	<EventRatio>1.0</EventRatio>
 	<EnemyBlink>true</EnemyBlink>
@@ -34,8 +38,8 @@
 	<RenderIcon>true</RenderIcon>
 	<CoolMusic>true</CoolMusic>
 	<BossBig>true</BossBig>
-	<TargetX>228</TargetX>
-	<TargetY>164</TargetY>
+	<TargetX>220</TargetX>
+	<TargetY>180</TargetY>
 	<EnemysX>1</EnemysX>
 	<EnemysY>0</EnemysY>
 	<!--

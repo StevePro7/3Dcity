@@ -27,7 +27,8 @@ namespace WindowsGame.Common.Screens
 		private Byte IconIndex;
 		private Vector2 spritePosition;
 
-		protected Vector2 TargetPosition { get; set; }
+		//TODO delete
+		//protected Vector2 TargetPosition { get; set; }
 
 		public override void Initialize()
 		{
@@ -54,10 +55,11 @@ namespace WindowsGame.Common.Screens
 			Flag1 = Flag2 = false;
 			Lefts = Right = false;
 
-			UInt16 targetX = MyGame.Manager.ConfigManager.GlobalConfigData.TargetX;
-			UInt16 targetY = MyGame.Manager.ConfigManager.GlobalConfigData.TargetY;
-			TargetPosition = new Vector2(targetX, targetY);
-			MyGame.Manager.SpriteManager.LargeTarget.SetPosition(TargetPosition);
+			//TODO delete
+			//UInt16 targetX = MyGame.Manager.ConfigManager.GlobalConfigData.TargetX;
+			//UInt16 targetY = MyGame.Manager.ConfigManager.GlobalConfigData.TargetY;
+			//TargetPosition = new Vector2(targetX, targetY);
+			//MyGame.Manager.SpriteManager.LargeTarget.SetPosition(TargetPosition);
 		}
 
 		protected void UpdateFlag1(GameTime gameTime)
@@ -106,7 +108,7 @@ namespace WindowsGame.Common.Screens
 			Flag2 = false;
 		}
 
-		protected void PlaySoundEffect()
+		protected static void PlaySoundEffect()
 		{
 			MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Right);
 		}
@@ -205,13 +207,14 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.LevelManager.Draw();
 			MyGame.Manager.BulletManager.Draw();
 			MyGame.Manager.SpriteManager.DrawCursor();
-			MyGame.Manager.SpriteManager.LargeTarget.Draw();
+			//MyGame.Manager.SpriteManager.LargeTarget.Draw();		//TODO delete
 		}
 
-		protected static void DrawTarget()
-		{
-			MyGame.Manager.SpriteManager.LargeTarget.Draw();
-		}
+		//TODO delete
+		//protected static void DrawTarget()
+		//{
+		//    MyGame.Manager.SpriteManager.LargeTarget.Draw();
+		//}
 
 		protected void DrawBacked()
 		{
