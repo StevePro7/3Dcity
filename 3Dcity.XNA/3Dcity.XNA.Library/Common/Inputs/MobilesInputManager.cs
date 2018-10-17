@@ -49,6 +49,9 @@ namespace WindowsGame.Common.Inputs
 
 		public void Update(GameTime gameTime)
 		{
+			// Update joystick input.
+			joystickInput.Update(gameTime);
+
 			// Update touch input
 			touchScreenInput.Update(gameTime);
 

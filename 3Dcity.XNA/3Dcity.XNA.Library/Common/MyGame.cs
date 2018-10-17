@@ -30,6 +30,7 @@ namespace WindowsGame.Common
 			Manager.StorageManager.Initialize();
 			Manager.ThreadManager.Initialize();
 
+			Manager.DeviceManager.Initialize();
 			Manager.InputManager.Initialize();
 		}
 
@@ -56,7 +57,6 @@ namespace WindowsGame.Common
 			Manager.ControlManager.Initialize();
 			Manager.DebugManager.Initialize();
 			Manager.DelayManager.Initialize();
-			Manager.DeviceManager.Initialize();
 			Manager.EnemyManager.Initialize();
 			Manager.EventManager.Initialize();
 			Manager.ExplosionManager.Initialize();

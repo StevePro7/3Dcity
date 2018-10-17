@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net.Configuration;
 using Microsoft.Xna.Framework;
 using WindowsGame.Common.Static;
 using WindowsGame.Master.Interfaces;

@@ -7,5 +7,6 @@ namespace WindowsGame.Common.Interfaces
 		void Initialize();
 
 		String BuildVersion { get; }
+		Byte MaxPlayers { get; }
 	}
 }

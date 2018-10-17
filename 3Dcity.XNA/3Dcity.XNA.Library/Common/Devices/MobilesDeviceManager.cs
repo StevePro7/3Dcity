@@ -8,6 +8,7 @@ namespace WindowsGame.Common.Devices
 		public void Initialize()
 		{
 			BuildVersion = "1.0.0.";
+			MaxPlayers = 1;
 
 #if ANDROID
 			BuildVersion = "1.0.0";
@@ -18,5 +19,6 @@ namespace WindowsGame.Common.Devices
 		}
 
 		public String BuildVersion { get; private set; }
+		public Byte MaxPlayers { get; private set; }
 	}
 }

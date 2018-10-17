@@ -75,7 +75,12 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.BulletManager.Update(gameTime);
 		}
 
-		protected void VerifyBullets(Boolean updateScore = true)
+		protected void VerifyBullets()
+		{
+			VerifyBullets(true);
+		}
+
+		protected void VerifyBullets(Boolean updateScore)
 		{
 			if (0 == MyGame.Manager.BulletManager.BulletTest.Count)
 			{

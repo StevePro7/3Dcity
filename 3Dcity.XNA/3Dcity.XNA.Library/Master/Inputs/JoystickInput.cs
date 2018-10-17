@@ -1,4 +1,5 @@
 ﻿using System;
+using WindowsGame.Common;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
@@ -27,14 +28,13 @@ namespace WindowsGame.Master.Inputs
 		private Byte maxPlayers;
 		private GamePadDeadZone gamePadDeadZone;
 
-		private const Byte MAX_PLAYERS = 4;
-
 		// http://xona.com/2010/05/03.html
 		// If not specified then IndependentAxes is the default.
 		// However, often circular it's better for 4-way motion.
 		public void Initialize()
 		{
-			Initialize(MAX_PLAYERS, GamePadDeadZone.Circular);
+			Byte theMaxPlayers = MyGame.Manager.DeviceManager.MaxPlayers;
+			Initialize(theMaxPlayers, GamePadDeadZone.Circular);
 		}
 		public void Initialize(Byte theMaxPlayers, GamePadDeadZone theGamePadDeadZone)
 		{
@@ -59,7 +59,6 @@ namespace WindowsGame.Master.Inputs
 		{
 			Byte index = (Byte)CurrPlayerIndex;
 			return CurrGamePadState[index].IsButtonDown(button) && PrevGamePadState[index].IsButtonUp(button);
-
 		}
 		public Boolean JoyPress(Buttons button)
 		{
