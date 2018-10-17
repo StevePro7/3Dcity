@@ -72,12 +72,11 @@ namespace WindowsGame.Common.Managers
 			Assets.SpriteSheet01Texture = contentFactory.LoadTexture(texturesRoot + "spritesheet01-1024");
 			Assets.SpriteSheet02Texture = contentFactory.LoadTexture(texturesRoot + "spritesheet02-1024");
 
-			Assets.TLBar = contentFactory.LoadTexture(texturesRoot + "1");
-			Assets.TRBar = contentFactory.LoadTexture(texturesRoot + "2");
-			Assets.BLBar = contentFactory.LoadTexture(texturesRoot + "3");
-			Assets.BRBar = contentFactory.LoadTexture(texturesRoot + "4");
-
 			// TODO delete
+			//Assets.TLBar = contentFactory.LoadTexture(texturesRoot + "1");
+			//Assets.TRBar = contentFactory.LoadTexture(texturesRoot + "2");
+			//Assets.BLBar = contentFactory.LoadTexture(texturesRoot + "3");
+			//Assets.BRBar = contentFactory.LoadTexture(texturesRoot + "4");
 			//Assets.BlackBar = contentFactory.LoadTexture(texturesRoot + "blackbar");
 			//Assets.YellowBar = contentFactory.LoadTexture(texturesRoot + "baryellow");
 			//Assets.RedBar = contentFactory.LoadTexture(texturesRoot + "barred");
@@ -93,7 +92,7 @@ namespace WindowsGame.Common.Managers
 			//Assets.SteveProTexture200 = contentFactory.LoadTexture(texturesRoot + "StevePro200");
 			//Assets.Target64 = contentFactory.LoadTexture(texturesRoot + "Target64");
 			//Assets.title01 = contentFactory.LoadTexture(texturesRoot + "title01");
-			Assets.ZZindigoTexture = contentFactory.LoadTexture(texturesRoot + "ZZindigo");
+			//Assets.ZZindigoTexture = contentFactory.LoadTexture(texturesRoot + "ZZindigo");
 		}
 
 		public void LoadContentSplash()

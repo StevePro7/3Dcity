@@ -1,13 +1,14 @@
 ﻿using System;
-using WindowsGame.Common.Static;
 using Microsoft.Xna.Framework;
-using WindowsGame.Master.Interfaces;
+using WindowsGame.Common.Static;
 using WindowsGame.Master;
+using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
 {
 	public class TestScreen : BaseScreenPlay , IScreen
 	{
+		private Rectangle[] images;
 		private Byte x, y, z;
 
 		public override void Initialize()
@@ -19,7 +20,8 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
-			x = 128;
+			images = MyGame.Manager.ImageManager.BorderRectangles;
+			x = 160;
 			y = 215;
 			z = 1;
 			base.LoadContent();
@@ -51,10 +53,10 @@ namespace WindowsGame.Common.Screens
 
 			// Sprite sheet #02.
 			MyGame.Manager.SpriteManager.Draw();
-			Engine.SpriteBatch.Draw(Assets.TLBar, new Vector2(x - z, y - z), Color.White);
-			Engine.SpriteBatch.Draw(Assets.TRBar, new Vector2(x + z, y - z), Color.White);
-			Engine.SpriteBatch.Draw(Assets.BLBar, new Vector2(x - z, y + z), Color.White);
-			Engine.SpriteBatch.Draw(Assets.BRBar, new Vector2(x + z, y + z), Color.White);
+			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, new Vector2(x - z, y - z), images[0], Color.White);
+			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, new Vector2(x + z, y - z), images[1], Color.White);
+			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, new Vector2(x - z, y + z), images[2], Color.White);
+			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, new Vector2(x + z, y + z), images[3], Color.White);
 
 			// Text data last!
 			MyGame.Manager.TextManager.Draw(TextDataList);

@@ -63,10 +63,11 @@ namespace WindowsGame.Common.Managers
 
 		public void Draw()
 		{
-			for (Byte index = 0; index < Constants.MAX_ENEMYS_SPAWN; index++)
-			{
-				Engine.SpriteBatch.Draw(Assets.ZZindigoTexture, boxPositions[index], Color.Black);
-			}
+			//TODO delete
+			//for (Byte index = 0; index < Constants.MAX_ENEMYS_SPAWN; index++)
+			//{
+			//    Engine.SpriteBatch.Draw(Assets.ZZindigoTexture, boxPositions[index], Color.Black);
+			//}
 		}
 
 		private Vector2[] GetBoxPositions()

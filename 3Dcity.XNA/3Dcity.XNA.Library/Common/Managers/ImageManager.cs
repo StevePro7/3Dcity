@@ -28,6 +28,7 @@ namespace WindowsGame.Common.Managers
 		Rectangle[] BulletRectangles { get; }
 		Rectangle[] OrbDiffRectangles { get; }
 		Rectangle[] StatusRectangles { get; }
+		Rectangle[] BorderRectangles { get; }
 		Rectangle TargetLargeRectangle { get; }
 		Rectangle TargetSmallRectangle { get; }
 	}
@@ -36,6 +37,9 @@ namespace WindowsGame.Common.Managers
 	{
 		public void LoadContent()
 		{
+			UInt16 wide = 0;
+			UInt16 high = 0;
+
 			const Byte halfSize = Constants.HalfSize;
 			const Byte iconSize = Constants.IconSize;
 			const Byte baseSize = Constants.BaseSize;
@@ -80,7 +84,8 @@ namespace WindowsGame.Common.Managers
 			ExplodeRectangles = new Rectangle[Constants.MAX_EXPLODE_TYPE][];
 			ExplodeRectangles[(Byte)ExplodeType.Small] = new Rectangle[Constants.MAX_EXPLODE_FRAME];
 			ExplodeRectangles[(Byte)ExplodeType.Big] = new Rectangle[Constants.MAX_EXPLODE_FRAME];
-			UInt16 high = 0 * baseSize;
+
+			high = 0 * baseSize;
 			for (Byte index = 0; index < Constants.MAX_EXPLODE_FRAME; index++)
 			{
 				ExplodeRectangles[(Byte)ExplodeType.Small][index] = new Rectangle(index * baseSize, high, baseSize, baseSize);
@@ -115,11 +120,25 @@ namespace WindowsGame.Common.Managers
 			BossMedRectangles[2] = new Rectangle(0 * bossMedSize, high + 1 * bossMedSize, bossMedSize, bossMedSize);
 			BossMedRectangles[3] = new Rectangle(1 * bossMedSize, high + 1 * bossMedSize, bossMedSize, bossMedSize);
 
-			const Byte half = enemySize / 2;
-			BossBigRectangle = new Rectangle(2 * bossMedSize + half, high + 0 * bossMedSize + half, bossBigSize, bossBigSize);
+			BossBigRectangle = new Rectangle(2 * bossMedSize, high + 0 * bossMedSize, bossBigSize, bossBigSize);
+
+
+			// Borders.
+			const Byte borderBars = 4;
+			const Byte borderWide = 180;
+			const Byte borderHigh = 30;
+			BorderRectangles = new Rectangle[borderBars];
+
+			wide = 2 * bossMedSize;
+			high = (UInt16)(high + 1 * bossBigSize);
+			BorderRectangles[0] = new Rectangle(wide + 0 * borderWide, high + 0 * borderHigh, borderWide, borderHigh);
+			BorderRectangles[1] = new Rectangle(wide + 1 * borderWide, high + 0 * borderHigh, borderWide, borderHigh);
+			BorderRectangles[2] = new Rectangle(wide + 0 * borderWide, high + 1 * borderHigh, borderWide, borderHigh);
+			BorderRectangles[3] = new Rectangle(wide + 1 * borderWide, high + 1 * borderHigh, borderWide, borderHigh);
+
 
 			// Targets.
-			const ushort wide = enemySize * Constants.MAX_ENEMYS_SPAWN;
+			wide = enemySize * Constants.MAX_ENEMYS_SPAWN;
 			high = 0;
 			//const UInt16 wide = (UInt16)(Constants.MAX_BULLET_FRAME * targetSize);
 			TargetLargeRectangle = new Rectangle(wide, high, targetSize, targetSize);
@@ -146,6 +165,7 @@ namespace WindowsGame.Common.Managers
 			const Byte statusWide = 204;
 			const Byte statusHigh = 24;
 
+			// Status.
 			StatusRectangles = new Rectangle[statusBars];
 			high = 1000;
 			for (Byte statusIndex = 0; statusIndex < statusBars; statusIndex++)
@@ -173,6 +193,7 @@ namespace WindowsGame.Common.Managers
 		public Rectangle[] BulletRectangles { get; private set; }
 		public Rectangle[] OrbDiffRectangles { get; private set; }
 		public Rectangle[] StatusRectangles { get; private set; }
+		public Rectangle[] BorderRectangles { get; private set; }
 		public Rectangle TargetLargeRectangle { get; private set; }
 		public Rectangle TargetSmallRectangle { get; private set; }
 	}
