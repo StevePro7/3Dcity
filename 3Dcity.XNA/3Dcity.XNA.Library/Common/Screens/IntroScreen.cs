@@ -21,7 +21,7 @@ namespace WindowsGame.Common.Screens
 		{
 			base.Initialize();
 
-			titlePosition = new Vector2((Constants.ScreenWide - 240) / 2.0f, (Constants.ScreenHigh - Constants.DbleSize) / 2.0f + 94);
+			titlePosition = Constants.TitlePosition;
 			startPosition = new Vector2(titlePosition.X, Constants.ScreenHigh - Constants.GameOffsetY + 10);
 
 			startY = startPosition.Y;
@@ -63,8 +63,8 @@ namespace WindowsGame.Common.Screens
 				return (Int32) PrevScreen;
 			}
 			// Check to go forward second.
-			Boolean midd = MyGame.Manager.InputManager.CenterPos();
-			if (midd)
+			Boolean mode = MyGame.Manager.InputManager.TitleMode();
+			if (mode)
 			{
 				return (Int32) NextScreen;
 			}
@@ -83,6 +83,7 @@ namespace WindowsGame.Common.Screens
 				// TODO once at final location - sit for a couple of seconds then show text (and score)
 				return (Int32) NextScreen;
 			}
+
 			return (Int32) CurrScreen;
 		}
 

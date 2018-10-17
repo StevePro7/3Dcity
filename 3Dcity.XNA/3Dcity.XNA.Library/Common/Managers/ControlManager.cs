@@ -15,6 +15,7 @@ namespace WindowsGame.Common.Managers
 		Boolean CheckGameState(Vector2 position);
 		Boolean CheckGameSound(Vector2 position);
 		Boolean CheckCenterPos(Vector2 position);
+		Boolean CheckTitleMode(Vector2 position);
 		Boolean CheckStatusBar(Vector2 position);
 		Boolean CheckLeftsSide(Vector2 position);
 		Boolean CheckRightSide(Vector2 position);
@@ -32,6 +33,7 @@ namespace WindowsGame.Common.Managers
 		private Rectangle gameStateCollision;
 		private Rectangle gameSoundCollision;
 		private Rectangle centerPosCollision;
+		private Rectangle titleModeCollision;
 		private Rectangle statusBarCollision;
 		private Rectangle leftsSideCollision;
 		private Rectangle rightSideCollision;
@@ -51,6 +53,9 @@ namespace WindowsGame.Common.Managers
 			const UInt16 half = Constants.ScreenWide / 2;
 			const Byte qtr = Constants.ScreenWide / 4;
 			centerPosCollision = new Rectangle(qtr, Constants.BaseSize + Constants.GameOffsetY, half, half);
+
+			Vector2 titlePosition = Constants.TitlePosition;
+			titleModeCollision = new Rectangle((UInt16)titlePosition.X, (UInt16)titlePosition.Y, 224, 160);
 
 			const UInt16 left = 250;
 			const UInt16 wide = 300;
@@ -156,6 +161,11 @@ namespace WindowsGame.Common.Managers
 		public Boolean CheckCenterPos(Vector2 position)
 		{
 			return CheckPosInRect(position, centerPosCollision);
+		}
+
+		public Boolean CheckTitleMode(Vector2 position)
+		{
+			return CheckPosInRect(position, titleModeCollision);
 		}
 
 		public Boolean CheckStatusBar(Vector2 position)

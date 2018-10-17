@@ -277,6 +277,21 @@ namespace WindowsGame.Common.Inputs
 			return false;
 		}
 
+		public Boolean TitleMode()
+		{
+			// Mouse.
+			if (mouseScreenInput.LeftButtonHold())
+			{
+				Boolean test = controlManager.CheckTitleMode(mouseScreenInput.MousePosition);
+				if (test)
+				{
+					return true;
+				}
+			}
+
+			return false;
+		}
+
 		public Boolean StatusBar()
 		{
 			// Mouse.

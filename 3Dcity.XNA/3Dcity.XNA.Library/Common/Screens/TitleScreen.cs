@@ -52,10 +52,16 @@ namespace WindowsGame.Common.Screens
 			{
 				return (Int32)PrevScreen;
 			}
+
+			// Check for cheat detecction.
+			//Boolean mode = MyGame.Manager.InputManager.TitleMode();
+
 			// Check to go forward second.
 			Boolean fire = MyGame.Manager.InputManager.Fire();
-			Boolean midd = MyGame.Manager.InputManager.CenterPos();
-			if (fire || midd)
+			Boolean left = MyGame.Manager.InputManager.LeftsSide();
+			Boolean rght = MyGame.Manager.InputManager.RightSide();
+
+			if (fire || left || rght)
 			{
 				MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Right);
 				flag1 = true;

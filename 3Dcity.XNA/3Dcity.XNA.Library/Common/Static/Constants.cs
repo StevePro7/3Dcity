@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Xna.Framework;
 
 namespace WindowsGame.Common.Static
 {
@@ -72,6 +73,8 @@ namespace WindowsGame.Common.Static
 		public const Byte BossMedSize = 240;
 		public const UInt16 BossBigSize = 360;
 
+		// Positions
+		public static Vector2 TitlePosition = new Vector2((Constants.ScreenWide - 240) / 2.0f, (Constants.ScreenHigh - Constants.DbleSize) / 2.0f + 94);
 
 		// Delimiters.
 		public static readonly Char[] Delim0 = { ',' };

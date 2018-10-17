@@ -18,6 +18,7 @@ namespace WindowsGame.Common.Interfaces
 		Boolean GameState();
 		Boolean GameSound();
 		Boolean CenterPos();
+		Boolean TitleMode();
 		Boolean StatusBar();
 		Boolean LeftsSide();
 		Boolean RightSide();

@@ -122,6 +122,11 @@ namespace WindowsGame.Common.Inputs
 			return MyPressFunc(controlManager.CheckCenterPos);
 		}
 
+		public Boolean TitleMode()
+		{
+			return MyPressFunc(controlManager.CheckTitleMode);
+		}
+
 		public Boolean StatusBar()
 		{
 			return MyPressFunc(controlManager.CheckStatusBar);
