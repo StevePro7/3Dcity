@@ -1,19 +1,27 @@
 ﻿using System;
+using WindowsGame.Common.Static;
 using Microsoft.Xna.Framework;
 using WindowsGame.Master.Interfaces;
+using WindowsGame.Master;
 
 namespace WindowsGame.Common.Screens
 {
 	public class TestScreen : BaseScreenPlay , IScreen
 	{
+		private Byte x, y, z;
+
 		public override void Initialize()
 		{
 			base.Initialize();
+			LoadTextData();
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
 
 		public override void LoadContent()
 		{
+			x = 128;
+			y = 215;
+			z = 1;
 			base.LoadContent();
 		}
 
@@ -31,6 +39,7 @@ namespace WindowsGame.Common.Screens
 			if (test)
 			{
 			}
+
 			return (Int32)CurrScreen;
 		}
 
@@ -42,8 +51,13 @@ namespace WindowsGame.Common.Screens
 
 			// Sprite sheet #02.
 			MyGame.Manager.SpriteManager.Draw();
+			Engine.SpriteBatch.Draw(Assets.TLBar, new Vector2(x - z, y - z), Color.White);
+			Engine.SpriteBatch.Draw(Assets.TRBar, new Vector2(x + z, y - z), Color.White);
+			Engine.SpriteBatch.Draw(Assets.BLBar, new Vector2(x - z, y + z), Color.White);
+			Engine.SpriteBatch.Draw(Assets.BRBar, new Vector2(x + z, y + z), Color.White);
 
 			// Text data last!
+			MyGame.Manager.TextManager.Draw(TextDataList);
 			MyGame.Manager.TextManager.DrawTitle();
 			MyGame.Manager.TextManager.DrawControls();
 			MyGame.Manager.TextManager.DrawProgress();

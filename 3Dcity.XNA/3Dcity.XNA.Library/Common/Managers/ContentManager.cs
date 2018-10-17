@@ -72,6 +72,10 @@ namespace WindowsGame.Common.Managers
 			Assets.SpriteSheet01Texture = contentFactory.LoadTexture(texturesRoot + "spritesheet01-1024");
 			Assets.SpriteSheet02Texture = contentFactory.LoadTexture(texturesRoot + "spritesheet02-1024");
 
+			Assets.TLBar = contentFactory.LoadTexture(texturesRoot + "1");
+			Assets.TRBar = contentFactory.LoadTexture(texturesRoot + "2");
+			Assets.BLBar = contentFactory.LoadTexture(texturesRoot + "3");
+			Assets.BRBar = contentFactory.LoadTexture(texturesRoot + "4");
 
 			// TODO delete
 			//Assets.BlackBar = contentFactory.LoadTexture(texturesRoot + "blackbar");
