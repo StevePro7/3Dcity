@@ -8,7 +8,6 @@ namespace WindowsGame.Common.Screens
 {
 	public class TitleScreen : BaseScreen, IScreen
 	{
-		//private Vector2[] backedPositions;
 		private Vector2 promptPosition;
 		private UInt16 promptDelay;
 		private UInt16 selectDelay;
@@ -19,12 +18,12 @@ namespace WindowsGame.Common.Screens
 		{
 			base.Initialize();
 
-			promptPosition = MyGame.Manager.TextManager.GetTextPosition(14, 11);
+			promptPosition = MyGame.Manager.TextManager.GetTextPosition(13, 11);
 			promptPosition.X -= 7.5f;
 			promptDelay = MyGame.Manager.ConfigManager.GlobalConfigData.TitleDelay;
 			selectDelay = MyGame.Manager.ConfigManager.GlobalConfigData.SelectDelay;
 
-			BackedPositions = MyGame.Manager.StateManager.SetBackedPositions(270, 213, 375, 217);
+			BackedPositions = MyGame.Manager.StateManager.SetBackedPositions(250, 213, 355, 217);
 
 			NextScreen = ScreenType.Diff;
 			PrevScreen = ScreenType.Exit;
@@ -102,6 +101,7 @@ namespace WindowsGame.Common.Screens
 			base.Draw();
 			MyGame.Manager.IconManager.DrawControls();
 			MyGame.Manager.RenderManager.DrawTitle();
+			MyGame.Manager.RenderManager.DrawBorderPosition(BackedPositions);
 
 			// Text data last!
 			//MyGame.Manager.TextManager.DrawBuild();
@@ -112,7 +112,7 @@ namespace WindowsGame.Common.Screens
 
 			if (flag2)
 			{
-				MyGame.Manager.RenderManager.DrawBorderPosition(BackedPositions);
+				//MyGame.Manager.RenderManager.DrawBorderPosition(BackedPositions);
 				Engine.SpriteBatch.DrawString(Assets.EmulogicFont, Globalize.INSERT_COINS, promptPosition, Color.White);
 			}
 		}
