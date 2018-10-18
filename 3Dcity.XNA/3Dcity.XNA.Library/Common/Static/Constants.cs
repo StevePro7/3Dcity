@@ -22,7 +22,7 @@ namespace WindowsGame.Common.Static
 		public const SByte FontOffsetY = -4;
 
 		// TODO - confirm that 0.2f is better than 0.1f for touch and mouse input detection!!
-		public const Single GeneralTolerance = 0.2f;		//TODO make configurable?  Or set to 0.0f to take out!
+		public const Single GeneralTolerance = 0.3f;		//TODO make configurable?  Or set to 0.0f to take out!
 		public const Single JoystickTolerance = 0.1f;	// Original is 0.4f;
 
 		public const SByte INVALID_INDEX = -1;
