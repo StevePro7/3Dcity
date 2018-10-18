@@ -141,7 +141,7 @@ namespace WindowsGame.Common.Managers
 
 		public void DrawStatusOuter()
 		{
-			Rectangle statusRectangle = statusRectangles[(Byte)StatusType.Blue];
+			Rectangle statusRectangle = statusRectangles[(Byte)StatusType.Black];
 			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, statusPosition, statusRectangle, Color.White);
 		}
 
