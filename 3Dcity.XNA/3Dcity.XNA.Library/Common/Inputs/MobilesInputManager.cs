@@ -95,6 +95,16 @@ namespace WindowsGame.Common.Inputs
 			return joystickInput.JoyHold(Buttons.Back);
 		}
 
+		public Single CheckJoyPadTiny(Vector2 position)
+		{
+			return MyMoveFunc(controlManager.CheckJoyPadTiny);
+		}
+
+		public Single LittleHorz()
+		{
+			return MyMoveFunc(controlManager.CheckJoyPadTiny);
+		}
+
 		public Single Horizontal()
 		{
 			return MyMoveFunc(controlManager.CheckJoyPadHorz);

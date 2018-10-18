@@ -147,7 +147,7 @@ namespace WindowsGame.Common.Screens
 		protected void DetectMove()
 		{
 			// Check move second.
-			MoveValue = MyGame.Manager.InputManager.Horizontal();
+			MoveValue = MyGame.Manager.InputManager.LittleHorz();
 			if (0 == MoveValue)
 			{
 				return;

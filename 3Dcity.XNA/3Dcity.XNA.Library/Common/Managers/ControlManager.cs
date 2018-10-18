@@ -9,6 +9,7 @@ namespace WindowsGame.Common.Managers
 		void Initialize();
 		void LoadContent();
 
+		Single CheckJoyPadTiny(Vector2 position);
 		Single CheckJoyPadHorz(Vector2 position);
 		Single CheckJoyPadVert(Vector2 position);
 		Boolean CheckJoyPadFire(Vector2 position);
@@ -27,6 +28,7 @@ namespace WindowsGame.Common.Managers
 
 	public class ControlManager : IControlManager 
 	{
+		private Rectangle joypadTinyCollision;
 		private Rectangle joypadMoveCollision;
 		private Rectangle joypadMoveBounds;
 		private Rectangle joyButtonCollision;
@@ -44,6 +46,9 @@ namespace WindowsGame.Common.Managers
 
 		public void LoadContent()
 		{
+			const Byte tinyWide = 200;
+			joypadTinyCollision = new Rectangle(0, Constants.ScreenHigh - Constants.GameOffsetY - tinyWide, tinyWide, tinyWide);
+
 			joypadMoveCollision = MyGame.Manager.IconManager.JoypadMove.Collision;
 			joypadMoveBounds = MyGame.Manager.IconManager.JoypadMove.Bounds;
 			joyButtonCollision = MyGame.Manager.IconManager.JoyButton.Collision;
@@ -64,6 +69,22 @@ namespace WindowsGame.Common.Managers
 
 			leftsSideCollision = GetMidSectionCollision(0, 180);
 			rightSideCollision = GetMidSectionCollision(410, 180);
+		}
+
+		public Single CheckJoyPadTiny(Vector2 position)
+		{
+			// Step 01. check collision.
+			Boolean contains = CheckPosInRect(position, joypadTinyCollision);
+			if (!contains)
+			{
+				return 0.0f;
+			}
+
+			// Step 02. clamp position.
+			position = ClampPosInRect(position, joypadMoveBounds);
+
+			// Step 03. calcd value.
+			return CalcJoyPadPosn(joypadMoveBounds.Width, position.X, joypadMoveBounds.Left);
 		}
 
 		public Single CheckJoyPadHorz(Vector2 position)

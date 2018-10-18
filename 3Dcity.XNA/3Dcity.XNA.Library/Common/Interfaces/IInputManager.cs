@@ -12,6 +12,7 @@ namespace WindowsGame.Common.Interfaces
 		Boolean Back();
 		Boolean Escape();
 
+		Single LittleHorz();
 		Single Horizontal();
 		Single Vertical();
 		Boolean Fire();

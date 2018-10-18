@@ -77,6 +77,51 @@ namespace WindowsGame.Common.Inputs
 			return keyboardInput.KeyHold(Keys.Escape) || joystickInput.JoyHold(Buttons.Back) || joystickInput.JoyHold(Buttons.B);
 		}
 
+		public Single LittleHorz()
+		{
+			Single horz = 0.0f;
+
+			// Mouse.
+			if (mouseScreenInput.LeftButtonPress())
+			{
+				horz = controlManager.CheckJoyPadTiny(mouseScreenInput.MousePosition);
+				if (Math.Abs(horz) > Single.Epsilon)
+				{
+					return horz;
+				}
+			}
+
+			// Joystick.
+			Byte index = (Byte)joystickInput.CurrPlayerIndex;
+			Single floatX = joystickInput.CurrGamePadState[index].ThumbSticks.Left.X;
+
+			if (floatX < -Constants.JoystickTolerance || floatX > Constants.JoystickTolerance)
+			{
+				return floatX;
+			}
+			if (joystickInput.CurrGamePadState[index].IsButtonDown(Buttons.DPadLeft))
+			{
+				return -1.0f;
+			}
+			if (joystickInput.CurrGamePadState[index].IsButtonDown(Buttons.DPadRight))
+			{
+				return 1.0f;
+			}
+
+			// Keyboard.
+			if (keyboardInput.KeyPress(Keys.Left))
+			{
+				horz = -1.0f;
+			}
+			if (keyboardInput.KeyPress(Keys.Right))
+			{
+				horz = 1.0f;
+			}
+
+			return horz;
+		}
+
+
 		public Single Horizontal()
 		{
 			Single horz = 0.0f;
