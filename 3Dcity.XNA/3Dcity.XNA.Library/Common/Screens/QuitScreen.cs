@@ -16,7 +16,7 @@ namespace WindowsGame.Common.Screens
 			CursorPositions[0] = MyGame.Manager.TextManager.GetTextPosition(14, 11);
 			CursorPositions[1] = MyGame.Manager.TextManager.GetTextPosition(23, 11);
 
-			BackedPositions = MyGame.Manager.StateManager.SetBackedPositions(275, 197, 365, 217);
+			BackedPositions = MyGame.Manager.StateManager.SetBackedPositions(275, 195, 385, 217);
 
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}

@@ -22,6 +22,8 @@ namespace WindowsGame.Common.Screens
 			base.Initialize();
 			LoadTextData();
 
+			BackedPositions = MyGame.Manager.StateManager.SetBackedPositions(235, 195, 385, 217);
+
 			UpdateGrid = MyGame.Manager.ConfigManager.GlobalConfigData.UpdateGrid;
 			NextScreen = ScreenType.Ready;
 
@@ -100,6 +102,7 @@ namespace WindowsGame.Common.Screens
 
 			// Sprite sheet #02.
 			DrawSheet02();
+			DrawBacked();
 
 			// Text data last!
 			DrawText();

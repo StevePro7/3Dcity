@@ -14,6 +14,8 @@ namespace WindowsGame.Common.Screens
 			base.Initialize();
 			LoadTextData();
 
+			BackedPositions = MyGame.Manager.StateManager.SetBackedPositions(285, 213, 330, 217);
+
 			UpdateGrid = MyGame.Manager.ConfigManager.GlobalConfigData.UpdateGrid;
 			readyDelay = MyGame.Manager.ConfigManager.GlobalConfigData.ReadyDelay;
 
@@ -89,7 +91,7 @@ namespace WindowsGame.Common.Screens
 			UpdateLevel();
 			if (NextScreen != CurrScreen)
 			{
-				return (Int32)NextScreen;
+				return (Int32) NextScreen;
 			}
 
 			return (Int32) CurrScreen;
@@ -102,6 +104,7 @@ namespace WindowsGame.Common.Screens
 
 			// Sprite sheet #02.
 			DrawSheet02();
+			DrawBacked();
 
 			// Text data last!
 			DrawTextCommon();

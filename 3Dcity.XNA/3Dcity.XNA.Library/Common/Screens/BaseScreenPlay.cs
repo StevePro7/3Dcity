@@ -317,6 +317,11 @@ namespace WindowsGame.Common.Screens
 			}
 		}
 
+		protected void DrawBacked()
+		{
+			MyGame.Manager.RenderManager.DrawBorderPosition(BackedPositions);
+		}
+
 		protected static void DrawText()
 		{
 			// Text data last!
