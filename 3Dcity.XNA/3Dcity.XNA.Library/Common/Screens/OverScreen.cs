@@ -15,11 +15,7 @@ namespace WindowsGame.Common.Screens
 			base.Initialize();
 			LoadTextData();
 
-			//BackedPositions = new Vector2[2];
-			//BackedPositions[0] = new Vector2(290, 215 + Constants.GameOffsetY);
-			//BackedPositions[1] = new Vector2(290, 220 + Constants.GameOffsetY);
-
-			CalcTwoBorders(290, 215, 220);
+			CalcFourBorders(280, 213, 325, 217);
 
 			bigDelay = MyGame.Manager.ConfigManager.GlobalConfigData.OverDelay;
 			medDelay = 3000;

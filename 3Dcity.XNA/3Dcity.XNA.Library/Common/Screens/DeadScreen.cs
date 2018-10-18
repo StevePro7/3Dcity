@@ -18,7 +18,7 @@ namespace WindowsGame.Common.Screens
 			base.Initialize();
 			LoadTextData();
 
-			CalcTwoBorders(285, 197, 217);
+			CalcFourBorders(290, 195, 305, 217);
 
 			deathPosition = MyGame.Manager.TextManager.GetTextPosition(15, 11);
 			bigDelay = MyGame.Manager.ConfigManager.GlobalConfigData.DeadDelay;
@@ -27,8 +27,8 @@ namespace WindowsGame.Common.Screens
 			Boolean unlimitedCont = MyGame.Manager.ConfigManager.GlobalConfigData.UnlimitedCont;
 			NextScreen = unlimitedCont ? ScreenType.Cont : ScreenType.Over;
 
-			NextScreen = CurrScreen; // TODO take out!!
-			
+			NextScreen = CurrScreen;
+
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
 
