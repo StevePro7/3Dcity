@@ -18,7 +18,8 @@ namespace WindowsGame.Common.Screens
 			base.Initialize();
 			LoadTextData();
 
-			CalcFourBorders(290, 195, 305, 217);
+			BackedPositions = MyGame.Manager.StateManager.SetBackedPositions(290, 195, 305, 217);
+			//CalcFourBorders(290, 195, 305, 217);
 
 			deathPosition = MyGame.Manager.TextManager.GetTextPosition(15, 11);
 			bigDelay = MyGame.Manager.ConfigManager.GlobalConfigData.DeadDelay;
@@ -26,8 +27,6 @@ namespace WindowsGame.Common.Screens
 
 			Boolean unlimitedCont = MyGame.Manager.ConfigManager.GlobalConfigData.UnlimitedCont;
 			NextScreen = unlimitedCont ? ScreenType.Cont : ScreenType.Over;
-
-			NextScreen = CurrScreen;
 
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}

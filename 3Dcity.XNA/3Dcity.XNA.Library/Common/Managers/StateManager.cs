@@ -1,5 +1,6 @@
 ﻿using System;
 using WindowsGame.Common.Sprites;
+using WindowsGame.Common.Static;
 using Microsoft.Xna.Framework;
 
 namespace WindowsGame.Common.Managers
@@ -15,6 +16,7 @@ namespace WindowsGame.Common.Managers
 		void SetIsGodMode(Boolean isGodMode);
 		void SetCheatGame(Boolean cheatGame);
 		void SetKillSpace(Vector2 position);
+		Vector2[] SetBackedPositions(UInt16 lft, UInt16 top, UInt16 rgt, UInt16 bot);
 
 		Boolean GamePause { get; }
 		Boolean GameQuiet { get; }
@@ -65,6 +67,16 @@ namespace WindowsGame.Common.Managers
 		public void SetKillSpace(Vector2 position)
 		{
 			KillSpace = position;
+		}
+
+		public Vector2[] SetBackedPositions(UInt16 lft, UInt16 top, UInt16 rgt, UInt16 bot)
+		{
+			Vector2[] backedPositions = new Vector2[Constants.MAX_BORDER];
+			backedPositions[0] = new Vector2(lft, top + Constants.GameOffsetY);
+			backedPositions[1] = new Vector2(rgt, top + Constants.GameOffsetY);
+			backedPositions[2] = new Vector2(lft, bot + Constants.GameOffsetY);
+			backedPositions[3] = new Vector2(rgt, bot + Constants.GameOffsetY);
+			return backedPositions;
 		}
 
 		public Boolean GamePause { get; private set; }

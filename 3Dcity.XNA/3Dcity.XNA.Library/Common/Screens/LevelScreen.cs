@@ -22,6 +22,10 @@ namespace WindowsGame.Common.Screens
 
 			CursorPositions = new Vector2[1];
 			CursorPositions[0] = MyGame.Manager.TextManager.GetTextPosition(16, 11);
+
+			BackedPositions = MyGame.Manager.StateManager.SetBackedPositions(235, 195, 405, 217);
+			//CalcFourBorders(235, 195, 405, 217);
+
 			NextScreen = ScreenType.Load;
 			PrevScreen = ScreenType.Diff;
 
@@ -135,6 +139,7 @@ namespace WindowsGame.Common.Screens
 			// Sprite sheet #02.
 			MyGame.Manager.LevelManager.Draw();
 			MyGame.Manager.SpriteManager.DrawCursor();
+			DrawBacked();
 
 			// Text data last!
 			DrawText();

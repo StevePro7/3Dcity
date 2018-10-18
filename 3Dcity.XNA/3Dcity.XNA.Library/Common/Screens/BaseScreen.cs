@@ -10,13 +10,15 @@ namespace WindowsGame.Common.Screens
 	public abstract class BaseScreen
 	{
 		protected UInt16 Timer { get; set; }
-		protected IList<TextData> TextDataList { get; private set; }
+		protected Vector2[] BackedPositions { get; set; }
 		protected ScreenType CurrScreen { get; set; }
 		protected ScreenType NextScreen { get; set; }
 		protected ScreenType PrevScreen { get; set; }
 		protected Boolean GamePause { get; set; }
-		protected Boolean UpdateStar { get; set; }
 		protected Boolean UpdateGrid { get; set; }
+
+		protected IList<TextData> TextDataList { get; private set; }
+		protected Boolean UpdateStar { get; private set; }
 
 		public virtual void Initialize()
 		{

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Dead</ScreenType>
+	<ScreenType>Title</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<!--<ScreenType>Level</ScreenType>-->
@@ -49,7 +49,7 @@
 	<EnemyTotal>5</EnemyTotal>
 	-->
 	<IsGodMode>false</IsGodMode>
-	<UnlimitedCont>true</UnlimitedCont>
+	<UnlimitedCont>false</UnlimitedCont>
 	<BackBorders>true</BackBorders>
 	<DebugTester>true</DebugTester>
 	<DonotSave>true</DonotSave>
