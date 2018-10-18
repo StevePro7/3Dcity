@@ -24,7 +24,6 @@ namespace WindowsGame.Common.Screens
 			CursorPositions[0] = MyGame.Manager.TextManager.GetTextPosition(16, 11);
 
 			BackedPositions = MyGame.Manager.StateManager.SetBackedPositions(235, 195, 405, 217);
-			//CalcFourBorders(235, 195, 405, 217);
 
 			NextScreen = ScreenType.Load;
 			PrevScreen = ScreenType.Diff;

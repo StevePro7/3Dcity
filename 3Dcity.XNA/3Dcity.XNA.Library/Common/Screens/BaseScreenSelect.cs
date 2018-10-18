@@ -170,15 +170,6 @@ namespace WindowsGame.Common.Screens
 			Flag2 = true;
 		}
 
-		//protected void CalcFourBorders(UInt16 lft, UInt16 top, UInt16 rgt, UInt16 bot)
-		//{
-		//    //BackedPositions = new Vector2[Constants.MAX_BORDER];
-		//    //BackedPositions[0] = new Vector2(lft, top + Constants.GameOffsetY);
-		//    //BackedPositions[1] = new Vector2(rgt, top + Constants.GameOffsetY);
-		//    //BackedPositions[2] = new Vector2(lft, bot + Constants.GameOffsetY);
-		//    //BackedPositions[3] = new Vector2(rgt, bot + Constants.GameOffsetY);
-		//}
-
 		protected static void DrawSheet01()
 		{
 			MyGame.Manager.IconManager.DrawControls();

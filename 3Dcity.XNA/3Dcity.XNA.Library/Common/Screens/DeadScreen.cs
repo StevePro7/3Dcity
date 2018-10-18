@@ -19,7 +19,6 @@ namespace WindowsGame.Common.Screens
 			LoadTextData();
 
 			BackedPositions = MyGame.Manager.StateManager.SetBackedPositions(290, 195, 305, 217);
-			//CalcFourBorders(290, 195, 305, 217);
 
 			deathPosition = MyGame.Manager.TextManager.GetTextPosition(15, 11);
 			bigDelay = MyGame.Manager.ConfigManager.GlobalConfigData.DeadDelay;

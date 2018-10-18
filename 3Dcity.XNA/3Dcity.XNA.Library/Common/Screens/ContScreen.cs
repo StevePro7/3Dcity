@@ -16,7 +16,6 @@ namespace WindowsGame.Common.Screens
 			CursorPositions[1] = MyGame.Manager.TextManager.GetTextPosition(22, 11);
 
 			BackedPositions = MyGame.Manager.StateManager.SetBackedPositions(255, 195, 365, 217);
-			//CalcFourBorders(255, 195, 365, 217);
 
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
