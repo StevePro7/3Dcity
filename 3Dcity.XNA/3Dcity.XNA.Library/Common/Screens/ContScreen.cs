@@ -15,7 +15,7 @@ namespace WindowsGame.Common.Screens
 			CursorPositions[0] = MyGame.Manager.TextManager.GetTextPosition(13, 11);
 			CursorPositions[1] = MyGame.Manager.TextManager.GetTextPosition(22, 11);
 
-			CalcFourBorders(255, 197, 345, 217);
+			CalcFourBorders(255, 195, 365, 217);
 
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}

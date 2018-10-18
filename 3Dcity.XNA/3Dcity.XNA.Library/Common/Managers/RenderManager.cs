@@ -21,6 +21,7 @@ namespace WindowsGame.Common.Managers
 		void DrawStatusOuter();
 		void DrawStatusInner(StatusType statusType, Single percentage);
 		void DrawStatusPosition(StatusType statusType, Vector2 position);
+		void DrawBorderPosition(Vector2[] positions);
 	}
 
 	public class RenderManager : IRenderManager
@@ -28,6 +29,7 @@ namespace WindowsGame.Common.Managers
 		private Rectangle[] gridRectangles;
 		private Rectangle[] starRectangles;
 		private Rectangle[] statusRectangles;
+		private Rectangle[] borderRectangles;
 		private Rectangle backRectangle;
 		private Vector2 backPosition;
 		private Vector2 starPosition;
@@ -80,6 +82,7 @@ namespace WindowsGame.Common.Managers
 			gridRectangles[2] = MyGame.Manager.ImageManager.GridRectangles[2];
 
 			statusRectangles = MyGame.Manager.ImageManager.StatusRectangles;
+			borderRectangles = MyGame.Manager.ImageManager.BorderRectangles;
 		}
 
 		public void UpdateStar(GameTime gameTime)
@@ -158,5 +161,20 @@ namespace WindowsGame.Common.Managers
 			Rectangle statusRectangle = statusRectangles[statusValu];
 			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, position, statusRectangle, Color.White);
 		}
+
+		public void DrawBorderPosition(Vector2[] positions)
+		{
+			if (!MyGame.Manager.ConfigManager.GlobalConfigData.BackBorders)
+			{
+				return;
+			}
+
+			for (Byte index = 0; index < Constants.MAX_BORDER; index++)
+			{
+				Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, positions[index], borderRectangles[index], Color.White);
+			}
+			
+		}
+
 	}
 }

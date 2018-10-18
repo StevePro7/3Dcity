@@ -27,6 +27,8 @@ namespace WindowsGame.Common.Screens
 			Boolean unlimitedCont = MyGame.Manager.ConfigManager.GlobalConfigData.UnlimitedCont;
 			NextScreen = unlimitedCont ? ScreenType.Cont : ScreenType.Over;
 
+			NextScreen = CurrScreen; // TODO take out!!
+			
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
 

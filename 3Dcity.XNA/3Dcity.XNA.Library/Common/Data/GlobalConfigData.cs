@@ -45,6 +45,7 @@ namespace WindowsGame.Common.Data
 		//public Byte EnemyTotal;
 		public Boolean IsGodMode;
 		public Boolean UnlimitedCont;
+		public Boolean BackBorders;
 		public Boolean DebugTester;
 		public Boolean DonotSave;
 		public Boolean QuitsToExit;

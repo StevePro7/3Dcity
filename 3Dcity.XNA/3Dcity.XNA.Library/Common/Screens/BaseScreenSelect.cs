@@ -8,7 +8,7 @@ namespace WindowsGame.Common.Screens
 	{
 		protected Vector2[] CursorPositions { get; set; }
 		protected Vector2[] BackedPositions { get; set; }
-		protected Vector2[] YellowPositions { get; set; }
+		//protected Vector2[] YellowPositions { get; set; }		// TODO delete
 		protected Vector2 Killspace { get; set; }
 		protected Boolean IsMoving { get; set; }
 		protected Byte SelectType { get; set; }
@@ -178,21 +178,26 @@ namespace WindowsGame.Common.Screens
 
 		protected void CalcFourBorders(UInt16 lft, UInt16 top, UInt16 rgt, UInt16 bot)
 		{
-			const Byte off = 4;
-			BackedPositions = new Vector2[4];
-			//CalcFourBorders(275, 197, 365, 217);
+			BackedPositions = new Vector2[Constants.MAX_BORDER];
+
 			BackedPositions[0] = new Vector2(lft, top + Constants.GameOffsetY);
-			BackedPositions[1] = new Vector2(lft, bot + Constants.GameOffsetY);
-			BackedPositions[2] = new Vector2(rgt, top + Constants.GameOffsetY);
+			BackedPositions[1] = new Vector2(rgt, top + Constants.GameOffsetY);
+			BackedPositions[2] = new Vector2(lft, bot + Constants.GameOffsetY);
 			BackedPositions[3] = new Vector2(rgt, bot + Constants.GameOffsetY);
 
-			YellowPositions = new Vector2[6];
-			YellowPositions[0] = new Vector2(lft - off, top - off + Constants.GameOffsetY);
-			YellowPositions[1] = new Vector2(lft - off, top + off + Constants.GameOffsetY);
-			YellowPositions[2] = new Vector2(lft - off, bot + off + Constants.GameOffsetY);
-			YellowPositions[3] = new Vector2(rgt + off, top - off + Constants.GameOffsetY);
-			YellowPositions[4] = new Vector2(rgt + off, top + off + Constants.GameOffsetY);
-			YellowPositions[5] = new Vector2(rgt + off, bot + off + Constants.GameOffsetY);
+
+			//BackedPositions[0] = new Vector2(lft, top + Constants.GameOffsetY);
+			//BackedPositions[1] = new Vector2(lft, bot + Constants.GameOffsetY);
+			//BackedPositions[2] = new Vector2(rgt, top + Constants.GameOffsetY);
+			//BackedPositions[3] = new Vector2(rgt, bot + Constants.GameOffsetY);
+
+			//YellowPositions = new Vector2[6];
+			//YellowPositions[0] = new Vector2(lft - off, top - off + Constants.GameOffsetY);
+			//YellowPositions[1] = new Vector2(lft - off, top + off + Constants.GameOffsetY);
+			//YellowPositions[2] = new Vector2(lft - off, bot + off + Constants.GameOffsetY);
+			//YellowPositions[3] = new Vector2(rgt + off, top - off + Constants.GameOffsetY);
+			//YellowPositions[4] = new Vector2(rgt + off, top + off + Constants.GameOffsetY);
+			//YellowPositions[5] = new Vector2(rgt + off, bot + off + Constants.GameOffsetY);
 		}
 
 		protected static void DrawSheet01()
@@ -223,10 +228,12 @@ namespace WindowsGame.Common.Screens
 			//{
 			//	MyGame.Manager.RenderManager.DrawStatusPosition(StatusType.Yellow, YellowPositions[index]);
 			//}
-			for (Byte index = 0; index < BackedPositions.Length; index++)
-			{
-				MyGame.Manager.RenderManager.DrawStatusPosition(StatusType.Black, BackedPositions[index]);
-			}
+			//for (Byte index = 0; index < BackedPositions.Length; index++)
+			//{
+			//    MyGame.Manager.RenderManager.DrawStatusPosition(StatusType.Black, BackedPositions[index]);
+			//}
+
+			MyGame.Manager.RenderManager.DrawBorderPosition(BackedPositions);
 		}
 
 		protected void DrawText()

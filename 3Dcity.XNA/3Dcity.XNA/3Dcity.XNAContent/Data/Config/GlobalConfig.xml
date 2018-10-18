@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Test</ScreenType>
+	<ScreenType>Cont</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<!--<ScreenType>Level</ScreenType>-->
@@ -50,6 +50,7 @@
 	-->
 	<IsGodMode>false</IsGodMode>
 	<UnlimitedCont>true</UnlimitedCont>
+	<BackBorders>true</BackBorders>
 	<DebugTester>true</DebugTester>
 	<DonotSave>true</DonotSave>
 	<QuitsToExit>true</QuitsToExit>
