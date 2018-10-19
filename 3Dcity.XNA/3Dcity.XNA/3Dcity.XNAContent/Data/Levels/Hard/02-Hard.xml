@@ -1,14 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <LevelConfigData>
 	<LevelNo>01</LevelNo>
-	<LevelName>MOOT</LevelName>
+	<LevelType>Hard</LevelType>
+	<LevelName>GEEZA</LevelName>
 	<BonusLevel>false</BonusLevel>
 	<GridDelay>250</GridDelay>
 	<BulletMaxim>5</BulletMaxim>
 	<BulletFrame>50</BulletFrame>
-	<!-- how fast bullet travels -->
-	<BulletShoot>100</BulletShoot>
-	<!-- delay between bullet shots -->
+	<BulletShoot>100</BulletShoot>	
 	<EnemySpawn>4</EnemySpawn>
 	<EnemyTotal>50</EnemyTotal>
 	<EnemyStartDelay>2000</EnemyStartDelay>
@@ -20,10 +19,6 @@
 	<EnemySpeedNone>70</EnemySpeedNone>
 	<EnemySpeedWave>20</EnemySpeedWave>
 	<EnemySpeedFast>10</EnemySpeedFast>
-	<!--
-	<EnemyDelay>1000</EnemyDelay>
-	<EnemyStart>5000</EnemyStart>
-	-->
 	<ExplodeDelay>100</ExplodeDelay>
 	<StartTimer>2000</StartTimer>
 </LevelConfigData>

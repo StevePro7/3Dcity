@@ -1,14 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <LevelConfigData>
 	<LevelNo>01</LevelNo>
+	<LevelType>Easy</LevelType>
 	<LevelName>MOOT</LevelName>
 	<BonusLevel>false</BonusLevel>
 	<GridDelay>500</GridDelay>
 	<BulletMaxim>1</BulletMaxim>
 	<BulletFrame>100</BulletFrame>
-	<!-- how fast bullet travels -->
-	<BulletShoot>500</BulletShoot>
-	<!-- delay between bullet shots -->
+	<BulletShoot>500</BulletShoot>	
 	<EnemySpawn>1</EnemySpawn>
 	<EnemyTotal>10</EnemyTotal>
 	<EnemyStartDelay>2000</EnemyStartDelay>
@@ -20,10 +19,5 @@
 	<EnemySpeedNone>100</EnemySpeedNone>
 	<EnemySpeedWave>0</EnemySpeedWave>
 	<EnemySpeedFast>0</EnemySpeedFast>
-	<!--
-	<EnemyDelay>1000</EnemyDelay>
-	<EnemyStart>5000</EnemyStart>
-	-->
 	<ExplodeDelay>100</ExplodeDelay>
-	<StartTimer>2000</StartTimer>
 </LevelConfigData>
