@@ -1,23 +1,23 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <LevelConfigData>
-	<LevelNo>01</LevelNo>
-	<LevelType>Easy</LevelType>
-	<LevelName>MOOT</LevelName>
-	<BonusLevel>false</BonusLevel>
-	<GridDelay>500</GridDelay>
-	<BulletMaxim>1</BulletMaxim>
-	<BulletFrame>100</BulletFrame>
-	<BulletShoot>500</BulletShoot>	
-	<EnemySpawn>1</EnemySpawn>
-	<EnemyTotal>10</EnemyTotal>
-	<EnemyStartDelay>2000</EnemyStartDelay>
-	<EnemyStartDelta>0</EnemyStartDelta>
-	<EnemyFrameDelay>1000</EnemyFrameDelay>
-	<EnemyFrameDelta>0</EnemyFrameDelta>
-	<EnemyFrameMinim>500</EnemyFrameMinim>
-	<EnemyFrameRange>200</EnemyFrameRange>
-	<EnemySpeedNone>100</EnemySpeedNone>
-	<EnemySpeedWave>0</EnemySpeedWave>
-	<EnemySpeedFast>0</EnemySpeedFast>
-	<ExplodeDelay>100</ExplodeDelay>
+  <LevelNo>1</LevelNo>
+  <LevelType>Easy</LevelType>
+  <LevelName>MOOT</LevelName>
+  <BonusLevel>false</BonusLevel>
+  <GridDelay>500</GridDelay>
+  <BulletMaxim>1</BulletMaxim>
+  <BulletFrame>100</BulletFrame>
+  <BulletShoot>500</BulletShoot>
+  <EnemySpawn>1</EnemySpawn>
+  <EnemyTotal>10</EnemyTotal>
+  <EnemyStartDelay>2000</EnemyStartDelay>
+  <EnemyStartDelta>0</EnemyStartDelta>
+  <EnemyFrameDelay>1000</EnemyFrameDelay>
+  <EnemyFrameDelta>0</EnemyFrameDelta>
+  <EnemyFrameMinim>500</EnemyFrameMinim>
+  <EnemyFrameRange>200</EnemyFrameRange>
+  <EnemySpeedNone>100</EnemySpeedNone>
+  <EnemySpeedWave>0</EnemySpeedWave>
+  <EnemySpeedFast>0</EnemySpeedFast>
+  <ExplodeDelay>100</ExplodeDelay>
 </LevelConfigData>

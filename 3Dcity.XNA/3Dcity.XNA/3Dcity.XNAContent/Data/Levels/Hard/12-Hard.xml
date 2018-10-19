@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LevelConfigData>
-  <LevelNo>3</LevelNo>
+  <LevelNo>12</LevelNo>
   <LevelType>Hard</LevelType>
-  <LevelName>AMAR</LevelName>
-  <BonusLevel>false</BonusLevel>
+  <LevelName>BONUS 2</LevelName>
+  <BonusLevel>true</BonusLevel>
   <GridDelay>200</GridDelay>
   <BulletMaxim>5</BulletMaxim>
   <BulletFrame>50</BulletFrame>
