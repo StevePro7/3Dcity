@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using WindowsGame.Common.Data;
-using WindowsGame.Common.Sprites;
 using WindowsGame.Common.Static;
 using WindowsGame.Master.Interfaces;
 
@@ -72,6 +69,8 @@ namespace WindowsGame.Common.Screens
 			VerifyEnemies();
 			if (NextScreen != CurrScreen)
 			{
+				// Edge case: reset shooting icon if dead.
+				MyGame.Manager.IconManager.UpdateFireIcon(0);
 				return (Int32) NextScreen;
 			}
 
