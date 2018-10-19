@@ -1,21 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Title</ScreenType>
+	<ScreenType>Load</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<!--<ScreenType>Level</ScreenType>-->
 	<!--<ScreenType>Resume</ScreenType>-->
 	<LevelType>Hard</LevelType>
-	<LevelIndex>1</LevelIndex>
+	<LevelIndex>5</LevelIndex>
 	<FramesPerSecond>100</FramesPerSecond>
-	<MaximLevel>3</MaximLevel>
+	<MaximLevel>18</MaximLevel>
 	<MaxBullets>20</MaxBullets>
 	<LoadAudio>true</LoadAudio>
 	<PlayAudio>true</PlayAudio>
 	<StarDelay>2000</StarDelay>
 	<!-- <GridDelay>300</GridDelay>			TODO delete -->
 	<ExplodeDelay>100</ExplodeDelay>
-	<SplashDelay>3000</SplashDelay>
+	<SplashDelay>0000</SplashDelay>
 	<SelectDelay>500</SelectDelay>
 	<IntroDelay>660</IntroDelay>
 	<TitleDelay>800</TitleDelay>
