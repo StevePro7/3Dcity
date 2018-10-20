@@ -1,12 +1,17 @@
 ﻿using System;
+using WindowsGame.Common.Data;
 using Microsoft.Xna.Framework;
 using WindowsGame.Common.Static;
 using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
 {
-	public class FinishScreen : BaseScreenPlay, IScreen
+	public class FinishScreen : BaseScreenSelect, IScreen
 	{
+		private Vector2 completePosition;
+		private Vector2 hitRatioPosition;
+		private String hitRatioText;
+
 		private Vector2 homeSpot;
 		private Single deltaX, deltaY;
 		private Boolean flag;
@@ -20,6 +25,9 @@ namespace WindowsGame.Common.Screens
 			UpdateGrid = MyGame.Manager.ConfigManager.GlobalConfigData.UpdateGrid;
 			homeSpot = MyGame.Manager.SpriteManager.LargeTarget.HomeSpot;
 
+			BackedPositions = MyGame.Manager.StateManager.SetBackedPositions(255, 195, 370, 217);
+			completePosition = MyGame.Manager.TextManager.GetTextPosition(13, 10);
+			hitRatioPosition = MyGame.Manager.TextManager.GetTextPosition(23, 11);
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
 
@@ -27,8 +35,14 @@ namespace WindowsGame.Common.Screens
 		{
 			base.LoadContent();
 
-			MyGame.Manager.RenderManager.SetGridDelay(LevelConfigData.GridDelay);
+			MyGame.Manager.IconManager.UpdateFireIcon(0);
 			MyGame.Manager.SpriteManager.SmallTarget.SetHomeSpot();
+
+			Byte scoreKills = MyGame.Manager.ScoreManager.ScoreKills;
+			Byte enemyTotal = MyGame.Manager.EnemyManager.EnemyTotal;
+			Single hitRatio = scoreKills / (Single) enemyTotal;
+			hitRatioText = hitRatio.ToString().PadLeft(3, '0');
+			hitRatioText += Globalize.PERCENTAGE;
 
 			deltaX = homeSpot.X - MyGame.Manager.SpriteManager.LargeTarget.Position.X;
 			deltaY = homeSpot.Y - MyGame.Manager.SpriteManager.LargeTarget.Position.Y;
@@ -45,9 +59,6 @@ namespace WindowsGame.Common.Screens
 
 			// Update bullets to finish off..
 			MyGame.Manager.BulletManager.Update(gameTime);
-
-			// Icons.
-			UpdateIcons();
 
 			if (flag)
 			{
@@ -83,7 +94,7 @@ namespace WindowsGame.Common.Screens
 		{
 			// Sprite sheet #01.
 			base.Draw();
-			MyGame.Manager.IconManager.DrawControls();
+			DrawSheet01();
 
 			// Sprite sheet #02.
 			MyGame.Manager.RenderManager.DrawStatusOuter();
@@ -93,14 +104,16 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.LevelManager.Draw();
 			MyGame.Manager.BulletManager.Draw();
 			MyGame.Manager.SpriteManager.Draw();
+			DrawBacked();
 
 			// Text data last!
+			DrawText();
 			MyGame.Manager.TextManager.DrawTitle();
-			MyGame.Manager.TextManager.DrawControls();
 			MyGame.Manager.TextManager.DrawProgress();
 			MyGame.Manager.EnemyManager.DrawProgress();
 			MyGame.Manager.LevelManager.DrawTextData();
-			MyGame.Manager.ScoreManager.Draw();
+			MyGame.Manager.TextManager.DrawText(Globalize.FINISH_TEXT1, completePosition);
+			MyGame.Manager.TextManager.DrawText(hitRatioText, hitRatioPosition);
 		}
 
 	}

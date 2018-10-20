@@ -17,6 +17,7 @@ namespace WindowsGame.Common.Static
 		public const String CURSOR_RIGHT = ">>";
 		public const String MISS_TEXT = "X";
 		public const String SEPARATOR = "/";
+		public const String PERCENTAGE = "%";
 
 		public const String SHIP_TYPE = "SHIP";
 		public const String BOSS_TYPE = "BOSS";
@@ -31,5 +32,7 @@ namespace WindowsGame.Common.Static
 
 		public const String DEAD_OPTION1 = "4X MISSES";
 		public const String DEAD_OPTION2 = "YOU DIED";
+
+		public const String FINISH_TEXT1 = "LEVEL COMPLETE";
 	}
 }
