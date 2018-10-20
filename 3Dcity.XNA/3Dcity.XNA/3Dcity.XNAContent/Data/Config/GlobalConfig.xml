@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Load</ScreenType>
+	<ScreenType>Title</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<!--<ScreenType>Level</ScreenType>-->
 	<!--<ScreenType>Resume</ScreenType>-->
 	<LevelType>Hard</LevelType>
-	<LevelIndex>1</LevelIndex>
+	<LevelIndex>0</LevelIndex>
 	<FramesPerSecond>100</FramesPerSecond>
 	<MaximLevel>18</MaximLevel>
 	<MaxBullets>20</MaxBullets>

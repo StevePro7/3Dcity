@@ -357,3 +357,14 @@ for (int d = 0; d < 360; d++)
 
 Issue
 20/10/2018
+EnemyTest.Clear();
+EnemyDict.Clear();
+EnemyPercentage
+
+
+Validation rules
+EnemySpawn > 0
+EnemyTotal > 0
+EnemyTotal >= EnemySpawn
+EnemySpeedNone + EnemySpeedWave + EnemySpeedFast = 100
+check DelayManager algorithm so that GetFastFrameDelay()

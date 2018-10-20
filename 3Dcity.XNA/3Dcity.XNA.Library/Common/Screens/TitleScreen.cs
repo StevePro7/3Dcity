@@ -33,6 +33,7 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
+			MyGame.Manager.ScoreManager.ResetAll();
 			iconIndex = 0;
 			flag1 = false;
 			flag2 = true;
@@ -67,6 +68,7 @@ namespace WindowsGame.Common.Screens
 			{
 				MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Right);
 				flag1 = true;
+				flag2 = true;
 				Timer = 0;
 			}
 
