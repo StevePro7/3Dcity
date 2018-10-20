@@ -92,15 +92,25 @@ namespace WindowsGame.Common.Managers
 			levelType = theLevelType;
 			levelConfigData = theLevelConfigData;
 			maxEnemySpawn = levelConfigData.EnemySpawn;
+			if (maxEnemySpawn <= 0)
+			{
+				maxEnemySpawn = 1;
+			}
 			if (maxEnemySpawn > Constants.MAX_ENEMYS_SPAWN)
 			{
 				maxEnemySpawn = Constants.MAX_ENEMYS_SPAWN;
 			}
 
-			// Ensure max total takes precedence over spawn.
-			if (maxEnemySpawn > levelConfigData.EnemyTotal)
+			EnemyTotal = levelConfigData.EnemyTotal;
+			if (EnemyTotal <= 0)
 			{
-				maxEnemySpawn = levelConfigData.EnemyTotal;
+				EnemyTotal = 1;
+			}
+
+			// Ensure max total takes precedence over spawn.
+			if (maxEnemySpawn > EnemyTotal)
+			{
+				maxEnemySpawn = EnemyTotal;
 			}
 
 			// Reset all enemies but not the list as will clear.
@@ -115,11 +125,11 @@ namespace WindowsGame.Common.Managers
 
 			EnemyStart = 0;
 			EnemySpawn = 0;
-			EnemyTotal = levelConfigData.EnemyTotal;
 			EnemyStartText = EnemyStart.ToString().PadLeft(3, '0');
 			EnemyTotalText = EnemyTotal.ToString().PadLeft(3, '0');
+			EnemyPercentage = 0.0f;
 
-			// Validate enemy frame proportions add to 100%
+			// TODO Validate enemy frame proportions add to 100%
 			if (100 == levelConfigData.EnemySpeedNone + levelConfigData.EnemySpeedWave + levelConfigData.EnemySpeedFast)
 			{
 				return;
@@ -267,7 +277,7 @@ namespace WindowsGame.Common.Managers
 			if (launchCheck)
 			{
 				EnemyStartText = EnemyStart.ToString().PadLeft(3, '0');
-				EnemyPercentage = ((Single)EnemyStart / (Single)EnemyTotal) * 100.0f;
+				EnemyPercentage = (EnemyStart / (Single)EnemyTotal) * 100.0f;
 			}
 		}
 

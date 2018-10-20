@@ -352,3 +352,8 @@ for (int d = 0; d < 360; d++)
 	string t = a.ToString();
 	System.Diagnostics.Debug.WriteLine(t);
 }
+
+
+
+Issue
+20/10/2018

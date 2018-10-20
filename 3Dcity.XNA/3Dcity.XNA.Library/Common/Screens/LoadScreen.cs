@@ -65,6 +65,7 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.StateManager.SetKillSpace(Vector2.Zero);
 			MyGame.Manager.EnemyManager.SpawnAllEnemies();
 
+			MyGame.Manager.SpriteManager.LargeTarget.SetHomeSpot();
 			MyGame.Manager.SoundManager.StopMusic();
 			MyGame.Manager.SoundManager.PlayMusic(SongType.GameMusic);
 		}
