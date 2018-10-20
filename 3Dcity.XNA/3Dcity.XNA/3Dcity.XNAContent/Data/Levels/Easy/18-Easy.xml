@@ -8,9 +8,9 @@
   <BulletMaxim>5</BulletMaxim>
   <BulletFrame>80</BulletFrame>
   <BulletShoot>120</BulletShoot>
-  <EnemySpawn>3</EnemySpawn>
-  <EnemyTotal>20</EnemyTotal>
-  <EnemyStartDelay>200</EnemyStartDelay>
+  <EnemySpawn>1</EnemySpawn>
+  <EnemyTotal>1</EnemyTotal>
+  <EnemyStartDelay>2000</EnemyStartDelay>
   <EnemyStartDelta>0</EnemyStartDelta>
   <EnemyFrameDelay>100</EnemyFrameDelay>
   <EnemyFrameDelta>0</EnemyFrameDelta>

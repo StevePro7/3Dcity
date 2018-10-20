@@ -45,7 +45,7 @@ namespace WindowsGame.Common.Screens
 
 			Byte scoreKills = MyGame.Manager.ScoreManager.ScoreKills;
 			Byte enemyTotal = MyGame.Manager.EnemyManager.EnemyTotal;
-			Single hitRatio = scoreKills / (Single) enemyTotal;
+			Single hitRatio = scoreKills / (Single) enemyTotal * 100;
 			hitRatioText = hitRatio.ToString().PadLeft(3, '0');
 			hitRatioText += Globalize.PERCENTAGE;
 
@@ -77,18 +77,20 @@ namespace WindowsGame.Common.Screens
 			}
 
 
-
 			UpdateFlag1(gameTime);
 			if (Selected)
 			{
-				MyGame.Manager.LevelManager.IncrementLevel();
-				if (MyGame.Manager.LevelManager.LevelIndex >= MyGame.Manager.LevelManager.MaximLevel)
+				Byte levelIndex = (Byte) (MyGame.Manager.LevelManager.LevelIndex + 1);
+				if (levelIndex >= MyGame.Manager.LevelManager.MaximLevel)
 				{
 					NextScreen = ScreenType.Beat;
 				}
-				//TODO delete as already level already set below...
-				//MyGame.Manager.LevelManager.SetLevelType((LevelType)SelectType);
-				return (Int32)NextScreen;
+				else
+				{
+					MyGame.Manager.LevelManager.SetLevelIndex(levelIndex);
+				}
+
+				return (Int32) NextScreen;
 			}
 
 			//DetectFire();

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using log4net.Core;
 using Microsoft.Xna.Framework;
 using WindowsGame.Common.Data;
 using WindowsGame.Common.Static;
@@ -121,18 +122,16 @@ namespace WindowsGame.Common.Managers
 				return;
 			}
 			LevelName = LevelNames[levelIndex];
-
-			// TODO delete
-			//if (null == LevelRoman)
-			//{
-			//    return;
-			//}
-			//levelText = LevelRoman[levelIndex];
 		}
 
 		public void IncrementLevel()
 		{
 			Byte levelIndex = (Byte) (LevelIndex + 1);
+			if (levelIndex >= MaximLevel)
+			{
+				return;
+			}
+
 			SetLevelIndex(levelIndex);
 		}
 
