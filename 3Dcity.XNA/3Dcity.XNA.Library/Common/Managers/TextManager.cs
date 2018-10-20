@@ -28,7 +28,7 @@ namespace WindowsGame.Common.Managers
 		void DrawTitle();
 		void DrawControls();
 
-		void DrawGameInfo();
+		void DrawGameInfo(Byte index);
 		void DrawInstruct();
 		void DrawProgress();
 		void DrawProgress(ShipType shipType);
@@ -161,10 +161,10 @@ namespace WindowsGame.Common.Managers
 			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, controlText[1], controlPosition[1], Color.White);
 		}
 
-		public void DrawGameInfo()
+		public void DrawGameInfo(Byte index)
 		{
-			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, Globalize.INTRO_TEXT1, generalPosition[0], Color.White);
-			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, Globalize.INTRO_TEXT2, generalPosition[1], Color.White);
+			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, Globalize.INTRO_TEXT1[index], generalPosition[0], Color.White);
+			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, Globalize.INTRO_TEXT2[index], generalPosition[1], Color.White);
 		}
 		public void DrawInstruct()
 		{

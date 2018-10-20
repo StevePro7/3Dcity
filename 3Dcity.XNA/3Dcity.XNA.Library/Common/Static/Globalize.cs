@@ -22,9 +22,6 @@ namespace WindowsGame.Common.Static
 		public const String SHIP_TYPE = "SHIP";
 		public const String BOSS_TYPE = "BOSS";
 
-		public const String INTRO_TEXT1 = "CLASSIC SHOOT 'EM UP!";
-		public const String INTRO_TEXT2 = "FROM STEVEPRO STUDIOS";
-
 		public const String INSTRUCTION1 = "MOVE TARGET TO CHOOSE";
 		public const String INSTRUCTION2 = "FIRE BUTTON TO SELECT";
 
@@ -34,5 +31,18 @@ namespace WindowsGame.Common.Static
 		public const String DEAD_OPTION2 = "YOU DIED";
 
 		public const String FINISH_TEXT1 = "LEVEL COMPLETE";
+
+		public static readonly String[] INTRO_TEXT1 = new String[Constants.INFO_LINES]
+		{
+			"CLASSIC SHOOT 'EM UP!",
+			"HEAVILY INSPIRED FROM",
+			"ORIGINAL GAME WRITTEN",
+		};
+		public static readonly String[] INTRO_TEXT2 = new String[Constants.INFO_LINES]
+		{
+			"FROM STEVEPRO STUDIOS",
+			"SPACE HARRIER IN 1985",
+			"FROM THE SEGA SC-3000",
+		};
 	}
 }

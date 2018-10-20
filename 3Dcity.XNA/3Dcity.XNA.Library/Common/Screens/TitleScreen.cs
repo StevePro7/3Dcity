@@ -19,11 +19,11 @@ namespace WindowsGame.Common.Screens
 			base.Initialize();
 
 			promptPosition = MyGame.Manager.TextManager.GetTextPosition(13, 11);
-			promptPosition.X -= 7.5f;
+			//promptPosition.X -= 7.5f;
 			promptDelay = MyGame.Manager.ConfigManager.GlobalConfigData.FlashDelay;
 			selectDelay = MyGame.Manager.ConfigManager.GlobalConfigData.SelectDelay;
 
-			BackedPositions = MyGame.Manager.StateManager.SetBackedPositions(250, 213, 355, 217);
+			BackedPositions = MyGame.Manager.StateManager.SetBackedPositions(255, 213, 365, 217);
 
 			NextScreen = ScreenType.Diff;
 			PrevScreen = ScreenType.Exit;
@@ -109,7 +109,7 @@ namespace WindowsGame.Common.Screens
 			//MyGame.Manager.TextManager.DrawBuild();
 			MyGame.Manager.TextManager.DrawTitle();
 			MyGame.Manager.TextManager.DrawControls();
-			MyGame.Manager.TextManager.DrawGameInfo();
+			MyGame.Manager.TextManager.DrawGameInfo(0);
 			MyGame.Manager.ScoreManager.Draw();
 
 			if (flag2)

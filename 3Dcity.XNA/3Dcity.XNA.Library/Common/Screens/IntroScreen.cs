@@ -15,6 +15,9 @@ namespace WindowsGame.Common.Screens
 		private Single titleY;
 		private Single deltaY;
 		private Boolean coolMusic;
+		private UInt16 delay1, delay2, timer;
+		private Byte index;
+		private Boolean flag;
 		//private String buildVersion;
 
 		public override void Initialize()
@@ -27,6 +30,11 @@ namespace WindowsGame.Common.Screens
 			startY = startPosition.Y;
 			titleY = titlePosition.Y;
 
+			timer = 0;
+			delay1 = 4000;
+			delay2 = MyGame.Manager.ConfigManager.GlobalConfigData.IntroDelay;
+			flag = false;
+
 			NextScreen = ScreenType.Title;
 			PrevScreen = ScreenType.Exit;
 
@@ -36,15 +44,16 @@ namespace WindowsGame.Common.Screens
 		public override void LoadContent()
 		{
 			//buildPosition = MyGame.Manager.TextManager.GetTextPosition(35, 23);
-			UInt16 introDelay = MyGame.Manager.ConfigManager.GlobalConfigData.IntroDelay;
+			const UInt16 gapDelay = 660;//	good guess
 			deltaY = startY - titleY;
-			deltaY = introDelay / deltaY;
+			deltaY = gapDelay / deltaY;
 			moverPosition = startPosition;
 			coolMusic = MyGame.Manager.StateManager.CoolMusic;
 			coolMusic = true;	// TODO revert...!
 			SongType song = coolMusic ? SongType.CoolMusic : SongType.GameTitle;
 			MyGame.Manager.SoundManager.PlayMusic(song, false);
 			//buildVersion = MyGame.Manager.DeviceManager.BuildVersion;
+			index = 0;
 			base.LoadContent();
 		}
 
@@ -60,7 +69,9 @@ namespace WindowsGame.Common.Screens
 			Boolean back = MyGame.Manager.InputManager.Back();
 			if (back)
 			{
-				return (Int32) PrevScreen;
+				//Maybe only exit on Title.
+				return (Int32) NextScreen;
+				//return (Int32) PrevScreen;
 			}
 			// Check to go forward second.
 			Boolean mode = MyGame.Manager.InputManager.TitleMode();
@@ -69,8 +80,8 @@ namespace WindowsGame.Common.Screens
 				return (Int32) NextScreen;
 			}
 
+			
 			UpdateTimer(gameTime);
-
 			if (startY > titleY)
 			{
 				Single delta = (Single) gameTime.ElapsedGameTime.TotalSeconds;
@@ -80,7 +91,26 @@ namespace WindowsGame.Common.Screens
 			}
 			else
 			{
-				// TODO once at final location - sit for a couple of seconds then show text (and score)
+				flag = true;
+			}
+
+			if (flag)
+			{
+				timer += (UInt16)gameTime.ElapsedGameTime.Milliseconds;
+				if (timer > delay1)
+				{
+					timer -= delay1;
+					index++;
+					if (index >= Constants.INFO_LINES)
+					{
+						index = 0;
+						return (Int32)NextScreen;
+					}
+				}
+			}
+			
+			if (Timer > delay2)
+			{
 				return (Int32) NextScreen;
 			}
 
@@ -97,9 +127,11 @@ namespace WindowsGame.Common.Screens
 			// Text data last!
 			//MyGame.Manager.TextManager.DrawBuild();
 			MyGame.Manager.TextManager.DrawTitle();
-			//MyGame.Manager.TextManager.DrawGameInfo();
-			//MyGame.Manager.ScoreManager.Draw();		// TODO - leave out for now...
-			//Engine.SpriteBatch.DrawString(Assets.EmulogicFont, buildVersion, buildPosition, Color.White);
+
+			if (flag)
+			{
+				MyGame.Manager.TextManager.DrawGameInfo(index);
+			}
 		}
 
 	}
