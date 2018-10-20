@@ -29,6 +29,8 @@ namespace WindowsGame.Common.Screens
 		public override void LoadContent()
 		{
 			base.LoadContent();
+			flag1 = false;
+			flag2 = false;
 
 			Killspace = MyGame.Manager.StateManager.KillSpace;
 			MyGame.Manager.SpriteManager.KillEnemy.SetPosition(Killspace);
@@ -71,7 +73,7 @@ namespace WindowsGame.Common.Screens
 				// Ensure sound effect once.
 				MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Over);
 				flag1 = true;
-				return (Int32)CurrScreen;
+				return (Int32) CurrScreen;
 			}
 
 			if (Timer <= medDelay)
@@ -84,7 +86,7 @@ namespace WindowsGame.Common.Screens
 				// Ensure sound effect once.
 				MyGame.Manager.SoundManager.PlayMusic(SongType.GameOver);
 				flag2 = true;
-				return (Int32)CurrScreen;
+				return (Int32) CurrScreen;
 			}
 
 			// Now can check to pro actively goto next screen.

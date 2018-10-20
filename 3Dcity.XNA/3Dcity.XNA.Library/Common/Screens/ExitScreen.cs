@@ -9,6 +9,7 @@ namespace WindowsGame.Common.Screens
 	{
 		public override Int32 Update(GameTime gameTime)
 		{
+			MyGame.Manager.SoundManager.StopMusic();
 			MyGame.Manager.StorageManager.SaveContent();
 
 #if ANDROID
