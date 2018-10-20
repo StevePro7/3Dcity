@@ -22,6 +22,7 @@ namespace WindowsGame.Common.Data
 		public UInt16 FlashDelay;
 		public UInt16 LoadDelay;
 		public UInt16 ReadyDelay;
+		public UInt16 FinishDelay;
 		public UInt16 DeadDelay;
 		public UInt16 ResumeDelay;
 		public UInt16 OverDelay;

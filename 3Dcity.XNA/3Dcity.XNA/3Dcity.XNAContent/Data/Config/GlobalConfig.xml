@@ -10,7 +10,7 @@
 	<FramesPerSecond>100</FramesPerSecond>
 	<MaximLevel>18</MaximLevel>
 	<MaxBullets>20</MaxBullets>
-	<LoadAudio>false</LoadAudio>
+	<LoadAudio>true</LoadAudio>
 	<PlayAudio>true</PlayAudio>
 	<StarDelay>2000</StarDelay>
 	<!-- <GridDelay>300</GridDelay>			TODO delete -->
@@ -23,6 +23,7 @@
 	<!-- 2500 -->
 	<ReadyDelay>1000</ReadyDelay>
 	<!-- 2500 -->
+	<FinishDelay>7000</FinishDelay>
 	<DeadDelay>4000</DeadDelay>
 	<!-- between 3000-5000ms -->
 	<ResumeDelay>5000</ResumeDelay>
