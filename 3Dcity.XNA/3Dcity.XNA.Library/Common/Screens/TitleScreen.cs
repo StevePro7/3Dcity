@@ -12,6 +12,9 @@ namespace WindowsGame.Common.Screens
 		private UInt16 promptDelay;
 		private UInt16 selectDelay;
 		private Byte iconIndex;
+		private Byte localCount;
+		private Boolean isGodMode;
+		private Boolean localCheat;
 		private Boolean flag1, flag2;
 
 		public override void Initialize()
@@ -25,6 +28,9 @@ namespace WindowsGame.Common.Screens
 
 			BackedPositions = MyGame.Manager.StateManager.SetBackedPositions(255, 213, 365, 217);
 
+			isGodMode = MyGame.Manager.ConfigManager.GlobalConfigData.IsGodMode;
+			MyGame.Manager.StateManager.SetIsGodMode(isGodMode);
+
 			NextScreen = ScreenType.Diff;
 			PrevScreen = ScreenType.Exit;
 
@@ -34,6 +40,8 @@ namespace WindowsGame.Common.Screens
 		public override void LoadContent()
 		{
 			MyGame.Manager.ScoreManager.ResetAll();
+			localCheat = false;
+			localCount = 0;
 			iconIndex = 0;
 			flag1 = false;
 			flag2 = true;
@@ -73,8 +81,23 @@ namespace WindowsGame.Common.Screens
 			}
 
 			// Check for cheat detection.
-			//Boolean mode = MyGame.Manager.InputManager.TitleMode();
-
+			if (!isGodMode)
+			{
+				if (!localCheat)
+				{
+					Boolean titleMode = MyGame.Manager.InputManager.TitleMode();
+					if (titleMode)
+					{
+						localCount++;
+						if (localCount >= Constants.MAX_CHEATS)
+						{
+							localCheat = true;
+							MyGame.Manager.StateManager.SetIsGodMode(localCheat);
+							MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Cheat);
+						}
+					}
+				}
+			}
 
 			// Check to go forward second.
 			if (!flag1)
