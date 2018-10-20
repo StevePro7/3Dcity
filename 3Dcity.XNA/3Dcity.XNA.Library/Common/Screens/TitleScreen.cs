@@ -53,23 +53,7 @@ namespace WindowsGame.Common.Screens
 			Boolean back = MyGame.Manager.InputManager.Back();
 			if (back)
 			{
-				return (Int32)PrevScreen;
-			}
-
-			// Check for cheat detecction.
-			//Boolean mode = MyGame.Manager.InputManager.TitleMode();
-
-			// Check to go forward second.
-			Boolean fire = MyGame.Manager.InputManager.Fire();
-			Boolean left = MyGame.Manager.InputManager.LeftsSide();
-			Boolean rght = MyGame.Manager.InputManager.RightSide();
-
-			if (fire || left || rght)
-			{
-				MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Right);
-				flag1 = true;
-				flag2 = true;
-				Timer = 0;
+				return (Int32) PrevScreen;
 			}
 
 			UpdateTimer(gameTime);
@@ -80,13 +64,34 @@ namespace WindowsGame.Common.Screens
 					flag1 = false;
 					iconIndex = Convert.ToByte(flag1);
 					MyGame.Manager.IconManager.UpdateFireIcon(iconIndex);
-					return (Int32) NextScreen;
+					return (Int32)NextScreen;
 				}
 
 				iconIndex = Convert.ToByte(flag1);
 				MyGame.Manager.IconManager.UpdateFireIcon(iconIndex);
 				return (Int32) CurrScreen;
 			}
+
+			// Check for cheat detection.
+			//Boolean mode = MyGame.Manager.InputManager.TitleMode();
+
+
+			// Check to go forward second.
+			if (!flag1)
+			{
+				Boolean fire = MyGame.Manager.InputManager.Fire();
+				Boolean left = MyGame.Manager.InputManager.LeftsSide();
+				Boolean rght = MyGame.Manager.InputManager.RightSide();
+
+				if (fire || left || rght)
+				{
+					MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Right);
+					flag1 = true;
+					flag2 = true;
+					Timer = 0;
+				}
+			}
+
 
 			if (Timer > promptDelay)
 			{

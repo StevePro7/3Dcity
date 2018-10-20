@@ -281,7 +281,7 @@ namespace WindowsGame.Common.Inputs
 			}
 
 			// Joystick.
-			if (joystickInput.JoyHold(Buttons.Y))
+			if (joystickInput.JoyHold(Buttons.X))
 			{
 				return true;
 			}
