@@ -115,7 +115,6 @@ namespace WindowsGame.Common.Screens
 				}
 			}
 
-
 			if (Timer > promptDelay)
 			{
 				flag2 = !flag2;

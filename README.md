@@ -1,9 +1,12 @@
 # 3Dcity
 
 TODO 20/10
-Set invincibility as cheat mode on title
+Add deceleration for more focused attack
 Do the 20,000 thing
 Do the beat screen
+
+DONE
+Set invincibility as cheat mode on title
 
 Do I want to wrap Diff + Level screen with yellow border like Cont / Dead / Over screen
 Rule : flash is OK e.g. Title and Finish screens

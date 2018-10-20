@@ -45,7 +45,7 @@ namespace WindowsGame.Common.Sprites
 		}
 
 		public Boolean IsExploding { get; private set; }
-		public UInt16 FrameDelay { get; private set; }
+		private UInt16 FrameDelay { get; set; }
 		public SByte EnemyID { get; private set; }
 	}
 }
