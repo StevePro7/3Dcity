@@ -11,7 +11,8 @@ namespace WindowsGame.Common.Screens
 		private Vector2 completePosition;
 		private Vector2 hitRatioPosition;
 		private String hitRatioText;
-
+		private UInt16 timer1, timer2;
+		private UInt16 promptDelay;
 		private Vector2 homeSpot;
 		private Single deltaX, deltaY;
 		private Boolean flag;
@@ -23,11 +24,15 @@ namespace WindowsGame.Common.Screens
 		{
 			base.Initialize();
 			UpdateGrid = MyGame.Manager.ConfigManager.GlobalConfigData.UpdateGrid;
+
+			promptDelay = MyGame.Manager.ConfigManager.GlobalConfigData.FlashDelay;
 			homeSpot = MyGame.Manager.SpriteManager.LargeTarget.HomeSpot;
 
-			BackedPositions = MyGame.Manager.StateManager.SetBackedPositions(255, 195, 370, 217);
+			BackedPositions = MyGame.Manager.StateManager.SetBackedPositions(250, 195, 370, 217);
 			completePosition = MyGame.Manager.TextManager.GetTextPosition(13, 10);
 			hitRatioPosition = MyGame.Manager.TextManager.GetTextPosition(23, 11);
+			NextScreen = ScreenType.Load;
+
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
 
@@ -46,6 +51,10 @@ namespace WindowsGame.Common.Screens
 
 			deltaX = homeSpot.X - MyGame.Manager.SpriteManager.LargeTarget.Position.X;
 			deltaY = homeSpot.Y - MyGame.Manager.SpriteManager.LargeTarget.Position.Y;
+
+			timer1 = 0;
+			timer2 = 0;
+			Flag2 = true;
 			flag = false;
 		}
 
@@ -60,9 +69,46 @@ namespace WindowsGame.Common.Screens
 			// Update bullets to finish off..
 			MyGame.Manager.BulletManager.Update(gameTime);
 
+			timer2 += (UInt16)gameTime.ElapsedGameTime.Milliseconds;
+			if (timer2 > promptDelay)
+			{
+				Flag2 = !Flag2;
+				timer2 -= promptDelay;
+			}
+
+
+
+			UpdateFlag1(gameTime);
+			if (Selected)
+			{
+				MyGame.Manager.LevelManager.IncrementLevel();
+				if (MyGame.Manager.LevelManager.LevelIndex >= MyGame.Manager.LevelManager.MaximLevel)
+				{
+					NextScreen = ScreenType.Beat;
+				}
+				//TODO delete as already level already set below...
+				//MyGame.Manager.LevelManager.SetLevelType((LevelType)SelectType);
+				return (Int32)NextScreen;
+			}
+
+			//DetectFire();
+			Boolean fire = MyGame.Manager.InputManager.Fire();
+			Boolean left = MyGame.Manager.InputManager.LeftsSide();
+			Boolean rght = MyGame.Manager.InputManager.RightSide();
+			if (fire || left || rght)
+			{
+				Flag1 = true;
+			}
+			if (Flag1)
+			{
+				PlaySoundEffect();
+				return (Int32)CurrScreen;
+			}
+
+
 			if (flag)
 			{
-				return (Int32) CurrScreen;
+				return (Int32)CurrScreen;
 			}
 
 
@@ -86,6 +132,7 @@ namespace WindowsGame.Common.Screens
 				UpdateGrid = false;
 				flag = true;
 			}
+
 
 			return (Int32) CurrScreen;
 		}
@@ -112,8 +159,13 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.TextManager.DrawProgress();
 			MyGame.Manager.EnemyManager.DrawProgress();
 			MyGame.Manager.LevelManager.DrawTextData();
-			MyGame.Manager.TextManager.DrawText(Globalize.FINISH_TEXT1, completePosition);
+			
 			MyGame.Manager.TextManager.DrawText(hitRatioText, hitRatioPosition);
+
+			if (Flag1 || Flag2)
+			{
+				MyGame.Manager.TextManager.DrawText(Globalize.FINISH_TEXT1, completePosition);
+			}
 		}
 
 	}

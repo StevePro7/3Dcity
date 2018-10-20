@@ -16,6 +16,8 @@ namespace WindowsGame.Common.Managers
 
 		void SetLevelType(LevelType levelType);
 		void SetLevelIndex(Byte levelIndex);
+		void IncrementLevel();
+
 		//void Draw();							// TODO delete	
 		//void DrawLevelRoman();					// TODO delete
 		void Draw();
@@ -126,6 +128,12 @@ namespace WindowsGame.Common.Managers
 			//    return;
 			//}
 			//levelText = LevelRoman[levelIndex];
+		}
+
+		public void IncrementLevel()
+		{
+			Byte levelIndex = (Byte) (LevelIndex + 1);
+			SetLevelIndex(levelIndex);
 		}
 
 		// TODO delete

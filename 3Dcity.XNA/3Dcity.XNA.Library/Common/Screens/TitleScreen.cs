@@ -20,7 +20,7 @@ namespace WindowsGame.Common.Screens
 
 			promptPosition = MyGame.Manager.TextManager.GetTextPosition(13, 11);
 			promptPosition.X -= 7.5f;
-			promptDelay = MyGame.Manager.ConfigManager.GlobalConfigData.TitleDelay;
+			promptDelay = MyGame.Manager.ConfigManager.GlobalConfigData.FlashDelay;
 			selectDelay = MyGame.Manager.ConfigManager.GlobalConfigData.SelectDelay;
 
 			BackedPositions = MyGame.Manager.StateManager.SetBackedPositions(250, 213, 355, 217);

@@ -18,10 +18,10 @@
 	<SplashDelay>0000</SplashDelay>
 	<SelectDelay>500</SelectDelay>
 	<IntroDelay>660</IntroDelay>
-	<TitleDelay>800</TitleDelay>
-	<LoadDelay>300</LoadDelay>
+	<FlashDelay>800</FlashDelay>
+	<LoadDelay>3000</LoadDelay>
 	<!-- 2500 -->
-	<ReadyDelay>100</ReadyDelay>
+	<ReadyDelay>1000</ReadyDelay>
 	<!-- 2500 -->
 	<DeadDelay>4000</DeadDelay>
 	<!-- between 3000-5000ms -->

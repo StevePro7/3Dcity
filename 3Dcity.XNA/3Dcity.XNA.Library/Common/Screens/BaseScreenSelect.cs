@@ -67,7 +67,7 @@ namespace WindowsGame.Common.Screens
 			{
 				return;
 			}
-			
+
 			UpdateTimer(gameTime);
 			if (Timer > SelectDelay * 2)
 			{
