@@ -67,6 +67,7 @@ namespace WindowsGame.Common.Screens
 				//MyGame.Manager.SoundManager.PlaySoundEffect(Bullet);
 
 				Vector2 position = MyGame.Manager.SpriteManager.LargeTarget.Position;
+				MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Fire);
 				MyGame.Manager.BulletManager.Shoot((Byte)bulletIndex, position);
 			}
 		}
@@ -130,6 +131,7 @@ namespace WindowsGame.Common.Screens
 				// Collision!	Enemy dead and trigger explode...
 				if (updateScore)
 				{
+					MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Ship);
 					MyGame.Manager.ScoreManager.UpdateGameScore(enemyFrame);
 				}
 

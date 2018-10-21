@@ -17,7 +17,7 @@ namespace WindowsGame.Common.Screens
 		private UInt16 promptDelay;
 		private Vector2 homeSpot;
 		private Single deltaX, deltaY;
-		private Boolean flag, flag3;
+		private Boolean flag, flag2, flag3;
 
 		private const Single offset = 1.0f;
 		private const Single multiplier = 0.6f;
@@ -61,6 +61,7 @@ namespace WindowsGame.Common.Screens
 			timer2 = 0;
 			Flag2 = true;
 			flag = false;
+			flag2 = false;
 			flag3 = false;
 		}
 
@@ -79,6 +80,12 @@ namespace WindowsGame.Common.Screens
 			if (timer1 <= startDelay)
 			{
 				return (Int32) CurrScreen;
+			}
+
+			if (!flag2)
+			{
+				flag2 = true;
+				MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Finish);
 			}
 
 			flag3 = true;
@@ -139,7 +146,7 @@ namespace WindowsGame.Common.Screens
 				if (Math.Abs(homeSpot.X - targetPosition.X) <= offset && Math.Abs(homeSpot.Y - targetPosition.Y) <= offset)
 				{
 					MyGame.Manager.SoundManager.StopMusic();
-					MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Cheat);
+					//MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Cheat);
 					UpdateGrid = false;
 					flag = true;
 				}
