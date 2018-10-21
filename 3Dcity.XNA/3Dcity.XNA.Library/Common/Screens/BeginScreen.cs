@@ -14,6 +14,7 @@ namespace WindowsGame.Common.Screens
 		private Rectangle enemysRect;
 		private Rectangle targetRect;
 		private String[] outputText;
+		private Boolean playSound;
 
 		public override void Initialize()
 		{
@@ -23,6 +24,7 @@ namespace WindowsGame.Common.Screens
 
 			// TODO delete!
 			outputText = new string[2] { "FALSE", "TRUE" };
+			playSound = true;
 
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
@@ -47,22 +49,45 @@ namespace WindowsGame.Common.Screens
 			Boolean gameState = MyGame.Manager.InputManager.GameState();
 			if (gameState)
 			{
-				//PlayMusic(SongType.BossMusic);
-				PlayMusic(SongType.CoolMusic);
+				if (playSound)
+				{
+					PlaySound(SoundEffectType.Ship);
+				}
+				else
+				{
+					//PlayMusic(SongType.BossMusic);
+					PlayMusic(SongType.CoolMusic);
+				}
 			}
 			else
 			{
 				Boolean gameSound = MyGame.Manager.InputManager.GameSound();
 				if (gameSound)
 				{
-					PlayMusic(SongType.ContMusic);
+					if (playSound)
+					{
+						PlaySound(SoundEffectType.Boss);
+					}
+					else
+					{
+						PlayMusic(SongType.ContMusic);
+					}
+					
 				}
 				else
 				{
 					Boolean fire = MyGame.Manager.InputManager.Fire();
 					if (fire)
 					{
-						PlayMusic(SongType.GameOver);
+
+						if (playSound)
+						{
+							PlaySound(SoundEffectType.Extra);
+						}
+						else
+						{
+							PlayMusic(SongType.GameOver);
+						}
 					}
 					else
 					{
@@ -74,7 +99,14 @@ namespace WindowsGame.Common.Screens
 						}
 						else
 						{
-							PlayMusic(SongType.GameTitle);
+							if (playSound)
+							{
+								PlaySound(SoundEffectType.Fire);
+							}
+							else
+							{
+								PlayMusic(SongType.GameTitle);
+							}
 						}
 					}
 				}
@@ -87,6 +119,11 @@ namespace WindowsGame.Common.Screens
 		{
 			MyGame.Manager.SoundManager.StopMusic();
 			MyGame.Manager.SoundManager.PlayMusic(songType, false);
+		}
+
+		private void PlaySound(SoundEffectType soundEffectType)
+		{
+			MyGame.Manager.SoundManager.PlaySoundEffect(soundEffectType);
 		}
 
 		public override void Draw()
