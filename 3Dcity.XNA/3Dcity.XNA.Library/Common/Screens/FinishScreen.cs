@@ -17,7 +17,7 @@ namespace WindowsGame.Common.Screens
 		private UInt16 promptDelay;
 		private Vector2 homeSpot;
 		private Single deltaX, deltaY;
-		private Boolean flag, flag2, flag3;
+		private Boolean flag, flag3; // flag2
 
 		private const Single offset = 1.0f;
 		private const Single multiplier = 0.6f;
@@ -48,6 +48,9 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.RenderManager.SetGridDelay(MyGame.Manager.LevelManager.LevelConfigData.GridDelay);
 			MyGame.Manager.SpriteManager.SmallTarget.SetHomeSpot();
 
+			MyGame.Manager.SoundManager.StopMusic();
+			MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Finish);
+
 			Byte scoreKills = MyGame.Manager.ScoreManager.ScoreKills;
 			Byte enemyTotal = MyGame.Manager.EnemyManager.EnemyTotal;
 			Single hitRatio = scoreKills / (Single) enemyTotal * 100;
@@ -61,7 +64,7 @@ namespace WindowsGame.Common.Screens
 			timer2 = 0;
 			Flag2 = true;
 			flag = false;
-			flag2 = false;
+			//flag2 = false;
 			flag3 = false;
 		}
 
@@ -82,11 +85,11 @@ namespace WindowsGame.Common.Screens
 				return (Int32) CurrScreen;
 			}
 
-			if (!flag2)
-			{
-				flag2 = true;
-				MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Finish);
-			}
+			//if (!flag2)
+			//{
+			//	flag2 = true;
+			//	MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Finish);
+			//}
 
 			flag3 = true;
 			timer2 += (UInt16)gameTime.ElapsedGameTime.Milliseconds;
