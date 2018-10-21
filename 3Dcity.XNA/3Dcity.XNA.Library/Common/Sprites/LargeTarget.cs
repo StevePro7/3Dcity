@@ -19,9 +19,14 @@ namespace WindowsGame.Common.Sprites
 			accY = 1.0f;
 		}
 
-		public void Update(GameTime gameTime, Single horz, Single vert)
+		public void Update(GameTime gameTime, Boolean slow, Single horz, Single vert)
 		{
 			Vector2 position = Position;
+			Single mult = 1.0f;
+			if (slow)
+			{
+				mult /= 2.0f;
+			}
 
 			// Tolerance
 			if (Math.Abs(horz) < Constants.GeneralTolerance)
@@ -68,8 +73,8 @@ namespace WindowsGame.Common.Sprites
 			}
 
 			Single delta = (Single)gameTime.ElapsedGameTime.TotalSeconds;
-			Single moveX = horz * delta * PIXEL * accX;
-			Single moveY = vert * delta * PIXEL * accY;
+			Single moveX = horz * delta * PIXEL * accX * mult;
+			Single moveY = vert * delta * PIXEL * accY * mult;
 
 			position.X += moveX;
 			position.Y += moveY;

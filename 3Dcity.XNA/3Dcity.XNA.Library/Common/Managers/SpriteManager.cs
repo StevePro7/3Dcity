@@ -11,7 +11,7 @@ namespace WindowsGame.Common.Managers
 		void LoadContent();
 		void Reset();
 
-		void SetMovement(Single horz, Single vert);
+		void SetMovement(Boolean slow, Single horz, Single vert);
 		void SetPosition(SpriteType type, Vector2 position);
 		void Update(GameTime gameTime);
 
@@ -29,6 +29,7 @@ namespace WindowsGame.Common.Managers
 		private Vector2 smallPosition;
 		private Vector2 largePosition;
 		private Single targetHorz, targetVert;
+		private Boolean targetSlow;
 
 		public void Initialize()
 		{
@@ -39,6 +40,7 @@ namespace WindowsGame.Common.Managers
 			KillEnemy = new Enemy();
 			KillEnemy.SetDeath();
 			KillEnemy.SetBlinkd(false);
+			targetSlow = false;
 		}
 
 		public void LoadContent()
@@ -46,6 +48,7 @@ namespace WindowsGame.Common.Managers
 			LargeTarget.LoadContent(MyGame.Manager.ImageManager.TargetLargeRectangle);
 			SmallTarget.LoadContent(MyGame.Manager.ImageManager.TargetSmallRectangle);
 			KillEnemy.LoadContent(MyGame.Manager.ImageManager.EnemyRectangles);
+			targetSlow = false;
 		}
 
 		public void Reset()
@@ -54,8 +57,9 @@ namespace WindowsGame.Common.Managers
 			LargeTarget.SetPosition(largePosition);
 		}
 
-		public void SetMovement(Single horz, Single vert)
+		public void SetMovement(Boolean slow, Single horz, Single vert)
 		{
+			targetSlow = slow;
 			targetHorz = horz;
 			targetVert = vert;
 		}
@@ -76,7 +80,7 @@ namespace WindowsGame.Common.Managers
 
 		public void Update(GameTime gameTime)
 		{
-			LargeTarget.Update(gameTime, targetHorz, targetVert);
+			LargeTarget.Update(gameTime, targetSlow, targetHorz, targetVert);
 			SmallTarget.Update(gameTime, targetHorz, targetVert);
 		}
 

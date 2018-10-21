@@ -43,9 +43,10 @@ namespace WindowsGame.Common.Screens
 		protected static void DetectTarget(GameTime gameTime)
 		{
 			// Move target unconditionally.
+			Boolean slow = MyGame.Manager.InputManager.Decelerate();
 			Single horz = MyGame.Manager.InputManager.Horizontal();
 			Single vert = MyGame.Manager.InputManager.Vertical();
-			MyGame.Manager.SpriteManager.SetMovement(horz, vert);
+			MyGame.Manager.SpriteManager.SetMovement(slow, horz, vert);
 			MyGame.Manager.SpriteManager.Update(gameTime);
 		}
 

@@ -100,6 +100,11 @@ namespace WindowsGame.Common.Inputs
 			return MyMoveFunc(controlManager.CheckJoyPadTiny);
 		}
 
+		public Boolean Decelerate()
+		{
+			return MyMove2Func(controlManager.CheckRightSide);
+		}
+
 		public Single LittleHorz()
 		{
 			return MyMoveFunc(controlManager.CheckJoyPadTiny);

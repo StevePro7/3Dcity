@@ -77,6 +77,34 @@ namespace WindowsGame.Common.Inputs
 			return keyboardInput.KeyHold(Keys.Escape) || joystickInput.JoyHold(Buttons.Back) || joystickInput.JoyHold(Buttons.B);
 		}
 
+		public Boolean Decelerate()
+		{
+			// Mouse.
+			if (mouseScreenInput.LeftButtonPress())
+			{
+				Boolean test = controlManager.CheckRightSide(mouseScreenInput.MousePosition);
+				if (test)
+				{
+					return true;
+				}
+			}
+
+			// Joystick.
+			Boolean decelerate = joystickInput.JoyPress(Buttons.RightTrigger);
+			if (decelerate)
+			{
+				return true;
+			}
+
+			// Keyboard.
+			if (keyboardInput.KeyPress(Keys.A))
+			{
+				return true;
+			}
+
+			return false;
+		}
+
 		public Single LittleHorz()
 		{
 			Single horz = 0.0f;

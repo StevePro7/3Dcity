@@ -17,7 +17,7 @@ namespace WindowsGame.UnitTests.Common.Managers
 		public void MyTest()
 		{
 			SpriteManager.Initialize();
-			SpriteManager.SetMovement(0, 0);
+			SpriteManager.SetMovement(false, 0, 0);
 		}
 
 		[TearDown]
