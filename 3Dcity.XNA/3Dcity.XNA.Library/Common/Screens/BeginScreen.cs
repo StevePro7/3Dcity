@@ -19,7 +19,7 @@ namespace WindowsGame.Common.Screens
 		{
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 			base.Initialize();
-			LoadTextData();
+			//LoadTextData();
 
 			// TODO delete!
 			outputText = new string[2] { "FALSE", "TRUE" };
@@ -47,25 +47,22 @@ namespace WindowsGame.Common.Screens
 			Boolean gameState = MyGame.Manager.InputManager.GameState();
 			if (gameState)
 			{
-				MyGame.Manager.SoundManager.StopMusic();
-				//MyGame.Manager.SoundManager.PlayMusic(SongType.BossMusic);
-				MyGame.Manager.SoundManager.PlayMusic(SongType.CoolMusic, false);
+				//PlayMusic(SongType.BossMusic);
+				PlayMusic(SongType.CoolMusic);
 			}
 			else
 			{
 				Boolean gameSound = MyGame.Manager.InputManager.GameSound();
 				if (gameSound)
 				{
-					MyGame.Manager.SoundManager.StopMusic();
-					MyGame.Manager.SoundManager.PlayMusic(SongType.ContMusic, false);
+					PlayMusic(SongType.ContMusic);
 				}
 				else
 				{
 					Boolean fire = MyGame.Manager.InputManager.Fire();
 					if (fire)
 					{
-						MyGame.Manager.SoundManager.StopMusic();
-						MyGame.Manager.SoundManager.PlayMusic(SongType.GameOver, false);
+						PlayMusic(SongType.GameOver);
 					}
 					else
 					{
@@ -77,14 +74,19 @@ namespace WindowsGame.Common.Screens
 						}
 						else
 						{
-							MyGame.Manager.SoundManager.StopMusic();
-							MyGame.Manager.SoundManager.PlayMusic(SongType.GameTitle, false);
+							PlayMusic(SongType.GameTitle);
 						}
 					}
 				}
 			}
 
 			return (Int32)CurrScreen;
+		}
+
+		private void PlayMusic(SongType songType)
+		{
+			MyGame.Manager.SoundManager.StopMusic();
+			MyGame.Manager.SoundManager.PlayMusic(songType, false);
 		}
 
 		public override void Draw()
@@ -100,7 +102,7 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.LevelManager.Draw();
 
 			// Text data last!
-			MyGame.Manager.TextManager.Draw(TextDataList);
+			//MyGame.Manager.TextManager.Draw(TextDataList);
 			MyGame.Manager.TextManager.DrawTitle();
 			MyGame.Manager.TextManager.DrawControls();
 			MyGame.Manager.LevelManager.DrawTextData();

@@ -83,10 +83,15 @@
 	{
 		Aaargh,
 		Bonus,
+		Boss,
 		Cheat,
+		Extra,
+		Finish,
+		Fire,
 		Over,
 		Ready,
 		Right,
+		Ship,
 		Wrong,
 	}
 
@@ -111,7 +116,7 @@
 		Init,
 		Title,
 		Intro,
-		//Begin,		// TODO delete
+		Begin,
 		Diff,
 		Level,
 		Load,
