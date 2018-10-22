@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Finish</ScreenType>
+	<ScreenType>Load</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<!--<ScreenType>Level</ScreenType>-->
 	<!--<ScreenType>Resume</ScreenType>-->
 	<LevelType>Easy</LevelType>
 	<LevelNo>4</LevelNo>
-	<LevelIndex>3</LevelIndex>
+	<LevelIndex>17</LevelIndex>
 	<FramesPerSecond>100</FramesPerSecond>
 	<MaximLevel>18</MaximLevel>
 	<MaxBullets>20</MaxBullets>
@@ -24,7 +24,7 @@
 	<!-- 2500 -->
 	<ReadyDelay>1000</ReadyDelay>
 	<!-- 2500 -->
-	<FinishDelay>7000</FinishDelay>
+	<FinishDelay>8000</FinishDelay>
 	<DeadDelay>4000</DeadDelay>
 	<!-- between 3000-5000ms -->
 	<ResumeDelay>5000</ResumeDelay>

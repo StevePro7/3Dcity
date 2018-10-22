@@ -1,8 +1,9 @@
 # 3Dcity
 
 TODO 22/10
-Check input detection on select screens:
-Diff, Level, Quit, Cont, Over
+Check invincibility works on isGodMode [always] or local cheat [per game]
+Check invincibility works on Bonus Level e.g. 5
+Refactor the auto move [finish scren] out to the SpriteManager so can be shared
 
 Replace 0.4f to 0.3f on Constants General tolerance
 Move the hit detection square slightly above fire button so can decelerate
@@ -11,10 +12,14 @@ Move the hit detection square slightly above fire button so can decelerate
 TODO 20/10
 Add deceleration for more focused attack
 Do the 20,000 thing
-Do the beat screen
+
 
 DONE
 Set invincibility as cheat mode on title
+Do the beat screen
+Do the finish screen
+Check input detection on select screens:
+Diff, Level, Quit, Cont, Over
 
 Do I want to wrap Diff + Level screen with yellow border like Cont / Dead / Over screen
 Rule : flash is OK e.g. Title and Finish screens

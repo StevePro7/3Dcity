@@ -50,10 +50,6 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.RenderManager.SetGridDelay(MyGame.Manager.LevelManager.LevelConfigData.GridDelay);
 			MyGame.Manager.SpriteManager.SmallTarget.SetHomeSpot();
 
-			//TODO delete
-			//MyGame.Manager.SpriteManager.LargeTarget.SetPosition(new Vector2(0, 80));
-			//TODO delete
-
 			Byte scoreKills = MyGame.Manager.ScoreManager.ScoreKills;
 			Byte enemyTotal = MyGame.Manager.EnemyManager.EnemyTotal;
 			Single hitRatio = scoreKills / (Single) enemyTotal * 100;
@@ -142,16 +138,6 @@ namespace WindowsGame.Common.Screens
 			UpdateFlag1(gameTime);
 			if (Selected)
 			{
-				//Byte levelIndex = (Byte) (MyGame.Manager.LevelManager.LevelIndex + 1);
-				//if (levelIndex >= MyGame.Manager.LevelManager.MaximLevel)
-				//{
-				//    MyGame.Manager.ScoreManager.ResetMisses();
-				//    NextScreen = ScreenType.Beat;
-				//}
-				//else
-				//{
-				//    MyGame.Manager.LevelManager.SetLevelIndex(levelIndex);
-				//}
 				CompleteScreen();
 				return (Int32)NextScreen;
 			}
