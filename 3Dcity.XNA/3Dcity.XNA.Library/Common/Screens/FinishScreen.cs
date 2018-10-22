@@ -138,6 +138,39 @@ namespace WindowsGame.Common.Screens
 				return (Int32) CurrScreen;
 			}
 
+			// After initial slight pause and 2s wait check if player wants to skip auto move...
+			UpdateFlag1(gameTime);
+			if (Selected)
+			{
+				//Byte levelIndex = (Byte) (MyGame.Manager.LevelManager.LevelIndex + 1);
+				//if (levelIndex >= MyGame.Manager.LevelManager.MaximLevel)
+				//{
+				//    MyGame.Manager.ScoreManager.ResetMisses();
+				//    NextScreen = ScreenType.Beat;
+				//}
+				//else
+				//{
+				//    MyGame.Manager.LevelManager.SetLevelIndex(levelIndex);
+				//}
+				CompleteScreen();
+				return (Int32)NextScreen;
+			}
+
+			//DetectFire();
+			Boolean fire = MyGame.Manager.InputManager.Select();
+			Boolean left = MyGame.Manager.InputManager.LeftsSide();
+			Boolean rght = MyGame.Manager.InputManager.RightSide();
+			if (fire || left || rght)
+			{
+				Flag1 = true;
+			}
+			if (Flag1)
+			{
+				MyGame.Manager.SoundManager.StopSoundEffect(SoundEffectType.Finish);
+				PlaySoundEffect();
+				return (Int32)CurrScreen;
+			}
+
 			if (FinishState.AutoMove == finishState)
 			{
 				if (!flag)
@@ -177,37 +210,6 @@ namespace WindowsGame.Common.Screens
 				MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Cheat);
 				finishState = FinishState.Complete;
 				return (Int32) CurrScreen;
-			}
-
-			UpdateFlag1(gameTime);
-			if (Selected)
-			{
-				//Byte levelIndex = (Byte) (MyGame.Manager.LevelManager.LevelIndex + 1);
-				//if (levelIndex >= MyGame.Manager.LevelManager.MaximLevel)
-				//{
-				//    MyGame.Manager.ScoreManager.ResetMisses();
-				//    NextScreen = ScreenType.Beat;
-				//}
-				//else
-				//{
-				//    MyGame.Manager.LevelManager.SetLevelIndex(levelIndex);
-				//}
-				CompleteScreen();
-				return (Int32) NextScreen;
-			}
-
-			//DetectFire();
-			Boolean fire = MyGame.Manager.InputManager.Select();
-			Boolean left = MyGame.Manager.InputManager.LeftsSide();
-			Boolean rght = MyGame.Manager.InputManager.RightSide();
-			if (fire || left || rght)
-			{
-				Flag1 = true;
-			}
-			if (Flag1)
-			{
-				PlaySoundEffect();
-				return (Int32)CurrScreen;
 			}
 
 			return (Int32) CurrScreen;
