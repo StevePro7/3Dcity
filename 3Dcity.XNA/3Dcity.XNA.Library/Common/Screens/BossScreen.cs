@@ -56,7 +56,6 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.RenderManager.DrawStatusOuter();
 			MyGame.Manager.RenderManager.DrawStatusInner(StatusType.Red, 100.0f);
 
-			//MyGame.Manager.EnemyManager.Draw();
 			if (bossBig)
 			{
 				MyGame.Manager.BossManager.DrawBigBoss();

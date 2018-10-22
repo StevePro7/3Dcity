@@ -222,10 +222,10 @@ namespace WindowsGame.Common.Screens
 			DrawSheet01();
 
 			// Sprite sheet #02.
+			MyGame.Manager.EnemyManager.Draw();
 			MyGame.Manager.RenderManager.DrawStatusOuter();
 			MyGame.Manager.RenderManager.DrawStatusInner(StatusType.Yellow, MyGame.Manager.EnemyManager.EnemyPercentage);
 
-			MyGame.Manager.EnemyManager.Draw();
 			MyGame.Manager.LevelManager.Draw();
 			MyGame.Manager.BulletManager.Draw();
 
