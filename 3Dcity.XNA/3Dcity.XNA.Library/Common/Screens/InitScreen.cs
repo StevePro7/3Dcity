@@ -57,7 +57,7 @@ namespace WindowsGame.Common.Screens
 
 			if (!flag)
 			{
-				Boolean test = MyGame.Manager.InputManager.Fire();
+				Boolean test = MyGame.Manager.InputManager.Select();
 				if (test)
 				{
 					flag = true;

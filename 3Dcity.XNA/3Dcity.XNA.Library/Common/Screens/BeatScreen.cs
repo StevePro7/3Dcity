@@ -25,6 +25,7 @@ namespace WindowsGame.Common.Screens
 			base.Initialize();
 			LoadTextData();
 
+			BackedPositions = MyGame.Manager.StateManager.SetBackedPositions(235, 195, 385, 217);
 			beatDelay = MyGame.Manager.ConfigManager.GlobalConfigData.BeatDelay;
 
 			// Seems good explosion delay 300ms
@@ -202,6 +203,7 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.LevelManager.Draw();
 			MyGame.Manager.ExplosionManager.Draw();
 			MyGame.Manager.SpriteManager.Draw();
+			DrawBacked();
 
 			// Text data last!
 			MyGame.Manager.TextManager.Draw(TextDataList);

@@ -76,7 +76,7 @@ namespace WindowsGame.Common.Screens
 				}
 				else
 				{
-					Boolean fire = MyGame.Manager.InputManager.Fire();
+					Boolean fire = MyGame.Manager.InputManager.Select();
 					if (fire)
 					{
 

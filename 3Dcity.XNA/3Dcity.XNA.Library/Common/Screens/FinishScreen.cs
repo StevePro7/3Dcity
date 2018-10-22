@@ -106,6 +106,7 @@ namespace WindowsGame.Common.Screens
 				Byte levelIndex = (Byte) (MyGame.Manager.LevelManager.LevelIndex + 1);
 				if (levelIndex >= MyGame.Manager.LevelManager.MaximLevel)
 				{
+					MyGame.Manager.ScoreManager.ResetMisses();
 					NextScreen = ScreenType.Beat;
 				}
 				else
@@ -117,7 +118,7 @@ namespace WindowsGame.Common.Screens
 			}
 
 			//DetectFire();
-			Boolean fire = MyGame.Manager.InputManager.Fire();
+			Boolean fire = MyGame.Manager.InputManager.Select();
 			Boolean left = MyGame.Manager.InputManager.LeftsSide();
 			Boolean rght = MyGame.Manager.InputManager.RightSide();
 			if (fire || left || rght)
