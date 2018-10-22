@@ -1,9 +1,7 @@
 using System;
-using WindowsGame.Common.Data;
-using log4net.Core;
 using Microsoft.Xna.Framework;
+using WindowsGame.Common.Data;
 using WindowsGame.Common.Static;
-using WindowsGame.Master;
 
 namespace WindowsGame.Common.Managers
 {

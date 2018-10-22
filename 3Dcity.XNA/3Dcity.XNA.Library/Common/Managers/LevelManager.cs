@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using log4net.Core;
 using Microsoft.Xna.Framework;
 using WindowsGame.Common.Data;
 using WindowsGame.Common.Static;
