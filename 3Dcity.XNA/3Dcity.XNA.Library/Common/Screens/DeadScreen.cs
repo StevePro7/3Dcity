@@ -40,7 +40,7 @@ namespace WindowsGame.Common.Screens
 
 			Boolean miss = Constants.MAX_MISSES == MyGame.Manager.ScoreManager.MissesTotal;
 			deathText = miss ? Globalize.DEAD_OPTION1 : Globalize.DEAD_OPTION2;
-			smlDelay = miss ? (UInt16) 600 : Constants.SLIGHT_PAUSE;
+			smlDelay = miss ? Constants.LONGER_PAUSE : Constants.SLIGHT_PAUSE;
 
 			Boolean dead = Constants.MAX_MISSES != MyGame.Manager.ScoreManager.MissesTotal;
 			deathText = dead ? Globalize.DEAD_OPTION2 : Globalize.DEAD_OPTION1;

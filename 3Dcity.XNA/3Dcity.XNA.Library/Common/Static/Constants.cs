@@ -64,6 +64,7 @@ namespace WindowsGame.Common.Static
 		public const Byte BOTTOM_SECTOR = 5;
 		public const Byte BOTTOM_OFFSET = 190;
 		public const UInt16 HALFWAY_DOWN = 280;
+		public const UInt16 LONGER_PAUSE = 600;
 		public const UInt16 SLIGHT_PAUSE = 100;
 		public const UInt16 INFO_LINES = 3;
 
