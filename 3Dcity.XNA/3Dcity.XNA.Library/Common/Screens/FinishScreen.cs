@@ -11,7 +11,7 @@ namespace WindowsGame.Common.Screens
 		private Vector2 completePosition;
 		private Vector2 hitRatioPosition;
 		private String hitRatioText;
-		private UInt16 timer1, timer2;
+		private UInt16 timer1, timer2, timer3;
 		private UInt16 pauseDelay;
 		private UInt16 startDelay;
 		private UInt16 finishDelay;
@@ -50,7 +50,9 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.RenderManager.SetGridDelay(MyGame.Manager.LevelManager.LevelConfigData.GridDelay);
 			MyGame.Manager.SpriteManager.SmallTarget.SetHomeSpot();
 
-			
+			//TODO delete
+			//MyGame.Manager.SpriteManager.LargeTarget.SetPosition(new Vector2(0, 80));
+			//TODO delete
 
 			Byte scoreKills = MyGame.Manager.ScoreManager.ScoreKills;
 			Byte enemyTotal = MyGame.Manager.EnemyManager.EnemyTotal;
@@ -63,6 +65,7 @@ namespace WindowsGame.Common.Screens
 
 			timer1 = 0;
 			timer2 = 0;
+			timer3 = 0;
 			Flag2 = true;
 			flag = false;
 			//flag2 = false;
@@ -76,6 +79,7 @@ namespace WindowsGame.Common.Screens
 			MusicSfx,
 			PauseMed,
 			AutoMove,
+			WaitingX,
 			Complete
 		}
 
@@ -90,6 +94,13 @@ namespace WindowsGame.Common.Screens
 			// Update bullets to finish off..
 			MyGame.Manager.BulletManager.Update(gameTime);
 
+			timer3 += (UInt16)gameTime.ElapsedGameTime.Milliseconds;
+			if (timer3 >= finishDelay)
+			{
+				CompleteScreen();
+				return (Int32) NextScreen;
+			}
+
 			timer1 += (UInt16)gameTime.ElapsedGameTime.Milliseconds;
 			if (FinishState.PauseSml == finishState && timer1 <= pauseDelay)
 			{
@@ -98,7 +109,7 @@ namespace WindowsGame.Common.Screens
 
 			if (FinishState.PauseSml == finishState && timer1 > pauseDelay)
 			{
-				timer1 = 0;
+				timer1 -= pauseDelay;
 				finishState = FinishState.MusicSfx;
 				MyGame.Manager.SoundManager.StopMusic();
 				MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Finish);
@@ -122,7 +133,7 @@ namespace WindowsGame.Common.Screens
 			}
 			if (FinishState.PauseMed == finishState && timer1 > startDelay)
 			{
-				//flag3 = false;
+				timer1 -= startDelay;
 				finishState = FinishState.AutoMove;
 				return (Int32) CurrScreen;
 			}
@@ -146,34 +157,42 @@ namespace WindowsGame.Common.Screens
 					MyGame.Manager.SpriteManager.LargeTarget.SetPosition(targetPosition);
 					if (Math.Abs(homeSpot.X - targetPosition.X) <= offset && Math.Abs(homeSpot.Y - targetPosition.Y) <= offset)
 					{
-						MyGame.Manager.SoundManager.StopMusic();
-						MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Cheat);
-						finishState = FinishState.Complete;
+						finishState = FinishState.WaitingX;
 						UpdateGrid = false;
 						flag = true;
 					}
-					else
-					{
-						return (Int32) CurrScreen;
-					}
+
+					return (Int32) CurrScreen;
 				}
 			}
 
+			if (FinishState.WaitingX == finishState && timer1 <= startDelay)
+			{
+				return (Int32) CurrScreen;
+			}
+			if (FinishState.WaitingX == finishState && timer1 > startDelay)
+			{
+				timer1 -= startDelay;
+				MyGame.Manager.SoundManager.StopMusic();
+				MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Cheat);
+				finishState = FinishState.Complete;
+				return (Int32) CurrScreen;
+			}
 
 			UpdateFlag1(gameTime);
 			if (Selected)
 			{
-				Byte levelIndex = (Byte) (MyGame.Manager.LevelManager.LevelIndex + 1);
-				if (levelIndex >= MyGame.Manager.LevelManager.MaximLevel)
-				{
-					MyGame.Manager.ScoreManager.ResetMisses();
-					NextScreen = ScreenType.Beat;
-				}
-				else
-				{
-					MyGame.Manager.LevelManager.SetLevelIndex(levelIndex);
-				}
-
+				//Byte levelIndex = (Byte) (MyGame.Manager.LevelManager.LevelIndex + 1);
+				//if (levelIndex >= MyGame.Manager.LevelManager.MaximLevel)
+				//{
+				//    MyGame.Manager.ScoreManager.ResetMisses();
+				//    NextScreen = ScreenType.Beat;
+				//}
+				//else
+				//{
+				//    MyGame.Manager.LevelManager.SetLevelIndex(levelIndex);
+				//}
+				CompleteScreen();
 				return (Int32) NextScreen;
 			}
 
@@ -191,10 +210,21 @@ namespace WindowsGame.Common.Screens
 				return (Int32)CurrScreen;
 			}
 
-
-			
-
 			return (Int32) CurrScreen;
+		}
+
+		private void CompleteScreen()
+		{
+			Byte levelIndex = (Byte)(MyGame.Manager.LevelManager.LevelIndex + 1);
+			if (levelIndex >= MyGame.Manager.LevelManager.MaximLevel)
+			{
+				MyGame.Manager.ScoreManager.ResetMisses();
+				NextScreen = ScreenType.Beat;
+			}
+			else
+			{
+				MyGame.Manager.LevelManager.SetLevelIndex(levelIndex);
+			}
 		}
 
 		public override void Draw()
