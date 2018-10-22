@@ -7,12 +7,14 @@ using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
 {
-	public class BeatScreen : BaseScreen, IScreen
+	public class BeatScreen : BaseScreenSelect, IScreen
 	{
 		private IList<Rectangle> enemyBounds;
 		private Vector2[] positions;
 		private UInt16[] delays;
+		private UInt16 timer;
 		private UInt16 delay;
+		private UInt16 beatDelay;
 		private Boolean[] flags;
 		private Byte maxExplode;
 		private Byte wide;
@@ -21,8 +23,12 @@ namespace WindowsGame.Common.Screens
 		public override void Initialize()
 		{
 			base.Initialize();
+			LoadTextData();
+
+			beatDelay = MyGame.Manager.ConfigManager.GlobalConfigData.BeatDelay;
 
 			// Seems good explosion delay 300ms
+			timer = 0;
 			delay = 100;
 
 			maxExplode = Constants.MAX_EXPLODE_SPAWN;
@@ -35,7 +41,7 @@ namespace WindowsGame.Common.Screens
 
 			wide = (Byte)enemyBounds[0].Width;
 			high = (Byte)enemyBounds[0].Width;
-
+			NextScreen = ScreenType.Title;
 
 			// TODO delete this!!
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
@@ -45,6 +51,7 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
+			base.LoadContent();
 			for (Byte index = 0; index < maxExplode; index++)
 			{
 				positions[index] = GetRandomPosition(index);
@@ -69,7 +76,13 @@ namespace WindowsGame.Common.Screens
 			flags[1] = true;
 			flags[3] = true;
 			flags[6] = true;
-			base.LoadContent();
+
+			MyGame.Manager.SpriteManager.LargeTarget.SetHomeSpot();
+			MyGame.Manager.SpriteManager.SmallTarget.SetHomeSpot();
+
+			// TODO do need slight pause first?
+			MyGame.Manager.SoundManager.StopMusic();
+			MyGame.Manager.SoundManager.PlayMusic(SongType.GameTitle);
 		}
 
 		public override Int32 Update(GameTime gameTime)
@@ -80,16 +93,20 @@ namespace WindowsGame.Common.Screens
 				return (Int32)CurrScreen;
 			}
 
+			//TODO delete
+			//string time = gameTime.ElapsedGameTime.TotalSeconds.ToString();
+			//MyGame.Manager.Logger.Info(time);
 
-			string time = gameTime.ElapsedGameTime.TotalSeconds.ToString();
-			MyGame.Manager.Logger.Info(time);
 
+			timer += (UInt16)gameTime.ElapsedGameTime.Milliseconds;
+			if (timer > beatDelay)
+			{
+				// Reset back to start.
+				MyGame.Manager.LevelManager.SetLevelIndex(0);
+				MyGame.Manager.SoundManager.StopMusic();
+				return (Int32) NextScreen;
+			}
 
-			//ExplodeType explodeType = ExplodeType.Small;
-			//GetRandomExplodeType();
-			UpdateTimer(gameTime);
-
-			//const Byte index = 1;
 			for (Byte index = 0; index < maxExplode; index++)
 			{
 				if (flags[index])
@@ -97,7 +114,7 @@ namespace WindowsGame.Common.Screens
 					continue;
 				}
 
-				if (Timer > delays[index])
+				if (timer > delays[index])
 				{
 					flags[index] = true;
 					Byte enemyID = index;
@@ -107,7 +124,6 @@ namespace WindowsGame.Common.Screens
 					MyGame.Manager.ExplosionManager.Explode(enemyID, explodeType, positions[index]);
 				}
 			}
-
 
 			MyGame.Manager.ExplosionManager.Update(gameTime);
 			if (0 != MyGame.Manager.ExplosionManager.ExplosionTest.Count)
@@ -122,6 +138,27 @@ namespace WindowsGame.Common.Screens
 					positions[testIndex] = GetRandomPosition(enemyID);
 					MyGame.Manager.ExplosionManager.Explode(enemyID, explodeType, positions[testIndex]);
 				}
+			}
+
+
+			UpdateFlag1(gameTime);
+			if (Selected)
+			{
+				// Reset back to start.
+				MyGame.Manager.LevelManager.SetLevelIndex(0);
+				MyGame.Manager.SoundManager.StopMusic();
+				return (Int32) NextScreen;
+			}
+			if (Flag1)
+			{
+				return (Int32) CurrScreen;
+			}
+
+			DetectSelect();
+			if (Flag1)
+			{
+				PlaySoundEffect();
+				return (Int32) CurrScreen;
 			}
 
 			#region Events
@@ -161,8 +198,16 @@ namespace WindowsGame.Common.Screens
 			base.Draw();
 			MyGame.Manager.IconManager.DrawControls();
 
+			// Sprite sheet #02.
+			MyGame.Manager.LevelManager.Draw();
 			MyGame.Manager.ExplosionManager.Draw();
 			MyGame.Manager.SpriteManager.Draw();
+
+			// Text data last!
+			MyGame.Manager.TextManager.Draw(TextDataList);
+			MyGame.Manager.TextManager.DrawTitle();
+			MyGame.Manager.TextManager.DrawControls();
+			MyGame.Manager.ScoreManager.Draw();
 		}
 
 		private Vector2 GetRandomPosition(Byte index)
@@ -196,7 +241,7 @@ namespace WindowsGame.Common.Screens
 			
 			return position;
 		}
-		private ExplodeType GetRandomExplodeType()
+		private static ExplodeType GetRandomExplodeType()
 		{
 			Byte type = (Byte) MyGame.Manager.RandomManager.Next(2);
 			return (ExplodeType) type;
