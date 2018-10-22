@@ -12,13 +12,14 @@ namespace WindowsGame.Common.Screens
 		private Vector2 hitRatioPosition;
 		private String hitRatioText;
 		private UInt16 timer1, timer2;
+		private UInt16 pauseDelay;
 		private UInt16 startDelay;
 		private UInt16 finishDelay;
 		private UInt16 promptDelay;
 		private Vector2 homeSpot;
 		private Single deltaX, deltaY;
 		private Boolean flag, flag3; // flag2
-
+		private FinishState finishState;
 		private const Single offset = 1.0f;
 		private const Single multiplier = 0.6f;
 
@@ -27,6 +28,7 @@ namespace WindowsGame.Common.Screens
 			base.Initialize();
 			UpdateGrid = MyGame.Manager.ConfigManager.GlobalConfigData.UpdateGrid;
 
+			pauseDelay = Constants.LONGER_PAUSE;
 			startDelay = 2000;
 			finishDelay = MyGame.Manager.ConfigManager.GlobalConfigData.FinishDelay;
 			promptDelay = MyGame.Manager.ConfigManager.GlobalConfigData.FlashDelay;
@@ -48,8 +50,7 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.RenderManager.SetGridDelay(MyGame.Manager.LevelManager.LevelConfigData.GridDelay);
 			MyGame.Manager.SpriteManager.SmallTarget.SetHomeSpot();
 
-			MyGame.Manager.SoundManager.StopMusic();
-			MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Finish);
+			
 
 			Byte scoreKills = MyGame.Manager.ScoreManager.ScoreKills;
 			Byte enemyTotal = MyGame.Manager.EnemyManager.EnemyTotal;
@@ -66,6 +67,16 @@ namespace WindowsGame.Common.Screens
 			flag = false;
 			//flag2 = false;
 			flag3 = false;
+			finishState = FinishState.PauseSml;
+		}
+
+		private enum FinishState
+		{
+			PauseSml,
+			MusicSfx,
+			PauseMed,
+			AutoMove,
+			Complete
 		}
 
 		public override Int32 Update(GameTime gameTime)
@@ -80,23 +91,72 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.BulletManager.Update(gameTime);
 
 			timer1 += (UInt16)gameTime.ElapsedGameTime.Milliseconds;
-			if (timer1 <= startDelay)
+			if (FinishState.PauseSml == finishState && timer1 <= pauseDelay)
 			{
 				return (Int32) CurrScreen;
 			}
 
-			//if (!flag2)
-			//{
-			//	flag2 = true;
-			//	MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Finish);
-			//}
-
-			flag3 = true;
-			timer2 += (UInt16)gameTime.ElapsedGameTime.Milliseconds;
-			if (timer2 > promptDelay)
+			if (FinishState.PauseSml == finishState && timer1 > pauseDelay)
 			{
-				Flag2 = !Flag2;
-				timer2 -= promptDelay;
+				timer1 = 0;
+				finishState = FinishState.MusicSfx;
+				MyGame.Manager.SoundManager.StopMusic();
+				MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Finish);
+				finishState = FinishState.PauseMed;
+				return (Int32) CurrScreen;
+			}
+
+			if (FinishState.PauseMed == finishState)
+			{
+				flag3 = true;
+				timer2 += (UInt16)gameTime.ElapsedGameTime.Milliseconds;
+				if (timer2 > promptDelay)
+				{
+					Flag2 = !Flag2;
+					timer2 -= promptDelay;
+				}
+			}
+			if (FinishState.PauseMed == finishState && timer1 <= startDelay)
+			{
+				return (Int32) CurrScreen;
+			}
+			if (FinishState.PauseMed == finishState && timer1 > startDelay)
+			{
+				//flag3 = false;
+				finishState = FinishState.AutoMove;
+				return (Int32) CurrScreen;
+			}
+
+			if (FinishState.AutoMove == finishState)
+			{
+				if (!flag)
+				{
+					Single deltaT = (Single)gameTime.ElapsedGameTime.TotalSeconds;
+					Vector2 targetPosition = MyGame.Manager.SpriteManager.LargeTarget.Position;
+
+					if (Math.Abs(homeSpot.X - targetPosition.X) > offset)
+					{
+						targetPosition.X += deltaX * deltaT * multiplier;
+					}
+					if (Math.Abs(homeSpot.Y - targetPosition.Y) > offset)
+					{
+						targetPosition.Y += deltaY * deltaT * multiplier;
+					}
+
+					MyGame.Manager.SpriteManager.LargeTarget.SetPosition(targetPosition);
+					if (Math.Abs(homeSpot.X - targetPosition.X) <= offset && Math.Abs(homeSpot.Y - targetPosition.Y) <= offset)
+					{
+						MyGame.Manager.SoundManager.StopMusic();
+						MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Cheat);
+						finishState = FinishState.Complete;
+						UpdateGrid = false;
+						flag = true;
+					}
+					else
+					{
+						return (Int32) CurrScreen;
+					}
+				}
 			}
 
 
@@ -132,29 +192,7 @@ namespace WindowsGame.Common.Screens
 			}
 
 
-			if (!flag)
-			{
-				Single deltaT = (Single) gameTime.ElapsedGameTime.TotalSeconds;
-				Vector2 targetPosition = MyGame.Manager.SpriteManager.LargeTarget.Position;
-
-				if (Math.Abs(homeSpot.X - targetPosition.X) > offset)
-				{
-					targetPosition.X += deltaX*deltaT*multiplier;
-				}
-				if (Math.Abs(homeSpot.Y - targetPosition.Y) > offset)
-				{
-					targetPosition.Y += deltaY*deltaT*multiplier;
-				}
-
-				MyGame.Manager.SpriteManager.LargeTarget.SetPosition(targetPosition);
-				if (Math.Abs(homeSpot.X - targetPosition.X) <= offset && Math.Abs(homeSpot.Y - targetPosition.Y) <= offset)
-				{
-					MyGame.Manager.SoundManager.StopMusic();
-					//MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Cheat);
-					UpdateGrid = false;
-					flag = true;
-				}
-			}
+			
 
 			return (Int32) CurrScreen;
 		}
@@ -172,11 +210,12 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.EnemyManager.Draw();
 			MyGame.Manager.LevelManager.Draw();
 			MyGame.Manager.BulletManager.Draw();
-			MyGame.Manager.SpriteManager.Draw();
+
 			if (flag3)
 			{
 				DrawBacked();
 			}
+			MyGame.Manager.SpriteManager.Draw();
 
 			// Text data last!
 			if (flag3)

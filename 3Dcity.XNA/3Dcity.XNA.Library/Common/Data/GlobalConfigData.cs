@@ -7,6 +7,7 @@ namespace WindowsGame.Common.Data
 	{
 		public ScreenType ScreenType;
 		public LevelType LevelType;
+		public Byte LevelNo;
 		public Byte LevelIndex;
 		public Byte FramesPerSecond;
 		public Byte MaximLevel;
