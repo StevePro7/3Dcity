@@ -73,7 +73,7 @@ namespace WindowsGame.Common.Managers
 					PlayAudio = MyGame.Manager.ConfigManager.GlobalConfigData.PlayAudio,
 					CoolMusic = MyGame.Manager.ConfigManager.GlobalConfigData.CoolMusic,
 					LevelType = MyGame.Manager.ConfigManager.GlobalConfigData.LevelType,
-					LevelIndex = MyGame.Manager.ConfigManager.GlobalConfigData.LevelIndex,
+					LevelIndex = (Byte)(MyGame.Manager.ConfigManager.GlobalConfigData.LevelNo - 1),
 				};
 			}
 			else

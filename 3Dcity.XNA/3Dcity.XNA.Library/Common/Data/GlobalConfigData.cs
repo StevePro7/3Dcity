@@ -8,14 +8,14 @@ namespace WindowsGame.Common.Data
 		public ScreenType ScreenType;
 		public LevelType LevelType;
 		public Byte LevelNo;
-		public Byte LevelIndex;
+		//public Byte LevelIndex;		// TODO delete - always use 1-based LevelNo to match Levels files
 		public Byte FramesPerSecond;
 		public Byte MaximLevel;
 		public Byte MaxBullets;
 		public Boolean LoadAudio;
 		public Boolean PlayAudio;
 		public UInt16 StarDelay;
-		//public UInt16 GridDelay;		// TODO delete
+		//public UInt16 GridDelay;		// TODO delete	
 		public UInt16 ExplodeDelay;
 		public UInt16 SplashDelay;
 		public UInt16 SelectDelay;

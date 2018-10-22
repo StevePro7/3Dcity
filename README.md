@@ -1,6 +1,8 @@
 # 3Dcity
 
 TODO 22/10
+IMPORTANT
+Ensure NO breakages by replacing LevelNo for LevelIndex including storage manager!!
 Check invincibility works on isGodMode [always] or local cheat [per game]
 Check invincibility works on Bonus Level e.g. 5
 Refactor the auto move [finish scren] out to the SpriteManager so can be shared

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using log4net.Core;
 using Microsoft.Xna.Framework;
 using WindowsGame.Common.Data;
 using WindowsGame.Common.Static;
@@ -16,7 +17,7 @@ namespace WindowsGame.Common.Managers
 
 		void SetLevelType(LevelType levelType);
 		void SetLevelIndex(Byte levelIndex);
-		void IncrementLevel();
+		void SetLevelNo(Byte levelNo);
 
 		//void Draw();							// TODO delete	
 		//void DrawLevelRoman();					// TODO delete
@@ -31,6 +32,7 @@ namespace WindowsGame.Common.Managers
 		Byte MaximLevel { get; }
 		LevelType LevelType { get; }
 		Byte LevelIndex { get; }
+		//Byte LevelNo { get; }
 		//String LevelDiff { get; }					// TODO delete
 		String LevelValu { get; }
 		String LevelName { get; }
@@ -123,14 +125,10 @@ namespace WindowsGame.Common.Managers
 			LevelName = LevelNames[levelIndex];
 		}
 
-		public void IncrementLevel()
+		public void SetLevelNo(Byte levelNo)
 		{
-			Byte levelIndex = (Byte) (LevelIndex + 1);
-			if (levelIndex >= MaximLevel)
-			{
-				return;
-			}
-
+			//LevelNo = levelNo;		// TODO delete
+			Byte levelIndex = (Byte) (levelNo - 1);
 			SetLevelIndex(levelIndex);
 		}
 
@@ -174,6 +172,7 @@ namespace WindowsGame.Common.Managers
 		public Byte MaximLevel { get; private set; }
 		public LevelType LevelType { get; private set; }
 		public Byte LevelIndex { get; private set; }
+		//public Byte LevelNo { get; private set; }
 		//public String LevelDiff { get; private set; }		// TODO delete
 		public String LevelValu { get; private set; }
 		public String LevelName { get; private set; }

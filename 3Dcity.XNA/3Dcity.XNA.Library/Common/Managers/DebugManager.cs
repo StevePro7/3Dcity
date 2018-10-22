@@ -1,5 +1,6 @@
 using System;
 using WindowsGame.Common.Data;
+using log4net.Core;
 using Microsoft.Xna.Framework;
 using WindowsGame.Common.Static;
 using WindowsGame.Master;
@@ -38,12 +39,15 @@ namespace WindowsGame.Common.Managers
 
 			// Reset levels for testing scenario.
 			LevelType LevelType = MyGame.Manager.ConfigManager.GlobalConfigData.LevelType;
-			Byte LevelIndex = MyGame.Manager.ConfigManager.GlobalConfigData.LevelIndex;
+			Byte LevelNo = MyGame.Manager.ConfigManager.GlobalConfigData.LevelNo;
+			//Byte LevelIndex = (Byte) (LevelNo - 1);		//	MyGame.Manager.ConfigManager.GlobalConfigData.LevelIndex;
 			MyGame.Manager.LevelManager.SetLevelType(LevelType);
-			MyGame.Manager.LevelManager.SetLevelIndex(LevelIndex);
+			//MyGame.Manager.LevelManager.SetLevelIndex(LevelIndex);
+			MyGame.Manager.LevelManager.SetLevelNo(LevelNo);
 
 
 			// Load level configuration data.
+			Byte LevelIndex = (Byte) (LevelNo - 1);
 			MyGame.Manager.LevelManager.LoadLevelConfigData(LevelType, LevelIndex);
 			LevelConfigData LevelConfigData = MyGame.Manager.LevelManager.LevelConfigData;
 
