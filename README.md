@@ -1,6 +1,12 @@
 # 3Dcity
 
 TODO 22/10
+Check enemy in slot 7 does go behind the status bar [should!]
+Change so that the target can go in front of middle text for Load + Ready
+[not Dead, Cont, Over screen]
+Ensure that press button select on Cont screen Stop music first...! [before SFX]
+Myabe try and reverse the Decelerate and make Accelerate [i.e. Mult = 2]
+
 IMPORTANT
 Ensure NO breakages by replacing LevelNo for LevelIndex including storage manager!!
 

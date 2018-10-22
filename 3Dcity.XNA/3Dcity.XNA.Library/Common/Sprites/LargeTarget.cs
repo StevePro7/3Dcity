@@ -6,7 +6,7 @@ namespace WindowsGame.Common.Sprites
 {
 	public class LargeTarget : BaseSprite
 	{
-		private const Single PIXEL = 200.0f;		// TODO tweak this constant
+		private const Single PIXEL = 100.0f;		// TODO tweak this constant
 		private const Single RATIO = 1.05f;			// TODO tweak this acceleration
 		private const Single MAXIM = 2.5f;			// TODO tweak maximum acceleration
 
