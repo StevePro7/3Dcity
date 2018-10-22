@@ -1,5 +1,13 @@
 # 3Dcity
 
+TODO 22/10
+Check input detection on select screens:
+Diff, Level, Quit, Cont, Over
+
+Replace 0.4f to 0.3f on Constants General tolerance
+Move the hit detection square slightly above fire button so can decelerate
+
+
 TODO 20/10
 Add deceleration for more focused attack
 Do the 20,000 thing

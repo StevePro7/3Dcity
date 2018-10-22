@@ -269,6 +269,33 @@ namespace WindowsGame.Common.Inputs
 			return false;
 		}
 
+		public Boolean Select()
+		{
+			// Mouse.
+			if (mouseScreenInput.LeftButtonHold())
+			{
+				Boolean test = controlManager.CheckJoyPadFire(mouseScreenInput.MousePosition);
+				if (test)
+				{
+					return true;
+				}
+			}
+
+			// Joystick.
+			if (joystickInput.JoyHold(Buttons.A))
+			{
+				return true;
+			}
+
+			// Keyboard.
+			if (keyboardInput.KeyHold(Keys.Space))
+			{
+				return true;
+			}
+
+			return false;
+		}
+
 		public Boolean GameState()
 		{
 			// Mouse.

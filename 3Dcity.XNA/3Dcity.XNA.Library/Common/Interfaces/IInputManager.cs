@@ -17,6 +17,7 @@ namespace WindowsGame.Common.Interfaces
 		Single Horizontal();
 		Single Vertical();
 		Boolean Fire();
+		Boolean Select();
 		Boolean GameState();
 		Boolean GameSound();
 		Boolean CenterPos();

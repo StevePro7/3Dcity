@@ -125,6 +125,11 @@ namespace WindowsGame.Common.Inputs
 			return MyMove2Func(controlManager.CheckJoyPadFire);
 		}
 
+		public Boolean Select()
+		{
+			return MyPressFunc(controlManager.CheckJoyPadFire);
+		}
+
 		public Boolean GameState()
 		{
 			return MyPressFunc(controlManager.CheckGameState);

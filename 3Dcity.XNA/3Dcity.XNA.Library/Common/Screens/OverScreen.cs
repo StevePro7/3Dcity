@@ -94,7 +94,7 @@ namespace WindowsGame.Common.Screens
 			//Boolean center = MyGame.Manager.InputManager.CenterPos();
 			//const Boolean center = false;		// TODO perfect transition...
 
-			DetectFire();
+			DetectSelect();
 			if (Flag1)
 			{
 				Timer = 0;

@@ -84,7 +84,7 @@ namespace WindowsGame.Common.Screens
 				return (Int32) CurrScreen;
 			}
 
-			DetectFire();
+			DetectSelect();
 			if (Flag1)
 			{
 				PlaySoundEffect();

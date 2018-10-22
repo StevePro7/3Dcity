@@ -134,11 +134,11 @@ namespace WindowsGame.Common.Screens
 			}
 		}
 
-		protected void DetectFire()
+		protected void DetectSelect()
 		{
 			// Check fire first.
-			Boolean fire = MyGame.Manager.InputManager.Fire();
-			if (fire)
+			Boolean select = MyGame.Manager.InputManager.Select();
+			if (select)
 			{
 				Flag1 = true;
 			}
