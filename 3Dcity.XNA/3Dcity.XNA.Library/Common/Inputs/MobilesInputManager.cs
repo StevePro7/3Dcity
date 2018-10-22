@@ -102,7 +102,7 @@ namespace WindowsGame.Common.Inputs
 
 		public Boolean Decelerate()
 		{
-			return MyMove2Func(controlManager.CheckRightSide);
+			return MyMove2Func(controlManager.CheckDeclerate);
 		}
 
 		public Single LittleHorz()

@@ -20,6 +20,7 @@ namespace WindowsGame.Common.Managers
 		Boolean CheckStatusBar(Vector2 position);
 		Boolean CheckLeftsSide(Vector2 position);
 		Boolean CheckRightSide(Vector2 position);
+		Boolean CheckDeclerate(Vector2 position);
 
 		Boolean CheckPosInRect(Vector2 position, Rectangle collision);
 		Vector2 ClampPosInRect(Vector2 position, Rectangle bounds);
@@ -39,6 +40,7 @@ namespace WindowsGame.Common.Managers
 		private Rectangle statusBarCollision;
 		private Rectangle leftsSideCollision;
 		private Rectangle rightSideCollision;
+		private Rectangle declerateCollision;
 
 		public void Initialize()
 		{
@@ -69,6 +71,7 @@ namespace WindowsGame.Common.Managers
 
 			leftsSideCollision = GetMidSectionCollision(0, 180);
 			rightSideCollision = GetMidSectionCollision(410, 180);
+			declerateCollision = new Rectangle(Constants.ScreenWide - Constants.FIRE_OFFSET_X, Constants.HALFWAY_DOWN - Constants.TextsSize, Constants.FIRE_OFFSET_X, 3 * Constants.TextsSize);
 		}
 
 		public Single CheckJoyPadTiny(Vector2 position)
@@ -202,6 +205,11 @@ namespace WindowsGame.Common.Managers
 		public Boolean CheckRightSide(Vector2 position)
 		{
 			return CheckPosInRect(position, rightSideCollision);
+		}
+
+		public Boolean CheckDeclerate(Vector2 position)
+		{
+			return CheckPosInRect(position, declerateCollision);
 		}
 
 		private static Rectangle GetMidSectionCollision(UInt16 lft, UInt16 top)

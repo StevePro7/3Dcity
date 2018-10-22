@@ -82,7 +82,7 @@ namespace WindowsGame.Common.Inputs
 			// Mouse.
 			if (mouseScreenInput.LeftButtonPress())
 			{
-				Boolean test = controlManager.CheckRightSide(mouseScreenInput.MousePosition);
+				Boolean test = controlManager.CheckDeclerate(mouseScreenInput.MousePosition);
 				if (test)
 				{
 					return true;

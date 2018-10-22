@@ -29,8 +29,6 @@ namespace WindowsGame.Common.Managers
 		public void Initialize()
 		{
 			const Byte gameOffset = 100;
-			const Byte fireOffset = 200;
-
 			GameState = new GameState();
 			Vector2 statePosn = new Vector2(5, 4 + Constants.GameOffsetY);
 			Rectangle stateColl = new Rectangle(0, + Constants.GameOffsetY, gameOffset, gameOffset);
@@ -50,9 +48,14 @@ namespace WindowsGame.Common.Managers
 			JoypadMove.Initialize(jpPos, jpColl, jpBndl);
 
 			// Joystick fire button.
+			const Byte fireOffsetX = Constants.FIRE_OFFSET_X;
+			const Byte fireOffsetY = Constants.FIRE_OFFSET_Y;
+
 			JoyButton = new JoyButton();
-			Vector2 firePosn = new Vector2(Constants.ScreenWide - 80 - (2 * 20), Constants.ScreenHigh - Constants.GameOffsetY - 80 - (1 * 20));
-			Rectangle fireColl = new Rectangle(Constants.ScreenWide - fireOffset, Constants.ScreenHigh - Constants.GameOffsetY - fireOffset, fireOffset, fireOffset);
+			const Byte textSize = Constants.TextsSize;
+			const Byte baseSize = Constants.BaseSize;
+			Vector2 firePosn = new Vector2(Constants.ScreenWide - baseSize - (2 * textSize), Constants.ScreenHigh - Constants.GameOffsetY - baseSize - (1 * textSize));
+			Rectangle fireColl = new Rectangle(Constants.ScreenWide - fireOffsetX, Constants.ScreenHigh - Constants.GameOffsetY - fireOffsetY, fireOffsetX, fireOffsetY);
 			JoyButton.Initialize(firePosn, fireColl);
 		}
 

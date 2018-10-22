@@ -22,7 +22,7 @@ namespace WindowsGame.Common.Static
 		public const SByte FontOffsetY = -4;
 
 		// TODO - confirm that 0.2f is better than 0.1f for touch and mouse input detection!!
-		public const Single GeneralTolerance = 0.4f;		//TODO make configurable?  Or set to 0.0f to take out!
+		public const Single GeneralTolerance = 0.3f;		//TODO make configurable?  Or set to 0.0f to take out!
 		public const Single JoystickTolerance = 0.1f;	// Original is 0.4f;
 
 		public const SByte INVALID_INDEX = -1;
@@ -49,6 +49,8 @@ namespace WindowsGame.Common.Static
 		public static readonly UInt16[] ENEMY_OFFSET_Y = new UInt16[MAX_ENEMYS_SPAWN] { 80, 80, 80, 80, 80, 280, 280, 280 };
 		public const Byte ENEMY_RANDOM_X = 32;
 		public const Byte ENEMY_RANDOM_Y = 72;
+		public const Byte FIRE_OFFSET_X = 200;
+		public const Byte FIRE_OFFSET_Y = 160;
 
 		public static readonly SByte[] EXPLODE_OFFSET_X = new SByte[2] { 20, -20 };
 		public static readonly SByte[] EXPLODE_OFFSET_Y = new SByte[2] { 20, -20 };
