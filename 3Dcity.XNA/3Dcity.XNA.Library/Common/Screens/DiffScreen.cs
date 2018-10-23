@@ -25,7 +25,9 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
+			MyGame.Manager.SpriteManager.SmallTarget.SetHomeSpot();
 			base.LoadContent();
+
 			SelectType = (Byte)MyGame.Manager.LevelManager.LevelType;
 		}
 
@@ -57,12 +59,6 @@ namespace WindowsGame.Common.Screens
 				return (Int32) CurrScreen;
 			}
 
-			UpdateFlag2(gameTime);
-			if (IsMoving)
-			{
-				return (Int32)CurrScreen;
-			}
-
 			if (Lefts || Right)
 			{
 				return (Int32) CurrScreen;
@@ -89,6 +85,12 @@ namespace WindowsGame.Common.Screens
 			{
 				PlaySoundEffect();
 				return (Int32) CurrScreen;
+			}
+
+			UpdateFlag2(gameTime);
+			if (IsMoving)
+			{
+				return (Int32)CurrScreen;
 			}
 
 			DetectMove();

@@ -23,7 +23,9 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
+			MyGame.Manager.SpriteManager.SmallTarget.SetHomeSpot();
 			base.LoadContent();
+
 			NextScreen = CurrScreen;
 			SelectType = 1;
 		}
@@ -51,7 +53,7 @@ namespace WindowsGame.Common.Screens
 			// If game paused then do not check for sound.
 			if (GamePause)
 			{
-				return (Int32)CurrScreen;
+				return (Int32) CurrScreen;
 			}
 			if (UpdateGrid)
 			{
@@ -85,15 +87,9 @@ namespace WindowsGame.Common.Screens
 				return (Int32) CurrScreen;
 			}
 
-			UpdateFlag2(gameTime);
-			if (IsMoving)
-			{
-				return (Int32) CurrScreen;
-			}
-
 			if (Lefts || Right)
 			{
-				return (Int32)CurrScreen;
+				return (Int32) CurrScreen;
 			}
 			DetectLefts();
 			if (Lefts)
@@ -108,7 +104,7 @@ namespace WindowsGame.Common.Screens
 			if (Lefts || Right)
 			{
 				PlaySoundEffect();
-				return (Int32)CurrScreen;
+				return (Int32) CurrScreen;
 			}
 
 			DetectSelect();
@@ -116,6 +112,12 @@ namespace WindowsGame.Common.Screens
 			{
 				PlaySoundEffect();
 				return (Int32) CurrScreen;
+			}
+
+			UpdateFlag2(gameTime);
+			if (IsMoving)
+			{
+				return (Int32)CurrScreen;
 			}
 
 			DetectMove();
