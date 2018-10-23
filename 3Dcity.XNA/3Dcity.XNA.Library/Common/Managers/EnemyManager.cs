@@ -13,6 +13,7 @@ namespace WindowsGame.Common.Managers
 		void Initialize();
 		void LoadContent();
 		void Reset(LevelType theLevelType, LevelConfigData theLevelConfigData);
+		void Clear();
 		void SpawnAllEnemies();
 		void SpawnOneEnemy(Byte index);
 		Boolean CheckThisEnemy(Byte index);
@@ -119,8 +120,10 @@ namespace WindowsGame.Common.Managers
 				EnemyList[index].Reset();
 			}
 
-			EnemyTest.Clear();
-			EnemyDict.Clear();
+			//TODO delete
+			//EnemyTest.Clear();
+			//EnemyDict.Clear();
+			Clear();
 			enemyDelays.Clear();
 
 			EnemyStart = 0;
@@ -146,6 +149,12 @@ namespace WindowsGame.Common.Managers
 			}
 			// Otherwise halve the values and subtract from 100%.
 			levelConfigData.EnemySpeedNone = (Byte)(100 - (levelConfigData.EnemySpeedWave + levelConfigData.EnemySpeedFast));
+		}
+
+		public void Clear()
+		{
+			EnemyTest.Clear();
+			EnemyDict.Clear();
 		}
 
 		public void SpawnAllEnemies()

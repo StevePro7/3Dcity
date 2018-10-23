@@ -11,6 +11,7 @@ namespace WindowsGame.Common.Managers
 		void Initialize();
 		void LoadContent(Byte enemyID, ExplodeType explodeType);
 		void Reset(Byte theBombsExplode, UInt16 frameDelay);
+		void Clear();
 		void Explode(Byte enemyID, ExplodeType explodeType, Vector2 position);
 		void Update(GameTime gameTime);
 		void Draw();
@@ -64,8 +65,16 @@ namespace WindowsGame.Common.Managers
 				explode.Reset(frameDelay);
 			}
 
-			ExplosionTest.Clear();
+			//TODO delete
+			//ExplosionTest.Clear();
+			Clear();
 			keys.Clear();
+		}
+
+		public void Clear()
+		{
+			ExplosionTest.Clear();
+			ExplosionDict.Clear();
 		}
 
 		public void Explode(Byte enemyID, ExplodeType explodeType, Vector2 position)
