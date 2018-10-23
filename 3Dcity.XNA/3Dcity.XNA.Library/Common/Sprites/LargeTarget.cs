@@ -25,7 +25,7 @@ namespace WindowsGame.Common.Sprites
 			Single mult = 1.0f;
 			if (slow)
 			{
-				mult /= 2.0f;
+				mult *= 2.0f;
 			}
 
 			// Tolerance

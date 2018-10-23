@@ -5,6 +5,8 @@ Check enemy in slot 7 does go behind the status bar [should!]
 Change so that the target can go in front of middle text for Load + Ready
 [not Dead, Cont, Over screen]
 Ensure that press button select on Cont screen Stop music first...! [before SFX]
+
+Don't forget to update slow to fast and Decelerate to Accelerate if this con'ts
 Myabe try and reverse the Decelerate and make Accelerate [i.e. Mult = 2]
 
 IMPORTANT
