@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Load</ScreenType>
+	<ScreenType>Level</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<!--<ScreenType>Level</ScreenType>-->
@@ -20,7 +20,7 @@
 	<SelectDelay>500</SelectDelay>
 	<IntroDelay>23660</IntroDelay>
 	<FlashDelay>800</FlashDelay>
-	<LoadDelay>2000</LoadDelay>
+	<LoadDelay>4000</LoadDelay>
 	<!-- 2500 -->
 	<ReadyDelay>1000</ReadyDelay>
 	<!-- 2500 -->

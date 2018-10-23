@@ -53,7 +53,6 @@ namespace WindowsGame.Common.Screens
 			UpdateTimer(gameTime);
 			if (Timer >= readyDelay)
 			{
-				//MyGame.Manager.SoundManager.SetMaxVolume();			// TODO is this worse?
 				NextScreen = ScreenType.Play;
 				return (Int32) NextScreen;
 			}

@@ -84,16 +84,16 @@ namespace WindowsGame.Common.Screens
 				return (Int32)NextScreen;
 			}
 
-			Boolean statusBar = MyGame.Manager.InputManager.StatusBar();
-			if (statusBar)
+			Boolean select = MyGame.Manager.InputManager.Select();
+			Boolean status = MyGame.Manager.InputManager.StatusBar();
+			if (select || status)
 			{
-				return (Int32)NextScreen; 
+				return (Int32) NextScreen;
 			}
 
 			// Target.
 			DetectTarget(gameTime);
-
-			return (Int32)CurrScreen;
+			return (Int32) CurrScreen;
 		}
 
 		public override void Draw()
