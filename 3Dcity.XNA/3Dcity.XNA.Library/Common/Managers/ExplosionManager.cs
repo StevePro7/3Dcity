@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using WindowsGame.Common.Sprites;
 using WindowsGame.Common.Static;
-using Microsoft.Xna.Framework;
 
 namespace WindowsGame.Common.Managers
 {
@@ -65,8 +65,7 @@ namespace WindowsGame.Common.Managers
 				explode.Reset(frameDelay);
 			}
 
-			//TODO delete
-			//ExplosionTest.Clear();
+			// Important: collections MUST be cleared on Reset() to ensure stability!
 			Clear();
 			keys.Clear();
 		}

@@ -4,6 +4,9 @@ TODO 23/10
 Check that small target "pops" back to home spot on the following screens:
 Beat, Cont, Dead, Diff, Finish, Level, Over, Quit
 
+Check all the select screens - do want to can tap middle
+Left || Right to progress like select button?
+
 TODO 22/10
 Check enemy in slot 7 does go behind the status bar [should!]
 Change so that the target can go in front of middle text for Load + Ready

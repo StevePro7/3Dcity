@@ -48,10 +48,11 @@ namespace WindowsGame.Common.Screens
 
 			if (Selected)
 			{
-				// If game over then leave things as they are...
-				MyGame.Manager.StateManager.SetKillSpace(Vector2.Zero);
-				MyGame.Manager.ScoreManager.ResetMisses();
-				MyGame.Manager.SoundManager.StopMusic();
+				//TODO delete
+				//MyGame.Manager.StateManager.SetKillSpace(Vector2.Zero);
+				//MyGame.Manager.ScoreManager.ResetMisses();
+				//MyGame.Manager.SoundManager.StopMusic();
+				Complete();
 				return (Int32) NextScreen;
 			}
 
@@ -109,13 +110,26 @@ namespace WindowsGame.Common.Screens
 			//if (status || center || Timer > bigDelay)
 			if (Timer > bigDelay)
 			{
-				MyGame.Manager.StateManager.SetKillSpace(Vector2.Zero);
-				MyGame.Manager.ScoreManager.ResetMisses();
-				MyGame.Manager.SoundManager.StopMusic();
+				//TODO delete
+				//MyGame.Manager.StateManager.SetKillSpace(Vector2.Zero);
+				//MyGame.Manager.ScoreManager.ResetMisses();
+				//MyGame.Manager.SoundManager.StopMusic();
+				Complete();
 				return (Int32) NextScreen;
 			}
 
 			return (Int32)CurrScreen;
+		}
+
+		private static void Complete()
+		{
+			// If game over then leave things as they are...
+			MyGame.Manager.EnemyManager.Clear();
+			MyGame.Manager.ExplosionManager.Clear();
+
+			MyGame.Manager.StateManager.SetKillSpace(Vector2.Zero);
+			MyGame.Manager.ScoreManager.ResetMisses();
+			MyGame.Manager.SoundManager.StopMusic();
 		}
 
 		public override void Draw()

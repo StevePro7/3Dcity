@@ -120,9 +120,7 @@ namespace WindowsGame.Common.Managers
 				EnemyList[index].Reset();
 			}
 
-			//TODO delete
-			//EnemyTest.Clear();
-			//EnemyDict.Clear();
+			// Important: collections MUST be cleared on Reset() to ensure stability!
 			Clear();
 			enemyDelays.Clear();
 
