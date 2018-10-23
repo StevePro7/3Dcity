@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using Microsoft.Xna.Framework;
 using WindowsGame.Common.Static;
 using WindowsGame.Master.Interfaces;
@@ -52,7 +51,10 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
+			MyGame.Manager.SpriteManager.LargeTarget.SetHomeSpot();
+			MyGame.Manager.SpriteManager.SmallTarget.SetHomeSpot();
 			base.LoadContent();
+
 			for (Byte index = 0; index < maxExplode; index++)
 			{
 				positions[index] = GetRandomPosition(index);
@@ -77,9 +79,6 @@ namespace WindowsGame.Common.Screens
 			flags[1] = true;
 			flags[3] = true;
 			flags[6] = true;
-
-			MyGame.Manager.SpriteManager.LargeTarget.SetHomeSpot();
-			MyGame.Manager.SpriteManager.SmallTarget.SetHomeSpot();
 
 			// TODO do need slight pause first?
 			MyGame.Manager.SoundManager.StopMusic();

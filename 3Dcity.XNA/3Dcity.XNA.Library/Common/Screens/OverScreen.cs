@@ -28,7 +28,9 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
+			MyGame.Manager.SpriteManager.SmallTarget.SetHomeSpot();
 			base.LoadContent();
+
 			flag1 = false;
 			flag2 = false;
 

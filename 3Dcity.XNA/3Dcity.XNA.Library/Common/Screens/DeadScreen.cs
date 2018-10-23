@@ -46,6 +46,7 @@ namespace WindowsGame.Common.Screens
 			deathText = dead ? Globalize.DEAD_OPTION2 : Globalize.DEAD_OPTION1;
 			smlDelay = dead ? Constants.SLIGHT_PAUSE : (UInt16) 600;
 
+			MyGame.Manager.SpriteManager.SmallTarget.SetHomeSpot();
 			base.LoadContent();
 		}
 
