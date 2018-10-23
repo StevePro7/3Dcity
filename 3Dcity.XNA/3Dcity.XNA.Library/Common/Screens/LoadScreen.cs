@@ -104,6 +104,7 @@ namespace WindowsGame.Common.Screens
 			// Sprite sheet #02.
 			DrawSheet02();
 			DrawBacked();
+			MyGame.Manager.SpriteManager.Draw();
 
 			// Text data last!
 			DrawText();

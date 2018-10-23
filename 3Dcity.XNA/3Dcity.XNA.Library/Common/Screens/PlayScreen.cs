@@ -98,6 +98,8 @@ namespace WindowsGame.Common.Screens
 
 			// Sprite sheet #02.
 			DrawSheet02();
+			MyGame.Manager.BulletManager.Draw();
+			MyGame.Manager.SpriteManager.Draw();
 
 			// Text data last!
 			DrawTextCommon();

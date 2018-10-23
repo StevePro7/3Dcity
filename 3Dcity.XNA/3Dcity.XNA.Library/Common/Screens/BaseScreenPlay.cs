@@ -296,8 +296,6 @@ namespace WindowsGame.Common.Screens
 
 			MyGame.Manager.ExplosionManager.Draw();
 			MyGame.Manager.LevelManager.Draw();
-			MyGame.Manager.BulletManager.Draw();
-			MyGame.Manager.SpriteManager.Draw();
 		}
 
 		protected void DrawSheet02(Boolean flag)
