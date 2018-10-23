@@ -174,11 +174,11 @@ namespace WindowsGame.Common.Managers
 		public void SpawnOneEnemy(Byte index)
 		{
 			UInt16 frameDelay = enemyDelays[EnemySpawn];
-			SByte slotID;
+			Byte slotID;
 			while (true)
 			{
-				slotID = (SByte)MyGame.Manager.RandomManager.Next(Constants.MAX_ENEMYS_SPAWN);
-				if (!EnemyDict.ContainsKey((Byte)slotID))
+				slotID = (Byte)MyGame.Manager.RandomManager.Next(Constants.MAX_ENEMYS_SPAWN);
+				if (!EnemyDict.ContainsKey(slotID))
 				{
 					break;
 				}
@@ -193,17 +193,17 @@ namespace WindowsGame.Common.Managers
 			Vector2 position = enemy.Position;
 			Byte randomX = (Byte)MyGame.Manager.RandomManager.Next(Constants.ENEMY_RANDOM_X);
 			Byte randomY = (Byte)MyGame.Manager.RandomManager.Next(Constants.ENEMY_RANDOM_Y);
-			UInt16 offsetX = EnemyOffsetX[(Byte)slotID];
-			UInt16 offsetY = EnemyOffsetY[(Byte)slotID];
+			UInt16 offsetX = EnemyOffsetX[slotID];
+			UInt16 offsetY = EnemyOffsetY[slotID];
 
 			// TODO check this fits within [160,200] = [40,80] = [32,72] => [32 = 160-120-(2*4)]
 			// [32,72] => [32 = 160-120-(2*4), 72 = 200-120-(2*4)]
 			position.X = randomX + offsetX + Constants.BorderSize;
 			position.Y = randomY + offsetY + Constants.BorderSize;
 
-			Rectangle bounds = EnemyBounds[(Byte)slotID];
-			enemy.Spawn((Byte)slotID, frameDelay, position, bounds, levelType);
-			EnemyDict.Add((Byte)slotID, enemy);
+			Rectangle bounds = EnemyBounds[slotID];
+			enemy.Spawn(slotID, frameDelay, position, bounds, levelType);
+			EnemyDict.Add(slotID, enemy);
 
 			EnemySpawn++;
 		}
@@ -218,10 +218,15 @@ namespace WindowsGame.Common.Managers
 				return false;
 			}
 
-			SByte slotID = enemy.SlotID;
-			if (EnemyDict.ContainsKey((Byte)slotID))
+			//SByte slotID = enemy.SlotID;
+			SByte testID = enemy.SlotID;
+			if (testID >= 0 && testID < Constants.MAX_ENEMYS_SPAWN)
 			{
-				EnemyDict.Remove((Byte)slotID);
+				Byte slotID = (Byte) testID;
+				if (EnemyDict.ContainsKey(slotID))
+				{
+					EnemyDict.Remove(slotID);
+				}
 			}
 
 			enemy.Reset();
