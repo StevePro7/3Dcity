@@ -12,7 +12,7 @@
   <EnemyTotal>1</EnemyTotal>
   <EnemyStartDelay>2000</EnemyStartDelay>
   <EnemyStartDelta>0</EnemyStartDelta>
-  <EnemyFrameDelay>100</EnemyFrameDelay>
+  <EnemyFrameDelay>1000</EnemyFrameDelay>
   <EnemyFrameDelta>0</EnemyFrameDelta>
   <EnemyFrameMinim>500</EnemyFrameMinim>
   <EnemyFrameRange>600</EnemyFrameRange>

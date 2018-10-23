@@ -32,7 +32,6 @@ namespace WindowsGame.Common.Screens
 			delay = 100;
 
 			maxExplode = Constants.MAX_EXPLODE_SPAWN;
-			MyGame.Manager.ExplosionManager.Reset(maxExplode, delay);
 			enemyBounds = MyGame.Manager.EnemyManager.EnemyBounds;
 
 			positions = new Vector2[maxExplode];
@@ -43,16 +42,14 @@ namespace WindowsGame.Common.Screens
 			high = (Byte)enemyBounds[0].Width;
 			NextScreen = ScreenType.Title;
 
-			// TODO delete this!!
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
-			MyGame.Manager.ExplosionManager.Reset(maxExplode, delay);
-			// TODO delete this!!
 		}
 
 		public override void LoadContent()
 		{
 			MyGame.Manager.SpriteManager.LargeTarget.SetHomeSpot();
 			MyGame.Manager.SpriteManager.SmallTarget.SetHomeSpot();
+			MyGame.Manager.ExplosionManager.Reset(maxExplode, delay);
 			base.LoadContent();
 
 			for (Byte index = 0; index < maxExplode; index++)
@@ -98,12 +95,13 @@ namespace WindowsGame.Common.Screens
 			//MyGame.Manager.Logger.Info(time);
 
 
-			timer += (UInt16)gameTime.ElapsedGameTime.Milliseconds;
+			timer += (UInt16) gameTime.ElapsedGameTime.Milliseconds;
 			if (timer > beatDelay)
 			{
 				// Reset back to start.
-				MyGame.Manager.LevelManager.SetLevelIndex(0);
-				MyGame.Manager.SoundManager.StopMusic();
+				Complete();
+				//MyGame.Manager.SoundManager.StopMusic();
+				//MyGame.Manager.LevelManager.SetLevelIndex(0);
 				return (Int32) NextScreen;
 			}
 
@@ -145,8 +143,8 @@ namespace WindowsGame.Common.Screens
 			if (Selected)
 			{
 				// Reset back to start.
-				MyGame.Manager.LevelManager.SetLevelIndex(0);
-				MyGame.Manager.SoundManager.StopMusic();
+				//MyGame.Manager.LevelManager.SetLevelIndex(0);
+				Complete();
 				return (Int32) NextScreen;
 			}
 			if (Flag1)
@@ -157,6 +155,7 @@ namespace WindowsGame.Common.Screens
 			DetectSelect();
 			if (Flag1)
 			{
+				MyGame.Manager.SoundManager.StopMusic();
 				PlaySoundEffect();
 				return (Int32) CurrScreen;
 			}
@@ -190,6 +189,12 @@ namespace WindowsGame.Common.Screens
 			#endregion
 
 			return (Int32)CurrScreen;
+		}
+
+		private void Complete()
+		{
+			MyGame.Manager.SoundManager.StopMusic();
+			MyGame.Manager.LevelManager.SetLevelIndex(0);
 		}
 
 		public override void Draw()
