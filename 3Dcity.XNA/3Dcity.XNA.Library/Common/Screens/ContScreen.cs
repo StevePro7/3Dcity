@@ -121,14 +121,15 @@ namespace WindowsGame.Common.Screens
 			DrawSheet01();
 
 			// Sprite sheet #02.
-			MyGame.Manager.RenderManager.DrawStatusOuter();
-			MyGame.Manager.RenderManager.DrawStatusInner(StatusType.Yellow, MyGame.Manager.EnemyManager.EnemyPercentage);
-
-			// Draw dead enemy on instant death only.
+			MyGame.Manager.EnemyManager.Draw();
 			if (Vector2.Zero != Killspace)
 			{
+				// Draw dead enemy on instant death only.
 				MyGame.Manager.SpriteManager.KillEnemy.Draw();
 			}
+
+			MyGame.Manager.RenderManager.DrawStatusOuter();
+			MyGame.Manager.RenderManager.DrawStatusInner(StatusType.Yellow, MyGame.Manager.EnemyManager.EnemyPercentage);
 
 			DrawSheet02();
 			MyGame.Manager.SpriteManager.LargeTarget.Draw();

@@ -52,7 +52,6 @@ namespace WindowsGame.Common.Screens
 			DrawSheet01();
 
 			// Sprite sheet #02.
-			// Sprite sheet #02.
 			MyGame.Manager.RenderManager.DrawStatusOuter();
 			MyGame.Manager.RenderManager.DrawStatusInner(StatusType.Red, 100.0f);
 

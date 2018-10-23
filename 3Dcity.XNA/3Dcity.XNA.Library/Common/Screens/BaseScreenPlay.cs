@@ -64,9 +64,6 @@ namespace WindowsGame.Common.Screens
 					return;
 				}
 
-				// TODO check!
-				//MyGame.Manager.SoundManager.PlaySoundEffect(Bullet);
-
 				Vector2 position = MyGame.Manager.SpriteManager.LargeTarget.Position;
 				MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Fire);
 				MyGame.Manager.BulletManager.Shoot((Byte)bulletIndex, position);

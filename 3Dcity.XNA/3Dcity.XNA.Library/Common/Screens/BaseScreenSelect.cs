@@ -177,7 +177,6 @@ namespace WindowsGame.Common.Screens
 
 		protected static void DrawSheet02()
 		{
-			MyGame.Manager.EnemyManager.Draw();
 			MyGame.Manager.ExplosionManager.Draw();
 			MyGame.Manager.LevelManager.Draw();
 			MyGame.Manager.BulletManager.Draw();
