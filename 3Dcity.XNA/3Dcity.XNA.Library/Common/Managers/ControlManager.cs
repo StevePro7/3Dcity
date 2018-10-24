@@ -212,6 +212,8 @@ namespace WindowsGame.Common.Managers
 			return CheckPosInRect(position, rightSideCollision);
 		}
 
+		//TODO rename CheckDeclerate
+		//public Boolean CheckBoostFast(Vector2 position)
 		public Boolean CheckDeclerate(Vector2 position)
 		{
 			return CheckPosInRect(position, declerateCollision);
