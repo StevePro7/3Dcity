@@ -61,7 +61,7 @@ namespace WindowsGame.Common.Screens
 			}
 
 
-			Boolean statusBar = MyGame.Manager.InputManager.StatusBar();
+			Boolean statusBar = MyGame.Manager.InputManager.Back();
 			if (statusBar)
 			{
 				NextScreen = ScreenType.Play;
