@@ -1,5 +1,29 @@
 # 3Dcity
 
+24/10
+How long does bullet start to finish?
+BulletFrame = 1000
+timer = 6s
+i.e. 6 * 1000 = 6000ms
+	<BulletMaxim>3</BulletMaxim>
+	<BulletFrame>1000</BulletFrame>
+	<BulletShoot>2000</BulletShoot>
+	
+I think this formula is wrong...!
+Perfect because 3 * 2000 = 6 * 1000
+i.e.
+BulletMaxim * BulletShoot = 6 frames * BulletFrame
+
+BulletFrame = BulletMaxim * BulletShoot / 6
+1000 = 3 * 2000 / 6
+
+but if BulletMaxim > 3 then will only ever shoot 3x bullets max
+so to shoot 4 = 4 * 2000 = 8000 then BulletFrame needs to be at least 8000 / 6
+
+i.e.
+BulletFrame = 1200 works but 1400 will not work
+
+
 TODO 23/10
 Check that small target "pops" back to home spot on the following screens:
 Beat, Cont, Dead, Diff, Finish, Level, Over, Quit

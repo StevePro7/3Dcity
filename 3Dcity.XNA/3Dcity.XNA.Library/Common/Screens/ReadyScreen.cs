@@ -28,7 +28,6 @@ namespace WindowsGame.Common.Screens
 
 			NextScreen = CurrScreen;
 			MyGame.Manager.RenderManager.SetGridDelay(LevelConfigData.GridDelay);
-			//MyGame.Manager.SoundManager.SetMinVolume();			// TODO is this worse?
 			MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Ready);
 		}
 

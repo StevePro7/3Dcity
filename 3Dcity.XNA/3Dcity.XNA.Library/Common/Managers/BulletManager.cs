@@ -102,11 +102,11 @@ namespace WindowsGame.Common.Managers
 		{
 			if (!CanShoot)
 			{
-				ShootTimer += (Single)gameTime.ElapsedGameTime.Milliseconds;
+				ShootTimer += gameTime.ElapsedGameTime.Milliseconds;
 				if (ShootTimer >= ShootDelay)
 				{
 					CanShoot = true;
-					ShootTimer = 0;
+					ShootTimer -= ShootDelay;
 				}
 			}
 
