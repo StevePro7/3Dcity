@@ -10,6 +10,7 @@ namespace WindowsGame.Common.Screens
 		{
 			base.Initialize();
 			LoadTextData();
+			UpdateGrid = MyGame.Manager.ConfigManager.GlobalConfigData.UpdateGrid;
 
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
@@ -17,6 +18,7 @@ namespace WindowsGame.Common.Screens
 		public override void LoadContent()
 		{
 			base.LoadContent();
+			MyGame.Manager.RenderManager.SetGridDelay(LevelConfigData.GridDelay);
 		}
 
 		public override Int32 Update(GameTime gameTime)

@@ -1,6 +1,15 @@
 # 3Dcity
 
 24/10
+Grid delay
+100 is too fast - don't go less than this...!
+150 would be good for fast / bonus levels
+500 is too slow - don't go more than this
+To summarize, between 200 and 300 on average is good
+200 Hard
+300 Easy
+
+BULLET
 How long does bullet start to finish?
 BulletFrame = 1000
 timer = 6s
