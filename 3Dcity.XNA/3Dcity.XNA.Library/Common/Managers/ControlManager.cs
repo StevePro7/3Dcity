@@ -71,7 +71,12 @@ namespace WindowsGame.Common.Managers
 
 			leftsSideCollision = GetMidSectionCollision(0, 180);
 			rightSideCollision = GetMidSectionCollision(410, 180);
-			declerateCollision = new Rectangle(Constants.ScreenWide - Constants.FIRE_OFFSET_X, Constants.HALFWAY_DOWN - Constants.TextsSize, Constants.FIRE_OFFSET_X, 3 * Constants.TextsSize);
+
+			//declerateCollision = {X:600 Y:160 Width:200 Height:160}
+			declerateCollision = new Rectangle(Constants.ScreenWide - Constants.FIRE_OFFSET_X, Constants.FIRE_OFFSET_Y + Constants.GameOffsetY, Constants.FIRE_OFFSET_X, Constants.FIRE_OFFSET_Y);
+
+			//declerateCollision = {X:600 Y:260 Width:200 Height:60}
+			//declerateCollision = new Rectangle(Constants.ScreenWide - Constants.FIRE_OFFSET_X, Constants.HALFWAY_DOWN - Constants.TextsSize, Constants.FIRE_OFFSET_X, 3 * Constants.TextsSize);
 		}
 
 		public Single CheckJoyPadTiny(Vector2 position)
