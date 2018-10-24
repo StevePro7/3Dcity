@@ -10,6 +10,19 @@ i.e. 6 * 1000 = 6000ms
 	<BulletShoot>2000</BulletShoot>
 	
 I think this formula is wrong...!
+Actually is 6s window from first frame to last frame
+6 frames * BulletFrame 
+6 * 1000 = 6000ms = 6s
+
+Therefore, if BulletMaxim * BulletShoot <= 6000 then can fire the BulletMaxim bullets
+e.g.
+BulletMaxim * BulletShoot = 3 * 2000 = 6000 so can fire all the bullets
+and if
+BulletMaxim * BulletShoot = 4 * 1500 = 6000 so can fire all the bullets
+but if
+BulletMaxim * BulletShoot = 5 * 1500 = 7500 then 7500 > 6000 so will not fire all 5x bullets!
+
+
 Perfect because 3 * 2000 = 6 * 1000
 i.e.
 BulletMaxim * BulletShoot = 6 frames * BulletFrame
