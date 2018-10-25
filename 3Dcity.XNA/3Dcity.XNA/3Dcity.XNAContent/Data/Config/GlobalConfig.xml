@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Test</ScreenType>
+	<ScreenType>Intro</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<!--<ScreenType>Level</ScreenType>-->
@@ -11,7 +11,7 @@
 	<FramesPerSecond>100</FramesPerSecond>
 	<MaximLevel>18</MaximLevel>
 	<MaxBullets>20</MaxBullets>
-	<LoadAudio>false</LoadAudio>
+	<LoadAudio>true</LoadAudio>
 	<PlayAudio>true</PlayAudio>
 	<StarDelay>2000</StarDelay>
 	<!-- <GridDelay>300</GridDelay>			TODO delete -->
