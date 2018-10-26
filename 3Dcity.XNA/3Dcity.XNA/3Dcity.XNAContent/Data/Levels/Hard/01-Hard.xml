@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LevelConfigData>
-  <LevelNo>01</LevelNo>
+  <LevelNo>1</LevelNo>
   <LevelType>Hard</LevelType>
   <LevelName>MOOT</LevelName>
   <BonusLevel>false</BonusLevel>
   <GridDelay>300</GridDelay>
-  <BulletMaxim>5</BulletMaxim>
+  <BulletMaxim>2</BulletMaxim>
   <BulletFrame>50</BulletFrame>
   <BulletShoot>100</BulletShoot>
-  <EnemySpawn>2</EnemySpawn>
-  <EnemyTotal>20</EnemyTotal>
+  <EnemySpawn>3</EnemySpawn>
+  <EnemyTotal>10</EnemyTotal>
   <EnemyStartDelay>2000</EnemyStartDelay>
   <EnemyStartDelta>0</EnemyStartDelta>
   <EnemyFrameDelay>1000</EnemyFrameDelay>

@@ -4,13 +4,13 @@
   <LevelType>Easy</LevelType>
   <LevelName>ABSYMBEL</LevelName>
   <BonusLevel>false</BonusLevel>
-  <GridDelay>450</GridDelay>
+  <GridDelay>250</GridDelay>
   <BulletMaxim>5</BulletMaxim>
   <BulletFrame>80</BulletFrame>
   <BulletShoot>120</BulletShoot>
-  <EnemySpawn>1</EnemySpawn>
-  <EnemyTotal>1</EnemyTotal>
-  <EnemyStartDelay>2000</EnemyStartDelay>
+  <EnemySpawn>6</EnemySpawn>
+  <EnemyTotal>100</EnemyTotal>
+  <EnemyStartDelay>1000</EnemyStartDelay>
   <EnemyStartDelta>0</EnemyStartDelta>
   <EnemyFrameDelay>1000</EnemyFrameDelay>
   <EnemyFrameDelta>0</EnemyFrameDelta>
@@ -19,5 +19,5 @@
   <EnemySpeedNone>90</EnemySpeedNone>
   <EnemySpeedWave>10</EnemySpeedWave>
   <EnemySpeedFast>0</EnemySpeedFast>
-  <ExplodeDelay>100</ExplodeDelay>
+  <ExplodeDelay>110</ExplodeDelay>
 </LevelConfigData>

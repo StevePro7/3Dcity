@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LevelConfigData>
-  <LevelNo>05</LevelNo>
+  <LevelNo>5</LevelNo>
   <LevelType>Hard</LevelType>
   <LevelName>BONUS 1</LevelName>
   <BonusLevel>true</BonusLevel>
-  <GridDelay>200</GridDelay>
+  <GridDelay>150</GridDelay>
   <BulletMaxim>5</BulletMaxim>
   <BulletFrame>50</BulletFrame>
   <BulletShoot>100</BulletShoot>
-  <EnemySpawn>6</EnemySpawn>
+  <EnemySpawn>4</EnemySpawn>
   <EnemyTotal>100</EnemyTotal>
   <EnemyStartDelay>2000</EnemyStartDelay>
   <EnemyStartDelta>50</EnemyStartDelta>
@@ -19,5 +19,5 @@
   <EnemySpeedNone>50</EnemySpeedNone>
   <EnemySpeedWave>30</EnemySpeedWave>
   <EnemySpeedFast>20</EnemySpeedFast>
-  <ExplodeDelay>100</ExplodeDelay>
+  <ExplodeDelay>75</ExplodeDelay>
 </LevelConfigData>

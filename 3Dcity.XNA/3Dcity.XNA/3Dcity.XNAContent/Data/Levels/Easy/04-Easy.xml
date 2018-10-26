@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LevelConfigData>
-  <LevelNo>04</LevelNo>
+  <LevelNo>4</LevelNo>
   <LevelType>Easy</LevelType>
   <LevelName>CIECIEL</LevelName>
   <BonusLevel>false</BonusLevel>
-  <GridDelay>450</GridDelay>
-  <BulletMaxim>5</BulletMaxim>
+  <GridDelay>350</GridDelay>
+  <BulletMaxim>2</BulletMaxim>
   <BulletFrame>80</BulletFrame>
   <BulletShoot>120</BulletShoot>
-  <EnemySpawn>3</EnemySpawn>
-  <EnemyTotal>20</EnemyTotal>
-  <EnemyStartDelay>200</EnemyStartDelay>
+  <EnemySpawn>2</EnemySpawn>
+  <EnemyTotal>10</EnemyTotal>
+  <EnemyStartDelay>1000</EnemyStartDelay>
   <EnemyStartDelta>0</EnemyStartDelta>
-  <EnemyFrameDelay>100</EnemyFrameDelay>
+  <EnemyFrameDelay>1000</EnemyFrameDelay>
   <EnemyFrameDelta>0</EnemyFrameDelta>
   <EnemyFrameMinim>500</EnemyFrameMinim>
   <EnemyFrameRange>600</EnemyFrameRange>
   <EnemySpeedNone>90</EnemySpeedNone>
   <EnemySpeedWave>10</EnemySpeedWave>
   <EnemySpeedFast>0</EnemySpeedFast>
-  <ExplodeDelay>100</ExplodeDelay>
+  <ExplodeDelay>125</ExplodeDelay>
 </LevelConfigData>
