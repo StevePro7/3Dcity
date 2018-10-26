@@ -26,6 +26,7 @@ namespace WindowsGame.Common.Static
 		public const Single JoystickTolerance = 0.1f;	// Original is 0.4f;
 
 		public const SByte INVALID_INDEX = -1;
+		public const Byte TEST_LEVELNO = 99;
 
 		// Maximums.
 		public const Byte MAX_GRID = 3;

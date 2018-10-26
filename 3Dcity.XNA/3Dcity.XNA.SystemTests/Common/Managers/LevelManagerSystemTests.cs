@@ -39,8 +39,8 @@ namespace WindowsGame.SystemTests.Common.Managers
 		[Test]
 		public void LoadLevelConfigDataTest()
 		{
-			const LevelType levelType = LevelType.Easy;
-			const Byte levelIndex = 0;
+			const LevelType levelType = LevelType.Test;
+			const Byte levelIndex = 98;
 
 			LevelManager.LoadLevelConfigData(levelType, levelIndex);
 

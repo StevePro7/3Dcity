@@ -38,16 +38,28 @@ namespace WindowsGame.Common.Managers
 			// Reset levels for testing scenario.
 			LevelType LevelType = MyGame.Manager.ConfigManager.GlobalConfigData.LevelType;
 			Byte LevelNo = MyGame.Manager.ConfigManager.GlobalConfigData.LevelNo;
+
+			if (LevelType.Test == LevelType && Constants.TEST_LEVELNO != LevelNo)
+			{
+				LevelNo = Constants.TEST_LEVELNO;
+			}
+
+			// Load level configuration data.
+			LevelConfigData LevelConfigData = LoadLevelConfigData(LevelType, LevelNo);
+
+			// Adjust 
+			if (LevelType.Test == LevelType)
+			{
+				LevelType = (LevelType)Enum.Parse(typeof(LevelType), LevelConfigData.LevelType, true);
+				LevelNo = Convert.ToByte(LevelConfigData.LevelNo);
+				LevelConfigData = LoadLevelConfigData(LevelType, LevelNo);
+			}
+
 			//Byte LevelIndex = (Byte) (LevelNo - 1);		//	MyGame.Manager.ConfigManager.GlobalConfigData.LevelIndex;
 			MyGame.Manager.LevelManager.SetLevelType(LevelType);
 			//MyGame.Manager.LevelManager.SetLevelIndex(LevelIndex);
 			MyGame.Manager.LevelManager.SetLevelNo(LevelNo);
 
-
-			// Load level configuration data.
-			Byte LevelIndex = (Byte) (LevelNo - 1);
-			MyGame.Manager.LevelManager.LoadLevelConfigData(LevelType, LevelIndex);
-			LevelConfigData LevelConfigData = MyGame.Manager.LevelManager.LevelConfigData;
 
 			// Bullets.
 			MyGame.Manager.BulletManager.Reset(LevelConfigData.BulletMaxim, LevelConfigData.BulletFrame, LevelConfigData.BulletShoot);
@@ -63,13 +75,16 @@ namespace WindowsGame.Common.Managers
 			MyGame.Manager.StateManager.SetIsGodMode(MyGame.Manager.ConfigManager.GlobalConfigData.IsGodMode);
 		}
 
+		private LevelConfigData LoadLevelConfigData(LevelType LevelType, Byte LevelNo)
+		{
+			Byte LevelIndex = (Byte)(LevelNo - 1);
+			MyGame.Manager.LevelManager.LoadLevelConfigData(LevelType, LevelIndex);
+			LevelConfigData LevelConfigData = MyGame.Manager.LevelManager.LevelConfigData;
+			return LevelConfigData;
+		}
+
 		public void Draw()
 		{
-			//TODO delete
-			//for (Byte index = 0; index < Constants.MAX_ENEMYS_SPAWN; index++)
-			//{
-			//    Engine.SpriteBatch.Draw(Assets.ZZindigoTexture, boxPositions[index], Color.Black);
-			//}
 		}
 
 		private Vector2[] GetBoxPositions()

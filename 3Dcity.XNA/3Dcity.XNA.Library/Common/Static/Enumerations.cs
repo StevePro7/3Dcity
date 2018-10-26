@@ -15,7 +15,8 @@
 	public enum LevelType
 	{
 		Easy = 0,
-		Hard = 1
+		Hard = 1,
+		Test
 	}
 
 	public enum EnemyType
