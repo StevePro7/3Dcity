@@ -30,7 +30,8 @@ namespace WindowsGame.Common.Screens
 			LevelIndex = MyGame.Manager.LevelManager.LevelIndex;
 			LevelConfigData = MyGame.Manager.LevelManager.LevelConfigData;
 
-			Invincibile = MyGame.Manager.StateManager.IsGodMode || MyGame.Manager.StateManager.CheatGame;
+			Invincibile = MyGame.Manager.StateManager.IsGodMode ||
+			              MyGame.Manager.StateManager.CheatGame || LevelConfigData.BonusLevel;
 
 			//EnemySpawn = MyGame.Manager.EnemyManager.EnemySpawn;
 			EnemyTotal = MyGame.Manager.EnemyManager.EnemyTotal;

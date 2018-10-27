@@ -41,6 +41,7 @@ namespace WindowsGame.Common.Screens
 		{
 			MyGame.Manager.ScoreManager.ResetAll();
 			localCheat = false;
+			MyGame.Manager.StateManager.SetCheatGame(localCheat);
 			localCount = 0;
 			iconIndex = 0;
 			flag1 = false;
@@ -92,7 +93,7 @@ namespace WindowsGame.Common.Screens
 						if (localCount >= Constants.MAX_CHEATS)
 						{
 							localCheat = true;
-							MyGame.Manager.StateManager.SetIsGodMode(localCheat);
+							MyGame.Manager.StateManager.SetCheatGame(localCheat);
 							MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Cheat);
 						}
 					}
