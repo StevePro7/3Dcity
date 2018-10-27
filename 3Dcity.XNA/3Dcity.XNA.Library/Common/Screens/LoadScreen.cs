@@ -1,4 +1,5 @@
 ﻿using System;
+using WindowsGame.Common.Data;
 using Microsoft.Xna.Framework;
 using WindowsGame.Common.Static;
 using WindowsGame.Master;
@@ -37,9 +38,27 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
-			LevelType = MyGame.Manager.LevelManager.LevelType;
-			LevelIndex = MyGame.Manager.LevelManager.LevelIndex;
-			MyGame.Manager.LevelManager.LoadLevelConfigData(LevelType, LevelIndex);
+			// Adjust for testing.
+			LevelType levelType = MyGame.Manager.ConfigManager.GlobalConfigData.LevelType;
+			if (LevelType.Test == levelType)
+			{
+				// Load level configuration data.
+				Byte levelNo = Constants.TEST_LEVEL_NUM - 1;
+				MyGame.Manager.LevelManager.LoadLevelConfigData(levelType, levelNo);
+				LevelConfigData levelConfigData = MyGame.Manager.LevelManager.LevelConfigData;
+
+				levelType = (LevelType)Enum.Parse(typeof(LevelType), levelConfigData.LevelType, true);
+				levelNo = Convert.ToByte(levelConfigData.LevelNo);
+				MyGame.Manager.LevelManager.SetLevelType(levelType);
+				MyGame.Manager.LevelManager.SetLevelNo(levelNo);
+			}
+			else
+			{
+				LevelType = MyGame.Manager.LevelManager.LevelType;
+				LevelIndex = MyGame.Manager.LevelManager.LevelIndex;
+				MyGame.Manager.LevelManager.LoadLevelConfigData(LevelType, LevelIndex);
+			}
+
 			LevelConfigData = MyGame.Manager.LevelManager.LevelConfigData;
 
 			// Resets all relevant score level info,

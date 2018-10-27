@@ -65,7 +65,6 @@ namespace WindowsGame.Common.Screens
 				return (Int32) CurrScreen;
 			}
 
-			// TODO - check for cheat...!
 			// Check for cheat detection.
 			if (!isGodMode)
 			{

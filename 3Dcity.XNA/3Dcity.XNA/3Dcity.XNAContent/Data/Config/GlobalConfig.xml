@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Title</ScreenType>
+	<ScreenType>Load</ScreenType>
 	<!--<ScreenType>Play</ScreenType>-->
 	<!--<ScreenType>Diff</ScreenType>-->
 	<!--<ScreenType>Level</ScreenType>-->
 	<!--<ScreenType>Resume</ScreenType>-->
 	<LevelType>Hard</LevelType>
-	<LevelNo>10</LevelNo>
+	<LevelNo>4</LevelNo>
 	<!--<LevelIndex>0</LevelIndex>			TODO delete -->
 	<FramesPerSecond>100</FramesPerSecond>
 	<MaximLevel>18</MaximLevel>
 	<MaxBullets>20</MaxBullets>
-	<LoadAudio>true</LoadAudio>
+	<LoadAudio>false</LoadAudio>
 	<PlayAudio>true</PlayAudio>
 	<StarDelay>2000</StarDelay>
 	<!-- <GridDelay>300</GridDelay>			TODO delete -->
@@ -56,5 +56,5 @@
 	<BackBorders>true</BackBorders>
 	<DebugTester>true</DebugTester>
 	<DonotSave>true</DonotSave>
-	<QuitsToExit>false</QuitsToExit>
+	<QuitsToExit>true</QuitsToExit>
 </GlobalConfigData>

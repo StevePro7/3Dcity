@@ -39,40 +39,30 @@ namespace WindowsGame.Common.Managers
 			LevelType LevelType = MyGame.Manager.ConfigManager.GlobalConfigData.LevelType;
 			Byte LevelNo = MyGame.Manager.ConfigManager.GlobalConfigData.LevelNo;
 
-			if (LevelType.Test == LevelType && Constants.TEST_LEVELNO != LevelNo)
-			{
-				LevelNo = Constants.TEST_LEVELNO;
-			}
-
-			// Load level configuration data.
-			LevelConfigData LevelConfigData = LoadLevelConfigData(LevelType, LevelNo);
-
-			// Adjust 
 			if (LevelType.Test == LevelType)
 			{
-				LevelType = (LevelType)Enum.Parse(typeof(LevelType), LevelConfigData.LevelType, true);
-				LevelNo = Convert.ToByte(LevelConfigData.LevelNo);
-				LevelConfigData = LoadLevelConfigData(LevelType, LevelNo);
+				return;
 			}
 
-			//Byte LevelIndex = (Byte) (LevelNo - 1);		//	MyGame.Manager.ConfigManager.GlobalConfigData.LevelIndex;
+			// IMPORTANT data must be set otherwise will crash!
 			MyGame.Manager.LevelManager.SetLevelType(LevelType);
-			//MyGame.Manager.LevelManager.SetLevelIndex(LevelIndex);
 			MyGame.Manager.LevelManager.SetLevelNo(LevelNo);
+
+
+			// Load level configuration data.
+			Byte LevelIndex = (Byte)(LevelNo - 1);
+			MyGame.Manager.LevelManager.LoadLevelConfigData(LevelType, LevelIndex);
+			LevelConfigData LevelConfigData = MyGame.Manager.LevelManager.LevelConfigData;
 
 
 			// Bullets.
 			MyGame.Manager.BulletManager.Reset(LevelConfigData.BulletMaxim, LevelConfigData.BulletFrame, LevelConfigData.BulletShoot);
 
 			// Enemies.
-			//MyGame.Manager.EnemyManager.Reset(LevelType, LevelConfigData.EnemySpawn, 1000, 5000, LevelConfigData.EnemyTotal);
 			MyGame.Manager.EnemyManager.Reset(LevelType, LevelConfigData);
 
 			// Explosions.
 			MyGame.Manager.ExplosionManager.Reset(LevelConfigData.EnemySpawn, LevelConfigData.ExplodeDelay);
-
-			// TODO update this logic for god mode [global] vs. local cheat...!
-			MyGame.Manager.StateManager.SetIsGodMode(MyGame.Manager.ConfigManager.GlobalConfigData.IsGodMode);
 		}
 
 		private static LevelConfigData LoadLevelConfigData(LevelType LevelType, Byte LevelNo)
