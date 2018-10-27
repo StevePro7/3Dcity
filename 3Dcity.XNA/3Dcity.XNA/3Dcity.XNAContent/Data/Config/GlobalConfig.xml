@@ -5,7 +5,7 @@
 	<!--<ScreenType>Diff</ScreenType>-->
 	<!--<ScreenType>Level</ScreenType>-->
 	<!--<ScreenType>Resume</ScreenType>-->
-	<LevelType>Hard</LevelType>
+	<LevelType>Test</LevelType>
 	<LevelNo>4</LevelNo>
 	<!--<LevelIndex>0</LevelIndex>			TODO delete -->
 	<FramesPerSecond>100</FramesPerSecond>

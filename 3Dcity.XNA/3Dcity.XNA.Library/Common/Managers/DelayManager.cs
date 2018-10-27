@@ -127,23 +127,23 @@ namespace WindowsGame.Common.Managers
 		}
 		private UInt16 GetWaveFrameDelay(UInt16 enemyFrameDelay, UInt16 enemyFrameRange, UInt16 enemyFrameMinim)
 		{
-			//TODO test this common re-factored out code.
-			//return GetFrameDelayCommon(SpeedType.Wave, 0, enemyFrameDelay, enemyFrameRange, enemyFrameMinim);
+			return GetFrameDelayCommon(SpeedType.Wave, 0, enemyFrameDelay, enemyFrameRange, enemyFrameMinim);
 
+			// TODO delete dead code...
 			// 360 degrees in sine wave.
-			UInt16 index = (Byte)MyGame.Manager.RandomManager.Next(DEGREES_PER_CIRCLE);
-			Single value = DelayWaves[index];
+			//UInt16 index = (Byte)MyGame.Manager.RandomManager.Next(DEGREES_PER_CIRCLE);
+			//Single value = DelayWaves[index];
 
-			Int16 multi = (Int16)(value * enemyFrameRange);
-			Int16 delay = (Int16)(enemyFrameDelay - multi);
+			//Int16 multi = (Int16)(value * enemyFrameRange);
+			//Int16 delay = (Int16)(enemyFrameDelay - multi);
 
-			// Prevent from too fast...!
-			if (delay < enemyFrameMinim)
-			{
-				delay = (Int16) enemyFrameMinim;
-			}
+			//// Prevent from too fast...!
+			//if (delay < enemyFrameMinim)
+			//{
+			//    delay = (Int16) enemyFrameMinim;
+			//}
 
-			return (UInt16)delay;
+			//return (UInt16)delay;
 		}
 		private UInt16 GetFastFrameDelay(Byte key, Byte enemyTotal, UInt16 enemyFrameDelay, UInt16 enemyFrameRange, UInt16 enemyFrameMinim)
 		{
@@ -153,26 +153,26 @@ namespace WindowsGame.Common.Managers
 				percentage = (Single)(key + 1) / enemyTotal;
 			}
 
-			//TODO test this common re-factored out code.
-			//return GetFrameDelayCommon(SpeedType.Fast, percentage, enemyFrameDelay, enemyFrameRange, enemyFrameMinim);
+			return GetFrameDelayCommon(SpeedType.Fast, percentage, enemyFrameDelay, enemyFrameRange, enemyFrameMinim);
 
+			// TODO delete dead code...
 			// 360 degrees in sine wave.
-			UInt16 index = (Byte)MyGame.Manager.RandomManager.Next(DEGREES_PER_CIRCLE);
-			Single value = DelayWaves[index];
+			//UInt16 index = (Byte)MyGame.Manager.RandomManager.Next(DEGREES_PER_CIRCLE);
+			//Single value = DelayWaves[index];
 
-			value = Math.Abs(value);
-			value += percentage;
+			//value = Math.Abs(value);
+			//value += percentage;
 
-			Int16 multi = (Int16)(value * enemyFrameRange);
-			Int16 delay = (Int16)(enemyFrameDelay - multi);
+			//Int16 multi = (Int16)(value * enemyFrameRange);
+			//Int16 delay = (Int16)(enemyFrameDelay - multi);
 
-			// Prevent from too fast...!
-			if (delay < enemyFrameMinim)
-			{
-				delay = (Int16)enemyFrameMinim;
-			}
+			//// Prevent from too fast...!
+			//if (delay < enemyFrameMinim)
+			//{
+			//    delay = (Int16)enemyFrameMinim;
+			//}
 
-			return (UInt16)delay;
+			//return (UInt16)delay;
 		}
 
 		private UInt16 GetFrameDelayCommon(SpeedType speedType, Single percentage, UInt16 enemyFrameDelay, UInt16 enemyFrameRange, UInt16 enemyFrameMinim)

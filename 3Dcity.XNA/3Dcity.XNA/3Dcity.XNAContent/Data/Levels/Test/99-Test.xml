@@ -14,7 +14,7 @@
   <EnemyStartDelta>0</EnemyStartDelta>
   <EnemyFrameDelay>1000</EnemyFrameDelay>
   <EnemyFrameDelta>0</EnemyFrameDelta>
-  <EnemyFrameMinim>500</EnemyFrameMinim>
+  <EnemyFrameMinim>600</EnemyFrameMinim>
   <EnemyFrameRange>200</EnemyFrameRange>
   <EnemySpeedNone>30</EnemySpeedNone>
   <EnemySpeedWave>50</EnemySpeedWave>
