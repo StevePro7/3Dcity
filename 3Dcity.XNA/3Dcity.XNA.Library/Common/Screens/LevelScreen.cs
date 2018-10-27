@@ -15,6 +15,7 @@ namespace WindowsGame.Common.Screens
 		private Byte maximLevel;
 		private String levelName;
 		private String levelValu;
+		private Boolean isGodMode;
 		private Boolean localCheat;
 		private Byte localCount;
 
@@ -39,6 +40,7 @@ namespace WindowsGame.Common.Screens
 		public override void LoadContent()
 		{
 			MyGame.Manager.SpriteManager.SmallTarget.SetHomeSpot();
+			isGodMode = MyGame.Manager.ConfigManager.GlobalConfigData.IsGodMode;
 			localCheat = MyGame.Manager.StateManager.CheatGame;
 			base.LoadContent();
 
@@ -76,23 +78,23 @@ namespace WindowsGame.Common.Screens
 			}
 
 			// Check for cheat detection.
-			//if (!isGodMode)
-			//{
-			//    if (!localCheat)
-			//    {
-			//        Boolean titleMode = MyGame.Manager.InputManager.TitleMode();
-			//        if (titleMode)
-			//        {
-			//            localCount++;
-			//            if (localCount >= Constants.MAX_CHEATS)
-			//            {
-			//                localCheat = true;
-			//                MyGame.Manager.StateManager.SetCheatGame(localCheat);
-			//                MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Cheat);
-			//            }
-			//        }
-			//    }
-			//}
+			if (!isGodMode)
+			{
+				if (!localCheat)
+				{
+					Boolean titleMode = MyGame.Manager.InputManager.TitleMode();
+					if (titleMode)
+					{
+						localCount++;
+						if (localCount >= Constants.MAX_CHEATS)
+						{
+							localCheat = true;
+							MyGame.Manager.StateManager.SetCheatGame(localCheat);
+							MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Cheat);
+						}
+					}
+				}
+			}
 
 			if (Lefts || Right)
 			{
