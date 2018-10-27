@@ -44,13 +44,9 @@ namespace WindowsGame.Common.Inputs
 		public Boolean Back()
 		{
 			// Mouse.
-			if (mouseScreenInput.LeftButtonHold())
+			if (StatusBar())
 			{
-				Boolean test = controlManager.CheckStatusBar(mouseScreenInput.MousePosition);
-				if (test)
-				{
-					return true;
-				}
+				return true;
 			}
 
 			// Joystick.
@@ -443,18 +439,6 @@ namespace WindowsGame.Common.Inputs
 				{
 					return true;
 				}
-			}
-
-			// Joystick.
-			if (joystickInput.JoyHold(Buttons.Y))
-			{
-				return true;
-			}
-
-			// Keyboard.
-			if (keyboardInput.KeyHold(Keys.F1))
-			{
-				return true;
 			}
 
 			return false;
