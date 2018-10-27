@@ -41,8 +41,17 @@ namespace WindowsGame.Common.Managers
 
 			if (LevelType.Test == LevelType)
 			{
-				return;
+				if (ScreenType.Load == screenType)
+				{
+					return;
+				}
+
+				const Byte levelNo = Constants.TEST_LEVEL_NUM - 1;
+				MyGame.Manager.LevelManager.LoadLevelConfigData(LevelType, levelNo);
+				LevelType = (LevelType)Enum.Parse(typeof(LevelType), MyGame.Manager.LevelManager.LevelConfigData.LevelType, true);
+				LevelNo = Convert.ToByte(MyGame.Manager.LevelManager.LevelConfigData.LevelNo);
 			}
+
 
 			// IMPORTANT data must be set otherwise will crash!
 			MyGame.Manager.LevelManager.SetLevelType(LevelType);

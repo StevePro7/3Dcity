@@ -1,11 +1,19 @@
 ﻿using System;
+using WindowsGame.Common.Data;
+using WindowsGame.Common.Static;
 using Microsoft.Xna.Framework;
 using WindowsGame.Master.Interfaces;
+using WindowsGame.Master;
 
 namespace WindowsGame.Common.Screens
 {
 	public class TestScreen : BaseScreenPlay , IScreen
 	{
+		private Rectangle rect, rect2;
+		private Vector2 enemy;
+		private Vector2 large;
+		private Vector2 spot;
+
 		public override void Initialize()
 		{
 			base.Initialize();
@@ -17,6 +25,11 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
+			rect = MyGame.Manager.ImageManager.EnemyRectangles[7];
+			enemy = new Vector2(200, 150);
+			large = new Vector2(100, 150);
+			MyGame.Manager.SpriteManager.LargeTarget.SetPosition(large);
+
 			base.LoadContent();
 			MyGame.Manager.RenderManager.SetGridDelay(LevelConfigData.GridDelay);
 		}
@@ -29,12 +42,22 @@ namespace WindowsGame.Common.Screens
 				return (Int32)CurrScreen;
 			}
 
+			SByte number = MyGame.Manager.InputManager.Number();
+			if (1 == number)
+			{
+				//spot = 
+			}
+
 			// Target.
 			DetectTarget(gameTime);
 
 			// Bullets.
 			DetectBullets();
 			UpdateBullets(gameTime);
+
+			// Explosions.
+			UpdateExplosions(gameTime);
+			VerifyExplosions();
 
 			// Icons.
 			UpdateIcons();
@@ -50,6 +73,8 @@ namespace WindowsGame.Common.Screens
 
 			// Sprite sheet #02.
 			DrawSheet02();
+			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, enemy, rect, Color.White);
+			MyGame.Manager.ExplosionManager.Draw();
 			MyGame.Manager.BulletManager.Draw();
 			MyGame.Manager.SpriteManager.Draw();
 
