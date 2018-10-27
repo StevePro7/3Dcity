@@ -48,10 +48,6 @@ namespace WindowsGame.Common.Screens
 
 			if (Selected)
 			{
-				//TODO delete
-				//MyGame.Manager.StateManager.SetKillSpace(Vector2.Zero);
-				//MyGame.Manager.ScoreManager.ResetMisses();
-				//MyGame.Manager.SoundManager.StopMusic();
 				Complete();
 				return (Int32) NextScreen;
 			}
@@ -97,6 +93,13 @@ namespace WindowsGame.Common.Screens
 			//Boolean center = MyGame.Manager.InputManager.CenterPos();
 			//const Boolean center = false;		// TODO perfect transition...
 
+			Boolean back = MyGame.Manager.InputManager.Back();
+			if (back)
+			{
+				Complete();
+				return (Int32)NextScreen;
+			}
+
 			DetectSelect();
 			if (Flag1)
 			{
@@ -110,10 +113,6 @@ namespace WindowsGame.Common.Screens
 			//if (status || center || Timer > bigDelay)
 			if (Timer > bigDelay)
 			{
-				//TODO delete
-				//MyGame.Manager.StateManager.SetKillSpace(Vector2.Zero);
-				//MyGame.Manager.ScoreManager.ResetMisses();
-				//MyGame.Manager.SoundManager.StopMusic();
 				Complete();
 				return (Int32) NextScreen;
 			}

@@ -103,7 +103,7 @@ namespace WindowsGame.Common.Screens
 			ScreenType screenType = MyGame.Manager.ConfigManager.GlobalConfigData.ScreenType;
 			if (ScreenType.Splash == screenType || ScreenType.Init == screenType)
 			{
-				screenType = ScreenType.Title;
+				screenType = ScreenType.Intro;
 			}
 
 			return (Int32)screenType;

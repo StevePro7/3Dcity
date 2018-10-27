@@ -34,9 +34,7 @@ namespace WindowsGame.Common.Screens
 			delay1 = 4000;
 			delay2 = MyGame.Manager.ConfigManager.GlobalConfigData.IntroDelay;
 			flag = false;
-
 			NextScreen = ScreenType.Title;
-			PrevScreen = ScreenType.Exit;
 
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
@@ -69,9 +67,8 @@ namespace WindowsGame.Common.Screens
 			Boolean back = MyGame.Manager.InputManager.Back();
 			if (back)
 			{
-				//Maybe only exit on Title.
+				// Exit on Title.
 				return (Int32) NextScreen;
-				//return (Int32) PrevScreen;
 			}
 			// Check to go forward second.
 			Boolean mode = MyGame.Manager.InputManager.TitleMode();
@@ -80,7 +77,6 @@ namespace WindowsGame.Common.Screens
 				return (Int32) NextScreen;
 			}
 
-			
 			UpdateTimer(gameTime);
 			if (startY > titleY)
 			{
@@ -125,7 +121,7 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.RenderManager.DrawBottom();
 
 			// Text data last!
-			//MyGame.Manager.TextManager.DrawBuild();
+			MyGame.Manager.TextManager.DrawBuild();
 			MyGame.Manager.TextManager.DrawTitle();
 
 			if (flag)
