@@ -288,7 +288,39 @@ namespace WindowsGame.Common.Inputs
 			}
 
 			// Keyboard.
-			if (keyboardInput.KeyHold(Keys.Space))
+			if (keyboardInput.KeyHold(Keys.Enter) || keyboardInput.KeyHold(Keys.Space))
+			{
+				return true;
+			}
+
+			return false;
+		}
+
+		public Boolean SelectJoystick()
+		{
+			// Joystick.
+			if (joystickInput.JoySelect(Buttons.A))
+			{
+				return true;
+			}
+
+			return false;
+		}
+
+		public Boolean SelectWithout()
+		{
+			// Mouse.
+			if (mouseScreenInput.LeftButtonHold())
+			{
+				Boolean test = controlManager.CheckJoyPadFire(mouseScreenInput.MousePosition);
+				if (test)
+				{
+					return true;
+				}
+			}
+
+			// Keyboard.
+			if (keyboardInput.KeyHold(Keys.Enter) || keyboardInput.KeyHold(Keys.Space))
 			{
 				return true;
 			}
@@ -363,7 +395,7 @@ namespace WindowsGame.Common.Inputs
 			}
 
 			// Joystick.
-			if (joystickInput.JoyHold(Buttons.A) || joystickInput.JoyHold(Buttons.Start))
+			if (joystickInput.JoyHold(Buttons.A))
 			{
 				return true;
 			}
@@ -387,6 +419,19 @@ namespace WindowsGame.Common.Inputs
 				{
 					return true;
 				}
+			}
+
+			// Joystick.
+			//if (joystickInput.JoyPress(Buttons.Y))
+			if (joystickInput.JoyHold(Buttons.RightShoulder))
+			{
+				return true;
+			}
+
+			// Keyboard.
+			if (keyboardInput.KeyHold(Keys.D1))
+			{
+				return true;
 			}
 
 			return false;

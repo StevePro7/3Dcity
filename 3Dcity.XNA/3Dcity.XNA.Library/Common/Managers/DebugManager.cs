@@ -75,7 +75,7 @@ namespace WindowsGame.Common.Managers
 			MyGame.Manager.StateManager.SetIsGodMode(MyGame.Manager.ConfigManager.GlobalConfigData.IsGodMode);
 		}
 
-		private LevelConfigData LoadLevelConfigData(LevelType LevelType, Byte LevelNo)
+		private static LevelConfigData LoadLevelConfigData(LevelType LevelType, Byte LevelNo)
 		{
 			Byte LevelIndex = (Byte)(LevelNo - 1);
 			MyGame.Manager.LevelManager.LoadLevelConfigData(LevelType, LevelIndex);

@@ -102,7 +102,15 @@ namespace WindowsGame.Common.Screens
 			// Check to go forward second.
 			if (!flag1)
 			{
-				Boolean fire = MyGame.Manager.InputManager.Select();
+				Boolean fire = false;
+#if WINDOWS
+				fire = MyGame.Manager.InputManager.SelectJoystick();
+#endif
+				if (!fire)
+				{
+					fire = MyGame.Manager.InputManager.SelectWithout();
+				}
+
 				Boolean left = MyGame.Manager.InputManager.LeftsSide();
 				Boolean rght = MyGame.Manager.InputManager.RightSide();
 

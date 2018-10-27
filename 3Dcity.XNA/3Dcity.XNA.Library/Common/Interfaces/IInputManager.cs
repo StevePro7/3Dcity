@@ -18,6 +18,8 @@ namespace WindowsGame.Common.Interfaces
 		Single Vertical();
 		Boolean Fire();
 		Boolean Select();
+		Boolean SelectJoystick();
+		Boolean SelectWithout();
 		Boolean GameState();
 		Boolean GameSound();
 		Boolean CenterPos();

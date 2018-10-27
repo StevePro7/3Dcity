@@ -13,6 +13,7 @@ namespace WindowsGame.Master.Inputs
 
 		Boolean JoyHold(Buttons button);
 		Boolean JoyPress(Buttons button);
+		Boolean JoySelect(Buttons button);
 		void SetMotors(Single leftMotor, Single rightMotor);
 		void SetMotors(PlayerIndex playerIndex, Single leftMotor, Single rightMotor);
 		void ResetMotors();
@@ -64,6 +65,21 @@ namespace WindowsGame.Master.Inputs
 		{
 			Byte index = (Byte)CurrPlayerIndex;
 			return CurrGamePadState[index].IsButtonDown(button);
+		}
+
+		public Boolean JoySelect(Buttons button)
+		{
+			for (Byte index = 0; index < maxPlayers; index++)
+			{
+				Boolean select = CurrGamePadState[index].IsButtonDown(button) && PrevGamePadState[index].IsButtonUp(button);
+				if (select)
+				{
+					CurrPlayerIndex = (PlayerIndex) index;
+					return true;
+				}
+			}
+
+			return false;
 		}
 
 		public void SetMotors(Single leftMotor, Single rightMotor)
