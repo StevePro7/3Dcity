@@ -85,8 +85,7 @@ namespace WindowsGame.Common.Screens
 			}
 
 			Boolean select = MyGame.Manager.InputManager.Select();
-			Boolean status = MyGame.Manager.InputManager.StatusBar();
-			if (select || status)
+			if (select)
 			{
 				return (Int32) NextScreen;
 			}

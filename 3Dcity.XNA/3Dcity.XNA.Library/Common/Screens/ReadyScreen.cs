@@ -39,16 +39,6 @@ namespace WindowsGame.Common.Screens
 				return (Int32) CurrScreen;
 			}
 
-			// TODO take out this check as is only 1s long this screen...
-			// Check status bar to fast forward.
-			//Boolean statusBar = MyGame.Manager.InputManager.StatusBar();
-			//if (statusBar)
-			//{
-			//    //MyGame.Manager.SoundManager.SetMaxVolume();			// TODO is this worse?
-			//    NextScreen = ScreenType.Play;
-			//    return (Int32) NextScreen;
-			//}
-
 			UpdateTimer(gameTime);
 			if (Timer >= readyDelay)
 			{
