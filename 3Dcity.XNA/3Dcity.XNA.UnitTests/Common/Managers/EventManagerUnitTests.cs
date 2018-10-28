@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using WindowsGame.Common.Managers;
-using WindowsGame.Common.Static;
 using Microsoft.Xna.Framework;
 using NUnit.Framework;
+using WindowsGame.Common.Managers;
+using WindowsGame.Common.Static;
 
 namespace WindowsGame.UnitTests.Common.Managers
 {

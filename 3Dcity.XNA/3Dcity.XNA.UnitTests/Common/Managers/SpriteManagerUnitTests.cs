@@ -1,5 +1,6 @@
-﻿using WindowsGame.Common.Managers;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using WindowsGame.Common.Managers;
+
 namespace WindowsGame.UnitTests.Common.Managers
 {
 	[TestFixture]

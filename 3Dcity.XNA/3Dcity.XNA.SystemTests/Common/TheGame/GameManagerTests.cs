@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
-using WindowsGame.Common;
 using NUnit.Framework;
+using WindowsGame.Common;
 
 namespace WindowsGame.SystemTests.Common.TheGame
 {
