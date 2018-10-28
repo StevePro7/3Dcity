@@ -53,8 +53,13 @@ namespace WindowsGame.Common.Static
 		public const Byte FIRE_OFFSET_X = 200;
 		public const Byte FIRE_OFFSET_Y = 160;
 
-		public static readonly SByte[] EXPLODE_OFFSET_X = new SByte[2] { 20, -20 };
-		public static readonly SByte[] EXPLODE_OFFSET_Y = new SByte[2] { 20, -20 };
+		//Bullet offset: Use this to centralize explosion around bullet.
+		public static readonly SByte[] EXPLODE_OFFSET_X = new SByte[2] { -8, -48 };
+		public static readonly SByte[] EXPLODE_OFFSET_Y = new SByte[2] { -8, -48 };
+
+		//Enemy offset: Use this to centralize explosion around enemy.
+		//public static readonly SByte[] EXPLODE_OFFSET_X = new SByte[2] { 20, -20 };
+		//public static readonly SByte[] EXPLODE_OFFSET_Y = new SByte[2] { 20, -20 };
 
 		public static readonly Byte[] CURSOR_OFFSET_X = new Byte[3] { 30, 80, 130 };
 

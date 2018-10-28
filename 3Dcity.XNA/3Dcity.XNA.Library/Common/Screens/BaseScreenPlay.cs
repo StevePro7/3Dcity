@@ -137,7 +137,10 @@ namespace WindowsGame.Common.Screens
 				ExplodeType explodeType = enemy.FrameIndex < 4 ? ExplodeType.Small : ExplodeType.Big;
 				Byte enemyID = enemy.ID;
 				MyGame.Manager.ExplosionManager.LoadContent(enemyID, explodeType);
-				MyGame.Manager.ExplosionManager.Explode(enemyID, explodeType, enemy.Position);
+
+				//Vector2 explosionPosition = enemy.Position;		//Use this to centralize explosion around enemy.
+				Vector2 explosionPosition = bullet.Position;		//Use this to centralize explosion around bullet.
+				MyGame.Manager.ExplosionManager.Explode(enemyID, explodeType, explosionPosition);
 				enemy.Dead();
 			}
 		}
