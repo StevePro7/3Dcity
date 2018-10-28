@@ -1,5 +1,4 @@
 ﻿using System;
-using WindowsGame.Common.Static;
 
 namespace WindowsGame.Common.Data
 {

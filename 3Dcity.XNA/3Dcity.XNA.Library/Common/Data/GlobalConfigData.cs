@@ -6,8 +6,8 @@ namespace WindowsGame.Common.Data
 	public struct GlobalConfigData
 	{
 		public ScreenType ScreenType;
-		public LevelType LevelType;
 		public Byte LevelNo;
+		public LevelType LevelType;
 		//public Byte LevelIndex;		// TODO delete - always use 1-based LevelNo to match Levels files
 		public Byte FramesPerSecond;
 		public Byte MaximLevel;
