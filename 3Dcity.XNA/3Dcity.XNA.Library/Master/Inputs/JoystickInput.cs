@@ -1,7 +1,7 @@
 ﻿using System;
-using WindowsGame.Common;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using WindowsGame.Common;
 
 namespace WindowsGame.Master.Inputs
 {
@@ -111,6 +111,5 @@ namespace WindowsGame.Master.Inputs
 		public PlayerIndex CurrPlayerIndex { get; private set; }
 		public GamePadState[] CurrGamePadState { get; private set; }
 		public GamePadState[] PrevGamePadState { get; private set; }
-
 	}
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
-using WindowsGame.Master.Interfaces;
 using Microsoft.Xna.Framework;
+using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Master.Implementation
 {

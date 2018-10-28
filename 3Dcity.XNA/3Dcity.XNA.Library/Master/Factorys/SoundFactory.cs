@@ -59,11 +59,6 @@ namespace WindowsGame.Master.Factorys
 
 		public void StopMusic()
 		{
-			//if (MediaState.Playing == MediaPlayerX.State)
-			//{
-			//    MediaPlayerX.Stop();
-			//}
-
 			MediaPlayerX.Stop();
 		}
 

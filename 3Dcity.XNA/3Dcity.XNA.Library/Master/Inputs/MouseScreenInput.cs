@@ -1,7 +1,7 @@
 ﻿using System;
-using WindowsGame.Common;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using WindowsGame.Common;
 
 namespace WindowsGame.Master.Inputs
 {
@@ -106,6 +106,5 @@ namespace WindowsGame.Master.Inputs
 		public Int32 CurrMouseX { get; private set; }
 		public Int32 CurrMouseY { get; private set; }
 		public Vector2 MousePosition { get; private set; }
-
 	}
 }
