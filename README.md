@@ -4,6 +4,8 @@
 Reference to landscape left orientation only:
 https://github.com/MonoGame/MonoGame/issues/4064
 
+Game Over check for left \ right to select [like fire button]
+
 24/10/2018
 Grid delay
 100 is too fast - don't go less than this...!
