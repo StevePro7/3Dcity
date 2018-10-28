@@ -1,6 +1,10 @@
 # 3Dcity
 
-24/10
+28/10/2018
+Reference to landscape left orientation only:
+https://github.com/MonoGame/MonoGame/issues/4064
+
+24/10/2018
 Grid delay
 100 is too fast - don't go less than this...!
 150 would be good for fast / bonus levels

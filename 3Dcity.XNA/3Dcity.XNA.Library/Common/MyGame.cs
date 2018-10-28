@@ -140,7 +140,7 @@ namespace WindowsGame.Common
 		public static void OnExiting()
 		{
 			Manager.SoundManager.StopMusic();
-			Manager.ThreadManager.Abort();
+			Manager.DeviceManager.Abort();
 		}
 
 		public static IGameManager Manager { get; private set; }

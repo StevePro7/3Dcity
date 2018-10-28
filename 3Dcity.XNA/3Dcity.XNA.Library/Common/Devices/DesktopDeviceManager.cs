@@ -18,6 +18,11 @@ namespace WindowsGame.Common.Devices
 #endif
 		}
 
+		public void Abort()
+		{
+			MyGame.Manager.ThreadManager.Abort();
+		}
+
 		public String BuildVersion { get; private set; }
 		public Byte MaxPlayers { get; private set; }
 	}
