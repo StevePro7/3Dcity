@@ -15,7 +15,7 @@ namespace WindowsGame.Common
 
 		public AnGame()
 		{
-			graphics = new GraphicsDeviceManager(this);
+			graphics = new GraphicsDeviceManager(this) {SupportedOrientations = DisplayOrientation.LandscapeLeft};
 			Registration.Initialize();
 
 			var manager = GameFactory.Resolve();

@@ -6,18 +6,19 @@ using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
 {
-	public class TestScreen : BaseScreenPlay , IScreen
+	public class TestScreen : BaseScreenPlay, IScreen
 	{
-		private Rectangle rect, rect2;
+		private Rectangle rect;
 		private Vector2 enemy;
 		private Vector2 large;
-		private Vector2 spot;
+		//private Vector2 spot;
 
 		public override void Initialize()
 		{
 			base.Initialize();
 			LoadTextData();
 			//UpdateGrid = MyGame.Manager.ConfigManager.GlobalConfigData.UpdateGrid;
+			PrevScreen = ScreenType.Exit;
 
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
@@ -39,6 +40,12 @@ namespace WindowsGame.Common.Screens
 			if (GamePause)
 			{
 				return (Int32)CurrScreen;
+			}
+
+			Boolean back = MyGame.Manager.InputManager.Back();
+			if (back)
+			{
+				return (Int32)PrevScreen;
 			}
 
 			// Target.
