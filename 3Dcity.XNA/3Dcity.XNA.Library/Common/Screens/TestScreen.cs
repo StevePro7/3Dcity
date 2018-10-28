@@ -1,9 +1,8 @@
 ﻿using System;
-using WindowsGame.Common.Data;
-using WindowsGame.Common.Static;
 using Microsoft.Xna.Framework;
-using WindowsGame.Master.Interfaces;
+using WindowsGame.Common.Static;
 using WindowsGame.Master;
+using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
 {

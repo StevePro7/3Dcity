@@ -1,7 +1,7 @@
 using System;
+using Microsoft.Xna.Framework;
 using WindowsGame.Common.Static;
 using WindowsGame.Master;
-using Microsoft.Xna.Framework;
 
 namespace WindowsGame.Common.Managers
 {

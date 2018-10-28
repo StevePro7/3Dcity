@@ -19,24 +19,5 @@ namespace WindowsGame.Common.Static
 
 		public static Texture2D SpriteSheet01Texture;
 		public static Texture2D SpriteSheet02Texture;
-
-
-		// TODO delete
-		//public static Texture2D TLBar;
-		//public static Texture2D TRBar;
-		//public static Texture2D BLBar;
-		//public static Texture2D BRBar;
-		//public static Texture2D GameTitle;
-		//public static Texture2D OrbGreen32;
-		//public static Texture2D OrbRed32;
-		//public static Texture2D Enemy120;
-		//public static Texture2D Target56;
-		//public static Texture2D Target64;
-		//public static Texture2D SteveProTexture40;
-		//public static Texture2D SteveProTexture80;
-		//public static Texture2D SteveProTexture160;
-		//public static Texture2D SteveProTexture200;
-		//public static Texture2D title01;
-		//public static Texture2D ZZindigoTexture;
 	}
 }

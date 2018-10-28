@@ -1,7 +1,7 @@
 ﻿using System;
 using WindowsGame.Common.Data;
-using WindowsGame.Master.Factorys;
 using WindowsGame.Common.Static;
+using WindowsGame.Master.Factorys;
 
 namespace WindowsGame.Common.Managers
 {

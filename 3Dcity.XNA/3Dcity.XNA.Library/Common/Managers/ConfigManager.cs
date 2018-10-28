@@ -1,6 +1,6 @@
 using System;
-using WindowsGame.Common.Static;
 using WindowsGame.Common.Data;
+using WindowsGame.Common.Static;
 
 namespace WindowsGame.Common.Managers
 {

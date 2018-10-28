@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using WindowsGame.Common.Objects;
 using WindowsGame.Common.Static;
 using WindowsGame.Master.Objects;
-using Microsoft.Xna.Framework;
 
 namespace WindowsGame.Common.Screens
 {

@@ -5,7 +5,6 @@ using Microsoft.Xna.Framework;
 using WindowsGame.Common.Static;
 using WindowsGame.Master;
 using WindowsGame.Master.Objects;
-using Ninject.Syntax;
 
 namespace WindowsGame.Common.Managers
 {

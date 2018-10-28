@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using WindowsGame.Master.Factorys;
-using WindowsGame.Common.Static;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
+using WindowsGame.Common.Static;
+using WindowsGame.Master.Factorys;
 
 namespace WindowsGame.Common.Managers
 {
@@ -71,33 +71,10 @@ namespace WindowsGame.Common.Managers
 			// Textures.
 			Assets.SpriteSheet01Texture = contentFactory.LoadTexture(texturesRoot + "spritesheet01-1024");
 			Assets.SpriteSheet02Texture = contentFactory.LoadTexture(texturesRoot + "spritesheet02-1024");
-
-			// TODO delete
-			//Assets.TLBar = contentFactory.LoadTexture(texturesRoot + "1");
-			//Assets.TRBar = contentFactory.LoadTexture(texturesRoot + "2");
-			//Assets.BLBar = contentFactory.LoadTexture(texturesRoot + "3");
-			//Assets.BRBar = contentFactory.LoadTexture(texturesRoot + "4");
-			//Assets.BlackBar = contentFactory.LoadTexture(texturesRoot + "blackbar");
-			//Assets.YellowBar = contentFactory.LoadTexture(texturesRoot + "baryellow");
-			//Assets.RedBar = contentFactory.LoadTexture(texturesRoot + "barred");
-			//Assets.GameTitle = contentFactory.LoadTexture(texturesRoot + "3Dcity");
-			//Assets.OrbGreen32 = contentFactory.LoadTexture(texturesRoot + "OrbGreen32");
-			//Assets.OrbRed32 = contentFactory.LoadTexture(texturesRoot + "OrbRed32");
-			//Assets.Enemy120 = contentFactory.LoadTexture(texturesRoot + "Enemy120");
-			//Assets.Target56 = contentFactory.LoadTexture(texturesRoot + "Target56");
-			//Assets.Target64 = contentFactory.LoadTexture(texturesRoot + "Target64");
-			//Assets.SteveProTexture40 = contentFactory.LoadTexture(texturesRoot + "StevePro40");
-			//Assets.SteveProTexture80 = contentFactory.LoadTexture(texturesRoot + "StevePro80");
-			//Assets.SteveProTexture160 = contentFactory.LoadTexture(texturesRoot + "StevePro160");
-			//Assets.SteveProTexture200 = contentFactory.LoadTexture(texturesRoot + "StevePro200");
-			//Assets.Target64 = contentFactory.LoadTexture(texturesRoot + "Target64");
-			//Assets.title01 = contentFactory.LoadTexture(texturesRoot + "title01");
-			//Assets.ZZindigoTexture = contentFactory.LoadTexture(texturesRoot + "ZZindigo");
 		}
 
 		public void LoadContentSplash()
 		{
-			// TODO revert!
 			String splash = (0 == MyGame.Manager.ConfigManager.GlobalConfigData.SplashDelay) ? "SplashBlank" : "Splash";
 			Assets.SplashTexture = contentFactory.LoadTexture(texturesRoot + splash);
 		}

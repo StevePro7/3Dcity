@@ -108,8 +108,6 @@ namespace WindowsGame.Common
 			{
 				if (Manager.ConfigManager.GlobalConfigData.QuitsToExit)
 				{
-					//TODO remove in the final build!!!
-					//MyGame.Manager.EventManager.SerializeAllEvents();
 					Engine.Game.Exit();
 					return;
 				}
@@ -137,6 +135,12 @@ namespace WindowsGame.Common
 			Android.OS.Process.KillProcess(Android.OS.Process.MyPid());
 			System.Environment.Exit(0);
 #endif
+		}
+
+		public static void OnExiting()
+		{
+			Manager.SoundManager.StopMusic();
+			Manager.ThreadManager.Abort();
 		}
 
 		public static IGameManager Manager { get; private set; }

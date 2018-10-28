@@ -1,6 +1,6 @@
 ﻿using System;
-using WindowsGame.Common.Data;
 using Microsoft.Xna.Framework;
+using WindowsGame.Common.Data;
 using WindowsGame.Common.Static;
 using WindowsGame.Master;
 using WindowsGame.Master.Interfaces;
