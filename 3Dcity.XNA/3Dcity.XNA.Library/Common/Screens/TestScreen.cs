@@ -18,7 +18,7 @@ namespace WindowsGame.Common.Screens
 		{
 			base.Initialize();
 			LoadTextData();
-			UpdateGrid = MyGame.Manager.ConfigManager.GlobalConfigData.UpdateGrid;
+			//UpdateGrid = MyGame.Manager.ConfigManager.GlobalConfigData.UpdateGrid;
 
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
@@ -40,12 +40,6 @@ namespace WindowsGame.Common.Screens
 			if (GamePause)
 			{
 				return (Int32)CurrScreen;
-			}
-
-			SByte number = MyGame.Manager.InputManager.Number();
-			if (1 == number)
-			{
-				//spot = 
 			}
 
 			// Target.
