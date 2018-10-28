@@ -51,6 +51,8 @@ namespace WindowsGame.Common.Screens
 				levelNo = Convert.ToByte(levelConfigData.LevelNo);
 				MyGame.Manager.LevelManager.SetLevelType(levelType);
 				MyGame.Manager.LevelManager.SetLevelNo(levelNo);
+				LevelType = MyGame.Manager.LevelManager.LevelType;
+				LevelIndex = MyGame.Manager.LevelManager.LevelIndex;
 			}
 			else
 			{
@@ -72,6 +74,9 @@ namespace WindowsGame.Common.Screens
 
 			// Explosions.
 			MyGame.Manager.ExplosionManager.Reset(LevelConfigData.EnemySpawn, LevelConfigData.ExplodeDelay);
+
+			// Sprites.
+			MyGame.Manager.SpriteManager.Reset(LevelType, MyGame.Manager.LevelManager.LevelNo);
 
 			levelName = MyGame.Manager.LevelManager.LevelName;
 			levelValu = MyGame.Manager.LevelManager.LevelValu;

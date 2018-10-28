@@ -72,6 +72,9 @@ namespace WindowsGame.Common.Managers
 
 			// Explosions.
 			MyGame.Manager.ExplosionManager.Reset(LevelConfigData.EnemySpawn, LevelConfigData.ExplodeDelay);
+
+			// Sprites.
+			MyGame.Manager.SpriteManager.Reset(LevelType, MyGame.Manager.LevelManager.LevelNo);
 		}
 
 		private static LevelConfigData LoadLevelConfigData(LevelType LevelType, Byte LevelNo)

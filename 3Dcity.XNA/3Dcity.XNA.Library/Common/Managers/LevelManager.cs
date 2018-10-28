@@ -31,7 +31,7 @@ namespace WindowsGame.Common.Managers
 		Byte MaximLevel { get; }
 		LevelType LevelType { get; }
 		Byte LevelIndex { get; }
-		//Byte LevelNo { get; }
+		Byte LevelNo { get; }
 		//String LevelDiff { get; }					// TODO delete
 		String LevelValu { get; }
 		String LevelName { get; }
@@ -126,7 +126,7 @@ namespace WindowsGame.Common.Managers
 
 		public void SetLevelNo(Byte levelNo)
 		{
-			//LevelNo = levelNo;		// TODO delete
+			LevelNo = levelNo;
 			Byte levelIndex = (Byte) (levelNo - 1);
 			SetLevelIndex(levelIndex);
 		}
@@ -171,7 +171,7 @@ namespace WindowsGame.Common.Managers
 		public Byte MaximLevel { get; private set; }
 		public LevelType LevelType { get; private set; }
 		public Byte LevelIndex { get; private set; }
-		//public Byte LevelNo { get; private set; }
+		public Byte LevelNo { get; private set; }
 		//public String LevelDiff { get; private set; }		// TODO delete
 		public String LevelValu { get; private set; }
 		public String LevelName { get; private set; }

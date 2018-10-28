@@ -62,6 +62,8 @@ namespace WindowsGame.Common.Static
 		//public static readonly SByte[] EXPLODE_OFFSET_Y = new SByte[2] { 20, -20 };
 
 		public static readonly Byte[] CURSOR_OFFSET_X = new Byte[3] { 30, 80, 130 };
+		public static readonly Byte[] LARGE_TARGET_PB = new Byte[2] { 100, 110 };
+		public static readonly Byte[] SMALL_TARGET_PB = new Byte[2] { 50, 60 };
 
 		public static readonly UInt16[] ENEMYS_SCORE = new UInt16[MAX_ENEMYS_SPAWN] { 1000, 500, 250, 100, 75, 50, 25, 10 };
 		public const UInt32 MAX_HIGH_SCORE = 999999;

@@ -9,7 +9,7 @@ namespace WindowsGame.Common.Managers
 	{
 		void Initialize();
 		void LoadContent();
-		void Reset();
+		void Reset(LevelType levelType, Byte levelNo);
 
 		void SetMovement(Boolean slow, Single horz, Single vert);
 		void SetPosition(SpriteType type, Vector2 position);
@@ -51,10 +51,17 @@ namespace WindowsGame.Common.Managers
 			targetSlow = false;
 		}
 
-		public void Reset()
+		public void Reset(LevelType levelType, Byte levelNo)
 		{
-			SmallTarget.SetPosition(smallPosition);
-			LargeTarget.SetPosition(largePosition);
+			Byte ratio = (Byte) (levelNo / 2.0f);
+			Byte largeTargetPB = Constants.LARGE_TARGET_PB[(Byte) levelType];
+			Byte smallTargetPB = Constants.SMALL_TARGET_PB[(Byte) levelType];
+
+			LargeTarget.Reset(largeTargetPB + ratio);
+			SmallTarget.Reset(smallTargetPB + ratio);
+
+			//SmallTarget.SetPosition(smallPosition);
+			//LargeTarget.SetPosition(largePosition);
 		}
 
 		public void SetMovement(Boolean slow, Single horz, Single vert)

@@ -6,17 +6,22 @@ namespace WindowsGame.Common.Sprites
 {
 	public class LargeTarget : BaseSprite
 	{
-		private const Single PIXEL = 100.0f;		// TODO tweak this constant
+		private Single pixel;
 		private const Single RATIO = 1.05f;			// TODO tweak this acceleration
 		private const Single MAXIM = 2.5f;			// TODO tweak maximum acceleration
 
 		private Single accX;
 		private Single accY;
 
-		public LargeTarget() : base()
+		public LargeTarget()
 		{
 			accX = 1.0f;
 			accY = 1.0f;
+		}
+
+		public override void Reset(Single thePixel)
+		{
+			pixel = thePixel;
 		}
 
 		public void Update(GameTime gameTime, Boolean slow, Single horz, Single vert)
@@ -73,8 +78,8 @@ namespace WindowsGame.Common.Sprites
 			}
 
 			Single delta = (Single)gameTime.ElapsedGameTime.TotalSeconds;
-			Single moveX = horz * delta * PIXEL * accX * mult;
-			Single moveY = vert * delta * PIXEL * accY * mult;
+			Single moveX = horz * delta * pixel * accX * mult;
+			Single moveY = vert * delta * pixel * accY * mult;
 
 			position.X += moveX;
 			position.Y += moveY;
