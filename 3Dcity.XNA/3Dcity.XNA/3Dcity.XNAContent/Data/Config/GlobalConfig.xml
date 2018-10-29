@@ -1,28 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GlobalConfigData>
-	<ScreenType>Load</ScreenType>
-	<!--<ScreenType>Play</ScreenType>-->
-	<!--<ScreenType>Diff</ScreenType>-->
-	<!--<ScreenType>Level</ScreenType>-->
-	<!--<ScreenType>Resume</ScreenType>-->
+	<ScreenType>Intro</ScreenType>
 	<LevelNo>1</LevelNo>
-	<LevelType>Test</LevelType>
+	<LevelType>Easy</LevelType>
 	<!--<LevelIndex>0</LevelIndex>			TODO delete -->
 	<FramesPerSecond>100</FramesPerSecond>
 	<MaximLevel>18</MaximLevel>
 	<MaxBullets>10</MaxBullets>
-	<LoadAudio>false</LoadAudio>
+	<LoadAudio>true</LoadAudio>
 	<PlayAudio>true</PlayAudio>
 	<StarDelay>2000</StarDelay>
 	<!-- <GridDelay>300</GridDelay>			TODO delete -->
 	<ExplodeDelay>100</ExplodeDelay>
-	<SplashDelay>0000</SplashDelay>
+	<SplashDelay>3000</SplashDelay>
 	<SelectDelay>500</SelectDelay>
 	<IntroDelay>23660</IntroDelay>
 	<FlashDelay>800</FlashDelay>
-	<LoadDelay>0000</LoadDelay>
+	<LoadDelay>4000</LoadDelay>
 	<!-- 2500 -->
-	<ReadyDelay>0000</ReadyDelay>
+	<ReadyDelay>1000</ReadyDelay>
 	<!-- 2500 -->
 	<FinishDelay>8000</FinishDelay>
 	<DeadDelay>4000</DeadDelay>
@@ -54,7 +50,7 @@
 	<IsGodMode>false</IsGodMode>
 	<UnlimitedCont>true</UnlimitedCont>
 	<BackBorders>true</BackBorders>
-	<DebugTester>true</DebugTester>
+	<DebugTester>false</DebugTester>
 	<DonotSave>true</DonotSave>
-	<QuitsToExit>true</QuitsToExit>
+	<QuitsToExit>false</QuitsToExit>
 </GlobalConfigData>
