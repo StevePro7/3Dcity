@@ -67,7 +67,8 @@ namespace WindowsGame.Common.Static
 
 		public static readonly UInt16[] ENEMYS_SCORE = new UInt16[MAX_ENEMYS_SPAWN] { 1000, 500, 250, 100, 75, 50, 25, 10 };
 		public const UInt32 MAX_HIGH_SCORE = 999999;
-		public const UInt32 DEF_HIGH_SCORE = 020000;
+		public const UInt32 DEF_HIGH_SCORE = 20000;
+		public const UInt16 DEF_MISS_SCORE = 5000;
 
 		public const Byte BOTTOM_SECTOR = 5;
 		public const Byte BOTTOM_OFFSET = 190;

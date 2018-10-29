@@ -40,6 +40,7 @@ namespace WindowsGame.Common.Managers
 		private TextData highTextData;
 		private String gameScoreText;
 		private String highScoreText;
+		private Int32 missScore;
 		private UInt32 gameScore;
 		private UInt16 scoreDelay;
 		private UInt16 scoreTimer;
@@ -71,6 +72,7 @@ namespace WindowsGame.Common.Managers
 			ResetStats();
 			ResetTimer();
 
+			missScore = 0;
 			gameScore = 0;
 			gameScoreText = GetGameScoreText();
 		}
@@ -94,7 +96,6 @@ namespace WindowsGame.Common.Managers
 			scoreTimer = 0;
 			scoreFlag = true;
 		}
-
 
 		public void Update(GameTime gameTime)
 		{
@@ -140,6 +141,20 @@ namespace WindowsGame.Common.Managers
 		public void UpdateGameScore(Byte index)
 		{
 			ScoreKills++;
+
+			// Update miss score.
+			missScore += Constants.ENEMYS_SCORE[index];
+			if (missScore >= Constants.DEF_MISS_SCORE)
+			{
+				missScore -= Constants.DEF_MISS_SCORE;
+				if (MissesTotal > 0)
+				{
+					ResetMisses();
+					MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Bonus);
+				}
+			}
+
+			// Update game score.
 			gameScore += Constants.ENEMYS_SCORE[index];
 			if (gameScore >= Constants.MAX_HIGH_SCORE)
 			{
