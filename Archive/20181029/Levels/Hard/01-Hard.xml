@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LevelConfigData>
+  <LevelNo>1</LevelNo>
+  <LevelType>Hard</LevelType>
+  <LevelName>MOOT</LevelName>
+  <BonusLevel>false</BonusLevel>
+  <GridDelay>300</GridDelay>
+  <BulletMaxim>2</BulletMaxim>
+  <BulletFrame>200</BulletFrame>
+  <BulletShoot>600</BulletShoot>
+  <EnemySpawn>3</EnemySpawn>
+  <EnemyTotal>10</EnemyTotal>
+  <EnemyStartDelay>3000</EnemyStartDelay>
+  <EnemyStartDelta>0</EnemyStartDelta>
+  <EnemyFrameDelay>2000</EnemyFrameDelay>
+  <EnemyFrameDelta>0</EnemyFrameDelta>
+  <EnemyFrameMinim>0</EnemyFrameMinim>
+  <EnemyFrameRange>0</EnemyFrameRange>
+  <EnemySpeedNone>100</EnemySpeedNone>
+  <EnemySpeedWave>0</EnemySpeedWave>
+  <EnemySpeedFast>0</EnemySpeedFast>
+  <ExplodeDelay>130</ExplodeDelay>
+</LevelConfigData>
