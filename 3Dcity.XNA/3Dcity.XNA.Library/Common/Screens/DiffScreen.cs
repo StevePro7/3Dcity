@@ -79,6 +79,7 @@ namespace WindowsGame.Common.Screens
 							localCheat = true;
 							MyGame.Manager.StateManager.SetCheatGame(localCheat);
 							MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Cheat);
+							MyGame.Manager.TextManager.CheatTitle();
 						}
 					}
 				}

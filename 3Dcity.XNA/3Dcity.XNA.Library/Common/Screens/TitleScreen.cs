@@ -39,9 +39,16 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
+			MyGame.Manager.TextManager.ResetTitle();
 			MyGame.Manager.ScoreManager.ResetAll();
+
 			localCheat = false;
 			MyGame.Manager.StateManager.SetCheatGame(localCheat);
+			if (isGodMode)
+			{
+				MyGame.Manager.TextManager.CheatTitle();
+			}
+
 			localCount = 0;
 			iconIndex = 0;
 			flag1 = false;
@@ -95,6 +102,7 @@ namespace WindowsGame.Common.Screens
 							localCheat = true;
 							MyGame.Manager.StateManager.SetCheatGame(localCheat);
 							MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Cheat);
+							MyGame.Manager.TextManager.CheatTitle();
 						}
 					}
 				}
@@ -142,7 +150,6 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.RenderManager.DrawBorderPosition(BackedPositions);
 
 			// Text data last!
-			//MyGame.Manager.TextManager.DrawBuild();
 			MyGame.Manager.TextManager.DrawTitle();
 			MyGame.Manager.TextManager.DrawControls();
 			MyGame.Manager.TextManager.DrawGameInfo(0);
@@ -150,7 +157,6 @@ namespace WindowsGame.Common.Screens
 
 			if (flag2)
 			{
-				//MyGame.Manager.RenderManager.DrawBorderPosition(BackedPositions);
 				Engine.SpriteBatch.DrawString(Assets.EmulogicFont, Globalize.INSERT_COINS, promptPosition, Color.White);
 			}
 		}
