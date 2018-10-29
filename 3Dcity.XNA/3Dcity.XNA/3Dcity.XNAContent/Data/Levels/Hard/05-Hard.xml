@@ -10,14 +10,14 @@
   <BulletShoot>225</BulletShoot>
   <EnemySpawn>4</EnemySpawn>
   <EnemyTotal>100</EnemyTotal>
-  <EnemyStartDelay>2000</EnemyStartDelay>
-  <EnemyStartDelta>50</EnemyStartDelta>
-  <EnemyFrameDelay>1000</EnemyFrameDelay>
-  <EnemyFrameDelta>50</EnemyFrameDelta>
-  <EnemyFrameMinim>500</EnemyFrameMinim>
-  <EnemyFrameRange>250</EnemyFrameRange>
-  <EnemySpeedNone>50</EnemySpeedNone>
+  <EnemyStartDelay>1000</EnemyStartDelay>
+  <EnemyStartDelta>125</EnemyStartDelta>
+  <EnemyFrameDelay>800</EnemyFrameDelay>
+  <EnemyFrameDelta>0</EnemyFrameDelta>
+  <EnemyFrameMinim>600</EnemyFrameMinim>
+  <EnemyFrameRange>100</EnemyFrameRange>
+  <EnemySpeedNone>40</EnemySpeedNone>
   <EnemySpeedWave>30</EnemySpeedWave>
-  <EnemySpeedFast>20</EnemySpeedFast>
+  <EnemySpeedFast>30</EnemySpeedFast>
   <ExplodeDelay>100</ExplodeDelay>
 </LevelConfigData>
