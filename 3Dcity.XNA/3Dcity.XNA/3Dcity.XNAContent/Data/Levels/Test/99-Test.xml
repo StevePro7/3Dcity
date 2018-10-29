@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LevelConfigData>
-	<LevelNo>1</LevelNo>
+	<LevelNo>2</LevelNo>
 	<LevelType>Easy</LevelType>
-	<LevelName>MOOT</LevelName>
+	<LevelName>GEEZA</LevelName>
 	<BonusLevel>false</BonusLevel>
 	<GridDelay>350</GridDelay>
-	<BulletMaxim>1</BulletMaxim>
-	<BulletFrame>150</BulletFrame>
-	<BulletShoot>900</BulletShoot>
+	<BulletMaxim>5</BulletMaxim>
+	<BulletFrame>175</BulletFrame>
+	<BulletShoot>210</BulletShoot>
 	<EnemySpawn>1</EnemySpawn>
 	<EnemyTotal>5</EnemyTotal>
-	<EnemyStartDelay>5000</EnemyStartDelay>
+	<EnemyStartDelay>1000</EnemyStartDelay>
 	<EnemyStartDelta>0</EnemyStartDelta>
-	<EnemyFrameDelay>2500</EnemyFrameDelay>
+	<EnemyFrameDelay>1000</EnemyFrameDelay>
 	<EnemyFrameDelta>0</EnemyFrameDelta>
-	<EnemyFrameMinim>0</EnemyFrameMinim>
-	<EnemyFrameRange>0</EnemyFrameRange>
+	<EnemyFrameMinim>500</EnemyFrameMinim>
+	<EnemyFrameRange>600</EnemyFrameRange>
 	<EnemySpeedNone>100</EnemySpeedNone>
 	<EnemySpeedWave>0</EnemySpeedWave>
 	<EnemySpeedFast>0</EnemySpeedFast>
-	<ExplodeDelay>150</ExplodeDelay>
+	<ExplodeDelay>125</ExplodeDelay>
 </LevelConfigData>

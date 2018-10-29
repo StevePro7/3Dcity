@@ -5,9 +5,9 @@
   <LevelName>OLISIS</LevelName>
   <BonusLevel>false</BonusLevel>
   <GridDelay>300</GridDelay>
-  <BulletMaxim>3</BulletMaxim>
-  <BulletFrame>80</BulletFrame>
-  <BulletShoot>120</BulletShoot>
+  <BulletMaxim>2</BulletMaxim>
+  <BulletFrame>200</BulletFrame>
+  <BulletShoot>600</BulletShoot>
   <EnemySpawn>2</EnemySpawn>
   <EnemyTotal>35</EnemyTotal>
   <EnemyStartDelay>1000</EnemyStartDelay>

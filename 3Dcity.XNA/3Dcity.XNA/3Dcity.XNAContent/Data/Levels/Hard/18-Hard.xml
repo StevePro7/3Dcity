@@ -6,8 +6,8 @@
   <BonusLevel>false</BonusLevel>
   <GridDelay>200</GridDelay>
   <BulletMaxim>6</BulletMaxim>
-  <BulletFrame>50</BulletFrame>
-  <BulletShoot>100</BulletShoot>
+  <BulletFrame>200</BulletFrame>
+  <BulletShoot>200</BulletShoot>
   <EnemySpawn>8</EnemySpawn>
   <EnemyTotal>250</EnemyTotal>
   <EnemyStartDelay>2000</EnemyStartDelay>
@@ -19,5 +19,5 @@
   <EnemySpeedNone>50</EnemySpeedNone>
   <EnemySpeedWave>30</EnemySpeedWave>
   <EnemySpeedFast>20</EnemySpeedFast>
-  <ExplodeDelay>80</ExplodeDelay>
+  <ExplodeDelay>100</ExplodeDelay>
 </LevelConfigData>

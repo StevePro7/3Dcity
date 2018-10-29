@@ -5,9 +5,9 @@
   <LevelName>PARMS</LevelName>
   <BonusLevel>false</BonusLevel>
   <GridDelay>300</GridDelay>
-  <BulletMaxim>5</BulletMaxim>
-  <BulletFrame>80</BulletFrame>
-  <BulletShoot>120</BulletShoot>
+  <BulletMaxim>4</BulletMaxim>
+  <BulletFrame>150</BulletFrame>
+  <BulletShoot>225</BulletShoot>
   <EnemySpawn>4</EnemySpawn>
   <EnemyTotal>75</EnemyTotal>
   <EnemyStartDelay>1000</EnemyStartDelay>

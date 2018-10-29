@@ -6,8 +6,8 @@
   <BonusLevel>false</BonusLevel>
   <GridDelay>350</GridDelay>
   <BulletMaxim>2</BulletMaxim>
-  <BulletFrame>80</BulletFrame>
-  <BulletShoot>120</BulletShoot>
+  <BulletFrame>200</BulletFrame>
+  <BulletShoot>600</BulletShoot>
   <EnemySpawn>2</EnemySpawn>
   <EnemyTotal>10</EnemyTotal>
   <EnemyStartDelay>1000</EnemyStartDelay>

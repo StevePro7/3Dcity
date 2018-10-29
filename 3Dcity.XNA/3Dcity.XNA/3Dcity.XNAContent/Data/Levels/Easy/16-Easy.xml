@@ -5,9 +5,9 @@
   <LevelName>NATURA</LevelName>
   <BonusLevel>false</BonusLevel>
   <GridDelay>250</GridDelay>
-  <BulletMaxim>5</BulletMaxim>
-  <BulletFrame>80</BulletFrame>
-  <BulletShoot>120</BulletShoot>
+  <BulletMaxim>4</BulletMaxim>
+  <BulletFrame>150</BulletFrame>
+  <BulletShoot>225</BulletShoot>
   <EnemySpawn>6</EnemySpawn>
   <EnemyTotal>80</EnemyTotal>
   <EnemyStartDelay>1000</EnemyStartDelay>
