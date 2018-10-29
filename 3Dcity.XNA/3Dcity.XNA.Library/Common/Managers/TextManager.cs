@@ -12,6 +12,8 @@ namespace WindowsGame.Common.Managers
 	{
 		void Initialize();
 		void Initialize(String contentRoot);
+		void ResetTitle();
+		void CheatTitle();
 
 		IList<TextData> LoadTextData(String screen);
 		IList<TextData> LoadTextData(String screen, Byte textsSize, UInt16 offsetX, UInt16 offsetY, Single fontX, Single fontY);
@@ -64,7 +66,7 @@ namespace WindowsGame.Common.Managers
 
 			textFileRoot = String.Format("{0}{1}/{2}/{3}", root, Constants.CONTENT_DIRECTORY, Constants.DATA_DIRECTORY, TEXTS_DIRECTORY);
 
-			titleText = Globalize.GAME_TITLE;
+			ResetTitle();
 			titlePosition = GetTextPosition(15, 1);
 
 			controlText = new String[2] { Globalize.MOVE_TITLE, Globalize.FIRE_TITLE };
@@ -78,6 +80,15 @@ namespace WindowsGame.Common.Managers
 
 			shipTypePosition = GetTextPosition(9, 23);
 			buildNumPosition = GetTextPosition(35, 23);
+		}
+
+		public void ResetTitle()
+		{
+			titleText = Globalize.GAME_TITLE;
+		}
+		public void CheatTitle()
+		{
+			titleText = Globalize.GAME_CHEAT;
 		}
 
 		public IList<TextData> LoadTextData(String screen)
