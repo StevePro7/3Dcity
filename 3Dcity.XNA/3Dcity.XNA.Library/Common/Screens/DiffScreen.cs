@@ -35,6 +35,7 @@ namespace WindowsGame.Common.Screens
 			base.LoadContent();
 
 			SelectType = (Byte)MyGame.Manager.LevelManager.LevelType;
+			MyGame.Manager.LevelManager.CheckLevelOrbs();
 		}
 
 		public override Int32 Update(GameTime gameTime)

@@ -17,6 +17,7 @@ namespace WindowsGame.Common.Managers
 		void SetLevelType(LevelType levelType);
 		void SetLevelIndex(Byte levelIndex);
 		void SetLevelNo(Byte levelNo);
+		void CheckLevelOrbs();
 
 		//void Draw();							// TODO delete	
 		//void DrawLevelRoman();					// TODO delete
@@ -101,13 +102,7 @@ namespace WindowsGame.Common.Managers
 			LevelType = levelType;
 			levelDiff = levelType.ToString().ToUpper();
 
-			// TODO refactor?  Into 2x methods and put this in second?
-			if (null == MyGame.Manager.ImageManager.OrbDiffRectangles)
-			{
-				return;
-			}
-
-			levelOrbPbRectangle = MyGame.Manager.ImageManager.OrbDiffRectangles[(Byte)LevelType];
+			CheckLevelOrbs();
 		}
 		
 		public void SetLevelIndex(Byte levelIndex)
@@ -131,19 +126,16 @@ namespace WindowsGame.Common.Managers
 			SetLevelIndex(levelIndex);
 		}
 
-		// TODO delete
-		//public void Draw()
-		//{
-		//    MyGame.Manager.TextManager.DrawText(LevelDiff, LevelTextPositions[0]);
-		//    MyGame.Manager.TextManager.DrawText(LevelValu, LevelTextPositions[1]);
-		//    MyGame.Manager.TextManager.DrawText(LevelName, LevelTextPositions[2]);
-		//}
+		public void CheckLevelOrbs()
+		{
+			if (null == MyGame.Manager.ImageManager.OrbDiffRectangles)
+			{
+				return;
+			}
 
-		// TODO delete
-		//public void DrawLevelRoman()
-		//{
-		//    Engine.SpriteBatch.DrawString(Assets.EmulogicFont, levelText, levelRomanPosition, Color.White);
-		//}
+			levelOrbPbRectangle = MyGame.Manager.ImageManager.OrbDiffRectangles[(Byte)LevelType];
+		}
+
 		public void Draw()
 		{
 			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, levelOrbPosition, levelOrbPbRectangle, Color.White);

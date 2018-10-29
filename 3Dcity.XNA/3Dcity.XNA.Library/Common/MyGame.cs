@@ -32,6 +32,10 @@ namespace WindowsGame.Common
 
 			Manager.DeviceManager.Initialize();
 			Manager.InputManager.Initialize();
+
+			// Initialize default values.
+			Manager.LevelManager.SetLevelType(LevelType.Easy);
+			Manager.LevelManager.SetLevelIndex(0);
 		}
 
 		public static void LoadContent()
