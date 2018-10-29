@@ -100,6 +100,8 @@ namespace WindowsGame.Common.Screens
 				return (Int32)NextScreen;
 			}
 
+			DetectLefts();
+			DetectRight();
 			DetectSelect();
 			if (Flag1)
 			{
