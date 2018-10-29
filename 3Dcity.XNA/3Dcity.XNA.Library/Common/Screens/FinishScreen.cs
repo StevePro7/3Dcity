@@ -51,7 +51,7 @@ namespace WindowsGame.Common.Screens
 
 			Byte scoreKills = MyGame.Manager.ScoreManager.ScoreKills;
 			Byte enemyTotal = MyGame.Manager.EnemyManager.EnemyTotal;
-			Single hitRatio = scoreKills / (Single) enemyTotal * 100;
+			Byte hitRatio = (Byte)(scoreKills / (Single)enemyTotal * 100);
 			hitRatioText = hitRatio.ToString().PadLeft(3, '0');
 			hitRatioText += Globalize.PERCENTAGE;
 
