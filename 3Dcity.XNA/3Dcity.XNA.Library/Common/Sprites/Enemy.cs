@@ -54,7 +54,7 @@ namespace WindowsGame.Common.Sprites
 			FrameIndex = FrameImage[FrameCount];
 		}
 
-		public void Spawn(Byte slotID, UInt16 frameDelay, Vector2 position, Rectangle bounds, LevelType levelType)
+		public void Spawn(Byte slotID, UInt16 frameDelay, Vector2 position, Rectangle bounds, LevelType levelType, Boolean enemyRotate)
 		{
 			SetSlotID(slotID);
 
@@ -82,6 +82,7 @@ namespace WindowsGame.Common.Sprites
 			FrameTimer = 0;
 			FrameIndex = FrameImage[FrameCount];
 			EnemyLaunch = false;
+			this.enemyRotate = enemyRotate;
 		}
 
 		public void Start(UInt16 startFrameDelay)

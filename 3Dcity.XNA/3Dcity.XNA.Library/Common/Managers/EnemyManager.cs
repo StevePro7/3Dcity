@@ -43,6 +43,7 @@ namespace WindowsGame.Common.Managers
 		private LevelType levelType;
 		private LevelConfigData levelConfigData;
 		private IDictionary<Byte, UInt16> enemyDelays;
+		private IList<Boolean> enemyRotates;
 		private Byte maxEnemySpawn;
 		private Vector2[] progressPosition;
 
@@ -73,6 +74,7 @@ namespace WindowsGame.Common.Managers
 			}
 
 			enemyDelays = new Dictionary<Byte, UInt16>(Constants.MAX_ENEMYS_TOTAL);
+			enemyRotates = new List<Boolean>(Constants.MAX_ENEMYS_TOTAL);
 			progressPosition = new Vector2[3];
 			progressPosition[0] = MyGame.Manager.TextManager.GetTextPosition(25, 23);
 			progressPosition[1] = MyGame.Manager.TextManager.GetTextPosition(28, 23);
@@ -92,6 +94,7 @@ namespace WindowsGame.Common.Managers
 		{
 			levelType = theLevelType;
 			levelConfigData = theLevelConfigData;
+
 			maxEnemySpawn = levelConfigData.EnemySpawn;
 			if (maxEnemySpawn <= 0)
 			{
@@ -123,6 +126,7 @@ namespace WindowsGame.Common.Managers
 			// Important: collections MUST be cleared on Reset() to ensure stability!
 			Clear();
 			enemyDelays.Clear();
+			enemyRotates.Clear();
 
 			EnemyStart = 0;
 			EnemySpawn = 0;
@@ -160,6 +164,7 @@ namespace WindowsGame.Common.Managers
 			// Calculate frame delays for all enemy ships.
 			MyGame.Manager.DelayManager.ResetEnemyDelays(enemyDelays, levelConfigData, EnemyTotal);
 			MyGame.Manager.DelayManager.CalcdEnemyDelays(enemyDelays, levelConfigData, EnemyTotal);
+			ResetEnemyRotates();
 
 			for (Byte index = 0; index < maxEnemySpawn; index++)
 			{
@@ -181,6 +186,8 @@ namespace WindowsGame.Common.Managers
 		public void SpawnOneEnemy(Byte index)
 		{
 			UInt16 frameDelay = enemyDelays[EnemySpawn];
+			Boolean enemyRotate = enemyRotates[EnemySpawn];
+
 			Byte slotID;
 			while (true)
 			{
@@ -209,7 +216,7 @@ namespace WindowsGame.Common.Managers
 			position.Y = randomY + offsetY + Constants.BorderSize;
 
 			Rectangle bounds = EnemyBounds[slotID];
-			enemy.Spawn(slotID, frameDelay, position, bounds, levelType);
+			enemy.Spawn(slotID, frameDelay, position, bounds, levelType, enemyRotate);
 			EnemyDict.Add(slotID, enemy);
 
 			EnemySpawn++;
@@ -344,6 +351,15 @@ namespace WindowsGame.Common.Managers
 				offsetY += Constants.GameOffsetY;
 				const Byte offsetX = Constants.BOTTOM_OFFSET;
 				return new Rectangle(offsetX + (wide * index) + inflate, offsetY + inflate, wide - size - deflate, high - size - deflate);
+			}
+		}
+		private void ResetEnemyRotates()
+		{
+			for (Byte index = 0; index < EnemyTotal; index++)
+			{
+				Byte percent = (Byte) MyGame.Manager.RandomManager.Next(100);
+				Boolean rotate = percent < levelConfigData.EnemyRotates;
+				enemyRotates.Add(rotate);
 			}
 		}
 
