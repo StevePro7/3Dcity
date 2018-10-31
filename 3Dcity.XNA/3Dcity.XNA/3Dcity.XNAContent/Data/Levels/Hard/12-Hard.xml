@@ -16,8 +16,8 @@
   <EnemyFrameDelta>0</EnemyFrameDelta>
   <EnemyFrameMinim>400</EnemyFrameMinim>
   <EnemyFrameRange>100</EnemyFrameRange>
-  <EnemySpeedNone>0</EnemySpeedNone>
-  <EnemySpeedWave>50</EnemySpeedWave>
+  <EnemySpeedNone>10</EnemySpeedNone>
+  <EnemySpeedWave>40</EnemySpeedWave>
   <EnemySpeedFast>50</EnemySpeedFast>
   <ExplodeDelay>90</ExplodeDelay>
 </LevelConfigData>
