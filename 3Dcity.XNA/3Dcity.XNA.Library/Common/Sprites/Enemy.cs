@@ -7,12 +7,19 @@ namespace WindowsGame.Common.Sprites
 {
 	public class Enemy : BaseSprite
 	{
+		private readonly Byte[] frameAngle;
 		private IList<Byte> blinkFrame;
+		private Vector2[] origins;
+		private Single[] rotates;
+		private Boolean enemyRotate;
 
 		public Enemy()
 		{
 			FrameDelay = new UInt16[Constants.MAX_ENEMYS_FRAME];
 			FrameImage = new Byte[] { 0, 0, 1, 2, 3, 4, 5, 6, 7, 7, 7, 7, 7 };
+			frameAngle = new Byte[] { 0, 1, 1, 2, 2, 3, 3, 0 };
+			origins = GetOrigins();
+			rotates = GetRotates();
 		}
 
 		public void SetBlinkd(Boolean enemyBlink)
@@ -36,6 +43,7 @@ namespace WindowsGame.Common.Sprites
 			FrameIndex = 0;
 			FrameTimer = 0;
 			EnemyLaunch = false;
+			enemyRotate = false;
 		}
 
 		public void SetDeath()
@@ -122,7 +130,8 @@ namespace WindowsGame.Common.Sprites
 				return;
 			}
 
-			base.Draw();
+			Byte index = enemyRotate ? frameAngle[FrameIndex] : (Byte) 0;
+			base.DrawRotate(rotates[index], origins[index]);
 		}
 
 		public void Dead()
@@ -146,6 +155,25 @@ namespace WindowsGame.Common.Sprites
 		public void SetSlotID(Byte slotID)
 		{
 			SlotID = (SByte)slotID;
+		}
+
+		private Vector2[] GetOrigins()
+		{
+			origins = new Vector2[Constants.MAX_ROTATE];
+			origins[(Byte)RotateType.None] = new Vector2(0, 0);
+			origins[(Byte)RotateType.Rght] = new Vector2(0, Constants.EnemySize);
+			origins[(Byte)RotateType.Down] = new Vector2(Constants.EnemySize, Constants.EnemySize);
+			origins[(Byte)RotateType.Left] = new Vector2(Constants.EnemySize, 0);
+			return origins;
+		}
+		private Single[] GetRotates()
+		{
+			rotates = new Single[Constants.MAX_ROTATE];
+			rotates[(Byte)RotateType.None] = MathHelper.ToRadians(0);
+			rotates[(Byte)RotateType.Rght] = MathHelper.ToRadians(90);
+			rotates[(Byte)RotateType.Down] = MathHelper.ToRadians(180);
+			rotates[(Byte)RotateType.Left] = MathHelper.ToRadians(270);
+			return rotates;
 		}
 
 		public SByte SlotID { get; private set; }
