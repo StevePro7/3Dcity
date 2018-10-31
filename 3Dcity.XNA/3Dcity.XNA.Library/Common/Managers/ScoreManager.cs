@@ -150,7 +150,7 @@ namespace WindowsGame.Common.Managers
 				if (MissesTotal > 0)
 				{
 					ResetMisses();
-					MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Bonus);
+					MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Extra);
 				}
 			}
 
