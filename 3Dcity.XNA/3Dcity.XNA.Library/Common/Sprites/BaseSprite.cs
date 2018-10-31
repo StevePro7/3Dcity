@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using WindowsGame.Common.Static;
 using WindowsGame.Master;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace WindowsGame.Common.Sprites
 {
@@ -98,10 +99,18 @@ namespace WindowsGame.Common.Sprites
 		{
 			Draw(FrameIndex);
 		}
+		protected void DrawRotate(Single rotate, Vector2 origin)
+		{
+			DrawRotate(FrameIndex, rotate, origin);
+		}
 
-		protected virtual void Draw(Byte theFrameIndex)
+		private void Draw(Byte theFrameIndex)
 		{
 			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, Position, rectangles[theFrameIndex], Color.White);
+		}
+		private void DrawRotate(Byte theFrameIndex, Single rotate, Vector2 origin)
+		{
+			Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, Position, rectangles[theFrameIndex], Color.White, rotate, origin, 1.0f, SpriteEffects.None, 1.0f);
 		}
 
 		public void SetID(Byte index)

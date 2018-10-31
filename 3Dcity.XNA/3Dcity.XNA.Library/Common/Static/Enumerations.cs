@@ -36,6 +36,14 @@
 		Fast = 2
 	}
 
+	public enum RotateType
+	{
+		None = 0,
+		Rght = 1,
+		Down = 2,
+		Left = 3,
+	}
+
 	public enum SpawnType
 	{
 		Repeat,
