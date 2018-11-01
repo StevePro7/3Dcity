@@ -134,23 +134,24 @@ namespace WindowsGame.Common.Managers
 			EnemyTotalText = EnemyTotal.ToString().PadLeft(3, '0');
 			EnemyPercentage = 0.0f;
 
+			// TODO delete this as validation already done prior to export!
 			// TODO Validate enemy frame proportions add to 100%
-			if (100 == levelConfigData.EnemySpeedNone + levelConfigData.EnemySpeedWave + levelConfigData.EnemySpeedFast)
-			{
-				return;
-			}
+			//if (100 == levelConfigData.EnemySpeedNone + levelConfigData.EnemySpeedWave + levelConfigData.EnemySpeedFast)
+			//{
+			//    return;
+			//}
 
-			//TODO Maybe have a better validation algorithm if totals > 100%
-			if (levelConfigData.EnemySpeedWave > 100)
-			{
-				levelConfigData.EnemySpeedWave = 50;
-			}
-			if (levelConfigData.EnemySpeedFast > 100)
-			{
-				levelConfigData.EnemySpeedFast /= 50;
-			}
-			// Otherwise halve the values and subtract from 100%.
-			levelConfigData.EnemySpeedNone = (Byte)(100 - (levelConfigData.EnemySpeedWave + levelConfigData.EnemySpeedFast));
+			////TODO Maybe have a better validation algorithm if totals > 100%
+			//if (levelConfigData.EnemySpeedWave > 100)
+			//{
+			//    levelConfigData.EnemySpeedWave = 50;
+			//}
+			//if (levelConfigData.EnemySpeedFast > 100)
+			//{
+			//    levelConfigData.EnemySpeedFast /= 50;
+			//}
+			//// Otherwise halve the values and subtract from 100%.
+			//levelConfigData.EnemySpeedNone = (Byte)(100 - (levelConfigData.EnemySpeedWave + levelConfigData.EnemySpeedFast));
 		}
 
 		public void Clear()
@@ -357,9 +358,7 @@ namespace WindowsGame.Common.Managers
 		{
 			for (Byte index = 0; index < EnemyTotal; index++)
 			{
-				Byte percent = (Byte) MyGame.Manager.RandomManager.Next(100);
-				Boolean rotate = percent < levelConfigData.EnemyRotates;
-				enemyRotates.Add(rotate);
+				enemyRotates.Add(false);
 			}
 		}
 
