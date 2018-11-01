@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LevelConfigData>
+  <LevelNo>9</LevelNo>
+  <LevelType>Hard</LevelType>
+  <LevelName>REVI</LevelName>
+  <BonusLevel>false</BonusLevel>
+  <GridDelay>250</GridDelay>
+  <BulletMaxim>3</BulletMaxim>
+  <BulletFrame>150</BulletFrame>
+  <BulletShoot>300</BulletShoot>
+  <EnemySpawn>5</EnemySpawn>
+  <EnemyTotal>100</EnemyTotal>
+  <EnemyStartDelay>1125</EnemyStartDelay>
+  <EnemyStartDelta>125</EnemyStartDelta>
+  <EnemyFrameDelay>850</EnemyFrameDelay>
+  <EnemyFrameDelta>50</EnemyFrameDelta>
+  <EnemyFrameMinim>720</EnemyFrameMinim>
+  <EnemyFrameRange>65</EnemyFrameRange>
+  <EnemySpeedNone>50</EnemySpeedNone>
+  <EnemySpeedWave>25</EnemySpeedWave>
+  <EnemySpeedFast>25</EnemySpeedFast>
+  <EnemyRotates>25</EnemyRotates>
+  <ExplodeDelay>110</ExplodeDelay>
+</LevelConfigData>
