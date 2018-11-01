@@ -1,5 +1,10 @@
 # 3Dcity
 
+01/11/2018
+For the first group of five questions: £100 -> £200 -> £300 -> £500 -> £1,000
+For the second group of five questions: £2,000 -> £4,000 -> £8,000 -> £16,000 -> £32,000
+For the final group of five questions: £64,000 -> £125,000 -> £250,000 -> £500,000 -> £1,000,000
+
 28/10/2018
 Reference to landscape left orientation only:
 https://github.com/MonoGame/MonoGame/issues/4064
