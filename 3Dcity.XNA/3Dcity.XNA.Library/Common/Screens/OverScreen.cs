@@ -36,6 +36,7 @@ namespace WindowsGame.Common.Screens
 
 			Killspace = MyGame.Manager.StateManager.KillSpace;
 			MyGame.Manager.SpriteManager.KillEnemy.SetPosition(Killspace);
+			MyGame.Manager.SoundManager.StopMusic();
 		}
 
 		public override Int32 Update(GameTime gameTime)
