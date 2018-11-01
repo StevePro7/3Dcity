@@ -356,9 +356,26 @@ namespace WindowsGame.Common.Managers
 		}
 		private void ResetEnemyRotates()
 		{
-			for (Byte index = 0; index < EnemyTotal; index++)
+			Byte enemyTotal = levelConfigData.EnemyTotal;
+			for (Byte index = 0; index < enemyTotal; index++)
 			{
 				enemyRotates.Add(false);
+			}
+
+			const Byte first = 1;
+			Byte iterations = (Byte) (levelConfigData.EnemyRotates / 100.0f * enemyTotal);
+			for (Byte index = 0; index < iterations; index++)
+			{
+				while (true)
+				{
+					// Always want first [0th] enemy to be None so random starts >= first.
+					Byte key = (Byte)MyGame.Manager.RandomManager.Next(first, enemyTotal);
+					if (!enemyRotates[key])
+					{
+						enemyRotates[key] = true;
+						break;
+					}
+				}
 			}
 		}
 
