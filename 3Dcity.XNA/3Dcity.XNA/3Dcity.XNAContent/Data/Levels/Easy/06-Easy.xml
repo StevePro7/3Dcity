@@ -19,5 +19,6 @@
   <EnemySpeedNone>55</EnemySpeedNone>
   <EnemySpeedWave>35</EnemySpeedWave>
   <EnemySpeedFast>10</EnemySpeedFast>
+  <EnemyRotates>15</EnemyRotates>
   <ExplodeDelay>120</ExplodeDelay>
 </LevelConfigData>
