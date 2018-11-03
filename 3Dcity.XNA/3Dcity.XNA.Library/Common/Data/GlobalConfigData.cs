@@ -8,15 +8,12 @@ namespace WindowsGame.Common.Data
 		public ScreenType ScreenType;
 		public Byte LevelNo;
 		public LevelType LevelType;
-		//public Byte LevelIndex;		// TODO delete - always use 1-based LevelNo to match Levels files
 		public Byte FramesPerSecond;
 		public Byte MaximLevel;
 		public Byte MaxBullets;
 		public Boolean LoadAudio;
 		public Boolean PlayAudio;
 		public UInt16 StarDelay;
-		//public UInt16 GridDelay;		// TODO delete	
-		public UInt16 ExplodeDelay;
 		public UInt16 SplashDelay;
 		public UInt16 SelectDelay;
 		public UInt16 IntroDelay;
@@ -38,14 +35,6 @@ namespace WindowsGame.Common.Data
 		public Boolean RenderIcon;
 		public Boolean CoolMusic;
 		public Boolean BossBig;
-		public UInt16 TargetX;
-		public UInt16 TargetY;
-		public UInt16 EnemysX;
-		public UInt16 EnemysY;
-		//public Byte EnemyFrame;
-		//public Byte EnemyIndex;
-		//public Byte EnemySpawn;
-		//public Byte EnemyTotal;
 		public Boolean IsGodMode;
 		public Boolean UnlimitedCont;
 		public Boolean BackBorders;

@@ -53,12 +53,6 @@ namespace WindowsGame.Common.Screens
 			IsMoving = false;
 			Flag1 = Flag2 = false;
 			Lefts = Right = false;
-
-			//TODO delete
-			//UInt16 targetX = MyGame.Manager.ConfigManager.GlobalConfigData.TargetX;
-			//UInt16 targetY = MyGame.Manager.ConfigManager.GlobalConfigData.TargetY;
-			//TargetPosition = new Vector2(targetX, targetY);
-			//MyGame.Manager.SpriteManager.LargeTarget.SetPosition(TargetPosition);
 		}
 
 		protected void UpdateFlag1(GameTime gameTime)

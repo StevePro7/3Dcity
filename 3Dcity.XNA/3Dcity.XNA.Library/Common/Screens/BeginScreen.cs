@@ -32,13 +32,6 @@ namespace WindowsGame.Common.Screens
 		public override void LoadContent()
 		{
 			outputPos = MyGame.Manager.TextManager.GetTextPosition(0, 4);
-			GlobalConfigData data = MyGame.Manager.ConfigManager.GlobalConfigData;
-			enemysPos = new Vector2(data.EnemysX, data.EnemysY);
-
-			Single x = (120 - 64) / 2.0f + data.EnemysX;
-			Single y = (120 - 64) / 2.0f + data.EnemysY;
-			targetPos = new Vector2(x - 0, y - 0);
-
 			enemysRect = MyGame.Manager.ImageManager.EnemyRectangles[7];
 			targetRect = MyGame.Manager.ImageManager.TargetLargeRectangle;
 			base.LoadContent();
