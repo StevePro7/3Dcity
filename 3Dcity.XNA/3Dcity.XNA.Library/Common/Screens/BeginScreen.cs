@@ -9,8 +9,6 @@ namespace WindowsGame.Common.Screens
 	public class BeginScreen : BaseScreen, IScreen
 	{
 		private Vector2 outputPos;
-		private Vector2 enemysPos;
-		private Vector2 targetPos;
 		private Rectangle enemysRect;
 		private Rectangle targetRect;
 		private String[] outputText;

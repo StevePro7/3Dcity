@@ -13,8 +13,8 @@ namespace WindowsGame.Common.Sprites
 		private Single[] rotates;
 		private Boolean enemyRotate;
 		private MoveType moveType;
-		private Direction currDirection;
-		private Direction prevDirection;
+		//private Direction currDirection;
+		//private Direction prevDirection;
 		private Boolean isFlying;
 		private Single pixel;
 		private Vector2 begin, start;
@@ -51,7 +51,8 @@ namespace WindowsGame.Common.Sprites
 			EnemyLaunch = false;
 			enemyRotate = false;
 			moveType = MoveType.None;
-			currDirection = prevDirection = Direction.None;
+			//currDirection = Direction.None;
+			//prevDirection = Direction.None;
 			isFlying = false;
 			begin = start = Vector2.Zero;
 		}
