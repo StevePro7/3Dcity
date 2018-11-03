@@ -17,6 +17,7 @@ namespace WindowsGame.Common.Sprites
 		private Direction prevDirection;
 		private Boolean isFlying;
 		private Single pixel;
+		private Vector2 begin, start;
 
 		public Enemy()
 		{
@@ -52,6 +53,7 @@ namespace WindowsGame.Common.Sprites
 			moveType = MoveType.None;
 			currDirection = prevDirection = Direction.None;
 			isFlying = false;
+			begin = start = Vector2.Zero;
 		}
 
 		public void SetDeath()
@@ -94,6 +96,7 @@ namespace WindowsGame.Common.Sprites
 			moveType = theMoveType;
 			isFlying = false;
 			pixel = 8.0f;
+			begin = start = Vector2.Zero;
 		}
 
 		public void Start(UInt16 startFrameDelay)
@@ -116,13 +119,13 @@ namespace WindowsGame.Common.Sprites
 			//{
 			if (isFlying)
 			{
-				Vector2 aaaa = new Vector2(0, -1);
+				//Vector2 start = new Vector2(0, -1);
 				Single delta = (Single) gameTime.ElapsedGameTime.TotalSeconds;
 				Single mover = (Single) (pixel * delta * 10);
-				aaaa *= mover;
+				begin = start * mover;
 				Vector2 position = Position;
 				//position.X += mover;
-				position += aaaa;
+				position += begin;
 				if (position.X < Bounds.Left || position.X > Bounds.Right || position.Y < Bounds.Top || position.Y > Bounds.Bottom)
 				{
 					pixel = -pixel;
@@ -158,6 +161,14 @@ namespace WindowsGame.Common.Sprites
 				//if (MoveType.None != moveType)
 				{
 					isFlying = FrameIndex == 1 || FrameIndex == 2 || FrameIndex == 3 || FrameIndex == 4 || FrameIndex == 5;	// Hard
+					if (1 == FrameIndex)
+					{
+						begin = start = new Vector2(1, 0);
+					}
+					if (3 == FrameIndex)
+					{
+						begin = start = new Vector2(0, 1);
+					}
 					//isFlying = FrameIndex < 6;
 					//isFlying = FrameIndex == 2 || FrameIndex == 3 || FrameIndex == 4 || FrameIndex == 5;
 				}
