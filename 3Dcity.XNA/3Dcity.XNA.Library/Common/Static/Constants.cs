@@ -35,6 +35,7 @@ namespace WindowsGame.Common.Static
 		public const Byte MAX_BORDER = 4;
 		public const Byte MAX_CHEATS = 5;
 		public const Byte MAX_ROTATE = 4;
+		public const Byte MAX_MOVES = 4;
 
 		public const Byte MAX_ENEMYS_TOTAL = 250;
 		public const Byte MAX_ENEMYS_SPAWN = 8;

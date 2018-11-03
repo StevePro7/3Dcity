@@ -50,12 +50,21 @@
 		Spaced
 	}
 
+	public enum Direction
+	{
+		None = 0,
+		Left = 1,
+		Right = 2,
+		Up = 3,
+		Down = 4
+	}
+
 	public enum MoveType
 	{
-		None,
-		Horz,
-		Vert,
-		Both
+		None = 0,
+		Horz = 1,
+		Vert = 2,
+		Both = 3,
 	}
 
 	public enum ShipType

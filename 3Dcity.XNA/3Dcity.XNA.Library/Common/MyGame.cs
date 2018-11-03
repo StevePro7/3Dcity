@@ -66,6 +66,7 @@ namespace WindowsGame.Common
 			Manager.ExplosionManager.Initialize();
 			Manager.IconManager.Initialize();
 			Manager.LevelManager.Initialize();
+			Manager.MoverManager.Initialize();
 			Manager.RandomManager.Initialize();
 			Manager.RenderManager.Initialize();
 			Manager.ScoreManager.Initialize();
