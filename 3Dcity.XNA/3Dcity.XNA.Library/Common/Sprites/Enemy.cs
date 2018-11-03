@@ -93,7 +93,7 @@ namespace WindowsGame.Common.Sprites
 			enemyRotate = doesEnemyRotate;
 			moveType = theMoveType;
 			isFlying = false;
-			pixel = 2.0f;
+			pixel = 8.0f;
 		}
 
 		public void Start(UInt16 startFrameDelay)
@@ -116,12 +116,14 @@ namespace WindowsGame.Common.Sprites
 			//{
 			if (isFlying)
 			{
-
+				Vector2 aaaa = new Vector2(0, -1);
 				Single delta = (Single) gameTime.ElapsedGameTime.TotalSeconds;
-				Single mover = (Single) (pixel*delta*10);
+				Single mover = (Single) (pixel * delta * 10);
+				aaaa *= mover;
 				Vector2 position = Position;
-				position.X += mover;
-				if (position.X >= Bounds.Right || position.X <= Bounds.Left)
+				//position.X += mover;
+				position += aaaa;
+				if (position.X < Bounds.Left || position.X > Bounds.Right || position.Y < Bounds.Top || position.Y > Bounds.Bottom)
 				{
 					pixel = -pixel;
 					//position.X = Bounds.Right;
@@ -137,13 +139,6 @@ namespace WindowsGame.Common.Sprites
 				FrameTimer -= frameDelay;
 				FrameCount++;
 
-				isFlying = false;
-				if (MoveType.None != moveType)
-				{
-					isFlying = FrameIndex == 1 ||FrameIndex == 2 || FrameIndex == 3 || FrameIndex == 4 || FrameIndex == 5;	// Hard
-					//isFlying = FrameIndex == 2 || FrameIndex == 3 || FrameIndex == 4 || FrameIndex == 5;
-				}
-
 				// Signal when enemy first visible
 				if (1 == FrameCount)
 				{
@@ -154,6 +149,17 @@ namespace WindowsGame.Common.Sprites
 				if (FrameCount >= MaxFrames)
 				{
 					EnemyType = EnemyType.Test;
+					return;
+				}
+
+
+				FrameIndex = FrameImage[FrameCount];
+				isFlying = false;
+				//if (MoveType.None != moveType)
+				{
+					isFlying = FrameIndex == 1 || FrameIndex == 2 || FrameIndex == 3 || FrameIndex == 4 || FrameIndex == 5;	// Hard
+					//isFlying = FrameIndex < 6;
+					//isFlying = FrameIndex == 2 || FrameIndex == 3 || FrameIndex == 4 || FrameIndex == 5;
 				}
 			}
 		}
