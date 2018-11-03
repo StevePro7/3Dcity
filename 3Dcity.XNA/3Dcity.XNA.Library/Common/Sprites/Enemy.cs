@@ -15,6 +15,7 @@ namespace WindowsGame.Common.Sprites
 		private MoveType moveType;
 		private Direction currDirection;
 		private Direction prevDirection;
+		private Single pixel;
 
 		public Enemy()
 		{
@@ -89,6 +90,7 @@ namespace WindowsGame.Common.Sprites
 			EnemyLaunch = false;
 			enemyRotate = doesEnemyRotate;
 			moveType = theMoveType;
+			pixel = 2.0f;
 		}
 
 		public void Start(UInt16 startFrameDelay)
@@ -105,6 +107,23 @@ namespace WindowsGame.Common.Sprites
 
 			FrameTimer += (UInt16)gameTime.ElapsedGameTime.Milliseconds;
 			FrameIndex = FrameImage[FrameCount];
+
+			// stevepro
+			if (FrameIndex == 2 || FrameIndex == 3 || FrameIndex == 4 || FrameIndex == 5)
+			{
+				Single delta = (Single)gameTime.ElapsedGameTime.TotalSeconds;
+				Single mover = (Single)(pixel * delta * 10); 
+				Vector2 position = Position;
+				position.X += mover;
+				if (position.X >= Bounds.Right || position.X <= Bounds.Left)
+				{
+					pixel = -pixel;
+					//position.X = Bounds.Right;
+				}
+
+				Position = position;
+			}
+
 			UInt16 frameDelay = FrameDelay[FrameCount];
 			if (FrameTimer >= frameDelay)
 			{
