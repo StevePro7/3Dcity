@@ -12,6 +12,9 @@ namespace WindowsGame.Common.Sprites
 		private Vector2[] origins;
 		private Single[] rotates;
 		private Boolean enemyRotate;
+		private MoveType moveType;
+		private Direction currDirection;
+		private Direction prevDirection;
 
 		public Enemy()
 		{
@@ -44,6 +47,8 @@ namespace WindowsGame.Common.Sprites
 			FrameTimer = 0;
 			EnemyLaunch = false;
 			enemyRotate = false;
+			moveType = MoveType.None;
+			currDirection = prevDirection = Direction.None;
 		}
 
 		public void SetDeath()
@@ -54,7 +59,7 @@ namespace WindowsGame.Common.Sprites
 			FrameIndex = FrameImage[FrameCount];
 		}
 
-		public void Spawn(Byte slotID, UInt16 frameDelay, Vector2 position, Rectangle bounds, LevelType levelType, Boolean enemyRotate)
+		public void Spawn(Byte slotID, UInt16 frameDelay, Vector2 position, Rectangle bounds, LevelType levelType, Boolean doesEnemyRotate, MoveType theMoveType)
 		{
 			SetSlotID(slotID);
 
@@ -82,7 +87,8 @@ namespace WindowsGame.Common.Sprites
 			FrameTimer = 0;
 			FrameIndex = FrameImage[FrameCount];
 			EnemyLaunch = false;
-			this.enemyRotate = enemyRotate;
+			enemyRotate = doesEnemyRotate;
+			moveType = theMoveType;
 		}
 
 		public void Start(UInt16 startFrameDelay)

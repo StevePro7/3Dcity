@@ -44,6 +44,7 @@ namespace WindowsGame.Common.Managers
 		private LevelConfigData levelConfigData;
 		private IDictionary<Byte, UInt16> enemyDelays;
 		private IList<Boolean> enemyRotates;
+		private IList<MoveType> enemyMoves;
 		private Byte maxEnemySpawn;
 		private Vector2[] progressPosition;
 
@@ -75,6 +76,8 @@ namespace WindowsGame.Common.Managers
 
 			enemyDelays = new Dictionary<Byte, UInt16>(Constants.MAX_ENEMYS_TOTAL);
 			enemyRotates = new List<Boolean>(Constants.MAX_ENEMYS_TOTAL);
+			enemyMoves = new List<MoveType>(Constants.MAX_ENEMYS_TOTAL);
+
 			progressPosition = new Vector2[3];
 			progressPosition[0] = MyGame.Manager.TextManager.GetTextPosition(25, 23);
 			progressPosition[1] = MyGame.Manager.TextManager.GetTextPosition(28, 23);
@@ -127,31 +130,13 @@ namespace WindowsGame.Common.Managers
 			Clear();
 			enemyDelays.Clear();
 			enemyRotates.Clear();
+			enemyMoves.Clear();
 
 			EnemyStart = 0;
 			EnemySpawn = 0;
 			EnemyStartText = EnemyStart.ToString().PadLeft(3, '0');
 			EnemyTotalText = EnemyTotal.ToString().PadLeft(3, '0');
 			EnemyPercentage = 0.0f;
-
-			// TODO delete this as validation already done prior to export!
-			// TODO Validate enemy frame proportions add to 100%
-			//if (100 == levelConfigData.EnemySpeedNone + levelConfigData.EnemySpeedWave + levelConfigData.EnemySpeedFast)
-			//{
-			//    return;
-			//}
-
-			////TODO Maybe have a better validation algorithm if totals > 100%
-			//if (levelConfigData.EnemySpeedWave > 100)
-			//{
-			//    levelConfigData.EnemySpeedWave = 50;
-			//}
-			//if (levelConfigData.EnemySpeedFast > 100)
-			//{
-			//    levelConfigData.EnemySpeedFast /= 50;
-			//}
-			//// Otherwise halve the values and subtract from 100%.
-			//levelConfigData.EnemySpeedNone = (Byte)(100 - (levelConfigData.EnemySpeedWave + levelConfigData.EnemySpeedFast));
 		}
 
 		public void Clear()
@@ -165,7 +150,10 @@ namespace WindowsGame.Common.Managers
 			// Calculate frame delays for all enemy ships.
 			MyGame.Manager.DelayManager.ResetEnemyDelays(enemyDelays, levelConfigData, EnemyTotal);
 			MyGame.Manager.DelayManager.CalcdEnemyDelays(enemyDelays, levelConfigData, EnemyTotal);
+
+			// Reset rotates and moves.
 			ResetEnemyRotates();
+			ResetEnemyMoves();
 
 			for (Byte index = 0; index < maxEnemySpawn; index++)
 			{
@@ -188,6 +176,7 @@ namespace WindowsGame.Common.Managers
 		{
 			UInt16 frameDelay = enemyDelays[EnemySpawn];
 			Boolean enemyRotate = enemyRotates[EnemySpawn];
+			MoveType moveType = enemyMoves[EnemySpawn];
 
 			Byte slotID;
 			while (true)
@@ -217,7 +206,7 @@ namespace WindowsGame.Common.Managers
 			position.Y = randomY + offsetY + Constants.BorderSize;
 
 			Rectangle bounds = EnemyBounds[slotID];
-			enemy.Spawn(slotID, frameDelay, position, bounds, levelType, enemyRotate);
+			enemy.Spawn(slotID, frameDelay, position, bounds, levelType, enemyRotate, moveType);
 			EnemyDict.Add(slotID, enemy);
 
 			EnemySpawn++;
@@ -376,6 +365,14 @@ namespace WindowsGame.Common.Managers
 						break;
 					}
 				}
+			}
+		}
+		private void ResetEnemyMoves()
+		{
+			Byte enemyTotal = levelConfigData.EnemyTotal;
+			for (Byte index = 0; index < enemyTotal; index++)
+			{
+				enemyMoves.Add(MoveType.None);
 			}
 		}
 
