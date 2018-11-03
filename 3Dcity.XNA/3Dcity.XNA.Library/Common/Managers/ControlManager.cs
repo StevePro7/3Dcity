@@ -20,7 +20,7 @@ namespace WindowsGame.Common.Managers
 		Boolean CheckStatusBar(Vector2 position);
 		Boolean CheckLeftsSide(Vector2 position);
 		Boolean CheckRightSide(Vector2 position);
-		Boolean CheckDeclerate(Vector2 position);
+		Boolean CheckAcclerate(Vector2 position);
 
 		Boolean CheckPosInRect(Vector2 position, Rectangle collision);
 		Vector2 ClampPosInRect(Vector2 position, Rectangle bounds);
@@ -40,7 +40,7 @@ namespace WindowsGame.Common.Managers
 		private Rectangle statusBarCollision;
 		private Rectangle leftsSideCollision;
 		private Rectangle rightSideCollision;
-		private Rectangle declerateCollision;
+		private Rectangle acclerateCollision;
 
 		public void Initialize()
 		{
@@ -72,11 +72,8 @@ namespace WindowsGame.Common.Managers
 			leftsSideCollision = GetMidSectionCollision(0, 180);
 			rightSideCollision = GetMidSectionCollision(410, 180);
 
-			//declerateCollision = {X:600 Y:160 Width:200 Height:160}
-			declerateCollision = new Rectangle(Constants.ScreenWide - Constants.FIRE_OFFSET_X, Constants.FIRE_OFFSET_Y + Constants.GameOffsetY, Constants.FIRE_OFFSET_X, Constants.FIRE_OFFSET_Y);
-
-			//declerateCollision = {X:600 Y:260 Width:200 Height:60}
-			//declerateCollision = new Rectangle(Constants.ScreenWide - Constants.FIRE_OFFSET_X, Constants.HALFWAY_DOWN - Constants.TextsSize, Constants.FIRE_OFFSET_X, 3 * Constants.TextsSize);
+			//acclerateCollision = {X:600 Y:160 Width:200 Height:160}
+			acclerateCollision = new Rectangle(Constants.ScreenWide - Constants.FIRE_OFFSET_X, Constants.FIRE_OFFSET_Y + Constants.GameOffsetY, Constants.FIRE_OFFSET_X, Constants.FIRE_OFFSET_Y);
 		}
 
 		public Single CheckJoyPadTiny(Vector2 position)
@@ -212,11 +209,9 @@ namespace WindowsGame.Common.Managers
 			return CheckPosInRect(position, rightSideCollision);
 		}
 
-		//TODO rename CheckDeclerate
-		//public Boolean CheckBoostFast(Vector2 position)
-		public Boolean CheckDeclerate(Vector2 position)
+		public Boolean CheckAcclerate(Vector2 position)
 		{
-			return CheckPosInRect(position, declerateCollision);
+			return CheckPosInRect(position, acclerateCollision);
 		}
 
 		private static Rectangle GetMidSectionCollision(UInt16 lft, UInt16 top)

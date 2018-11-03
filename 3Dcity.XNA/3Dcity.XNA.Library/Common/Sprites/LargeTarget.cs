@@ -24,11 +24,11 @@ namespace WindowsGame.Common.Sprites
 			pixel = thePixel;
 		}
 
-		public void Update(GameTime gameTime, Boolean slow, Single horz, Single vert)
+		public void Update(GameTime gameTime, Boolean fast, Single horz, Single vert)
 		{
 			Vector2 position = Position;
 			Single mult = 1.0f;
-			if (slow)
+			if (fast)
 			{
 				mult *= 2.0f;
 			}

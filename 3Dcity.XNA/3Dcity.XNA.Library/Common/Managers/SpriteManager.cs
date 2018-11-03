@@ -11,7 +11,7 @@ namespace WindowsGame.Common.Managers
 		void LoadContent();
 		void Reset(LevelType levelType, Byte levelNo);
 
-		void SetMovement(Boolean slow, Single horz, Single vert);
+		void SetMovement(Boolean fast, Single horz, Single vert);
 		void SetPosition(SpriteType type, Vector2 position);
 		void Update(GameTime gameTime);
 
@@ -29,7 +29,7 @@ namespace WindowsGame.Common.Managers
 		private Vector2 smallPosition;
 		private Vector2 largePosition;
 		private Single targetHorz, targetVert;
-		private Boolean targetSlow;
+		private Boolean targetFast;
 
 		public void Initialize()
 		{
@@ -40,7 +40,7 @@ namespace WindowsGame.Common.Managers
 			KillEnemy = new Enemy();
 			KillEnemy.SetDeath();
 			KillEnemy.SetBlinkd(false);
-			targetSlow = false;
+			targetFast = false;
 		}
 
 		public void LoadContent()
@@ -48,7 +48,7 @@ namespace WindowsGame.Common.Managers
 			LargeTarget.LoadContent(MyGame.Manager.ImageManager.TargetLargeRectangle);
 			SmallTarget.LoadContent(MyGame.Manager.ImageManager.TargetSmallRectangle);
 			KillEnemy.LoadContent(MyGame.Manager.ImageManager.EnemyRectangles);
-			targetSlow = false;
+			targetFast = false;
 		}
 
 		public void Reset(LevelType levelType, Byte levelNo)
@@ -64,9 +64,9 @@ namespace WindowsGame.Common.Managers
 			//LargeTarget.SetPosition(largePosition);
 		}
 
-		public void SetMovement(Boolean slow, Single horz, Single vert)
+		public void SetMovement(Boolean fast, Single horz, Single vert)
 		{
-			targetSlow = slow;
+			targetFast = fast;
 			targetHorz = horz;
 			targetVert = vert;
 		}
@@ -87,7 +87,7 @@ namespace WindowsGame.Common.Managers
 
 		public void Update(GameTime gameTime)
 		{
-			LargeTarget.Update(gameTime, targetSlow, targetHorz, targetVert);
+			LargeTarget.Update(gameTime, targetFast, targetHorz, targetVert);
 			SmallTarget.Update(gameTime, targetHorz, targetVert);
 		}
 

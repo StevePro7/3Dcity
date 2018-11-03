@@ -69,12 +69,12 @@ namespace WindowsGame.Common.Inputs
 			return keyboardInput.KeyHold(Keys.Escape) || joystickInput.JoyHold(Buttons.Back) || joystickInput.JoyHold(Buttons.B);
 		}
 
-		public Boolean Decelerate()
+		public Boolean Accelerate()
 		{
 			// Mouse.
 			if (mouseScreenInput.LeftButtonPress())
 			{
-				Boolean test = controlManager.CheckDeclerate(mouseScreenInput.MousePosition);
+				Boolean test = controlManager.CheckAcclerate(mouseScreenInput.MousePosition);
 				if (test)
 				{
 					return true;
