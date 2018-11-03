@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LevelConfigData>
+  <LevelNo>7</LevelNo>
+  <LevelType>Hard</LevelType>
+  <LevelName>LUCASIA</LevelName>
+  <BonusLevel>false</BonusLevel>
+  <GridDelay>250</GridDelay>
+  <BulletMaxim>2</BulletMaxim>
+  <BulletFrame>200</BulletFrame>
+  <BulletShoot>600</BulletShoot>
+  <EnemySpawn>5</EnemySpawn>
+  <EnemyTotal>50</EnemyTotal>
+  <EnemyStartDelay>1250</EnemyStartDelay>
+  <EnemyStartDelta>125</EnemyStartDelta>
+  <EnemyFrameDelay>900</EnemyFrameDelay>
+  <EnemyFrameDelta>50</EnemyFrameDelta>
+  <EnemyFrameMinim>770</EnemyFrameMinim>
+  <EnemyFrameRange>65</EnemyFrameRange>
+  <EnemySpeedNone>60</EnemySpeedNone>
+  <EnemySpeedWave>20</EnemySpeedWave>
+  <EnemySpeedFast>20</EnemySpeedFast>
+  <EnemyRotates>20</EnemyRotates>
+  <ExplodeDelay>110</ExplodeDelay>
+</LevelConfigData>
