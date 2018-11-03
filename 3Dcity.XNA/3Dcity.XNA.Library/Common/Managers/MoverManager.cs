@@ -8,6 +8,7 @@ namespace WindowsGame.Common.Managers
 	public interface IMoverManager
 	{
 		void Initialize();
+		void ResetEnemyMoves(IList<MoveType> enemyMoves, Byte percentage, Byte enemyTotal, MoveType moveType);
 
 		IList<Direction>[] DirectionList { get; }
 		Vector2[] UnitVelocityList { get; }
@@ -32,6 +33,25 @@ namespace WindowsGame.Common.Managers
 			UnitVelocityList[(Byte)Direction.Right] = new Vector2(1, 0);
 			UnitVelocityList[(Byte)Direction.Up] = new Vector2(0, -1);
 			UnitVelocityList[(Byte)Direction.Down] = new Vector2(0, 1);
+		}
+
+		public void ResetEnemyMoves(IList<MoveType> enemyMoves, Byte percentage, Byte enemyTotal, MoveType moveType)
+		{
+			const Byte first = 1;
+			Byte iterations = (Byte)(percentage / 100.0f * enemyTotal);
+			for (Byte index = 0; index < iterations; index++)
+			{
+				while (true)
+				{
+					// Always want first [0th] enemy to be None so random starts >= first.
+					Byte key = (Byte)MyGame.Manager.RandomManager.Next(first, enemyTotal);
+					if (MoveType.None == enemyMoves[key])
+					{
+						enemyMoves[key] = moveType;
+						break;
+					}
+				}
+			}
 		}
 
 		private static IList<Direction> GetHorzDirection()

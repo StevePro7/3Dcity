@@ -374,6 +374,10 @@ namespace WindowsGame.Common.Managers
 			{
 				enemyMoves.Add(MoveType.None);
 			}
+
+			MyGame.Manager.MoverManager.ResetEnemyMoves(enemyMoves, levelConfigData.EnemyMoverHorz, enemyTotal, MoveType.Horz);
+			MyGame.Manager.MoverManager.ResetEnemyMoves(enemyMoves, levelConfigData.EnemyMoverVert, enemyTotal, MoveType.Vert);
+			MyGame.Manager.MoverManager.ResetEnemyMoves(enemyMoves, levelConfigData.EnemyMoverBoth, enemyTotal, MoveType.Both);
 		}
 
 		public IList<Enemy> EnemyList { get; private set; }
