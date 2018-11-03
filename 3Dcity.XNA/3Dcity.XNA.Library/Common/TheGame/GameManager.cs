@@ -23,6 +23,7 @@ namespace WindowsGame.Common.TheGame
 		IIconManager IconManager { get; }
 		IImageManager ImageManager { get; }
 		IInputManager InputManager { get; }
+		IMoverManager MoverManager { get; }
 		ILevelManager LevelManager { get; }
 		IRandomManager RandomManager { get; }
 		IRenderManager RenderManager { get; }
@@ -61,6 +62,7 @@ namespace WindowsGame.Common.TheGame
 			IImageManager imageManager,
 			IInputManager inputManager,
 			ILevelManager levelManager,
+			IMoverManager moverManager,
 			IRandomManager randomManager,
 			IRenderManager renderManager,
 			IResolutionManager resolutionManager,
@@ -94,6 +96,7 @@ namespace WindowsGame.Common.TheGame
 			IconManager = iconManager;
 			InputManager = inputManager;
 			LevelManager = levelManager;
+			MoverManager = moverManager;
 			RandomManager = randomManager;
 			RenderManager = renderManager;
 			ResolutionManager = resolutionManager;
@@ -127,6 +130,7 @@ namespace WindowsGame.Common.TheGame
 		public IImageManager ImageManager { get; private set; }
 		public IInputManager InputManager { get; private set; }
 		public ILevelManager LevelManager { get; private set; }
+		public IMoverManager MoverManager { get; private set; }
 		public IRandomManager RandomManager { get; private set; }
 		public IRenderManager RenderManager { get; private set; }
 		public IResolutionManager ResolutionManager { get; private set; }

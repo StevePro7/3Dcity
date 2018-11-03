@@ -28,6 +28,7 @@ namespace WindowsGame.UnitTests
 		protected IImageManager ImageManager;
 		protected IInputManager InputManager;
 		protected ILevelManager LevelManager;
+		protected IMoverManager MoverManager;
 		protected IRandomManager RandomManager;
 		protected IRenderManager RenderManager;
 		protected IResolutionManager ResolutionManager;
@@ -65,6 +66,7 @@ namespace WindowsGame.UnitTests
 			ImageManager = MockRepository.GenerateStub<IImageManager>();
 			InputManager = MockRepository.GenerateStub<IInputManager>();
 			LevelManager = MockRepository.GenerateStub<ILevelManager>();
+			MoverManager = MockRepository.GenerateStub<IMoverManager>();
 			RandomManager = MockRepository.GenerateStub<IRandomManager>();
 			RenderManager = MockRepository.GenerateStub<IRenderManager>();
 			ResolutionManager = MockRepository.GenerateStub<IResolutionManager>();
@@ -102,6 +104,7 @@ namespace WindowsGame.UnitTests
 				ImageManager,
 				InputManager,
 				LevelManager,
+				MoverManager,
 				RandomManager,
 				RenderManager,
 				ResolutionManager,
@@ -143,6 +146,7 @@ namespace WindowsGame.UnitTests
 			ImageManager = null;
 			InputManager = null;
 			LevelManager = null;
+			MoverManager = null;
 			RandomManager = null;
 			RenderManager = null;
 			ResolutionManager = null;
