@@ -23,6 +23,10 @@ namespace WindowsGame.Common.Data
 		public Byte EnemySpeedNone;
 		public Byte EnemySpeedWave;
 		public Byte EnemySpeedFast;
+		public Byte EnemyMoverNone;
+		public Byte EnemyMoverHorz;
+		public Byte EnemyMoverVert;
+		public Byte EnemyMoverBoth;
 		public Byte EnemyRotates;
 		public UInt16 ExplodeDelay;
 	}
