@@ -547,7 +547,20 @@
       <Name>BeatScreen</Name>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Data\Config\GlobalConfigPROD.xml">
+      <Name>GlobalConfigPROD</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Config\GlobalConfigTEST.xml">
+      <Name>GlobalConfigTEST</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <ItemGroup>
     <None Include="Data\Levels\Test\99-Test.xml">
       <Name>99-Test</Name>
