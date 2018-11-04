@@ -16,6 +16,7 @@ namespace WindowsGame.Common.Managers
 		SongType GetGameMusic(Byte levelIndex);
 		//SongType GetBossMusic(Byte levelIndex);
 
+		void PlayGameMusic(SongType key);
 		void PlayMusic(SongType key);
 		void PlayMusic(SongType key, Boolean isRepeating);
 		void PauseMusic();
@@ -140,6 +141,11 @@ namespace WindowsGame.Common.Managers
 
 			SoundEffectInstance value = Assets.SoundEffectDictionary[key];
 			soundFactory.StopSoundEffect(value);
+		}
+
+		public void PlayGameMusic(SongType key)
+		{
+			PlayMusic(key, true);
 		}
 
 		public void PlayMusic(SongType key)
