@@ -48,8 +48,11 @@ namespace WindowsGame.SystemTests.Common.Managers
 
 			// Ensure that enemy frame delay proportions work.
 			LevelConfigData data = LevelManager.LevelConfigData;
-			Byte sum = (Byte) (data.EnemySpeedNone + data.EnemySpeedWave + data.EnemySpeedFast);
-			Assert.That(100, Is.EqualTo(sum));
+			Byte sum1 = (Byte) (data.EnemySpeedNone + data.EnemySpeedWave + data.EnemySpeedFast);
+			Assert.That(100, Is.EqualTo(sum1));
+
+			Byte sum2 = (Byte)(data.EnemyMoverNone + data.EnemyMoverHorz + data.EnemyMoverVert + data.EnemyMoverBoth);
+			Assert.That(100, Is.EqualTo(sum2));
 
 			PrintData(LevelManager.LevelConfigData);
 		}
