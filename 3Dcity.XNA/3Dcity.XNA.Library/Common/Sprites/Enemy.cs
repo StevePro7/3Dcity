@@ -12,12 +12,12 @@ namespace WindowsGame.Common.Sprites
 		private Vector2[] origins;
 		private Single[] rotates;
 		private Boolean enemyRotate;
-		private MoveType moveType;
-		//private Direction currDirection;
-		//private Direction prevDirection;
-		private Boolean isFlying;
-		private Single pixel;
-		private Vector2 begin, start;
+		private Vector2 unitVelocity;
+		private Vector2 moveVelocity;
+		//private MoveType moveType;
+		//private Boolean isFlying;
+		//private Single pixel;
+		//private Vector2 begin, start;
 
 		public Enemy()
 		{
@@ -49,12 +49,13 @@ namespace WindowsGame.Common.Sprites
 			FrameIndex = 0;
 			FrameTimer = 0;
 			EnemyLaunch = false;
+			EnemyChange = false;
 			enemyRotate = false;
-			moveType = MoveType.None;
-			//currDirection = Direction.None;
-			//prevDirection = Direction.None;
-			isFlying = false;
-			begin = start = Vector2.Zero;
+			MoveType = MoveType.None;
+			unitVelocity = Vector2.Zero;
+			moveVelocity = Vector2.Zero;
+			//isFlying = false;
+			//begin = start = Vector2.Zero;
 		}
 
 		public void SetDeath()
@@ -65,7 +66,7 @@ namespace WindowsGame.Common.Sprites
 			FrameIndex = FrameImage[FrameCount];
 		}
 
-		public void Spawn(Byte slotID, UInt16 frameDelay, Vector2 position, Rectangle bounds, LevelType levelType, Boolean doesEnemyRotate, MoveType theMoveType)
+		public void Spawn(Byte slotID, UInt16 frameDelay, Vector2 position, Rectangle bounds, LevelType levelType, Boolean doesEnemyRotate, MoveType moveType)
 		{
 			SetSlotID(slotID);
 
@@ -93,11 +94,14 @@ namespace WindowsGame.Common.Sprites
 			FrameTimer = 0;
 			FrameIndex = FrameImage[FrameCount];
 			EnemyLaunch = false;
+			EnemyChange = false;
 			enemyRotate = doesEnemyRotate;
-			moveType = theMoveType;
-			isFlying = false;
-			pixel = 8.0f;
-			begin = start = Vector2.Zero;
+			MoveType = moveType;
+			unitVelocity = Vector2.Zero;
+			moveVelocity = Vector2.Zero;
+			//isFlying = false;
+			//pixel = 8.0f;
+			//begin = start = Vector2.Zero;
 		}
 
 		public void Start(UInt16 startFrameDelay)
@@ -112,68 +116,57 @@ namespace WindowsGame.Common.Sprites
 				return;
 			}
 
+			EnemyChange = false;
 			FrameTimer += (UInt16)gameTime.ElapsedGameTime.Milliseconds;
 			FrameIndex = FrameImage[FrameCount];
 
-			// stevepro
-			//if (FrameIndex == 2 || FrameIndex == 3 || FrameIndex == 4 || FrameIndex == 5)
-			//{
-			if (isFlying)
+			// Move enemy as necessary.
+			if (MoveType.None != MoveType)
 			{
-				//Vector2 start = new Vector2(0, -1);
-				Single delta = (Single) gameTime.ElapsedGameTime.TotalSeconds;
-				Single mover = (Single) (pixel * delta * 10);
-				begin = start * mover;
-				Vector2 position = Position;
-				//position.X += mover;
-				position += begin;
-				if (position.X < Bounds.Left || position.X > Bounds.Right || position.Y < Bounds.Top || position.Y > Bounds.Bottom)
+				if (EnemyMoving)
 				{
-					pixel = -pixel;
-					//position.X = Bounds.Right;
-				}
+					Single delta = (Single) gameTime.ElapsedGameTime.TotalSeconds;
 
-				Position = position;
+					//TODO level config variable.
+					const Single pixel = 2.0f;
+					Single mover = (Single) (pixel * delta * 10);
+
+					moveVelocity = unitVelocity * mover;
+					Vector2 position = Position;
+					position += moveVelocity;
+					if (position.X < Bounds.Left || position.X > Bounds.Right || position.Y < Bounds.Top || position.Y > Bounds.Bottom)
+					{
+						moveVelocity *= -1.0f;
+					}
+
+					Position = position;
+				}
 			}
-			//}
 
 			UInt16 frameDelay = FrameDelay[FrameCount];
-			if (FrameTimer >= frameDelay)
+			if (!(FrameTimer >= frameDelay))
 			{
-				FrameTimer -= frameDelay;
-				FrameCount++;
-
-				// Signal when enemy first visible
-				if (1 == FrameCount)
-				{
-					EnemyLaunch = true;
-				}
-
-				// Check for collision after final frame complete!
-				if (FrameCount >= MaxFrames)
-				{
-					EnemyType = EnemyType.Test;
-					return;
-				}
-
-
-				FrameIndex = FrameImage[FrameCount];
-				isFlying = false;
-				//if (MoveType.None != moveType)
-				{
-					isFlying = FrameIndex == 1 || FrameIndex == 2 || FrameIndex == 3 || FrameIndex == 4 || FrameIndex == 5;	// Hard
-					if (1 == FrameIndex)
-					{
-						begin = start = new Vector2(1, 0);
-					}
-					if (3 == FrameIndex)
-					{
-						begin = start = new Vector2(0, 1);
-					}
-					//isFlying = FrameIndex < 6;
-					//isFlying = FrameIndex == 2 || FrameIndex == 3 || FrameIndex == 4 || FrameIndex == 5;
-				}
+				return;
 			}
+
+			EnemyChange = true;
+			FrameTimer -= frameDelay;
+			FrameCount++;
+
+			// Signal when enemy first visible
+			if (1 == FrameCount)
+			{
+				EnemyLaunch = true;
+			}
+
+			// Check for collision after final frame complete!
+			if (FrameCount >= MaxFrames)
+			{
+				EnemyType = EnemyType.Test;
+				return;
+			}
+
+			FrameIndex = FrameImage[FrameCount];
 		}
 
 		public override void Draw()
@@ -214,6 +207,15 @@ namespace WindowsGame.Common.Sprites
 		{
 			SlotID = (SByte)slotID;
 		}
+		public void SetEnemyMoving(Boolean enemyMoving)
+		{
+			EnemyMoving = enemyMoving;
+		}
+		public void SetEnemyVelocity(Vector2 velocity)
+		{
+			unitVelocity = velocity;
+			moveVelocity = velocity;
+		}
 
 		private Vector2[] GetOrigins()
 		{
@@ -240,5 +242,8 @@ namespace WindowsGame.Common.Sprites
 		public Byte FrameCount { get; private set; }
 		public EnemyType EnemyType { get; private set; }
 		public Boolean EnemyLaunch { get; private set; }
+		public Boolean EnemyChange { get; private set; }
+		public Boolean EnemyMoving { get; private set; }
+		public MoveType MoveType { get; private set; }
 	}
 }

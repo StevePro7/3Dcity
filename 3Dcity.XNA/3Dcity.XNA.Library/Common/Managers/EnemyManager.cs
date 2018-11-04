@@ -271,6 +271,29 @@ namespace WindowsGame.Common.Managers
 				Enemy enemy = EnemyList[index];
 				enemy.Update(gameTime);
 
+				if (enemy.EnemyChange)
+				{
+					if (MoveType.None != enemy.MoveType)
+					{
+						Boolean enemyMoving = MyGame.Manager.MoverManager.ShouldEnemyMove(enemy.FrameIndex, levelType);
+						enemy.SetEnemyMoving(enemyMoving);
+
+						if (enemyMoving)
+						{
+							Boolean updateVelocity = MyGame.Manager.MoverManager.UpdateVelocity(enemy.FrameIndex, enemy.MoveType, levelType);
+							if (updateVelocity)
+							{
+								Vector2 velocity = MyGame.Manager.MoverManager.GetEnemyVelocity(enemy.MoveType);
+								enemy.SetEnemyVelocity(velocity);
+							}
+						}
+						else
+						{
+							enemy.SetEnemyVelocity(Vector2.Zero);
+						}
+					}
+				}
+
 				if (enemy.EnemyLaunch)
 				{
 					launchCheck = true;

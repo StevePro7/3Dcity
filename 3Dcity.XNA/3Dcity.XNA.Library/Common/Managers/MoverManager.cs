@@ -9,8 +9,12 @@ namespace WindowsGame.Common.Managers
 	{
 		void Initialize();
 		void ResetEnemyMoves(IList<MoveType> enemyMoves, Byte percentage, Byte enemyTotal, MoveType moveType);
+		Boolean ShouldEnemyMove(Byte item, LevelType levelType);
+		Boolean UpdateVelocity(Byte frameIndex, MoveType moveType, LevelType levelType);
+		Vector2 GetEnemyVelocity(MoveType moveType);
 
 		IList<Direction>[] DirectionList { get; }
+		IList<Byte>[] MoveFrameList { get; }
 		Vector2[] UnitVelocityList { get; }
 		Vector2[] MoveVelocityList { get; }
 	}
@@ -25,6 +29,11 @@ namespace WindowsGame.Common.Managers
 			DirectionList[(Byte)MoveType.Horz] = GetHorzDirection();
 			DirectionList[(Byte)MoveType.Vert] = GetVertDirection();
 			DirectionList[(Byte)MoveType.Both] = GetBothDirection();
+
+			// Initialize move frames.
+			MoveFrameList = new IList<Byte>[2];
+			MoveFrameList[(Byte) LevelType.Easy] = new List<Byte> { 1, 2, 3, 4};
+			MoveFrameList[(Byte) LevelType.Hard] = new List<Byte> {1, 2, 3, 4, 5};
 
 			// Initialize velocities.
 			UnitVelocityList = new Vector2[Constants.MAX_MOVES + 1];
@@ -52,6 +61,39 @@ namespace WindowsGame.Common.Managers
 					}
 				}
 			}
+		}
+
+		public Boolean ShouldEnemyMove(Byte item, LevelType levelType)
+		{
+			IList<Byte> moveFrames = MoveFrameList[(Byte) levelType];
+			return moveFrames.Contains(item);
+		}
+
+		public Boolean UpdateVelocity(Byte frameIndex, MoveType moveType, LevelType levelType)
+		{
+			if (MoveType.Both == moveType)
+			{
+				return true;
+			}
+
+			IList<Byte> moveFrames = MoveFrameList[(Byte)levelType];
+			Byte moveFrame = moveFrames[0];
+			if (frameIndex == moveFrame)
+			{
+				return true;
+			}
+
+			return false;
+		}
+
+		public Vector2 GetEnemyVelocity(MoveType moveType)
+		{
+			IList<Direction> directionList = DirectionList[(Byte) moveType];
+			Byte max = (Byte) directionList.Count;
+			Byte index = (Byte)MyGame.Manager.RandomManager.Next(max);
+			Direction direction = directionList[index];
+			Vector2 unitVelocity = UnitVelocityList[(Byte) direction];
+			return unitVelocity;
 		}
 
 		private static IList<Direction> GetHorzDirection()
@@ -82,6 +124,7 @@ namespace WindowsGame.Common.Managers
 		}
 
 		public IList<Direction>[] DirectionList { get; private set; }
+		public IList<Byte>[] MoveFrameList { get; private set; }
 		public Vector2[] UnitVelocityList { get; private set; }
 		public Vector2[] MoveVelocityList { get; private set; }
 	}
