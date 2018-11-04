@@ -27,6 +27,7 @@ namespace WindowsGame.Common.Data
 		public Byte EnemyMoverHorz;
 		public Byte EnemyMoverVert;
 		public Byte EnemyMoverBoth;
+		public Byte EnemyVelocity;
 		public Byte EnemyRotates;
 		public UInt16 ExplodeDelay;
 	}

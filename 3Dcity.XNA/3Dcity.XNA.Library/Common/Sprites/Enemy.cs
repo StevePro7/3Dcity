@@ -14,10 +14,7 @@ namespace WindowsGame.Common.Sprites
 		private Boolean enemyRotate;
 		private Vector2 unitVelocity;
 		private Vector2 moveVelocity;
-		//private MoveType moveType;
-		//private Boolean isFlying;
-		//private Single pixel;
-		//private Vector2 begin, start;
+		private Byte enemySpeed;
 
 		public Enemy()
 		{
@@ -51,11 +48,11 @@ namespace WindowsGame.Common.Sprites
 			EnemyLaunch = false;
 			EnemyChange = false;
 			enemyRotate = false;
+
 			MoveType = MoveType.None;
 			unitVelocity = Vector2.Zero;
 			moveVelocity = Vector2.Zero;
-			//isFlying = false;
-			//begin = start = Vector2.Zero;
+			enemySpeed = 0;
 		}
 
 		public void SetDeath()
@@ -66,7 +63,7 @@ namespace WindowsGame.Common.Sprites
 			FrameIndex = FrameImage[FrameCount];
 		}
 
-		public void Spawn(Byte slotID, UInt16 frameDelay, Vector2 position, Rectangle bounds, LevelType levelType, Boolean doesEnemyRotate, MoveType moveType)
+		public void Spawn(Byte slotID, UInt16 frameDelay, Vector2 position, Rectangle bounds, LevelType levelType, Boolean doesEnemyRotate, MoveType moveType, Byte theEnemySpeed)
 		{
 			SetSlotID(slotID);
 
@@ -76,7 +73,6 @@ namespace WindowsGame.Common.Sprites
 				FrameDelay[index] = frameDelay;
 			}
 
-			// TODO maybe only half the blink delay on Hard level type.
 			if (LevelType.Hard == levelType)
 			{
 				for (Byte index = 1; index < blinkFrame.Count; index++)
@@ -96,12 +92,11 @@ namespace WindowsGame.Common.Sprites
 			EnemyLaunch = false;
 			EnemyChange = false;
 			enemyRotate = doesEnemyRotate;
+
 			MoveType = moveType;
 			unitVelocity = Vector2.Zero;
 			moveVelocity = Vector2.Zero;
-			//isFlying = false;
-			//pixel = 8.0f;
-			//begin = start = Vector2.Zero;
+			enemySpeed = theEnemySpeed;
 		}
 
 		public void Start(UInt16 startFrameDelay)
@@ -126,17 +121,16 @@ namespace WindowsGame.Common.Sprites
 				if (EnemyMoving)
 				{
 					Single delta = (Single) gameTime.ElapsedGameTime.TotalSeconds;
-
-					//TODO level config variable.
-					const Single pixel = 2.0f;
-					Single mover = (Single) (pixel * delta * 10);
+					Single mover = (enemySpeed * delta * 10);
 
 					moveVelocity = unitVelocity * mover;
 					Vector2 position = Position;
 					position += moveVelocity;
+
 					if (position.X < Bounds.Left || position.X > Bounds.Right || position.Y < Bounds.Top || position.Y > Bounds.Bottom)
 					{
-						moveVelocity *= -1.0f;
+						// If attempt to navigate outside bounds then negate unit velocity.
+						unitVelocity *= -1.0f;
 					}
 
 					Position = position;
@@ -153,7 +147,7 @@ namespace WindowsGame.Common.Sprites
 			FrameTimer -= frameDelay;
 			FrameCount++;
 
-			// Signal when enemy first visible
+			// Signal when enemy first visible.
 			if (1 == FrameCount)
 			{
 				EnemyLaunch = true;

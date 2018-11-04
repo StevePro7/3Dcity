@@ -177,6 +177,7 @@ namespace WindowsGame.Common.Managers
 			UInt16 frameDelay = enemyDelays[EnemySpawn];
 			Boolean enemyRotate = enemyRotates[EnemySpawn];
 			MoveType moveType = enemyMoves[EnemySpawn];
+			Byte theEnemySpeed = levelConfigData.EnemyVelocity;
 
 			Byte slotID;
 			while (true)
@@ -188,10 +189,7 @@ namespace WindowsGame.Common.Managers
 				}
 			}
 
-			// TODO delete
-			//slotID = 0;		// hard code slotID to test.
-			//MyGame.Manager.Logger.Info((slotID+1).ToString());
-
+			// Retrieve the enemy from list.
 			Enemy enemy = EnemyList[index];
 
 			Vector2 position = enemy.Position;
@@ -200,13 +198,13 @@ namespace WindowsGame.Common.Managers
 			UInt16 offsetX = EnemyOffsetX[slotID];
 			UInt16 offsetY = EnemyOffsetY[slotID];
 
-			// TODO check this fits within [160,200] = [40,80] = [32,72] => [32 = 160-120-(2*4)]
+			// This fits within [160,200] = [40,80] = [32,72] => [32 = 160-120-(2*4)]
 			// [32,72] => [32 = 160-120-(2*4), 72 = 200-120-(2*4)]
 			position.X = randomX + offsetX + Constants.BorderSize;
 			position.Y = randomY + offsetY + Constants.BorderSize;
 
 			Rectangle bounds = EnemyBounds[slotID];
-			enemy.Spawn(slotID, frameDelay, position, bounds, levelType, enemyRotate, moveType);
+			enemy.Spawn(slotID, frameDelay, position, bounds, levelType, enemyRotate, moveType, theEnemySpeed);
 			EnemyDict.Add(slotID, enemy);
 
 			EnemySpawn++;
@@ -222,7 +220,6 @@ namespace WindowsGame.Common.Managers
 				return false;
 			}
 
-			//SByte slotID = enemy.SlotID;
 			SByte testID = enemy.SlotID;
 			if (testID >= 0 && testID < Constants.MAX_ENEMYS_SPAWN)
 			{
@@ -271,6 +268,7 @@ namespace WindowsGame.Common.Managers
 				Enemy enemy = EnemyList[index];
 				enemy.Update(gameTime);
 
+				// Check if should move enemy ship...
 				if (enemy.EnemyChange)
 				{
 					if (MoveType.None != enemy.MoveType)
