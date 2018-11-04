@@ -12,36 +12,35 @@ namespace WindowsGame.Common.Managers
 		Boolean ShouldEnemyMove(Byte item, LevelType levelType);
 		Boolean UpdateVelocity(Byte frameIndex, MoveType moveType, LevelType levelType);
 		Vector2 GetEnemyVelocity(MoveType moveType);
-
-		IList<Direction>[] DirectionList { get; }
-		IList<Byte>[] MoveFrameList { get; }
-		Vector2[] UnitVelocityList { get; }
-		Vector2[] MoveVelocityList { get; }
 	}
 
 	public class MoverManager : IMoverManager
 	{
+		private IList<Direction>[] directionList;
+		private IList<Byte>[] moveFrameList;
+		private Vector2[] unitVelocityList;
+
 		public void Initialize()
 		{
 			// Initialize directions.
-			DirectionList = new IList<Direction>[Constants.MAX_MOVES];
-			DirectionList[(Byte)MoveType.None] = new List<Direction> { Direction.None };
-			DirectionList[(Byte)MoveType.Horz] = GetHorzDirection();
-			DirectionList[(Byte)MoveType.Vert] = GetVertDirection();
-			DirectionList[(Byte)MoveType.Both] = GetBothDirection();
+			directionList = new IList<Direction>[Constants.MAX_MOVES];
+			directionList[(Byte)MoveType.None] = new List<Direction> { Direction.None };
+			directionList[(Byte)MoveType.Horz] = GetHorzDirection();
+			directionList[(Byte)MoveType.Vert] = GetVertDirection();
+			directionList[(Byte)MoveType.Both] = GetBothDirection();
 
 			// Initialize move frames.
-			MoveFrameList = new IList<Byte>[2];
-			MoveFrameList[(Byte) LevelType.Easy] = new List<Byte> { 1, 2, 3, 4};
-			MoveFrameList[(Byte) LevelType.Hard] = new List<Byte> {1, 2, 3, 4, 5};
+			moveFrameList = new IList<Byte>[2];
+			moveFrameList[(Byte) LevelType.Easy] = new List<Byte> { 1, 2, 3, 4};
+			moveFrameList[(Byte) LevelType.Hard] = new List<Byte> {1, 2, 3, 4, 5};
 
 			// Initialize velocities.
-			UnitVelocityList = new Vector2[Constants.MAX_MOVES + 1];
-			UnitVelocityList[(Byte)Direction.None] = Vector2.Zero;
-			UnitVelocityList[(Byte)Direction.Left] = new Vector2(-1, 0);
-			UnitVelocityList[(Byte)Direction.Right] = new Vector2(1, 0);
-			UnitVelocityList[(Byte)Direction.Up] = new Vector2(0, -1);
-			UnitVelocityList[(Byte)Direction.Down] = new Vector2(0, 1);
+			unitVelocityList = new Vector2[Constants.MAX_MOVES + 1];
+			unitVelocityList[(Byte)Direction.None] = Vector2.Zero;
+			unitVelocityList[(Byte)Direction.Left] = new Vector2(-1, 0);
+			unitVelocityList[(Byte)Direction.Right] = new Vector2(1, 0);
+			unitVelocityList[(Byte)Direction.Up] = new Vector2(0, -1);
+			unitVelocityList[(Byte)Direction.Down] = new Vector2(0, 1);
 		}
 
 		public void ResetEnemyMoves(IList<MoveType> enemyMoves, Byte percentage, Byte enemyTotal, MoveType moveType)
@@ -65,7 +64,7 @@ namespace WindowsGame.Common.Managers
 
 		public Boolean ShouldEnemyMove(Byte item, LevelType levelType)
 		{
-			IList<Byte> moveFrames = MoveFrameList[(Byte) levelType];
+			IList<Byte> moveFrames = moveFrameList[(Byte) levelType];
 			return moveFrames.Contains(item);
 		}
 
@@ -76,7 +75,7 @@ namespace WindowsGame.Common.Managers
 				return true;
 			}
 
-			IList<Byte> moveFrames = MoveFrameList[(Byte)levelType];
+			IList<Byte> moveFrames = moveFrameList[(Byte)levelType];
 			Byte moveFrame = moveFrames[0];
 			if (frameIndex == moveFrame)
 			{
@@ -88,11 +87,11 @@ namespace WindowsGame.Common.Managers
 
 		public Vector2 GetEnemyVelocity(MoveType moveType)
 		{
-			IList<Direction> directionList = DirectionList[(Byte) moveType];
-			Byte max = (Byte) directionList.Count;
+			IList<Direction> directions = directionList[(Byte)moveType];
+			Byte max = (Byte)directions.Count;
 			Byte index = (Byte)MyGame.Manager.RandomManager.Next(max);
-			Direction direction = directionList[index];
-			Vector2 unitVelocity = UnitVelocityList[(Byte) direction];
+			Direction direction = directions[index];
+			Vector2 unitVelocity = unitVelocityList[(Byte) direction];
 			return unitVelocity;
 		}
 
@@ -123,9 +122,5 @@ namespace WindowsGame.Common.Managers
 			};
 		}
 
-		public IList<Direction>[] DirectionList { get; private set; }
-		public IList<Byte>[] MoveFrameList { get; private set; }
-		public Vector2[] UnitVelocityList { get; private set; }
-		public Vector2[] MoveVelocityList { get; private set; }
 	}
 }
