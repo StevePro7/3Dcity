@@ -23,6 +23,7 @@
   <EnemyMoverHorz>0</EnemyMoverHorz>
   <EnemyMoverVert>0</EnemyMoverVert>
   <EnemyMoverBoth>0</EnemyMoverBoth>
+  <EnemyVelocity>5</EnemyVelocity>
   <EnemyRotates>0</EnemyRotates>
   <ExplodeDelay>90</ExplodeDelay>
 </LevelConfigData>
