@@ -189,6 +189,10 @@ namespace WindowsGame.Common.Managers
 				}
 			}
 
+			// TODO delete
+			//slotID = 0;		// hard code slotID to test.
+			//MyGame.Manager.Logger.Info((slotID+1).ToString());
+
 			// Retrieve the enemy from list.
 			Enemy enemy = EnemyList[index];
 
@@ -203,7 +207,25 @@ namespace WindowsGame.Common.Managers
 			position.X = randomX + offsetX + Constants.BorderSize;
 			position.Y = randomY + offsetY + Constants.BorderSize;
 
+			// Implement bounds checking...
 			Rectangle bounds = EnemyBounds[slotID];
+			if (position.X < bounds.Left)
+			{
+				position.X = bounds.Left;
+			}
+			if (position.X > bounds.Right)
+			{
+				position.X = bounds.Right;
+			}
+			if (position.Y < bounds.Top)
+			{
+				position.Y = bounds.Top;
+			}
+			if (position.Y > bounds.Bottom)
+			{
+				position.Y = bounds.Bottom;
+			}
+
 			enemy.Spawn(slotID, frameDelay, position, bounds, levelType, enemyRotate, moveType, theEnemySpeed);
 			EnemyDict.Add(slotID, enemy);
 
