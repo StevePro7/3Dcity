@@ -13,6 +13,8 @@ namespace WindowsGame.Common.Managers
 
 		void GamePause(Boolean gamePause);
 		void GameQuiet(Boolean gameQuiet);
+		SongType GetGameMusic(Byte levelIndex);
+		//SongType GetBossMusic(Byte levelIndex);
 
 		void PlayMusic(SongType key);
 		void PlayMusic(SongType key, Boolean isRepeating);
@@ -28,12 +30,16 @@ namespace WindowsGame.Common.Managers
 		void SetMaxVolume();
 		void SetVolume(Single volume);
 
+		SongType[] SongTypeList { get; }
 		Boolean PlayAudio { get; }
 	}
 
 	public class SoundManager : ISoundManager
 	{
 		private readonly ISoundFactory soundFactory;
+
+		private SongType[] gameMusicList;
+		private SongType[] bossMusicList;
 
 		public SoundManager(ISoundFactory soundFactory)
 		{
@@ -48,6 +54,18 @@ namespace WindowsGame.Common.Managers
 		public void Initialize(Boolean playAudio)
 		{
 			PlayAudio = playAudio;
+
+			gameMusicList = new SongType[Constants.GAME_MUSIC]
+			{
+				SongType.GameMusic1,
+				SongType.GameMusic2,
+				SongType.GameMusic3,
+			};
+			bossMusicList = new SongType[Constants.BOSS_MUSIC]
+			{
+				SongType.BossMusic1,
+				SongType.BossMusic2,
+			};
 		}
 
 		public void GamePause(Boolean gamePause)
@@ -80,6 +98,18 @@ namespace WindowsGame.Common.Managers
 			SetPlayAudio(!gameQuiet);
 		}
 
+		public SongType GetGameMusic(Byte levelIndex)
+		{
+			Byte index = (Byte)(levelIndex % Constants.GAME_MUSIC);
+			return gameMusicList[index];
+		}
+
+		//SongType GetBossMusic(Byte levelIndex)
+		//{
+		//    Byte index = (Byte)(levelIndex % Constants.BOSS_MUSIC);
+		//    return bossMusicList[index];
+		//}
+		
 		public void PlaySoundEffect(SoundEffectType key)
 		{
 			if (null == Assets.SoundEffectDictionary)
@@ -213,6 +243,7 @@ namespace WindowsGame.Common.Managers
 			soundFactory.SetVolume(volume);
 		}
 
+		public SongType[] SongTypeList{ get; private set; }
 		public Boolean PlayAudio { get; private set; }
 	}
 }

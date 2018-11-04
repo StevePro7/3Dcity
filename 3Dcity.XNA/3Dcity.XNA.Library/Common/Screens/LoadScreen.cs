@@ -91,7 +91,8 @@ namespace WindowsGame.Common.Screens
 
 			MyGame.Manager.SpriteManager.LargeTarget.SetHomeSpot();
 			MyGame.Manager.SoundManager.StopMusic();
-			MyGame.Manager.SoundManager.PlayMusic(SongType.GameMusic);
+			SongType songType = MyGame.Manager.SoundManager.GetGameMusic(LevelIndex);
+			MyGame.Manager.SoundManager.PlayMusic(songType);
 		}
 
 		public override Int32 Update(GameTime gameTime)

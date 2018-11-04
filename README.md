@@ -1,5 +1,13 @@
 # 3Dcity
 
+04/11/2018
+AUDIO
+GameMusic1	MainBGM
+GameMusic2	BattleField
+GameMusic3	Haya Oh
+BossMusic1	Ida
+BossMusic1	Syura
+
 01/11/2018
 For the first group of five questions: £100 -> £200 -> £300 -> £500 -> £1,000
 For the second group of five questions: £2,000 -> £4,000 -> £8,000 -> £16,000 -> £32,000

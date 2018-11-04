@@ -89,10 +89,13 @@
 
 	public enum SongType
 	{
-		BossMusic,
+		BossMusic1,
+		BossMusic2,
 		ContMusic,
 		CoolMusic,
-		GameMusic,
+		GameMusic1,
+		GameMusic2,
+		GameMusic3,
 		GameOver,
 		GameTitle
 	}
