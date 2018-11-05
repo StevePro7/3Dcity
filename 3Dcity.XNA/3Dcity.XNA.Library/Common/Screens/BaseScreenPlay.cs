@@ -66,7 +66,7 @@ namespace WindowsGame.Common.Screens
 				}
 
 				Vector2 position = MyGame.Manager.SpriteManager.LargeTarget.Position;
-				MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Fire);
+				MyGame.Manager.SoundManager.PlayBulletSoundEffect();
 				MyGame.Manager.BulletManager.Shoot((Byte)bulletIndex, position);
 			}
 		}

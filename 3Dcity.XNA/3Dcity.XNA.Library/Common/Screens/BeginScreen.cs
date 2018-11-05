@@ -77,7 +77,7 @@ namespace WindowsGame.Common.Screens
 						}
 						else
 						{
-							PlayMusic(SongType.GameOver);
+							PlaySound(SoundEffectType.Fire3);
 						}
 					}
 					else
@@ -92,11 +92,11 @@ namespace WindowsGame.Common.Screens
 						{
 							if (playSound)
 							{
-								PlaySound(SoundEffectType.Fire);
+								PlaySound(SoundEffectType.Fire1);
 							}
 							else
 							{
-								PlayMusic(SongType.GameTitle);
+								PlaySound(SoundEffectType.Fire2);
 							}
 						}
 					}

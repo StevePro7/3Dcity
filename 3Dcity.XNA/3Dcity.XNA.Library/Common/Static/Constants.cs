@@ -80,6 +80,7 @@ namespace WindowsGame.Common.Static
 		public const UInt16 INFO_LINES = 3;
 		public const Byte GAME_MUSIC = 3;
 		public const Byte BOSS_MUSIC = 2;
+		public const Byte FIRE_SOUND = 3;
 
 		// Sizes.
 		public const Byte BorderSize = 4;

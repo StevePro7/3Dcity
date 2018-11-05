@@ -23,6 +23,7 @@ namespace WindowsGame.Common.Managers
 		void ResumeMusic();
 		void StopMusic();
 
+		void PlayBulletSoundEffect();
 		void PlaySoundEffect(SoundEffectType key);
 		void StopSoundEffect(SoundEffectType key);
 
@@ -41,6 +42,7 @@ namespace WindowsGame.Common.Managers
 
 		private SongType[] gameMusicList;
 		private SongType[] bossMusicList;
+		private SoundEffectType[] bulletSoundList;
 
 		public SoundManager(ISoundFactory soundFactory)
 		{
@@ -66,6 +68,12 @@ namespace WindowsGame.Common.Managers
 			{
 				SongType.BossMusic1,
 				SongType.BossMusic2,
+			};
+			bulletSoundList = new SoundEffectType[Constants.FIRE_SOUND]
+			{
+				SoundEffectType.Fire1,
+				SoundEffectType.Fire2,
+				SoundEffectType.Fire3,
 			};
 		}
 
@@ -110,7 +118,14 @@ namespace WindowsGame.Common.Managers
 		//    Byte index = (Byte)(levelIndex % Constants.BOSS_MUSIC);
 		//    return bossMusicList[index];
 		//}
-		
+
+		public void PlayBulletSoundEffect()
+		{
+			Byte index = (Byte)MyGame.Manager.RandomManager.Next(Constants.FIRE_SOUND);
+			SoundEffectType key = bulletSoundList[index];
+			PlaySoundEffect(key);
+		}
+
 		public void PlaySoundEffect(SoundEffectType key)
 		{
 			if (null == Assets.SoundEffectDictionary)
