@@ -42,14 +42,55 @@ namespace WindowsGame.SystemTests.Common.Managers
 			MyGame.Manager.RandomManager.Initialize();
 
 			DelayManager.LoadContent();
+			Console.WriteLine("Level:{0} Num:{1}", levelType, levelNo);
+
 			DelayManager.ResetEnemyDelays(enemyDelays, levelConfigData);
+
+			IDictionary<SpeedType, Byte> totals = new Dictionary<SpeedType, Byte>(Constants.MAX_ENEMYS_TOTAL);
+			for (Byte index = 0; index < enemyDelays.Count; index++)
+			{
+				UInt16 value = enemyDelays[index];
+				SpeedType speedType = (SpeedType)value;
+				if (!totals.ContainsKey(speedType))
+				{
+					totals.Add(speedType, 1);
+				}
+				else
+				{
+					totals[speedType]++;	
+				}
+
+				String msg = String.Format("Delay[{0}]={1}", index, speedType);
+				//Console.WriteLine(msg);
+			}
+
+			Console.WriteLine("Speed[{0}]={1}", SpeedType.None, totals[SpeedType.None]);
+			Console.WriteLine("Speed[{0}]={1}", SpeedType.Wave, totals[SpeedType.Wave]);
+			Console.WriteLine("Speed[{0}]={1}", SpeedType.Fast, totals[SpeedType.Fast]);
+
+
 			DelayManager.CalcdEnemyDelays(enemyDelays, levelConfigData);
 
-			Console.WriteLine("Level:{0} Num:{1}", levelType, levelNo);
-			foreach (UInt16 delay in enemyDelays.Values)
+			
+			UInt16 minValue = UInt16.MaxValue;
+			UInt16 maxValue = UInt16.MinValue;
+			for (Byte index = 0; index < enemyDelays.Count; index++)
 			{
-				Console.WriteLine(delay);
+				UInt16 value = enemyDelays[index];
+				if (value < minValue)
+				{
+					minValue = value;
+				}
+				if (value > maxValue)
+				{
+					maxValue = value;
+				}
+
+				String msg = String.Format("Delay[{0}]={1}", index, value);
+				//Console.WriteLine(msg);
 			}
+
+			Console.WriteLine("Min:{0} Max:{1}", minValue, maxValue);
 		}
 
 		[TearDown]
