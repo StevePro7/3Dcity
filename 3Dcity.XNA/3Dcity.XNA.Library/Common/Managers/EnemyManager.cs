@@ -148,8 +148,8 @@ namespace WindowsGame.Common.Managers
 		public void SpawnAllEnemies()
 		{
 			// Calculate frame delays for all enemy ships.
-			MyGame.Manager.DelayManager.ResetEnemyDelays(enemyDelays, levelConfigData, EnemyTotal);
-			MyGame.Manager.DelayManager.CalcdEnemyDelays(enemyDelays, levelConfigData, EnemyTotal);
+			MyGame.Manager.DelayManager.ResetEnemyDelays(enemyDelays, levelConfigData);
+			MyGame.Manager.DelayManager.CalcdEnemyDelays(enemyDelays, levelConfigData);
 
 			// Reset rotates and moves.
 			ResetEnemyRotates();

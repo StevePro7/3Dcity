@@ -14,8 +14,8 @@ namespace WindowsGame.Common.Managers
 		UInt16 GetStartDelay(Byte index, UInt16 enemyStartDelay, UInt16 enemyStartDelta);
 		UInt16 GetTotalDelay(UInt16[] frameDelays);
 
-		void ResetEnemyDelays(IDictionary<Byte, UInt16> enemyDelays, LevelConfigData levelConfigData, Byte enemyTotal);
-		void CalcdEnemyDelays(IDictionary<Byte, UInt16> enemyDelays, LevelConfigData levelConfigData, Byte enemyTotal);
+		void ResetEnemyDelays(IDictionary<Byte, UInt16> enemyDelays, LevelConfigData levelConfigData);
+		void CalcdEnemyDelays(IDictionary<Byte, UInt16> enemyDelays, LevelConfigData levelConfigData);
 
 		IList<Single> DelayWaves { get; }
 	}
@@ -62,8 +62,10 @@ namespace WindowsGame.Common.Managers
 			return total;
 		}
 
-		public void ResetEnemyDelays(IDictionary<Byte, UInt16> enemyDelays, LevelConfigData levelConfigData, Byte enemyTotal)
+		public void ResetEnemyDelays(IDictionary<Byte, UInt16> enemyDelays, LevelConfigData levelConfigData)
 		{
+			 Byte enemyTotal = levelConfigData.EnemyTotal;
+
 			enemyDelays.Clear();
 			for (Byte index = 0; index < enemyTotal; index++)
 			{
@@ -94,8 +96,10 @@ namespace WindowsGame.Common.Managers
 			}
 		}
 
-		public void CalcdEnemyDelays(IDictionary<Byte, UInt16> enemyDelays, LevelConfigData levelConfigData, Byte enemyTotal)
+		public void CalcdEnemyDelays(IDictionary<Byte, UInt16> enemyDelays, LevelConfigData levelConfigData)
 		{
+			Byte enemyTotal = levelConfigData.EnemyTotal;
+
 			UInt16 enemyFrameDelay = levelConfigData.EnemyFrameDelay;
 			UInt16 enemyFrameDelta = levelConfigData.EnemyFrameDelta;
 
