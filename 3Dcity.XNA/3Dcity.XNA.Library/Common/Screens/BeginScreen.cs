@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using Microsoft.Xna.Framework;
 using WindowsGame.Common.Data;
 using WindowsGame.Common.Static;
@@ -42,7 +43,7 @@ namespace WindowsGame.Common.Screens
 			{
 				if (playSound)
 				{
-					PlaySound(SoundEffectType.Ship);
+					PlaySound(SoundEffectType.Fire1);
 				}
 				else
 				{
@@ -57,20 +58,19 @@ namespace WindowsGame.Common.Screens
 				{
 					if (playSound)
 					{
-						PlaySound(SoundEffectType.Boss);
+						PlaySound(SoundEffectType.Fire2);
 					}
 					else
 					{
 						PlayMusic(SongType.ContMusic);
 					}
-					
+
 				}
 				else
 				{
 					Boolean fire = MyGame.Manager.InputManager.Select();
 					if (fire)
 					{
-
 						if (playSound)
 						{
 							PlaySound(SoundEffectType.Extra);
@@ -92,11 +92,11 @@ namespace WindowsGame.Common.Screens
 						{
 							if (playSound)
 							{
-								PlaySound(SoundEffectType.Fire1);
+								PlaySound(SoundEffectType.Fire3);
 							}
 							else
 							{
-								PlaySound(SoundEffectType.Fire2);
+								PlaySound(SoundEffectType.Fire3);
 							}
 						}
 					}
