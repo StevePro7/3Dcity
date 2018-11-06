@@ -32,12 +32,12 @@
 	<UpdateGrid>true</UpdateGrid>
 	<RenderBack>true</RenderBack>
 	<RenderIcon>true</RenderIcon>
-	<CoolMusic>true</CoolMusic>
+	<CoolMusic>false</CoolMusic>
 	<BossBig>true</BossBig>
 	<IsGodMode>false</IsGodMode>
 	<UnlimitedCont>true</UnlimitedCont>
 	<BackBorders>true</BackBorders>
 	<DebugTester>false</DebugTester>
-	<DonotSave>true</DonotSave>
+	<DonotSave>false</DonotSave>
 	<QuitsToExit>false</QuitsToExit>
 </GlobalConfigData>
