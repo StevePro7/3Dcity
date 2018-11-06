@@ -112,6 +112,8 @@ Myabe try and reverse the Decelerate and make Accelerate [i.e. Mult = 2]
 
 IMPORTANT
 Ensure NO breakages by replacing LevelNo for LevelIndex including storage manager!!
+Isolated Storage
+C:\<profile>\AppData\Local\IsolatedStorage\
 
 Check the back button on Android device [and press status bar equivalent]
 Check invincibility works on isGodMode [always] or local cheat [per game]
