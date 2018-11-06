@@ -1,4 +1,33 @@
 # 3Dcity
+06/11/2018
+Enemy delay rules:
+DelayManager
+
+StartDelay
+UInt16 delta = Random(0, EnemyStartDelta);
+startDelay = EnemyStartDelay - delta;
+
+FrameDelay
+if (None)
+{
+	UInt16 delta = Random(0, EnemyFrameDelta);
+	startDelay = EnemyFrameDelay - delta;
+}
+if (Wave)
+{
+	range = [-1, 1];
+	value = range * EnemyFrameRange;
+	delay = EnemyFrameDelay - value;
+	if (delay < minim) then delay = minim;
+}
+if (Fast)
+{
+	range = [0, 2];
+	value = range * EnemyFrameRange;
+	delay = EnemyFrameDelay - value;
+	if (delay < minim) then delay = minim;
+}
+
 
 04/11/2018
 AUDIO
