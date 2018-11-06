@@ -19,10 +19,10 @@
   <EnemySpeedNone>40</EnemySpeedNone>
   <EnemySpeedWave>40</EnemySpeedWave>
   <EnemySpeedFast>20</EnemySpeedFast>
-  <EnemyMoverNone>40</EnemyMoverNone>
-  <EnemyMoverHorz>20</EnemyMoverHorz>
-  <EnemyMoverVert>20</EnemyMoverVert>
-  <EnemyMoverBoth>20</EnemyMoverBoth>
+  <EnemyMoverNone>85</EnemyMoverNone>
+  <EnemyMoverHorz>10</EnemyMoverHorz>
+  <EnemyMoverVert>5</EnemyMoverVert>
+  <EnemyMoverBoth>0</EnemyMoverBoth>
   <EnemyVelocity>2</EnemyVelocity>
   <EnemyRotates>0</EnemyRotates>
   <ExplodeDelay>110</ExplodeDelay>

@@ -12,10 +12,10 @@
   <EnemyTotal>250</EnemyTotal>
   <EnemyStartDelay>900</EnemyStartDelay>
   <EnemyStartDelta>100</EnemyStartDelta>
-  <EnemyFrameDelay>650</EnemyFrameDelay>
-  <EnemyFrameDelta>50</EnemyFrameDelta>
-  <EnemyFrameMinim>500</EnemyFrameMinim>
-  <EnemyFrameRange>75</EnemyFrameRange>
+  <EnemyFrameDelay>1300</EnemyFrameDelay>
+  <EnemyFrameDelta>100</EnemyFrameDelta>
+  <EnemyFrameMinim>1000</EnemyFrameMinim>
+  <EnemyFrameRange>150</EnemyFrameRange>
   <EnemySpeedNone>20</EnemySpeedNone>
   <EnemySpeedWave>40</EnemySpeedWave>
   <EnemySpeedFast>40</EnemySpeedFast>

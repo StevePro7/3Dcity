@@ -12,17 +12,17 @@
   <EnemyTotal>175</EnemyTotal>
   <EnemyStartDelay>950</EnemyStartDelay>
   <EnemyStartDelta>100</EnemyStartDelta>
-  <EnemyFrameDelay>700</EnemyFrameDelay>
-  <EnemyFrameDelta>50</EnemyFrameDelta>
-  <EnemyFrameMinim>550</EnemyFrameMinim>
-  <EnemyFrameRange>75</EnemyFrameRange>
+  <EnemyFrameDelay>1400</EnemyFrameDelay>
+  <EnemyFrameDelta>100</EnemyFrameDelta>
+  <EnemyFrameMinim>1100</EnemyFrameMinim>
+  <EnemyFrameRange>150</EnemyFrameRange>
   <EnemySpeedNone>30</EnemySpeedNone>
   <EnemySpeedWave>35</EnemySpeedWave>
   <EnemySpeedFast>35</EnemySpeedFast>
-  <EnemyMoverNone>10</EnemyMoverNone>
-  <EnemyMoverHorz>30</EnemyMoverHorz>
-  <EnemyMoverVert>30</EnemyMoverVert>
-  <EnemyMoverBoth>30</EnemyMoverBoth>
+  <EnemyMoverNone>25</EnemyMoverNone>
+  <EnemyMoverHorz>25</EnemyMoverHorz>
+  <EnemyMoverVert>25</EnemyMoverVert>
+  <EnemyMoverBoth>25</EnemyMoverBoth>
   <EnemyVelocity>7</EnemyVelocity>
   <EnemyRotates>40</EnemyRotates>
   <ExplodeDelay>100</ExplodeDelay>
