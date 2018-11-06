@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LevelConfigData>
+  <LevelNo>6</LevelNo>
+  <LevelType>Hard</LevelType>
+  <LevelName>OLISIS</LevelName>
+  <BonusLevel>false</BonusLevel>
+  <GridDelay>250</GridDelay>
+  <BulletMaxim>2</BulletMaxim>
+  <BulletFrame>200</BulletFrame>
+  <BulletShoot>600</BulletShoot>
+  <EnemySpawn>4</EnemySpawn>
+  <EnemyTotal>75</EnemyTotal>
+  <EnemyStartDelay>1375</EnemyStartDelay>
+  <EnemyStartDelta>125</EnemyStartDelta>
+  <EnemyFrameDelay>900</EnemyFrameDelay>
+  <EnemyFrameDelta>50</EnemyFrameDelta>
+  <EnemyFrameMinim>770</EnemyFrameMinim>
+  <EnemyFrameRange>65</EnemyFrameRange>
+  <EnemySpeedNone>65</EnemySpeedNone>
+  <EnemySpeedWave>20</EnemySpeedWave>
+  <EnemySpeedFast>15</EnemySpeedFast>
+  <EnemyMoverNone>10</EnemyMoverNone>
+  <EnemyMoverHorz>30</EnemyMoverHorz>
+  <EnemyMoverVert>30</EnemyMoverVert>
+  <EnemyMoverBoth>30</EnemyMoverBoth>
+  <EnemyVelocity>3</EnemyVelocity>
+  <EnemyRotates>20</EnemyRotates>
+  <ExplodeDelay>110</ExplodeDelay>
+</LevelConfigData>
