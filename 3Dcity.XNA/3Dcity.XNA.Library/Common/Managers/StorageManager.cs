@@ -36,7 +36,6 @@ namespace WindowsGame.Common.Managers
 
 		public void LoadContent()
 		{
-			// TODO remove!  Only used for testing get data from config!
 			if (MyGame.Manager.ConfigManager.GlobalConfigData.DonotSave)
 			{
 				return;
@@ -59,7 +58,6 @@ namespace WindowsGame.Common.Managers
 
 		public void SaveContent()
 		{
-			// TODO remove!  Only used for testing get data from config!
 			if (MyGame.Manager.ConfigManager.GlobalConfigData.DonotSave)
 			{
 				return;
@@ -79,7 +77,6 @@ namespace WindowsGame.Common.Managers
 			else
 			{
 				storagePersistData.HighScore = MyGame.Manager.ScoreManager.HighScore;
-				//storagePersistData.HighScore = Constants.DEF_HIGH_SCORE;	// Reset!
 				storagePersistData.PlayAudio = MyGame.Manager.SoundManager.PlayAudio;
 				storagePersistData.CoolMusic = MyGame.Manager.StateManager.CoolMusic;
 				storagePersistData.LevelType = MyGame.Manager.LevelManager.LevelType;
