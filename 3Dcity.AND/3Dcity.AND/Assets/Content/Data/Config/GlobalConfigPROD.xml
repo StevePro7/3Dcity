@@ -13,17 +13,13 @@
 	<SelectDelay>500</SelectDelay>
 	<IntroDelay>23660</IntroDelay>
 	<FlashDelay>800</FlashDelay>
-	<LoadDelay>4000</LoadDelay>
-	<!-- 2500 -->
-	<ReadyDelay>1000</ReadyDelay>
-	<!-- 2500 -->
+	<LoadDelay>4000</LoadDelay>		<!-- 2500 -->
+	<ReadyDelay>1000</ReadyDelay>	<!-- 2500 -->
 	<FinishDelay>8000</FinishDelay>
-	<DeadDelay>4000</DeadDelay>
-	<!-- between 3000-5000ms -->
+	<DeadDelay>4000</DeadDelay>		<!-- between 3000-5000ms -->
 	<ResumeDelay>5000</ResumeDelay>
 	<OverDelay>16000</OverDelay>
-	<BeatDelay>28000</BeatDelay>
-	<!-- 16000 is a keeper !-->
+	<BeatDelay>28000</BeatDelay>	<!-- 16000 is a keeper !-->
 	<ScoreDelay>600</ScoreDelay>
 	<EventRatio>1.0</EventRatio>
 	<EnemyBlink>true</EnemyBlink>
