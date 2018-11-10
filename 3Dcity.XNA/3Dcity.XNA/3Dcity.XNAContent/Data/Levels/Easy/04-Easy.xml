@@ -9,7 +9,7 @@
   <BulletFrame>200</BulletFrame>
   <BulletShoot>600</BulletShoot>
   <EnemySpawn>2</EnemySpawn>
-  <EnemyTotal>10</EnemyTotal>
+  <EnemyTotal>20</EnemyTotal>
   <EnemyStartDelay>3000</EnemyStartDelay>
   <EnemyStartDelta>500</EnemyStartDelta>
   <EnemyFrameDelay>2000</EnemyFrameDelay>
