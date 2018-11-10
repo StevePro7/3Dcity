@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input.Touch;
 
 namespace WindowsGame.Common.Interfaces
 {
@@ -10,12 +9,24 @@ namespace WindowsGame.Common.Interfaces
 		void LoadContent();
 		void Update(GameTime gameTime);
 
-		Vector2[] GetPositions();
-		TouchLocationState[] GetStates();
-		Boolean[] GetStates2();
+		Boolean Back();
+		Boolean Escape();
 
+		Boolean Accelerate();
+		Single LittleHorz();
 		Single Horizontal();
 		Single Vertical();
-		Boolean Escape();
+		Boolean Fire();
+		Boolean Select();
+		Boolean SelectJoystick();
+		Boolean SelectWithout();
+		Boolean GameState();
+		Boolean GameSound();
+		Boolean CenterPos();
+		Boolean TitleMode();
+		Boolean StatusBar();
+		Boolean LeftsSide();
+		Boolean RightSide();
+		SByte Number();
 	}
 }

@@ -1,82 +1,105 @@
 ﻿using System;
-using WindowsGame.Common.Static;
-using WindowsGame.Define.Interfaces;
 using Microsoft.Xna.Framework;
-using WindowsGame.Define;
-using Microsoft.Xna.Framework.Input.Touch;
+using WindowsGame.Common.Static;
+using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
 {
-	public class ReadyScreen : BaseScreen, IScreen 
+	public class ReadyScreen : BaseScreenPlay, IScreen
 	{
-		private Vector2[] positions;
-		private TouchLocationState[] states;
-		private Vector2[,] matrix;
-
-		private const Byte MAX_X = 2;
-		private const Byte MAX_Y = 10;
+		private UInt16 readyDelay;
 
 		public override void Initialize()
 		{
-			matrix = GetMatrix();
 			base.Initialize();
+			LoadTextData();
+
+			BackedPositions = MyGame.Manager.StateManager.SetBackedPositions(285, 213, 330, 217);
+
+			UpdateGrid = MyGame.Manager.ConfigManager.GlobalConfigData.UpdateGrid;
+			readyDelay = MyGame.Manager.ConfigManager.GlobalConfigData.ReadyDelay;
+
+			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
 
 		public override void LoadContent()
 		{
 			base.LoadContent();
+
+			NextScreen = CurrScreen;
+			MyGame.Manager.RenderManager.SetGridDelay(LevelConfigData.GridDelay);
+			MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Ready);
 		}
 
-		public Int32 Update(GameTime gameTime)
+		public override Int32 Update(GameTime gameTime)
 		{
-			positions = MyGame.Manager.InputManager.GetPositions();
-			states = MyGame.Manager.InputManager.GetStates();
-			return (Int32)ScreenType.Ready;
+			base.Update(gameTime);
+			if (GamePause)
+			{
+				return (Int32) CurrScreen;
+			}
+
+			UpdateTimer(gameTime);
+			if (Timer >= readyDelay)
+			{
+				NextScreen = ScreenType.Play;
+				return (Int32) NextScreen;
+			}
+
+			// Begin common code...
+			CheckLevelComplete = false;
+
+			// Target.
+			DetectTarget(gameTime);
+
+			// Bullets.
+			DetectBullets();
+			UpdateBullets(gameTime);
+			VerifyBullets(false);
+
+			// Explosions.
+			UpdateExplosions(gameTime);
+			VerifyExplosions();
+
+			// Enemies.
+			UpdateEnemies(gameTime);
+			VerifyEnemies();
+			if (NextScreen != CurrScreen)
+			{
+				return (Int32) NextScreen;
+			}
+
+			// Icons.
+			UpdateIcons();
+
+			// Score.
+			UpdateScore(gameTime);
+
+			// Summary.
+			UpdateLevel();
+			if (NextScreen != CurrScreen)
+			{
+				return (Int32) NextScreen;
+			}
+
+			return (Int32) CurrScreen;
 		}
 
 		public override void Draw()
 		{
-			// TODO delegate this to device manager??
-			Engine.Game.Window.Title = GetType().Name;// Globalize.GAME_TITLE;
+			// Sprite sheet #01.
+			DrawSheet01();
 
-			if (null != positions)
-			{
-				int max = positions.Length;
-				for (var i = 0; i < max; i++)
-				{
-					string text = String.Format("({0}, {1})", positions[i].X, positions[i].Y);
-					Engine.SpriteBatch.DrawString(Assets.EmulogicFont, text, matrix[0, i], Color.Yellow);
-				}
-			}
+			// Sprite sheet #02.
+			DrawSheet02();
+			DrawBacked();
+			MyGame.Manager.BulletManager.Draw();
+			MyGame.Manager.SpriteManager.Draw();
 
-			if (null != states)
-			{
-				int max = states.Length;
-				for (var i = 0; i < max; i++)
-				{
-					string text = states[i].ToString();
-					Engine.SpriteBatch.DrawString(Assets.EmulogicFont, text, matrix[1, i], Color.White);
-				}
-			}
-
-			//Engine.SpriteBatch.DrawString(Assets.EmulogicFont, "HELLO", matrix[0, 0], Color.Yellow);
-			//Engine.SpriteBatch.DrawString(Assets.EmulogicFont, "0", matrix[0, 0] Color.Yellow );
-
-			base.Draw();
-		}
-
-		private Vector2[,] GetMatrix()
-		{
-			matrix = new Vector2[MAX_X, MAX_Y];
-			for (Byte x = 0; x < MAX_X; x++)
-			{
-				for (Byte y = 0; y < MAX_Y; y++)
-				{
-					matrix[x, y] = new Vector2((x * 450) + 20, (y * 30) + 20);
-				}
-			}
-
-			return matrix;
+			// Text data last!
+			DrawTextCommon();
+			MyGame.Manager.ScoreManager.DrawBlink();
+			MyGame.Manager.TextManager.Draw(TextDataList);
 		}
 
 	}

@@ -1,52 +1,109 @@
 ﻿using System;
-using WindowsGame.Common.Managers;
-using WindowsGame.Common.Objects;
-using WindowsGame.Common.Static;
-using WindowsGame.Define.Interfaces;
 using Microsoft.Xna.Framework;
-using WindowsGame.Define;
+using WindowsGame.Common.Static;
+using WindowsGame.Master.Interfaces;
 
 namespace WindowsGame.Common.Screens
 {
-	public class PlayScreen : BaseScreen, IScreen
+	public class PlayScreen : BaseScreenPlay, IScreen
 	{
 		public override void Initialize()
 		{
 			base.Initialize();
+			UpdateGrid = MyGame.Manager.ConfigManager.GlobalConfigData.UpdateGrid;
+			PrevScreen = ScreenType.Quit;
+
+			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
 
 		public override void LoadContent()
 		{
 			base.LoadContent();
+			NextScreen = CurrScreen;
+			MyGame.Manager.RenderManager.SetGridDelay(LevelConfigData.GridDelay);
 		}
 
-		public Int32 Update(GameTime gameTime)
+		public override Int32 Update(GameTime gameTime)
 		{
-			//var positions = MyGame.Manager.InputManager.GetPositions();
+			base.Update(gameTime);
+			if (GamePause)
+			{
+				return (Int32) CurrScreen;
+			}
 
-			//MyGame.Manager.RenderManager.UpdateStar(gameTime);
-			//MyGame.Manager.RenderManager.UpdateGrid(gameTime);
+			// Check to go back first.
+			Boolean back = MyGame.Manager.InputManager.Back();
+			if (back)
+			{
+				MyGame.Manager.SoundManager.PauseMusic();
+				return (Int32)PrevScreen;
+			}
 
-			Single horz = MyGame.Manager.InputManager.Horizontal();
-			Single vert = MyGame.Manager.InputManager.Vertical();
-			//if (Math.Abs(horz) > 0.4)
-			//{
-			MyGame.Manager.SpriteManager.Update(gameTime, horz, vert);
-			//}
 
-			return (Int32)ScreenType.Play;
+			// Log delta to monitor performance!
+#if DEBUG
+			//string time = gameTime.ElapsedGameTime.TotalSeconds.ToString();
+			//MyGame.Manager.Logger.Info(time);
+			//Console.WriteLine(time);
+			//System.Diagnostics.Debug.WriteLine(time);
+#endif
+
+
+			// Begin common code...
+			CheckLevelComplete = false;
+
+			// Target.
+			DetectTarget(gameTime);
+
+			// Bullets.
+			DetectBullets();
+			UpdateBullets(gameTime);
+			VerifyBullets();
+
+			// Explosions.
+			UpdateExplosions(gameTime);
+			VerifyExplosions();
+
+			// Enemies.
+			UpdateEnemies(gameTime);
+			VerifyEnemies();
+			if (NextScreen != CurrScreen)
+			{
+				// Edge case: reset shooting icon if dead.
+				MyGame.Manager.IconManager.UpdateFireIcon(0);
+				return (Int32) NextScreen;
+			}
+
+			// Icons.
+			UpdateIcons();
+
+			// Score.
+			UpdateScore(gameTime);
+
+			// Summary.
+			UpdateLevel();
+			if (NextScreen != CurrScreen)
+			{
+				return (Int32) NextScreen;
+			}
+
+			return (Int32)CurrScreen;
 		}
 
 		public override void Draw()
 		{
-			// TODO delegate this to device manager??
-			Engine.Game.Window.Title = GetType().Name;// Globalize.GAME_TITLE;
-
-			//Engine.SpriteBatch.Draw(Assets.Target80Texture, new Vector2(100, 100), Color.White);
-			//MyGame.Manager.RenderManager.Draw();
-
-			MyGame.Manager.SpriteManager.Draw();
+			// Sprite sheet #01.
 			base.Draw();
+			DrawSheet01();
+
+			// Sprite sheet #02.
+			DrawSheet02();
+			MyGame.Manager.BulletManager.Draw();
+			MyGame.Manager.SpriteManager.Draw();
+
+			// Text data last!
+			DrawTextCommon();
+			MyGame.Manager.ScoreManager.DrawBlink();
 		}
 
 	}

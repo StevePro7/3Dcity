@@ -1,7 +1,7 @@
 using System;
-using WindowsGame.Common.Objects;
-using WindowsGame.Common.Static;
 using Microsoft.Xna.Framework;
+using WindowsGame.Common.Sprites;
+using WindowsGame.Common.Static;
 
 namespace WindowsGame.Common.Managers
 {
@@ -9,106 +9,116 @@ namespace WindowsGame.Common.Managers
 	{
 		void Initialize();
 		void LoadContent();
-		void Update(GameTime gameTime, Single horz, Single vert);
+		void Reset(LevelType levelType, Byte levelNo);
+
+		void SetMovement(Boolean fast, Single horz, Single vert);
+		void SetPosition(SpriteType type, Vector2 position);
+		void Update(GameTime gameTime);
+
 		void Draw();
+		void DrawCursor();
+
+		// Properties.
+		SmallTarget SmallTarget { get; }
+		LargeTarget LargeTarget { get; }
+		Enemy KillEnemy { get; }
 	}
 
 	public class SpriteManager : ISpriteManager
 	{
-		//private UInt16 jp1x, jp1y, jp2x, jp2y, jpyPsize;
-		//private UInt16 cl1x, cl1y, collSize;
-		//private UInt16 collSize;
+		private Vector2 smallPosition;
+		private Vector2 largePosition;
+		private Single targetHorz, targetVert;
+		private Boolean targetFast;
 
 		public void Initialize()
 		{
+			smallPosition = new Vector2(80, 360 + Constants.GameOffsetY);
+			largePosition = new Vector2((Constants.ScreenWide - 64) / 2.0f, 250 + Constants.GameOffsetY);
 			TheInit();
+
+			KillEnemy = new Enemy();
+			KillEnemy.SetDeath();
+			KillEnemy.SetBlinkd(false);
+			targetFast = false;
 		}
 
 		public void LoadContent()
 		{
-			Collision1200.LoadContent(Assets.SteveProTexture200);
-			Collision2200.LoadContent(Assets.SteveProTexture200);
-			JoypadMove.LoadContent(Assets.JoypadTexture);
-			JoypadMove2.LoadContent(Assets.JoypadTexture);
-			SmallTarget.LoadContent(Assets.Target40Texture);
-			SmallTarget2.LoadContent(Assets.Target40Texture);
-			BigTarget.LoadContent(Assets.Target64Texture);
+			LargeTarget.LoadContent(MyGame.Manager.ImageManager.TargetLargeRectangle);
+			SmallTarget.LoadContent(MyGame.Manager.ImageManager.TargetSmallRectangle);
+			KillEnemy.LoadContent(MyGame.Manager.ImageManager.EnemyRectangles);
+			targetFast = false;
 		}
 
-		public void Update(GameTime gameTime, Single horz, Single vert)
+		public void Reset(LevelType levelType, Byte levelNo)
 		{
-			BigTarget.Update(gameTime, horz, vert);
+			Byte ratio = (Byte) (levelNo / 2.0f);
+			Byte largeTargetPB = Constants.LARGE_TARGET_PB[(Byte) levelType];
+			Byte smallTargetPB = Constants.SMALL_TARGET_PB[(Byte) levelType];
 
-			SmallTarget.Update(gameTime, horz, vert);
-			SmallTarget2.Update(gameTime, horz, vert);
+			LargeTarget.Reset(largeTargetPB + ratio);
+			SmallTarget.Reset(smallTargetPB + ratio);
+
+			//SmallTarget.SetPosition(smallPosition);
+			//LargeTarget.SetPosition(largePosition);
+		}
+
+		public void SetMovement(Boolean fast, Single horz, Single vert)
+		{
+			targetFast = fast;
+			targetHorz = horz;
+			targetVert = vert;
+		}
+
+		public void SetPosition(SpriteType type, Vector2 position)
+		{
+			switch (type)
+			{
+				case SpriteType.LargeTarget:
+					LargeTarget.SetPosition(position);
+					break;
+
+				case SpriteType.SmallTarget:
+					SmallTarget.SetPosition(position);
+					break;
+			}
+		}
+
+		public void Update(GameTime gameTime)
+		{
+			LargeTarget.Update(gameTime, targetFast, targetHorz, targetVert);
+			SmallTarget.Update(gameTime, targetHorz, targetVert);
 		}
 
 		public void Draw()
 		{
-			//Collision1200.Draw();
-			Collision2200.Draw();
-			JoypadMove.Draw();
-			JoypadMove2.Draw();
 			SmallTarget.Draw();
-			SmallTarget2.Draw();
-			BigTarget.Draw();
+			LargeTarget.Draw();
+		}
+
+		public void DrawCursor()
+		{
+			SmallTarget.Draw();
 		}
 
 		private void TheInit()
 		{
-			//collSize = 200;
-			//jpyPsize = 160;
-			//jp1x = 20; jp1y = 20; jp2x = 20;
-			//jp2y = (UInt16) (Constants.ScreenHigh - collSize + 20);
-
-			//UInt16 baseX = 20;///MyGame.Manager.ConfigManager.GlobalConfigData.JoypadX;
-			//UInt16 baseY = 20;//MyGame.Manager.ConfigManager.GlobalConfigData.JoypadY;
-
-			Vector2 jpPos = new Vector2(20, 300);
-			Rectangle jpColl = new Rectangle(0, 280, 200, 200);
-			JoypadMove = new JoypadMove();
-			JoypadMove.Initialize(jpPos, jpColl);
-			//JoypadMove.Initialize(jp1x, jp1y, jpyPsize, 0, 0, collSize);
-
-			Vector2 jpPos2 = new Vector2(20, 20);
-			Rectangle jpColl2 = new Rectangle(0, 0, 200, 200);
-			JoypadMove2 = new JoypadMove();
-			JoypadMove2.Initialize(jpPos2, jpColl2);
-
-			//UInt16 high = (UInt16) (Constants.ScreenHigh - collSize);
-			//UInt16 wide = (UInt16) (Constants.ScreenWide - collSize);
-
-			Collision1200 = new Collision200();
-			Collision1200.Initialize(new Vector2(0, 280), jpColl);
-
-			Collision2200 = new Collision200();
-			Collision2200.Initialize(Vector2.Zero, jpColl2);
-
-			Vector2 stPos = new Vector2(80, 360);
-			Rectangle stBounds = new Rectangle(30, 310, 100, 100);
+			//Vector2 stPos = new Vector2(80, 360 + Constants.GameOffsetY);
+			Rectangle stBounds = new Rectangle(30, 310 + Constants.GameOffsetY, 100, 100);
 			SmallTarget = new SmallTarget();
-			SmallTarget.Initialize(stPos, Rectangle.Empty, stBounds);
+			SmallTarget.Initialize(smallPosition, stBounds);
 
-			Vector2 stPos2 = new Vector2(80, 80);
-			Rectangle stBounds2 = new Rectangle(30, 30, 100, 100);
-			SmallTarget2 = new SmallTarget();
-			SmallTarget2.Initialize(stPos2, Rectangle.Empty, stBounds2);
-
-			const Byte targetTop = 80;
+			const Byte targetTop = 74;
 			const Byte targetSize = 64;
-			Vector2 bgPos = new Vector2(400, 240);
-			Rectangle bgBounds = new Rectangle(0, targetTop, 800 - targetSize, 480 - targetTop - targetSize);
-			BigTarget = new BigTarget();
-			BigTarget.Initialize(bgPos, Rectangle.Empty, bgBounds);
+			//Vector2 bgPos = new Vector2((Constants.ScreenWide - 64) / 2.0f, 250 + Constants.GameOffsetY);
+			Rectangle bgBounds = new Rectangle(-2, targetTop + Constants.GameOffsetY, Constants.ScreenWide - targetSize + 2, Constants.ScreenHigh - (2 * Constants.GameOffsetY) - targetTop - targetSize + 2);
+			LargeTarget = new LargeTarget();
+			LargeTarget.Initialize(largePosition, Rectangle.Empty, bgBounds);
 		}
 
-		public Collision200 Collision1200 { get; private set; }
-		public Collision200 Collision2200 { get; private set; }
-		public JoypadMove JoypadMove { get; private set; }
-		public JoypadMove JoypadMove2 { get; private set; }
 		public SmallTarget SmallTarget { get; private set; }
-		public SmallTarget SmallTarget2 { get; private set; }
-		public BigTarget BigTarget { get; private set; }
-
+		public LargeTarget LargeTarget { get; private set; }
+		public Enemy KillEnemy { get; private set; }
 	}
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading;
-using WindowsGame.Common;
 
 namespace WindowsGame.Common.Managers
 {

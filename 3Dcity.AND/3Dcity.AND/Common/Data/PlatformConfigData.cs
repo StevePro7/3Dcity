@@ -1,9 +1,9 @@
 using System;
 
-namespace WindowsGame.Data
+namespace WindowsGame.Common.Data
 {
 	public struct PlatformConfigData
 	{
-		public Byte MaxTouches;
+		public Byte MaxInputs;
 	}
 }

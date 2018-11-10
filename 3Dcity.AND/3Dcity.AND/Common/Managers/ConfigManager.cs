@@ -1,7 +1,6 @@
 using System;
-using WindowsGame.Common.Static;
 using WindowsGame.Common.Data;
-using WindowsGame.Data;
+using WindowsGame.Common.Static;
 
 namespace WindowsGame.Common.Managers
 {
@@ -11,7 +10,7 @@ namespace WindowsGame.Common.Managers
 		void Initialize(String root);
 		void LoadContent();
 		void LoadGlobalConfigData();
-		void LoadPlaformConfigData(Platform platform);
+		void LoadPlaformConfigData(PlatformType platformType);
 
 		GlobalConfigData GlobalConfigData { get; }
 		PlatformConfigData PlatformConfigData { get; }
@@ -24,6 +23,7 @@ namespace WindowsGame.Common.Managers
 		private const String CONFIG_DIRECTORY = "Config";
 		private const String GLOBAL_CONFIG_FILENAME = "GlobalConfig.xml";
 		public const String PLATFORM_CONFIG_FILENAME = "PlatformConfig{0}.xml";
+		public const String LEVEL_CONFIG_FILENAME = "LevelConfig{0}.xml";
 
 		public void Initialize()
 		{
@@ -37,7 +37,7 @@ namespace WindowsGame.Common.Managers
 		public void LoadContent()
 		{
 			LoadGlobalConfigData();
-			LoadPlaformConfigData(Constants.Platform);
+			LoadPlaformConfigData(Constants.PlatformType);
 		}
 
 		public void LoadGlobalConfigData()
@@ -46,9 +46,9 @@ namespace WindowsGame.Common.Managers
 			GlobalConfigData = MyGame.Manager.FileManager.LoadXml<GlobalConfigData>(file);
 		}
 
-		public void LoadPlaformConfigData(Platform platform)
+		public void LoadPlaformConfigData(PlatformType platformType)
 		{
-			String name = PLATFORM_CONFIG_FILENAME.Replace("{0}", platform.ToString());
+			String name = PLATFORM_CONFIG_FILENAME.Replace("{0}", platformType.ToString());
 			String file = String.Format("{0}/{1}", configRoot, name);
 			PlatformConfigData = MyGame.Manager.FileManager.LoadXml<PlatformConfigData>(file);
 		}

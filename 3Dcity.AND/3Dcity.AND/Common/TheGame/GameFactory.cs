@@ -1,4 +1,4 @@
-﻿using WindowsGame.Define.IoC;
+﻿using WindowsGame.Master.IoC;
 
 namespace WindowsGame.Common.TheGame
 {

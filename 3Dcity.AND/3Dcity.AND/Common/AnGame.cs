@@ -1,8 +1,8 @@
 using System;
+using Microsoft.Xna.Framework;
 using WindowsGame.Common.Static;
 using WindowsGame.Common.TheGame;
-using WindowsGame.Define;
-using Microsoft.Xna.Framework;
+using WindowsGame.Master;
 
 namespace WindowsGame.Common
 {
@@ -15,7 +15,7 @@ namespace WindowsGame.Common
 
 		public AnGame()
 		{
-			graphics = new GraphicsDeviceManager(this);
+			graphics = new GraphicsDeviceManager(this) {SupportedOrientations = DisplayOrientation.LandscapeLeft};
 			Registration.Initialize();
 
 			var manager = GameFactory.Resolve();
@@ -62,6 +62,12 @@ namespace WindowsGame.Common
 		{
 			MyGame.OnDeactivated();
 			base.OnDeactivated(sender, args);
+		}
+
+		protected override void OnExiting(object sender, EventArgs args)
+		{
+			MyGame.OnExiting();
+			base.OnExiting(sender, args);
 		}
 
 	}
