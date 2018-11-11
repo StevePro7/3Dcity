@@ -94,7 +94,8 @@ namespace WindowsGame.Common.Screens
 		public virtual void Draw()
 		{
 			// TODO remove!
-			Master.Engine.Game.Window.Title = GetType().Name;
+			//Master.Engine.Game.Window.Title = GetType().Name;
+			Master.Engine.Game.Window.Title = "3D City";
 
 			if (MyGame.Manager.ConfigManager.GlobalConfigData.RenderBack)
 			{

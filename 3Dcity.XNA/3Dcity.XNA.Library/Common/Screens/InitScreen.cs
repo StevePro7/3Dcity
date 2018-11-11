@@ -76,6 +76,7 @@ namespace WindowsGame.Common.Screens
 
 		public void Draw()
 		{
+			Master.Engine.Game.Window.Title = "3D City";
 			Engine.SpriteBatch.Draw(Assets.SplashTexture, bannerPosition, Color.White);
 			if (0 == splashDelay)
 			{
