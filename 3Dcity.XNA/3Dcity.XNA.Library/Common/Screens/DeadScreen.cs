@@ -70,6 +70,7 @@ namespace WindowsGame.Common.Screens
 			{
 				// Ensure sound effect once.
 				MyGame.Manager.SoundManager.PlaySoundEffect(SoundEffectType.Aaargh);
+				MyGame.Manager.InputManager.SetMotors(1, 0);
 				Flag1 = true;
 			}
 
@@ -79,6 +80,7 @@ namespace WindowsGame.Common.Screens
 			}
 
 			// Now can check to pro actively goto next screen.
+			MyGame.Manager.InputManager.ResetMotors();
 			Boolean status = MyGame.Manager.InputManager.StatusBar();
 
 			// Time expired so advance.
