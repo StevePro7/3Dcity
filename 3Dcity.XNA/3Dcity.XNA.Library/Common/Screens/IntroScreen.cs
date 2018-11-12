@@ -73,8 +73,9 @@ namespace WindowsGame.Common.Screens
 				return (Int32) NextScreen;
 			}
 			// Check to go forward second.
+			Boolean test = MyGame.Manager.InputManager.Select();
 			Boolean mode = MyGame.Manager.InputManager.TitleMode();
-			if (mode)
+			if (test || mode)
 			{
 				return (Int32) NextScreen;
 			}

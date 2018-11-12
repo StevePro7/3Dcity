@@ -61,6 +61,8 @@ namespace WindowsGame.Common.Screens
 				if (test)
 				{
 					flag = true;
+
+					// TODO don't toggle this on UWP build!!
 					MyGame.Manager.StateManager.SetCoolMusic(!MyGame.Manager.StateManager.CoolMusic);
 				}
 			}
@@ -76,7 +78,9 @@ namespace WindowsGame.Common.Screens
 
 		public void Draw()
 		{
+			//MyGame.Manager.DeviceManager.DrawTitle(GetType().Name);
 			MyGame.Manager.DeviceManager.DrawTitle();
+
 			Engine.SpriteBatch.Draw(Assets.SplashTexture, bannerPosition, Color.White);
 			if (0 == splashDelay)
 			{
