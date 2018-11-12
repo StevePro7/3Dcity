@@ -23,6 +23,7 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
+			MyGame.Manager.InputManager.ResetMotors();
 			MyGame.Manager.SpriteManager.SmallTarget.SetHomeSpot();
 			base.LoadContent();
 
