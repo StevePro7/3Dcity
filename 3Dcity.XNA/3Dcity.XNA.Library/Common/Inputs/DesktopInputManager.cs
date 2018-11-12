@@ -530,5 +530,13 @@ namespace WindowsGame.Common.Inputs
 			return Constants.INVALID_INDEX;
 		}
 
+		public void SetMotors(Single leftMotor, Single rightMotor)
+		{
+		}
+
+		public void ResetMotors()
+		{
+		}
+
 	}
 }

@@ -180,6 +180,15 @@ namespace WindowsGame.Common.Inputs
 			return Constants.INVALID_INDEX;
 		}
 
+		public void SetMotors(Single leftMotor, Single rightMotor)
+		{
+		}
+
+		public void ResetMotors()
+		{
+		}
+
+
 		private Single MyMoveFunc(Func<Vector2, Single> func)
 		{
 			Single data = 0.0f;

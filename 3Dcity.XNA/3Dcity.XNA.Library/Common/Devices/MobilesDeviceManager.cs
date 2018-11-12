@@ -18,6 +18,14 @@ namespace WindowsGame.Common.Devices
 #endif
 		}
 
+		public void SetMotors(Single leftMotor, Single rightMotor)
+		{
+		}
+
+		public void ResetMotors()
+		{
+		}
+
 		public void Abort()
 		{
 		}
