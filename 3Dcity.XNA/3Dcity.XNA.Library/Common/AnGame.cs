@@ -33,11 +33,13 @@ namespace WindowsGame.Common
 		protected override void LoadContent()
 		{
 			MyGame.LoadContent();
+			base.LoadContent();
 		}
 
 		protected override void UnloadContent()
 		{
 			MyGame.UnloadContent();
+			base.UnloadContent();
 		}
 
 		protected override void Update(GameTime gameTime)

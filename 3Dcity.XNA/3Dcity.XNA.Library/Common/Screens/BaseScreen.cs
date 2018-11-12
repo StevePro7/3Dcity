@@ -56,6 +56,7 @@ namespace WindowsGame.Common.Screens
 			// If game paused then do not check for sound.
 			if (GamePause)
 			{
+				MyGame.Manager.InputManager.ResetMotors();
 				return (Int32)CurrScreen;
 			}
 

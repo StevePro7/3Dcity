@@ -134,6 +134,7 @@ namespace WindowsGame.Common
 
 		public static void OnDeactivated()
 		{
+			Manager.InputManager.ResetMotors();
 			Manager.StorageManager.SaveContent();
 
 #if ANDROID

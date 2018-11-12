@@ -532,10 +532,12 @@ namespace WindowsGame.Common.Inputs
 
 		public void SetMotors(Single leftMotor, Single rightMotor)
 		{
+			joystickInput.SetMotors(leftMotor, rightMotor);
 		}
 
 		public void ResetMotors()
 		{
+			SetMotors(0, 0);
 		}
 
 	}
