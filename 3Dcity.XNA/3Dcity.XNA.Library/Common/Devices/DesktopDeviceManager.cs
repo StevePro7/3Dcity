@@ -1,5 +1,7 @@
 ﻿using System;
 using WindowsGame.Common.Interfaces;
+using WindowsGame.Common.Static;
+using WindowsGame.Master;
 
 namespace WindowsGame.Common.Devices
 {
@@ -16,6 +18,15 @@ namespace WindowsGame.Common.Devices
 #if IOS
 			BuildVersion = "1.0.0";
 #endif
+		}
+
+		public void DrawTitle()
+		{
+			DrawTitle(Globalize.DRAW_TITLE);
+		}
+		public void DrawTitle(String title)
+		{
+			Engine.Game.Window.Title = title;
 		}
 
 		public void SetMotors(Single leftMotor, Single rightMotor)

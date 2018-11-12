@@ -18,6 +18,13 @@ namespace WindowsGame.Common.Devices
 #endif
 		}
 
+		public void DrawTitle()
+		{
+		}
+		public void DrawTitle(String title)
+		{
+		}
+
 		public void SetMotors(Single leftMotor, Single rightMotor)
 		{
 		}

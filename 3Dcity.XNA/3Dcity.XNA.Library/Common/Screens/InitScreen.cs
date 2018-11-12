@@ -76,7 +76,7 @@ namespace WindowsGame.Common.Screens
 
 		public void Draw()
 		{
-			Master.Engine.Game.Window.Title = "3D City";
+			MyGame.Manager.DeviceManager.DrawTitle();
 			Engine.SpriteBatch.Draw(Assets.SplashTexture, bannerPosition, Color.White);
 			if (0 == splashDelay)
 			{
