@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WindowsGame.SystemTests</RootNamespace>
-    <AssemblyName>3Dcity.XNA.SystemTests</AssemblyName>
+    <AssemblyName>3DCity.SystemTests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
