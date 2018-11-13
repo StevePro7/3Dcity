@@ -421,7 +421,7 @@ namespace WindowsGame.Common.Inputs
 			}
 
 			// Keyboard.
-			if (keyboardInput.KeyHold(Keys.D1) || keyboardInput.KeyHold(Keys.Space))
+			if (keyboardInput.KeyHold(Keys.D1) || keyboardInput.KeyHold(Keys.Back))
 			{
 				return true;
 			}
