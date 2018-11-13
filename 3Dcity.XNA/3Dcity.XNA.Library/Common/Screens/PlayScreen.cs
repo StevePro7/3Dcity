@@ -7,6 +7,7 @@ namespace WindowsGame.Common.Screens
 {
 	public class PlayScreen : BaseScreenPlay, IScreen
 	{
+		private Boolean isGodMode;
 		private Boolean currRumble;
 		private Boolean prevRumble;
 
@@ -26,6 +27,8 @@ namespace WindowsGame.Common.Screens
 			base.LoadContent();
 			NextScreen = CurrScreen;
 			MyGame.Manager.RenderManager.SetGridDelay(LevelConfigData.GridDelay);
+
+			isGodMode = MyGame.Manager.StateManager.CheatGame || LevelConfigData.BonusLevel;
 			currRumble = false;
 			prevRumble = false;
 		}
@@ -73,20 +76,23 @@ namespace WindowsGame.Common.Screens
 
 			// Enemies.
 			UpdateEnemies(gameTime);
-			currRumble = MyGame.Manager.EnemyManager.EnemyController > 0;
-			if (currRumble)
+			if (!isGodMode)
 			{
-				Single rightMotor = MyGame.Manager.EnemyManager.EnemyController;
-				MyGame.Manager.InputManager.SetMotors(0, rightMotor);
-			}
-			else
-			{
-				if (currRumble != prevRumble)
+				currRumble = MyGame.Manager.EnemyManager.EnemyController > 0;
+				if (currRumble)
 				{
-					MyGame.Manager.InputManager.ResetMotors();
+					Single rightMotor = MyGame.Manager.EnemyManager.EnemyController;
+					MyGame.Manager.InputManager.SetMotors(0, rightMotor);
 				}
+				else
+				{
+					if (currRumble != prevRumble)
+					{
+						MyGame.Manager.InputManager.ResetMotors();
+					}
+				}
+				prevRumble = currRumble;
 			}
-			prevRumble = currRumble;
 
 			VerifyEnemies();
 			if (NextScreen != CurrScreen)
