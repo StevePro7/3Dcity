@@ -32,6 +32,7 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.SpriteManager.SmallTarget.SetHomeSpot();
 			isGodMode = MyGame.Manager.ConfigManager.GlobalConfigData.IsGodMode;
 			localCheat = MyGame.Manager.StateManager.CheatGame;
+			localCount = 0;
 			base.LoadContent();
 
 			SelectType = (Byte)MyGame.Manager.LevelManager.LevelType;
