@@ -280,7 +280,7 @@ namespace WindowsGame.Common.Inputs
 			}
 
 			// Keyboard.
-			if (keyboardInput.KeyHold(Keys.Enter) || keyboardInput.KeyHold(Keys.Space))
+			if (keyboardInput.KeyHold(Keys.Space))
 			{
 				return true;
 			}
@@ -312,7 +312,7 @@ namespace WindowsGame.Common.Inputs
 			}
 
 			// Keyboard.
-			if (keyboardInput.KeyHold(Keys.Enter) || keyboardInput.KeyHold(Keys.Space))
+			if (keyboardInput.KeyHold(Keys.Space))
 			{
 				return true;
 			}
@@ -393,7 +393,7 @@ namespace WindowsGame.Common.Inputs
 			}
 
 			// Keyboard.
-			if (keyboardInput.KeyHold(Keys.Enter) || keyboardInput.KeyHold(Keys.Space))
+			if (keyboardInput.KeyHold(Keys.Space))
 			{
 				return true;
 			}
