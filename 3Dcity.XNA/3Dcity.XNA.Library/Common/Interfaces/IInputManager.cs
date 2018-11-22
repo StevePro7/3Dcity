@@ -9,6 +9,7 @@ namespace WindowsGame.Common.Interfaces
 		void LoadContent();
 		void Update(GameTime gameTime);
 
+		Boolean BackAll();
 		Boolean Back();
 		Boolean Escape();
 
@@ -17,12 +18,14 @@ namespace WindowsGame.Common.Interfaces
 		Single Horizontal();
 		Single Vertical();
 		Boolean Fire();
+		Boolean SelectAll();
 		Boolean Select();
 		Boolean SelectJoystick();
 		Boolean SelectWithout();
 		Boolean GameState();
 		Boolean GameSound();
 		Boolean CenterPos();
+		Boolean TitleModeAll();
 		Boolean TitleMode();
 		Boolean StatusBar();
 		Boolean LeftsSide();

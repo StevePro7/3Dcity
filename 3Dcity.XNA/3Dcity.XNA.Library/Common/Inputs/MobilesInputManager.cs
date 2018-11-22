@@ -85,6 +85,10 @@ namespace WindowsGame.Common.Inputs
 			}
 		}
 
+		public Boolean BackAll()
+		{
+			return Back();
+		}
 		public Boolean Back()
 		{
 			return Escape() || StatusBar();
@@ -125,6 +129,10 @@ namespace WindowsGame.Common.Inputs
 			return MyMove2Func(controlManager.CheckJoyPadFire);
 		}
 
+		public Boolean SelectAll()
+		{
+			return Select();
+		}
 		public Boolean Select()
 		{
 			return MyPressFunc(controlManager.CheckJoyPadFire);
@@ -155,6 +163,10 @@ namespace WindowsGame.Common.Inputs
 			return MyPressFunc(controlManager.CheckCenterPos);
 		}
 
+		public Boolean TitleModeAll()
+		{
+			return TitleMode();
+		}
 		public Boolean TitleMode()
 		{
 			return MyPressFunc(controlManager.CheckTitleMode);

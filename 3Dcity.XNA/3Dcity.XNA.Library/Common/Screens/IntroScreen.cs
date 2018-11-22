@@ -66,15 +66,15 @@ namespace WindowsGame.Common.Screens
 			}
 
 			// Check to go back first.
-			Boolean back = MyGame.Manager.InputManager.Back();
+			Boolean back = MyGame.Manager.InputManager.BackAll();
 			if (back)
 			{
 				// Exit on Title.
 				return (Int32) NextScreen;
 			}
 			// Check to go forward second.
-			Boolean test = MyGame.Manager.InputManager.Select();
-			Boolean mode = MyGame.Manager.InputManager.TitleMode();
+			Boolean test = MyGame.Manager.InputManager.SelectAll();
+			Boolean mode = MyGame.Manager.InputManager.TitleModeAll();
 			if (test || mode)
 			{
 				return (Int32) NextScreen;

@@ -11,6 +11,7 @@ namespace WindowsGame.Master.Inputs
 		void Initialize(Byte theMaxPlayers, GamePadDeadZone theGamePadDeadZone);
 		void Update(GameTime gameTime);
 
+		Boolean JoyHoldAll(Buttons button);
 		Boolean JoyHold(Buttons button);
 		Boolean JoyPress(Buttons button);
 		Boolean JoySelect(Buttons button);
@@ -56,6 +57,20 @@ namespace WindowsGame.Master.Inputs
 			}
 		}
 
+		public Boolean JoyHoldAll(Buttons button)
+		{
+			Boolean test = false;
+			for (Byte index = 0; index < maxPlayers; index++)
+			{
+				test = CurrGamePadState[index].IsButtonDown(button) && PrevGamePadState[index].IsButtonUp(button);
+				if (test)
+				{
+					break;
+				}
+			}
+
+			return test;
+		}
 		public Boolean JoyHold(Buttons button)
 		{
 			Byte index = (Byte)CurrPlayerIndex;

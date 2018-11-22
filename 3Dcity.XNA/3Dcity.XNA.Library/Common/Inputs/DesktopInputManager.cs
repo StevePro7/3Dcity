@@ -41,6 +41,16 @@ namespace WindowsGame.Common.Inputs
 			mouseScreenInput.Update(gameTime);
 		}
 
+		public Boolean BackAll()
+		{
+			Boolean back = Back();
+			if (back)
+			{
+				return true;
+			}
+
+			return joystickInput.JoyHoldAll(Buttons.Back) || joystickInput.JoyHoldAll(Buttons.B);
+		}
 		public Boolean Back()
 		{
 			// Mouse.
@@ -261,6 +271,16 @@ namespace WindowsGame.Common.Inputs
 			return false;
 		}
 
+		public Boolean SelectAll()
+		{
+			Boolean select = Select();
+			if (select)
+			{
+				return true;
+			}
+
+			return joystickInput.JoyHoldAll(Buttons.A);
+		}
 		public Boolean Select()
 		{
 			// Mouse.
@@ -387,7 +407,7 @@ namespace WindowsGame.Common.Inputs
 			}
 
 			// Joystick.
-			if (joystickInput.JoyHold(Buttons.A))
+			if (joystickInput.JoyHoldAll(Buttons.A))
 			{
 				return true;
 			}
@@ -401,6 +421,16 @@ namespace WindowsGame.Common.Inputs
 			return false;
 		}
 
+		public Boolean TitleModeAll()
+		{
+			Boolean titleMode = TitleMode();
+			if (titleMode)
+			{
+				return true;
+			}
+
+			return joystickInput.JoyHoldAll(Buttons.RightShoulder);
+		}
 		public Boolean TitleMode()
 		{
 			// Mouse.
@@ -414,7 +444,6 @@ namespace WindowsGame.Common.Inputs
 			}
 
 			// Joystick.
-			//if (joystickInput.JoyPress(Buttons.Y))
 			if (joystickInput.JoyHold(Buttons.RightShoulder))
 			{
 				return true;
