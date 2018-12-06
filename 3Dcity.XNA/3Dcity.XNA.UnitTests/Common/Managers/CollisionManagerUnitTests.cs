@@ -25,10 +25,9 @@ namespace WindowsGame.UnitTests.Common.Managers
 			const Byte radius = 64;
 			Vector2 enemysPosition = new Vector2(354, 141);
 			Vector2 targetPosition = new Vector2(368, 168);
-			Boolean collide = false;
 
 			// Act.
-			collide = CollisionManager.BoxesCollision(radius, enemysPosition, targetPosition);
+			var collide = CollisionManager.BoxesCollision(radius, enemysPosition, targetPosition);
 
 			// Assert.
 			Assert.True(collide);
@@ -39,12 +38,10 @@ namespace WindowsGame.UnitTests.Common.Managers
 		{
 			const Byte radius = 64;
 			Vector2 enemysPosition = new Vector2(100, 100);
-			Vector2 targetPosition = Vector2.Zero;
-			Boolean collide = false;
 
 			// Left.
-			targetPosition = new Vector2(30, 100);
-			collide = CollisionManager.BoxesCollision(radius, enemysPosition, targetPosition);
+			var targetPosition = new Vector2(30, 100);
+			var collide = CollisionManager.BoxesCollision(radius, enemysPosition, targetPosition);
 			Assert.False(collide);
 			targetPosition = new Vector2(36, 100);
 			collide = CollisionManager.BoxesCollision(radius, enemysPosition, targetPosition);
@@ -91,11 +88,8 @@ namespace WindowsGame.UnitTests.Common.Managers
 		[Test]
 		public void DetermineEnemySlotTest()
 		{
-			Vector2 position = Vector2.Zero;
-			SByte index = Constants.INVALID_INDEX;
-
-			position = new Vector2(156, 275);
-			index = CollisionManager.DetermineEnemySlot(position);
+			var position = new Vector2(156, 275);
+			var index = CollisionManager.DetermineEnemySlot(position);
 			Assert.That(index, Is.EqualTo(Constants.INVALID_INDEX));
 
 			position = new Vector2(157, 175);
