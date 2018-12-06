@@ -111,7 +111,7 @@ namespace WindowsGame.Common.Screens
 			// Check to go forward second.
 			if (!flag1)
 			{
-				Boolean fire;
+				Boolean fire = false;
 #if WINDOWS
 				fire = MyGame.Manager.InputManager.SelectJoystick();
 #endif
