@@ -190,10 +190,6 @@ namespace WindowsGame.Common.Managers
 				}
 			}
 
-			// TODO delete
-			//slotID = 0;		// hard code slotID to test.
-			//MyGame.Manager.Logger.Info((slotID+1).ToString());
-
 			// Retrieve the enemy from list.
 			Enemy enemy = EnemyList[index];
 

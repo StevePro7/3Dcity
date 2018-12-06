@@ -1,7 +1,5 @@
-﻿
-using System;
+﻿using System;
 using Microsoft.Xna.Framework;
-using WindowsGame.Common.Data;
 using WindowsGame.Common.Static;
 using WindowsGame.Master.Interfaces;
 
@@ -9,31 +7,16 @@ namespace WindowsGame.Common.Screens
 {
 	public class BeginScreen : BaseScreen, IScreen
 	{
-		private Vector2 outputPos;
-		private Rectangle enemysRect;
-		private Rectangle targetRect;
-		private String[] outputText;
 		private Boolean playSound;
 
 		public override void Initialize()
 		{
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 			base.Initialize();
-			//LoadTextData();
 
-			// TODO delete!
-			outputText = new string[2] { "FALSE", "TRUE" };
 			playSound = true;
 
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
-		}
-
-		public override void LoadContent()
-		{
-			outputPos = MyGame.Manager.TextManager.GetTextPosition(0, 4);
-			enemysRect = MyGame.Manager.ImageManager.EnemyRectangles[7];
-			targetRect = MyGame.Manager.ImageManager.TargetLargeRectangle;
-			base.LoadContent();
 		}
 
 		public override Int32 Update(GameTime gameTime)
@@ -71,14 +54,7 @@ namespace WindowsGame.Common.Screens
 					Boolean fire = MyGame.Manager.InputManager.Select();
 					if (fire)
 					{
-						if (playSound)
-						{
-							PlaySound(SoundEffectType.Extra);
-						}
-						else
-						{
-							PlaySound(SoundEffectType.Fire3);
-						}
+						PlaySound(playSound ? SoundEffectType.Extra : SoundEffectType.Fire3);
 					}
 					else
 					{
@@ -123,21 +99,14 @@ namespace WindowsGame.Common.Screens
 			base.Draw();
 			MyGame.Manager.IconManager.DrawControls();
 
-			//Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, enemysPos, enemysRect, Color.White);
-			//Engine.SpriteBatch.Draw(Assets.SpriteSheet02Texture, targetPos, targetRect, Color.White);
-
 			// Sprite sheet #02.
 			MyGame.Manager.LevelManager.Draw();
 
 			// Text data last!
-			//MyGame.Manager.TextManager.Draw(TextDataList);
 			MyGame.Manager.TextManager.DrawTitle();
 			MyGame.Manager.TextManager.DrawControls();
 			MyGame.Manager.LevelManager.DrawTextData();
 			MyGame.Manager.ScoreManager.Draw();
-
-			// TODO delete
-			//Engine.SpriteBatch.DrawString(Assets.EmulogicFont, outputText[Convert.ToByte(collision)], outputPos, Color.White);
 		}
 
 	}

@@ -90,10 +90,6 @@ namespace WindowsGame.Common.Screens
 			}
 
 			// Now can check to pro actively goto next screen.
-			//Boolean status = MyGame.Manager.InputManager.StatusBar();
-			//Boolean center = MyGame.Manager.InputManager.CenterPos();
-			//const Boolean center = false;		// TODO perfect transition...
-
 			Boolean back = MyGame.Manager.InputManager.Back();
 			if (back)
 			{

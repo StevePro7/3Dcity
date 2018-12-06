@@ -16,9 +16,7 @@ namespace WindowsGame.Common.Managers
 		void CheatTitle();
 
 		IList<TextData> LoadTextData(String screen);
-		IList<TextData> LoadTextData(String screen, Byte textsSize, UInt16 offsetX, UInt16 offsetY, Single fontX, Single fontY);
 		Vector2 GetTextPosition(SByte x, SByte y);
-		Vector2 GetTextPosition(SByte x, SByte y, Byte textsSize, UInt16 offsetX, UInt16 offsetY, Single fontX, Single fontY);
 
 		void Draw(IEnumerable<TextData> textDataList);
 		void Draw(TextData textData);
@@ -47,10 +45,9 @@ namespace WindowsGame.Common.Managers
 		private Vector2 shipTypePosition;
 		private Vector2 buildNumPosition;
 
-		public static readonly String[] shipTypeText = new String[2] { Globalize.SHIP_TYPE, Globalize.BOSS_TYPE }; 
+		public static readonly String[] shipTypeText = { Globalize.SHIP_TYPE, Globalize.BOSS_TYPE }; 
 
 		private static Char[] DELIM;
-		private static Char[] PIPES;
 
 		private const String TEXTS_DIRECTORY = "Texts";
 
@@ -62,14 +59,13 @@ namespace WindowsGame.Common.Managers
 		public void Initialize(String root)
 		{
 			DELIM = new[] { ',' };
-			PIPES = new[] { '|' };
 
 			textFileRoot = String.Format("{0}{1}/{2}/{3}", root, Constants.CONTENT_DIRECTORY, Constants.DATA_DIRECTORY, TEXTS_DIRECTORY);
 
 			ResetTitle();
 			titlePosition = GetTextPosition(15, 1);
 
-			controlText = new String[2] { Globalize.MOVE_TITLE, Globalize.FIRE_TITLE };
+			controlText = new[] { Globalize.MOVE_TITLE, Globalize.FIRE_TITLE };
 			controlPosition = new Vector2[2];
 			controlPosition[0] = GetTextPosition(3, 23);
 			controlPosition[1] = GetTextPosition(34, 23);

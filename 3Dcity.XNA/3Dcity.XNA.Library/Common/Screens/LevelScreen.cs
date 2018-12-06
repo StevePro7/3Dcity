@@ -7,7 +7,7 @@ namespace WindowsGame.Common.Screens
 {
 	public class LevelScreen : BaseScreenSelect, IScreen
 	{
-		private readonly String[] cursorOptions = new string[3] { Globalize.CURSOR_LEFTS, "  ", Globalize.CURSOR_RIGHT };
+		private readonly String[] cursorOptions = { Globalize.CURSOR_LEFTS, "  ", Globalize.CURSOR_RIGHT };
 		private Vector2 levelNamePosition;
 		private Vector2 levelTextPosition;
 

@@ -29,16 +29,6 @@ namespace WindowsGame.Common.Devices
 			Engine.Game.Window.Title = title;
 		}
 
-		public void SetMotors(Single leftMotor, Single rightMotor)
-		{
-			MyGame.Manager.InputManager.SetMotors(leftMotor, rightMotor);
-		}
-
-		public void ResetMotors()
-		{
-			MyGame.Manager.InputManager.ResetMotors();
-		}
-
 		public void Abort()
 		{
 			MyGame.Manager.ThreadManager.Abort();

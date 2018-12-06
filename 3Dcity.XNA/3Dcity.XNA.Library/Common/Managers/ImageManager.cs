@@ -37,9 +37,6 @@ namespace WindowsGame.Common.Managers
 	{
 		public void LoadContent()
 		{
-			UInt16 wide = 0;
-			UInt16 high = 0;
-
 			const Byte halfSize = Constants.HalfSize;
 			const Byte iconSize = Constants.IconSize;
 			const Byte baseSize = Constants.BaseSize;
@@ -85,7 +82,7 @@ namespace WindowsGame.Common.Managers
 			ExplodeRectangles[(Byte)ExplodeType.Small] = new Rectangle[Constants.MAX_EXPLODE_FRAME];
 			ExplodeRectangles[(Byte)ExplodeType.Big] = new Rectangle[Constants.MAX_EXPLODE_FRAME];
 
-			high = 0 * baseSize;
+			ushort high = 0 * baseSize;
 			for (Byte index = 0; index < Constants.MAX_EXPLODE_FRAME; index++)
 			{
 				ExplodeRectangles[(Byte)ExplodeType.Small][index] = new Rectangle(index * baseSize, high, baseSize, baseSize);
@@ -105,7 +102,7 @@ namespace WindowsGame.Common.Managers
 			}
 
 			// Enemies.
-			high = (UInt16)(3 * baseSize + dbleSize);
+			high = 3 * baseSize + dbleSize;
 			EnemyRectangles = new Rectangle[Constants.MAX_ENEMYS_SPAWN];
 			for (Byte index = 0; index < Constants.MAX_ENEMYS_SPAWN; index++)
 			{
@@ -129,7 +126,7 @@ namespace WindowsGame.Common.Managers
 			const Byte borderHigh = 30;
 			BorderRectangles = new Rectangle[borderBars];
 
-			wide = 2 * bossMedSize;
+			ushort wide = 2 * bossMedSize;
 			high = (UInt16)(high + 1 * bossBigSize);
 			BorderRectangles[0] = new Rectangle(wide + 0 * borderWide, high + 0 * borderHigh, borderWide, borderHigh);
 			BorderRectangles[1] = new Rectangle(wide + 1 * borderWide, high + 0 * borderHigh, borderWide, borderHigh);

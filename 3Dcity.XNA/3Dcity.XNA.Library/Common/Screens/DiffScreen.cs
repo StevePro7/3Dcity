@@ -58,9 +58,7 @@ namespace WindowsGame.Common.Screens
 			UpdateFlag1(gameTime);
 			if (Selected)
 			{
-				//TODO delete as already level already set below...
-				//MyGame.Manager.LevelManager.SetLevelType((LevelType)SelectType);
-				return (Int32)NextScreen;
+				return (Int32) NextScreen;
 			}
 			if (Flag1)
 			{

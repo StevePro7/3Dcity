@@ -14,7 +14,6 @@ namespace WindowsGame.Common.Managers
 		void GamePause(Boolean gamePause);
 		void GameQuiet(Boolean gameQuiet);
 		SongType GetGameMusic(Byte levelIndex);
-		//SongType GetBossMusic(Byte levelIndex);
 
 		void PlayGameMusic(SongType key);
 		void PlayMusic(SongType key);
@@ -28,11 +27,7 @@ namespace WindowsGame.Common.Managers
 		void StopSoundEffect(SoundEffectType key);
 
 		void SetPlayAudio(Boolean playAudio);
-		void SetMinVolume();
-		void SetMaxVolume();
-		void SetVolume(Single volume);
 
-		SongType[] SongTypeList { get; }
 		Boolean PlayAudio { get; }
 	}
 
@@ -41,7 +36,6 @@ namespace WindowsGame.Common.Managers
 		private readonly ISoundFactory soundFactory;
 
 		private SongType[] gameMusicList;
-		private SongType[] bossMusicList;
 		private SoundEffectType[] bulletSoundList;
 
 		public SoundManager(ISoundFactory soundFactory)
@@ -58,18 +52,13 @@ namespace WindowsGame.Common.Managers
 		{
 			PlayAudio = playAudio;
 
-			gameMusicList = new SongType[Constants.GAME_MUSIC]
+			gameMusicList = new[]
 			{
 				SongType.GameMusic1,
 				SongType.GameMusic2,
 				SongType.GameMusic3,
 			};
-			bossMusicList = new SongType[Constants.BOSS_MUSIC]
-			{
-				SongType.BossMusic1,
-				SongType.BossMusic2,
-			};
-			bulletSoundList = new SoundEffectType[Constants.FIRE_SOUND]
+			bulletSoundList = new[]
 			{
 				SoundEffectType.Fire1,
 				SoundEffectType.Fire2,
@@ -249,22 +238,6 @@ namespace WindowsGame.Common.Managers
 			SetVolume();
 		}
 
-		public void SetMinVolume()
-		{
-			soundFactory.SetMinVolume();
-		}
-
-		public void SetMaxVolume()
-		{
-			soundFactory.SetMaxVolume();
-		}
-
-		public void SetVolume(Single volume)
-		{
-			soundFactory.SetVolume(volume);
-		}
-
-		public SongType[] SongTypeList{ get; private set; }
 		public Boolean PlayAudio { get; private set; }
 	}
 }

@@ -9,7 +9,7 @@ namespace WindowsGame.Common
 	/// <summary>
 	/// This is the main type for your game
 	/// </summary>
-	public class AnGame : Microsoft.Xna.Framework.Game
+	public class AnGame : Game
 	{
 		private readonly GraphicsDeviceManager graphics;
 

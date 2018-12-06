@@ -11,13 +11,11 @@ namespace WindowsGame.Common.Screens
 		private Rectangle rect;
 		private Vector2 enemy;
 		private Vector2 large;
-		//private Vector2 spot;
 
 		public override void Initialize()
 		{
 			base.Initialize();
 			LoadTextData();
-			//UpdateGrid = MyGame.Manager.ConfigManager.GlobalConfigData.UpdateGrid;
 			PrevScreen = ScreenType.Exit;
 
 			MyGame.Manager.DebugManager.Reset(CurrScreen);

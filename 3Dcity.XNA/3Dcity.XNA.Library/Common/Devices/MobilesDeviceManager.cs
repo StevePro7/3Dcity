@@ -21,17 +21,6 @@ namespace WindowsGame.Common.Devices
 		public void DrawTitle()
 		{
 		}
-		public void DrawTitle(String title)
-		{
-		}
-
-		public void SetMotors(Single leftMotor, Single rightMotor)
-		{
-		}
-
-		public void ResetMotors()
-		{
-		}
 
 		public void Abort()
 		{

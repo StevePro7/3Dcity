@@ -6,9 +6,6 @@ namespace WindowsGame.Common.Interfaces
 	{
 		void Initialize();
 		void DrawTitle();
-		void DrawTitle(String title);
-		void SetMotors(Single leftMotor, Single rightMotor);
-		void ResetMotors();
 		void Abort();
 
 		String BuildVersion { get; }

@@ -23,7 +23,6 @@ namespace WindowsGame.Common.Managers
 		private const String CONFIG_DIRECTORY = "Config";
 		private const String GLOBAL_CONFIG_FILENAME = "GlobalConfig.xml";
 		public const String PLATFORM_CONFIG_FILENAME = "PlatformConfig{0}.xml";
-		public const String LEVEL_CONFIG_FILENAME = "LevelConfig{0}.xml";
 
 		public void Initialize()
 		{

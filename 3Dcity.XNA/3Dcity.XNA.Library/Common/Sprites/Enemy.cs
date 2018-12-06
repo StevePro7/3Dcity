@@ -185,7 +185,7 @@ namespace WindowsGame.Common.Sprites
 			}
 
 			Byte index = enemyRotate ? frameAngle[FrameIndex] : (Byte) 0;
-			base.DrawRotate(rotates[index], origins[index]);
+			DrawRotate(rotates[index], origins[index]);
 		}
 
 		public void Dead()

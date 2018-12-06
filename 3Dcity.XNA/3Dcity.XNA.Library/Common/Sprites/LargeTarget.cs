@@ -7,8 +7,8 @@ namespace WindowsGame.Common.Sprites
 	public class LargeTarget : BaseSprite
 	{
 		private Single pixel;
-		private const Single RATIO = 1.05f;			// TODO tweak this acceleration
-		private const Single MAXIM = 2.5f;			// TODO tweak maximum acceleration
+		private const Single RATIO = 1.05f;
+		private const Single MAXIM = 2.5f;
 
 		private Single accX;
 		private Single accY;
@@ -19,7 +19,7 @@ namespace WindowsGame.Common.Sprites
 			accY = 1.0f;
 		}
 
-		public override void Reset(Single thePixel)
+		public virtual void Reset(Single thePixel)
 		{
 			pixel = thePixel;
 		}

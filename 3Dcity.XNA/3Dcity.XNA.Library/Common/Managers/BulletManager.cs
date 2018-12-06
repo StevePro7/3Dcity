@@ -17,11 +17,8 @@ namespace WindowsGame.Common.Managers
 		void Shoot(Byte bulletIndex, Vector2 position);
 		void Draw();
 
-		IList<Bullet> BulletList { get; }
 		IList<Bullet> BulletTest { get; }
 		Boolean CanShoot { get; }
-		UInt16 ShootDelay { get; }
-		Single ShootTimer { get; }
 	}
 
 	public class BulletManager : IBulletManager 

@@ -30,7 +30,6 @@ namespace WindowsGame.Common.Interfaces
 		Boolean StatusBar();
 		Boolean LeftsSide();
 		Boolean RightSide();
-		SByte Number();
 
 		void SetMotors(Single leftMotor, Single rightMotor);
 		void ResetMotors();

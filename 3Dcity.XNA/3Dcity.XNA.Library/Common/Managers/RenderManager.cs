@@ -20,7 +20,6 @@ namespace WindowsGame.Common.Managers
 		void DrawBottom();
 		void DrawStatusOuter();
 		void DrawStatusInner(StatusType statusType, Single percentage);
-		void DrawStatusPosition(StatusType statusType, Vector2 position);
 		void DrawBorderPosition(Vector2[] positions);
 	}
 
@@ -38,7 +37,6 @@ namespace WindowsGame.Common.Managers
 		private Vector2 bottomPosition;
 		private Vector2 statusPosition;
 
-		//private Vector2 origin;				// TODO delete
 		private UInt16 starTimer, starDelay;
 		private UInt16 gridTimer, gridDelay;
 		private Single rotation;
@@ -47,7 +45,7 @@ namespace WindowsGame.Common.Managers
 		public void Initialize()
 		{
 			starDelay = MyGame.Manager.ConfigManager.GlobalConfigData.StarDelay;
-			gridDelay = 0;// TODO delete MyGame.Manager.ConfigManager.GlobalConfigData.GridDelay;
+			gridDelay = 0;
 			starTimer = gridTimer = 0;
 			starIndex = gridIndex = 0;
 
@@ -61,7 +59,6 @@ namespace WindowsGame.Common.Managers
 			bottomPosition = new Vector2(0, bottHigh + Constants.TargetSize);
 			statusPosition = new Vector2(14 * 20 - 2, Constants.ScreenHigh - 20 - Constants.GameOffsetY - 4);
  
-			//origin = new Vector2(40, 0);		// TODO delete
 			rotation = MathHelper.ToRadians(270);
 		}
 

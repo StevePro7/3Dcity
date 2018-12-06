@@ -6,7 +6,6 @@ namespace WindowsGame.Common.Data
 	{
 		public String LevelNo;
 		public String LevelType;
-		public String LevelName;
 		public Boolean BonusLevel;
 		public UInt16 GridDelay;
 		public Byte BulletMaxim;

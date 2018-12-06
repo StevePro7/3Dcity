@@ -61,8 +61,6 @@ namespace WindowsGame.Common.Screens
 				if (test)
 				{
 					flag = true;
-
-					// TODO don't toggle this on UWP build!!
 					MyGame.Manager.StateManager.SetCoolMusic(!MyGame.Manager.StateManager.CoolMusic);
 				}
 			}

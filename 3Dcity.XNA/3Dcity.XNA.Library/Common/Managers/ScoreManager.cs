@@ -26,7 +26,6 @@ namespace WindowsGame.Common.Managers
 		// Properties.
 		UInt32 HighScore { get; }
 		Byte MissesTotal { get; }
-		Byte ScoreAvoid { get; }
 		Byte ScoreKills { get; }
 	}
 

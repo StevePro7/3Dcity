@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using WindowsGame.Common.Static;
 using WindowsGame.Master;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace WindowsGame.Common.Sprites
 {
@@ -26,7 +26,6 @@ namespace WindowsGame.Common.Sprites
 			Initialize(position, Rectangle.Empty, bounds);
 		}
 
-		// TODO use overload above as collision not needed
 		public virtual void Initialize(Vector2 position, Rectangle collision, Rectangle bounds)
 		{
 			BaseX = (UInt16)(position.X);
@@ -42,7 +41,7 @@ namespace WindowsGame.Common.Sprites
 
 		public virtual void LoadContent(Rectangle theRectangle)
 		{
-			Rectangle[] theRectangles = new Rectangle[1] { theRectangle };
+			Rectangle[] theRectangles = new Rectangle[] { theRectangle };
 			LoadContent(theRectangles);
 		}
 
@@ -61,10 +60,6 @@ namespace WindowsGame.Common.Sprites
 			Midpoint = new Vector2(midX, midY);
 		}
 
-		public virtual void Reset(Single thePixel)
-		{
-		}
-
 		public void SetPosition(Vector2 position)
 		{
 			Position = position;
@@ -78,17 +73,6 @@ namespace WindowsGame.Common.Sprites
 		public void SetHomeSpot()
 		{
 			Position = HomeSpot;
-		}
-
-		public Vector2 GetMidPoint()
-		{
-			Single midX = SizeW / 2.0f;
-			Single midY = SizeH / 2.0f;
-
-			Vector2 midpoint = new Vector2(Position.X + midX, Position.Y + midY);
-			Midpoint = midpoint;
-
-			return Midpoint;
 		}
 
 		public virtual void Update(GameTime gameTime)

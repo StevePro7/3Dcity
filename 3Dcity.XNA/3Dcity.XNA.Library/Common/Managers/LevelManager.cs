@@ -19,21 +19,16 @@ namespace WindowsGame.Common.Managers
 		void SetLevelNo(Byte levelNo);
 		void CheckLevelOrbs();
 
-		//void Draw();							// TODO delete	
-		//void DrawLevelRoman();					// TODO delete
 		void Draw();
 		void DrawTextData();
 
 		// Properties.
-		//Vector2[] LevelTextPositions { get; }		// TODO delete
 		IList<String> LevelNames { get; }
-		//IList<String> LevelRoman { get; }			// TODO delete
 		LevelConfigData LevelConfigData { get; }
 		Byte MaximLevel { get; }
 		LevelType LevelType { get; }
 		Byte LevelIndex { get; }
 		Byte LevelNo { get; }
-		//String LevelDiff { get; }					// TODO delete
 		String LevelValu { get; }
 		String LevelName { get; }
 	}
@@ -42,18 +37,13 @@ namespace WindowsGame.Common.Managers
 	{
 		private String levelRoot;
 
-		private String levelDiff;
-		//private String levelText;				// TODO delete
 		private String levelData;
-		private Vector2 levelRomanPosition;
 		private Vector2 levelNumPosition;
 		private Vector2 levelOrbPosition;
 		private Rectangle levelOrbPbRectangle;
-		//private Rectangle diffOrbRectangle;	// TODO delete
 
 		private const String LEVELS_DIRECTORY = "Levels";
 		private const String LEVELS_NAMESFILE = "LevelNames";
-		private const String LEVELS_ROMANFILE = "LevelRoman";
 
 		public void Initialize()
 		{
@@ -63,8 +53,6 @@ namespace WindowsGame.Common.Managers
 		public void Initialize(String root)
 		{
 			levelRoot = String.Format("{0}{1}/{2}/{3}", root, Constants.CONTENT_DIRECTORY, Constants.DATA_DIRECTORY, LEVELS_DIRECTORY);
-			levelRomanPosition = MyGame.Manager.TextManager.GetTextPosition(0, 11);
-			//LevelTextPositions = GetLevelTextPositions();
 
 			const Byte offset = 48;
 			levelOrbPosition = new Vector2(Constants.ScreenWide - offset - Constants.GameOffsetX - 4, Constants.ScreenHigh - offset - Constants.GameOffsetY);
@@ -75,13 +63,6 @@ namespace WindowsGame.Common.Managers
 		{
 			String namesFile = String.Format("{0}/{1}.txt", levelRoot, LEVELS_NAMESFILE);
 			LevelNames = MyGame.Manager.FileManager.LoadTxt(namesFile);
-
-			// TODO delete
-			//String romanFile = String.Format("{0}/{1}.txt", levelRoot, LEVELS_ROMANFILE);
-			//LevelRoman = MyGame.Manager.FileManager.LoadTxt(romanFile);
-			//LevelType = MyGame.Manager.ConfigManager.GlobalConfigData.LevelType;
-			//LevelIndex = MyGame.Manager.ConfigManager.GlobalConfigData.LevelIndex;
-			// TODO delete
 
 			MaximLevel = MyGame.Manager.ConfigManager.GlobalConfigData.MaximLevel;
 			if (MaximLevel > LevelNames.Count)
@@ -100,8 +81,6 @@ namespace WindowsGame.Common.Managers
 		public void SetLevelType(LevelType levelType)
 		{
 			LevelType = levelType;
-			levelDiff = levelType.ToString().ToUpper();
-
 			CheckLevelOrbs();
 		}
 		
@@ -146,25 +125,12 @@ namespace WindowsGame.Common.Managers
 			Engine.SpriteBatch.DrawString(Assets.EmulogicFont, levelData, levelNumPosition, Color.White);
 		}
 
-		// TODO delete
-		//private static Vector2[] GetLevelTextPositions()
-		//{
-		//    Vector2[] positions = new Vector2[3];
-		//    positions[0] = MyGame.Manager.TextManager.GetTextPosition(0, 9);
-		//    positions[1] = MyGame.Manager.TextManager.GetTextPosition(0, 10);
-		//    positions[2] = MyGame.Manager.TextManager.GetTextPosition(0, 11);
-		//    return positions;
-		//}
-
-		public Vector2[] LevelTextPositions { get; private set; }
 		public IList<String> LevelNames { get; private set; }
-		//public IList<String> LevelRoman { get; private set; }		// TODO delete
 		public LevelConfigData LevelConfigData { get; private set; }
 		public Byte MaximLevel { get; private set; }
 		public LevelType LevelType { get; private set; }
 		public Byte LevelIndex { get; private set; }
 		public Byte LevelNo { get; private set; }
-		//public String LevelDiff { get; private set; }		// TODO delete
 		public String LevelValu { get; private set; }
 		public String LevelName { get; private set; }
 	}
