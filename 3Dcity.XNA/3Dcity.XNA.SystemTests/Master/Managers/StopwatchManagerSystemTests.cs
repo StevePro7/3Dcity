@@ -23,7 +23,6 @@ namespace WindowsGame.SystemTests.Master.Managers
 			StopwatchManager.Stop();
 			Int64 time = StopwatchManager.ElapsedMilliseconds;
 			Console.WriteLine("Time: " + time);
-			//Assert.That((Int64)2000, Is.EqualTo(time));
 		}
 
 		[TearDown]

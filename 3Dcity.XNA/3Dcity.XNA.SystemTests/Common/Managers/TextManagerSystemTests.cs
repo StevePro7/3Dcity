@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 using WindowsGame.Common;
+using WindowsGame.Common.Managers;
 using WindowsGame.Common.Screens;
 using WindowsGame.Master.Objects;
 

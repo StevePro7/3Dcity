@@ -1,7 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
 using WindowsGame.Common;
-using WindowsGame.Common.Interfaces;
 using WindowsGame.Common.Managers;
 using WindowsGame.Common.Static;
 using WindowsGame.Common.TheGame;
@@ -14,37 +13,16 @@ namespace WindowsGame.SystemTests
 {
 	public abstract class BaseSystemTests
 	{
-		protected IBossManager BossManager;
-		protected IBulletManager BulletManager;
 		protected ICollisionManager CollisionManager;
 		protected ICommandManager CommandManager;
 		protected IConfigManager ConfigManager;
-		protected IContentManager ContentManager;
-		protected IControlManager ControlManager;
-		protected IDebugManager DebugManager;
 		protected IDelayManager DelayManager;
-		protected IDeviceManager DeviceManager;
 		protected IEnemyManager EnemyManager;
-		protected IEventManager EventManager;
-		protected IExplosionManager ExplosionManager;
-		protected IIconManager IconManager;
-		protected IImageManager ImageManager;
-		protected IInputManager InputManager;
 		protected ILevelManager LevelManager;
-		protected IRandomManager RandomManager;
-		protected IRenderManager RenderManager;
-		protected IResolutionManager ResolutionManager;
-		protected IScoreManager ScoreManager;
-		protected IScreenManager ScreenManager;
-		protected ISoundManager SoundManager;
-		protected ISpriteManager SpriteManager;
 		protected IStateManager StateManager;
 		protected IStopwatchManager StopwatchManager;
-		protected IStorageManager StorageManager;
+
 		protected ITextManager TextManager;
-		protected IThreadManager ThreadManager;
-		protected IFileManager FileManager;
-		protected ILogger Logger;
 
 		// mklink /D C:\3DCity.Content D:\SVN\3Dcity\3Dcity.XNA\3Dcity.XNA\3Dcity.XNA\bin\x86\Debug\
 		// mklink /D C:\3DCity.Content E:\GitHub\StevePro7\3Dcity\3Dcity.XNA\3Dcity.XNA\3Dcity.XNA\bin\x86\Debug\

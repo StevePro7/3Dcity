@@ -57,11 +57,8 @@ namespace WindowsGame.SystemTests.Common.Managers
 				}
 				else
 				{
-					totals[speedType]++;	
+					totals[speedType]++;
 				}
-
-				String msg = String.Format("Delay[{0}]={1}", index, speedType);
-				//Console.WriteLine(msg);
 			}
 
 			Console.WriteLine("Speed[{0}]={1}", SpeedType.None, totals[SpeedType.None]);
@@ -85,9 +82,6 @@ namespace WindowsGame.SystemTests.Common.Managers
 				{
 					maxValue = value;
 				}
-
-				String msg = String.Format("Delay[{0}]={1}", index, value);
-				//Console.WriteLine(msg);
 			}
 
 			Console.WriteLine("Min:{0} Max:{1}", minValue, maxValue);
