@@ -254,4 +254,3 @@ namespace WindowsGame.Common.Managers
 		public IList<UInt16> TargetList { get; private set; }
 	}
 }
-

@@ -22,21 +22,13 @@ namespace WindowsGame.Common.Managers
 		void Draw();
 		void DrawProgress();
 
-		IList<Enemy> EnemyList { get; }
 		IList<Enemy> EnemyTest { get; }
 		IDictionary<Byte, Enemy> EnemyDict { get; }
-
 		IList<Rectangle> EnemyBounds { get; }
-		UInt16[] EnemyOffsetX { get; }
-		UInt16[] EnemyOffsetY { get; }
 
-		Byte EnemySpawn { get; }
 		Byte EnemyTotal { get; }
-		Byte EnemyStart { get; }
 		Single EnemyPercentage { get; }
 		Single EnemyController { get; }
-		String EnemyTotalText { get; }
-		String EnemyStartText { get; }
 	}
 
 	public class EnemyManager : IEnemyManager
@@ -189,6 +181,10 @@ namespace WindowsGame.Common.Managers
 					break;
 				}
 			}
+
+			// TODO delete
+			//slotID = 0;		// hard code slotID to test.
+			//MyGame.Manager.Logger.Info((slotID+1).ToString());
 
 			// Retrieve the enemy from list.
 			Enemy enemy = EnemyList[index];
