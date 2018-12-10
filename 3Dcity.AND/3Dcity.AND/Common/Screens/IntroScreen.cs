@@ -10,7 +10,6 @@ namespace WindowsGame.Common.Screens
 		private Vector2 startPosition;
 		private Vector2 titlePosition;
 		private Vector2 moverPosition;
-		//private Vector2 buildPosition;
 		private Single startY;
 		private Single titleY;
 		private Single deltaY;
@@ -18,7 +17,6 @@ namespace WindowsGame.Common.Screens
 		private UInt16 delay1, delay2, timer;
 		private Byte index;
 		private Boolean flag;
-		//private String buildVersion;
 
 		public override void Initialize()
 		{
@@ -41,7 +39,6 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
-			//buildPosition = MyGame.Manager.TextManager.GetTextPosition(35, 23);
 			const UInt16 gapDelay = 660;//	good guess
 			deltaY = startY - titleY;
 			deltaY = gapDelay / deltaY;
@@ -52,7 +49,6 @@ namespace WindowsGame.Common.Screens
 			SongType song = coolMusic ? SongType.CoolMusic : SongType.GameTitle;
 
 			MyGame.Manager.SoundManager.PlayMusic(song, false);
-			//buildVersion = MyGame.Manager.DeviceManager.BuildVersion;
 			index = 0;
 			base.LoadContent();
 		}
@@ -66,15 +62,16 @@ namespace WindowsGame.Common.Screens
 			}
 
 			// Check to go back first.
-			Boolean back = MyGame.Manager.InputManager.Back();
+			Boolean back = MyGame.Manager.InputManager.BackAll();
 			if (back)
 			{
 				// Exit on Title.
 				return (Int32) NextScreen;
 			}
 			// Check to go forward second.
-			Boolean mode = MyGame.Manager.InputManager.TitleMode();
-			if (mode)
+			Boolean test = MyGame.Manager.InputManager.SelectAll();
+			Boolean mode = MyGame.Manager.InputManager.TitleModeAll();
+			if (test || mode)
 			{
 				return (Int32) NextScreen;
 			}
@@ -84,7 +81,6 @@ namespace WindowsGame.Common.Screens
 			{
 				Single delta = (Single) gameTime.ElapsedGameTime.TotalSeconds;
 				startY -= delta * deltaY * 24;
-				//startY -= delta * deltaY * 8;			// TODO make configurable??
 				moverPosition.Y = startY;
 			}
 			else

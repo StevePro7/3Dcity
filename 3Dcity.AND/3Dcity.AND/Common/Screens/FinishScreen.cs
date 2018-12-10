@@ -17,7 +17,7 @@ namespace WindowsGame.Common.Screens
 		private UInt16 promptDelay;
 		private Vector2 homeSpot;
 		private Single deltaX, deltaY;
-		private Boolean flag, flag3; // flag2
+		private Boolean flag, flag3;
 		private FinishState finishState;
 		private const Single offset = 1.0f;
 		private const Single multiplier = 0.6f;
@@ -63,7 +63,6 @@ namespace WindowsGame.Common.Screens
 			timer3 = 0;
 			Flag2 = true;
 			flag = false;
-			//flag2 = false;
 			flag3 = false;
 			finishState = FinishState.PauseSml;
 		}
@@ -141,7 +140,6 @@ namespace WindowsGame.Common.Screens
 				return (Int32)NextScreen;
 			}
 
-			//DetectFire();
 			Boolean fire = MyGame.Manager.InputManager.Select();
 			Boolean left = MyGame.Manager.InputManager.LeftsSide();
 			Boolean rght = MyGame.Manager.InputManager.RightSide();

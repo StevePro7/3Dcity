@@ -6,12 +6,6 @@
 		Mobiles = 1
 	}
 
-	public enum CursorType
-	{
-		Left = 0,
-		Right = 1
-	}
-
 	public enum LevelType
 	{
 		Easy = 0,
@@ -42,12 +36,6 @@
 		Rght = 1,
 		Down = 2,
 		Left = 3,
-	}
-
-	public enum SpawnType
-	{
-		Repeat,
-		Spaced
 	}
 
 	public enum Direction
@@ -84,7 +72,6 @@
 		Black = 0,
 		Yellow = 1,
 		Red = 2,
-		Blue = 3
 	}
 
 	public enum SongType
@@ -103,8 +90,6 @@
 	public enum SoundEffectType
 	{
 		Aaargh,
-		Bonus,
-		Boss,
 		Cheat,
 		Extra,
 		Finish,
@@ -130,7 +115,6 @@
 		SmallTarget,
 		Bullet,
 		Enemy,
-		Explosion
 	}
 
 	public enum ScreenType

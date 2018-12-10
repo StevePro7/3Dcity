@@ -16,7 +16,6 @@ namespace WindowsGame.Common.Screens
 			base.Initialize();
 			UpdateGrid = MyGame.Manager.ConfigManager.GlobalConfigData.UpdateGrid;
 
-			// TODO make delay values configurable!
 			bigDelay = MyGame.Manager.ConfigManager.GlobalConfigData.ResumeDelay;
 			smlDelay = 200;
 

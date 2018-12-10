@@ -7,9 +7,9 @@ namespace WindowsGame.Common.Sprites
 	public class SmallTarget : BaseSprite
 	{
 		private Single pixel;
-		private const Single RATIO = 0.15f;			// TODO make configurable to tweak "speed" in which small target moves
+		private const Single RATIO = 0.15f;
 
-		public override void Reset(Single thePixel)
+		public virtual void Reset(Single thePixel)
 		{
 			pixel = thePixel;
 		}
@@ -18,7 +18,6 @@ namespace WindowsGame.Common.Sprites
 		{
 			Vector2 position = Position;
 
-			// TODO - ignore squiggle + check if this snaps back to center on iPad!
 			if (0 == horz && 0 == vert)
 			{
 				position.X = BaseX;

@@ -26,7 +26,7 @@ namespace WindowsGame.Common.Objects
 
 		public virtual void LoadContent(Rectangle theRectangle)
 		{
-			Rectangle[] theRectangles = new Rectangle[1] { theRectangle };
+			Rectangle[] theRectangles = { theRectangle };
 			LoadContent(theRectangles);
 		}
 

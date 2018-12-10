@@ -41,6 +41,16 @@ namespace WindowsGame.Common.Inputs
 			mouseScreenInput.Update(gameTime);
 		}
 
+		public Boolean BackAll()
+		{
+			Boolean back = Back();
+			if (back)
+			{
+				return true;
+			}
+
+			return joystickInput.JoyHoldAll(Buttons.Back) || joystickInput.JoyHoldAll(Buttons.B);
+		}
 		public Boolean Back()
 		{
 			// Mouse.
@@ -261,6 +271,16 @@ namespace WindowsGame.Common.Inputs
 			return false;
 		}
 
+		public Boolean SelectAll()
+		{
+			Boolean select = Select();
+			if (select)
+			{
+				return true;
+			}
+
+			return joystickInput.JoyHoldAll(Buttons.A);
+		}
 		public Boolean Select()
 		{
 			// Mouse.
@@ -280,7 +300,7 @@ namespace WindowsGame.Common.Inputs
 			}
 
 			// Keyboard.
-			if (keyboardInput.KeyHold(Keys.Enter) || keyboardInput.KeyHold(Keys.Space))
+			if (keyboardInput.KeyHold(Keys.Space))
 			{
 				return true;
 			}
@@ -312,7 +332,7 @@ namespace WindowsGame.Common.Inputs
 			}
 
 			// Keyboard.
-			if (keyboardInput.KeyHold(Keys.Enter) || keyboardInput.KeyHold(Keys.Space))
+			if (keyboardInput.KeyHold(Keys.Space))
 			{
 				return true;
 			}
@@ -387,13 +407,13 @@ namespace WindowsGame.Common.Inputs
 			}
 
 			// Joystick.
-			if (joystickInput.JoyHold(Buttons.A))
+			if (joystickInput.JoyHoldAll(Buttons.A))
 			{
 				return true;
 			}
 
 			// Keyboard.
-			if (keyboardInput.KeyHold(Keys.Enter) || keyboardInput.KeyHold(Keys.Space))
+			if (keyboardInput.KeyHold(Keys.Space))
 			{
 				return true;
 			}
@@ -401,6 +421,16 @@ namespace WindowsGame.Common.Inputs
 			return false;
 		}
 
+		public Boolean TitleModeAll()
+		{
+			Boolean titleMode = TitleMode();
+			if (titleMode)
+			{
+				return true;
+			}
+
+			return joystickInput.JoyHoldAll(Buttons.RightShoulder);
+		}
 		public Boolean TitleMode()
 		{
 			// Mouse.
@@ -414,14 +444,13 @@ namespace WindowsGame.Common.Inputs
 			}
 
 			// Joystick.
-			//if (joystickInput.JoyPress(Buttons.Y))
 			if (joystickInput.JoyHold(Buttons.RightShoulder))
 			{
 				return true;
 			}
 
 			// Keyboard.
-			if (keyboardInput.KeyHold(Keys.D1) || keyboardInput.KeyHold(Keys.Space))
+			if (keyboardInput.KeyHold(Keys.D1) || keyboardInput.KeyHold(Keys.Back))
 			{
 				return true;
 			}
@@ -476,58 +505,14 @@ namespace WindowsGame.Common.Inputs
 			return false;
 		}
 
-		public SByte Number()
+		public void SetMotors(Single leftMotor, Single rightMotor)
 		{
-			if (keyboardInput.KeyHold(Keys.D1))
-			{
-				return 0;
-			}
-			if (keyboardInput.KeyHold(Keys.D2))
-			{
-				return 1;
-			}
-			if (keyboardInput.KeyHold(Keys.D3))
-			{
-				return 2;
-			}
-			if (keyboardInput.KeyHold(Keys.D4))
-			{
-				return 3;
-			}
-			if (keyboardInput.KeyHold(Keys.D5))
-			{
-				return 4;
-			}
-			if (keyboardInput.KeyHold(Keys.D6))
-			{
-				return 5;
-			}
-			if (keyboardInput.KeyHold(Keys.D7))// || keyboardInput.KeyHold(Keys.Q))
-			{
-				return 6;
-			}
-			if (keyboardInput.KeyHold(Keys.D8))// || keyboardInput.KeyHold(Keys.W))
-			{
-				return 7;
-			}
-			//if (keyboardInput.KeyHold(Keys.E))
-			//{
-			//    return 8;
-			//}
-			//if (keyboardInput.KeyHold(Keys.R))
-			//{
-			//    return 9;
-			//}
-			//if (keyboardInput.KeyHold(Keys.T))
-			//{
-			//    return 10;
-			//}
-			//if (keyboardInput.KeyHold(Keys.Y))
-			//{
-			//    return 11;
-			//}
+			joystickInput.SetMotors(leftMotor, rightMotor);
+		}
 
-			return Constants.INVALID_INDEX;
+		public void ResetMotors()
+		{
+			SetMotors(0, 0);
 		}
 
 	}

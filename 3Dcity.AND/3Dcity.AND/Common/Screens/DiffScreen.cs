@@ -32,6 +32,7 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.SpriteManager.SmallTarget.SetHomeSpot();
 			isGodMode = MyGame.Manager.ConfigManager.GlobalConfigData.IsGodMode;
 			localCheat = MyGame.Manager.StateManager.CheatGame;
+			localCount = 0;
 			base.LoadContent();
 
 			SelectType = (Byte)MyGame.Manager.LevelManager.LevelType;
@@ -57,9 +58,7 @@ namespace WindowsGame.Common.Screens
 			UpdateFlag1(gameTime);
 			if (Selected)
 			{
-				//TODO delete as already level already set below...
-				//MyGame.Manager.LevelManager.SetLevelType((LevelType)SelectType);
-				return (Int32)NextScreen;
+				return (Int32) NextScreen;
 			}
 			if (Flag1)
 			{

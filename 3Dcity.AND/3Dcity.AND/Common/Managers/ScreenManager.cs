@@ -29,7 +29,6 @@ namespace WindowsGame.Common.Managers
 			screens = GetScreens();
 			screens[(Int32)ScreenType.Splash].Initialize();
 			screens[(Int32)ScreenType.Init].Initialize();
-			//color = GetColor();
 		}
 
 		public void LoadContent()
@@ -51,7 +50,6 @@ namespace WindowsGame.Common.Managers
 			{
 				currScreen = nextScreen;
 				screens[currScreen].LoadContent();
-				//color = GetColor();
 			}
 
 			nextScreen = screens[currScreen].Update(gameTime);
@@ -64,12 +62,6 @@ namespace WindowsGame.Common.Managers
 			screens[currScreen].Draw();
 			Engine.SpriteBatch.End();
 		}
-
-		// TODO delete
-		//private Color GetColor()
-		//{
-		//    return Color.Black;
-		//}
 
 		private static Dictionary<Int32, IScreen> GetScreens()
 		{

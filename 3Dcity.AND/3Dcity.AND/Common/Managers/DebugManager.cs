@@ -9,7 +9,6 @@ namespace WindowsGame.Common.Managers
 	{
 		void Initialize();
 		void Reset(ScreenType screenType);
-		void Draw();
 	}
 
 	public class DebugManager : IDebugManager
@@ -75,18 +74,6 @@ namespace WindowsGame.Common.Managers
 
 			// Sprites.
 			MyGame.Manager.SpriteManager.Reset(LevelType, MyGame.Manager.LevelManager.LevelNo);
-		}
-
-		private static LevelConfigData LoadLevelConfigData(LevelType LevelType, Byte LevelNo)
-		{
-			Byte LevelIndex = (Byte)(LevelNo - 1);
-			MyGame.Manager.LevelManager.LoadLevelConfigData(LevelType, LevelIndex);
-			LevelConfigData LevelConfigData = MyGame.Manager.LevelManager.LevelConfigData;
-			return LevelConfigData;
-		}
-
-		public void Draw()
-		{
 		}
 
 		private Vector2[] GetBoxPositions()

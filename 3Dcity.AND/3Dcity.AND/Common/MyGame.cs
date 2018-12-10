@@ -40,7 +40,7 @@ namespace WindowsGame.Common
 
 		public static void LoadContent()
 		{
-			Byte framesPerSecond = MyGame.Manager.ConfigManager.GlobalConfigData.FramesPerSecond;
+			Byte framesPerSecond = Manager.ConfigManager.GlobalConfigData.FramesPerSecond;
 			Engine.Game.IsFixedTimeStep = Constants.IsFixedTimeStep;
 			Engine.Game.TargetElapsedTime = TimeSpan.FromSeconds(1.0f / framesPerSecond);
 			Engine.Game.IsMouseVisible = Constants.IsMouseVisible;
@@ -103,7 +103,7 @@ namespace WindowsGame.Common
 		public static void Update(GameTime gameTime)
 		{
 			// 50fps = 20ms = 20 / 1000 = 0.02
-			Single delta = (Single) gameTime.ElapsedGameTime.TotalSeconds;
+			// Single delta = (Single) gameTime.ElapsedGameTime.TotalSeconds;
 
 			Manager.InputManager.Update(gameTime);
 
@@ -134,6 +134,7 @@ namespace WindowsGame.Common
 
 		public static void OnDeactivated()
 		{
+			Manager.InputManager.ResetMotors();
 			Manager.StorageManager.SaveContent();
 
 #if ANDROID

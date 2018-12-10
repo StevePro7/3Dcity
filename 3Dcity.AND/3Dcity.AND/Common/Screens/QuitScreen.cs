@@ -23,6 +23,7 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
+			MyGame.Manager.InputManager.ResetMotors();
 			MyGame.Manager.SpriteManager.SmallTarget.SetHomeSpot();
 			base.LoadContent();
 
@@ -42,7 +43,6 @@ namespace WindowsGame.Common.Screens
 			{
 				MyGame.Manager.StateManager.ToggleGameState();
 				GamePause = MyGame.Manager.StateManager.GamePause;
-				//MyGame.Manager.SoundManager.GamePause(GamePause);
 
 				BaseObject icon = MyGame.Manager.IconManager.GameState;
 				MyGame.Manager.IconManager.ToggleIcon(icon);

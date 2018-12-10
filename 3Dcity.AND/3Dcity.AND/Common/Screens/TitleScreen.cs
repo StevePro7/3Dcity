@@ -66,7 +66,7 @@ namespace WindowsGame.Common.Screens
 			}
 
 			// Check to go back first.
-			Boolean back = MyGame.Manager.InputManager.Back();
+			Boolean back = MyGame.Manager.InputManager.BackAll();
 			if (back)
 			{
 				return (Int32) PrevScreen;
@@ -93,7 +93,7 @@ namespace WindowsGame.Common.Screens
 			{
 				if (!localCheat)
 				{
-					Boolean titleMode = MyGame.Manager.InputManager.TitleMode();
+					Boolean titleMode = MyGame.Manager.InputManager.TitleModeAll();
 					if (titleMode)
 					{
 						localCount++;

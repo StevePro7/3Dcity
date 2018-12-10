@@ -6,6 +6,7 @@ namespace WindowsGame.Common.Static
 	{
 		public const String YEAR_TITLE = "(C) 1988";
 
+		public const String DRAW_TITLE = "3D City";
 		public const String GAME_TITLE = "--3D CITY--";
 		public const String GAME_CHEAT = "==3D CITY==";
 		public const String MOVE_TITLE = "MOVE";

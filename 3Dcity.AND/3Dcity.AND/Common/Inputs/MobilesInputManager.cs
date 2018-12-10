@@ -5,7 +5,6 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 using WindowsGame.Common.Interfaces;
 using WindowsGame.Common.Managers;
-using WindowsGame.Common.Static;
 using WindowsGame.Master.Inputs;
 
 namespace WindowsGame.Common.Inputs
@@ -85,6 +84,10 @@ namespace WindowsGame.Common.Inputs
 			}
 		}
 
+		public Boolean BackAll()
+		{
+			return Back();
+		}
 		public Boolean Back()
 		{
 			return Escape() || StatusBar();
@@ -93,11 +96,6 @@ namespace WindowsGame.Common.Inputs
 		public Boolean Escape()
 		{
 			return joystickInput.JoyHold(Buttons.Back);
-		}
-
-		public Single CheckJoyPadTiny(Vector2 position)
-		{
-			return MyMoveFunc(controlManager.CheckJoyPadTiny);
 		}
 
 		public Boolean Accelerate()
@@ -125,6 +123,10 @@ namespace WindowsGame.Common.Inputs
 			return MyMove2Func(controlManager.CheckJoyPadFire);
 		}
 
+		public Boolean SelectAll()
+		{
+			return Select();
+		}
 		public Boolean Select()
 		{
 			return MyPressFunc(controlManager.CheckJoyPadFire);
@@ -155,6 +157,10 @@ namespace WindowsGame.Common.Inputs
 			return MyPressFunc(controlManager.CheckCenterPos);
 		}
 
+		public Boolean TitleModeAll()
+		{
+			return TitleMode();
+		}
 		public Boolean TitleMode()
 		{
 			return MyPressFunc(controlManager.CheckTitleMode);
@@ -175,10 +181,14 @@ namespace WindowsGame.Common.Inputs
 			return MyPressFunc(controlManager.CheckRightSide);
 		}
 
-		public SByte Number()
+		public void SetMotors(Single leftMotor, Single rightMotor)
 		{
-			return Constants.INVALID_INDEX;
 		}
+
+		public void ResetMotors()
+		{
+		}
+
 
 		private Single MyMoveFunc(Func<Vector2, Single> func)
 		{

@@ -22,7 +22,6 @@ namespace WindowsGame.Common.Screens
 		public override void Initialize()
 		{
 			base.Initialize();
-			//LoadTextData();		// TODO delete
 
 			MyGame.Manager.DebugManager.Reset(CurrScreen);
 		}
@@ -55,7 +54,6 @@ namespace WindowsGame.Common.Screens
 			if (index >= eventTimeList.Count)
 			{
 				MyGame.Manager.StopwatchManager.Stop();
-				Int64 time = MyGame.Manager.StopwatchManager.ElapsedMilliseconds;
 				return (Int32)CurrScreen;
 			}
 
@@ -64,7 +62,6 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.EventManager.ClearEvents();
 
 			Single eventTime = eventTimeList[index];
-			//Single timer = (Single)Math.Round(gameTime.ElapsedGameTime.TotalSeconds, 2);
 			timer = (Single)gameTime.ElapsedGameTime.TotalSeconds;
 			delta += timer;
 			delta = (Single)Math.Round(delta, 2);
@@ -100,7 +97,6 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.SpriteManager.Draw();
 
 			// Text data last!
-			//MyGame.Manager.TextManager.Draw(TextDataList);		// TODO delete
 			MyGame.Manager.TextManager.DrawTitle();
 			MyGame.Manager.TextManager.DrawControls();
 			MyGame.Manager.LevelManager.DrawTextData();

@@ -11,7 +11,6 @@ namespace WindowsGame.Common.Managers
 		void Initialize();
 		void LoadContent();
 		void ToggleIcon(BaseObject icon);
-		void UpdateIcon(BaseObject icon, Byte index);
 		void UpdateFireIcon(Byte index);
 		void Draw();
 		void DrawControls();
@@ -66,7 +65,6 @@ namespace WindowsGame.Common.Managers
 			GameState.LoadContent(MyGame.Manager.ImageManager.GameStateRectangles);
 			GameSound.LoadContent(MyGame.Manager.ImageManager.GameSoundRectangles);
 
-			// TODO is this correct to set sound icon here?
 			Byte index = Convert.ToByte(MyGame.Manager.StateManager.GameQuiet);
 			UpdateIcon(GameSound, index);
 		}

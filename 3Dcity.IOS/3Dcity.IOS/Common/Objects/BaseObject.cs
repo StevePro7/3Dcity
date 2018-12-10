@@ -1,13 +1,13 @@
 ﻿using System;
-using WindowsGame.Define;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+using WindowsGame.Common.Static;
+using WindowsGame.Master;
 
 namespace WindowsGame.Common.Objects
 {
 	public class BaseObject
 	{
-		private Texture2D texture;
+		private Rectangle[] rectangles;
 
 		public virtual void Initialize(Vector2 position, Rectangle collision)
 		{
@@ -21,51 +21,47 @@ namespace WindowsGame.Common.Objects
 			Position = position;
 			Collision = collision;
 			Bounds = bounds;
+			Index = 0;
 		}
 
-		//public virtual void Initialize(UInt16 baseX, UInt16 baseY, UInt16 size, UInt16 collX, UInt16 collY, UInt16 rect)
-		//{
-		//    Initialize(baseX, baseY, size, size, collX, collY, rect, rect);
-		//}
-
-		//public virtual void Initialize(UInt16 baseX, UInt16 baseY, UInt16 sizeW, UInt16 sizeH, UInt16 collX, UInt16 collY, UInt16 collW, UInt16 collH)
-		//{
-		//    BaseX = baseX;
-		//    BaseY = baseY;
-		//    SizeW = sizeW;
-		//    SizeH = sizeH;
-		//    Position = new Vector2(baseX, baseY);
-
-		//    Single midX = sizeW / 2.0f;
-		//    Single midY = sizeH / 2.0f;
-		//    Midpoint = new Vector2(baseX + midX, baseY + midY);
-
-		//    Collision = new Rectangle(collX, collY, collW, collH);
-		//}
-
-		public virtual void LoadContent(Texture2D theTexture)
+		public virtual void LoadContent(Rectangle theRectangle)
 		{
-			UInt16 width = (UInt16)(theTexture.Width);
-			UInt16 height = (UInt16)(theTexture.Height);
-
-			LoadContent(theTexture, width, height);
+			Rectangle[] theRectangles = { theRectangle };
+			LoadContent(theRectangles);
 		}
 
-		protected virtual void LoadContent(Texture2D theTexture, UInt16 width, UInt16 height)
+		public virtual void LoadContent(Rectangle[] theRectangles)
 		{
-			texture = theTexture;
+			rectangles = theRectangles;
 
-			SizeW = (UInt16)(texture.Width);
-			SizeH = (UInt16)(texture.Height);
+			// Assume all textures in array are same size!
+			UInt16 width = (UInt16)(theRectangles[0].Width);
+			UInt16 height = (UInt16)(theRectangles[0].Height);
+			SizeW = width;
+			SizeH = height;
 
 			Single midX = width / 2.0f + BaseX;
 			Single midY = height / 2.0f + BaseY;
 			Midpoint = new Vector2(midX, midY);
 		}
 
+		public void ToggleIcon()
+		{
+			Index = (Byte)(1 - Index);
+		}
+		public void UpdateIcon(Byte index)
+		{
+			Index = index;
+		}
+
 		public virtual void Draw()
 		{
-			Engine.SpriteBatch.Draw(texture, Position, Color.White);
+			Engine.SpriteBatch.Draw(Assets.SpriteSheet01Texture, Position, rectangles[0], Color.White);
+		}
+
+		protected virtual void Draw(Byte index)
+		{
+			Engine.SpriteBatch.Draw(Assets.SpriteSheet01Texture, Position, rectangles[index], Color.White);
 		}
 
 		public UInt16 BaseX { get; private set; }
@@ -76,5 +72,6 @@ namespace WindowsGame.Common.Objects
 		public Vector2 Midpoint { get; private set; }
 		public Rectangle Collision { get; private set; }
 		public Rectangle Bounds { get; private set; }
+		protected Byte Index { get; private set; }
 	}
 }

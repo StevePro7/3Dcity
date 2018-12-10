@@ -57,7 +57,7 @@ namespace WindowsGame.Common.Screens
 
 			if (!flag)
 			{
-				Boolean test = MyGame.Manager.InputManager.Select();
+				Boolean test = MyGame.Manager.InputManager.SelectAll();
 				if (test)
 				{
 					flag = true;
@@ -76,6 +76,9 @@ namespace WindowsGame.Common.Screens
 
 		public void Draw()
 		{
+			//MyGame.Manager.DeviceManager.DrawTitle(GetType().Name);
+			MyGame.Manager.DeviceManager.DrawTitle();
+
 			Engine.SpriteBatch.Draw(Assets.SplashTexture, bannerPosition, Color.White);
 			if (0 == splashDelay)
 			{

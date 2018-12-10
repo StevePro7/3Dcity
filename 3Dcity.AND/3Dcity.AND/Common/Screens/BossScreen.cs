@@ -18,7 +18,6 @@ namespace WindowsGame.Common.Screens
 
 		public override void LoadContent()
 		{
-			// TODO read this from boss level config file.
 			MyGame.Manager.BulletManager.Reset(10, 100, 100);
 			bossBig = MyGame.Manager.ConfigManager.GlobalConfigData.BossBig;
 

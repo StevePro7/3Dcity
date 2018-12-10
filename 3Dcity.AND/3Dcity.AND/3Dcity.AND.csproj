@@ -16,10 +16,10 @@
     <AndroidApplication>true</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <AndroidSupportedAbis>armeabi-v7a%3bx86</AndroidSupportedAbis>
+    <AndroidSupportedAbis>armeabi;armeabi-v7a;x86</AndroidSupportedAbis>
     <AndroidStoreUncompressedFileExtensions>.m4a</AndroidStoreUncompressedFileExtensions>
     <MandroidI18n />
-    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
     <MonoGamePlatform>Android</MonoGamePlatform>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
@@ -35,9 +35,6 @@
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <AndroidLinkMode>None</AndroidLinkMode>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <AotAssemblies>false</AotAssemblies>
-    <EnableLLVM>false</EnableLLVM>
-    <BundleAssemblies>false</BundleAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -49,10 +46,10 @@
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <AotAssemblies>false</AotAssemblies>
-    <EnableLLVM>false</EnableLLVM>
-    <BundleAssemblies>false</BundleAssemblies>
     <DebugSymbols>false</DebugSymbols>
+    <ExternalConsole>false</ExternalConsole>
+    <Commandlineparameters></Commandlineparameters>
+    <PlatformTarget>anycpu</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
@@ -195,103 +192,47 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\AndroidManifest.xml" />
+    <None Include="Properties\AndroidManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Data\Config\GlobalConfig.xml" />
+    <AndroidAsset Include="Assets\Content\Data\Config\GlobalConfig.xml">
+      <SubType>Designer</SubType>
+    </AndroidAsset>
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\Textures\Splash.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Common\Back\" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Data\Config\PlatformConfigMobiles.xml" />
+    <AndroidAsset Include="Assets\Content\Data\Texts\TestScreen.txt" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\Data\Config\PlatformConfigDesktop.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Textures\SplashBlank.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Textures\spritesheet01-1024.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Textures\spritesheet02-1024.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Sound\Aaargh.wav" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Sound\Bonus.wav" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Sound\Boss.wav" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Sound\BossMusic1.mp3" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Sound\BossMusic2.mp3" />
+    <AndroidAsset Include="Assets\Content\Data\Config\PlatformConfigMobiles.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\Sound\Cheat.wav" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Sound\ContMusic.mp3" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Sound\CoolMusic.mp3" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Sound\Extra.wav" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Sound\Finish.wav" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Sound\Fire1.wav" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Sound\Fire2.wav" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Sound\Fire3.wav" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Sound\GameMusic1.mp3" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Sound\GameMusic2.mp3" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Sound\GameMusic3.mp3" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidAsset Include="Assets\Content\Sound\GameOver.mp3" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Sound\GameTitle.mp3" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Sound\Over.wav" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Sound\Ready.wav" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidAsset Include="Assets\Content\Sound\Right.wav" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Sound\Ship.wav" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\Sound\Title.mp3" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\Sound\Wrong.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Textures\spritesheet01-1024.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Textures\spritesheet02-1024.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\Data\Events\00.txt" />
@@ -306,13 +247,100 @@
     <AndroidAsset Include="Assets\Content\Data\Levels\LevelNames.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Common\Back\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Data\Texts\ContScreen.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Data\Texts\DiffScreen.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Data\Texts\LevelScreen.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Data\Texts\OverScreen.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Data\Sprite\Enemys.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Data\Sprite\Target.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-hdpi\ic_launcher.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-ldpi\ic_launcher.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-mdpi\ic_launcher.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-xhdpi\ic_launcher.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-xxhdpi\ic_launcher.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Sound\ContMusic.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Sound\GameTitle.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Sound\CoolMusic.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Textures\SplashBlank.bmp" />
+  </ItemGroup>
+  <ItemGroup>
     <AndroidAsset Include="Assets\Content\Data\Levels\Easy\01-Easy.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Data\Levels\Hard\01-Hard.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\Data\Levels\Easy\02-Easy.xml" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Data\Levels\Hard\02-Hard.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Data\Texts\LoadScreen.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Data\Texts\ReadyScreen.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Data\Texts\QuitScreen.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Sound\Aaargh.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Sound\Bonus.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Sound\Ready.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Sound\Over.wav" />
+  </ItemGroup>
+  <ItemGroup>
     <AndroidAsset Include="Assets\Content\Data\Levels\Easy\03-Easy.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Data\Levels\Hard\03-Hard.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Data\Maths\DelayWaves.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Data\Texts\DeadScreen.txt" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\Data\Levels\Easy\04-Easy.xml" />
@@ -360,15 +388,6 @@
     <AndroidAsset Include="Assets\Content\Data\Levels\Easy\18-Easy.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Data\Levels\Hard\01-Hard.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Data\Levels\Hard\02-Hard.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Data\Levels\Hard\03-Hard.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidAsset Include="Assets\Content\Data\Levels\Hard\04-Hard.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -414,57 +433,57 @@
     <AndroidAsset Include="Assets\Content\Data\Levels\Hard\18-Hard.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Data\Levels\Test\99-Test.xml" />
+    <AndroidAsset Include="Assets\Content\Data\Texts\FinishScreen.txt" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Data\Maths\DelayWaves.txt" />
+    <AndroidAsset Include="Assets\Content\Sound\Boss.wav" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Data\Sprite\Enemys.txt" />
+    <AndroidAsset Include="Assets\Content\Sound\Extra.wav" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Data\Sprite\Target.txt" />
+    <AndroidAsset Include="Assets\Content\Sound\Finish.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Sound\Ship.wav" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\Data\Texts\BeatScreen.txt" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Data\Texts\ContScreen.txt" />
+    <AndroidAsset Include="Assets\Content\Data\Levels\Test\99-Test.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Data\Texts\DeadScreen.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Data\Texts\DiffScreen.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Data\Texts\FinishScreen.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Data\Texts\LevelScreen.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Data\Texts\LoadScreen.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Data\Texts\OverScreen.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Data\Texts\QuitScreen.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Data\Texts\ReadyScreen.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Data\Texts\TestScreen.txt" />
+    <AndroidAsset Include="Assets\Content\Data\Config\GlobalConfigTEST.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\Data\Config\GlobalConfigPROD.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Data\Config\GlobalConfigTEST.xml" />
+    <AndroidAsset Include="Assets\Content\Sound\BossMusic1.mp3" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Sound\BossMusic2.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Sound\GameMusic1.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Sound\GameMusic2.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Sound\GameMusic3.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Sound\Fire1.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Sound\Fire2.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Sound\Fire3.wav" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

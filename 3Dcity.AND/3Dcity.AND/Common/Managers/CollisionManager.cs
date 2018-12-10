@@ -26,7 +26,6 @@ namespace WindowsGame.Common.Managers
 
 	public class CollisionManager : ICollisionManager
 	{
-		// TODO have 2x versions of this array : 1x for easy and 1x for hard
 		// Use the current smaller offsets for Hard + add include frame 6 / 7
 		// Tweak bigger offsets for Easy esp. for the earlier frames [smaller]
 		private Byte[][] enemyFrameOffsets;
@@ -178,7 +177,6 @@ namespace WindowsGame.Common.Managers
 				Byte modulo = (Byte)(position.X / Constants.DbleSize);
 				UInt16 data = (UInt16)((modulo + 1) * Constants.DbleSize);
 
-				var bob = (Int16)(data - position.X);
 				if (borderSize == (Int16)(data - position.X))
 				{
 					return Constants.INVALID_INDEX;
@@ -256,4 +254,3 @@ namespace WindowsGame.Common.Managers
 		public IList<UInt16> TargetList { get; private set; }
 	}
 }
-

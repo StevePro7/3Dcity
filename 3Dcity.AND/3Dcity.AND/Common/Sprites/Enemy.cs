@@ -49,6 +49,7 @@ namespace WindowsGame.Common.Sprites
 			EnemyChange = false;
 			enemyRotate = false;
 
+			EnemyMotor = 0.0f;
 			MoveType = MoveType.None;
 			unitVelocity = Vector2.Zero;
 			moveVelocity = Vector2.Zero;
@@ -93,6 +94,7 @@ namespace WindowsGame.Common.Sprites
 			EnemyChange = false;
 			enemyRotate = doesEnemyRotate;
 
+			EnemyMotor = 0.0f;
 			MoveType = moveType;
 			unitVelocity = Vector2.Zero;
 			moveVelocity = Vector2.Zero;
@@ -106,6 +108,7 @@ namespace WindowsGame.Common.Sprites
 
 		public override void Update(GameTime gameTime)
 		{
+			EnemyMotor = 0.0f;
 			if (EnemyType.Move != EnemyType)
 			{
 				return;
@@ -114,6 +117,7 @@ namespace WindowsGame.Common.Sprites
 			EnemyChange = false;
 			FrameTimer += (UInt16)gameTime.ElapsedGameTime.Milliseconds;
 			FrameIndex = FrameImage[FrameCount];
+			UInt16 frameDelay = FrameDelay[FrameCount];
 
 			// Move enemy as necessary.
 			if (MoveType.None != MoveType)
@@ -137,7 +141,12 @@ namespace WindowsGame.Common.Sprites
 				}
 			}
 
-			UInt16 frameDelay = FrameDelay[FrameCount];
+			// Set motor rumble if necessary.
+			if (FrameCount >= MaxFrames - 1)
+			{
+				EnemyMotor = FrameTimer / frameDelay;
+			}
+
 			if (!(FrameTimer >= frameDelay))
 			{
 				return;
@@ -176,7 +185,7 @@ namespace WindowsGame.Common.Sprites
 			}
 
 			Byte index = enemyRotate ? frameAngle[FrameIndex] : (Byte) 0;
-			base.DrawRotate(rotates[index], origins[index]);
+			DrawRotate(rotates[index], origins[index]);
 		}
 
 		public void Dead()
@@ -238,6 +247,7 @@ namespace WindowsGame.Common.Sprites
 		public Boolean EnemyLaunch { get; private set; }
 		public Boolean EnemyChange { get; private set; }
 		public Boolean EnemyMoving { get; private set; }
+		public Single EnemyMotor { get; private set; }
 		public MoveType MoveType { get; private set; }
 	}
 }

@@ -16,9 +16,7 @@ namespace WindowsGame.Common.Managers
 		void Update(GameTime gameTime);
 		void Draw();
 
-		IList<Explosion> ExplosionList { get; }
 		IList<Byte> ExplosionTest { get; }
-		IDictionary<Byte, Explosion> ExplosionDict { get; }
 	}
 
 	public class ExplosionManager : IExplosionManager 

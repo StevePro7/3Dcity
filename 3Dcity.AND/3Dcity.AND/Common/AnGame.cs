@@ -9,7 +9,7 @@ namespace WindowsGame.Common
 	/// <summary>
 	/// This is the main type for your game
 	/// </summary>
-	public class AnGame : Microsoft.Xna.Framework.Game
+	public class AnGame : Game
 	{
 		private readonly GraphicsDeviceManager graphics;
 
@@ -33,11 +33,13 @@ namespace WindowsGame.Common
 		protected override void LoadContent()
 		{
 			MyGame.LoadContent();
+			base.LoadContent();
 		}
 
 		protected override void UnloadContent()
 		{
 			MyGame.UnloadContent();
+			base.UnloadContent();
 		}
 
 		protected override void Update(GameTime gameTime)

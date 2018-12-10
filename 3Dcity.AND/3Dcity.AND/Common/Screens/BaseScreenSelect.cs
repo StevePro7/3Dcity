@@ -26,9 +26,6 @@ namespace WindowsGame.Common.Screens
 		private Byte IconIndex;
 		private Vector2 spritePosition;
 
-		//TODO delete
-		//protected Vector2 TargetPosition { get; set; }
-
 		public override void Initialize()
 		{
 			base.Initialize();
@@ -175,14 +172,7 @@ namespace WindowsGame.Common.Screens
 			MyGame.Manager.LevelManager.Draw();
 			MyGame.Manager.BulletManager.Draw();
 			MyGame.Manager.SpriteManager.DrawCursor();
-			//MyGame.Manager.SpriteManager.LargeTarget.Draw();		//TODO delete
 		}
-
-		//TODO delete
-		//protected static void DrawTarget()
-		//{
-		//    MyGame.Manager.SpriteManager.LargeTarget.Draw();
-		//}
 
 		protected void DrawBacked()
 		{

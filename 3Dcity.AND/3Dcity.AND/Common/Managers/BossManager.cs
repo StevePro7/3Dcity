@@ -10,9 +10,7 @@ namespace WindowsGame.Common.Managers
 		void Initialize();
 		void LoadContent();
 		void Update(GameTime gameTime);
-		void Draw();
 		void DrawMedBoss();
-		void DrawMedBoss(Byte index);
 		void DrawBigBoss();
 		void DrawProgress();
 	}

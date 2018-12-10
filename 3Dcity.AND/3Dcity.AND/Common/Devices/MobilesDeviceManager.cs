@@ -18,6 +18,10 @@ namespace WindowsGame.Common.Devices
 #endif
 		}
 
+		public void DrawTitle()
+		{
+		}
+
 		public void Abort()
 		{
 		}

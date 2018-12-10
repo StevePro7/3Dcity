@@ -1,6 +1,9 @@
 using System;
-using WindowsGame.Define.Factorys;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 using WindowsGame.Common.Static;
+using WindowsGame.Master.Factorys;
 
 namespace WindowsGame.Common.Managers
 {
@@ -10,8 +13,6 @@ namespace WindowsGame.Common.Managers
 		void Initialize(String root);
 		void LoadContent();
 		void LoadContentSplash();
-
-		//String ContentRoot { get; }
 	}
 
 	public class ContentManager : IContentManager 
@@ -42,56 +43,41 @@ namespace WindowsGame.Common.Managers
 		public void LoadContent()
 		{
 			// Fonts.
-			String fontRoot = String.Format("{0}/{1}/", contentRoot, FONTS_DIRECTORY);
-			Assets.EmulogicFont = contentFactory.LoadFont(fontRoot + "Emulogic");
+			String fontsRoot = String.Format("{0}/{1}/", contentRoot, FONTS_DIRECTORY);
+			Assets.EmulogicFont = contentFactory.LoadFont(fontsRoot + "Emulogic");
 
 			// Sounds.
-			//String soundsRoot = String.Format("{0}/{1}/", contentRoot, SOUND_DIRECTORY);
+			if (MyGame.Manager.ConfigManager.GlobalConfigData.LoadAudio)
+			{
+				String soundsRoot = String.Format("{0}/{1}/", contentRoot, SOUND_DIRECTORY);
+
+				Assets.SongDictionary = new Dictionary<SongType, Song>();
+				for (SongType key = SongType.BossMusic1; key <= SongType.GameTitle; ++key)
+				{
+					String assetName = String.Format("{0}{1}", soundsRoot, key);
+					Song value = contentFactory.LoadSong(assetName);
+					Assets.SongDictionary.Add(key, value);
+				}
+
+				Assets.SoundEffectDictionary = new Dictionary<SoundEffectType, SoundEffectInstance>();
+				for (SoundEffectType key = SoundEffectType.Aaargh; key <= SoundEffectType.Wrong; ++key)
+				{
+					String assetName = String.Format("{0}{1}", soundsRoot, key);
+					SoundEffectInstance value = contentFactory.LoadSoundEffectInstance(assetName);
+					Assets.SoundEffectDictionary.Add(key, value);
+				}
+			}
 
 			// Textures.
-			Assets.SteveProTexture40 = contentFactory.LoadTexture(texturesRoot + "StevePro40");
-			Assets.SteveProTexture80 = contentFactory.LoadTexture(texturesRoot + "StevePro80");
-			Assets.SteveProTexture160 = contentFactory.LoadTexture(texturesRoot + "StevePro160");
-			Assets.SteveProTexture200 = contentFactory.LoadTexture(texturesRoot + "StevePro200");
-			//Assets.GameScreen800 = contentFactory.LoadTexture(texturesRoot + "GameScreen800");
-			//Assets.GameScreen960 = contentFactory.LoadTexture(texturesRoot + "GameScreen960");
-
-			Assets.Target40Texture = contentFactory.LoadTexture(texturesRoot + "Target40");
-			Assets.Target64Texture = contentFactory.LoadTexture(texturesRoot + "Target64");
-			Assets.Target80Texture = contentFactory.LoadTexture(texturesRoot + "Target80");
-
-			Assets.Enemy25Texture = contentFactory.LoadTexture(texturesRoot + "25");
-			Assets.Enemy32Texture = contentFactory.LoadTexture(texturesRoot + "32");
-			Assets.Enemy40Texture = contentFactory.LoadTexture(texturesRoot + "40");
-			Assets.Enemy50Texture = contentFactory.LoadTexture(texturesRoot + "50");
-			Assets.Enemy64Texture = contentFactory.LoadTexture(texturesRoot + "64");
-			Assets.Enemy80Texture = contentFactory.LoadTexture(texturesRoot + "80");
-			Assets.Enemy96Texture = contentFactory.LoadTexture(texturesRoot + "96");
-			Assets.Enemy120Texture = contentFactory.LoadTexture(texturesRoot + "120");
-			//Assets.Enemy128Texture = contentFactory.LoadTexture(texturesRoot + "128");
-
-			Assets.PlayTexture = contentFactory.LoadTexture(texturesRoot + "play");
-			Assets.PauseTexture = contentFactory.LoadTexture(texturesRoot + "pause");
-			Assets.SoundOnTexture = contentFactory.LoadTexture(texturesRoot + "soundOn");
-			Assets.SoundOffTexture = contentFactory.LoadTexture(texturesRoot + "soundOff");
-
-			Assets.BackgroundTexture = contentFactory.LoadTexture(texturesRoot + "background");
-			Assets.Foreground01Texture = contentFactory.LoadTexture(texturesRoot + "foreground01");
-			Assets.Foreground02Texture = contentFactory.LoadTexture(texturesRoot + "foreground02");
-			Assets.Foreground03Texture = contentFactory.LoadTexture(texturesRoot + "foreground03");
-			Assets.ButtonTexture = contentFactory.LoadTexture(texturesRoot + "button");
-			Assets.JoypadTexture = contentFactory.LoadTexture(texturesRoot + "joypad");
-			Assets.Stars01Texture = contentFactory.LoadTexture(texturesRoot + "stars01");
-			Assets.Stars02Texture = contentFactory.LoadTexture(texturesRoot + "stars02");
+			Assets.SpriteSheet01Texture = contentFactory.LoadTexture(texturesRoot + "spritesheet01-1024");
+			Assets.SpriteSheet02Texture = contentFactory.LoadTexture(texturesRoot + "spritesheet02-1024");
 		}
 
 		public void LoadContentSplash()
 		{
-			// TODO revert!
-			String splash = (0 == MyGame.Manager.ConfigManager.GlobalConfigData.SplashDelay) ? "StevePro160" : "Splash";
+			String splash = (0 == MyGame.Manager.ConfigManager.GlobalConfigData.SplashDelay) ? "SplashBlank" : "Splash";
 			Assets.SplashTexture = contentFactory.LoadTexture(texturesRoot + splash);
 		}
 
-		//public String ContentRoot { get; private set; }
 	}
 }

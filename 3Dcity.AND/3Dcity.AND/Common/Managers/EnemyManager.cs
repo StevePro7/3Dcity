@@ -22,20 +22,13 @@ namespace WindowsGame.Common.Managers
 		void Draw();
 		void DrawProgress();
 
-		IList<Enemy> EnemyList { get; }
 		IList<Enemy> EnemyTest { get; }
 		IDictionary<Byte, Enemy> EnemyDict { get; }
-
 		IList<Rectangle> EnemyBounds { get; }
-		UInt16[] EnemyOffsetX { get; }
-		UInt16[] EnemyOffsetY { get; }
 
-		Byte EnemySpawn { get; }
 		Byte EnemyTotal { get; }
-		Byte EnemyStart { get; }
 		Single EnemyPercentage { get; }
-		String EnemyTotalText { get; }
-		String EnemyStartText { get; }
+		Single EnemyController { get; }
 	}
 
 	public class EnemyManager : IEnemyManager
@@ -283,12 +276,23 @@ namespace WindowsGame.Common.Managers
 
 		public void Update(GameTime gameTime)
 		{
+			EnemyController = 0.0f;
 			Boolean launchCheck = false;
 			EnemyTest.Clear();
 			for (Byte index = 0; index < maxEnemySpawn; index++)
 			{
 				Enemy enemy = EnemyList[index];
 				enemy.Update(gameTime);
+
+				// Check if controller should rumble.
+				if (enemy.EnemyMotor > 0)
+				{
+					Single enemyMotor = enemy.EnemyMotor;
+					if (EnemyController < enemyMotor)
+					{
+						EnemyController = enemyMotor;
+					}
+				}
 
 				// Check if should move enemy ship...
 				if (enemy.EnemyChange)
@@ -434,6 +438,7 @@ namespace WindowsGame.Common.Managers
 		public Byte EnemyTotal { get; private set; }
 		public Byte EnemyStart { get; private set; }
 		public Single EnemyPercentage { get; private set; }
+		public Single EnemyController { get; private set; }
 		public String EnemyTotalText { get; private set; }
 		public String EnemyStartText { get; private set; }
 	}

@@ -56,6 +56,7 @@ namespace WindowsGame.Common.Screens
 			// If game paused then do not check for sound.
 			if (GamePause)
 			{
+				MyGame.Manager.InputManager.ResetMotors();
 				return (Int32)CurrScreen;
 			}
 
@@ -93,8 +94,8 @@ namespace WindowsGame.Common.Screens
 
 		public virtual void Draw()
 		{
-			// TODO remove!
-			Master.Engine.Game.Window.Title = GetType().Name;
+			//MyGame.Manager.DeviceManager.DrawTitle(GetType().Name);
+			MyGame.Manager.DeviceManager.DrawTitle();
 
 			if (MyGame.Manager.ConfigManager.GlobalConfigData.RenderBack)
 			{

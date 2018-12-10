@@ -77,7 +77,6 @@ namespace WindowsGame.Common.Screens
 			flags[3] = true;
 			flags[6] = true;
 
-			// TODO do need slight pause first?
 			MyGame.Manager.SoundManager.StopMusic();
 			MyGame.Manager.SoundManager.PlayMusic(SongType.GameTitle);
 		}
@@ -90,18 +89,12 @@ namespace WindowsGame.Common.Screens
 				return (Int32)CurrScreen;
 			}
 
-			//TODO delete
-			//string time = gameTime.ElapsedGameTime.TotalSeconds.ToString();
-			//MyGame.Manager.Logger.Info(time);
-
 
 			timer += (UInt16) gameTime.ElapsedGameTime.Milliseconds;
 			if (timer > beatDelay)
 			{
 				// Reset back to start.
 				Complete();
-				//MyGame.Manager.SoundManager.StopMusic();
-				//MyGame.Manager.LevelManager.SetLevelIndex(0);
 				return (Int32) NextScreen;
 			}
 
