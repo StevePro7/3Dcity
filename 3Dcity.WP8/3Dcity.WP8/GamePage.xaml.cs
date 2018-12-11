@@ -1,8 +1,7 @@
-﻿using System;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using WindowsGame.Common;
 using MonoGame.Framework;
-//using WindowsGame.Common;
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
 namespace _3Dcity.WP8

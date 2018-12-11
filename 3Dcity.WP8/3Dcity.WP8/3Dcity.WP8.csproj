@@ -113,10 +113,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnGame.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\AnGame.cs" />
     <Compile Include="Common\Data\GlobalConfigData.cs" />
     <Compile Include="Common\Data\LevelConfigData.cs" />
     <Compile Include="Common\Data\PlatformConfigData.cs" />
