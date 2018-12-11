@@ -84,6 +84,7 @@
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <Content Include="Assets\SplashScreen.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-140.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-240.jpg" />
     <Content Include="Assets\Wide310x150Logo.scale-240.png" />
     <Content Include="Assets\WideLogo.scale-100.png" />
     <Content Include="Content\Fonts\Emulogic.xnb" />
