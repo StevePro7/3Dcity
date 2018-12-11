@@ -1,4 +1,9 @@
 # 3Dcity
+11/12/2018
+WP8					not recognized
+ThreadManager.cs	Thread
+StorageFactory.cs	IsolatedStorage
+
 06/11/2018
 Enemy delay rules:
 DelayManager

@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Threading;
+//using System.Threading;
 
 namespace WindowsGame.Common.Managers
 {
@@ -12,30 +12,32 @@ namespace WindowsGame.Common.Managers
 	}
 	public class ThreadManager : IThreadManager
 	{
-		private Thread backgroundThread;
+		//private Thread backgroundThread;
 
 		public void Initialize()
 		{
-			backgroundThread = new Thread(BackgroundLoadContent);
+			//backgroundThread = new Thread(BackgroundLoadContent);
 		}
 
 		public void LoadContentAsync()
 		{
-			backgroundThread.Start();
+			MyGame.LoadContentAsync();
+			//backgroundThread.Start();
 		}
 
 		public Boolean Join(Int32 millisecondsTimeout)
 		{
-			return backgroundThread.Join(millisecondsTimeout);
+			//return backgroundThread.Join(millisecondsTimeout);
+		    return true;
 		}
 
 		public void Abort()
 		{
-			if (null != backgroundThread)
-			{
-				backgroundThread.Abort();
-				backgroundThread = null;
-			}
+			//if (null != backgroundThread)
+			//{
+			//	backgroundThread.Abort();
+			//	backgroundThread = null;
+			//}
 		}
 		private static void BackgroundLoadContent()
 		{
