@@ -8,7 +8,7 @@
     <ProjectGuid>{AC1DF8F5-48B4-44F9-A6E3-0F71D061321C}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>_3Dcity.WP8</RootNamespace>
+    <RootNamespace>WindowsGame</RootNamespace>
     <AssemblyName>3Dcity.WP8</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
@@ -82,6 +82,10 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\SplashScreen.scale-140.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-240.png" />
+    <Content Include="Assets\WideLogo.scale-100.png" />
     <Content Include="Content\Fonts\Emulogic.xnb" />
     <Content Include="Content\Sound\Aaargh.xnb" />
     <Content Include="Content\Sound\Bonus.xnb" />
