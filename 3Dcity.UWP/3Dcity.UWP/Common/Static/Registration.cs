@@ -52,7 +52,13 @@ namespace WindowsGame.Common.Static
 			IoCContainer.Initialize<ILogger, ProdLogger>();
 #endif
 
-#if !WINDOWS
+#if WINDOWS_UAP
+			IoCContainer.Initialize<IDeviceManager, DesktopDeviceManager>();
+			IoCContainer.Initialize<IInputManager, DesktopInputManager>();
+			IoCContainer.Initialize<ILogger, TestLogger>();
+#endif
+
+#if !WINDOWS && !WINDOWS_UAP
 			IoCContainer.Initialize<IDeviceManager, MobilesDeviceManager>();
 			IoCContainer.Initialize<IInputManager, MobilesInputManager>();
 			IoCContainer.Initialize<ILogger, TestLogger>();
