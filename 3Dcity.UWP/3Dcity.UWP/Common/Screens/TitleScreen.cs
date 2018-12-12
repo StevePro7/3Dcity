@@ -112,7 +112,7 @@ namespace WindowsGame.Common.Screens
 			if (!flag1)
 			{
 				Boolean fire = false;
-#if WINDOWS
+#if WINDOWS || WINDOWS_UAP
 				fire = MyGame.Manager.InputManager.SelectJoystick();
 #endif
 				if (!fire)
