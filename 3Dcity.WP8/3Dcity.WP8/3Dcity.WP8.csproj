@@ -16,6 +16,9 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{76F1466A-8B6D-4E39-A767-685A06062A39};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <MonoGamePlatform>WindowsPhone8</MonoGamePlatform>
+    <AppxBundle>Always</AppxBundle>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundlePlatforms>neutral</AppxBundlePlatforms>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -82,8 +85,11 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-140.png" />
+    <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Assets\StoreLogo.scale-140.png" />
     <Content Include="Assets\Wide310x150Logo.scale-240.jpg" />
     <Content Include="Assets\Wide310x150Logo.scale-240.png" />
     <Content Include="Assets\WideLogo.scale-100.png" />
@@ -115,6 +121,7 @@
     <Content Include="Content\Textures\SplashBlank.xnb" />
     <Content Include="Content\Textures\spritesheet01-1024.xnb" />
     <Content Include="Content\Textures\spritesheet02-1024.xnb" />
+    <None Include="Package.StoreAssociation.xml" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
