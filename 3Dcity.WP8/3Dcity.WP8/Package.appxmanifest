@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-  <Identity Name="40848SteveProStudios.3DcityWP8" Publisher="CN=5A763094-545D-442B-BFDD-D99AC33DA8B4" Version="1.0.0.0" />
-  <mp:PhoneIdentity PhoneProductId="0e2b63ed-27b4-4318-b805-5cd89318d309" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Identity Name="40848SteveProStudios.12487527AA3D5" Publisher="CN=5A763094-545D-442B-BFDD-D99AC33DA8B4" Version="1.0.0.0" />
+  <mp:PhoneIdentity PhoneProductId="41b25b28-bea4-443e-9993-5d65af781e3c" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>3DcityWP8</DisplayName>
+    <DisplayName>3DCityWP8</DisplayName>
     <PublisherDisplayName>StevePro Studios</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
