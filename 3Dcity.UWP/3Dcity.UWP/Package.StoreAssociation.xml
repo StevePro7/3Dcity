@@ -361,11 +361,13 @@
   <ProductReservedInfo>
     <MainPackageIdentityName>40848SteveProStudios.1107309F000C6</MainPackageIdentityName>
     <ReservedNames>
-      <ReservedName>Retro 3D City</ReservedName>
+      <ReservedName>3D City</ReservedName>
     </ReservedNames>
   </ProductReservedInfo>
   <AccountPackageIdentityNames>
+    <MainPackageIdentityName>40848SteveProStudios.36982C4BAE9A1</MainPackageIdentityName>
     <MainPackageIdentityName>40848SteveProStudios.3DCityUWP</MainPackageIdentityName>
+    <MainPackageIdentityName>40848SteveProStudios.SimpsonsTrivia</MainPackageIdentityName>
   </AccountPackageIdentityNames>
   <PackageInfoList LandingUrl="https://developer.microsoft.com/dashboard/Application?appId=9NF638C5LL2Z" />
 </StoreAssociation>
