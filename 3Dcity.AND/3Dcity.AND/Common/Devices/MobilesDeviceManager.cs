@@ -7,11 +7,11 @@ namespace WindowsGame.Common.Devices
 	{
 		public void Initialize()
 		{
-			BuildVersion = "1.0.0.";
+			BuildVersion = "1.0.0";
 			MaxPlayers = 1;
 
 #if ANDROID
-			BuildVersion = "1.0.0";
+			BuildVersion = "1.1.0";
 #endif
 #if IOS
 			BuildVersion = "1.0.0";
