@@ -16,7 +16,7 @@ namespace WindowsGame.Common.Devices
 			BuildVersion = "1.1.0";
 #endif
 #if IOS
-			BuildVersion = "1.0.0";
+			BuildVersion = "1.1.0";
 #endif
 		}
 
